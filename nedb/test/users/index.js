@@ -3,7 +3,7 @@ var users = require('../../users/index');
 var faker = require('faker');
 var email = faker.internet.email();
 
-describe('Users', function() {
+describe('NeDB connector: Users', function() {
 
   describe('addNewUser api', function() {
     it('Regist a new users', function(done) {

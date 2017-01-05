@@ -53,7 +53,7 @@ module.exports = {
     });
   },
 
-  retriveAllTemplatesPrototypes: function(query, sort, skip, limit) {
+  retriveAllTemplatesPrototypes: function(sort, skip, limit) {
     return new Promise(function(resolve, reject) {
       if (sort && skip && limit) {
         return
@@ -67,7 +67,7 @@ module.exports = {
             return resolve(data);
           });
       } else {
-        return prototypes.find({}, function(err, data) {
+        return prototypes.find({ isTemplate: true, isActive: true }, function(err, data) {
           if (err) return reject();
           resolve(data);
         });

@@ -9,7 +9,10 @@ module.exports = {
     return v.validate(object, schema);
   },
 
-  retriveUserDevice: function(query, sort, skip, limit) {
+  retriveUserDevices: function(query, sort, skip, limit) {
+
+    query.isActive = true;
+
     return new Promise(function(resolve, reject) {
       if (sort && skip && limit) {
         return

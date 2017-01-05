@@ -1,7 +1,7 @@
 var assert = require('chai').assert;
 var datapoints = require('../../datapoints/index');
 
-describe('Datapoint', function() {
+describe('NeDB connector: Datapoint', function() {
   describe('uploadDatapoint api', function() {
     it('Upload a datapoint should pass', function(done) {
       datapoints.uploadDatapoint({
