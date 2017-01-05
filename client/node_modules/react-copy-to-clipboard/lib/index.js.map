@@ -1,0 +1,1 @@
+{"version":3,"sources":["../src/index.js"],"names":[],"mappings":";;;;;;;;+BAA4B,mBAAmB","file":"index.js","sourcesContent":["import CopyToClipboard from './CopyToClipboard';\n\n\nexport default CopyToClipboard;\n"]}

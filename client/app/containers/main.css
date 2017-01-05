@@ -1,0 +1,22 @@
+.base {
+  min-height: 512px;
+  max-width: 954px;
+  margin: 0 auto;
+  padding-top: 100px;
+  display: flex;
+  flex-direction: column;
+}
+.block {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 20px 0px;
+}
+
+@media (min-width: 377px) and (max-width: 768px) {
+
+}
+
+@media (max-width: 376px) {
+
+}

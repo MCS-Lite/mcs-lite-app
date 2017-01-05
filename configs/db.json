@@ -1,0 +1,5 @@
+{
+  "db": "nedb",
+  "host": "localhost",
+  "port": ""
+}

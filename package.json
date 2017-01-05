@@ -1,0 +1,42 @@
+{
+  "name": "mcs-lite-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.html",
+  "scripts": {
+    "watch:global": "~/Downloads/nwjs-sdk-v0.19.3-osx-x64/nwjs.app/Contents/MacOS/nwjs --enable-logging .",
+    "watch:dfserver": "node ./server/index.js",
+    "test:ws": "node ./node_modules/wotcity.io/tests/websocket-send.js",
+    "build:global": "sh ./build.sh",
+    "test:nedb": "mocha --recursive ./nedb/test/"
+  },
+  "window": {
+    "toolbar": false,
+    "show_in_taskbar": true,
+    "width": 1024,
+    "height": 728,
+    "min_width": 1024,
+    "min_height": 728,
+    "max_width": 1024,
+    "max_height": 728,
+    "title": "MCS-Lite-app",
+    "position": "center",
+    "frame": true
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "chai": "^3.5.0",
+    "express": "^4.14.0",
+    "faker": "^3.1.0",
+    "jsonschema": "^1.1.1",
+    "mocha": "^3.2.0",
+    "nedb": "^1.8.0",
+    "shortid": "^2.2.6",
+    "utils-merge": "^1.0.0",
+    "wotcity.io": "^0.8.14"
+  },
+  "devDependencies": {
+    "nw-builder": "^3.1.2"
+  }
+}
