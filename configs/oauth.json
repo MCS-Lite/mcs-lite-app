@@ -1,0 +1,13 @@
+{
+  "ACCESS_TOKEN_EXP": 60,
+  "REFRESH_TOKEN_EXP": 20160,
+  "JWT_SECRET": "superSecret",
+  "host": "localhost",
+  "clientUrl": "http://localhost:3001/v2console/",
+  "clients": {
+    "1000000000000000001": {
+      "secret": "mcs_lite_app_secret",
+      "grantTypes": ["password", "refresh_token"]
+    }
+  }
+}

@@ -5,6 +5,8 @@ module.exports = function ($db) {
   };
 
   var retrieveUserList = function(req, res, next) {
+    // console.log(req.oauth);
+    // console.log(req.user.userId);
     res.send('123123');
   };
 

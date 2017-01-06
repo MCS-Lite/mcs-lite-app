@@ -16,6 +16,7 @@ describe('NeDB connector: Users', function() {
       .catch(done);
     });
   });
+
   describe('retrieveUserList api', function() {
     it('Retrieve all user list.', function(done) {
       users

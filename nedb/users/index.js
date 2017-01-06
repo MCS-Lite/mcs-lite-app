@@ -9,7 +9,24 @@ module.exports = {
   validateSchema: function(object) {
     return v.validate(object, schema);
   },
-
+  signInUser: function(email, password) {
+    return new Promise( function(resolve, reject) {
+      return users.find({
+        email: email,
+        password: password,
+        isActive: true,
+      }, function(err, data) {
+        if (err) {
+          return reject(err);
+        }
+        if (data.length === 1) {
+          return resolve(data[0]);
+        } else {
+          return reject({ error: 'email / password is incorrect.' });
+        }
+      });
+    });
+  },
   addNewUser: function(field) {
     field.userId = shortid.generate();
     field.isActive = false;
