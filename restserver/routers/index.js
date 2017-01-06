@@ -85,7 +85,6 @@ module.exports = function($db, $app) {
   this.uploadDatapoint = {
     path: '/devices/:deviceId/datapoints',
     methods: ['post'],
-    middleware: [$app.oauth.authorise()],
     handler: datapointsController.uploadDatapoints,
   };
 

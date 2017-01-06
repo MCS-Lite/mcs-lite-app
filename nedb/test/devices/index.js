@@ -1,5 +1,5 @@
 var assert = require('chai').assert;
-var devices = require('../../devices/index');
+var devices = require('../../index').init().devices;
 var shortid = require('shortid');
 var userId = shortid.generate();
 describe('NeDB connector: Device', function() {
@@ -25,6 +25,8 @@ describe('NeDB connector: Device', function() {
     it('Retrieve this user devices should pass', function(done) {
       devices.addNewDevice({
         createUserId: userId,
+        deviceId: '123123',
+        deviceKey: '123123',
         deviceName: 'test device Name',
         deviceDescription: '123123123',
         deviceImageURL: 'http://www.google.com',

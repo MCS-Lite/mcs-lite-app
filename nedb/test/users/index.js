@@ -1,5 +1,5 @@
 var assert = require('chai').assert;
-var users = require('../../users/index');
+var users = require('../../index').init().users;
 var faker = require('faker');
 var email = faker.internet.email();
 

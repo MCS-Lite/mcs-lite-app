@@ -1,11 +1,30 @@
 var assert = require('chai').assert;
-var datapoints = require('../../datapoints/index');
+var init = require('../../index').init();
+var datapoints = init.datapoints;
+var devices = init.devices;
+var shortid = require('shortid');
+
+var userId = shortid.generate();
+var deviceId = shortid.generate();
+var deviceKey = shortid.generate();
+
+devices.addNewDevice({
+  createUserId: userId,
+  deviceId: deviceId,
+  deviceKey: deviceKey,
+  deviceName: 'test device Name',
+  deviceDescription: '123123123',
+  deviceImageURL: 'http://www.google.com',
+  prototypeId: shortid.generate(),
+});
 
 describe('NeDB connector: Datapoint', function() {
   describe('uploadDatapoint api', function() {
     it('Upload a datapoint should pass', function(done) {
+
       datapoints.uploadDatapoint({
-        deviceId: '123123',
+        deviceId: deviceId,
+        deviceKey: deviceKey,
         datachannel: 'qweqwewqe',
         timestamp: new Date().getTime(),
         data: 123123,

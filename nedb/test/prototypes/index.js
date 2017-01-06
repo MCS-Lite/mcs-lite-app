@@ -1,5 +1,5 @@
 var assert = require('chai').assert;
-var prototypes = require('../../prototypes/index');
+var prototypes = require('../../index').init().prototypes;
 var shortid = require('shortid');
 var userId = shortid.generate();
 
