@@ -4,12 +4,19 @@ var Validator = require('jsonschema').Validator;
 var v = new Validator();
 var schema = require('./schema');
 var shortid = require('shortid');
+var crypto = require('crypto');
+var secretKey = require('../../configs/rest').secretKey;
 
 module.exports = {
   validateSchema: function(object) {
     return v.validate(object, schema);
   },
   signInUser: function(email, password) {
+    password = crypto
+      .createHmac('sha256', secretKey)
+      .update(password)
+      .digest('hex');
+
     return new Promise( function(resolve, reject) {
       return users.find({
         email: email,
@@ -33,6 +40,11 @@ module.exports = {
     field.createdAt = new Date().getTime();
     field.updatedAt = new Date().getTime();
     field.isActive = true;
+    field.password = crypto
+      .createHmac('sha256', secretKey)
+      .update(field.password)
+      .digest('hex');
+
     var validataSchema = v.validate(field, schema);
 
     return new Promise( function(resolve, reject) {

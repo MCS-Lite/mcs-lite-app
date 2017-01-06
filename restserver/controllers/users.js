@@ -13,5 +13,6 @@ module.exports = function ($db) {
   return {
     registUser: registUser,
     retrieveUserList: retrieveUserList,
+    login: login,
   };
 };

@@ -6,7 +6,7 @@ module.exports = function ($db) {
     // console.log($db.devices.);
     console.log(123132);
     return new Promise(function(resolve, reject) {
-      return devices.retriveUserDevices({ createUserId: req.body.userId })
+      return devices.retriveUserDevices({ createUserId: req.user.userId })
     })
     .then(function(data) {
       return res.send('123123')
@@ -17,15 +17,15 @@ module.exports = function ($db) {
   };
 
   var retrieveDeviceDetail = function(req, res, next) {
-
+    var userId = req.user.userId;
   };
 
   var addNewDevice = function(req, res, next) {
-
+    var userId = req.user.userId;
   };
 
   var editNewDevice = function(req, res, next) {
-
+    var userId = req.user.userId;
   };
 
   return {

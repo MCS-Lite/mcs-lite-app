@@ -1,22 +1,27 @@
 module.exports = function ($db) {
 
   var retrievePrototypeDetail = function(req, res, next) {
+    var userId = req.user.userId;
     res.send('123123');
   };
 
   var retrievePrototype = function(req, res, next) {
+    var userId = req.user.userId;
     res.send('123123');
   };
 
   var addNewPrototype = function(req, res, next) {
+    var userId = req.user.userId;
     res.send('123123');
   };
 
   var addDataChannel = function(req, res, next) {
+    var userId = req.user.userId;
     res.send('123123');
   };
 
   var editDataChannel = function(req, res, next) {
+    var userId = req.user.userId;
     res.send('123123');
   };
 

@@ -8,5 +8,6 @@ module.exports = {
     updatedAt: { type: 'integer' },
     createdAt: { type: 'integer' },
     isActive: { type: 'boolean' },
+    isAdmin: { type: 'boolean' },
   },
 };

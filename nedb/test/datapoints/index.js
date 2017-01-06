@@ -17,8 +17,8 @@ describe('NeDB connector: Datapoint', function() {
     });
   });
 
-  describe('retrieveDeviceAllDatapoint api', function(done) {
-    it('retrieve all datapoint (by device) should pass', function() {
+  describe('retrieveDeviceAllDatapoint api', function() {
+    it('retrieve all datapoint (by device) should pass', function(done) {
       datapoints.retrieveDeviceAllDatapoint({
         deviceId: '123123',
       })
@@ -29,8 +29,8 @@ describe('NeDB connector: Datapoint', function() {
     });
   });
 
-  describe('retrieveDatachannelDatapoint api', function(done) {
-    it('retrieve all datapoint (by datachannel) should pass', function() {
+  describe('retrieveDatachannelDatapoint api', function() {
+    it('retrieve all datapoint (by datachannel) should pass', function(done) {
       datapoints.retrieveDatachannelDatapoint({
         deviceId: '123123',
         datachannel: 'qweqwewqe',
