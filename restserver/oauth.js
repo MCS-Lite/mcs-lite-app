@@ -52,7 +52,7 @@ module.exports = function($db) {
 
   model.getRefreshToken = function(bearerToken, callback) {
     jwt.verify(bearerToken, $config.JWT_SECRET, function(err, payload) {
-      if (err || payload.type !== 'refreshToken') {
+      if (err) {
         return callback(err);
       }
       /* returning null means token is invalid */
@@ -109,7 +109,6 @@ module.exports = function($db) {
       });
     })
     .catch(function(err) {
-      console.log(err);
       return callback($errors["401"], {
         error: err.message,
         message: err.message,
