@@ -6,9 +6,8 @@ module.exports = function($db, $app) {
   var datapointsController = new require('../controllers/datapoints')($db);
 
   this.registUser = {
-    path: '/users',
+    path: '/users/regist',
     methods: ['post'],
-    middleware: [$app.oauth.authorise()],
     handler: usersController.registUser,
   };
 

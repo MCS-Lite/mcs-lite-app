@@ -15,7 +15,6 @@ module.exports = function(users) {
         .createHmac('sha256', secretKey)
         .update(password)
         .digest('hex');
-
       return new Promise( function(resolve, reject) {
         return users.find({
           email: email,
@@ -103,7 +102,6 @@ module.exports = function(users) {
     editUser: function(query, update) {
       return new Promise(function(resolve, reject) {
         return users.update(query, { $set: update }, {}, function(err, num) {
-          console.log(num);
           if (err) return reject();
           resolve({ message: 'success' });
         });
