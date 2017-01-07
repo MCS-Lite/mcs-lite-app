@@ -24,7 +24,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.all('/oauth/token', app.oauth.grant());
-
+app.db = connectDB;
 handleRouters(app, new routers(connectDB, app));
 app.use(app.oauth.errorHandler());
 

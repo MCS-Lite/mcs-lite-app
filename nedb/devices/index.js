@@ -1,4 +1,3 @@
-var Datastore = require('nedb');
 var Validator = require('jsonschema').Validator;
 var v = new Validator();
 var schema = require('./schema');

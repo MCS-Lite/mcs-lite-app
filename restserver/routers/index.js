@@ -88,10 +88,9 @@ module.exports = function($db, $app) {
     handler: datapointsController.uploadDatapoints,
   };
 
-  this.retrieveDatapoint = {
-    path: '/devices/:deviceId/datapoints',
+  this.retrieveDatachannelDatapoint = {
+    path: '/devices/:deviceId/datapoints/datachannel/:datachannelId',
     methods: ['get'],
-    middleware: [$app.oauth.authorise()],
     handler: datapointsController.retrieveDatapoints,
   };
 
