@@ -1,12 +1,9 @@
 
 module.exports = function ($db) {
   var devices = $db.devices;
-  console.log(devices);
   var retrieveDevice = function (req, res, next) {
-    // console.log($db.devices.);
-    console.log(123132);
     return new Promise(function(resolve, reject) {
-      return devices.retriveUserDevices({ createUserId: req.user.userId })
+      return devices.retriveUserDevices({ createUserId: req.user.userId });
     })
     .then(function(data) {
       return res.send('123123')

@@ -10,6 +10,7 @@ module.exports = function(users) {
     validateSchema: function(object) {
       return v.validate(object, schema);
     },
+
     signInUser: function(email, password) {
       password = crypto
         .createHmac('sha256', secretKey)
@@ -32,6 +33,7 @@ module.exports = function(users) {
         });
       });
     },
+
     addNewUser: function(field) {
       field.userId = shortid.generate();
       field.isActive = false;
@@ -88,6 +90,34 @@ module.exports = function(users) {
           resolve(data);
         });
       });
+    },
+
+    checkIsAdmin: function(userId) {
+      return new Promise(function(resolve, reject) {
+        return users.find({ userId: userId, isAdmin: true, isActive: true }, function(err, data) {
+          if (err) return reject();
+          if (data.length != 1) {
+            return reject();
+          } else {
+            resolve(data);
+          }
+        });
+      });
+    },
+
+    changeUserToAdmin: function(email, isAdmin) {
+      return new Promise(function(resolve, reject) {
+        return users.update({
+          email: email,
+          isActive: true,
+        }, {
+          $set: { isAdmin: isAdmin }
+        }, {
+        }, function(err, num) {
+          if (err) return reject();
+          resolve({ message: 'success' });
+        });
+      })
     },
 
     retrieveOneUser: function(query) {

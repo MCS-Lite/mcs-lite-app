@@ -49,14 +49,14 @@ describe('Oauth API:', function() {
         refresh_token = data.body.refresh_token;
         assert.equal(data.body.token_type, 'bearer', 'token_type is not bearer.')
         done();
-      })
+      });
     });
   });
 
   describe('check access_token api:', function() {
     it('return 200.', function(done) {
       request(mcs)
-      .get('/users')
+      .get('/test')
       .set('Content-Type', 'application/x-www-form-urlencoded')
       .set('Authorization', 'Bearer ' + access_token)
       .expect(200)
@@ -65,7 +65,7 @@ describe('Oauth API:', function() {
 
     it('return 401.', function(done) {
       request(mcs)
-      .get('/users')
+      .get('/test')
       .set('Content-Type', 'application/x-www-form-urlencoded')
       .set('Authorization', 'Bearer 1' + access_token)
       .then(function(data) {

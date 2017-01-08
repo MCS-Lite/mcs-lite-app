@@ -5,6 +5,15 @@ module.exports = function($db, $app) {
   var prototypesController = new require('../controllers/prototypes')($db);
   var datapointsController = new require('../controllers/datapoints')($db);
 
+  this.test = {
+    path: '/test',
+    methods: ['get'],
+    middleware: [$app.oauth.authorise()],
+    handler: function(req, res, next) {
+      res.send(200, '');
+    },
+  };
+
   this.registUser = {
     path: '/users/regist',
     methods: ['post'],
