@@ -1,8 +1,8 @@
 var request = require('supertest-as-promised');
 var faker = require('faker');
 var assert = require('chai').assert;
-var mcs = require('../../../index');
-mcs.listen(3000);
+// var mcs = require('../../../index');
+// mcs.listen(3000);
 
 /* faker user account */
 var userName = faker.name.findName();
@@ -19,7 +19,10 @@ var clientSecret;
 Object.keys(oauth.clients).forEach(function(key) { clientId = key; clientSecret = oauth.clients[key].secret });
 var basic_token = new Buffer(clientId + ':' + clientSecret).toString('base64');
 
+require('../../bootstrap.js');
+
 describe('Oauth API:', function() {
+
 
   before(function(done) {
     request(mcs)

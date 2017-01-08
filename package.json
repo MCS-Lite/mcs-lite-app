@@ -8,7 +8,8 @@
     "watch:dfserver": "node ./server/index.js",
     "test:ws": "node ./node_modules/wotcity.io/tests/websocket-send.js",
     "build:global": "sh ./build.sh",
-    "test:nedb": "mocha --recursive ./nedb/test/"
+    "test:nedb": "mocha --recursive ./nedb/test/",
+    "test:api": "mocha ./restserver/tests/api --recursive"
   },
   "window": {
     "toolbar": false,
