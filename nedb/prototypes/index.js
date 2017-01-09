@@ -1,12 +1,16 @@
 var Validator = require('jsonschema').Validator;
 var v = new Validator();
 var schema = require('./schema');
+var shortid = require('shortid');
+var crypto = require('crypto');
+var configs = require('../../configs/rest');
 
 module.exports = function(prototypes) {
   return {
     validateSchema: function(object) {
       return v.validate(object, schema);
     },
+
     retriveUserPrototypes: function(query, sort, skip, limit) {
       return new Promise(function(resolve, reject) {
         if (sort && skip && limit) {
@@ -74,15 +78,17 @@ module.exports = function(prototypes) {
     },
 
     addNewPrototype: function(field) {
-      field.prototypeId = '123123';
-      field.prototypeKey = '123123';
       field.isPublic = false;
       field.isActive = false;
       field.createdAt = new Date().getTime();
       field.updatedAt = new Date().getTime();
       field.fwId = '';
       field.isActive = true;
-      field.isTemplate = true;
+      field.prototypeId = shortid.generate();
+      field.prototypeKey =  crypto
+        .createHmac('sha256', configs.prototypeKey)
+        .update(field.createdAt.toString() + field.prototypeId)
+        .digest('hex');;
 
       var validataSchema = v.validate(field, schema);
 
@@ -109,7 +115,6 @@ module.exports = function(prototypes) {
     editPrototype: function(query, update) {
       return new Promise(function(resolve, reject) {
         return prototypes.update(query, { $set: update }, {}, function(err, num) {
-          console.log(num);
           if (err) return reject();
           resolve({ message: 'success' });
         });
@@ -117,7 +122,9 @@ module.exports = function(prototypes) {
     },
 
     deletePrototype: function(updateContent, filter) {
+      return new Promise(function(resolve, reject) {
 
+      });
     },
   };
 }

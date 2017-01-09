@@ -77,6 +77,7 @@ module.exports = function(devices) {
         }
       })
       .then(function() {
+        /* add new device */
         return new Promise(function(resolve, reject) {
           return devices.insert(field, function(err, data) {
             if (err) return reject();
@@ -97,7 +98,9 @@ module.exports = function(devices) {
     },
 
     deleteDevices: function(updateContent, filter) {
+      return new Promise(function(resolve, reject) {
 
+      });
     },
   };
 }

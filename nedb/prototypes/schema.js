@@ -8,11 +8,22 @@ module.exports = {
     prototypeImageURL: { type: 'string' },
     createdUserId: { type: 'string' },
     version: { type: 'string' },
-    display: { type: 'array' },
     isPublic: { type: 'boolean' },
     isActive: { type: 'boolean' },
     isTemplate: { type: 'boolean' },
   },
+  required: [
+    'prototypeId',
+    'prototypeKey',
+    'prototypeName',
+    'prototypeDescription',
+    'prototypeImageURL',
+    'createdUserId',
+    'version',
+    'isPublic',
+    'isActive',
+    'isTemplate',
+  ],
 };
 
 

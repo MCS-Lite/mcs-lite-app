@@ -10,4 +10,14 @@ module.exports = {
     createdAt: { type: 'integer' },
     isActive: { type: 'boolean' },
   },
+  required: [
+    'deviceId',
+    'deviceKey',
+    'datachannelId',
+    'timestamp',
+    'data',
+    'updatedAt',
+    'createdAt',
+    'isActive',
+  ],
 };

@@ -42,6 +42,7 @@ describe('NeDB connector: Prototypes', function() {
         prototypeDescription: '123123123',
         prototypeImageURL: 'http://www.google.com',
         version: '0.0.1',
+        isTemplate: false,
       })
       .then(function(data) {
         done();

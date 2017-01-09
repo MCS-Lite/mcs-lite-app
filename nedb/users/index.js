@@ -16,6 +16,7 @@ module.exports = function(users) {
         .createHmac('sha256', secretKey)
         .update(password)
         .digest('hex');
+
       return new Promise( function(resolve, reject) {
         return users.find({
           email: email,
@@ -92,14 +93,19 @@ module.exports = function(users) {
       });
     },
 
-    checkIsAdmin: function(userId) {
+    checkIsAdmin: function(userId, isMiddleware) {
       return new Promise(function(resolve, reject) {
         return users.find({ userId: userId, isAdmin: true, isActive: true }, function(err, data) {
           if (err) return reject();
+
+          if (isMiddleware) {
+            return resolve(data);
+          }
+
           if (data.length != 1) {
-            return reject();
+            return reject({ error: 'This user is not admin!' });
           } else {
-            resolve(data);
+            return resolve(data);
           }
         });
       });
@@ -117,7 +123,7 @@ module.exports = function(users) {
           if (err) return reject();
           resolve({ message: 'success' });
         });
-      })
+      });
     },
 
     retrieveOneUser: function(query) {

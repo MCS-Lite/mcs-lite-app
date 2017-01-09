@@ -3,6 +3,7 @@ var db = new Datastore({ filename: './db/database.db' });
 var devices = require('./devices/index');
 var datapoints = require('./datapoints/index');
 var prototypes = require('./prototypes/index');
+var datachannels = require('./datachannels/index');
 var users = require('./users/index');
 
 var $devices = new Datastore({ filename: './db/devices.json', autoload: true });
@@ -17,7 +18,7 @@ function init(host, port, config) {
     devices: new devices($devices),
     datapoints: new datapoints($datapoints, $devices),
     users: new users($users),
-    // datachannels: new datachannels($datachannels),
+    datachannels: new datachannels($datachannels, $prototypes),
   };
 };
 
