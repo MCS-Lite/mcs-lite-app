@@ -4,6 +4,7 @@ module.exports = function($db, $app) {
   var usersController = new require('../controllers/users')($db);
   var prototypesController = new require('../controllers/prototypes')($db);
   var datapointsController = new require('../controllers/datapoints')($db);
+  var datachannelsController = new require('../controllers/datachannels')($db);
 
   this.test = {
     path: '/test',
@@ -48,18 +49,25 @@ module.exports = function($db, $app) {
     handler: prototypesController.addNewPrototype,
   };
 
+  this.editPrototype = {
+    path: '/prototypes/:prototypeId',
+    methods: ['put'],
+    middleware: [$app.oauth.authorise()],
+    handler: prototypesController.editPrototype,
+  };
+
   this.addDataChannel = {
-    path: '/prototypes/:prototypeId/dataChannel',
+    path: '/prototypes/:prototypeId/datachannels',
     methods: ['post'],
     middleware: [$app.oauth.authorise()],
-    handler: prototypesController.addDataChannel,
+    handler: datachannelsController.addNewDatachannels,
   };
 
   this.editDataChannel = {
-    path: '/prototypes/:prototypeId/dataChannel',
+    path: '/prototypes/:prototypeId/datachannels/:datachannelId',
     methods: ['put'],
     middleware: [$app.oauth.authorise()],
-    handler: prototypesController.editDataChannel,
+    handler: datachannelsController.editDatachannels,
   };
 
   this.retrieveDeviceList = {
@@ -84,8 +92,8 @@ module.exports = function($db, $app) {
   };
 
   this.editNewDevice = {
-    path: '/devices',
-    methods: ['post'],
+    path: '/devices/:deviceId',
+    methods: ['put'],
     middleware: [$app.oauth.authorise()],
     handler: devicesController.editNewDevice,
   };
@@ -101,5 +109,4 @@ module.exports = function($db, $app) {
     methods: ['get'],
     handler: datapointsController.retrieveDatapoints,
   };
-
 };

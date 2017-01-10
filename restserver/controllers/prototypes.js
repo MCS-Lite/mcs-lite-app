@@ -12,7 +12,7 @@ module.exports = function ($db) {
       isActive: true,
     })
     .then(function(data) {
-      return res.send(200, { data: data });
+      return res.send(200, { data: data[0] });
     })
     .catch(function(err) {
       return res.send(400, err);
@@ -23,7 +23,7 @@ module.exports = function ($db) {
     var userId = req.user.userId;
     var prototypesData = [];
     return prototypes.retriveUserPrototypes({
-      userId: userId,
+      createdUserId: userId,
       isActive: true,
     })
     .then(function(data) {
@@ -37,7 +37,6 @@ module.exports = function ($db) {
     .catch(function(err) {
       return res.send(400, err)
     })
-    res.send('123123');
   };
 
   var addNewPrototype = function(req, res, next) {
@@ -65,38 +64,17 @@ module.exports = function ($db) {
     });
   };
 
-  var addDataChannel = function(req, res, next) {
+  var editPrototype = function(req, res, next) {
     var userId = req.user.userId;
-    var prototypeId = req.params.prototypeId;
-
-    return datachannels.addNewDatachannel({
-      datachannelId: req.body.datachannelId,
-      datachannelDescription: req.body.datachannelDescription,
-      datachannelTypeId: req.body.datachannelTypeId,
-      prototypeId: prototypeId,
-      createUserId: userId,
-      config: req.body.config,
-    })
-    .then(function(data) {
-      return res.send(200, 'success.');
-    })
-    .catch(function(err) {
-      return res.send(400, err);
-    });
-  };
-
-  var editDataChannel = function(req, res, next) {
-    var userId = req.user.userId;
-    var prototypeId = req.params.prototypeId;
-    var datachannelId = req.params.datachannelId;
-
-    return datachannels.editDatachannel({
-      datachannelId: datachannelId,
-      prototypeId: prototypeId,
+    return prototypes.editPrototype({
+      createdUserId: userId,
+      prototypeId: req.params.prototypeId,
       isActive: true,
     }, {
-      datachannelDescription: req.body.datachannelDescription,
-      datachannelTypeId: req.body.datachannelTypeId,
+      prototypeName: req.body.prototypeName,
+      prototypeDescription: req.body.prototypeDescription,
+      prototypeImageURL: req.body.prototypeImageURL,
+      version: req.body.version,
     })
     .then(function() {
       return res.send(200, 'success.');
@@ -110,8 +88,7 @@ module.exports = function ($db) {
     retrievePrototypeDetail: retrievePrototypeDetail,
     retrievePrototype: retrievePrototype,
     addNewPrototype: addNewPrototype,
-    addDataChannel: addDataChannel,
-    editDataChannel: editDataChannel,
+    editPrototype: editPrototype,
   };
 
 };

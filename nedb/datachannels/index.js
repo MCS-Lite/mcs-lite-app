@@ -8,8 +8,19 @@ module.exports = function(datachannels, prototypes) {
     validateSchema: function(object) {
       return v.validate(object, schema);
     },
-
+    retrievDatachannel: function(field) {
+      return new Promise(function(resolve, reject) {
+        return datachannels.find(field, function(err, data) {
+          if (err) return reject();
+          return resolve(data);
+        });
+      });
+    },
     addNewDatachannel: function(field) {
+      field.updatedAt = new Date().getTime();
+      field.createdAt = new Date().getTime();
+      field.isActive = true;
+
       return new Promise(function(resolve, reject) {
         return prototypes.find({
           prototypeId: field.prototypeId,
@@ -18,15 +29,23 @@ module.exports = function(datachannels, prototypes) {
           if (data.length === 1) {
             return resolve(data[0]);
           } else {
-            return reject({ error: 'Can not find this prototyeId.' });
+            return reject({ error: 'Can not find this prototypeId.' });
           }
         })
       })
       .then(function() {
         return new Promise(function(resolve, reject) {
-          field.updatedAt = new Date().getTime();
-          field.createdAt = new Date().getTime();
-          field.isActive = true;
+          var validataSchema = v.validate(field, schema);
+
+          if (validataSchema.errors.length === 0) {
+            return resolve();
+          } else {
+            return reject({ schema: validataSchema.errors })
+          }
+        });
+      })
+      .then(function() {
+        return new Promise(function(resolve, reject) {
           return datachannels.insert(field, function(err, data) {
             if (err) return reject();
             return resolve(data);
@@ -38,7 +57,6 @@ module.exports = function(datachannels, prototypes) {
     editDatachannel: function(query, update) {
       return new Promise(function(resolve, reject) {
         return datachannels.update(query, { $set: update }, {}, function(err, num) {
-          console.log(num);
           if (err) return reject();
           resolve({ message: 'success.' });
         });

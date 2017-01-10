@@ -3,6 +3,8 @@ module.exports = function ($db) {
   var devices = $db.devices;
 
   var retrieveDevice = function (req, res, next) {
+    var userId = req.user.userId;
+
     return devices.retriveUserDevices({
       createUserId: userId,
       isActive: true,
@@ -39,10 +41,10 @@ module.exports = function ($db) {
       deviceName: req.body.deviceName,
       deviceDescription: req.body.deviceDescription,
       deviceImageURL: req.body.deviceImageURL,
-      prototypeId: req.params.prototypeId,
+      prototypeId: req.body.prototypeId,
     })
     .then(function(data) {
-      return res.send(200, 'success.')
+      return res.send(200, { data: data })
     })
     .catch(function(err) {
       return res.send(400, err);
@@ -53,8 +55,9 @@ module.exports = function ($db) {
     var userId = req.user.userId;
 
     return devices.editDevices({
-      prototypeId: req.params.prototypeId,
       deviceId: req.params.deviceId,
+      createUserId: userId,
+      isActive: true,
     }, {
       deviceName: req.body.deviceName,
       deviceDescription: req.body.deviceDescription,

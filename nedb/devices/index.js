@@ -1,6 +1,9 @@
 var Validator = require('jsonschema').Validator;
 var v = new Validator();
 var schema = require('./schema');
+var shortid = require('shortid');
+var crypto = require('crypto');
+var configs = require('../../configs/rest');
 
 module.exports = function(devices) {
   return {
@@ -63,6 +66,11 @@ module.exports = function(devices) {
       field.updatedAt = new Date().getTime();
       field.fwId = '';
       field.isActive = true;
+      field.deviceId = shortid.generate();
+      field.deviceKey = crypto
+        .createHmac('sha256', configs.deviceKey)
+        .update(field.createdAt.toString() + field.deviceId)
+        .digest('hex');
 
       var validataSchema = v.validate(field, schema);
 
@@ -90,7 +98,6 @@ module.exports = function(devices) {
     editDevices: function(query, update) {
       return new Promise(function(resolve, reject) {
         return devices.update(query, { $set: update }, {}, function(err, num) {
-          console.log(num);
           if (err) return reject();
           resolve({ message: 'success' });
         });
