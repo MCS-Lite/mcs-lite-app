@@ -1,0 +1,40 @@
+import React from 'react'
+import { Route } from 'react-router'
+import App from '../components/app'
+import Main from '../containers/main'
+import Prototypes from '../containers/prototypes'
+import PrototypeDetail from '../containers/prototypeDetail'
+import Devices from '../containers/devices'
+import DeviceDetail from '../containers/deviceDetail'
+import AdminLogin from '../containers/adminLogin'
+import Admin from '../containers/admin'
+import Login from '../containers/login'
+
+export default (
+  <Route component={App}>
+    <Route
+      path="/"
+      components={Login} />
+    <Route
+      path="/login"
+      components={Login} />
+    <Route
+      path="/admin/login"
+      components={AdminLogin} />
+    <Route
+      path="/admin"
+      components={Admin} />
+    <Route
+      path="/prototypes"
+      components={Prototypes} />
+    <Route
+      path="/prototypes/:prototypeId"
+      components={PrototypeDetail} />
+    <Route
+      path="/devices"
+      components={Devices} />
+    <Route
+      path="/devices/:deviceId"
+      components={DeviceDetail} />
+  </Route>
+)

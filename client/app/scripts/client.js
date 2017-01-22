@@ -9,12 +9,14 @@ import App from '../components/app';
 import { applyMiddleware, createStore, combineReducers, compose } from 'redux';
 import { Provider } from 'react-redux';
 import reducers from '../reducers';
-import Routr from '../routes/routr';
+import { Router, Route, RouterContext, browserHistory } from 'react-router';
+// import Routr from '../routes/routr';
 import promiseMiddleware from '../utils/promiseMiddleware';
 
 // const composedReducers = combineReducers(reducers);
 const store = createStore(reducers);
-new Routr(store);
+import routes from '../routes/routing';
+// new Routr(store);
 // const finalCreateStore = applyMiddleware( promiseMiddleware )(createStore);
 // let store = finalCreateStore(composedReducers, state);
 
@@ -23,7 +25,7 @@ console.log(store.getState());
 if (document && document.getElementById('app')) {
   dom.render(
     <Provider store={store}>
-      <App />
+      <Router history={browserHistory} routes={routes} />
     </Provider>,
     document.getElementById('app')
   );

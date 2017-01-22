@@ -1,15 +1,16 @@
-import React from 'react'
-
-import Footer from '@mtk/mcs-components/lib/Footer';
-import Header from '@mtk/mcs-components/lib/Header';
+import React, { Component } from 'react';
 import Main from '../containers/main';
 
-let App = () => (
-  <div>
-    <Header />
-    <Main />
-    <Footer />
-  </div>
-)
+class App extends Component {
+  render() {
+    const { children } = this.props;
+    return (
+      <div>
+        { children }
+      </div>
+
+    );
+  }
+}
 
 export default App

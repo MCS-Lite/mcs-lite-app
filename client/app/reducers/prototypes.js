@@ -1,14 +1,15 @@
 import {
   OPEN_EDITPROTOTYPE,
   CLOSE_EDITPROTOTYPE,
-} from '../constants/ActionTypes';
+} from '../constants/PrototypeActionTypes';
 import assign from 'object-assign';
 
 const initialState = {
-  editPrototype: false
+  editPrototype: false,
+  addNewPrototype: false,
 }
 
-export default function menus( state = initialState, action ) {
+export default function prototypes( state = initialState, action ) {
   switch ( action.type ) {
     case OPEN_EDITPROTOTYPE:
       return assign({}, state, { editPrototype: true });

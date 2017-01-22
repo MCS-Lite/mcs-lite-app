@@ -1,0 +1,3112 @@
+├─ abbrev@1.0.9
+│  ├─ licenses: ISC
+│  ├─ repository: https://github.com/isaacs/abbrev-js
+│  ├─ publisher: Isaac Z. Schlueter
+│  ├─ email: i@izs.me
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/abbrev/LICENSE
+├─ accepts@1.0.1
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/expressjs/accepts
+│  ├─ publisher: Jonathan Ong
+│  ├─ email: me@jongleberry.com
+│  └─ url: http://jongleberry.com
+├─ accepts@1.3.3
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/jshttp/accepts
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/accepts/LICENSE
+├─ acorn@1.2.2
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/marijnh/acorn
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/acorn/LICENSE
+├─ amdefine@1.0.1
+│  ├─ licenses: BSD-3-Clause OR MIT
+│  ├─ repository: https://github.com/jrburke/amdefine
+│  ├─ publisher: James Burke
+│  ├─ email: jrburke@gmail.com
+│  ├─ url: http://github.com/jrburke
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/amdefine/LICENSE
+├─ ansi-align@1.1.0
+│  ├─ licenses: ISC
+│  ├─ repository: https://github.com/nexdrew/ansi-align
+│  ├─ publisher: nexdrew
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/ansi-align/LICENSE
+├─ ansi-regex@0.2.1
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/sindresorhus/ansi-regex
+│  ├─ publisher: Sindre Sorhus
+│  ├─ email: sindresorhus@gmail.com
+│  └─ url: http://sindresorhus.com
+├─ ansi-regex@1.1.1
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/sindresorhus/ansi-regex
+│  ├─ publisher: Sindre Sorhus
+│  ├─ email: sindresorhus@gmail.com
+│  ├─ url: http://sindresorhus.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/readline2/node_modules/ansi-regex/license
+├─ ansi-regex@2.0.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/sindresorhus/ansi-regex
+│  ├─ publisher: Sindre Sorhus
+│  ├─ email: sindresorhus@gmail.com
+│  ├─ url: sindresorhus.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/string-width/node_modules/ansi-regex/license
+├─ ansi-styles@1.0.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/sindresorhus/ansi-styles
+│  ├─ publisher: Sindre Sorhus
+│  ├─ email: sindresorhus@gmail.com
+│  └─ url: http://sindresorhus.com
+├─ ansi-styles@1.1.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/sindresorhus/ansi-styles
+│  ├─ publisher: Sindre Sorhus
+│  ├─ email: sindresorhus@gmail.com
+│  └─ url: http://sindresorhus.com
+├─ ansi-styles@2.2.1
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/chalk/ansi-styles
+│  ├─ publisher: Sindre Sorhus
+│  ├─ email: sindresorhus@gmail.com
+│  ├─ url: sindresorhus.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/boxen/node_modules/ansi-styles/license
+├─ archiver-utils@1.3.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/archiverjs/archiver-utils
+│  ├─ publisher: Chris Talkington
+│  ├─ url: http://christalkington.com/
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/archiver-utils/LICENSE
+├─ archiver@1.3.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/archiverjs/node-archiver
+│  ├─ publisher: Chris Talkington
+│  ├─ url: http://christalkington.com/
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/archiver/LICENSE
+├─ array-find-index@1.0.2
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/sindresorhus/array-find-index
+│  ├─ publisher: Sindre Sorhus
+│  ├─ email: sindresorhus@gmail.com
+│  ├─ url: sindresorhus.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/array-find-index/license
+├─ array-flatten@1.1.1
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/blakeembrey/array-flatten
+│  ├─ publisher: Blake Embrey
+│  ├─ email: hello@blakeembrey.com
+│  ├─ url: http://blakeembrey.me
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/array-flatten/LICENSE
+├─ asap@2.0.5
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/kriskowal/asap
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/asap/LICENSE.md
+├─ asn1@0.2.3
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/mcavage/node-asn1
+│  ├─ publisher: Mark Cavage
+│  ├─ email: mcavage@gmail.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/asn1/LICENSE
+├─ assert-plus@0.2.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/mcavage/node-assert-plus
+│  ├─ publisher: Mark Cavage
+│  └─ email: mcavage@gmail.com
+├─ assert-plus@1.0.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/mcavage/node-assert-plus
+│  ├─ publisher: Mark Cavage
+│  └─ email: mcavage@gmail.com
+├─ assertion-error@1.0.2
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/chaijs/assertion-error
+│  ├─ publisher: Jake Luer
+│  ├─ email: jake@qualiancy.com
+│  └─ url: http://qualiancy.com
+├─ ast-types@0.8.15
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/benjamn/ast-types
+│  ├─ publisher: Ben Newman
+│  ├─ email: bn@cs.stanford.edu
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/ast-types/LICENSE
+├─ async@0.2.10
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/caolan/async
+│  ├─ publisher: Caolan McMahon
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/nedb/node_modules/async/LICENSE
+├─ async@0.8.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/caolan/async
+│  ├─ publisher: Caolan McMahon
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/inquirer/node_modules/async/LICENSE
+├─ async@0.9.2
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/caolan/async
+│  ├─ publisher: Caolan McMahon
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/async/LICENSE
+├─ async@1.5.2
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/caolan/async
+│  ├─ publisher: Caolan McMahon
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/lwm2m-node-lib/node_modules/async/LICENSE
+├─ async@2.1.4
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/caolan/async
+│  ├─ publisher: Caolan McMahon
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/archiver/node_modules/async/LICENSE
+├─ asynckit@0.4.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/alexindigo/asynckit
+│  ├─ publisher: Alex Indigo
+│  ├─ email: iam@alexindigo.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/asynckit/LICENSE
+├─ aws-sign2@0.6.0
+│  ├─ licenses: Apache-2.0
+│  ├─ repository: https://github.com/mikeal/aws-sign
+│  ├─ publisher: Mikeal Rogers
+│  ├─ email: mikeal.rogers@gmail.com
+│  ├─ url: http://www.futurealoof.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/aws-sign2/LICENSE
+├─ aws4@1.5.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/mhart/aws4
+│  ├─ publisher: Michael Hart
+│  ├─ email: michael.hart.au@gmail.com
+│  ├─ url: http://github.com/mhart
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/aws4/LICENSE
+├─ backbone@1.3.3
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/jashkenas/backbone
+│  ├─ publisher: Jeremy Ashkenas
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/backbone/LICENSE
+├─ balanced-match@0.4.2
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/juliangruber/balanced-match
+│  ├─ publisher: Julian Gruber
+│  ├─ email: mail@juliangruber.com
+│  ├─ url: http://juliangruber.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/balanced-match/LICENSE.md
+├─ base62@0.1.1
+│  ├─ licenses: MIT*
+│  ├─ repository: https://github.com/andrew/base62.js
+│  ├─ publisher: Andrew Nesbitt
+│  ├─ email: andrewnez@gmail.com
+│  ├─ url: http://andrew-nesbitt.com/
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/base62/LICENSE
+├─ base64-js@1.1.2
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/beatgammit/base64-js
+│  ├─ publisher: T. Jameson Little
+│  ├─ email: t.jameson.little@gmail.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/base64-js/LICENSE.MIT
+├─ base64-url@1.3.3
+│  ├─ licenses: ISC
+│  ├─ repository: https://github.com/joaquimserafim/base64-url
+│  ├─ publisher: @joaquimserafim
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/base64-url/LICENSE
+├─ base64url@2.0.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/brianloveswords/base64url
+│  └─ publisher: Brian J Brennan
+├─ basic-auth@0.0.1
+│  ├─ licenses: MIT
+│  └─ repository: https://github.com/visionmedia/node-basic-auth
+├─ bcrypt-pbkdf@1.0.0
+│  └─ licenses: BSD-4-Clause
+├─ binary-search-tree@0.2.5
+│  ├─ licenses: MIT*
+│  ├─ repository: https://github.com/louischatriot/node-binary-search-tree
+│  ├─ publisher: Louis Chatriot
+│  └─ email: louis.chatriot@gmail.com
+├─ binary@0.3.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/substack/node-binary
+│  ├─ publisher: James Halliday
+│  ├─ email: mail@substack.net
+│  └─ url: http://substack.net
+├─ bindings@1.2.1
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/TooTallNate/node-bindings
+│  ├─ publisher: Nathan Rajlich
+│  ├─ email: nathan@tootallnate.net
+│  └─ url: http://tootallnate.net
+├─ bl@0.9.5
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/rvagg/bl
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/bl/LICENSE.md
+├─ bl@1.0.2
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/rvagg/bl
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/lwm2m-node-lib/node_modules/coap/node_modules/bl/LICENSE.md
+├─ bl@1.1.2
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/rvagg/bl
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/request/node_modules/bl/LICENSE.md
+├─ bl@1.2.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/rvagg/bl
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/tar-stream/node_modules/bl/LICENSE.md
+├─ bluebird@2.11.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/petkaantonov/bluebird
+│  ├─ publisher: Petka Antonov
+│  ├─ email: petka_antonov@hotmail.com
+│  ├─ url: http://github.com/petkaantonov/
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/bluebird/LICENSE
+├─ bluebird@2.9.26
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/petkaantonov/bluebird
+│  ├─ publisher: Petka Antonov
+│  ├─ email: petka_antonov@hotmail.com
+│  ├─ url: http://github.com/petkaantonov/
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/lwm2m-node-lib/node_modules/mongoose/node_modules/mquery/node_modules/bluebird/LICENSE
+├─ bluebird@3.4.7
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/petkaantonov/bluebird
+│  ├─ publisher: Petka Antonov
+│  ├─ email: petka_antonov@hotmail.com
+│  ├─ url: http://github.com/petkaantonov/
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/wotcity.io/node_modules/bluebird/LICENSE
+├─ body-parser@1.15.2
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/expressjs/body-parser
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/body-parser/LICENSE
+├─ boom@2.10.1
+│  ├─ licenses: BSD-3-Clause
+│  ├─ repository: https://github.com/hapijs/boom
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/boom/LICENSE
+├─ boxen@0.6.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/sindresorhus/boxen
+│  ├─ publisher: Sindre Sorhus
+│  ├─ email: sindresorhus@gmail.com
+│  ├─ url: sindresorhus.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/boxen/license
+├─ brace-expansion@1.1.6
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/juliangruber/brace-expansion
+│  ├─ publisher: Julian Gruber
+│  ├─ email: mail@juliangruber.com
+│  └─ url: http://juliangruber.com
+├─ browser-stdout@1.3.0
+│  ├─ licenses: ISC
+│  ├─ repository: https://github.com/kumavis/browser-stdout
+│  └─ publisher: kumavis
+├─ bson@0.4.21
+│  ├─ licenses: Apache-2.0
+│  ├─ repository: https://github.com/mongodb/js-bson
+│  ├─ publisher: Christian Amor Kvalheim
+│  ├─ email: christkv@gmail.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/lwm2m-node-lib/node_modules/mongodb/node_modules/mongodb-core/node_modules/bson/LICENSE
+├─ buffer-crc32@0.2.1
+│  ├─ licenses: MIT*
+│  ├─ repository: https://github.com/brianloveswords/buffer-crc32
+│  ├─ publisher: Brian J. Brennan
+│  ├─ email: brianloveswords@gmail.com
+│  └─ url: http://bjb.io
+├─ buffer-equal-constant-time@1.0.1
+│  ├─ licenses: BSD-3-Clause
+│  ├─ repository: https://github.com/goinstant/buffer-equal-constant-time
+│  ├─ publisher: GoInstant Inc., a salesforce.com company
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/buffer-equal-constant-time/LICENSE.txt
+├─ buffer-shims@1.0.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/calvinmetcalf/buffer-shims
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/buffer-shims/license.md
+├─ buffers@0.1.1
+│  ├─ licenses: UNKNOWN
+│  ├─ repository: https://github.com/substack/node-buffers
+│  ├─ publisher: James Halliday
+│  ├─ email: mail@substack.net
+│  └─ url: http://substack.net
+├─ builtin-modules@1.1.1
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/sindresorhus/builtin-modules
+│  ├─ publisher: Sindre Sorhus
+│  ├─ email: sindresorhus@gmail.com
+│  ├─ url: sindresorhus.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/builtin-modules/license
+├─ bytes@0.3.0
+│  ├─ licenses: MIT*
+│  ├─ repository: https://github.com/visionmedia/bytes.js
+│  ├─ publisher: TJ Holowaychuk
+│  ├─ email: tj@vision-media.ca
+│  └─ url: http://tjholowaychuk.com
+├─ bytes@2.4.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/visionmedia/bytes.js
+│  ├─ publisher: TJ Holowaychuk
+│  ├─ email: tj@vision-media.ca
+│  ├─ url: http://tjholowaychuk.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/body-parser/node_modules/bytes/LICENSE
+├─ camelcase-keys@2.1.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/sindresorhus/camelcase-keys
+│  ├─ publisher: Sindre Sorhus
+│  ├─ email: sindresorhus@gmail.com
+│  ├─ url: http://sindresorhus.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/camelcase-keys/license
+├─ camelcase@2.1.1
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/sindresorhus/camelcase
+│  ├─ publisher: Sindre Sorhus
+│  ├─ email: sindresorhus@gmail.com
+│  ├─ url: http://sindresorhus.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/camelcase/license
+├─ capitalize@1.0.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/grncdr/js-capitalize
+│  ├─ publisher: Stephen Sugden
+│  ├─ email: me@stephensugden.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/lwm2m-node-lib/node_modules/coap/node_modules/capitalize/LICENSE
+├─ capture-stack-trace@1.0.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/floatdrop/capture-stack-trace
+│  ├─ publisher: Vsevolod Strukchinsky
+│  ├─ email: floatdrop@gmail.com
+│  └─ url: github.com/floatdrop
+├─ caseless@0.11.0
+│  ├─ licenses: Apache-2.0
+│  ├─ repository: https://github.com/mikeal/caseless
+│  ├─ publisher: Mikeal Rogers
+│  ├─ email: mikeal.rogers@gmail.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/caseless/LICENSE
+├─ cfgmerge@1.0.1
+│  ├─ licenses: ISC
+│  └─ repository: https://github.com/Mediatek-Cloud/merge
+├─ chai@3.5.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/chaijs/chai
+│  ├─ publisher: Jake Luer
+│  └─ email: jake@alogicalparadox.com
+├─ chainsaw@0.1.0
+│  ├─ licenses: MIT/X11
+│  ├─ repository: https://github.com/substack/node-chainsaw
+│  ├─ publisher: James Halliday
+│  ├─ email: mail@substack.net
+│  └─ url: http://substack.net
+├─ chalk@0.4.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/sindresorhus/chalk
+│  ├─ publisher: Sindre Sorhus
+│  ├─ email: sindresorhus@gmail.com
+│  └─ url: http://sindresorhus.com
+├─ chalk@0.5.1
+│  ├─ licenses: MIT
+│  └─ repository: https://github.com/sindresorhus/chalk
+├─ chalk@1.1.3
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/chalk/chalk
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/boxen/node_modules/chalk/license
+├─ cli-boxes@1.0.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/sindresorhus/cli-boxes
+│  ├─ publisher: Sindre Sorhus
+│  ├─ email: sindresorhus@gmail.com
+│  ├─ url: sindresorhus.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/cli-boxes/license
+├─ cli-color@0.3.3
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/medikoo/cli-color
+│  ├─ publisher: Mariusz Nowak
+│  ├─ email: medyk@medikoo.com
+│  ├─ url: http://www.medikoo.com/
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/cli-color/LICENSE
+├─ clone-stats@0.0.1
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/hughsk/clone-stats
+│  ├─ publisher: Hugh Kennedy
+│  ├─ email: hughskennedy@gmail.com
+│  ├─ url: http://hughsk.io/
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/clone-stats/LICENSE.md
+├─ cluster@0.7.7
+│  ├─ licenses: MIT*
+│  ├─ repository: https://github.com/LearnBoost/cluster
+│  ├─ publisher: TJ Holowaychuk
+│  ├─ email: tj@learnboost.com
+│  ├─ url: http://tjholowaychuk.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/cluster/LICENSE
+├─ coap-cli@0.4.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/mcollina/coap-cli
+│  ├─ publisher: Matteo Collina
+│  ├─ email: hello@matteocollina.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/lwm2m-node-lib/node_modules/coap-cli/LICENSE
+├─ coap-packet@0.1.13
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/mcollina/coap-packet
+│  ├─ publisher: Matteo Collina
+│  ├─ email: hello@matteocollina.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/coap-packet/LICENSE.md
+├─ coap@0.10.5
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/mcollina/node-coap
+│  ├─ publisher: Matteo Collina
+│  ├─ email: hello@matteocollina.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/coap/LICENSE.md
+├─ coap@0.12.1
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/mcollina/node-coap
+│  ├─ publisher: Matteo Collina
+│  ├─ email: hello@matteocollina.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/lwm2m-node-lib/node_modules/coap-cli/node_modules/coap/LICENSE.md
+├─ coap@0.13.1
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/mcollina/node-coap
+│  ├─ publisher: Matteo Collina
+│  ├─ email: hello@matteocollina.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/lwm2m-node-lib/node_modules/coap/LICENSE.md
+├─ code-point-at@1.1.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/sindresorhus/code-point-at
+│  ├─ publisher: Sindre Sorhus
+│  ├─ email: sindresorhus@gmail.com
+│  ├─ url: sindresorhus.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/code-point-at/license
+├─ colors@1.1.2
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/Marak/colors.js
+│  ├─ publisher: Marak Squires
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/lwm2m-node-lib/node_modules/logops/node_modules/colors/LICENSE
+├─ combined-stream@1.0.5
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/felixge/node-combined-stream
+│  ├─ publisher: Felix Geisendörfer
+│  ├─ email: felix@debuggable.com
+│  ├─ url: http://debuggable.com/
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/combined-stream/License
+├─ command-node@0.1.1
+│  ├─ licenses: UNKNOWN
+│  ├─ repository: https://github.com/telefonicaid/command-node
+│  ├─ publisher: Daniel Moran
+│  └─ email: dmj@tid.es
+├─ commander@2.9.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/tj/commander.js
+│  ├─ publisher: TJ Holowaychuk
+│  ├─ email: tj@vision-media.ca
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/commander/LICENSE
+├─ component-emitter@1.2.1
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/component/emitter
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/component-emitter/LICENSE
+├─ compress-commons@1.1.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/archiverjs/node-compress-commons
+│  ├─ publisher: Chris Talkington
+│  ├─ url: http://christalkington.com/
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/compress-commons/LICENSE
+├─ concat-map@0.0.1
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/substack/node-concat-map
+│  ├─ publisher: James Halliday
+│  ├─ email: mail@substack.net
+│  ├─ url: http://substack.net
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/concat-map/LICENSE
+├─ configstore@2.1.0
+│  ├─ licenses: BSD-2-Clause
+│  ├─ repository: https://github.com/yeoman/configstore
+│  ├─ publisher: Sindre Sorhus
+│  ├─ email: sindresorhus@gmail.com
+│  └─ url: sindresorhus.com
+├─ content-disposition@0.5.1
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/jshttp/content-disposition
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/content-disposition/LICENSE
+├─ content-type@1.0.2
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/jshttp/content-type
+│  ├─ publisher: Douglas Christopher Wilson
+│  ├─ email: doug@somethingdoug.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/content-type/LICENSE
+├─ cookie-parser@1.0.1
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/expressjs/cookie-parser
+│  ├─ publisher: TJ Holowaychuk
+│  ├─ email: tj@vision-media.ca
+│  └─ url: http://tjholowaychuk.com
+├─ cookie-session@1.2.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/expressjs/cookie-session
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/cookie-session/LICENSE
+├─ cookie-signature@1.0.3
+│  ├─ licenses: MIT*
+│  ├─ repository: https://github.com/visionmedia/node-cookie-signature
+│  ├─ publisher: TJ Holowaychuk
+│  └─ email: tj@learnboost.com
+├─ cookie-signature@1.0.6
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/visionmedia/node-cookie-signature
+│  ├─ publisher: TJ Holowaychuk
+│  └─ email: tj@learnboost.com
+├─ cookie@0.1.0
+│  ├─ licenses: MIT*
+│  ├─ repository: https://github.com/shtylman/node-cookie
+│  ├─ publisher: Roman Shtylman
+│  ├─ email: shtylman@gmail.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/cookie-parser/node_modules/cookie/LICENSE
+├─ cookie@0.1.2
+│  ├─ licenses: MIT*
+│  ├─ repository: https://github.com/shtylman/node-cookie
+│  ├─ publisher: Roman Shtylman
+│  ├─ email: shtylman@gmail.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/mtk-core/node_modules/cookie/LICENSE
+├─ cookie@0.3.1
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/jshttp/cookie
+│  ├─ publisher: Roman Shtylman
+│  ├─ email: shtylman@gmail.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/cookie/LICENSE
+├─ cookiejar@2.1.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/bmeck/node-cookiejar
+│  ├─ publisher: bradleymeck
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/cookiejar/LICENSE
+├─ cookies@0.5.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/expressjs/cookies
+│  ├─ publisher: Jed Schmidt
+│  ├─ email: tr@nslator.jp
+│  ├─ url: http://jed.is
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/cookies/LICENSE.txt
+├─ core-util-is@1.0.2
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/isaacs/core-util-is
+│  ├─ publisher: Isaac Z. Schlueter
+│  ├─ email: i@izs.me
+│  ├─ url: http://blog.izs.me/
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/core-util-is/LICENSE
+├─ crc32-stream@1.0.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/archiverjs/node-crc32-stream
+│  ├─ publisher: Chris Talkington
+│  ├─ url: http://christalkington.com/
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/crc32-stream/LICENSE
+├─ crc@3.4.1
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/alexgorbatchev/node-crc
+│  ├─ publisher: Alex Gorbatchev
+│  ├─ url: https://github.com/alexgorbatchev
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/crc/LICENSE
+├─ create-error-class@3.0.2
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/floatdrop/create-error-class
+│  ├─ publisher: Vsevolod Strukchinsky
+│  ├─ email: floatdrop@gmail.com
+│  ├─ url: github.com/floatdrop
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/create-error-class/license
+├─ cryptiles@2.0.5
+│  ├─ licenses: BSD-3-Clause
+│  ├─ repository: https://github.com/hapijs/cryptiles
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/cryptiles/LICENSE
+├─ crypto@0.0.3
+│  ├─ licenses: BSD
+│  ├─ repository: https://github.com/Gozala/crypto
+│  ├─ publisher: Irakli Gozalishvili
+│  └─ email: rfobic@gmail.com
+├─ csrf@3.0.4
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/pillarjs/csrf
+│  ├─ publisher: Jonathan Ong
+│  ├─ email: me@jongleberry.com
+│  ├─ url: http://jongleberry.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/csrf/LICENSE
+├─ csurf@1.9.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/expressjs/csurf
+│  ├─ publisher: Jonathan Ong
+│  ├─ email: me@jongleberry.com
+│  ├─ url: http://jongleberry.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/csurf/LICENSE
+├─ currently-unhandled@0.4.1
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/jamestalmage/currently-unhandled
+│  ├─ publisher: James Talmage
+│  ├─ email: james@talmage.io
+│  ├─ url: github.com/jamestalmage
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/currently-unhandled/license
+├─ d@0.1.1
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/medikoo/d
+│  ├─ publisher: Mariusz Nowak
+│  ├─ email: medyk@medikoo.com
+│  ├─ url: http://www.medikoo.com/
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/d/LICENCE
+├─ dashdash@1.14.1
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/trentm/node-dashdash
+│  ├─ publisher: Trent Mick
+│  ├─ email: trentm@gmail.com
+│  ├─ url: http://trentm.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/dashdash/LICENSE.txt
+├─ dateformat@1.0.12
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/felixge/node-dateformat
+│  ├─ publisher: Steven Levithan
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/dateformat/LICENSE
+├─ deasync@0.1.7
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/abbr/deasync
+│  ├─ publisher: Vladimir Kurchatkin
+│  └─ email: vladimir.kurchatkin@gmail.com
+├─ debug@0.7.4
+│  ├─ licenses: MIT*
+│  ├─ repository: https://github.com/visionmedia/debug
+│  ├─ publisher: TJ Holowaychuk
+│  └─ email: tj@vision-media.ca
+├─ debug@0.8.0
+│  ├─ licenses: MIT*
+│  ├─ repository: https://github.com/visionmedia/debug
+│  ├─ publisher: TJ Holowaychuk
+│  └─ email: tj@vision-media.ca
+├─ debug@0.8.1
+│  ├─ licenses: MIT*
+│  ├─ repository: https://github.com/visionmedia/debug
+│  ├─ publisher: TJ Holowaychuk
+│  └─ email: tj@vision-media.ca
+├─ debug@2.2.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/visionmedia/debug
+│  ├─ publisher: TJ Holowaychuk
+│  └─ email: tj@vision-media.ca
+├─ debuglog@1.0.1
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/sam-github/node-debuglog
+│  ├─ publisher: Sam Roberts
+│  ├─ email: sam@strongloop.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/debuglog/LICENSE
+├─ decamelize@1.2.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/sindresorhus/decamelize
+│  ├─ publisher: Sindre Sorhus
+│  ├─ email: sindresorhus@gmail.com
+│  ├─ url: sindresorhus.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/decamelize/license
+├─ decompress-zip@0.3.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/bower/decompress-zip
+│  └─ publisher: Bower
+├─ deep-eql@0.1.3
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/chaijs/deep-eql
+│  ├─ publisher: Jake Luer
+│  └─ email: jake@alogicalparadox.com
+├─ deep-extend@0.4.1
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/unclechu/node-deep-extend
+│  ├─ publisher: Viacheslav Lotsmanov
+│  ├─ email: lotsmanov89@gmail.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/deep-extend/LICENSE
+├─ delayed-stream@1.0.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/felixge/node-delayed-stream
+│  ├─ publisher: Felix Geisendörfer
+│  ├─ email: felix@debuggable.com
+│  ├─ url: http://debuggable.com/
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/delayed-stream/License
+├─ depd@1.1.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/dougwilson/nodejs-depd
+│  ├─ publisher: Douglas Christopher Wilson
+│  ├─ email: doug@somethingdoug.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/depd/LICENSE
+├─ deprecate@1.0.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/brianc/node-deprecate
+│  └─ publisher: Brian M. Carlson
+├─ destroy@1.0.4
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/stream-utils/destroy
+│  ├─ publisher: Jonathan Ong
+│  ├─ email: me@jongleberry.com
+│  ├─ url: http://jongleberry.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/destroy/LICENSE
+├─ dezalgo@1.0.3
+│  ├─ licenses: ISC
+│  ├─ repository: https://github.com/npm/dezalgo
+│  ├─ publisher: Isaac Z. Schlueter
+│  ├─ email: i@izs.me
+│  ├─ url: http://blog.izs.me/
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/dezalgo/LICENSE
+├─ diff@1.4.0
+│  ├─ licenses: BSD
+│  └─ repository: https://github.com/kpdecker/jsdiff
+├─ dot-prop@3.0.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/sindresorhus/dot-prop
+│  ├─ publisher: Sindre Sorhus
+│  ├─ email: sindresorhus@gmail.com
+│  ├─ url: sindresorhus.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/dot-prop/license
+├─ duplexer2@0.0.2
+│  ├─ licenses: BSD
+│  ├─ repository: https://github.com/deoxxa/duplexer2
+│  ├─ publisher: Conrad Pankoff
+│  ├─ email: deoxxa@fknsrs.biz
+│  ├─ url: http://www.fknsrs.biz/
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/duplexer2/LICENSE.md
+├─ duplexer2@0.1.4
+│  ├─ licenses: BSD-3-Clause
+│  ├─ repository: https://github.com/deoxxa/duplexer2
+│  ├─ publisher: Conrad Pankoff
+│  ├─ email: deoxxa@fknsrs.biz
+│  ├─ url: http://www.fknsrs.biz/
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/got/node_modules/duplexer2/LICENSE.md
+├─ ecc-jsbn@0.1.1
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/quartzjer/ecc-jsbn
+│  ├─ publisher: Jeremie Miller
+│  ├─ email: jeremie@jabber.org
+│  ├─ url: http://jeremie.com/
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/ecc-jsbn/LICENSE
+├─ ecdsa-sig-formatter@1.0.9
+│  ├─ licenses: Apache-2.0
+│  ├─ repository: https://github.com/Brightspace/node-ecdsa-sig-formatter
+│  ├─ publisher: D2L Corporation
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/ecdsa-sig-formatter/LICENSE
+├─ ee-first@1.1.1
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/jonathanong/ee-first
+│  ├─ publisher: Jonathan Ong
+│  ├─ email: me@jongleberry.com
+│  ├─ url: http://jongleberry.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/ee-first/LICENSE
+├─ ejs@0.8.8
+│  ├─ licenses: MIT*
+│  ├─ repository: https://github.com/visionmedia/ejs
+│  ├─ publisher: TJ Holowaychuk
+│  └─ email: tj@vision-media.ca
+├─ encodeurl@1.0.1
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/pillarjs/encodeurl
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/encodeurl/LICENSE
+├─ end-of-stream@1.1.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/mafintosh/end-of-stream
+│  ├─ publisher: Mathias Buus
+│  ├─ email: mathiasbuus@gmail.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/end-of-stream/LICENSE
+├─ error-ex@1.3.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/qix-/node-error-ex
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/error-ex/LICENSE
+├─ es3ify@0.1.4
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/spicyj/es3ify
+│  ├─ publisher: Ben Alpert
+│  ├─ email: ben@benalpert.com
+│  ├─ url: http://benalpert.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/es3ify/LICENSE
+├─ es5-ext@0.10.12
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/medikoo/es5-ext
+│  ├─ publisher: Mariusz Nowak
+│  ├─ email: medyk@medikoo.com
+│  ├─ url: http://www.medikoo.com/
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/es5-ext/LICENSE
+├─ es6-iterator@0.1.3
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/medikoo/es6-iterator
+│  ├─ publisher: Mariusz Nowak
+│  ├─ email: medyk@medikoo.com
+│  ├─ url: http://www.medikoo.com/
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/es6-weak-map/node_modules/es6-iterator/LICENSE
+├─ es6-iterator@2.0.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/medikoo/es6-iterator
+│  ├─ publisher: Mariusz Nowak
+│  ├─ email: medyk@medikoo.com
+│  ├─ url: http://www.medikoo.com/
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/es6-iterator/LICENSE
+├─ es6-promise@3.0.2
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/jakearchibald/ES6-Promises
+│  ├─ publisher: Yehuda Katz, Tom Dale, Stefan Penner and contributors
+│  ├─ url: Conversion to ES6 API by Jake Archibald
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/lwm2m-node-lib/node_modules/mongodb/node_modules/es6-promise/LICENSE
+├─ es6-symbol@2.0.1
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/medikoo/es6-symbol
+│  ├─ publisher: Mariusz Nowak
+│  ├─ email: medyk@medikoo.com
+│  ├─ url: http://www.medikoo.com/
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/es6-weak-map/node_modules/es6-symbol/LICENSE
+├─ es6-symbol@3.1.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/medikoo/es6-symbol
+│  ├─ publisher: Mariusz Nowak
+│  ├─ email: medyk@medikoo.com
+│  ├─ url: http://www.medikoo.com/
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/es6-symbol/LICENSE
+├─ es6-weak-map@0.1.4
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/medikoo/es6-weak-map
+│  ├─ publisher: Mariusz Nowak
+│  ├─ email: medyk@medikoo.com
+│  ├─ url: http://www.medikoo.com/
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/es6-weak-map/LICENCE
+├─ escape-html@1.0.1
+│  ├─ licenses: MIT*
+│  └─ repository: https://github.com/component/escape-html
+├─ escape-html@1.0.3
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/component/escape-html
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/escape-html/LICENSE
+├─ escape-string-regexp@1.0.5
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/sindresorhus/escape-string-regexp
+│  ├─ publisher: Sindre Sorhus
+│  ├─ email: sindresorhus@gmail.com
+│  ├─ url: sindresorhus.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/escape-string-regexp/license
+├─ esmangle-evaluator@1.0.1
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/zertosh/esmangle-evaluator
+│  ├─ publisher: Andres Suarez
+│  └─ email: zertosh@gmail.com
+├─ esprima-fb@15001.1001.0-dev-harmony-fb
+│  ├─ licenses: BSD
+│  ├─ repository: https://github.com/facebook/esprima
+│  ├─ publisher: Ariya Hidayat
+│  └─ email: ariya.hidayat@gmail.com
+├─ esprima-fb@3001.1.0-dev-harmony-fb
+│  ├─ licenses: BSD
+│  ├─ repository: https://github.com/facebook/esprima
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/esprima-fb/LICENSE.BSD
+├─ etag@1.7.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/jshttp/etag
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/etag/LICENSE
+├─ event-emitter@0.3.4
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/medikoo/event-emitter
+│  ├─ publisher: Mariusz Nowak
+│  ├─ email: medyk@medikoo.com
+│  ├─ url: http://www.medikoo.com/
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/event-emitter/LICENSE
+├─ express-session@1.14.2
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/expressjs/session
+│  ├─ publisher: TJ Holowaychuk
+│  ├─ email: tj@vision-media.ca
+│  ├─ url: http://tjholowaychuk.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/express-session/LICENSE
+├─ express@4.14.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/expressjs/express
+│  ├─ publisher: TJ Holowaychuk
+│  ├─ email: tj@vision-media.ca
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/express/LICENSE
+├─ express@4.2.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/visionmedia/express
+│  ├─ publisher: TJ Holowaychuk
+│  ├─ email: tj@vision-media.ca
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/mtk-core/node_modules/express/LICENSE
+├─ extend@3.0.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/justmoon/node-extend
+│  ├─ publisher: Stefan Thomas
+│  ├─ email: justmoon@members.fsf.org
+│  ├─ url: http://www.justmoon.net
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/lwm2m-node-lib/node_modules/mongoose-auto-increment/node_modules/extend/LICENSE
+├─ extsprintf@1.0.2
+│  ├─ licenses: MIT*
+│  ├─ repository: https://github.com/davepacheco/node-extsprintf
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/extsprintf/LICENSE
+├─ faker@3.1.0
+│  ├─ licenses: MIT
+│  └─ repository: https://github.com/Marak/Faker.js
+├─ falafel@1.2.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/substack/node-falafel
+│  ├─ publisher: James Halliday
+│  ├─ email: mail@substack.net
+│  └─ url: http://substack.net
+├─ fastseries@1.7.2
+│  ├─ licenses: ISC
+│  ├─ repository: https://github.com/mcollina/fastseries
+│  ├─ publisher: Matteo Collina
+│  ├─ email: hello@matteocollina.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/fastseries/LICENSE
+├─ fill-keys@1.0.2
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/bendrucker/fill-keys
+│  ├─ publisher: Ben Drucker
+│  ├─ email: bvdrucker@gmail.com
+│  ├─ url: bendrucker.me
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/fill-keys/license
+├─ filled-array@1.1.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/sindresorhus/filled-array
+│  ├─ publisher: Sindre Sorhus
+│  ├─ email: sindresorhus@gmail.com
+│  ├─ url: sindresorhus.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/filled-array/license
+├─ finalhandler@0.5.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/pillarjs/finalhandler
+│  ├─ publisher: Douglas Christopher Wilson
+│  ├─ email: doug@somethingdoug.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/finalhandler/LICENSE
+├─ find-up@1.1.2
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/sindresorhus/find-up
+│  ├─ publisher: Sindre Sorhus
+│  ├─ email: sindresorhus@gmail.com
+│  ├─ url: sindresorhus.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/find-up/license
+├─ foreach@2.0.5
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/manuelstofer/foreach
+│  ├─ publisher: Manuel Stofer
+│  ├─ email: manuel@takimata.ch
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/foreach/LICENSE
+├─ forever-agent@0.6.1
+│  ├─ licenses: Apache-2.0
+│  ├─ repository: https://github.com/mikeal/forever-agent
+│  ├─ publisher: Mikeal Rogers
+│  ├─ email: mikeal.rogers@gmail.com
+│  ├─ url: http://www.futurealoof.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/forever-agent/LICENSE
+├─ form-data@1.0.0-rc4
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/form-data/form-data
+│  ├─ publisher: Felix Geisendörfer
+│  ├─ email: felix@debuggable.com
+│  ├─ url: http://debuggable.com/
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/superagent/node_modules/form-data/License
+├─ form-data@2.0.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/form-data/form-data
+│  ├─ publisher: Felix Geisendörfer
+│  ├─ email: felix@debuggable.com
+│  ├─ url: http://debuggable.com/
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/form-data/License
+├─ formidable@1.0.17
+│  ├─ licenses: MIT*
+│  ├─ repository: https://github.com/felixge/node-formidable
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/formidable/LICENSE
+├─ forwarded@0.1.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/jshttp/forwarded
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/forwarded/LICENSE
+├─ fresh@0.2.2
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/visionmedia/node-fresh
+│  ├─ publisher: TJ Holowaychuk
+│  ├─ email: tj@vision-media.ca
+│  └─ url: http://tjholowaychuk.com
+├─ fresh@0.3.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/jshttp/fresh
+│  ├─ publisher: TJ Holowaychuk
+│  ├─ email: tj@vision-media.ca
+│  ├─ url: http://tjholowaychuk.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/fresh/LICENSE
+├─ fs-extra@0.30.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/jprichardson/node-fs-extra
+│  ├─ publisher: JP Richardson
+│  ├─ email: jprichardson@gmail.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/fs-extra/LICENSE
+├─ fs.realpath@1.0.0
+│  ├─ licenses: ISC
+│  ├─ repository: https://github.com/isaacs/fs.realpath
+│  ├─ publisher: Isaac Z. Schlueter
+│  ├─ email: i@izs.me
+│  ├─ url: http://blog.izs.me/
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/fs.realpath/LICENSE
+├─ generate-function@2.0.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/mafintosh/generate-function
+│  └─ publisher: Mathias Buus
+├─ generate-object-property@1.2.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/mafintosh/generate-object-property
+│  ├─ publisher: Mathias Buus
+│  ├─ url: @mafintosh
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/generate-object-property/LICENSE
+├─ get-stdin@4.0.1
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/sindresorhus/get-stdin
+│  ├─ publisher: Sindre Sorhus
+│  ├─ email: sindresorhus@gmail.com
+│  └─ url: http://sindresorhus.com
+├─ getpass@0.1.6
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/arekinath/node-getpass
+│  ├─ publisher: Alex Wilson
+│  ├─ email: alex.wilson@joyent.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/getpass/LICENSE
+├─ glob@3.2.11
+│  ├─ licenses: BSD
+│  ├─ repository: https://github.com/isaacs/node-glob
+│  ├─ publisher: Isaac Z. Schlueter
+│  ├─ email: i@izs.me
+│  ├─ url: http://blog.izs.me/
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/simple-glob/node_modules/glob/LICENSE
+├─ glob@6.0.4
+│  ├─ licenses: ISC
+│  ├─ repository: https://github.com/isaacs/node-glob
+│  ├─ publisher: Isaac Z. Schlueter
+│  ├─ email: i@izs.me
+│  ├─ url: http://blog.izs.me/
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/glob/LICENSE
+├─ glob@7.0.5
+│  ├─ licenses: ISC
+│  ├─ repository: https://github.com/isaacs/node-glob
+│  ├─ publisher: Isaac Z. Schlueter
+│  ├─ email: i@izs.me
+│  ├─ url: http://blog.izs.me/
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/mocha/node_modules/glob/LICENSE
+├─ glob@7.1.1
+│  ├─ licenses: ISC
+│  ├─ repository: https://github.com/isaacs/node-glob
+│  ├─ publisher: Isaac Z. Schlueter
+│  ├─ email: i@izs.me
+│  ├─ url: http://blog.izs.me/
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/rimraf/node_modules/glob/LICENSE
+├─ got@5.7.1
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/sindresorhus/got
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/got/license
+├─ graceful-fs-extra@2.0.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/adam-lynch/graceful-fs-extra
+│  ├─ publisher: Adam Lynch
+│  └─ email: contact@adamlynch.com
+├─ graceful-fs@4.1.11
+│  ├─ licenses: ISC
+│  ├─ repository: https://github.com/isaacs/node-graceful-fs
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/graceful-fs/LICENSE
+├─ graceful-ncp@3.0.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/adam-lynch/graceful-ncp
+│  ├─ publisher: Adam Lynch
+│  └─ email: contact@adamlynch.com
+├─ graceful-readlink@1.0.1
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/zhiyelee/graceful-readlink
+│  ├─ publisher: zhiyelee
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/graceful-readlink/LICENSE
+├─ growl@1.9.2
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/tj/node-growl
+│  ├─ publisher: TJ Holowaychuk
+│  └─ email: tj@vision-media.ca
+├─ gulp-util@2.2.20
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/wearefractal/gulp-util
+│  ├─ publisher: Fractal
+│  ├─ email: contact@wearefractal.com
+│  ├─ url: http://wearefractal.com/
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/gulp-util/LICENSE
+├─ har-validator@2.0.6
+│  ├─ licenses: ISC
+│  ├─ repository: https://github.com/ahmadnassri/har-validator
+│  ├─ publisher: Ahmad Nassri
+│  ├─ email: ahmad@ahmadnassri.com
+│  ├─ url: https://www.ahmadnassri.com/
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/har-validator/LICENSE
+├─ has-ansi@0.1.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/sindresorhus/has-ansi
+│  ├─ publisher: Sindre Sorhus
+│  ├─ email: sindresorhus@gmail.com
+│  └─ url: http://sindresorhus.com
+├─ has-ansi@2.0.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/sindresorhus/has-ansi
+│  ├─ publisher: Sindre Sorhus
+│  ├─ email: sindresorhus@gmail.com
+│  ├─ url: sindresorhus.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/boxen/node_modules/has-ansi/license
+├─ has-color@0.1.7
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/sindresorhus/has-color
+│  ├─ publisher: Sindre Sorhus
+│  ├─ email: sindresorhus@gmail.com
+│  └─ url: http://sindresorhus.com
+├─ has-flag@1.0.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/sindresorhus/has-flag
+│  ├─ publisher: Sindre Sorhus
+│  ├─ email: sindresorhus@gmail.com
+│  ├─ url: sindresorhus.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/has-flag/license
+├─ hawk@3.1.3
+│  ├─ licenses: BSD-3-Clause
+│  ├─ repository: https://github.com/hueniverse/hawk
+│  ├─ publisher: Eran Hammer
+│  ├─ email: eran@hammer.io
+│  ├─ url: http://hueniverse.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/hawk/LICENSE
+├─ hoek@2.16.3
+│  ├─ licenses: BSD-3-Clause
+│  ├─ repository: https://github.com/hapijs/hoek
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/hoek/LICENSE
+├─ hooks-fixed@1.1.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/vkarpov15/hooks-fixed
+│  ├─ publisher: Brian Noguchi
+│  ├─ email: brian.noguchi@gmail.com
+│  └─ url: https://github.com/bnoguchi/
+├─ hosted-git-info@2.1.5
+│  ├─ licenses: ISC
+│  ├─ repository: https://github.com/npm/hosted-git-info
+│  ├─ publisher: Rebecca Turner
+│  ├─ email: me@re-becca.org
+│  ├─ url: http://re-becca.org
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/hosted-git-info/LICENSE
+├─ http-errors@1.5.1
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/jshttp/http-errors
+│  ├─ publisher: Jonathan Ong
+│  ├─ email: me@jongleberry.com
+│  ├─ url: http://jongleberry.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/http-errors/LICENSE
+├─ http-signature@1.1.1
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/joyent/node-http-signature
+│  ├─ publisher: Joyent, Inc
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/http-signature/LICENSE
+├─ iconv-lite@0.4.13
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/ashtuchkin/iconv-lite
+│  ├─ publisher: Alexander Shtuchkin
+│  ├─ email: ashtuchkin@gmail.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/iconv-lite/LICENSE
+├─ immediate@3.0.6
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/calvinmetcalf/immediate
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/immediate/LICENSE.txt
+├─ imurmurhash@0.1.4
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/jensyt/imurmurhash-js
+│  ├─ publisher: Jens Taylor
+│  ├─ email: jensyt@gmail.com
+│  └─ url: https://github.com/homebrewing
+├─ indent-string@2.1.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/sindresorhus/indent-string
+│  ├─ publisher: Sindre Sorhus
+│  ├─ email: sindresorhus@gmail.com
+│  ├─ url: sindresorhus.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/indent-string/license
+├─ inflight@1.0.6
+│  ├─ licenses: ISC
+│  ├─ repository: https://github.com/npm/inflight
+│  ├─ publisher: Isaac Z. Schlueter
+│  ├─ email: i@izs.me
+│  ├─ url: http://blog.izs.me/
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/inflight/LICENSE
+├─ inherits@2.0.1
+│  ├─ licenses: ISC
+│  ├─ repository: https://github.com/isaacs/inherits
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/lwm2m-node-lib/node_modules/coap/node_modules/readable-stream/node_modules/inherits/LICENSE
+├─ inherits@2.0.3
+│  ├─ licenses: ISC
+│  ├─ repository: https://github.com/isaacs/inherits
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/inherits/LICENSE
+├─ ini@1.3.4
+│  ├─ licenses: ISC
+│  ├─ repository: https://github.com/isaacs/ini
+│  ├─ publisher: Isaac Z. Schlueter
+│  ├─ email: i@izs.me
+│  ├─ url: http://blog.izs.me/
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/ini/LICENSE
+├─ inline-process-browser@1.0.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/calvinmetcalf/inline-process-browser
+│  ├─ publisher: Calvin W. Metcalf
+│  └─ email: calvin.metcalf@gmail.com
+├─ inquirer@0.5.1
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/SBoudrias/Inquirer.js
+│  ├─ publisher: Simon Boudrias
+│  └─ email: admin@simonboudrias.com
+├─ ipaddr.js@1.1.1
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/whitequark/ipaddr.js
+│  ├─ publisher: whitequark
+│  ├─ email: whitequark@whitequark.org
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/ipaddr.js/LICENSE
+├─ is-arrayish@0.2.1
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/qix-/node-is-arrayish
+│  ├─ publisher: Qix
+│  ├─ url: http://github.com/qix-
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/is-arrayish/LICENSE
+├─ is-builtin-module@1.0.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/sindresorhus/is-builtin-module
+│  ├─ publisher: Sindre Sorhus
+│  ├─ email: sindresorhus@gmail.com
+│  ├─ url: sindresorhus.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/is-builtin-module/license
+├─ is-finite@1.0.2
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/sindresorhus/is-finite
+│  ├─ publisher: Sindre Sorhus
+│  ├─ email: sindresorhus@gmail.com
+│  ├─ url: sindresorhus.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/is-finite/license
+├─ is-fullwidth-code-point@1.0.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/sindresorhus/is-fullwidth-code-point
+│  ├─ publisher: Sindre Sorhus
+│  ├─ email: sindresorhus@gmail.com
+│  ├─ url: sindresorhus.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/is-fullwidth-code-point/license
+├─ is-my-json-valid@2.15.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/mafintosh/is-my-json-valid
+│  ├─ publisher: Mathias Buus
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/is-my-json-valid/LICENSE
+├─ is-npm@1.0.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/sindresorhus/is-npm
+│  ├─ publisher: Sindre Sorhus
+│  ├─ email: sindresorhus@gmail.com
+│  └─ url: http://sindresorhus.com
+├─ is-obj@1.0.1
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/sindresorhus/is-obj
+│  ├─ publisher: Sindre Sorhus
+│  ├─ email: sindresorhus@gmail.com
+│  ├─ url: sindresorhus.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/is-obj/license
+├─ is-object@1.0.1
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/ljharb/is-object
+│  ├─ publisher: Raynos
+│  ├─ email: raynos2@gmail.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/is-object/LICENSE
+├─ is-property@1.0.2
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/mikolalysenko/is-property
+│  ├─ publisher: Mikola Lysenko
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/is-property/LICENSE
+├─ is-redirect@1.0.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/sindresorhus/is-redirect
+│  ├─ publisher: Sindre Sorhus
+│  ├─ email: sindresorhus@gmail.com
+│  ├─ url: sindresorhus.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/is-redirect/license
+├─ is-retry-allowed@1.1.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/floatdrop/is-retry-allowed
+│  ├─ publisher: Vsevolod Strukchinsky
+│  ├─ email: floatdrop@gmail.com
+│  ├─ url: github.com/floatdrop
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/is-retry-allowed/license
+├─ is-stream@1.1.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/sindresorhus/is-stream
+│  ├─ publisher: Sindre Sorhus
+│  ├─ email: sindresorhus@gmail.com
+│  ├─ url: sindresorhus.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/is-stream/license
+├─ is-typedarray@1.0.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/hughsk/is-typedarray
+│  ├─ publisher: Hugh Kennedy
+│  ├─ email: hughskennedy@gmail.com
+│  ├─ url: http://hughsk.io/
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/is-typedarray/LICENSE.md
+├─ is-utf8@0.2.1
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/wayfind/is-utf8
+│  ├─ publisher: wayfind
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/is-utf8/LICENSE
+├─ isarray@0.0.1
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/juliangruber/isarray
+│  ├─ publisher: Julian Gruber
+│  ├─ email: mail@juliangruber.com
+│  └─ url: http://juliangruber.com
+├─ isarray@1.0.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/juliangruber/isarray
+│  ├─ publisher: Julian Gruber
+│  ├─ email: mail@juliangruber.com
+│  └─ url: http://juliangruber.com
+├─ isemail@1.2.0
+│  ├─ licenses: BSD-2-Clause
+│  ├─ repository: https://github.com/hapijs/isemail
+│  ├─ publisher: Eli Skeggs
+│  ├─ email: skeggse@gmail.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/isemail/LICENSE
+├─ isstream@0.1.2
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/rvagg/isstream
+│  ├─ publisher: Rod Vagg
+│  ├─ email: rod@vagg.org
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/isstream/LICENSE.md
+├─ jju@1.3.0
+│  ├─ licenses: WTFPL
+│  ├─ repository: https://github.com/rlidwka/jju
+│  ├─ publisher: Alex Kocharin
+│  ├─ email: alex@kocharin.ru
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/jju/LICENSE
+├─ jodid25519@1.0.2
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/meganz/jodid25519
+│  ├─ publisher: Michele Bini, Ron Garret, Guy K. Kloss
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/jodid25519/LICENSE
+├─ joi@6.10.1
+│  ├─ licenses: BSD-3-Clause
+│  ├─ repository: https://github.com/hapijs/joi
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/joi/LICENSE
+├─ jsbn@0.1.0
+│  ├─ licenses: BSD
+│  ├─ repository: https://github.com/andyperlitch/jsbn
+│  ├─ publisher: Tom Wu
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/jsbn/LICENSE
+├─ json-parse-helpfulerror@1.0.3
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/smikes/json-parse-helpfulerror
+│  ├─ publisher: Sam Mikes
+│  ├─ email: smikes@cubane.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/json-parse-helpfulerror/LICENSE
+├─ json-schema@0.2.3
+│  ├─ licenses
+│  │  ├─ 0: AFLv2.1
+│  │  └─ 1: BSD
+│  ├─ repository: https://github.com/kriszyp/json-schema
+│  └─ publisher: Kris Zyp
+├─ json-stringify-safe@5.0.1
+│  ├─ licenses: ISC
+│  ├─ repository: https://github.com/isaacs/json-stringify-safe
+│  ├─ publisher: Isaac Z. Schlueter
+│  ├─ email: i@izs.me
+│  ├─ url: http://blog.izs.me
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/json-stringify-safe/LICENSE
+├─ json3@3.3.2
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/bestiejs/json3
+│  ├─ publisher: Kit Cambridge
+│  ├─ email: github@kitcambridge.be
+│  ├─ url: http://kitcambridge.be/
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/json3/LICENSE
+├─ jsonfile@2.4.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/jprichardson/node-jsonfile
+│  ├─ publisher: JP Richardson
+│  ├─ email: jprichardson@gmail.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/jsonfile/LICENSE
+├─ jsonpointer@4.0.1
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/janl/node-jsonpointer
+│  ├─ publisher: Jan Lehnardt
+│  ├─ email: jan@apache.org
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/jsonpointer/LICENSE.md
+├─ jsonschema@1.1.1
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/tdegrunt/jsonschema
+│  ├─ publisher: Tom de Grunt
+│  ├─ email: tom@degrunt.nl
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/jsonschema/LICENSE
+├─ jsonwebtoken@7.2.1
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/auth0/node-jsonwebtoken
+│  ├─ publisher: auth0
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/jsonwebtoken/LICENSE
+├─ jsprim@1.3.1
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/davepacheco/node-jsprim
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/jsprim/LICENSE
+├─ jstransform@3.0.0
+│  ├─ licenses: Apache-2.0
+│  ├─ repository: https://github.com/facebook/jstransform
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/jstransform/LICENSE
+├─ jwa@1.1.5
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/brianloveswords/node-jwa
+│  ├─ publisher: Brian J. Brennan
+│  ├─ email: brianloveswords@gmail.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/jwa/LICENSE
+├─ jws@3.1.4
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/brianloveswords/node-jws
+│  ├─ publisher: Brian J Brennan
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/jws/LICENSE
+├─ kareem@1.0.1
+│  ├─ licenses: Apache 2.0
+│  ├─ repository: https://github.com/vkarpov15/kareem
+│  ├─ publisher: Valeri Karpov
+│  ├─ email: val@karpov.io
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/lwm2m-node-lib/node_modules/mongoose/node_modules/kareem/LICENSE
+├─ keygrip@1.0.1
+│  ├─ licenses: MIT*
+│  ├─ repository: https://github.com/expressjs/keygrip
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/keygrip/LICENSE.txt
+├─ klaw@1.3.1
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/jprichardson/node-klaw
+│  ├─ publisher: JP Richardson
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/klaw/LICENSE
+├─ latest-version@2.0.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/sindresorhus/latest-version
+│  ├─ publisher: Sindre Sorhus
+│  ├─ email: sindresorhus@gmail.com
+│  ├─ url: sindresorhus.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/latest-version/license
+├─ lazy-req@1.1.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/sindresorhus/lazy-req
+│  ├─ publisher: Sindre Sorhus
+│  ├─ email: sindresorhus@gmail.com
+│  ├─ url: http://sindresorhus.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/lazy-req/license
+├─ lazystream@1.0.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/jpommerening/node-lazystream
+│  ├─ publisher: Jonas Pommerening
+│  ├─ email: jonas.pommerening@gmail.com
+│  └─ url: https://npmjs.org/~jpommerening
+├─ lie@3.0.2
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/calvinmetcalf/lie
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/lie/license.md
+├─ load-json-file@1.1.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/sindresorhus/load-json-file
+│  ├─ publisher: Sindre Sorhus
+│  ├─ email: sindresorhus@gmail.com
+│  ├─ url: sindresorhus.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/load-json-file/license
+├─ localforage@1.4.3
+│  ├─ licenses: Apache-2.0
+│  ├─ repository: https://github.com/localForage/localForage
+│  ├─ publisher: Mozilla
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/localforage/LICENSE
+├─ lodash._baseassign@3.2.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/lodash/lodash
+│  ├─ publisher: John-David Dalton
+│  ├─ email: john.david.dalton@gmail.com
+│  ├─ url: http://allyoucanleet.com/
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/lodash._baseassign/LICENSE.txt
+├─ lodash._basecopy@3.0.1
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/lodash/lodash
+│  ├─ publisher: John-David Dalton
+│  ├─ email: john.david.dalton@gmail.com
+│  ├─ url: http://allyoucanleet.com/
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/lodash._basecopy/LICENSE.txt
+├─ lodash._basecreate@3.0.3
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/lodash/lodash
+│  ├─ publisher: John-David Dalton
+│  ├─ email: john.david.dalton@gmail.com
+│  ├─ url: http://allyoucanleet.com/
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/lodash._basecreate/LICENSE
+├─ lodash._escapehtmlchar@2.4.1
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/lodash/lodash-cli
+│  ├─ publisher: John-David Dalton
+│  ├─ email: john.david.dalton@gmail.com
+│  ├─ url: http://allyoucanleet.com/
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/lodash._escapehtmlchar/LICENSE.txt
+├─ lodash._escapestringchar@2.4.1
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/lodash/lodash-cli
+│  ├─ publisher: John-David Dalton
+│  ├─ email: john.david.dalton@gmail.com
+│  ├─ url: http://allyoucanleet.com/
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/lodash._escapestringchar/LICENSE.txt
+├─ lodash._getnative@3.9.1
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/lodash/lodash
+│  ├─ publisher: John-David Dalton
+│  ├─ email: john.david.dalton@gmail.com
+│  ├─ url: http://allyoucanleet.com/
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/lodash._getnative/LICENSE
+├─ lodash._htmlescapes@2.4.1
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/lodash/lodash-cli
+│  ├─ publisher: John-David Dalton
+│  ├─ email: john.david.dalton@gmail.com
+│  ├─ url: http://allyoucanleet.com/
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/lodash._htmlescapes/LICENSE.txt
+├─ lodash._isiterateecall@3.0.9
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/lodash/lodash
+│  ├─ publisher: John-David Dalton
+│  ├─ email: john.david.dalton@gmail.com
+│  ├─ url: http://allyoucanleet.com/
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/lodash._isiterateecall/LICENSE.txt
+├─ lodash._isnative@2.4.1
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/lodash/lodash-cli
+│  ├─ publisher: John-David Dalton
+│  ├─ email: john.david.dalton@gmail.com
+│  ├─ url: http://allyoucanleet.com/
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/lodash._isnative/LICENSE.txt
+├─ lodash._objecttypes@2.4.1
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/lodash/lodash-cli
+│  ├─ publisher: John-David Dalton
+│  ├─ email: john.david.dalton@gmail.com
+│  ├─ url: http://allyoucanleet.com/
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/lodash._objecttypes/LICENSE.txt
+├─ lodash._reinterpolate@2.4.1
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/lodash/lodash-cli
+│  ├─ publisher: John-David Dalton
+│  ├─ email: john.david.dalton@gmail.com
+│  ├─ url: http://allyoucanleet.com/
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/lodash._reinterpolate/LICENSE.txt
+├─ lodash._reunescapedhtml@2.4.1
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/lodash/lodash-cli
+│  ├─ publisher: John-David Dalton
+│  ├─ email: john.david.dalton@gmail.com
+│  ├─ url: http://allyoucanleet.com/
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/lodash._reunescapedhtml/LICENSE.txt
+├─ lodash._shimkeys@2.4.1
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/lodash/lodash-cli
+│  ├─ publisher: John-David Dalton
+│  ├─ email: john.david.dalton@gmail.com
+│  ├─ url: http://allyoucanleet.com/
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/lodash._shimkeys/LICENSE.txt
+├─ lodash.create@3.1.1
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/lodash/lodash
+│  ├─ publisher: John-David Dalton
+│  ├─ email: john.david.dalton@gmail.com
+│  ├─ url: http://allyoucanleet.com/
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/lodash.create/LICENSE
+├─ lodash.defaults@2.4.1
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/lodash/lodash-cli
+│  ├─ publisher: John-David Dalton
+│  ├─ email: john.david.dalton@gmail.com
+│  ├─ url: http://allyoucanleet.com/
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/lodash.defaults/LICENSE.txt
+├─ lodash.escape@2.4.1
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/lodash/lodash-cli
+│  ├─ publisher: John-David Dalton
+│  ├─ email: john.david.dalton@gmail.com
+│  ├─ url: http://allyoucanleet.com/
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/lodash.escape/LICENSE.txt
+├─ lodash.isarguments@3.1.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/lodash/lodash
+│  ├─ publisher: John-David Dalton
+│  ├─ email: john.david.dalton@gmail.com
+│  ├─ url: http://allyoucanleet.com/
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/lodash.isarguments/LICENSE
+├─ lodash.isarray@3.0.4
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/lodash/lodash
+│  ├─ publisher: John-David Dalton
+│  ├─ email: john.david.dalton@gmail.com
+│  ├─ url: http://allyoucanleet.com/
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/lodash.isarray/LICENSE
+├─ lodash.isobject@2.4.1
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/lodash/lodash-cli
+│  ├─ publisher: John-David Dalton
+│  ├─ email: john.david.dalton@gmail.com
+│  ├─ url: http://allyoucanleet.com/
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/lodash.isobject/LICENSE.txt
+├─ lodash.keys@2.4.1
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/lodash/lodash-cli
+│  ├─ publisher: John-David Dalton
+│  ├─ email: john.david.dalton@gmail.com
+│  ├─ url: http://allyoucanleet.com/
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/lodash.keys/LICENSE.txt
+├─ lodash.keys@3.1.2
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/lodash/lodash
+│  ├─ publisher: John-David Dalton
+│  ├─ email: john.david.dalton@gmail.com
+│  ├─ url: http://allyoucanleet.com/
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/lodash._baseassign/node_modules/lodash.keys/LICENSE
+├─ lodash.once@4.1.1
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/lodash/lodash
+│  ├─ publisher: John-David Dalton
+│  ├─ email: john.david.dalton@gmail.com
+│  ├─ url: http://allyoucanleet.com/
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/lodash.once/LICENSE
+├─ lodash.template@2.4.1
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/lodash/lodash-cli
+│  ├─ publisher: John-David Dalton
+│  ├─ email: john.david.dalton@gmail.com
+│  ├─ url: http://allyoucanleet.com/
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/lodash.template/LICENSE.txt
+├─ lodash.templatesettings@2.4.1
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/lodash/lodash-cli
+│  ├─ publisher: John-David Dalton
+│  ├─ email: john.david.dalton@gmail.com
+│  ├─ url: http://allyoucanleet.com/
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/lodash.templatesettings/LICENSE.txt
+├─ lodash.values@2.4.1
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/lodash/lodash-cli
+│  ├─ publisher: John-David Dalton
+│  ├─ email: john.david.dalton@gmail.com
+│  ├─ url: http://allyoucanleet.com/
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/lodash.values/LICENSE.txt
+├─ lodash@2.4.2
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/lodash/lodash
+│  ├─ publisher: John-David Dalton
+│  ├─ email: john.david.dalton@gmail.com
+│  ├─ url: http://allyoucanleet.com/
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/inquirer/node_modules/lodash/LICENSE.txt
+├─ lodash@3.10.1
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/lodash/lodash
+│  ├─ publisher: John-David Dalton
+│  ├─ email: john.david.dalton@gmail.com
+│  ├─ url: http://allyoucanleet.com/
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/lodash/LICENSE
+├─ lodash@4.16.6
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/lodash/lodash
+│  ├─ publisher: John-David Dalton
+│  ├─ email: john.david.dalton@gmail.com
+│  ├─ url: http://allyoucanleet.com/
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/nw-builder/node_modules/lodash/LICENSE
+├─ lodash@4.17.4
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/lodash/lodash
+│  ├─ publisher: John-David Dalton
+│  ├─ email: john.david.dalton@gmail.com
+│  ├─ url: http://allyoucanleet.com/
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/archiver-utils/node_modules/lodash/LICENSE
+├─ log@1.4.0
+│  ├─ licenses: MIT*
+│  ├─ publisher: TJ Holowaychuk
+│  └─ email: tj@vision-media.ca
+├─ logops@0.5.0
+│  ├─ licenses: Apache-2.0
+│  ├─ repository: https://github.com/telefonicaid/logops
+│  ├─ publisher: Javier Mendiara Cañardo
+│  ├─ email: javier.mendiaracanardo@telefonica.com
+│  ├─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/lwm2m-node-lib/node_modules/logops/LICENSE
+│  └─ noticeFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/lwm2m-node-lib/node_modules/logops/NOTICE
+├─ loud-rejection@1.6.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/sindresorhus/loud-rejection
+│  ├─ publisher: Sindre Sorhus
+│  ├─ email: sindresorhus@gmail.com
+│  ├─ url: sindresorhus.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/loud-rejection/license
+├─ lowercase-keys@1.0.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/sindresorhus/lowercase-keys
+│  ├─ publisher: Sindre Sorhus
+│  ├─ email: sindresorhus@gmail.com
+│  └─ url: sindresorhus.com
+├─ lru-cache@2.5.2
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/isaacs/node-lru-cache
+│  ├─ publisher: Isaac Z. Schlueter
+│  ├─ email: i@izs.me
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/lru-cache/LICENSE
+├─ lru-cache@4.0.0
+│  ├─ licenses: ISC
+│  ├─ repository: https://github.com/isaacs/node-lru-cache
+│  ├─ publisher: Isaac Z. Schlueter
+│  ├─ email: i@izs.me
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/lwm2m-node-lib/node_modules/coap/node_modules/lru-cache/LICENSE
+├─ lru-queue@0.1.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/medikoo/lru-queue
+│  ├─ publisher: Mariusz Nowak
+│  ├─ email: medyk@medikoo.com
+│  ├─ url: http://www.medikoo.com/
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/lru-queue/LICENCE
+├─ lwm2m-node-lib@0.4.2
+│  ├─ licenses: UNKNOWN
+│  ├─ repository: https://github.com/telefonicaid/lwm2m-node-lib
+│  ├─ publisher: Daniel Moran
+│  └─ email: daniel.moranjimenez@telefonica.com
+├─ map-obj@1.0.1
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/sindresorhus/map-obj
+│  ├─ publisher: Sindre Sorhus
+│  ├─ email: sindresorhus@gmail.com
+│  ├─ url: sindresorhus.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/map-obj/license
+├─ mcs-lite-app@1.0.0
+│  ├─ licenses: ISC
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/license.log
+├─ media-typer@0.3.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/jshttp/media-typer
+│  ├─ publisher: Douglas Christopher Wilson
+│  ├─ email: doug@somethingdoug.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/media-typer/LICENSE
+├─ memoizee@0.3.10
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/medikoo/memoizee
+│  ├─ publisher: Mariusz Nowak
+│  ├─ email: medikoo@medikoo.com
+│  ├─ url: http://www.medikoo.com/
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/memoizee/LICENSE
+├─ meow@3.7.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/sindresorhus/meow
+│  ├─ publisher: Sindre Sorhus
+│  ├─ email: sindresorhus@gmail.com
+│  ├─ url: sindresorhus.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/meow/license
+├─ merge-descriptors@0.0.2
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/component/merge-descriptors
+│  ├─ publisher: Jonathan Ong
+│  ├─ email: me@jongleberry.com
+│  └─ url: http://jongleberry.com
+├─ merge-descriptors@1.0.1
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/component/merge-descriptors
+│  ├─ publisher: Jonathan Ong
+│  ├─ email: me@jongleberry.com
+│  ├─ url: http://jongleberry.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/merge-descriptors/LICENSE
+├─ methods@1.0.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/visionmedia/node-methods
+│  ├─ publisher: TJ Holowaychuk
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/mtk-core/node_modules/methods/LICENSE
+├─ methods@1.1.2
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/jshttp/methods
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/methods/LICENSE
+├─ mime-db@1.25.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/jshttp/mime-db
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/mime-db/LICENSE
+├─ mime-types@2.1.13
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/jshttp/mime-types
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/mime-types/LICENSE
+├─ mime@1.2.11
+│  ├─ licenses: MIT*
+│  ├─ repository: https://github.com/broofa/node-mime
+│  ├─ publisher: Robert Kieffer
+│  ├─ email: robert@broofa.com
+│  ├─ url: http://github.com/broofa
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/mtk-core/node_modules/mime/LICENSE
+├─ mime@1.3.4
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/broofa/node-mime
+│  ├─ publisher: Robert Kieffer
+│  ├─ email: robert@broofa.com
+│  ├─ url: http://github.com/broofa
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/mime/LICENSE
+├─ minimatch@0.2.14
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/isaacs/minimatch
+│  ├─ publisher: Isaac Z. Schlueter
+│  ├─ email: i@izs.me
+│  ├─ url: http://blog.izs.me
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/simple-glob/node_modules/minimatch/LICENSE
+├─ minimatch@0.3.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/isaacs/minimatch
+│  ├─ publisher: Isaac Z. Schlueter
+│  ├─ email: i@izs.me
+│  ├─ url: http://blog.izs.me
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/simple-glob/node_modules/glob/node_modules/minimatch/LICENSE
+├─ minimatch@3.0.3
+│  ├─ licenses: ISC
+│  ├─ repository: https://github.com/isaacs/minimatch
+│  ├─ publisher: Isaac Z. Schlueter
+│  ├─ email: i@izs.me
+│  ├─ url: http://blog.izs.me
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/minimatch/LICENSE
+├─ minimist@0.0.10
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/substack/minimist
+│  ├─ publisher: James Halliday
+│  ├─ email: mail@substack.net
+│  ├─ url: http://substack.net
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/optimist/node_modules/minimist/LICENSE
+├─ minimist@0.0.8
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/substack/minimist
+│  ├─ publisher: James Halliday
+│  ├─ email: mail@substack.net
+│  ├─ url: http://substack.net
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/mocha/node_modules/minimist/LICENSE
+├─ minimist@0.2.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/substack/minimist
+│  ├─ publisher: James Halliday
+│  ├─ email: mail@substack.net
+│  ├─ url: http://substack.net
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/minimist/LICENSE
+├─ minimist@1.2.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/substack/minimist
+│  ├─ publisher: James Halliday
+│  ├─ email: mail@substack.net
+│  ├─ url: http://substack.net
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/meow/node_modules/minimist/LICENSE
+├─ mkdirp@0.3.5
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/substack/node-mkdirp
+│  ├─ publisher: James Halliday
+│  ├─ email: mail@substack.net
+│  ├─ url: http://substack.net
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/mkdirp/LICENSE
+├─ mkdirp@0.5.1
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/substack/node-mkdirp
+│  ├─ publisher: James Halliday
+│  ├─ email: mail@substack.net
+│  ├─ url: http://substack.net
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/mocha/node_modules/mkdirp/LICENSE
+├─ mkpath@0.1.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/jrajav/mkpath
+│  ├─ publisher: Jonathan Rajavuori
+│  ├─ email: jrajav@gmail.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/mkpath/LICENSE
+├─ mocha@3.2.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/mochajs/mocha
+│  ├─ publisher: TJ Holowaychuk
+│  ├─ email: tj@vision-media.ca
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/mocha/LICENSE
+├─ module-not-found-error@1.0.1
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/bendrucker/module-not-found-error
+│  ├─ publisher: Ben Drucker
+│  ├─ email: bvdrucker@gmail.com
+│  ├─ url: bendrucker.me
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/module-not-found-error/license
+├─ moment@2.17.1
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/moment/moment
+│  ├─ publisher: Iskren Ivov Chernev
+│  ├─ email: iskren.chernev@gmail.com
+│  ├─ url: https://github.com/ichernev
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/moment/LICENSE
+├─ mongodb-core@1.3.1
+│  ├─ licenses: Apache-2.0
+│  ├─ repository: https://github.com/christkv/mongodb-core
+│  ├─ publisher: Christian Kvalheim
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/lwm2m-node-lib/node_modules/mongodb/node_modules/mongodb-core/LICENSE
+├─ mongodb@2.1.6
+│  ├─ licenses: Apache-2.0
+│  ├─ repository: https://github.com/mongodb/node-mongodb-native
+│  ├─ publisher: Christian Kvalheim
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/lwm2m-node-lib/node_modules/mongoose/node_modules/mongodb/LICENSE
+├─ mongodb@2.1.7
+│  ├─ licenses: Apache-2.0
+│  ├─ repository: https://github.com/mongodb/node-mongodb-native
+│  ├─ publisher: Christian Kvalheim
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/lwm2m-node-lib/node_modules/mongodb/LICENSE
+├─ mongoose-auto-increment@5.0.1
+│  ├─ licenses: MIT*
+│  ├─ repository: https://github.com/codetunnel/mongoose-auto-increment
+│  ├─ publisher: Alex Ford
+│  ├─ email: alex.ford@codetunnel.com
+│  ├─ url: Chevex
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/lwm2m-node-lib/node_modules/mongoose-auto-increment/LICENSE
+├─ mongoose@4.4.3
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/Automattic/mongoose
+│  ├─ publisher: Guillermo Rauch
+│  └─ email: guillermo@learnboost.com
+├─ morgan@1.0.1
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/expressjs/morgan
+│  ├─ publisher: Jonathan Ong
+│  ├─ email: me@jongleberry.com
+│  └─ url: http://jongleberry.com
+├─ mpath@0.2.1
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/aheckmann/mpath
+│  ├─ publisher: Aaron Heckmann
+│  ├─ email: aaron.heckmann+github@gmail.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/lwm2m-node-lib/node_modules/mongoose/node_modules/mpath/LICENSE
+├─ mpromise@0.5.5
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/aheckmann/mpromise
+│  ├─ publisher: Aaron Heckmann
+│  ├─ email: aaron.heckmann+github@gmail.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/lwm2m-node-lib/node_modules/mongoose/node_modules/mpromise/LICENSE
+├─ mquery@1.6.3
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/aheckmann/mquery
+│  ├─ publisher: Aaron Heckmann
+│  ├─ email: aaron.heckmann+github@gmail.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/lwm2m-node-lib/node_modules/mongoose/node_modules/mquery/LICENSE
+├─ ms@0.7.1
+│  ├─ licenses: MIT*
+│  ├─ repository: https://github.com/guille/ms.js
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/ms/LICENSE
+├─ mtk-core@0.1.28
+│  ├─ licenses: ISC
+│  └─ repository: https://github.com/Mediatek-Cloud/mtk-core
+├─ multipipe@0.1.2
+│  ├─ licenses: MIT
+│  └─ repository: https://github.com/juliangruber/multipipe
+├─ muri@1.1.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/aheckmann/muri
+│  ├─ publisher: Aaron Heckmann
+│  ├─ email: aaron.heckmann+github@gmail.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/lwm2m-node-lib/node_modules/mongoose/node_modules/muri/LICENSE
+├─ mute-stream@0.0.4
+│  ├─ licenses: BSD
+│  ├─ repository: https://github.com/isaacs/mute-stream
+│  ├─ publisher: Isaac Z. Schlueter
+│  ├─ email: i@izs.me
+│  ├─ url: http://blog.izs.me/
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/mute-stream/LICENSE
+├─ nan@2.5.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/nodejs/nan
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/nan/LICENSE.md
+├─ ncp@2.0.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/AvianFlu/ncp
+│  ├─ publisher: AvianFlu
+│  ├─ email: charlie@charlieistheman.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/ncp/LICENSE.md
+├─ nedb@1.8.0
+│  ├─ licenses: SEE LICENSE IN LICENSE
+│  ├─ repository: https://github.com/louischatriot/nedb
+│  ├─ publisher: Louis Chatriot
+│  ├─ email: louis.chatriot@gmail.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/nedb/LICENSE
+├─ negotiator@0.4.9
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/jshttp/negotiator
+│  ├─ publisher: Federico Romero
+│  ├─ email: federico.romero@outboxlabs.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/mtk-core/node_modules/negotiator/LICENSE
+├─ negotiator@0.6.1
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/jshttp/negotiator
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/negotiator/LICENSE
+├─ next-tick@0.2.2
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/medikoo/next-tick
+│  ├─ publisher: Mariusz Nowak
+│  ├─ email: medykk@medikoo.com
+│  ├─ url: http://www.medikoo.com/
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/next-tick/LICENCE
+├─ node-status-codes@1.0.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/sindresorhus/node-status-codes
+│  ├─ publisher: Sindre Sorhus
+│  ├─ email: sindresorhus@gmail.com
+│  ├─ url: sindresorhus.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/node-status-codes/license
+├─ node-uuid@1.4.7
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/broofa/node-uuid
+│  ├─ publisher: Robert Kieffer
+│  ├─ email: robert@broofa.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/node-uuid/LICENSE.md
+├─ nopt@1.0.10
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/isaacs/nopt
+│  ├─ publisher: Isaac Z. Schlueter
+│  ├─ email: i@izs.me
+│  ├─ url: http://blog.izs.me/
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/touch/node_modules/nopt/LICENSE
+├─ nopt@3.0.6
+│  ├─ licenses: ISC
+│  ├─ repository: https://github.com/npm/nopt
+│  ├─ publisher: Isaac Z. Schlueter
+│  ├─ email: i@izs.me
+│  ├─ url: http://blog.izs.me/
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/nopt/LICENSE
+├─ normalize-package-data@2.3.5
+│  ├─ licenses: BSD-2-Clause
+│  ├─ repository: https://github.com/npm/normalize-package-data
+│  ├─ publisher: Meryn Stol
+│  ├─ email: merynstol@gmail.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/normalize-package-data/LICENSE
+├─ normalize-path@2.0.1
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/jonschlinkert/normalize-path
+│  ├─ publisher: Jon Schlinkert
+│  ├─ url: https://github.com/jonschlinkert
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/normalize-path/LICENSE
+├─ number-is-nan@1.0.1
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/sindresorhus/number-is-nan
+│  ├─ publisher: Sindre Sorhus
+│  ├─ email: sindresorhus@gmail.com
+│  ├─ url: sindresorhus.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/number-is-nan/license
+├─ nw-builder@3.1.2
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/mllrsohn/nw-builder
+│  ├─ publisher: Steffen Müller
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/nw-builder/LICENSE
+├─ oauth-sign@0.8.2
+│  ├─ licenses: Apache-2.0
+│  ├─ repository: https://github.com/mikeal/oauth-sign
+│  ├─ publisher: Mikeal Rogers
+│  ├─ email: mikeal.rogers@gmail.com
+│  ├─ url: http://www.futurealoof.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/oauth-sign/LICENSE
+├─ oauth2-server@2.4.0
+│  ├─ licenses: ISC
+│  ├─ repository: https://github.com/Mediatek-Cloud/Oauth2-server
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/oauth2-server/LICENSE
+├─ object-assign@4.1.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/sindresorhus/object-assign
+│  ├─ publisher: Sindre Sorhus
+│  ├─ email: sindresorhus@gmail.com
+│  ├─ url: sindresorhus.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/object-assign/license
+├─ object-keys@1.0.11
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/ljharb/object-keys
+│  ├─ publisher: Jordan Harband
+│  ├─ email: ljharb@gmail.com
+│  ├─ url: http://ljharb.codes
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/object-keys/LICENSE
+├─ on-finished@2.3.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/jshttp/on-finished
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/on-finished/LICENSE
+├─ on-headers@1.0.1
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/jshttp/on-headers
+│  ├─ publisher: Douglas Christopher Wilson
+│  ├─ email: doug@somethingdoug.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/on-headers/LICENSE
+├─ once@1.3.3
+│  ├─ licenses: ISC
+│  ├─ repository: https://github.com/isaacs/once
+│  ├─ publisher: Isaac Z. Schlueter
+│  ├─ email: i@izs.me
+│  ├─ url: http://blog.izs.me/
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/end-of-stream/node_modules/once/LICENSE
+├─ once@1.4.0
+│  ├─ licenses: ISC
+│  ├─ repository: https://github.com/isaacs/once
+│  ├─ publisher: Isaac Z. Schlueter
+│  ├─ email: i@izs.me
+│  ├─ url: http://blog.izs.me/
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/once/LICENSE
+├─ optimist@0.6.1
+│  ├─ licenses: MIT/X11
+│  ├─ repository: https://github.com/substack/node-optimist
+│  ├─ publisher: James Halliday
+│  ├─ email: mail@substack.net
+│  ├─ url: http://substack.net
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/optimist/LICENSE
+├─ os-homedir@1.0.2
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/sindresorhus/os-homedir
+│  ├─ publisher: Sindre Sorhus
+│  ├─ email: sindresorhus@gmail.com
+│  ├─ url: sindresorhus.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/os-homedir/license
+├─ os-tmpdir@1.0.2
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/sindresorhus/os-tmpdir
+│  ├─ publisher: Sindre Sorhus
+│  ├─ email: sindresorhus@gmail.com
+│  ├─ url: sindresorhus.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/os-tmpdir/license
+├─ osenv@0.1.4
+│  ├─ licenses: ISC
+│  ├─ repository: https://github.com/npm/osenv
+│  ├─ publisher: Isaac Z. Schlueter
+│  ├─ email: i@izs.me
+│  ├─ url: http://blog.izs.me/
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/osenv/LICENSE
+├─ package-json@2.4.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/sindresorhus/package-json
+│  ├─ publisher: Sindre Sorhus
+│  ├─ email: sindresorhus@gmail.com
+│  ├─ url: sindresorhus.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/package-json/license
+├─ parse-json@2.2.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/sindresorhus/parse-json
+│  ├─ publisher: Sindre Sorhus
+│  ├─ email: sindresorhus@gmail.com
+│  ├─ url: sindresorhus.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/parse-json/license
+├─ parseurl@1.0.1
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/expressjs/parseurl
+│  ├─ publisher: Jonathan Ong
+│  ├─ email: me@jongleberry.com
+│  └─ url: http://jongleberry.com
+├─ parseurl@1.3.1
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/pillarjs/parseurl
+│  ├─ publisher: Jonathan Ong
+│  ├─ email: me@jongleberry.com
+│  ├─ url: http://jongleberry.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/parseurl/LICENSE
+├─ path-exists@2.1.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/sindresorhus/path-exists
+│  ├─ publisher: Sindre Sorhus
+│  ├─ email: sindresorhus@gmail.com
+│  ├─ url: sindresorhus.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/path-exists/license
+├─ path-is-absolute@1.0.1
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/sindresorhus/path-is-absolute
+│  ├─ publisher: Sindre Sorhus
+│  ├─ email: sindresorhus@gmail.com
+│  ├─ url: sindresorhus.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/path-is-absolute/license
+├─ path-to-regexp@0.1.2
+│  ├─ licenses: MIT*
+│  └─ repository: https://github.com/component/path-to-regexp
+├─ path-to-regexp@0.1.7
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/component/path-to-regexp
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/path-to-regexp/LICENSE
+├─ path-type@1.1.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/sindresorhus/path-type
+│  ├─ publisher: Sindre Sorhus
+│  ├─ email: sindresorhus@gmail.com
+│  ├─ url: sindresorhus.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/path-type/license
+├─ pify@2.3.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/sindresorhus/pify
+│  ├─ publisher: Sindre Sorhus
+│  ├─ email: sindresorhus@gmail.com
+│  ├─ url: sindresorhus.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/pify/license
+├─ pinkie-promise@2.0.1
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/floatdrop/pinkie-promise
+│  ├─ publisher: Vsevolod Strukchinsky
+│  ├─ email: floatdrop@gmail.com
+│  ├─ url: github.com/floatdrop
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/pinkie-promise/license
+├─ pinkie@2.0.4
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/floatdrop/pinkie
+│  ├─ publisher: Vsevolod Strukchinsky
+│  ├─ email: floatdrop@gmail.com
+│  ├─ url: github.com/floatdrop
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/pinkie/license
+├─ platform-overrides@1.0.1
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/adam-lynch/platform-overrides
+│  ├─ publisher: Adam Lynch
+│  └─ email: contact@adamlynch.com
+├─ plist@2.0.1
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/TooTallNate/node-plist
+│  ├─ publisher: Nathan Rajlich
+│  ├─ email: nathan@tootallnate.net
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/plist/LICENSE
+├─ prepend-http@1.0.4
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/sindresorhus/prepend-http
+│  ├─ publisher: Sindre Sorhus
+│  ├─ email: sindresorhus@gmail.com
+│  ├─ url: sindresorhus.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/prepend-http/license
+├─ private@0.1.6
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/benjamn/private
+│  ├─ publisher: Ben Newman
+│  ├─ email: bn@cs.stanford.edu
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/private/LICENSE
+├─ process-nextick-args@1.0.6
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/calvinmetcalf/process-nextick-args
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/lwm2m-node-lib/node_modules/coap/node_modules/readable-stream/node_modules/process-nextick-args/license.md
+├─ process-nextick-args@1.0.7
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/calvinmetcalf/process-nextick-args
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/process-nextick-args/license.md
+├─ process@0.9.0
+│  ├─ licenses: MIT*
+│  ├─ repository: https://github.com/shtylman/node-process
+│  ├─ publisher: Roman Shtylman
+│  ├─ email: shtylman@gmail.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/process/LICENSE
+├─ progress@1.1.8
+│  ├─ licenses: MIT*
+│  ├─ repository: https://github.com/visionmedia/node-progress
+│  ├─ publisher: TJ Holowaychuk
+│  ├─ email: tj@vision-media.ca
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/progress/LICENSE
+├─ proxy-addr@1.1.2
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/jshttp/proxy-addr
+│  ├─ publisher: Douglas Christopher Wilson
+│  ├─ email: doug@somethingdoug.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/proxy-addr/LICENSE
+├─ proxyquire@1.7.10
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/thlorenz/proxyquire
+│  ├─ publisher: Thorsten Lorenz
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/proxyquire/LICENSE
+├─ pseudomap@1.0.2
+│  ├─ licenses: ISC
+│  ├─ repository: https://github.com/isaacs/pseudomap
+│  ├─ publisher: Isaac Z. Schlueter
+│  ├─ email: i@izs.me
+│  ├─ url: http://blog.izs.me/
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/lwm2m-node-lib/node_modules/coap/node_modules/lru-cache/node_modules/pseudomap/LICENSE
+├─ pump@1.0.2
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/mafintosh/pump
+│  ├─ publisher: Mathias Buus Madsen
+│  ├─ email: mathiasbuus@gmail.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/pump/LICENSE
+├─ punycode@1.4.1
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/bestiejs/punycode.js
+│  ├─ publisher: Mathias Bynens
+│  └─ url: https://mathiasbynens.be/
+├─ q@1.4.1
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/kriskowal/q
+│  ├─ publisher: Kris Kowal
+│  ├─ email: kris@cixar.com
+│  ├─ url: https://github.com/kriskowal
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/q/LICENSE
+├─ qs@0.6.6
+│  ├─ licenses: MIT*
+│  ├─ repository: https://github.com/visionmedia/node-querystring
+│  ├─ publisher: TJ Holowaychuk
+│  ├─ email: tj@vision-media.ca
+│  └─ url: http://tjholowaychuk.com
+├─ qs@6.2.0
+│  ├─ licenses: BSD-3-Clause
+│  ├─ repository: https://github.com/ljharb/qs
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/qs/LICENSE
+├─ random-bytes@1.0.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/crypto-utils/random-bytes
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/random-bytes/LICENSE
+├─ range-parser@1.0.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/visionmedia/node-range-parser
+│  ├─ publisher: TJ Holowaychuk
+│  ├─ email: tj@vision-media.ca
+│  └─ url: http://tjholowaychuk.com
+├─ range-parser@1.2.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/jshttp/range-parser
+│  ├─ publisher: TJ Holowaychuk
+│  ├─ email: tj@vision-media.ca
+│  ├─ url: http://tjholowaychuk.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/range-parser/LICENSE
+├─ raw-body@2.1.7
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/stream-utils/raw-body
+│  ├─ publisher: Jonathan Ong
+│  ├─ email: me@jongleberry.com
+│  ├─ url: http://jongleberry.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/raw-body/LICENSE
+├─ rc@1.1.6
+│  ├─ licenses: (BSD-2-Clause OR MIT OR Apache-2.0)
+│  ├─ repository: https://github.com/dominictarr/rc
+│  ├─ publisher: Dominic Tarr
+│  ├─ email: dominic.tarr@gmail.com
+│  ├─ url: dominictarr.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/rc/LICENSE.MIT
+├─ rcedit@0.7.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/atom/node-rcedit
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/rcedit/LICENSE
+├─ read-all-stream@3.1.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/floatdrop/read-all-stream
+│  ├─ publisher: Vsevolod Strukchinsky
+│  ├─ email: floatdrop@gmail.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/read-all-stream/license
+├─ read-installed@4.0.3
+│  ├─ licenses: ISC
+│  ├─ repository: https://github.com/isaacs/read-installed
+│  ├─ publisher: Isaac Z. Schlueter
+│  ├─ email: i@izs.me
+│  ├─ url: http://blog.izs.me/
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/read-installed/LICENSE
+├─ read-package-json@2.0.4
+│  ├─ licenses: ISC
+│  ├─ repository: https://github.com/npm/read-package-json
+│  ├─ publisher: Isaac Z. Schlueter
+│  ├─ email: i@izs.me
+│  ├─ url: http://blog.izs.me/
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/read-package-json/LICENSE
+├─ read-pkg-up@1.0.1
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/sindresorhus/read-pkg-up
+│  ├─ publisher: Sindre Sorhus
+│  ├─ email: sindresorhus@gmail.com
+│  ├─ url: sindresorhus.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/read-pkg-up/license
+├─ read-pkg@1.1.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/sindresorhus/read-pkg
+│  ├─ publisher: Sindre Sorhus
+│  ├─ email: sindresorhus@gmail.com
+│  ├─ url: sindresorhus.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/read-pkg/license
+├─ readable-stream@1.0.31
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/isaacs/readable-stream
+│  ├─ publisher: Isaac Z. Schlueter
+│  ├─ email: i@izs.me
+│  ├─ url: http://blog.izs.me/
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/lwm2m-node-lib/node_modules/mongodb/node_modules/readable-stream/LICENSE
+├─ readable-stream@1.0.33
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/isaacs/readable-stream
+│  ├─ publisher: Isaac Z. Schlueter
+│  ├─ email: i@izs.me
+│  ├─ url: http://blog.izs.me/
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/lwm2m-node-lib/node_modules/coap-cli/node_modules/coap/node_modules/readable-stream/LICENSE
+├─ readable-stream@1.0.34
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/isaacs/readable-stream
+│  ├─ publisher: Isaac Z. Schlueter
+│  ├─ email: i@izs.me
+│  ├─ url: http://blog.izs.me/
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/inline-process-browser/node_modules/readable-stream/LICENSE
+├─ readable-stream@1.1.14
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/isaacs/readable-stream
+│  ├─ publisher: Isaac Z. Schlueter
+│  ├─ email: i@izs.me
+│  ├─ url: http://blog.izs.me/
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/readable-stream/LICENSE
+├─ readable-stream@2.0.5
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/nodejs/readable-stream
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/lwm2m-node-lib/node_modules/coap/node_modules/readable-stream/LICENSE
+├─ readable-stream@2.0.6
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/nodejs/readable-stream
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/request/node_modules/readable-stream/LICENSE
+├─ readable-stream@2.2.2
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/nodejs/readable-stream
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/got/node_modules/readable-stream/LICENSE
+├─ readdir-scoped-modules@1.0.2
+│  ├─ licenses: ISC
+│  ├─ repository: https://github.com/npm/readdir-scoped-modules
+│  ├─ publisher: Isaac Z. Schlueter
+│  ├─ email: i@izs.me
+│  ├─ url: http://blog.izs.me/
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/readdir-scoped-modules/LICENSE
+├─ readline2@0.1.1
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/SBoudrias/readline2
+│  ├─ publisher: Simon Boudrias
+│  └─ email: admin@simonboudrias.com
+├─ recast@0.10.43
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/benjamn/recast
+│  ├─ publisher: Ben Newman
+│  ├─ email: bn@cs.stanford.edu
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/recast/LICENSE
+├─ recursive-readdir-sync@1.0.6
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/battlejj/recursive-readdir-sync
+│  ├─ publisher: Jeremy Battle
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/recursive-readdir-sync/LICENSE
+├─ redent@1.0.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/sindresorhus/redent
+│  ├─ publisher: Sindre Sorhus
+│  ├─ email: sindresorhus@gmail.com
+│  ├─ url: sindresorhus.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/redent/license
+├─ regexp-clone@0.0.1
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/aheckmann/regexp-clone
+│  ├─ publisher: Aaron Heckmann
+│  ├─ email: aaron.heckmann+github@gmail.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/lwm2m-node-lib/node_modules/mongoose/node_modules/regexp-clone/LICENSE
+├─ registry-auth-token@3.1.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/rexxars/registry-auth-token
+│  ├─ publisher: Espen Hovlandsdal
+│  ├─ email: espen@hovlandsdal.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/registry-auth-token/LICENSE
+├─ registry-url@3.1.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/sindresorhus/registry-url
+│  ├─ publisher: Sindre Sorhus
+│  ├─ email: sindresorhus@gmail.com
+│  ├─ url: sindresorhus.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/registry-url/license
+├─ repeating@2.0.1
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/sindresorhus/repeating
+│  ├─ publisher: Sindre Sorhus
+│  ├─ email: sindresorhus@gmail.com
+│  ├─ url: sindresorhus.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/repeating/license
+├─ request@2.75.0
+│  ├─ licenses: Apache-2.0
+│  ├─ repository: https://github.com/request/request
+│  ├─ publisher: Mikeal Rogers
+│  ├─ email: mikeal.rogers@gmail.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/request/LICENSE
+├─ require_optional@1.0.0
+│  ├─ licenses: Apache-2.0
+│  ├─ repository: https://github.com/christkv/require_optional
+│  ├─ publisher: Christian Kvalheim Amor
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/lwm2m-node-lib/node_modules/mongodb/node_modules/mongodb-core/node_modules/require_optional/LICENSE
+├─ resolve-from@2.0.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/sindresorhus/resolve-from
+│  ├─ publisher: Sindre Sorhus
+│  ├─ email: sindresorhus@gmail.com
+│  ├─ url: sindresorhus.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/lwm2m-node-lib/node_modules/mongodb/node_modules/mongodb-core/node_modules/require_optional/node_modules/resolve-from/license
+├─ resolve@1.1.7
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/substack/node-resolve
+│  ├─ publisher: James Halliday
+│  ├─ email: mail@substack.net
+│  ├─ url: http://substack.net
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/resolve/LICENSE
+├─ reusify@1.0.1
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/mcollina/reusify
+│  ├─ publisher: Matteo Collina
+│  ├─ email: hello@matteocollina.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/reusify/LICENSE
+├─ rimraf@2.2.8
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/isaacs/rimraf
+│  ├─ publisher: Isaac Z. Schlueter
+│  ├─ email: i@izs.me
+│  ├─ url: http://blog.izs.me/
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/temp/node_modules/rimraf/LICENSE
+├─ rimraf@2.5.4
+│  ├─ licenses: ISC
+│  ├─ repository: https://github.com/isaacs/rimraf
+│  ├─ publisher: Isaac Z. Schlueter
+│  ├─ email: i@izs.me
+│  ├─ url: http://blog.izs.me/
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/rimraf/LICENSE
+├─ rndm@1.2.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/crypto-utils/rndm
+│  ├─ publisher: Jonathan Ong
+│  ├─ email: me@jongleberry.com
+│  ├─ url: http://jongleberry.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/rndm/LICENSE
+├─ safe-buffer@5.0.1
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/feross/safe-buffer
+│  ├─ publisher: Feross Aboukhadijeh
+│  ├─ email: feross@feross.org
+│  ├─ url: http://feross.org
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/safe-buffer/LICENSE
+├─ semver-diff@2.1.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/sindresorhus/semver-diff
+│  ├─ publisher: Sindre Sorhus
+│  ├─ email: sindresorhus@gmail.com
+│  ├─ url: http://sindresorhus.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/semver-diff/license
+├─ semver@2.3.2
+│  ├─ licenses: BSD
+│  ├─ repository: https://github.com/isaacs/node-semver
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/nw-builder/node_modules/semver/LICENSE
+├─ semver@5.1.0
+│  ├─ licenses: ISC
+│  ├─ repository: https://github.com/npm/node-semver
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/lwm2m-node-lib/node_modules/mongodb/node_modules/mongodb-core/node_modules/require_optional/node_modules/semver/LICENSE
+├─ semver@5.3.0
+│  ├─ licenses: ISC
+│  ├─ repository: https://github.com/npm/node-semver
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/semver/LICENSE
+├─ send@0.14.1
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/pillarjs/send
+│  ├─ publisher: TJ Holowaychuk
+│  ├─ email: tj@vision-media.ca
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/send/LICENSE
+├─ send@0.3.0
+│  ├─ licenses: MIT*
+│  ├─ repository: https://github.com/visionmedia/send
+│  ├─ publisher: TJ Holowaychuk
+│  └─ email: tj@vision-media.ca
+├─ serve-static@1.1.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/expressjs/serve-static
+│  ├─ publisher: Douglas Christopher Wilson
+│  ├─ email: doug@somethingdoug.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/mtk-core/node_modules/serve-static/LICENSE
+├─ serve-static@1.11.1
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/expressjs/serve-static
+│  ├─ publisher: Douglas Christopher Wilson
+│  ├─ email: doug@somethingdoug.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/serve-static/LICENSE
+├─ setprototypeof@1.0.2
+│  ├─ licenses: ISC
+│  ├─ repository: https://github.com/wesleytodd/setprototypeof
+│  ├─ publisher: Wes Todd
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/setprototypeof/LICENSE
+├─ shortid@2.2.6
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/dylang/shortid
+│  ├─ publisher: Dylan Greene
+│  ├─ email: dylang@gmail.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/shortid/LICENSE
+├─ sigmund@1.0.1
+│  ├─ licenses: ISC
+│  ├─ repository: https://github.com/isaacs/sigmund
+│  ├─ publisher: Isaac Z. Schlueter
+│  ├─ email: i@izs.me
+│  ├─ url: http://blog.izs.me/
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/sigmund/LICENSE
+├─ signal-exit@3.0.2
+│  ├─ licenses: ISC
+│  ├─ repository: https://github.com/tapjs/signal-exit
+│  ├─ publisher: Ben Coe
+│  ├─ email: ben@npmjs.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/signal-exit/LICENSE.txt
+├─ simple-glob@0.1.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/jedmao/simple-glob
+│  ├─ publisher: "Cowboy" Ben Alman
+│  └─ url: http://benalman.com/
+├─ sliced@0.0.5
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/aheckmann/sliced
+│  ├─ publisher: Aaron Heckmann
+│  ├─ email: aaron.heckmann+github@gmail.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/lwm2m-node-lib/node_modules/mongoose/node_modules/mquery/node_modules/sliced/LICENSE
+├─ sliced@1.0.1
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/aheckmann/sliced
+│  ├─ publisher: Aaron Heckmann
+│  ├─ email: aaron.heckmann+github@gmail.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/lwm2m-node-lib/node_modules/mongoose/node_modules/sliced/LICENSE
+├─ slide@1.1.6
+│  ├─ licenses: ISC
+│  ├─ repository: https://github.com/isaacs/slide-flow-control
+│  ├─ publisher: Isaac Z. Schlueter
+│  ├─ email: i@izs.me
+│  ├─ url: http://blog.izs.me/
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/slide/LICENSE
+├─ sntp@1.0.9
+│  ├─ licenses: BSD
+│  ├─ repository: https://github.com/hueniverse/sntp
+│  ├─ publisher: Eran Hammer
+│  ├─ email: eran@hammer.io
+│  ├─ url: http://hueniverse.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/sntp/LICENSE
+├─ source-map@0.1.31
+│  ├─ licenses: BSD
+│  ├─ repository: https://github.com/mozilla/source-map
+│  ├─ publisher: Nick Fitzgerald
+│  ├─ email: nfitzgerald@mozilla.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/source-map/LICENSE
+├─ source-map@0.5.6
+│  ├─ licenses: BSD-3-Clause
+│  ├─ repository: https://github.com/mozilla/source-map
+│  ├─ publisher: Nick Fitzgerald
+│  ├─ email: nfitzgerald@mozilla.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/recast/node_modules/source-map/LICENSE
+├─ spdx-correct@1.0.2
+│  ├─ licenses: Apache-2.0
+│  ├─ repository: https://github.com/kemitchell/spdx-correct.js
+│  ├─ publisher: Kyle E. Mitchell
+│  ├─ email: kyle@kemitchell.com
+│  ├─ url: https://kemitchell.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/spdx-correct/LICENSE
+├─ spdx-expression-parse@1.0.4
+│  ├─ licenses: (MIT AND CC-BY-3.0)
+│  ├─ repository: https://github.com/kemitchell/spdx-expression-parse.js
+│  ├─ publisher: Kyle E. Mitchell
+│  ├─ email: kyle@kemitchell.com
+│  ├─ url: http://kemitchell.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/spdx-expression-parse/LICENSE
+├─ spdx-license-ids@1.2.2
+│  ├─ licenses: Unlicense
+│  ├─ repository: https://github.com/shinnn/spdx-license-ids
+│  ├─ publisher: Shinnosuke Watanabe
+│  ├─ url: https://github.com/shinnn
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/spdx-license-ids/LICENSE
+├─ sshpk@1.10.1
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/arekinath/node-sshpk
+│  ├─ publisher: Joyent, Inc
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/sshpk/LICENSE
+├─ static-favicon@1.0.2
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/expressjs/favicon
+│  ├─ publisher: TJ Holowaychuk
+│  ├─ email: tj@vision-media.ca
+│  ├─ url: http://tjholowaychuk.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/static-favicon/LICENSE
+├─ statuses@1.3.1
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/jshttp/statuses
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/statuses/LICENSE
+├─ string-width@1.0.2
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/sindresorhus/string-width
+│  ├─ publisher: Sindre Sorhus
+│  ├─ email: sindresorhus@gmail.com
+│  ├─ url: sindresorhus.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/string-width/license
+├─ string_decoder@0.10.31
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/rvagg/string_decoder
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/string_decoder/LICENSE
+├─ stringstream@0.0.5
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/mhart/StringStream
+│  ├─ publisher: Michael Hart
+│  ├─ email: michael.hart.au@gmail.com
+│  ├─ url: http://github.com/mhart
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/stringstream/LICENSE.txt
+├─ strip-ansi@0.1.1
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/sindresorhus/strip-ansi
+│  ├─ publisher: Sindre Sorhus
+│  ├─ email: sindresorhus@gmail.com
+│  └─ url: http://sindresorhus.com
+├─ strip-ansi@0.3.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/sindresorhus/strip-ansi
+│  ├─ publisher: Sindre Sorhus
+│  ├─ email: sindresorhus@gmail.com
+│  └─ url: http://sindresorhus.com
+├─ strip-ansi@2.0.1
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/sindresorhus/strip-ansi
+│  ├─ publisher: Sindre Sorhus
+│  ├─ email: sindresorhus@gmail.com
+│  └─ url: http://sindresorhus.com
+├─ strip-ansi@3.0.1
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/chalk/strip-ansi
+│  ├─ publisher: Sindre Sorhus
+│  ├─ email: sindresorhus@gmail.com
+│  ├─ url: sindresorhus.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/string-width/node_modules/strip-ansi/license
+├─ strip-bom@2.0.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/sindresorhus/strip-bom
+│  ├─ publisher: Sindre Sorhus
+│  ├─ email: sindresorhus@gmail.com
+│  ├─ url: sindresorhus.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/strip-bom/license
+├─ strip-indent@1.0.1
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/sindresorhus/strip-indent
+│  ├─ publisher: Sindre Sorhus
+│  ├─ email: sindresorhus@gmail.com
+│  ├─ url: http://sindresorhus.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/strip-indent/license
+├─ strip-json-comments@1.0.4
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/sindresorhus/strip-json-comments
+│  ├─ publisher: Sindre Sorhus
+│  ├─ email: sindresorhus@gmail.com
+│  ├─ url: sindresorhus.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/strip-json-comments/license
+├─ superagent@2.3.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/visionmedia/superagent
+│  ├─ publisher: TJ Holowaychuk
+│  ├─ email: tj@vision-media.ca
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/superagent/LICENSE
+├─ supertest-as-promised@4.0.2
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/WhoopInc/supertest-as-promised
+│  ├─ publisher: Nikhil Benesch
+│  ├─ email: benesch@whoop.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/supertest-as-promised/LICENSE
+├─ supertest@2.0.1
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/visionmedia/supertest
+│  ├─ publisher: TJ Holowaychuk
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/supertest/LICENSE
+├─ supports-color@0.2.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/sindresorhus/supports-color
+│  ├─ publisher: Sindre Sorhus
+│  ├─ email: sindresorhus@gmail.com
+│  └─ url: http://sindresorhus.com
+├─ supports-color@2.0.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/chalk/supports-color
+│  ├─ publisher: Sindre Sorhus
+│  ├─ email: sindresorhus@gmail.com
+│  ├─ url: sindresorhus.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/boxen/node_modules/supports-color/license
+├─ supports-color@3.1.2
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/chalk/supports-color
+│  ├─ publisher: Sindre Sorhus
+│  ├─ email: sindresorhus@gmail.com
+│  ├─ url: sindresorhus.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/mocha/node_modules/supports-color/license
+├─ tar-fs@1.15.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/mafintosh/tar-fs
+│  ├─ publisher: Mathias Buus
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/tar-fs/LICENSE
+├─ tar-stream@1.5.2
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/mafintosh/tar-stream
+│  ├─ publisher: Mathias Buus
+│  ├─ email: mathiasbuus@gmail.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/tar-stream/LICENSE
+├─ temp@0.7.0
+│  ├─ licenses: MIT*
+│  ├─ repository: https://github.com/bruce/node-temp
+│  ├─ publisher: Bruce Williams
+│  ├─ email: bruce@codefluency.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/temp/LICENSE
+├─ through2@0.5.1
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/rvagg/through2
+│  ├─ publisher: Rod Vagg
+│  ├─ email: r@va.gg
+│  ├─ url: https://github.com/rvagg
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/through2/LICENSE
+├─ through2@0.6.5
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/rvagg/through2
+│  ├─ publisher: Rod Vagg
+│  ├─ email: r@va.gg
+│  ├─ url: https://github.com/rvagg
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/inline-process-browser/node_modules/through2/LICENSE
+├─ through2@2.0.1
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/rvagg/through2
+│  ├─ publisher: Rod Vagg
+│  ├─ email: r@va.gg
+│  ├─ url: https://github.com/rvagg
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/lwm2m-node-lib/node_modules/coap-cli/node_modules/through2/LICENSE
+├─ through@2.3.8
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/dominictarr/through
+│  ├─ publisher: Dominic Tarr
+│  ├─ email: dominic.tarr@gmail.com
+│  ├─ url: dominictarr.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/through/LICENSE.MIT
+├─ timed-out@3.1.3
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/floatdrop/timed-out
+│  ├─ publisher: Vsevolod Strukchinsky
+│  ├─ email: floatdrop@gmail.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/timed-out/license
+├─ timers-ext@0.1.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/medikoo/timers-ext
+│  ├─ publisher: Mariusz Nowak
+│  ├─ email: medyk@medikoo.com
+│  ├─ url: http://www.medikoo.com/
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/timers-ext/LICENCE
+├─ topo@1.1.0
+│  ├─ licenses: BSD-3-Clause
+│  ├─ repository: https://github.com/hapijs/topo
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/topo/LICENSE
+├─ touch@0.0.3
+│  ├─ licenses: ISC
+│  ├─ repository: https://github.com/isaacs/node-touch
+│  ├─ publisher: Isaac Z. Schlueter
+│  ├─ email: i@izs.me
+│  ├─ url: http://blog.izs.me/
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/touch/LICENSE
+├─ tough-cookie@2.3.2
+│  ├─ licenses: BSD-3-Clause
+│  ├─ repository: https://github.com/salesforce/tough-cookie
+│  ├─ publisher: Jeremy Stashewsky
+│  ├─ email: jstashewsky@salesforce.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/tough-cookie/LICENSE
+├─ traverse@0.3.9
+│  ├─ licenses: MIT/X11
+│  ├─ repository: https://github.com/substack/js-traverse
+│  ├─ publisher: James Halliday
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/traverse/LICENSE
+├─ trim-newlines@1.0.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/sindresorhus/trim-newlines
+│  ├─ publisher: Sindre Sorhus
+│  ├─ email: sindresorhus@gmail.com
+│  ├─ url: sindresorhus.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/trim-newlines/license
+├─ tsscmp@1.0.5
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/suryagh/tsscmp
+│  ├─ publisher: suryagh
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/tsscmp/LICENSE
+├─ tunnel-agent@0.4.3
+│  ├─ licenses: Apache-2.0
+│  ├─ repository: https://github.com/mikeal/tunnel-agent
+│  ├─ publisher: Mikeal Rogers
+│  ├─ email: mikeal.rogers@gmail.com
+│  ├─ url: http://www.futurealoof.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/tunnel-agent/LICENSE
+├─ tweetnacl@0.14.5
+│  ├─ licenses: Unlicense
+│  ├─ repository: https://github.com/dchest/tweetnacl-js
+│  ├─ publisher: TweetNaCl-js contributors
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/tweetnacl/LICENSE
+├─ type-detect@0.1.1
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/chaijs/type-detect
+│  ├─ publisher: Jake Luer
+│  ├─ email: jake@alogicalparadox.com
+│  └─ url: http://alogicalparadox.com
+├─ type-detect@1.0.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/chaijs/type-detect
+│  ├─ publisher: Jake Luer
+│  ├─ email: jake@alogicalparadox.com
+│  └─ url: http://alogicalparadox.com
+├─ type-is@1.1.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/expressjs/type-is
+│  ├─ publisher: Jonathan Ong
+│  ├─ email: me@jongleberry.com
+│  └─ url: http://jongleberry.com
+├─ type-is@1.6.14
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/jshttp/type-is
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/type-is/LICENSE
+├─ typedarray-to-buffer@3.1.2
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/feross/typedarray-to-buffer
+│  ├─ publisher: Feross Aboukhadijeh
+│  ├─ email: feross@feross.org
+│  ├─ url: http://feross.org/
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/typedarray-to-buffer/LICENSE
+├─ uid-safe@2.1.3
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/crypto-utils/uid-safe
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/uid-safe/LICENSE
+├─ underscore@1.4.4
+│  ├─ licenses: MIT*
+│  ├─ repository: https://github.com/documentcloud/underscore
+│  ├─ publisher: Jeremy Ashkenas
+│  ├─ email: jeremy@documentcloud.org
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/underscore/LICENSE
+├─ underscore@1.7.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/jashkenas/underscore
+│  ├─ publisher: Jeremy Ashkenas
+│  ├─ email: jeremy@documentcloud.org
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/lwm2m-node-lib/node_modules/underscore/LICENSE
+├─ underscore@1.8.3
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/jashkenas/underscore
+│  ├─ publisher: Jeremy Ashkenas
+│  ├─ email: jeremy@documentcloud.org
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/backbone/node_modules/underscore/LICENSE
+├─ unpipe@1.0.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/stream-utils/unpipe
+│  ├─ publisher: Douglas Christopher Wilson
+│  ├─ email: doug@somethingdoug.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/unpipe/LICENSE
+├─ unreachable-branch-transform@0.3.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/zertosh/unreachable-branch-transform
+│  ├─ publisher: Andres Suarez
+│  ├─ email: zertosh@gmail.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/unreachable-branch-transform/LICENSE
+├─ unzip-response@1.0.2
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/sindresorhus/unzip-response
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/unzip-response/license
+├─ update-notifier@1.0.3
+│  ├─ licenses: BSD-2-Clause
+│  ├─ repository: https://github.com/yeoman/update-notifier
+│  ├─ publisher: Sindre Sorhus
+│  ├─ email: sindresorhus@gmail.com
+│  └─ url: sindresorhus.com
+├─ url-parse-lax@1.0.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/sindresorhus/url-parse-lax
+│  ├─ publisher: Sindre Sorhus
+│  ├─ email: sindresorhus@gmail.com
+│  ├─ url: sindresorhus.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/url-parse-lax/license
+├─ util-deprecate@1.0.2
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/TooTallNate/util-deprecate
+│  ├─ publisher: Nathan Rajlich
+│  ├─ email: nathan@tootallnate.net
+│  ├─ url: http://n8.io/
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/lwm2m-node-lib/node_modules/coap/node_modules/readable-stream/node_modules/util-deprecate/LICENSE
+├─ util-extend@1.0.3
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/isaacs/util-extend
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/util-extend/LICENSE
+├─ utils-merge@1.0.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/jaredhanson/utils-merge
+│  ├─ publisher: Jared Hanson
+│  ├─ email: jaredhanson@gmail.com
+│  ├─ url: http://www.jaredhanson.net/
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/utils-merge/LICENSE
+├─ uuid@2.0.3
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/defunctzombie/node-uuid
+│  ├─ publisher: Robert Kieffer
+│  ├─ email: robert@broofa.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/uuid/LICENSE.md
+├─ validate-npm-package-license@3.0.1
+│  ├─ licenses: Apache-2.0
+│  ├─ repository: https://github.com/kemitchell/validate-npm-package-license.js
+│  ├─ publisher: Kyle E. Mitchell
+│  ├─ email: kyle@kemitchell.com
+│  ├─ url: https://kemitchell.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/validate-npm-package-license/LICENSE
+├─ vary@1.1.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/jshttp/vary
+│  ├─ publisher: Douglas Christopher Wilson
+│  ├─ email: doug@somethingdoug.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/vary/LICENSE
+├─ verror@1.3.6
+│  ├─ licenses: MIT*
+│  ├─ repository: https://github.com/davepacheco/node-verror
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/verror/LICENSE
+├─ vinyl@0.2.3
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/wearefractal/vinyl
+│  ├─ publisher: Fractal
+│  ├─ email: contact@wearefractal.com
+│  ├─ url: http://wearefractal.com/
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/vinyl/LICENSE
+├─ walkdir@0.0.11
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/soldair/node-walkdir
+│  ├─ publisher: Ryan Day
+│  ├─ email: soldair@gmail.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/walkdir/license
+├─ websocket@1.0.24
+│  ├─ licenses: Apache-2.0
+│  ├─ repository: https://github.com/theturtle32/WebSocket-Node
+│  ├─ publisher: Brian McKelvey
+│  ├─ email: brian@worlize.com
+│  ├─ url: https://www.worlize.com/
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/websocket/LICENSE
+├─ widest-line@1.0.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/sindresorhus/widest-line
+│  ├─ publisher: Sindre Sorhus
+│  ├─ email: sindresorhus@gmail.com
+│  ├─ url: sindresorhus.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/widest-line/license
+├─ winresourcer@0.9.0
+│  ├─ licenses: Freeware
+│  ├─ repository: https://github.com/felicienfrancois/node-winresourcer
+│  ├─ publisher: Felicien Francois
+│  ├─ email: felicien@tweakstyle.com
+│  ├─ url: http://tweakstyle.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/winresourcer/LICENSE
+├─ wordwrap@0.0.3
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/substack/node-wordwrap
+│  ├─ publisher: James Halliday
+│  ├─ email: mail@substack.net
+│  ├─ url: http://substack.net
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/wordwrap/LICENSE
+├─ wotcity.io@0.8.14
+│  ├─ licenses: MIT License
+│  ├─ publisher: jollen
+│  ├─ email: jollen@jollen.org
+│  ├─ url: http://jollen.org/
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/wotcity.io/LICENSE
+├─ wrappy@1.0.2
+│  ├─ licenses: ISC
+│  ├─ repository: https://github.com/npm/wrappy
+│  ├─ publisher: Isaac Z. Schlueter
+│  ├─ email: i@izs.me
+│  ├─ url: http://blog.izs.me/
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/wrappy/LICENSE
+├─ write-file-atomic@1.2.0
+│  ├─ licenses: ISC
+│  ├─ repository: https://github.com/iarna/write-file-atomic
+│  ├─ publisher: Rebecca Turner
+│  ├─ email: me@re-becca.org
+│  ├─ url: http://re-becca.org
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/write-file-atomic/LICENSE
+├─ xdg-basedir@2.0.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/sindresorhus/xdg-basedir
+│  ├─ publisher: Sindre Sorhus
+│  ├─ email: sindresorhus@gmail.com
+│  ├─ url: sindresorhus.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/xdg-basedir/license
+├─ xmlbuilder@8.2.2
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/oozcitak/xmlbuilder-js
+│  ├─ publisher: Ozgur Ozcitak
+│  ├─ email: oozcitak@gmail.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/xmlbuilder/LICENSE
+├─ xmldom@0.1.27
+│  ├─ licenses: LGPL
+│  ├─ repository: https://github.com/jindw/xmldom
+│  ├─ publisher: jindw
+│  ├─ email: jindw@xidea.org
+│  ├─ url: http://www.xidea.org
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/xmldom/LICENSE
+├─ xtend@3.0.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/Raynos/xtend
+│  ├─ publisher: Raynos
+│  ├─ email: raynos2@gmail.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/xtend/LICENCE
+├─ xtend@4.0.1
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/Raynos/xtend
+│  ├─ publisher: Raynos
+│  ├─ email: raynos2@gmail.com
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/jsonwebtoken/node_modules/xtend/LICENCE
+├─ yaeti@0.0.6
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/ibc/yaeti
+│  ├─ publisher: Iñaki Baz Castillo
+│  ├─ email: ibc@aliax.net
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/yaeti/LICENSE
+├─ yallist@2.0.0
+│  ├─ licenses: ISC
+│  ├─ repository: https://github.com/isaacs/yallist
+│  ├─ publisher: Isaac Z. Schlueter
+│  ├─ email: i@izs.me
+│  ├─ url: http://blog.izs.me/
+│  └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/lwm2m-node-lib/node_modules/coap/node_modules/lru-cache/node_modules/yallist/LICENSE
+├─ youmeb-generator@0.0.1
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/poying/youmeb-generator
+│  ├─ publisher: Po-Ying Chen
+│  └─ email: poying.me@gmail.com
+└─ zip-stream@1.1.0
+   ├─ licenses: MIT
+   ├─ repository: https://github.com/archiverjs/node-zip-stream
+   ├─ publisher: Chris Talkington
+   ├─ url: http://christalkington.com/
+   └─ licenseFile: /Users/blue-mtk/mtk/mcs-lite-app/node_modules/zip-stream/LICENSE
+

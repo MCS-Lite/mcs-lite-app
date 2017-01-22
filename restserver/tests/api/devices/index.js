@@ -58,6 +58,7 @@ describe('Devices API:', function() {
       });
     });
   });
+
   describe('Add new device api:', function() {
     it('return 200.', function(done) {
 
