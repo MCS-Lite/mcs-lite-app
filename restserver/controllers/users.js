@@ -1,6 +1,195 @@
-module.exports = function ($db) {
+var jwt = require('jsonwebtoken');
+var $oauth = require('../../configs/oauth');
+var $rest = require('../../configs/rest');
 
+/* fetch basic token */
+var clientId;
+var clientSecret;
+Object.keys($oauth.clients).forEach(function(key) { clientId = key; clientSecret = $oauth.clients[key].secret });
+var basicToken = new Buffer(clientId + ':' + clientSecret).toString('base64');
+
+var request = require('superagent');
+
+module.exports = function ($db) {
   var users = $db.users;
+
+  var login = function(req, res, next) {
+    return new Promise((resolve, reject) => {
+      if (!req.body.email || !req.body.password) {
+        return reject('Email or password is not define.');
+      }
+      return resolve();
+    })
+    .then(() => {
+      var data = {
+        email: req.body.email,
+        grant_type: 'password',
+        password: req.body.password
+      };
+
+      return new Promise((resolve, reject) => {
+        request
+        .post(host + '/oauth/token')
+        .set('Cache-Control', 'no-cache')
+        .set('Content-Type', 'application/x-www-form-urlencoded')
+        .send(data)
+        .set('Authorization', 'Basic ' + basicToken)
+        .end(function(err, res) {
+          return res.ok ?  resolve(res.body) : reject(err.response.body.message);
+        });
+      });
+    }).then((data)=> {
+      var payload = {
+        token: data
+      };
+      try {
+        var token = jwt.sign(payload, $oauth.JWT_SECRET);
+      } catch (err) {
+        return next(err);
+      }
+
+      // if (req.basicToken) {
+
+      //   return $secretkey.find(req.basicToken.key, req.basicToken.secret)
+      //   .then(function(_data) {
+      //     return res.ok({
+      //       token: token,
+      //       access_token: data.access_token
+      //     });
+      //   })
+
+      // } else {
+
+      res.cookie('token', token, { maxAge: $rest.session.maxAge });
+
+      // 拿 language 做 local 判斷
+      return new Promise((resolve, reject) => {
+        request
+        .get(host + '/oauth/token/info')
+        .set('Cache-Control', 'no-cache')
+        .set('Content-Type', 'application/x-www-form-urlencoded')
+        .set('Authorization', `Bearer ${data.access_token}`)
+        .end(function(err, data) {
+          if (data.ok) {
+            return res.redirect(req.redirecClientUrl);
+            // if (data.body.language != null) {
+            //   return res.redirect(req.redirecClientUrl + '/' + $check.lang(data.body.language));
+            // } else {
+            //   return res.redirect(req.redirecClientUrl  + '/' + req.locale);
+            // }
+          } else {
+            reject(err.response.body.message);
+          }
+        });
+      });
+      // }
+    }).catch((err)=> {
+      if (err === 'Your account is not activated yet!') {
+        return res.redirect(`/user/${req.locale}/verify?email=${req.body.email}`);
+      } else {
+        return res.redirect(`/user/login?errorMsg=${encodeURI(err)}`);
+      }
+    });
+  };
+
+  var loginInterface = function(req, res, next) {
+    if (req.cookies.token) {
+      return new Promise((resolve, reject) => {
+        /* 解碼 cookie 內的 token */
+        jwt.verify(req.cookies.token, $oauth.JWT_SECRET, function(err, payload) {
+          return err ? reject(err) : resolve(payload.token);
+        });
+
+      }).then((token) => {
+
+        req.body.token = token;
+        return new Promise((resolve, reject) => {
+          /* 檢查 token 是否 active */
+          request
+          .get(host + '/users/info')
+          .set('Cache-Control', 'no-cache')
+          .set('Content-Type', 'application/x-www-form-urlencoded')
+          .set('Authorization', `Bearer ${token.access_token}`)
+          .end(function(err, res) {
+            return res.ok ? resolve('active') : reject({
+              code: err.response.body.code,
+              message: err.response.body.message,
+              token: token
+            });
+          });
+
+        }).then((data) => {
+
+          return data;
+
+        }).catch((err) => {
+
+          var data = {
+            refresh_token: token.refresh_token,
+            grant_type: 'refresh_token'
+          };
+          /* 若非 active 則拿 refreshtoken 重新洗新的 token  */
+          return new Promise((resolve, reject) => {
+            request
+            .post(host + '/oauth/token')
+            .set('Cache-Control', 'no-cache')
+            .set('Content-Type', 'application/x-www-form-urlencoded')
+            .send(data)
+            .set('Authorization', `Basic ${basic_token}`)
+            .end(function(err, res) {
+              return res.ok ?  resolve(res.body) : reject(err.response.body.message);
+            });
+          });
+        });
+      }).then((data) => {
+
+        if (data !== 'active') {
+          /* 如果非 active，就會把這些製作好的 token 塞入 cookie 中 */
+          var payload = {
+            token: data
+          };
+          var token = jwt.sign(payload, $oauth.JWT_SECRET);
+          res.cookie('token', token, { maxAge: $rest.session.maxAge });
+        }
+
+        if (process.env.NODE_ENV === 'dev') {
+          return res.redirect('http://127.0.0.1:8081/prototypes');
+        }
+
+        return res.redirect(req.redirecClientUrl);
+
+      }).catch((err) => {
+        /* 有任何錯誤就返回首頁 */
+        res.clearCookie('token', { path: '/' });
+        if (process.env.NODE_ENV === 'dev') {
+          return res.redirect('http://127.0.0.1:8081/');
+        }
+
+        return res.render('index.html', {
+          locale: req.locale,
+          renderRoute: req.renderRoute
+        });
+      });
+    } else {
+      /* 如果 cookie 沒有 token 就是以前未登入過狀態 */
+      if (process.env.NODE_ENV === 'dev') {
+        if (req.query.errorMsg) {
+          return res.redirect('http://127.0.0.1:8081?errorMsg=' + req.query.errorMsg);
+        }
+        return res.redirect('http://127.0.0.1:8081/');
+      }
+
+      return res.render('index.html', {
+        renderRoute: req.renderRoute,
+        locale: req.locale || 'en'
+      });
+    }
+    // return res.send(200, '123123');
+  };
+
+  var adminLoginInterface = function(req, res, next) {
+    return res.send(200, '123123');
+  };
 
   var registUser = function(req, res, next) {
     return users.addNewUser({
@@ -33,6 +222,8 @@ module.exports = function ($db) {
   return {
     registUser: registUser,
     retrieveUserList: retrieveUserList,
-    // login: login,
+    login: login,
+    loginInterface: loginInterface,
+    adminLoginInterface: adminLoginInterface,
   };
 };

@@ -15,6 +15,33 @@ module.exports = function($db, $app) {
     },
   };
 
+  this.userInfo = {
+    path: '/users/info',
+    methods: ['get'],
+    middleware: [$app.oauth.authorise()],
+    handler: function(req, res, next) {
+      res.send(200, req.user);
+    }
+  };
+
+  this.authLogin = {
+    path: '/auth/login',
+    methods: ['post'],
+    handler: usersController.login,
+  };
+
+  this.userLoginInterface = {
+    path: '/user/login',
+    methods: ['get'],
+    handler: usersController.loginInterface,
+  };
+
+  this.adminLoginInterface = {
+    path: '/admin/login',
+    methods: ['get'],
+    handler: usersController.adminLoginInterface,
+  };
+
   this.registUser = {
     path: '/users/regist',
     methods: ['post'],

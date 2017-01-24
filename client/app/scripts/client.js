@@ -20,6 +20,15 @@ import routes from '../routes/routing';
 // const finalCreateStore = applyMiddleware( promiseMiddleware )(createStore);
 // let store = finalCreateStore(composedReducers, state);
 
+window.apiUrl = 'http://localhost:3000';
+
+var oauth = require('../../../configs/oauth');
+var clientId;
+var clientSecret;
+Object.keys(oauth.clients).forEach(function(key) { clientId = key; clientSecret = oauth.clients[key].secret });
+var basic_token = new Buffer(clientId + ':' + clientSecret).toString('base64');
+window.basic_token = basic_token;
+
 console.log(store.getState());
 
 if (document && document.getElementById('app')) {

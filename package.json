@@ -5,7 +5,7 @@
   "main": "index.html",
   "scripts": {
     "watch:global": "~/Downloads/nwjs-sdk-v0.19.3-osx-x64/nwjs.app/Contents/MacOS/nwjs --enable-logging .",
-    "watch:dfserver": "node ./server/index.js",
+    "watch:dfserver": "NODE_ENV=dev node server.js",
     "test:ws": "node ./node_modules/wotcity.io/tests/websocket-send.js",
     "build:global": "sh ./build.sh",
     "test:nedb": "mocha --recursive ./nedb/test/",
@@ -29,7 +29,9 @@
   "dependencies": {
     "body-parser": "^1.15.2",
     "chai": "^3.5.0",
+    "cookie-parser": "^1.4.3",
     "crypto": "0.0.3",
+    "ejs": "^2.5.5",
     "express": "^4.14.0",
     "faker": "^3.1.0",
     "jsonschema": "^1.1.1",

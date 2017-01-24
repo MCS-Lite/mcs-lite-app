@@ -3,5 +3,9 @@
   "port": 3001,
   "secretKey": "mcs_lite",
   "prototypeKey": "prototypeKey",
-  "deviceKey": "deviceKey"
+  "deviceKey": "deviceKey",
+  "session": {
+    "secret": "thisissession",
+    "maxAge": 1209600000
+  }
 }
