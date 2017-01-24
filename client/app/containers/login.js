@@ -1,73 +1,51 @@
 import { connect } from 'react-redux';
 import React, { Component } from 'react'
-import main from './main.css';
-
-import { login } from '../actions/UserActions';
+import login from './login/login.css';
+import logo from './login/logo.png';
 
 import InputText from 'mtk-ui/lib/InputText';
 import InputForm from 'mtk-ui/lib/InputForm';
+import InputCheckbox from 'mtk-ui/lib/InputCheckbox';
 import Button from 'mtk-ui/lib/Button';
+import Hr from 'mtk-ui/lib/Hr';
+
+import Footer from '../components/footer';
 
 class Login extends Component {
-
-  constructor(props) {
-    super(props);
-    this.state = {
-      email: '',
-      password: '',
-    };
-    this.onChangeEmail = this.onChangeEmail.bind(this);
-    this.onChangePassword = this.onChangePassword.bind(this);
-    this.onSubmit = this.onSubmit.bind(this);
-  }
-
   render() {
     return (
       <div>
-        <div className={main.base}>
-          <form id="loginSubmit" role="form" action="http://127.0.0.1:3000/auth/login" method="post">
-            <InputText label="email" name="email" type="email" onChange={this.onChangeEmail} />
-            <InputText label="password" name="password" type="password" onChange={this.onChangePassword} />
+        <div className={login.base}>
+          <form
+            className={login.form}
+            id="loginSubmit"
+            role="form"
+            action="http://127.0.0.1:3000/auth/login"
+            method="post"
+          >
+            <img src={logo} className={login.logo}/>
+            <Hr className={login.hr}>Welcome</Hr>
+            <InputText name="email" type="email" onChange={this.onChangeEmail} placeholder="Email address" className={login.input}/>
+            <InputText name="password" type="password" placeholder="Password" onChange={this.onChangePassword} />
             <br />
-            <Button onClick={this.onSubmit} style={{ width: '100%' }}>
+            <InputCheckbox label="Remember me" />
+            <Button type="submit" className={login.submit}>
               Sign In
             </Button>
           </form>
         </div>
+        <Footer />
       </div>
     );
-  }
-
-  onChangeEmail(e) {
-    this.setState({ email: e.target.value });
-  }
-
-  onChangePassword(e) {
-    this.setState({ password: e.target.value });
-  }
-
-  onSubmit() {
-    console.log(this.state.email);
-    console.log(this.state.password);
-    login(this.state.email, this.state.password);
   }
 }
 
 const mapStateToProps = (state) => {
-  console.log(12313123);
-  console.log(state);
-  return {
-
-  };
+  return {};
 }
 
 const mapDispatchToProps = (dispatch) => {
-  console.log(dispatch);
-  return {
-    onTodoClick: (id) => {
-      dispatch(toggleTodo(id))
-    }
-  }
+  return {};
 }
 
 

@@ -1,4 +1,7 @@
 var jwt = require('jsonwebtoken');
+var request = require('superagent');
+
+/* config */
 var $oauth = require('../../configs/oauth');
 var $rest = require('../../configs/rest');
 
@@ -7,8 +10,6 @@ var clientId;
 var clientSecret;
 Object.keys($oauth.clients).forEach(function(key) { clientId = key; clientSecret = $oauth.clients[key].secret });
 var basicToken = new Buffer(clientId + ':' + clientSecret).toString('base64');
-
-var request = require('superagent');
 
 module.exports = function ($db) {
   var users = $db.users;
@@ -48,41 +49,24 @@ module.exports = function ($db) {
         return next(err);
       }
 
-      // if (req.basicToken) {
-
-      //   return $secretkey.find(req.basicToken.key, req.basicToken.secret)
-      //   .then(function(_data) {
-      //     return res.ok({
-      //       token: token,
-      //       access_token: data.access_token
-      //     });
-      //   })
-
-      // } else {
-
       res.cookie('token', token, { maxAge: $rest.session.maxAge });
 
-      // 拿 language 做 local 判斷
       return new Promise((resolve, reject) => {
         request
-        .get(host + '/oauth/token/info')
+        .get(host + '/users/info')
         .set('Cache-Control', 'no-cache')
         .set('Content-Type', 'application/x-www-form-urlencoded')
         .set('Authorization', `Bearer ${data.access_token}`)
         .end(function(err, data) {
           if (data.ok) {
-            return res.redirect(req.redirecClientUrl);
-            // if (data.body.language != null) {
-            //   return res.redirect(req.redirecClientUrl + '/' + $check.lang(data.body.language));
-            // } else {
-            //   return res.redirect(req.redirecClientUrl  + '/' + req.locale);
-            // }
+            if (process.env.NODE_ENV === 'dev') {
+              return res.redirect('http://127.0.0.1:8081/prototypes');
+            }
           } else {
             reject(err.response.body.message);
           }
         });
       });
-      // }
     }).catch((err)=> {
       if (err === 'Your account is not activated yet!') {
         return res.redirect(`/user/${req.locale}/verify?email=${req.body.email}`);
@@ -184,7 +168,6 @@ module.exports = function ($db) {
         locale: req.locale || 'en'
       });
     }
-    // return res.send(200, '123123');
   };
 
   var adminLoginInterface = function(req, res, next) {
