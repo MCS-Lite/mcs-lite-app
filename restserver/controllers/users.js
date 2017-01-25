@@ -78,6 +78,7 @@ module.exports = function ($db) {
 
   var checkCookies = function(req, res, next) {
     var info = {};
+    console.log(req.body);
     return new Promise((resolve, reject) => {
       /* 檢查cookie中的token是否合法 */
       jwt.verify(req.body.token, $oauth.JWT_SECRET, function(err, payload) {

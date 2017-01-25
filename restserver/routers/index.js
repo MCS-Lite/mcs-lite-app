@@ -30,7 +30,7 @@ module.exports = function($db, $app) {
     handler: usersController.login,
   };
 
-  this.authLogin = {
+  this.checkCookies = {
     path: '/auth/cookies',
     methods: ['post'],
     handler: usersController.checkCookies,

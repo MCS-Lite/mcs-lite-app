@@ -1,6 +1,7 @@
 import {
   CHECKTOKEN,
 } from '../constants/ActionTypes';
+import assign from 'object-assign';
 
 const initialState = {
   userId: '',

@@ -12,7 +12,6 @@ import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import reducers from '../reducers';
 import { Router, Route, RouterContext, browserHistory } from 'react-router';
-import promiseMiddleware from '../utils/promiseMiddleware';
 
 const store = createStore(reducers, applyMiddleware(thunk));
 import routes from '../routes/routing';

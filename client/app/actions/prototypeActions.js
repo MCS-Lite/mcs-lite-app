@@ -2,11 +2,11 @@ import types from '../constants/PrototypeActionTypes';
 import { createFetch } from 'http-client';
 
 export const retrievePrototypeList =  () => (dispatch) => {
-
+  return {};
 }
 
 export const createNewPrototype =  () => (dispatch) => {
-
+  return {};
 }
 
 export function editPrototype(status:Boolean) {
@@ -19,12 +19,13 @@ export function editPrototype(status:Boolean) {
   //     type: types.CLOSE_EDITPROTOTYPE,
   //   };
   // }
+  return {};
 }
 
 export const clonePrototype =  () => (dispatch) => {
-
+  return {};
 }
 
 export const deletePrototype =  () => (dispatch) => {
-
+  return {};
 }

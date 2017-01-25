@@ -9,7 +9,7 @@ import PrototypeCard from './prototypeCard';
 
 import prototypeStyle from './prototypes.css';
 
-const Prototypes = () => {
+const Prototypes = ({ main }) => {
   return (
     <div>
       <Header />

@@ -1,9 +1,13 @@
 import { connect } from 'react-redux';
 import React, { Component } from 'react';
-// import { detectErrorMsg } from '../actions/PrototypeActions';
 import PrototypeLayout from '../components/prototypes';
+import { retrievePrototypeList } from '../actions/PrototypeActions'
+class Prototype extends Component {
 
-class Login extends Component {
+  componentWillMount() {
+    this.props.retrievePrototypeList()
+  }
+
   render() {
     return (
       <PrototypeLayout {...this.props} />
@@ -15,4 +19,4 @@ const mapStateToProps = (state) => {
   return state;
 }
 
-export default connect(mapStateToProps, {})(Login);
+export default connect(mapStateToProps, { retrievePrototypeList })(Prototype);

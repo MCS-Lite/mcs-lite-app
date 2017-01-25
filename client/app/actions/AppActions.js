@@ -1,8 +1,8 @@
 import types from '../constants/ActionTypes';
-import { createFetch, base, accept, method, body, parse } from 'http-client';
 import { browserHistory } from 'react-router';
+import { checkStatus, parseJSON } from '../utils/fetch';
 
-const getCookie = (name) => {
+export const getCookie = (name) => {
   var value = "; " + document.cookie;
   var parts = value.split("; " + name + "=");
   if (parts.length == 2) return parts.pop().split(";").shift();
@@ -15,19 +15,27 @@ export const checkToken =  () => (dispatch) => {
     return browserHistory.push('/login')
   }
 
-  const fetch = createFetch(
-    base('http://127.0.0.1:3000'),
-    accept('application/json'),
-    method('POST'),
-    body(JSON.stringify({ token: token }), 'application/json'),
-    parse('json'),
-  );
-
-  fetch('/auth/cookies')
-  .then(response => {
-    console.log(response);
-    // return dispatch({
-    //   token
-    // })
+  return fetch(
+    window.apiUrl + '/auth/cookies',
+    {
+      method: "POST",
+      body: JSON.stringify({ token: token }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
+  )
+  .then(checkStatus)
+  .then(parseJSON)
+  .then((data) => {
+    return dispatch({
+      type: types.CHECKTOKEN,
+      access_token: data.results.access_token,
+      token: data.results.token,
+      userId: data.results.userId,
+    });
+  })
+  .catch(error => {
+    return browserHistory.push('/login?errorMsg=' + error);
   });
 }
