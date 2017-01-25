@@ -1,5 +1,4 @@
 import types from '../constants/PrototypeActionTypes';
-import { createFetch } from 'http-client';
 
 export const retrievePrototypeList =  () => (dispatch) => {
   return {};

@@ -1,6 +1,6 @@
 import types from '../constants/ActionTypes';
 import { browserHistory } from 'react-router';
-import { checkStatus, parseJSON } from '../utils/fetch';
+import { checkStatus, parseJSON, request } from '../utils/fetch';
 
 export const getCookie = (name) => {
   var value = "; " + document.cookie;
@@ -15,18 +15,7 @@ export const checkToken =  () => (dispatch) => {
     return browserHistory.push('/login')
   }
 
-  return fetch(
-    window.apiUrl + '/auth/cookies',
-    {
-      method: "POST",
-      body: JSON.stringify({ token: token }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    }
-  )
-  .then(checkStatus)
-  .then(parseJSON)
+  return request('/auth/cookies', 'POST', { token: token })
   .then((data) => {
     return dispatch({
       type: types.CHECKTOKEN,
