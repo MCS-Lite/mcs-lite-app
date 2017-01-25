@@ -1,6 +1,6 @@
 import types from '../constants/ActionTypes';
 import { browserHistory } from 'react-router';
-import { checkStatus, parseJSON, request } from '../utils/fetch';
+import { request } from '../utils/fetch';
 
 export const getCookie = (name) => {
   var value = "; " + document.cookie;

@@ -9,7 +9,8 @@ import PrototypeCard from './prototypeCard';
 
 import prototypeStyle from './prototypes.css';
 
-const Prototypes = ({ main }) => {
+const Prototypes = ({ prototypes }) => {
+  console.log(prototypes);
   return (
     <div>
       <Header />
@@ -18,7 +19,11 @@ const Prototypes = ({ main }) => {
         <PanelHeader />
         <div className={prototypeStyle.content}>
           <NewPrototypeCard />
-          <PrototypeCard />
+          {
+            prototypes.prototypeList.map((prototype) => {
+              return (<PrototypeCard {...prototype} />);
+            })
+          }
         </div>
       </div>
       <Footer />

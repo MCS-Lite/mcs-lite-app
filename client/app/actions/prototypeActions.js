@@ -1,7 +1,15 @@
 import types from '../constants/PrototypeActionTypes';
+import { request } from '../utils/fetch';
 
-export const retrievePrototypeList =  () => (dispatch) => {
-  return {};
+export const retrievePrototypeList =  () => (dispatch, getState) => {
+  console.log(getState().main.access_token)
+  return request('/prototypes', 'GET', getState().main.access_token)
+  .then((data) => {
+    return dispatch({
+      type: types.RETRIEVEPROTOTYPELIST,
+      data: data.data,
+    });
+  });
 }
 
 export const createNewPrototype =  () => (dispatch) => {

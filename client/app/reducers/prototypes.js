@@ -14,15 +14,15 @@ const initialState = {
 export default function prototypes( state = initialState, action ) {
   switch ( action.type ) {
     case RETRIEVEPROTOTYPELIST:
-      return assign({}, state, { prototypeList: actions.data });
+      return assign({}, state, { prototypeList: action.data });
     case CREATENEWPROTOTYPE:
-      return assign({}, state, { prototypeList: actions.data });
+      return assign({}, state, { prototypeList: action.data });
     case CLONEPROTOTYPE:
-      return assign({}, state, { prototypeList: actions.data });
+      return assign({}, state, { prototypeList: action.data });
     case EDITPROTOTYPE:
-      return assign({}, state, { prototypeList: actions.data });
+      return assign({}, state, { prototypeList: action.data });
     case DELETEPROTOTYPE:
-      return assign({}, state, { prototypeList: actions.data });
+      return assign({}, state, { prototypeList: action.data });
     default:
       return state;
   }

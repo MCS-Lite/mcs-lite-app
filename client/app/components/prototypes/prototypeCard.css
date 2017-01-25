@@ -9,6 +9,7 @@
   border: 1px solid #f1f2f7;
   border-radius: 3px;
   box-shadow: 1px 2px 1px 0 #e0e0e0, 0 0 0 #e0e0e0;
+  box-sizing: border-box;
 }
 
 .img{

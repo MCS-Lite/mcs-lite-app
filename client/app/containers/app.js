@@ -9,10 +9,12 @@ class App extends Component {
   }
 
   render() {
-    const { children } = this.props;
+    const { children, location, main } = this.props;
     return (
       <div>
-        { children }
+        { location.pathname === '/login' ?
+          children : (main.isInitialized && children)
+        }
       </div>
     );
   }

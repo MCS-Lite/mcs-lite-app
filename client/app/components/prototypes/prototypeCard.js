@@ -8,19 +8,35 @@ import MiMoreVert from 'mtk-icon/lib/MiMoreVert';
 
 import productBanner from './productBanner.png';
 
-const PrototypeCardLayout = () => {
+import { default as compose } from 'recompose/compose';
+import { default as pure } from 'recompose/pure';
+import { default as withState } from 'recompose/withState';
+import { default as withHandlers } from 'recompose/withHandlers';
+
+import { browserHistory } from 'react-router';
+
+const PrototypeCardLayout = ({
+  prototypeName,
+  prototypeId,
+  version,
+  openPrototypeDetail,
+}) => {
   return (
     <div className={prototypeCardStyles.base}>
       <div>
-        <MiMoreVert className={prototypeCardStyles.more}/>
+        <MiMoreVert className={prototypeCardStyles.more} />
         <img src={productBanner} className={prototypeCardStyles.img} />
       </div>
       <div className={prototypeCardStyles.content}>
-        <h3 className={prototypeCardStyles.prototypeName}>React-Native Example</h3>
+        <h3
+          className={prototypeCardStyles.prototypeName}
+        >
+          {prototypeName}
+        </h3>
         <Hr className={prototypeCardStyles.hr}/>
-          Version: 0.0.1
+          Version: {version}
         <Hr />
-        <Button type="submit" className={prototypeCardStyles.button}>
+        <Button className={prototypeCardStyles.button} onClick={openPrototypeDetail}>
           Detail
         </Button>
       </div>
@@ -28,4 +44,9 @@ const PrototypeCardLayout = () => {
   );
 }
 
-export default PrototypeCardLayout;
+export default compose(
+  pure,
+  withHandlers({
+    openPrototypeDetail: props => () => browserHistory.push('/prototypes/' + props.prototypeId),
+  }),
+)(PrototypeCardLayout);

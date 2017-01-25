@@ -1,15 +1,36 @@
 export const request = (url, method, data, token) => {
-  return fetch(
-    window.apiUrl + url,
-    {
-      method: method,
-      body: JSON.stringify(data),
-      headers: {
-        "Authorization": token,
-        "Content-Type": "application/json",
-      },
-    }
-  )
+  let api;
+
+  switch(method) {
+    case 'GET':
+      api = fetch(
+        window.apiUrl + url,
+        {
+          method: method,
+          headers: {
+            "Authorization": "Bearer " + data,
+            "Content-Type": "application/json",
+          },
+        }
+      )
+      break;
+    case 'POST':
+      api = fetch(
+        window.apiUrl + url,
+        {
+          method: method,
+          body: JSON.stringify(data),
+          headers: {
+            "Authorization": "Bearer " + token,
+            "Content-Type": "application/json",
+          },
+        }
+      )
+      break;
+    default:
+  }
+
+  return api
   .then(checkStatus)
   .then(parseJSON)
 }

@@ -4,7 +4,7 @@ import PrototypeLayout from '../components/prototypes';
 import { retrievePrototypeList } from '../actions/PrototypeActions'
 class Prototype extends Component {
 
-  componentWillMount() {
+  componentDidMount() {
     this.props.retrievePrototypeList()
   }
 
