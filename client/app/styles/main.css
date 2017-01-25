@@ -19,7 +19,16 @@
   src: url(../font/riona-sans-medium.otf);
 }
 
-body { margin:0;padding:0;font-size:14px;color:#000;overflow-x:hidden;overflow-y:scroll}
+body {
+  margin:0;
+  padding:0;
+  font-size:14px;
+  color:#000;
+  background: #F1F2F7;
+/*  overflow-x:hidden;
+  overflow-y:scroll*/
+}
+
 * {
   font-family:RionaSans-Light,Arial,Helvetica,sans-serif;
 }

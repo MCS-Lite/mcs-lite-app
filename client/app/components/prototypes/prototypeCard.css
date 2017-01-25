@@ -1,0 +1,26 @@
+.base {
+  margin-left: 9px;
+  margin-right: 9px;
+  height: 385px;
+  width: 300px;
+  margin-bottom: 18px;
+  position: relative;
+  background: #fff;
+  border: 1px solid #f1f2f7;
+  border-radius: 3px;
+  box-shadow: 1px 2px 1px 0 #e0e0e0, 0 0 0 #e0e0e0;
+}
+
+.img{
+  height: 160px;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+.content{
+  padding: 20px;
+}
+
+.button{
+  width: 100%;
+}

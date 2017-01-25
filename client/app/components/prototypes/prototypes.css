@@ -1,0 +1,12 @@
+.base{
+  padding-top: 50px;
+  width: 954px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.content{
+  display: flex;
+  flex-direction: row;
+  margin-top: 20px;
+}

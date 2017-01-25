@@ -8,17 +8,15 @@ import { default as dom } from 'react-dom';
 import App from '../components/app';
 import { applyMiddleware, createStore, combineReducers, compose } from 'redux';
 import { Provider } from 'react-redux';
+import thunk from 'redux-thunk';
 import reducers from '../reducers';
 import { Router, Route, RouterContext, browserHistory } from 'react-router';
 // import Routr from '../routes/routr';
 import promiseMiddleware from '../utils/promiseMiddleware';
 
 // const composedReducers = combineReducers(reducers);
-const store = createStore(reducers);
+const store = createStore(reducers, applyMiddleware(thunk));
 import routes from '../routes/routing';
-// new Routr(store);
-// const finalCreateStore = applyMiddleware( promiseMiddleware )(createStore);
-// let store = finalCreateStore(composedReducers, state);
 
 window.apiUrl = 'http://localhost:3000';
 

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-var footerStyle = {
+const footerStyle = {
   background: '#353630',
   textAlign: 'center',
   position: 'fixed',
@@ -10,14 +10,12 @@ var footerStyle = {
   color: '#fff',
 };
 
-class Footer extends Component {
-  render() {
-    return (
-      <div>
-        <footer style={ footerStyle }>© 2016 MediaTek Inc. All Rights Reserved.</footer>
-      </div>
-    );
-  }
+const Footer = () => {
+  return (
+    <div>
+      <footer style={ footerStyle }>© 2017 MediaTek Inc. All Rights Reserved.</footer>
+    </div>
+  );
 }
 
 export default Footer
