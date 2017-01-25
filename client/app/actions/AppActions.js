@@ -1,21 +1,33 @@
 import types from '../constants/ActionTypes';
-import { createFetch } from 'http-client';
+import { createFetch, base, accept, method, body, parse } from 'http-client';
+import { browserHistory } from 'react-router';
 
-const fetch = createFetch(
-  base(window.apiUrl),  // Prefix all request URLs
-  accept('application/json'),         // Set "Accept: application/json" in the request headers
-  parse('json')                       // Read the response as JSON and put it in response.body
-);
-
-const getCookie = function(name) {
+const getCookie = (name) => {
   var value = "; " + document.cookie;
   var parts = value.split("; " + name + "=");
   if (parts.length == 2) return parts.pop().split(";").shift();
 }
 
 export const checkToken =  () => (dispatch) => {
-  fetch('/oauth/token')
+  const token = getCookie('token');
+
+  if (!token) {
+    return browserHistory.push('/login')
+  }
+
+  const fetch = createFetch(
+    base('http://127.0.0.1:3000'),
+    accept('application/json'),
+    method('POST'),
+    body(JSON.stringify({ token: token }), 'application/json'),
+    parse('json'),
+  );
+
+  fetch('/auth/cookies')
   .then(response => {
-    getCookie('token')
+    console.log(response);
+    // return dispatch({
+    //   token
+    // })
   });
 }

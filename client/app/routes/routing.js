@@ -1,6 +1,6 @@
 import React from 'react'
 import { Route } from 'react-router'
-import App from '../components/app'
+import App from '../containers/app'
 import Main from '../containers/main'
 import Prototypes from '../containers/prototypes'
 import PrototypeDetail from '../containers/prototypeDetail'
