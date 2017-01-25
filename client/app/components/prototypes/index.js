@@ -7,7 +7,6 @@ import PanelHeader from './PanelHeader';
 import NewPrototypeCard from './newPrototypeCard';
 import PrototypeCard from './prototypeCard';
 
-
 import prototypeStyle from './prototypes.css';
 
 const Prototypes = () => {

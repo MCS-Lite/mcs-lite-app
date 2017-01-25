@@ -76,6 +76,78 @@ module.exports = function ($db) {
     });
   };
 
+  var checkCookies = function(req, res, next) {
+    var info = {};
+    return new Promise((resolve, reject) => {
+      /* 檢查cookie中的token是否合法 */
+      jwt.verify(req.body.token, $oauth.JWT_SECRET, function(err, payload) {
+        return err ? reject(err) : resolve(payload.token);
+      });
+
+    }).then((token) => {
+      /* 帶去 Oauth 檢查 */
+      var data = {
+        refresh_token: token.refresh_token,
+        grant_type: 'refresh_token'
+      };
+
+      return new Promise((resolve, reject) => {
+        request
+        .post(host + '/oauth/token')
+        .set('Cache-Control', 'no-cache')
+        .set('Content-Type', 'application/x-www-form-urlencoded')
+        .send(data)
+        .set('Authorization', 'Basic ' + basicToken)
+        .end(function(err, res) {
+          return res.ok ?  resolve(res.body) : reject(err.response.body.message);
+        });
+      });
+
+    }).then((token) => {
+      /* 去抓 user info */
+      return new Promise((resolve, reject) => {
+        request
+        .get(`${host}/users/info`)
+        .set('Cache-Control', 'no-cache')
+        .set('Content-Type', 'application/x-www-form-urlencoded')
+        .set('Authorization', `Bearer ${token.access_token}`)
+        .end(function(err, res) {
+          console.log(res.body);
+          if (res.ok) {
+            info.access_token = token.access_token;
+            info.expire_time  = token.expire_time;
+            info.userId       = res.body.userId;
+
+            var payload = {
+              token: token
+            };
+
+            var _token = jwt.sign(payload, $oauth.JWT_SECRET);
+            info.token  = _token;
+
+            return resolve(info);
+          } else {
+            return reject({
+              code: err.response.body.code,
+              message: err.response.body.message,
+              token: token,
+            });
+          }
+        });
+      });
+
+    }).then((info) => {
+      return res.send(200, {
+        results: info
+      });
+    }).catch((err) => {
+      return res.send(401, {
+        error: err,
+        message: 'token is invalid.',
+      });
+    });
+  };
+
   var loginInterface = function(req, res, next) {
     if (req.cookies.token) {
       return new Promise((resolve, reject) => {
@@ -208,5 +280,6 @@ module.exports = function ($db) {
     login: login,
     loginInterface: loginInterface,
     adminLoginInterface: adminLoginInterface,
+    checkCookies: checkCookies,
   };
 };

@@ -1,20 +1,28 @@
 import {
-  OPEN_EDITPROTOTYPE,
-  CLOSE_EDITPROTOTYPE,
+  RETRIEVEPROTOTYPELIST,
+  CREATENEWPROTOTYPE,
+  CLONEPROTOTYPE,
+  EDITPROTOTYPE,
+  DELETEPROTOTYPE,
 } from '../constants/PrototypeActionTypes';
 import assign from 'object-assign';
 
 const initialState = {
-  editPrototype: false,
-  addNewPrototype: false,
+  prototypeList: [],
 }
 
 export default function prototypes( state = initialState, action ) {
   switch ( action.type ) {
-    case OPEN_EDITPROTOTYPE:
-      return assign({}, state, { editPrototype: true });
-    case CLOSE_EDITPROTOTYPE:
-      return assign({}, state, { editPrototype: false });
+    case RETRIEVEPROTOTYPELIST:
+      return assign({}, state, { prototypeList: actions.data });
+    case CREATENEWPROTOTYPE:
+      return assign({}, state, { prototypeList: actions.data });
+    case CLONEPROTOTYPE:
+      return assign({}, state, { prototypeList: actions.data });
+    case EDITPROTOTYPE:
+      return assign({}, state, { prototypeList: actions.data });
+    case DELETEPROTOTYPE:
+      return assign({}, state, { prototypeList: actions.data });
     default:
       return state;
   }

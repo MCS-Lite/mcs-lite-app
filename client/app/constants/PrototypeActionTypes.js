@@ -1,6 +1,9 @@
 import constants from 'react-constants';
 
 export default constants([
-  "OPEN_EDITPROTOTYPE",
-  "CLOSE_EDITPROTOTYPE",
+  "RETRIEVEPROTOTYPELIST",
+  "CREATENEWPROTOTYPE",
+  "CLONEPROTOTYPE",
+  "EDITPROTOTYPE",
+  "DELETEPROTOTYPE",
 ]);

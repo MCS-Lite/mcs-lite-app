@@ -30,6 +30,12 @@ module.exports = function($db, $app) {
     handler: usersController.login,
   };
 
+  this.authLogin = {
+    path: '/auth/cookies',
+    methods: ['post'],
+    handler: usersController.checkCookies,
+  };
+
   this.userLoginInterface = {
     path: '/user/login',
     methods: ['get'],
