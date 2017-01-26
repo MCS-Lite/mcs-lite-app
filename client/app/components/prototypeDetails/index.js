@@ -12,7 +12,6 @@ import PrototypeDetailInfo from './prototypeDetailInfo';
 import prototypeDetailStyle from './prototypeDetail.css';
 
 const Prototypes = ({ prototypes }) => {
-
   const {
     prototypeName,
     version,

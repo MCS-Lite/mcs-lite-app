@@ -7,4 +7,5 @@ export default constants([
   "CLONEPROTOTYPE",
   "EDITPROTOTYPE",
   "DELETEPROTOTYPE",
+  "CREATETESTDEVICE",
 ]);

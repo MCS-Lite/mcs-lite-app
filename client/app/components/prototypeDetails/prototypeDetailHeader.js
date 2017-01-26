@@ -1,16 +1,25 @@
 import { connect } from 'react-redux';
 import React, { Component } from 'react';
 
+import CreateTestDeviceDialog from './dialogs/createTestDevice';
 import prototypeDetailHeaderStyles from './prototypeDetailHeader.css';
 
 import Hr from 'mtk-ui/lib/Hr';
 import Button from 'mtk-ui/lib/Button';
 
+import { default as compose } from 'recompose/compose';
+import { default as pure } from 'recompose/pure';
+import { default as withState } from 'recompose/withState';
+import { default as withHandlers } from 'recompose/withHandlers';
 
 const PrototypeDetailHeaderLayout = ({
   prototypeName,
   prototypeId,
   version,
+  isCreateTestDevice,
+  setIsCreateTestDevice,
+  openCreateTestDevice,
+  main,
 }) => {
   return (
     <div className={prototypeDetailHeaderStyles.base}>
@@ -22,7 +31,12 @@ const PrototypeDetailHeaderLayout = ({
           <div>version: {version} </div>
         </div>
         <div className={prototypeDetailHeaderStyles.option}>
-          <Button>
+          <CreateTestDeviceDialog
+            isCreateTestDevice={isCreateTestDevice}
+            setIsCreateTestDevice={setIsCreateTestDevice}
+            prototypeId={prototypeId}
+          />
+          <Button onClick={openCreateTestDevice}>
             Create test device
           </Button>
           <Button kind="cancel">
@@ -35,4 +49,10 @@ const PrototypeDetailHeaderLayout = ({
   );
 }
 
-export default PrototypeDetailHeaderLayout;
+export default compose(
+  pure,
+  withState('isCreateTestDevice', 'setIsCreateTestDevice', false),
+  withHandlers({
+    openCreateTestDevice: props => () => props.setIsCreateTestDevice(true),
+  }),
+)(PrototypeDetailHeaderLayout);
