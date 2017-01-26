@@ -1,7 +1,9 @@
 import { connect } from 'react-redux';
 import React, { Component } from 'react';
+
 import Footer from '../footer';
 import Header from '@mtk/mcs-components/lib/Header';
+
 import Breadcrumb from './breadcrumb';
 import PanelHeader from './PanelHeader';
 import NewPrototypeCard from './newPrototypeCard';

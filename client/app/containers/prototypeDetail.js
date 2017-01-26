@@ -1,37 +1,22 @@
 import { connect } from 'react-redux';
-import React, { Component } from 'react'
-import main from './main.css';
+import React, { Component } from 'react';
+import PrototypeDetails from '../components/prototypeDetails';
+import { retrievePrototype } from '../actions/PrototypeDetailActions'
+class Prototype extends Component {
 
-class PrototypeDetail extends Component {
+  componentDidMount() {
+    this.props.retrievePrototype(this.props.params.prototypeId)
+  }
+
   render() {
-    console.log(this.props);
-    console.log(this.state);
     return (
-      <div>
-        <div>
-          this is admin page!
-        </div>
-      </div>
+      <PrototypeDetails {...this.props} />
     );
   }
 }
 
 const mapStateToProps = (state) => {
-  console.log(12313123);
-  console.log(state);
-  return {
-
-  };
+  return state;
 }
 
-const mapDispatchToProps = (dispatch) => {
-  console.log(dispatch);
-  return {
-    onTodoClick: (id) => {
-      dispatch(toggleTodo(id))
-    }
-  }
-}
-
-
-export default connect(mapStateToProps, mapDispatchToProps)(PrototypeDetail);
+export default connect(mapStateToProps, { retrievePrototype })(Prototype);
