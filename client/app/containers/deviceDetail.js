@@ -1,37 +1,22 @@
 import { connect } from 'react-redux';
-import React, { Component } from 'react'
-import main from './main.css';
+import React, { Component } from 'react';
+import DeviceDetails from '../components/deviceDetails';
+import * as deviceDetailActions from '../actions/DeviceDetailActions'
+class DeviceDetail extends Component {
 
-class Login extends Component {
+  componentDidMount() {
+    this.props.retrieveDevice(this.props.params.deviceId)
+  }
+
   render() {
-    console.log(this.props);
-    console.log(this.state);
     return (
-      <div>
-        <div>
-          this is admin page!
-        </div>
-      </div>
+      <DeviceDetails {...this.props} />
     );
   }
 }
 
 const mapStateToProps = (state) => {
-  console.log(12313123);
-  console.log(state);
-  return {
-
-  };
+  return state;
 }
 
-const mapDispatchToProps = (dispatch) => {
-  console.log(dispatch);
-  return {
-    onTodoClick: (id) => {
-      dispatch(toggleTodo(id))
-    }
-  }
-}
-
-
-export default connect(mapStateToProps, mapDispatchToProps)(Login);
+export default connect(mapStateToProps, deviceDetailActions)(DeviceDetail);
