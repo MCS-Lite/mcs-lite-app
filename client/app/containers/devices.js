@@ -1,35 +1,22 @@
 import { connect } from 'react-redux';
-import React, { Component } from 'react'
-import main from './main.css';
-
+import React, { Component } from 'react';
+import DeviceLayout from '../components/devices';
+import { retrieveDeviceList } from '../actions/DeviceActions'
 class Device extends Component {
+
+  componentDidMount() {
+    this.props.retrieveDeviceList()
+  }
+
   render() {
-    console.log(this.props);
-    console.log(this.state);
     return (
-      <div>
-        this is device page!
-      </div>
+      <DeviceLayout {...this.props} />
     );
   }
 }
 
 const mapStateToProps = (state) => {
-  console.log(12313123);
-  console.log(state);
-  return {
-
-  };
+  return state;
 }
 
-const mapDispatchToProps = (dispatch) => {
-  console.log(dispatch);
-  return {
-    onTodoClick: (id) => {
-      dispatch(toggleTodo(id))
-    }
-  }
-}
-
-
-export default connect(mapStateToProps, mapDispatchToProps)(Device);
+export default connect(mapStateToProps, { retrieveDeviceList })(Device);

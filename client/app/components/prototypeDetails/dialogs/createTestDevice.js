@@ -10,21 +10,23 @@ import DialogFooter from 'mtk-ui/lib/DialogFooter';
 import InputForm from 'mtk-ui/lib/InputForm';
 import InputText from 'mtk-ui/lib/InputText';
 import InputTextarea from 'mtk-ui/lib/InputTextarea';
+import Hr from 'mtk-ui/lib/Hr';
+import InputCheckbox from 'mtk-ui/lib/InputCheckbox';
 
 import { default as compose } from 'recompose/compose';
 import { default as pure } from 'recompose/pure';
 import { default as withState } from 'recompose/withState';
 import { default as withHandlers } from 'recompose/withHandlers';
 
-import { createTestDevice } from '../../../actions/PrototypeDetailActions';
-
 const CreateTestDeviceDialog = ({
   isCreateTestDevice,
   closeCreateTestDevice,
   openCreateTestDevice,
   submitCreateTestDevice,
-  onChangeTestDeviceName,
-  onChangeTestDeviceDescription,
+  onTestDeviceNameChange,
+  onTestDeviceDescriptionChange,
+  testDeviceName,
+  testDeviceDescription,
 }) => {
   return (
     <Dialog
@@ -43,17 +45,21 @@ const CreateTestDeviceDialog = ({
           <InputText
             required
             label="Device name"
+            value={testDeviceName}
             placeholder="Input the device name."
-            onChange={onChangeTestDeviceName}
+            onChange={onTestDeviceNameChange}
           />
           <InputTextarea
             label="Device description"
             rows="4"
+            value={testDeviceDescription}
             style={{ resize: 'none' }}
             placeholder="Input the device description."
-            onChange={onChangeTestDeviceDescription}
+            onChange={onTestDeviceDescriptionChange}
           />
         </InputForm>
+        <Hr />
+        <InputCheckbox label="Create as public device" />
       </DialogBody>
       <DialogFooter>
         <Button kind="cancel" onClick={closeCreateTestDevice}>Cancel</Button>
@@ -70,22 +76,20 @@ export default compose(
   withState('testDeviceName', 'setTestDeviceName', ''),
   withState('testDeviceDescription', 'setTestDeviceDescription', ''),
   withHandlers({
+    onTestDeviceNameChange: props => (e) => props.setTestDeviceName(e.target.value),
+    onTestDeviceDescriptionChange: props => (e) => props.setTestDeviceDescription(e.target.value),
+    closeCreateTestDevice: props => () => props.setIsCreateTestDevice(false),
     submitCreateTestDevice: props => () => {
-      console.log(props);
+      console.log(props)
       const data = {
         deviceName: props.testDeviceName,
         deviceDescription: props.testDeviceDescription,
         deviceImageURL: '',
         prototypeId: props.prototypeId,
       };
-
-      createTestDevice(data)
-      .then(function(data) {
-        props.closeCreateTestDevice();
-      });
+      // console.log(createTestDevice)
+      return props.createTestDevice(data);
+      // return props.setIsCreateTestDevice(false);
     },
-    onChangeTestDeviceName: props => (e) => props.setTestDeviceName(e.target.vallue),
-    onChangeTestDeviceDescription: props => (e) => props.setTestDeviceDescription(e.target.value),
-    closeCreateTestDevice: props => () => props.setIsCreateTestDevice(false),
   }),
  )(CreateTestDeviceDialog)

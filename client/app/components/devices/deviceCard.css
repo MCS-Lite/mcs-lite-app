@@ -1,0 +1,50 @@
+.base {
+  margin-left: 9px;
+  margin-right: 9px;
+  height: 385px;
+  width: 300px;
+  margin-bottom: 18px;
+  position: relative;
+  background: #fff;
+  border: 1px solid #f1f2f7;
+  border-radius: 3px;
+  box-shadow: 1px 2px 1px 0 #e0e0e0, 0 0 0 #e0e0e0;
+  box-sizing: border-box;
+}
+
+.img{
+  height: 160px;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+.content{
+  padding: 20px;
+}
+
+.button{
+  width: 100%;
+}
+
+.more{
+  position: fixed;
+  z-index: 1;
+  margin-left: 250px;
+  color: #00a1de;
+  font-size: 24px;
+  padding: 14px;
+}
+
+.deviceName{
+  font-size: 15px;
+  font-weight: 700;
+  width: 100%;
+  text-overflow: ellipsis;
+  display: inline-block;
+  overflow: hidden;
+  margin: 0px;
+}
+
+.hr {
+  margin: 0px;
+}

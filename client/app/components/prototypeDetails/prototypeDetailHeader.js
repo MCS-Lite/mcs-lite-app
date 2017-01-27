@@ -20,7 +20,9 @@ const PrototypeDetailHeaderLayout = ({
   setIsCreateTestDevice,
   openCreateTestDevice,
   main,
+  createTestDevice,
 }) => {
+  // more 要換成 DropdownButton
   return (
     <div className={prototypeDetailHeaderStyles.base}>
       <div className={prototypeDetailHeaderStyles.content}>
@@ -32,6 +34,7 @@ const PrototypeDetailHeaderLayout = ({
         </div>
         <div className={prototypeDetailHeaderStyles.option}>
           <CreateTestDeviceDialog
+            createTestDevice={createTestDevice}
             isCreateTestDevice={isCreateTestDevice}
             setIsCreateTestDevice={setIsCreateTestDevice}
             prototypeId={prototypeId}

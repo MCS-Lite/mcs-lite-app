@@ -11,7 +11,7 @@ import PrototypeDetailInfo from './prototypeDetailInfo';
 
 import prototypeDetailStyle from './prototypeDetail.css';
 
-const Prototypes = ({ prototypes }) => {
+const Prototypes = ({ prototypes,  createTestDevice }) => {
   const {
     prototypeName,
     version,
@@ -24,7 +24,7 @@ const Prototypes = ({ prototypes }) => {
       <Header />
       <div className={prototypeDetailStyle.base}>
         <Breadcrumb prototypeName={prototypeName} />
-        <PrototypeDetailHeader prototypeId={prototypeId} prototypeName={prototypeName} version={version} />
+        <PrototypeDetailHeader prototypeId={prototypeId} prototypeName={prototypeName} version={version} createTestDevice={createTestDevice}/>
         <PrototypeDetailInfo prototypeDescription={prototypeDescription} />
         <PanelHeader />
       </div>

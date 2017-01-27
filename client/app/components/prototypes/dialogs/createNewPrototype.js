@@ -22,9 +22,12 @@ const CreateNewPrototypeDialog = ({
   onVersionChange,
   onPrototypeNameChange,
   onPrototypeDescriptionChange,
-  prototypeName,
   closeCreatePrototype,
   openCreatePrototype,
+  prototypeName,
+  version,
+  prototypeDescription,
+  submitCreateNewPrototype,
 }) => {
   return (
     <Dialog
@@ -46,12 +49,14 @@ const CreateNewPrototypeDialog = ({
         >
         <InputText
           required
+          value={prototypeName}
           label="Prototype name"
           placeholder="Input the prototype name."
           onChange={onPrototypeNameChange}
         />
         <InputText
           required
+          value={version}
           label="Prototype version"
           placeholder="Input the prototype version."
           onChange={onVersionChange}
@@ -59,6 +64,7 @@ const CreateNewPrototypeDialog = ({
         <InputTextarea
           label="prototype description"
           rows="4"
+          value={prototypeDescription}
           style={{ resize: 'none' }}
           placeholder="Input the prototype description."
           onChange={onPrototypeDescriptionChange}
@@ -67,7 +73,7 @@ const CreateNewPrototypeDialog = ({
       </DialogBody>
       <DialogFooter>
         <Button kind="cancel" onClick={closeCreatePrototype}>Cancel</Button>
-        <Button kind="primary" onClick={openCreatePrototype}>
+        <Button kind="primary" onClick={submitCreateNewPrototype}>
           Save
         </Button>
       </DialogFooter>
@@ -81,6 +87,9 @@ export default compose(
   withState('version', 'setVersion', ''),
   withState('prototypeDescription', 'setPrototypeDescription', ''),
   withHandlers({
+    submitCreateNewPrototype: props => () => {
+      console.log(props);
+    },
     onVersionChange: props => (e) => props.setVersion(e.target.value),
     onPrototypeDescriptionChange: props => (e) => props.setPrototypeDescription(e.target.value),
     onPrototypeNameChange: props => (e) => props.setPrototypeName(e.target.value),

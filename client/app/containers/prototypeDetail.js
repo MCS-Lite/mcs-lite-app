@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import React, { Component } from 'react';
 import PrototypeDetails from '../components/prototypeDetails';
-import { retrievePrototype } from '../actions/PrototypeDetailActions'
+import * as prototypeDetailActions from '../actions/PrototypeDetailActions'
 class Prototype extends Component {
 
   componentDidMount() {
@@ -19,4 +19,4 @@ const mapStateToProps = (state) => {
   return state;
 }
 
-export default connect(mapStateToProps, { retrievePrototype })(Prototype);
+export default connect(mapStateToProps, prototypeDetailActions)(Prototype);

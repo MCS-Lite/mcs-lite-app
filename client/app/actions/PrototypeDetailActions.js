@@ -12,6 +12,7 @@ export const retrievePrototype =  (id) => (dispatch, getState) => {
 }
 
 export const createTestDevice =  (data) => (dispatch, getState) => {
+  console.log(data);
   data.createUserId = getState().main.userId;
   return request('/devices', 'POST', data, getState().main.access_token)
   .then((data) => {

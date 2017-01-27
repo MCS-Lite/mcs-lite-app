@@ -1,19 +1,16 @@
 import {
-  OPEN_EDITDEVICE,
-  CLOSE_EDITDEVICE,
+  RETRIEVEDEVICELIST,
 } from '../constants/DeviceActionTypes';
 import assign from 'object-assign';
 
 const initialState = {
-  editDevice: false,
+  deviceList: [],
 }
 
 export default function menus( state = initialState, action ) {
   switch ( action.type ) {
-    case OPEN_EDITPROTOTYPE:
-      return assign({}, state, { editDevice: true });
-    case CLOSE_EDITPROTOTYPE:
-      return assign({}, state, { editDevice: false });
+    case RETRIEVEDEVICELIST:
+      return assign({}, state, { deviceList: action.data });
     default:
       return state;
   }
