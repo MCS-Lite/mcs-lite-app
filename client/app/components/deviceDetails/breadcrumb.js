@@ -13,7 +13,7 @@ import { default as pure } from 'recompose/pure';
 const BreadcrumbLayout = ({ deviceName }) => {
   const Breadcrumbs = [
     { children: 'Development' },
-    { children: 'Devices', href: '/prototypes' },
+    { children: 'Devices', href: '/devices' },
     { children: deviceName, href: '/devices', active: true },
   ];
 

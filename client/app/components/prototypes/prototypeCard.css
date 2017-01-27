@@ -27,8 +27,8 @@
 }
 
 .more{
-  position: fixed;
-  z-index: 1;
+  position: absolute;
+  cursor: pointer;
   margin-left: 250px;
   color: #00a1de;
   font-size: 24px;
@@ -47,4 +47,10 @@
 
 .hr {
   margin: 0px;
+}
+
+.menu {
+  position: absolute !important;
+  top: 40px;
+  right: 20px;
 }

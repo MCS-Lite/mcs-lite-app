@@ -16,63 +16,58 @@ import { default as pure } from 'recompose/pure';
 import { default as withState } from 'recompose/withState';
 import { default as withHandlers } from 'recompose/withHandlers';
 
-const CreateNewPrototypeDialog = ({
-  isCreatePrototype,
-  onVersionChange,
-  onPrototypeNameChange,
-  onPrototypeDescriptionChange,
-  closeCreatePrototype,
-  openCreatePrototype,
+const EditPrototypeDialog = ({
+  selectMenuValue,
+  closeEditPrototype,
+  editPrototypeName,
+  onEditPrototypeNameChange,
+  editPrototypeDescription,
+  onEditPrototypeDescriptionChange,
   prototypeName,
-  version,
-  prototypeDescription,
-  submitCreateNewPrototype,
+  editVersion,
+  onEditVersionChange,
 }) => {
   return (
     <Dialog
-      show={isCreatePrototype}
+      show={selectMenuValue === 'edit'}
       size="large"
-      onHide={closeCreatePrototype}
+      onHide={closeEditPrototype}
     >
       <DialogHeader>
-        <div>Create Prototype</div>
+        <div>Edit prototype</div>
       </DialogHeader>
       <DialogBody>
-        <p>Fill in the following information or
-          <a href="">import from JSON file</a>
-          .
-        </p>
         <InputForm
           kind="horizontal"
           style={{ backgroundColor: 'white' }}
         >
         <InputText
           required
-          value={prototypeName}
+          value={editPrototypeName}
           label="Prototype name"
           placeholder="Input the prototype name."
-          onChange={onPrototypeNameChange}
+          onChange={onEditPrototypeNameChange}
         />
         <InputText
           required
-          value={version}
+          value={editVersion}
           label="Prototype version"
           placeholder="Input the prototype version."
-          onChange={onVersionChange}
+          onChange={onEditVersionChange}
         />
         <InputTextarea
           label="prototype description"
           rows="4"
-          value={prototypeDescription}
+          value={editPrototypeDescription}
           style={{ resize: 'none' }}
           placeholder="Input the prototype description."
-          onChange={onPrototypeDescriptionChange}
+          onChange={onEditPrototypeDescriptionChange}
         />
         </InputForm>
       </DialogBody>
       <DialogFooter>
-        <Button kind="cancel" onClick={closeCreatePrototype}>Cancel</Button>
-        <Button kind="primary" onClick={submitCreateNewPrototype}>
+        <Button kind="cancel" onClick={closeEditPrototype}>Cancel</Button>
+        <Button kind="primary" >
           Save
         </Button>
       </DialogFooter>
@@ -82,17 +77,13 @@ const CreateNewPrototypeDialog = ({
 
 export default compose(
   pure,
-  withState('prototypeName', 'setPrototypeName', ''),
-  withState('version', 'setVersion', ''),
-  withState('prototypeDescription', 'setPrototypeDescription', ''),
+  withState('editPrototypeName', 'setEditPrototypeName', (props) => props.prototypeName),
+  withState('editPrototypeDescription', 'setEditPrototypeDescription', (props) => props.prototypeDescription),
+  withState('editVersion', 'setEditVersion', (props) => props.version),
   withHandlers({
-    submitCreateNewPrototype: props => () => {
-      console.log(props);
-    },
-    onVersionChange: props => (e) => props.setVersion(e.target.value),
-    onPrototypeDescriptionChange: props => (e) => props.setPrototypeDescription(e.target.value),
-    onPrototypeNameChange: props => (e) => props.setPrototypeName(e.target.value),
-    openCreatePrototype: props => () => props.setIsCreatePrototype(true),
-    closeCreatePrototype: props => () => props.setIsCreatePrototype(false),
+    onEditVersionChange: props => (e) => props.setEditVersion(e.target.value),
+    onEditPrototypeDescriptionChange: props => (e) => props.setEditPrototypeDescription(e.target.value),
+    onEditPrototypeNameChange: props => (e) => props.setEditPrototypeName(e.target.value),
+    closeEditPrototype: props => () => props.setSelectMenuValue(''),
   }),
- )(CreateNewPrototypeDialog)
+ )(EditPrototypeDialog)
