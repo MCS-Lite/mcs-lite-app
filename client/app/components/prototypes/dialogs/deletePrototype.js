@@ -22,6 +22,7 @@ import notice from './notice.png';
 const DeletePrototypeDialog = ({
   selectMenuValue,
   closeDeletePrototype,
+  submitDeletePrototype,
 }) => {
   return (
     <Dialog
@@ -38,7 +39,7 @@ const DeletePrototypeDialog = ({
       </DialogBody>
       <DialogFooter>
         <Button kind="cancel" onClick={closeDeletePrototype}>Cancel</Button>
-        <Button kind="primary" >
+        <Button kind="primary" onClick={submitDeletePrototype}>
           OK
         </Button>
       </DialogFooter>
@@ -50,5 +51,9 @@ export default compose(
   pure,
   withHandlers({
     closeDeletePrototype: props => () => props.setSelectMenuValue(''),
+    submitDeletePrototype: props => () => {
+      props.setSelectMenuValue('');
+      props.deletePrototype(props.prototypeId);
+    },
   }),
  )(DeletePrototypeDialog)

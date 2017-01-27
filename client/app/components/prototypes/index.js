@@ -11,7 +11,7 @@ import PrototypeCard from './prototypeCard';
 
 import prototypeStyle from './prototypes.css';
 
-const Prototypes = ({ prototypes }) => {
+const Prototypes = ({ prototypes, ...props }) => {
   console.log(prototypes);
   return (
     <div>
@@ -23,7 +23,7 @@ const Prototypes = ({ prototypes }) => {
           <NewPrototypeCard />
           {
             prototypes.prototypeList.map((prototype) => {
-              return (<PrototypeCard {...prototype} />);
+              return (<PrototypeCard {...prototype} {...props} />);
             })
           }
         </div>

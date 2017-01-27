@@ -27,13 +27,31 @@ const PrototypeCardLayout = ({
   prototypeId,
   prototypeDescription,
   version,
+  isTemplate,
   openPrototypeDetail,
   onSelectMenuValueChange,
   isSelectMenu,
   selectMenuValue,
   openSelectMenu,
   setSelectMenuValue,
+  clonePrototype,
+  deletePrototype,
+  editPrototype,
 }) => {
+  console.log(isTemplate)
+  let items = [
+    { value: 'edit', children: 'Edit' },
+    { value: 'clone', children: 'Clone' },
+    { value: 'export', children: 'Export' },
+    { value: 'delete', children: 'Delete' },
+  ];
+
+  if (isTemplate) {
+    items = [
+      { value: 'clone', children: 'Clone' },
+      { value: 'export', children: 'Export' },
+    ]
+  }
   return (
     <div className={prototypeCardStyles.base}>
       <div>
@@ -45,25 +63,20 @@ const PrototypeCardLayout = ({
             className={prototypeCardStyles.menu}
             onChange={onSelectMenuValueChange}
             selectedValue={selectMenuValue}
-            items={[
-              { value: 'edit', children: 'Edit' },
-              { value: 'clone', children: 'Clone' },
-              { value: 'export', children: 'Export' },
-              { value: 'delete', children: 'Delete' },
-            ]}
+            items={items}
           />
           : ''
         }
-        { selectMenuValue === 'clone' ? <ClonePrototype prototypeName={prototypeName} selectMenuValue={selectMenuValue} setSelectMenuValue={setSelectMenuValue} /> : ''}
-        { selectMenuValue === 'edit' ? <EditPrototype prototypeName={prototypeName} version={version} prototypeDescription={prototypeDescription} selectMenuValue={selectMenuValue} setSelectMenuValue={setSelectMenuValue} /> : ''}
-        { selectMenuValue === 'delete' ? <DeletePrototype prototypeId={prototypeId} selectMenuValue={selectMenuValue} setSelectMenuValue={setSelectMenuValue} /> : ''}
+        { selectMenuValue === 'clone' ? <ClonePrototype clonePrototype={clonePrototype} prototypeId={prototypeId} prototypeName={prototypeName} selectMenuValue={selectMenuValue} setSelectMenuValue={setSelectMenuValue} /> : ''}
+        { selectMenuValue === 'edit' ? <EditPrototype editPrototype={editPrototype} prototypeId={prototypeId} prototypeName={prototypeName} version={version} prototypeDescription={prototypeDescription} selectMenuValue={selectMenuValue} setSelectMenuValue={setSelectMenuValue} /> : ''}
+        { selectMenuValue === 'delete' ? <DeletePrototype deletePrototype={deletePrototype} prototypeId={prototypeId} selectMenuValue={selectMenuValue} setSelectMenuValue={setSelectMenuValue} /> : ''}
 
       </div>
       <div className={prototypeCardStyles.content}>
         <h3
           className={prototypeCardStyles.prototypeName}
         >
-          {prototypeName}
+          {prototypeName} {isTemplate ? '(Template)' : ''}
         </h3>
         <Hr className={prototypeCardStyles.hr}/>
           Version: {version}
@@ -82,7 +95,10 @@ export default compose(
   withState('isSelectMenu', 'setIsSelectMenu', false),
   withHandlers({
     openPrototypeDetail: props => () => browserHistory.push('/prototypes/' + props.prototypeId),
-    onSelectMenuValueChange: props => (e, value) => props.setSelectMenuValue(value),
+    onSelectMenuValueChange: props => (e, value) => {
+      props.setIsSelectMenu(false);
+      props.setSelectMenuValue(value);
+    },
     openSelectMenu: props => (e) => props.setIsSelectMenu(!props.isSelectMenu),
   }),
 )(PrototypeCardLayout);

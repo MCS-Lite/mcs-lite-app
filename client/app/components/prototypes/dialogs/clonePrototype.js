@@ -24,6 +24,7 @@ const ClonePrototypeDialog = ({
   clonePrototypeDescription,
   onClonePrototypeDescriptionChange,
   prototypeName,
+  submitClonePrototype,
 }) => {
   return (
     <Dialog
@@ -59,7 +60,7 @@ const ClonePrototypeDialog = ({
       </DialogBody>
       <DialogFooter>
         <Button kind="cancel" onClick={closeClonePrototype}>Cancel</Button>
-        <Button kind="primary" >
+        <Button kind="primary" onClick={submitClonePrototype} >
           Save
         </Button>
       </DialogFooter>
@@ -75,5 +76,12 @@ export default compose(
     onClonePrototypeDescriptionChange: props => (e) => props.setClonePrototypeDescription(e.target.value),
     onClonePrototypeNameChange: props => (e) => props.setClonePrototypeName(e.target.value),
     closeClonePrototype: props => () => props.setSelectMenuValue(''),
+    submitClonePrototype: props => () => {
+      props.setSelectMenuValue('');
+      props.clonePrototype(props.prototypeId, {
+        prototypeName: props.clonePrototypeName,
+        prototypeDescription: props.clonePrototypeDescription,
+      });
+    },
   }),
  )(ClonePrototypeDialog)

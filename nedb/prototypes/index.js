@@ -79,7 +79,6 @@ module.exports = function(prototypes) {
 
     addNewPrototype: function(field) {
       field.isPublic = false;
-      field.isActive = false;
       field.createdAt = new Date().getTime();
       field.updatedAt = new Date().getTime();
       field.fwId = '';
@@ -123,8 +122,63 @@ module.exports = function(prototypes) {
 
     deletePrototype: function(updateContent, filter) {
       return new Promise(function(resolve, reject) {
-
+        return prototypes.update(query, { $set: update }, {}, function(err, num) {
+          if (err) return reject();
+          resolve({ message: 'success' });
+        });
       });
+    },
+
+    clonePrototype: function(prototypeId, data) {
+      var field = {};
+      field.isPublic = false;
+      field.createdAt = new Date().getTime();
+      field.updatedAt = new Date().getTime();
+      field.isActive = true;
+      field.fwId = '';
+      field.isTemplate = false;
+      field.prototypeId = shortid.generate();
+      field.prototypeKey =  crypto
+        .createHmac('sha256', configs.prototypeKey)
+        .update(field.createdAt.toString() + field.prototypeId)
+        .digest('hex');;
+      field.prototypeName = data.prototypeName || '';
+      field.prototypeDescription = data.prototypeDescription || '';
+      field.createdUserId = data.userId;
+      var validataSchema = v.validate(field, schema);
+
+      return new Promise(function(resolve, reject) {
+        return prototypes.find({ prototypeId: prototypeId, isActive: true}, function(err, data) {
+          if (err) return reject();
+          if (data.length != 1) {
+            return reject({ error: 'This prototypeId is not valid.' });
+          }
+          resolve(data);
+        });
+      })
+      .then(function(data) {
+        field.prototypeImageURL = data[0].prototypeImageURL || '';
+        field.version = data[0].version || '';
+
+        return new Promise( function(resolve, reject) {
+          /* validate schema */
+          var validataSchema = v.validate(field, schema);
+
+          if (validataSchema.errors.length === 0) {
+            return resolve();
+          } else {
+            return reject({ schema: validataSchema.errors })
+          }
+        })
+      })
+      .then(function(data) {
+        return new Promise(function(resolve, reject) {
+          return prototypes.insert(field, function(err, data) {
+            if (err) return reject();
+            resolve(data);
+          });
+        });
+      })
     },
   };
 }

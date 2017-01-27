@@ -115,7 +115,7 @@ describe('Devices API:', function() {
         deviceName: newDeviceName,
       })
       .then(function(data) {
-        assert.equal(data.text, 'success.', 'Response is not success.');
+        assert.equal(data.body.message, 'success', 'Response is not success.');
         return request(mcs)
         .get('/devices/' + deviceId)
         .set('Authorization', 'Bearer ' + global.access_token);

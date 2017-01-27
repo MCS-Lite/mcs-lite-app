@@ -14,7 +14,7 @@ export const request = (url, method, data, token) => {
         }
       )
       break;
-    case 'POST':
+    default:
       api = fetch(
         window.apiUrl + url,
         {
@@ -27,7 +27,7 @@ export const request = (url, method, data, token) => {
         }
       )
       break;
-    default:
+
   }
 
   return api

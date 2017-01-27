@@ -35,7 +35,7 @@ module.exports = function ($db) {
       datachannelTypeId: req.body.datachannelTypeId,
     })
     .then(function() {
-      return res.send(200, 'success.');
+      return res.send(200, { message: 'success' });
     })
     .catch(function(err) {
       return res.send(400, err);

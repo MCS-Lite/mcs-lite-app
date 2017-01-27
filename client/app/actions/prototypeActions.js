@@ -1,8 +1,9 @@
 import types from '../constants/PrototypeActionTypes';
 import { request } from '../utils/fetch';
+import { browserHistory } from 'react-router';
+
 
 export const retrievePrototypeList =  () => (dispatch, getState) => {
-  console.log(getState().main.access_token)
   return request('/prototypes', 'GET', getState().main.access_token)
   .then((data) => {
     return dispatch({
@@ -12,27 +13,33 @@ export const retrievePrototypeList =  () => (dispatch, getState) => {
   });
 }
 
-export const createNewPrototype =  () => (dispatch) => {
-  return {};
+export const createNewPrototype =  (data) => (dispatch, getState) => {
+  return request('/prototypes', 'POST', data, getState().main.access_token)
+  .then((data) => {
+    return dispatch({
+      type: types.CREATENEWPROTOTYPE,
+      data: data.data,
+    });
+  });
 }
 
-export function editPrototype(status:Boolean) {
-  // if (status) {
-  //   return {
-  //     type: types.OPEN_EDITPROTOTYPE,
-  //   };
-  // } else {
-  //   return {
-  //     type: types.CLOSE_EDITPROTOTYPE,
-  //   };
-  // }
-  return {};
+export const editPrototype = (id, data) => (dispatch, getState) => {
+  return request('/prototypes/' + id, 'PUT', data, getState().main.access_token)
+  .then(function() {
+    retrievePrototypeList()(dispatch, getState);
+  });
 }
 
-export const clonePrototype =  () => (dispatch) => {
-  return {};
+export const clonePrototype =  (id, data) => (dispatch, getState) => {
+  return request('/prototypes/' + id + '/clone', 'POST', data, getState().main.access_token)
+  .then(function() {
+    retrievePrototypeList()(dispatch, getState);
+  });
 }
 
-export const deletePrototype =  () => (dispatch) => {
-  return {};
+export const deletePrototype =  (id) => (dispatch, getState) => {
+  return request('/prototypes/' + id, 'DELETE', {}, getState().main.access_token)
+  .then(function() {
+    retrievePrototypeList()(dispatch, getState);
+  });
 }

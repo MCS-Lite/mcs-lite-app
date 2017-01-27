@@ -81,7 +81,7 @@ describe('Prototype API:', function() {
         prototypeName: newPrototypeName,
       })
       .then(function(data) {
-        assert.equal(data.text, 'success.', 'Response is not success.');
+        assert.equal(data.body.message, 'success', 'Response is not success.');
         return request(mcs)
         .get('/prototypes/' + prototypeId)
         .set('Authorization', 'Bearer ' + global.access_token);

@@ -77,7 +77,36 @@ module.exports = function ($db) {
       version: req.body.version,
     })
     .then(function() {
-      return res.send(200, 'success.');
+      return res.send(200, {message: 'success'});
+    })
+    .catch(function(err) {
+      return res.send(400, err);
+    });
+  };
+
+  var deletePrototype = function(req, res, next) {
+    var userId = req.user.userId;
+    return prototypes.editPrototype({
+      createdUserId: userId,
+      prototypeId: req.params.prototypeId,
+    }, {
+      isActive: false,
+    })
+    .then(function() {
+      return res.send(200, {message: 'success'});
+    })
+    .catch(function(err) {
+      return res.send(400, err);
+    });
+  };
+
+  var clonePrototype = function(req, res, next) {
+    var prototypeId = req.params.prototypeId;
+    var data = req.body;
+    data.userId = req.user.userId;
+    return prototypes.clonePrototype(prototypeId, data)
+    .then(function(data) {
+      return res.send(200, {data: data});
     })
     .catch(function(err) {
       return res.send(400, err);
@@ -89,6 +118,8 @@ module.exports = function ($db) {
     retrievePrototype: retrievePrototype,
     addNewPrototype: addNewPrototype,
     editPrototype: editPrototype,
+    deletePrototype: deletePrototype,
+    clonePrototype: clonePrototype,
   };
 
 };

@@ -74,7 +74,7 @@ describe('Datachannel API:', function() {
         datachannelTypeId: 1,
       })
       .then(function(data) {
-        assert.equal(data.text, 'success.', 'Response is not success.');
+        assert.equal(data.body.message, 'success', 'Response is not success.');
         return mcs.db.datachannels.retrievDatachannel({
           prototypeId: prototypeId,
           datachannelId: datachannelId,

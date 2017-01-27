@@ -89,6 +89,20 @@ module.exports = function($db, $app) {
     handler: prototypesController.editPrototype,
   };
 
+  this.clonePrototype = {
+    path: '/prototypes/:prototypeId/clone',
+    methods: ['post'],
+    middleware: [$app.oauth.authorise()],
+    handler: prototypesController.clonePrototype,
+  };
+
+  this.deletePrototype = {
+    path: '/prototypes/:prototypeId',
+    methods: ['delete'],
+    middleware: [$app.oauth.authorise()],
+    handler: prototypesController.deletePrototype,
+  };
+
   this.addDataChannel = {
     path: '/prototypes/:prototypeId/datachannels',
     methods: ['post'],

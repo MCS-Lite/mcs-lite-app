@@ -64,7 +64,7 @@ module.exports = function ($db) {
       deviceImageURL: req.body.deviceImageURL,
     })
     .then(function() {
-      return res.send(200, 'success.');
+      return res.send(200, { message: 'success' });
     })
     .catch(function(err) {
       return res.send(400, err);

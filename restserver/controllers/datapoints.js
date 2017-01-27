@@ -11,7 +11,7 @@ module.exports = function ($db) {
 
     return datapoints.uploadDatapoint(field)
     .then(function() {
-      return res.send(200, 'success!');
+      return res.send(200, {message: 'success' });
     })
     .catch(function(err) {
       return res.send(400, err);

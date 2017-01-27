@@ -26,6 +26,7 @@ const EditPrototypeDialog = ({
   prototypeName,
   editVersion,
   onEditVersionChange,
+  submitEditPrototype,
 }) => {
   return (
     <Dialog
@@ -67,7 +68,7 @@ const EditPrototypeDialog = ({
       </DialogBody>
       <DialogFooter>
         <Button kind="cancel" onClick={closeEditPrototype}>Cancel</Button>
-        <Button kind="primary" >
+        <Button kind="primary" onClick={submitEditPrototype}>
           Save
         </Button>
       </DialogFooter>
@@ -85,5 +86,13 @@ export default compose(
     onEditPrototypeDescriptionChange: props => (e) => props.setEditPrototypeDescription(e.target.value),
     onEditPrototypeNameChange: props => (e) => props.setEditPrototypeName(e.target.value),
     closeEditPrototype: props => () => props.setSelectMenuValue(''),
+    submitEditPrototype: props => () => {
+      props.setSelectMenuValue('');
+      props.editPrototype(props.prototypeId, {
+        prototypeName: props.editPrototypeName,
+        prototypeDescription: props.editPrototypeDescription,
+        version: props.editVersion,
+      });
+    },
   }),
  )(EditPrototypeDialog)

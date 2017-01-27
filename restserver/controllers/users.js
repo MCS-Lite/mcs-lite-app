@@ -254,7 +254,7 @@ module.exports = function ($db) {
       password: req.body.password,
     })
     .then(function(data) {
-      return res.send(200, 'success');
+      return res.send(200, { message: 'success' });
     })
     .catch(function(err) {
       return res.send(400, err);
