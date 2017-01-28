@@ -15,7 +15,6 @@ module.exports = function ($db) {
   var users = $db.users;
 
   var login = function(req, res, next) {
-    console.log(1111)
     return new Promise((resolve, reject) => {
       if (!req.body.email || !req.body.password) {
         return reject('Email or password is not define.');
@@ -41,7 +40,6 @@ module.exports = function ($db) {
         });
       });
     }).then((data)=> {
-      console.log(12312)
       var payload = {
         token: data
       };
@@ -60,7 +58,6 @@ module.exports = function ($db) {
         .set('Content-Type', 'application/x-www-form-urlencoded')
         .set('Authorization', `Bearer ${data.access_token}`)
         .end(function(err, data) {
-          console.log(1231211)
 
           if (data.ok) {
             if (process.env.NODE_ENV === 'dev') {
@@ -73,8 +70,6 @@ module.exports = function ($db) {
         });
       });
     }).catch((err)=> {
-      console.log(12)
-
       if (err === 'Your account is not activated yet!') {
         return res.redirect(`/user/${req.locale}/verify?email=${req.body.email}`);
       } else {

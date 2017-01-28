@@ -23,6 +23,36 @@ module.exports = function($db, $app, $rest) {
     },
   };
 
+  this.prototypesDetailInterface = {
+    path: '/prototypes/:prototypeId',
+    methods: ['get'],
+    handler: function(req, res, next) {
+      res.render('index.html');
+    },
+  };
+
+  this.devicesInterface = {
+    path: '/devices',
+    methods: ['get'],
+    handler: function(req, res, next) {
+      res.render('index.html');
+    },
+  };
+
+  this.devicesDetailInterface = {
+    path: '/devices/:deviceId',
+    methods: ['get'],
+    handler: function(req, res, next) {
+      res.render('index.html');
+    },
+  };
+
+  this.userLoginInterface = {
+    path: '/login',
+    methods: ['get'],
+    handler: usersController.loginInterface,
+  };
+
   this.test = {
     path: '/test',
     methods: ['get'],
@@ -51,12 +81,6 @@ module.exports = function($db, $app, $rest) {
     path: '/oauth/cookies',
     methods: ['post'],
     handler: usersController.checkCookies,
-  };
-
-  this.userLoginInterface = {
-    path: '/login',
-    methods: ['get'],
-    handler: usersController.loginInterface,
   };
 
   this.adminLoginInterface = {
