@@ -1,6 +1,6 @@
 import types from '../constants/ActionTypes';
 import { browserHistory } from 'react-router';
-import { request } from '../utils/fetch';
+import { requestOauth } from '../utils/fetch';
 
 export const getCookie = (name) => {
   var value = "; " + document.cookie;
@@ -15,7 +15,7 @@ export const checkToken =  () => (dispatch) => {
     return browserHistory.push('/login')
   }
 
-  return request('/auth/cookies', 'POST', { token: token })
+  return requestOauth('/cookies', 'POST', { token: token })
   .then((data) => {
     return dispatch({
       type: types.CHECKTOKEN,

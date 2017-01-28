@@ -15,6 +15,7 @@ module.exports = function ($db) {
   var users = $db.users;
 
   var login = function(req, res, next) {
+    console.log(1111)
     return new Promise((resolve, reject) => {
       if (!req.body.email || !req.body.password) {
         return reject('Email or password is not define.');
@@ -30,7 +31,7 @@ module.exports = function ($db) {
 
       return new Promise((resolve, reject) => {
         request
-        .post(host + '/oauth/token')
+        .post(oauthHost + '/oauth/token')
         .set('Cache-Control', 'no-cache')
         .set('Content-Type', 'application/x-www-form-urlencoded')
         .send(data)
@@ -40,6 +41,7 @@ module.exports = function ($db) {
         });
       });
     }).then((data)=> {
+      console.log(12312)
       var payload = {
         token: data
       };
@@ -53,32 +55,36 @@ module.exports = function ($db) {
 
       return new Promise((resolve, reject) => {
         request
-        .get(host + '/users/info')
+        .get(oauthHost + '/oauth/users/info')
         .set('Cache-Control', 'no-cache')
         .set('Content-Type', 'application/x-www-form-urlencoded')
         .set('Authorization', `Bearer ${data.access_token}`)
         .end(function(err, data) {
+          console.log(1231211)
+
           if (data.ok) {
             if (process.env.NODE_ENV === 'dev') {
               return res.redirect('http://127.0.0.1:8081/prototypes');
             }
+            return res.redirect('/prototypes');
           } else {
             reject(err.response.body.message);
           }
         });
       });
     }).catch((err)=> {
+      console.log(12)
+
       if (err === 'Your account is not activated yet!') {
         return res.redirect(`/user/${req.locale}/verify?email=${req.body.email}`);
       } else {
-        return res.redirect(`/user/login?errorMsg=${encodeURI(err)}`);
+        return res.redirect(`/login?errorMsg=${encodeURI(err)}`);
       }
     });
   };
 
   var checkCookies = function(req, res, next) {
     var info = {};
-    console.log(req.body);
     return new Promise((resolve, reject) => {
       /* 檢查cookie中的token是否合法 */
       jwt.verify(req.body.token, $oauth.JWT_SECRET, function(err, payload) {
@@ -94,7 +100,7 @@ module.exports = function ($db) {
 
       return new Promise((resolve, reject) => {
         request
-        .post(host + '/oauth/token')
+        .post(oauthHost + '/oauth/token')
         .set('Cache-Control', 'no-cache')
         .set('Content-Type', 'application/x-www-form-urlencoded')
         .send(data)
@@ -108,12 +114,11 @@ module.exports = function ($db) {
       /* 去抓 user info */
       return new Promise((resolve, reject) => {
         request
-        .get(`${host}/users/info`)
+        .get(oauthHost + '/oauth/users/info')
         .set('Cache-Control', 'no-cache')
         .set('Content-Type', 'application/x-www-form-urlencoded')
         .set('Authorization', `Bearer ${token.access_token}`)
         .end(function(err, res) {
-          console.log(res.body);
           if (res.ok) {
             info.access_token = token.access_token;
             info.expire_time  = token.expire_time;
@@ -163,7 +168,7 @@ module.exports = function ($db) {
         return new Promise((resolve, reject) => {
           /* 檢查 token 是否 active */
           request
-          .get(host + '/users/info')
+          .get(oauthHost + '/oauth/users/info')
           .set('Cache-Control', 'no-cache')
           .set('Content-Type', 'application/x-www-form-urlencoded')
           .set('Authorization', `Bearer ${token.access_token}`)
@@ -188,7 +193,7 @@ module.exports = function ($db) {
           /* 若非 active 則拿 refreshtoken 重新洗新的 token  */
           return new Promise((resolve, reject) => {
             request
-            .post(host + '/oauth/token')
+            .post(oauthHost + '/oauth/token')
             .set('Cache-Control', 'no-cache')
             .set('Content-Type', 'application/x-www-form-urlencoded')
             .send(data)
@@ -212,8 +217,7 @@ module.exports = function ($db) {
         if (process.env.NODE_ENV === 'dev') {
           return res.redirect('http://127.0.0.1:8081/prototypes');
         }
-
-        return res.redirect(req.redirecClientUrl);
+        return res.render('index.html');
 
       }).catch((err) => {
         /* 有任何錯誤就返回首頁 */
@@ -222,10 +226,7 @@ module.exports = function ($db) {
           return res.redirect('http://127.0.0.1:8081/');
         }
 
-        return res.render('index.html', {
-          locale: req.locale,
-          renderRoute: req.renderRoute
-        });
+        return res.render('index.html');
       });
     } else {
       /* 如果 cookie 沒有 token 就是以前未登入過狀態 */
@@ -236,10 +237,7 @@ module.exports = function ($db) {
         return res.redirect('http://127.0.0.1:8081/');
       }
 
-      return res.render('index.html', {
-        renderRoute: req.renderRoute,
-        locale: req.locale || 'en'
-      });
+      return res.render('index.html');
     }
   };
 

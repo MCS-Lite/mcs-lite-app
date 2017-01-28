@@ -8,7 +8,7 @@ var basic_token = new Buffer(clientId + ':' + clientSecret).toString('base64');
 
 module.exports = function(userName, email, password, isAdmin, mcs, done) {
   return request(mcs)
-  .post('/users/regist')
+  .post($rest.apiRoute + '/users/regist')
   .send({
     userName: userName,
     email: email,

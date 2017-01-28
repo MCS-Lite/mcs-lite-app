@@ -26,7 +26,7 @@ describe('Oauth API:', function() {
 
   before(function(done) {
     request(mcs)
-    .post('/users/regist')
+    .post($rest.apiRoute + '/users/regist')
     .send({
       userName: userName,
       email: email,

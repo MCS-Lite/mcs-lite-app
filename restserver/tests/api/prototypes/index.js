@@ -18,7 +18,7 @@ describe('Prototype API:', function() {
   describe('Retrieve user prototype list (by user) api:', function() {
     it('return 200.', function(done) {
       request(mcs)
-      .get('/prototypes')
+      .get($rest.apiRoute + '/prototypes')
       .set('Authorization', 'Bearer ' + global.access_token)
       .then(function(data) {
         done();
@@ -29,7 +29,7 @@ describe('Prototype API:', function() {
   describe('Add new prototype api:', function() {
     it('return 200.', function(done) {
       request(mcs)
-      .post('/prototypes')
+      .post($rest.apiRoute + '/prototypes')
       .set('Authorization', 'Bearer ' + global.access_token)
       .send({
         prototypeName: 'This is test prototype',
@@ -48,7 +48,7 @@ describe('Prototype API:', function() {
 
     it('return 400.', function(done) {
       request(mcs)
-      .post('/prototypes')
+      .post($rest.apiRoute + '/prototypes')
       .set('Authorization', 'Bearer ' + global.access_token)
       .send({
         prototypeDescription: 'This is test prototype',
@@ -63,7 +63,7 @@ describe('Prototype API:', function() {
   describe('Retrieve prototype api:', function() {
     it('return 200.', function(done) {
       request(mcs)
-      .get('/prototypes/' + prototypeId)
+      .get($rest.apiRoute + '/prototypes/' + prototypeId)
       .set('Authorization', 'Bearer ' + global.access_token)
       .expect(200)
       .end(done);
@@ -75,7 +75,7 @@ describe('Prototype API:', function() {
       var newPrototypeName = 'This is test prototype123';
 
       request(mcs)
-      .put('/prototypes/' + prototypeId)
+      .put($rest.apiRoute + '/prototypes/' + prototypeId)
       .set('Authorization', 'Bearer ' + global.access_token)
       .send({
         prototypeName: newPrototypeName,
@@ -83,7 +83,7 @@ describe('Prototype API:', function() {
       .then(function(data) {
         assert.equal(data.body.message, 'success', 'Response is not success.');
         return request(mcs)
-        .get('/prototypes/' + prototypeId)
+        .get($rest.apiRoute + '/prototypes/' + prototypeId)
         .set('Authorization', 'Bearer ' + global.access_token);
       })
       .then(function(data) {

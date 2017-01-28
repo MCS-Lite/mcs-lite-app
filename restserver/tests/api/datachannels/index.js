@@ -16,7 +16,7 @@ describe('Datachannel API:', function() {
 
   before(function(done) {
     request(mcs)
-    .post('/prototypes')
+    .post($rest.apiRoute + '/prototypes')
     .set('Authorization', 'Bearer ' + global.access_token)
     .send({
       prototypeName: 'This is test prototype',
@@ -33,7 +33,7 @@ describe('Datachannel API:', function() {
   describe('Add new datachannel api:', function() {
     it('return 200.', function(done) {
       request(mcs)
-      .post('/prototypes/' + prototypeId + '/datachannels')
+      .post($rest.apiRoute + '/prototypes/' + prototypeId + '/datachannels')
       .set('Authorization', 'Bearer ' + global.access_token)
       .send({
         datachannelId: '123123',
@@ -51,7 +51,7 @@ describe('Datachannel API:', function() {
 
     it('return 400.', function(done) {
       request(mcs)
-      .post('/prototypes/' + prototypeId + '/datachannels')
+      .post($rest.apiRoute + '/prototypes/' + prototypeId + '/datachannels')
       .set('Authorization', 'Bearer ' + global.access_token)
       .send({
         datachannelTypeId: 1,
@@ -67,7 +67,7 @@ describe('Datachannel API:', function() {
       var datachannelDescription = 'Test datachannel123';
 
       request(mcs)
-      .put('/prototypes/' + prototypeId + '/datachannels/' + datachannelId)
+      .put($rest.apiRoute + '/prototypes/' + prototypeId + '/datachannels/' + datachannelId)
       .set('Authorization', 'Bearer ' + global.access_token)
       .send({
         datachannelDescription: datachannelDescription,

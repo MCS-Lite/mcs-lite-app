@@ -18,7 +18,7 @@ const Login = ({ login }) => {
           className={LoginStyle.form}
           id="loginSubmit"
           role="form"
-          action="http://127.0.0.1:3000/auth/login"
+          action={ window.oauthUrl + "/login" }
           method="post"
         >
           <img src={logo} className={LoginStyle.logo}/>

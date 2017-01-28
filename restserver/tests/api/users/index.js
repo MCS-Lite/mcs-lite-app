@@ -20,7 +20,7 @@ describe('Users API:', function() {
   describe('Retrieve user list (by admin) api:', function() {
     it('return 200.', function(done) {
       request(mcs)
-      .get('/users')
+      .get($rest.apiRoute + '/users')
       .set('Authorization', 'Bearer ' + global.access_token)
       .then(function(data) {
         global.access_token = data.body.access_token;

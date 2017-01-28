@@ -1,10 +1,27 @@
-module.exports = function($db, $app) {
+module.exports = function($db, $app, $rest) {
 
   var devicesController = new require('../controllers/devices')($db);
   var usersController = new require('../controllers/users')($db);
   var prototypesController = new require('../controllers/prototypes')($db);
   var datapointsController = new require('../controllers/datapoints')($db);
   var datachannelsController = new require('../controllers/datachannels')($db);
+
+  console.log($rest.apiRoute)
+  this.client = {
+    path: '/',
+    methods: ['get'],
+    handler: function(req, res, next) {
+      res.render('index.html');
+    },
+  };
+
+  this.prototypesInterface = {
+    path: '/prototypes',
+    methods: ['get'],
+    handler: function(req, res, next) {
+      res.render('index.html');
+    },
+  };
 
   this.test = {
     path: '/test',
@@ -16,7 +33,7 @@ module.exports = function($db, $app) {
   };
 
   this.userInfo = {
-    path: '/users/info',
+    path: '/oauth/users/info',
     methods: ['get'],
     middleware: [$app.oauth.authorise()],
     handler: function(req, res, next) {
@@ -25,19 +42,19 @@ module.exports = function($db, $app) {
   };
 
   this.authLogin = {
-    path: '/auth/login',
+    path: '/oauth/login',
     methods: ['post'],
     handler: usersController.login,
   };
 
   this.checkCookies = {
-    path: '/auth/cookies',
+    path: '/oauth/cookies',
     methods: ['post'],
     handler: usersController.checkCookies,
   };
 
   this.userLoginInterface = {
-    path: '/user/login',
+    path: '/login',
     methods: ['get'],
     handler: usersController.loginInterface,
   };
@@ -49,110 +66,110 @@ module.exports = function($db, $app) {
   };
 
   this.registUser = {
-    path: '/users/regist',
+    path: $rest.apiRoute + '/users/regist',
     methods: ['post'],
     handler: usersController.registUser,
   };
 
   this.retrieveUserList = {
-    path: '/users',
+    path: $rest.apiRoute + '/users',
     methods: ['get'],
     middleware: [$app.oauth.authorise()],
     handler: usersController.retrieveUserList,
   };
 
   this.retrievePrototypeList = {
-    path: '/prototypes',
+    path: $rest.apiRoute + '/prototypes',
     methods: ['get'],
     middleware: [$app.oauth.authorise()],
     handler: prototypesController.retrievePrototype,
   };
 
   this.retrievePrototypeDetail = {
-    path: '/prototypes/:prototypeId',
+    path: $rest.apiRoute + '/prototypes/:prototypeId',
     methods: ['get'],
     middleware: [$app.oauth.authorise()],
     handler: prototypesController.retrievePrototypeDetail,
   };
 
   this.addNewPrototype = {
-    path: '/prototypes',
+    path: $rest.apiRoute + '/prototypes',
     methods: ['post'],
     middleware: [$app.oauth.authorise()],
     handler: prototypesController.addNewPrototype,
   };
 
   this.editPrototype = {
-    path: '/prototypes/:prototypeId',
+    path: $rest.apiRoute + '/prototypes/:prototypeId',
     methods: ['put'],
     middleware: [$app.oauth.authorise()],
     handler: prototypesController.editPrototype,
   };
 
   this.clonePrototype = {
-    path: '/prototypes/:prototypeId/clone',
+    path: $rest.apiRoute + '/prototypes/:prototypeId/clone',
     methods: ['post'],
     middleware: [$app.oauth.authorise()],
     handler: prototypesController.clonePrototype,
   };
 
   this.deletePrototype = {
-    path: '/prototypes/:prototypeId',
+    path: $rest.apiRoute + '/prototypes/:prototypeId',
     methods: ['delete'],
     middleware: [$app.oauth.authorise()],
     handler: prototypesController.deletePrototype,
   };
 
   this.addDataChannel = {
-    path: '/prototypes/:prototypeId/datachannels',
+    path: $rest.apiRoute + '/prototypes/:prototypeId/datachannels',
     methods: ['post'],
     middleware: [$app.oauth.authorise()],
     handler: datachannelsController.addNewDatachannels,
   };
 
   this.editDataChannel = {
-    path: '/prototypes/:prototypeId/datachannels/:datachannelId',
+    path: $rest.apiRoute + '/prototypes/:prototypeId/datachannels/:datachannelId',
     methods: ['put'],
     middleware: [$app.oauth.authorise()],
     handler: datachannelsController.editDatachannels,
   };
 
   this.retrieveDeviceList = {
-    path: '/devices',
+    path: $rest.apiRoute + '/devices',
     methods: ['get'],
     middleware: [$app.oauth.authorise()],
     handler: devicesController.retrieveDevice,
   };
 
   this.retrieveDeviceDetail = {
-    path: '/devices/:deviceId',
+    path: $rest.apiRoute + '/devices/:deviceId',
     methods: ['get'],
     middleware: [$app.oauth.authorise()],
     handler: devicesController.retrieveDeviceDetail,
   };
 
   this.addNewDevice = {
-    path: '/devices',
+    path: $rest.apiRoute + '/devices',
     methods: ['post'],
     middleware: [$app.oauth.authorise()],
     handler: devicesController.addNewDevice,
   };
 
   this.editNewDevice = {
-    path: '/devices/:deviceId',
+    path: $rest.apiRoute + '/devices/:deviceId',
     methods: ['put'],
     middleware: [$app.oauth.authorise()],
     handler: devicesController.editNewDevice,
   };
 
   this.uploadDatapoint = {
-    path: '/devices/:deviceId/datapoints',
+    path: $rest.apiRoute + '/devices/:deviceId/datapoints',
     methods: ['post'],
     handler: datapointsController.uploadDatapoints,
   };
 
   this.retrieveDatachannelDatapoint = {
-    path: '/devices/:deviceId/datapoints/datachannel/:datachannelId',
+    path: $rest.apiRoute + '/devices/:deviceId/datapoints/datachannel/:datachannelId',
     methods: ['get'],
     handler: datapointsController.retrieveDatapoints,
   };

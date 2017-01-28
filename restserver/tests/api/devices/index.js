@@ -16,7 +16,7 @@ describe('Devices API:', function() {
 
   before(function(done) {
     request(mcs)
-    .post('/prototypes')
+    .post($rest.apiRoute + '/prototypes')
     .set('Authorization', 'Bearer ' + global.access_token)
     .send({
       prototypeName: 'This is test prototype',
@@ -32,7 +32,7 @@ describe('Devices API:', function() {
 
   before(function(done) {
     request(mcs)
-      .post('/prototypes/' + prototypeId + '/datachannels')
+      .post($rest.apiRoute + '/prototypes/' + prototypeId + '/datachannels')
       .set('Authorization', 'Bearer ' + global.access_token)
       .send({
         datachannelId: '123123',
@@ -51,7 +51,7 @@ describe('Devices API:', function() {
   describe('Retrieve user device list (by user) api:', function() {
     it('return 200.', function(done) {
       request(mcs)
-      .get('/devices')
+      .get($rest.apiRoute + '/devices')
       .set('Authorization', 'Bearer ' + global.access_token)
       .then(function(data) {
         done();
@@ -63,7 +63,7 @@ describe('Devices API:', function() {
     it('return 200.', function(done) {
 
       request(mcs)
-      .post('/devices')
+      .post($rest.apiRoute + '/devices')
       .set('Authorization', 'Bearer ' + global.access_token)
       .send({
         prototypeId: prototypeId,
@@ -82,7 +82,7 @@ describe('Devices API:', function() {
 
     it('return 400.', function(done) {
       request(mcs)
-      .post('/devices')
+      .post($rest.apiRoute + '/devices')
       .set('Authorization', 'Bearer ' + global.access_token)
       .send({
         deviceName: 'Test device',
@@ -97,7 +97,7 @@ describe('Devices API:', function() {
   describe('Retrieve devices api:', function() {
     it('return 200.', function(done) {
       request(mcs)
-      .get('/devices/' + deviceId)
+      .get($rest.apiRoute + '/devices/' + deviceId)
       .set('Authorization', 'Bearer ' + global.access_token)
       .expect(200)
       .end(done);
@@ -109,7 +109,7 @@ describe('Devices API:', function() {
       var newDeviceName = 'This is test device123';
 
       request(mcs)
-      .put('/devices/' + deviceId)
+      .put($rest.apiRoute + '/devices/' + deviceId)
       .set('Authorization', 'Bearer ' + global.access_token)
       .send({
         deviceName: newDeviceName,
@@ -117,7 +117,7 @@ describe('Devices API:', function() {
       .then(function(data) {
         assert.equal(data.body.message, 'success', 'Response is not success.');
         return request(mcs)
-        .get('/devices/' + deviceId)
+        .get($rest.apiRoute + '/devices/' + deviceId)
         .set('Authorization', 'Bearer ' + global.access_token);
       })
       .then(function(data) {
