@@ -5,6 +5,7 @@ import { checkToken } from '../actions/AppActions';
 
 class App extends Component {
   componentWillMount() {
+    console.log(7777)
     this.props.checkToken();
   }
 

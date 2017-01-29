@@ -6,7 +6,6 @@ module.exports = function($db, $app, $rest) {
   var datapointsController = new require('../controllers/datapoints')($db);
   var datachannelsController = new require('../controllers/datachannels')($db);
 
-  console.log($rest.apiRoute)
   this.client = {
     path: '/',
     methods: ['get'],

@@ -61,7 +61,7 @@ module.exports = function ($db) {
 
           if (data.ok) {
             if (process.env.NODE_ENV === 'dev') {
-              return res.redirect('http://127.0.0.1:8081/prototypes');
+              return res.redirect('http://localhost:8081/prototypes');
             }
             return res.redirect('/prototypes');
           } else {
