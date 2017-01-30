@@ -10,11 +10,9 @@ export const getCookie = (name) => {
 
 export const checkToken =  () => (dispatch) => {
   const token = getCookie('token');
-  console.log(token);
   if (!token) {
     return browserHistory.push('/login')
   }
-  console.log(4444);
   return requestOauth('/cookies', 'POST', { token: token })
   .then((data) => {
     return dispatch({

@@ -7,6 +7,7 @@ import PrototypeDetail from '../containers/prototypeDetail'
 import Devices from '../containers/devices'
 import DeviceDetail from '../containers/deviceDetail'
 import AdminLogin from '../containers/adminLogin'
+import Singin from '../containers/signin'
 import Admin from '../containers/admin'
 import Login from '../containers/login'
 
@@ -14,10 +15,13 @@ export default (
   <Route component={App}>
     <Route
       path="/"
-      components={Login} />
+      components={Prototypes} />
     <Route
       path="/login"
       components={Login} />
+    <Route
+      path="/signin"
+      components={Signin} />
     <Route
       path="/admin/login"
       components={AdminLogin} />

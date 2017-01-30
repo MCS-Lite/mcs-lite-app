@@ -5,7 +5,11 @@ cd build && mkdir client && cd client && mkdir app
 cd ../..
 
 cp -R ./client/app/build/ ./build/client/app/build
-cp -R ./server/ ./build/server
+cp -R ./restserver/ ./build/restserver
+cp -R ./wotserver/ ./build/wotserver
+cp -R ./configs/ ./build/configs
+cp -R ./nedb/ ./build/nedb
+cp -R ./db/ ./build/db
 cp -R index.html ./build/index.html
 cp -R index.js ./build/index.js
 cp -R package.json ./build/package.json
