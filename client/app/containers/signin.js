@@ -4,11 +4,8 @@ import SigninLayout from '../components/signin';
 // import * as PrototypeActions from '../actions/PrototypeActions'
 class Signin extends Component {
 
-  componentDidMount() {
-    this.props.retrievePrototypeList()
-  }
-
   render() {
+    console.log(111111);
     return (
       <SigninLayout {...this.props} />
     );

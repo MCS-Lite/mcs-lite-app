@@ -5,14 +5,17 @@ import { checkToken } from '../actions/AppActions';
 
 class App extends Component {
   componentWillMount() {
-    this.props.checkToken();
+    const { checkToken, location } = this.props;
+    if (!/(login)|(signin)/.test(location.pathname)) {
+      checkToken();
+    }
   }
 
   render() {
     const { children, location, main } = this.props;
     return (
       <div>
-        { location.pathname === '/login' ?
+        { /(login)|(signin)/.test(location.pathname)  ?
           children : (main.isInitialized && children)
         }
       </div>

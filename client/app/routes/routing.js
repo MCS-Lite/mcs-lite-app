@@ -7,7 +7,7 @@ import PrototypeDetail from '../containers/prototypeDetail'
 import Devices from '../containers/devices'
 import DeviceDetail from '../containers/deviceDetail'
 import AdminLogin from '../containers/adminLogin'
-import Singin from '../containers/signin'
+import Signin from '../containers/signin'
 import Admin from '../containers/admin'
 import Login from '../containers/login'
 
