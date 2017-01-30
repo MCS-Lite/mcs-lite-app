@@ -14,6 +14,40 @@ var basicToken = new Buffer(clientId + ':' + clientSecret).toString('base64');
 module.exports = function ($db) {
   var users = $db.users;
 
+  var signIn = function(req, res, next) {
+    return new Promise((resolve, reject) => {
+      if (!req.body.email || !req.body.password || !req.body.userName) {
+        return reject('Email or password or userName is not define.');
+      }
+      return resolve();
+    })
+    .then(function(){
+
+      var data = {
+        userName: req.body.userName,
+        email: req.body.email,
+        password: req.body.password,
+      };
+
+      return new Promise((resolve, reject) => {
+        request
+        .post(host + '/users/regist')
+        .set('Cache-Control', 'no-cache')
+        .set('Content-Type', 'application/json')
+        .send(data)
+        .end(function(err, res) {
+          return res.ok ?  resolve(res.body) : reject(err.response.body.message);
+        });
+      });
+    })
+    .then(function(data) {
+      return res.redirect('/login');
+    })
+    .catch((err)=> {
+      return res.redirect(`/signin?errorMsg=${encodeURI(err)}`);
+    });
+  };
+
   var login = function(req, res, next) {
     return new Promise((resolve, reject) => {
       if (!req.body.email || !req.body.password) {
@@ -272,6 +306,7 @@ module.exports = function ($db) {
     registUser: registUser,
     retrieveUserList: retrieveUserList,
     login: login,
+    signIn: signIn,
     loginInterface: loginInterface,
     adminLoginInterface: adminLoginInterface,
     checkCookies: checkCookies,

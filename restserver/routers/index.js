@@ -22,6 +22,14 @@ module.exports = function($db, $app, $rest) {
     },
   };
 
+  this.signinInterface = {
+    path: '/signin',
+    methods: ['get'],
+    handler: function(req, res, next) {
+      res.render('index.html');
+    },
+  };
+
   this.prototypesDetailInterface = {
     path: '/prototypes/:prototypeId',
     methods: ['get'],
@@ -80,6 +88,12 @@ module.exports = function($db, $app, $rest) {
     path: '/oauth/cookies',
     methods: ['post'],
     handler: usersController.checkCookies,
+  };
+
+  this.signIn = {
+    path: '/oauth/signin',
+    methods: ['post'],
+    handler: usersController.signIn,
   };
 
   this.adminLoginInterface = {

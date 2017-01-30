@@ -39,3 +39,15 @@
   width: 100%;
   margin-top: 25px;
 }
+
+.createaccount{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.createaccount a {
+  color: #00a1de;
+  cursor: pointer;
+  margin-top: 14px;
+}

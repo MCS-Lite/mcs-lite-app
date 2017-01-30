@@ -1,0 +1,15 @@
+.submit {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 32px;
+}
+
+.submitBtn {
+  width: 121.5px;
+}
+
+.termofuseLink {
+  color: #00a1de;
+  cursor: pointer;
+}

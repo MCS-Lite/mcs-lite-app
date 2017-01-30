@@ -5,7 +5,6 @@ import SigninLayout from '../components/signin';
 class Signin extends Component {
 
   render() {
-    console.log(111111);
     return (
       <SigninLayout {...this.props} />
     );
