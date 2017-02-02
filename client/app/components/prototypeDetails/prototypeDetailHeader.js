@@ -14,13 +14,14 @@ import { default as pure } from 'recompose/pure';
 import { default as withState } from 'recompose/withState';
 import { default as withHandlers } from 'recompose/withHandlers';
 
-import EditPrototypeDialog from '../prototypes/dialogs/editPrototype'
-import DeletePrototypeDialog from '../prototypes/dialogs/deletePrototype'
-import ClonePrototypeDialog from '../prototypes/dialogs/clonePrototype'
+import EditPrototype from '../prototypes/dialogs/editPrototype'
+import DeletePrototype from '../prototypes/dialogs/deletePrototype'
+import ClonePrototype from '../prototypes/dialogs/clonePrototype'
 
 const PrototypeDetailHeaderLayout = ({
   prototypeName,
   prototypeId,
+  prototypeDescription,
   version,
   isCreateTestDevice,
   setIsCreateTestDevice,
@@ -29,6 +30,10 @@ const PrototypeDetailHeaderLayout = ({
   createTestDevice,
   onMoreButtonChange,
   selectMenuValue,
+  editPrototype,
+  clonePrototype,
+  deletePrototype,
+  setSelectMenuValue,
 }) => {
   return (
     <div className={prototypeDetailHeaderStyles.base}>
