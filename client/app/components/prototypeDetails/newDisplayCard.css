@@ -1,0 +1,19 @@
+.base {
+  /*height: 100%;*/
+  background: none;
+  border: 2px dashed #e0e0e0;
+  margin: 9px 9px 15px 9px;
+  width: 280px;
+  position: relative;
+  height: 300px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.button {
+  width: 80px;
+}

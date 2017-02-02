@@ -1,29 +1,33 @@
 import { connect } from 'react-redux';
 import React, { Component } from 'react';
 
-import panelHeaderStyles from './panelContent.css';
+import panelContentStyles from './panelContent.css';
 import Panel from 'mtk-ui/lib/Panel';
 import PanelHeader from 'mtk-ui/lib/PanelHeader';
 import PanelBody from 'mtk-ui/lib/PanelBody';
 import PanelIcon from 'mtk-ui/lib/PanelIcon';
+import NewDisplayCard from './newDisplayCard';
 
-const PanelHeaderLayout = () => {
+const PanelContentLayout = () => {
   return (
-    <div className={panelHeaderStyles.base}>
+    <div className={panelContentStyles.base}>
       <Panel>
         <PanelHeader>
           <PanelIcon iconName="bookmark" />
-          <div className={panelHeaderStyles.content}>
+          <div className={panelContentStyles.content}>
             <ul>
               <li>Data channel</li>
               <li>Test device</li>
             </ul>
           </div>
         </PanelHeader>
-        <PanelBody />
+        <PanelBody className={panelContentStyles.body}>
+          <NewDisplayCard />
+          
+        </PanelBody>
       </Panel>
     </div>
   );
 }
 
-export default PanelHeaderLayout;
+export default PanelContentLayout;
