@@ -1,9 +1,10 @@
 import { connect } from 'react-redux';
 import React, { Component } from 'react';
 
-import panelHeaderStyles from './panelHeader.css';
+import panelHeaderStyles from './panelContent.css';
 import Panel from 'mtk-ui/lib/Panel';
 import PanelHeader from 'mtk-ui/lib/PanelHeader';
+import PanelBody from 'mtk-ui/lib/PanelBody';
 import PanelIcon from 'mtk-ui/lib/PanelIcon';
 
 const PanelHeaderLayout = () => {
@@ -13,10 +14,13 @@ const PanelHeaderLayout = () => {
         <PanelHeader>
           <PanelIcon iconName="bookmark" />
           <div className={panelHeaderStyles.content}>
-            Data channel
-            Test device
+            <ul>
+              <li>Data channel</li>
+              <li>Test device</li>
+            </ul>
           </div>
         </PanelHeader>
+        <PanelBody />
       </Panel>
     </div>
   );

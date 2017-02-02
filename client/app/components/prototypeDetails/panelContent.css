@@ -1,0 +1,25 @@
+.base {
+  padding-left: 9px;
+  padding-right: 9px;
+}
+
+.content {
+  background: #fafafa;
+}
+
+.content ul {
+  list-style: none;
+  padding: 0px;
+  display: flex;
+  flex-direction: row;
+  margin: 0px;
+}
+
+.content ul li {
+  padding: 18px 15px;
+  cursor: pointer;
+}
+
+.content ul li.active {
+  background: #fff;
+}

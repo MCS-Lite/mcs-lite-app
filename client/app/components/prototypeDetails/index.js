@@ -5,13 +5,13 @@ import Footer from '../footer';
 import Header from '@mtk/mcs-components/lib/Header';
 
 import Breadcrumb from './breadcrumb';
-import PanelHeader from './panelHeader';
+import PanelContent from './panelContent';
 import PrototypeDetailHeader from './prototypeDetailHeader';
 import PrototypeDetailInfo from './prototypeDetailInfo';
 
 import prototypeDetailStyle from './prototypeDetail.css';
 
-const Prototypes = ({ prototypes,  createTestDevice }) => {
+const Prototypes = ({ prototypes,  createTestDevice, ...props }) => {
   const {
     prototypeName,
     version,
@@ -24,9 +24,9 @@ const Prototypes = ({ prototypes,  createTestDevice }) => {
       <Header />
       <div className={prototypeDetailStyle.base}>
         <Breadcrumb prototypeName={prototypeName} />
-        <PrototypeDetailHeader prototypeId={prototypeId} prototypeName={prototypeName} version={version} createTestDevice={createTestDevice}/>
+        <PrototypeDetailHeader prototypeId={prototypeId} prototypeName={prototypeName} version={version} createTestDevice={createTestDevice} {...props}/>
         <PrototypeDetailInfo prototypeDescription={prototypeDescription} />
-        <PanelHeader />
+        <PanelContent />
       </div>
       <Footer />
     </div>
