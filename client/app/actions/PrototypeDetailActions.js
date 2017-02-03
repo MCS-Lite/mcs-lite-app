@@ -43,3 +43,16 @@ export const deletePrototype =  (id) => (dispatch, getState) => {
     browserHistory.push('/prototypes');
   });
 }
+
+export const createDataChannel = (id, data) => (dispatch, getState) => {
+  return request('/prototypes/' + id + '/datachannels', 'POST', data, getState().main.access_token)
+  .then(function() {
+    return request('/prototypes/' + id, 'GET', getState().main.access_token)
+  })
+  .then((data) => {
+    return dispatch({
+      type: types.RETRIEVEPROTOTYPE,
+      data: data.data,
+    });
+  });
+}

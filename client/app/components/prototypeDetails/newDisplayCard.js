@@ -3,7 +3,7 @@ import newDisplayCardStyles from './newDisplayCard.css';
 
 import Button from 'mtk-ui/lib/Button';
 
-import CreateDataChannelDialog from './dialogs/createDatachannel';
+import SelectCreateDataChannelDialog from './dialogs/selectCreateDatachannel';
 import { default as compose } from 'recompose/compose';
 import { default as pure } from 'recompose/pure';
 import { default as withState } from 'recompose/withState';
@@ -20,7 +20,7 @@ const NewDisplayCardLayout = ({
     <Button className={newDisplayCardStyles.button} onClick={openCreateDataChannel}>
       Add
     </Button>
-    <CreateDataChannelDialog isCreateDataChannel={isCreateDataChannel} setIsCreateDataChannel={setIsCreateDataChannel} />
+    <SelectCreateDataChannelDialog isCreateDataChannel={isCreateDataChannel} setIsCreateDataChannel={setIsCreateDataChannel} />
     </div>
   );
 }

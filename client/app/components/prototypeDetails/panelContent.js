@@ -23,7 +23,6 @@ const PanelContentLayout = () => {
         </PanelHeader>
         <PanelBody className={panelContentStyles.body}>
           <NewDisplayCard />
-          
         </PanelBody>
       </Panel>
     </div>
