@@ -10,25 +10,26 @@ import { default as withState } from 'recompose/withState';
 import { default as withHandlers } from 'recompose/withHandlers';
 
 const NewDisplayCardLayout = ({
-  openCreateDataChannel,
-  isCreateDataChannel,
-  setIsCreateDataChannel,
+  openSelectCreateDataChannel,
+  isSelectCreateDataChannel,
+  setIsSelectCreateDataChannel,
+  prototypeId,
 }) => {
   return (
     <div className={newDisplayCardStyles.base}>
-    <p>Add Data channel now!</p>
-    <Button className={newDisplayCardStyles.button} onClick={openCreateDataChannel}>
-      Add
-    </Button>
-    <SelectCreateDataChannelDialog isCreateDataChannel={isCreateDataChannel} setIsCreateDataChannel={setIsCreateDataChannel} />
+      <p>Add Data channel now!</p>
+      <Button className={newDisplayCardStyles.button} onClick={openSelectCreateDataChannel}>
+        Add
+      </Button>
+      <SelectCreateDataChannelDialog prototypeId={prototypeId} isSelectCreateDataChannel={isSelectCreateDataChannel} setIsSelectCreateDataChannel={setIsSelectCreateDataChannel} />
     </div>
   );
 }
 
 export default compose(
   pure,
-  withState('isCreateDataChannel', 'setIsCreateDataChannel', false),
+  withState('isSelectCreateDataChannel', 'setIsSelectCreateDataChannel', false),
   withHandlers({
-    openCreateDataChannel: props => () => props.setIsCreateDataChannel(true),
+    openSelectCreateDataChannel: props => () => props.setIsSelectCreateDataChannel(true),
   }),
 )(NewDisplayCardLayout);

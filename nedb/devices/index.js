@@ -10,7 +10,15 @@ module.exports = function(devices) {
     validateSchema: function(object) {
       return v.validate(object, schema);
     },
-
+    retrievePrototypeDevices: function(query) {
+      query.isActive = true;
+      return new Promise(function(resolve, reject) {
+        return devices.find(query, function(err, data) {
+          if (err) return reject();
+          resolve(data);
+        });
+      });
+    },
     retriveUserDevices: function(query, sort, skip, limit) {
 
       query.isActive = true;

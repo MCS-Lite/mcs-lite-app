@@ -8,7 +8,9 @@ import PanelBody from 'mtk-ui/lib/PanelBody';
 import PanelIcon from 'mtk-ui/lib/PanelIcon';
 import NewDisplayCard from './newDisplayCard';
 
-const PanelContentLayout = () => {
+const PanelContentLayout = ({
+  prototypeId,
+}) => {
   return (
     <div className={panelContentStyles.base}>
       <Panel>
@@ -22,7 +24,7 @@ const PanelContentLayout = () => {
           </div>
         </PanelHeader>
         <PanelBody className={panelContentStyles.body}>
-          <NewDisplayCard />
+          <NewDisplayCard prototypeId={prototypeId}/>
         </PanelBody>
       </Panel>
     </div>

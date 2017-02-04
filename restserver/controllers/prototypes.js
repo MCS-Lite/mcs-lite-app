@@ -1,18 +1,48 @@
 module.exports = function ($db) {
   var prototypes = $db.prototypes;
+  var devices = $db.devices;
   var users = $db.users;
   var datachannels = $db.datachannels;
 
   var retrievePrototypeDetail = function(req, res, next) {
     var userId = req.user.userId;
+    var isAdmin = req.user.isAdmin;
     var prototypeId = req.params.prototypeId;
 
+    var prototypeData;
+    console.log(prototypeId);
     return prototypes.retriveUserPrototypes({
       prototypeId: prototypeId,
       isActive: true,
     })
     .then(function(data) {
-      return res.send(200, { data: data[0] });
+      console.log(data.length);
+      if (data.length !== 1) {
+        return res.send(400, 'Can\'t find this prototype.')
+      }
+      prototypeData = data[0];
+      if (isAdmin) {
+        return devices.retrievePrototypeDevices({
+          prototypeId: prototypeId,
+        });
+      } else {
+        return devices.retrievePrototypeDevices({
+          prototypeId: prototypeId,
+          createdUserId: userId,
+        });
+      }
+    })
+    .then(function(data){
+      prototypeData.devices = data;
+      prototypeData.devicesLength = data.length;
+      return datachannels.retrievDatachannel({
+        prototypeId: prototypeId,
+      });
+    })
+    .then(function(data) {
+      prototypeData.datachannels = data;
+      console.log(prototypeData);
+      return res.send(200, { data: prototypeData });
     })
     .catch(function(err) {
       return res.send(400, err);

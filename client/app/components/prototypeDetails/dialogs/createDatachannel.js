@@ -12,6 +12,7 @@ import InputText from 'mtk-ui/lib/InputText';
 import InputTextarea from 'mtk-ui/lib/InputTextarea';
 import Hr from 'mtk-ui/lib/Hr';
 import InputCheckbox from 'mtk-ui/lib/InputCheckbox';
+import InputSelect from 'mtk-ui/lib/InputSelect';
 
 import prototypeDetailActions from '../../../actions/prototypeDetailActions';
 
@@ -20,12 +21,29 @@ import { default as pure } from 'recompose/pure';
 import { default as withState } from 'recompose/withState';
 import { default as withHandlers } from 'recompose/withHandlers';
 
+import { data } from '../../../utils/dataChannelTypes';
+import Preview from '../preview';
+
+let dataChannelTypesOptions = []
+data.forEach((k,v)=>{
+  dataChannelTypesOptions.push({
+    value: k.dataChannelTypeId.toString(),
+    children: k.dataChannelTypeName,
+  });
+});
+
 const CreateDataChannelDialog = ({
   isCreateDataChannel,
   closeCreateDataChannel,
   onDataChannelNameChange,
   onDataChannelIdChange,
   onDataChannelDescriptionChange,
+  dataChannelName,
+  dataChannelId,
+  dataChannelDescription,
+  submitCreateDataChannel,
+  onDataChannelTypeChange,
+  dataChannelType,
 }) => {
   return (
     <Dialog
@@ -51,21 +69,27 @@ const CreateDataChannelDialog = ({
           <InputText
             required
             label="Data channel id"
-            value={dataChannelName}
+            value={dataChannelId}
             placeholder="Input the data channel id."
             onChange={onDataChannelIdChange}
           />
           <InputTextarea
             label="Description"
             rows="4"
-            value={testDeviceDescription}
+            value={dataChannelDescription}
             style={{ resize: 'none' }}
             placeholder="Input the data channel description."
             onChange={onDataChannelDescriptionChange}
           />
+          <InputSelect
+            placeholder="Input the data type."
+            items={dataChannelTypesOptions}
+            value={dataChannelType}
+            onChange={onDataChannelTypeChange}
+          />
         </InputForm>
-        <Hr />
-        <InputCheckbox label="Create as public device" />
+        <p>Template preview: Select a template that suits your data channel.</p>
+        <Preview />
       </DialogBody>
       <DialogFooter>
         <Button kind="cancel" onClick={closeCreateDataChannel}>Cancel</Button>
@@ -82,11 +106,21 @@ export default compose(
   withState('dataChannelName', 'setDataChannelName', ''),
   withState('dataChannelId', 'setDataChannelId', ''),
   withState('dataChannelDescription', 'setDataChannelDescription', ''),
-  withState('isCreateDataChannel', 'setIsCreateDataChannel', false),
+  withState('dataChannelType', 'setDataChannelType', ''),
   withHandlers({
+    closeCreateDataChannel: props => (e) => props.setIsCreateDataChannel(false),
     onDataChannelNameChange: props => (e) => props.setDataChannelName(e.target.value),
     onDataChannelIdChange: props => (e) => props.setDataChannelId(e.target.value),
     onDataChannelDescriptionChange: props => (e) => props.setDataChannelDescription(e.target.value),
-    submitCreateDataChannel: props => (e) => {},
+    onDataChannelTypeChange: props => (e, vallue) => props.setDataChannelType(value),
+    submitCreateDataChannel: props => (e) => {
+      let data = {};
+      data.displayCardType = props.displayCardType;
+      data.dataChannelId = props.dataChannelId;
+      data.dataChannelDescription = props.dataChannelDescription;
+      data.dataChannelName = props.dataChannelName;
+
+      // prototypeDetailActions.createDataChannel(props.prototypeId, data);
+    },
   }),
  )(CreateDataChannelDialog)

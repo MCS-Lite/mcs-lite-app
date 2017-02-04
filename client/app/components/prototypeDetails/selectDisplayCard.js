@@ -10,7 +10,11 @@ import { default as pure } from 'recompose/pure';
 import { default as withState } from 'recompose/withState';
 import { default as withHandlers } from 'recompose/withHandlers';
 
-const DisplayCardLayout = ({ title, description }) => {
+const DisplayCardLayout = ({
+  title,
+  description,
+  submitDisplayCard,
+}) => {
   return (
     <div className={displayCardStyles.base}>
       <div className={displayCardStyles.content}></div>
@@ -19,7 +23,7 @@ const DisplayCardLayout = ({ title, description }) => {
       <p className={displayCardStyles.description}>
       {description}
       </p>
-      <Button className={displayCardStyles.button}>
+      <Button className={displayCardStyles.button} onClick={submitDisplayCard}>
       Add
       </Button>
     </div>
@@ -28,4 +32,10 @@ const DisplayCardLayout = ({ title, description }) => {
 
 export default compose(
   pure,
+  withHandlers({
+    submitDisplayCard: props => () => {
+      props.setIsCreateDataChannel(true),
+      props.setDisplayCardType(props.displayCardType)
+    },
+  })
 )(DisplayCardLayout);

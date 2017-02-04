@@ -17,16 +17,17 @@ const Prototypes = ({ prototypes,  createTestDevice, ...props }) => {
     version,
     prototypeDescription,
     prototypeId,
+    devicesLength,
   } = prototypes.prototypeDetail;
-
+  console.log(prototypes.prototypeDetail.prototypeId)
   return (
     <div>
       <Header />
       <div className={prototypeDetailStyle.base}>
         <Breadcrumb prototypeName={prototypeName} />
         <PrototypeDetailHeader prototypeId={prototypeId} prototypeName={prototypeName} version={version} createTestDevice={createTestDevice} {...props}/>
-        <PrototypeDetailInfo prototypeDescription={prototypeDescription} />
-        <PanelContent />
+        <PrototypeDetailInfo prototypeDescription={prototypeDescription} devicesLength={devicesLength} />
+        <PanelContent prototypeId={prototypeId} />
       </div>
       <Footer />
     </div>

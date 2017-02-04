@@ -9,6 +9,7 @@ module.exports = function(datachannels, prototypes) {
       return v.validate(object, schema);
     },
     retrievDatachannel: function(field) {
+      field.isActive = true;
       return new Promise(function(resolve, reject) {
         return datachannels.find(field, function(err, data) {
           if (err) return reject();

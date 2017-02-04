@@ -5,6 +5,7 @@ import prototypeDetailInfoStyles from './prototypeDetailInfo.css';
 
 const PrototypeDetailInfoLayout = ({
   prototypeDescription,
+  devicesLength,
 }) => {
   return (
     <div className={prototypeDetailInfoStyles.base}>
@@ -16,7 +17,7 @@ const PrototypeDetailInfoLayout = ({
       </div>
       <div className={prototypeDetailInfoStyles.testDevice}>
         <div className={prototypeDetailInfoStyles.testDeviceInfo}>
-          <span>1</span>
+          <span>{devicesLength}</span>
           <p>Test Device</p>
         </div>
         <div className={prototypeDetailInfoStyles.hint}>

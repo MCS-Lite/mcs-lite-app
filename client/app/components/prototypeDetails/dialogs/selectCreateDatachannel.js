@@ -15,23 +15,30 @@ import { default as withHandlers } from 'recompose/withHandlers';
 import SelectDisplayCard from '../selectDisplayCard';
 import selectCreateDataChannelStyles from './selectCreateDataChannel.css'
 
+import CreateDataChannel from './createDataChannel';
+
 const CreateDataChannelDialog = ({
+  closeSelectCreateDataChannel,
+  setIsCreateDataChannel,
   isCreateDataChannel,
-  openCreateDataChannel,
-  closeCreateDataChannel,
+  displayCardType,
+  setDisplayCardType,
+  isSelectCreateDataChannel,
+  prototypeId,
 }) => {
   return (
     <Dialog
-      show={isCreateDataChannel}
+      show={isSelectCreateDataChannel}
       size="large"
-      onHide={closeCreateDataChannel}
+      onHide={closeSelectCreateDataChannel}
     >
       <DialogHeader>
         <div>Add data channel</div>
       </DialogHeader>
       <DialogBody className={selectCreateDataChannelStyles.content}>
-        <SelectDisplayCard title="Controller" description="The controller data channels allow you to control the status of your devices. eg, ON/OFF for a switch" />
-        <SelectDisplayCard title="Display" description="The display data channels allow you to get the data from your devices." />
+        <SelectDisplayCard setIsCreateDataChannel={setIsCreateDataChannel} displayCardType={1} setDisplayCardType={setDisplayCardType} title="Controller" description="The controller data channels allow you to control the status of your devices. eg, ON/OFF for a switch" />
+        <SelectDisplayCard setIsCreateDataChannel={setIsCreateDataChannel} displayCardType={2} setDisplayCardType={setDisplayCardType} title="Display" description="The display data channels allow you to get the data from your devices." />
+        <CreateDataChannel prototypeId={prototypeId} displayCardType={displayCardType} isCreateDataChannel={isCreateDataChannel} setIsCreateDataChannel={setIsCreateDataChannel} />
       </DialogBody>
     </Dialog>
   );
@@ -39,8 +46,9 @@ const CreateDataChannelDialog = ({
 
 export default compose(
   pure,
+  withState('displayCardType', 'setDisplayCardType', 0),
+  withState('isCreateDataChannel', 'setIsCreateDataChannel', false),
   withHandlers({
-    openCreateDataChannel: props => () => props.setIsCreateDataChannel(true),
-    closeCreateDataChannel: props => () => props.setIsCreateDataChannel(false),
+    closeSelectCreateDataChannel: props => () => props.setIsSelectCreateDataChannel(false),
   }),
  )(CreateDataChannelDialog)
