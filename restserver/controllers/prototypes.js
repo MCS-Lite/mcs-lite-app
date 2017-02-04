@@ -10,13 +10,11 @@ module.exports = function ($db) {
     var prototypeId = req.params.prototypeId;
 
     var prototypeData;
-    console.log(prototypeId);
     return prototypes.retriveUserPrototypes({
       prototypeId: prototypeId,
       isActive: true,
     })
     .then(function(data) {
-      console.log(data.length);
       if (data.length !== 1) {
         return res.send(400, 'Can\'t find this prototype.')
       }
@@ -41,7 +39,6 @@ module.exports = function ($db) {
     })
     .then(function(data) {
       prototypeData.datachannels = data;
-      console.log(prototypeData);
       return res.send(200, { data: prototypeData });
     })
     .catch(function(err) {

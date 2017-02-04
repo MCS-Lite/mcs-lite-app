@@ -24,8 +24,6 @@ Object.keys(oauth.clients).forEach(function(key) { clientId = key; clientSecret 
 var basic_token = new Buffer(clientId + ':' + clientSecret).toString('base64');
 window.basic_token = basic_token;
 
-console.log(store.getState());
-
 if (document && document.getElementById('app')) {
   dom.render(
     <Provider store={store}>

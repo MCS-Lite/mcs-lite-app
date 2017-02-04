@@ -2,10 +2,8 @@ import { connect } from 'react-redux';
 import React, { Component } from 'react'
 import main from './main.css';
 
-class Login extends Component {
+class Admin extends Component {
   render() {
-    console.log(this.props);
-    console.log(this.state);
     return (
       <div>
         <div>
@@ -17,21 +15,7 @@ class Login extends Component {
 }
 
 const mapStateToProps = (state) => {
-  console.log(12313123);
-  console.log(state);
-  return {
-
-  };
+  return state;
 }
 
-const mapDispatchToProps = (dispatch) => {
-  console.log(dispatch);
-  return {
-    onTodoClick: (id) => {
-      dispatch(toggleTodo(id))
-    }
-  }
-}
-
-
-export default connect(mapStateToProps, mapDispatchToProps)(Login);
+export default connect(mapStateToProps, {})(admin);

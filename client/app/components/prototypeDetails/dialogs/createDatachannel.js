@@ -1,4 +1,3 @@
-import { connect } from 'react-redux';
 import React, { Component } from 'react';
 
 import Button from 'mtk-ui/lib/Button';

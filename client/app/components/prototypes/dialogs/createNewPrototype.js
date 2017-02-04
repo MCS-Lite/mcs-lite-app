@@ -87,7 +87,7 @@ export default compose(
   withState('prototypeDescription', 'setPrototypeDescription', ''),
   withHandlers({
     submitCreateNewPrototype: props => () => {
-      console.log(props);
+      // console.log(props);
     },
     onVersionChange: props => (e) => props.setVersion(e.target.value),
     onPrototypeDescriptionChange: props => (e) => props.setPrototypeDescription(e.target.value),

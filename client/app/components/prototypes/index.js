@@ -1,4 +1,3 @@
-import { connect } from 'react-redux';
 import React, { Component } from 'react';
 
 import Footer from '../footer';
@@ -12,7 +11,6 @@ import PrototypeCard from './prototypeCard';
 import prototypeStyle from './prototypes.css';
 
 const Prototypes = ({ prototypes, ...props }) => {
-  console.log(prototypes);
   return (
     <div>
       <Header />

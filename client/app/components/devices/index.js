@@ -1,4 +1,3 @@
-import { connect } from 'react-redux';
 import React, { Component } from 'react';
 
 import Footer from '../footer';
@@ -11,7 +10,6 @@ import DeviceCard from './deviceCard';
 import deviceStyle from './devices.css';
 
 const Devices = ({ devices }) => {
-  console.log(devices);
   return (
     <div>
       <Header />

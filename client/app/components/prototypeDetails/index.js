@@ -19,7 +19,6 @@ const Prototypes = ({ prototypes,  createTestDevice, ...props }) => {
     prototypeId,
     devicesLength,
   } = prototypes.prototypeDetail;
-  console.log(prototypes.prototypeDetail.prototypeId)
   return (
     <div>
       <Header />

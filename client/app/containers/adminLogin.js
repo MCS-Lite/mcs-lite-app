@@ -4,12 +4,10 @@ import main from './main.css';
 
 class AdminLogin extends Component {
   render() {
-    console.log(this.props);
-    console.log(this.state);
     return (
       <div>
         <div className={main.base}>
-          this is login!
+          this is admin login!
         </div>
       </div>
     );
@@ -17,21 +15,7 @@ class AdminLogin extends Component {
 }
 
 const mapStateToProps = (state) => {
-  console.log(12313123);
-  console.log(state);
-  return {
-
-  };
+  return state;
 }
 
-const mapDispatchToProps = (dispatch) => {
-  console.log(dispatch);
-  return {
-    onTodoClick: (id) => {
-      dispatch(toggleTodo(id))
-    }
-  }
-}
-
-
-export default connect(mapStateToProps, mapDispatchToProps)(AdminLogin);
+export default connect(mapStateToProps, {})(AdminLogin);

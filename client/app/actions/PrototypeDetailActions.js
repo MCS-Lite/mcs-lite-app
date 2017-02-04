@@ -16,7 +16,6 @@ export const createTestDevice =  (data) => (dispatch, getState) => {
   data.createUserId = getState().main.userId;
   return request('/devices', 'POST', data, getState().main.access_token)
   .then((data) => {
-    console.log(data.data);
     browserHistory.push('/devices/' + data.data.deviceId);
   });
 }

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+
 const footerStyle = {
   background: '#353630',
   textAlign: 'center',

@@ -1,4 +1,3 @@
-import { connect } from 'react-redux';
 import React, { Component } from 'react';
 
 import prototypeCardStyles from './prototypeCard.css';
@@ -38,7 +37,6 @@ const PrototypeCardLayout = ({
   deletePrototype,
   editPrototype,
 }) => {
-  console.log(isTemplate)
   let items = [
     { value: 'edit', children: 'Edit' },
     { value: 'clone', children: 'Clone' },

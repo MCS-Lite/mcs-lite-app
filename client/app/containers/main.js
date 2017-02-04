@@ -5,32 +5,16 @@ import main from './main.css';
 
 class Main extends Component {
   render() {
-    console.log(this.props);
-    console.log(this.state);
     return (
       <div className={main.base}>
-        123123
+        this is main app.
       </div>
     );
   }
 }
 
 const mapStateToProps = (state) => {
-  console.log(12313123);
-  console.log(state);
-  return {
-
-  };
+  return state;
 }
 
-const mapDispatchToProps = (dispatch) => {
-  console.log(dispatch);
-  return {
-    onTodoClick: (id) => {
-      dispatch(toggleTodo(id))
-    }
-  }
-}
-
-
-export default connect(mapStateToProps, mapDispatchToProps)(Main);
+export default connect(mapStateToProps, {})(Main);

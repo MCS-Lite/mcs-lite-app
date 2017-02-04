@@ -1,4 +1,3 @@
-import { connect } from 'react-redux';
 import React, { Component } from 'react';
 import Footer from '../footer';
 import Header from '@mtk/mcs-components/lib/Header';

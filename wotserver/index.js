@@ -8,7 +8,7 @@ var onmessage = function(payload) {
   // console.log(paths);
   // var deviceId = paths[2];
   api.init(db).import(payload);
-  console.log(payload);
+  // console.log(payload);
 };
 
 var onnewthing = function(thing) {

@@ -1,4 +1,3 @@
-import { connect } from 'react-redux';
 import React, { Component } from 'react';
 
 import Button from 'mtk-ui/lib/Button';
@@ -80,7 +79,6 @@ export default compose(
     onTestDeviceDescriptionChange: props => (e) => props.setTestDeviceDescription(e.target.value),
     closeCreateTestDevice: props => () => props.setIsCreateTestDevice(false),
     submitCreateTestDevice: props => () => {
-      console.log(props)
       const data = {
         deviceName: props.testDeviceName,
         deviceDescription: props.testDeviceDescription,

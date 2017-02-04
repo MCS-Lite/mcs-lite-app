@@ -1,4 +1,3 @@
-import { connect } from 'react-redux';
 import React, { Component } from 'react';
 import prototypeBanner from '../prototypes/productBanner.png';
 import prototypeDetailInfoStyles from './prototypeDetailInfo.css';
