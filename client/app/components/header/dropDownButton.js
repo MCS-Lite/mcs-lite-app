@@ -20,9 +20,7 @@ import Clickable from '../clickable'
 @withState('onDocumentKeyupListener', 'setOnDocumentKeyupListener', null)
 @withHandlers({
   handleClick: props => (e) => {
-
     const hide = () => {
-      console.log(1);
       props.setIsOpen(false);
       if (props.onDocumentClickListener) {
         props.onDocumentClickListener.remove();
@@ -34,7 +32,6 @@ import Clickable from '../clickable'
     };
 
     e.preventDefault();
-    console.log(props)
     if (props.isOpen) {
       return hide();
     }
@@ -57,7 +54,7 @@ export default class DropdownButton extends Clickable {
       isOpen,
       isHover,
       handleClick,
-      style: menuStyle,
+      className: menuStyle,
       buttonStyle,
       activeStyle,
       arrowIcon,
@@ -82,17 +79,16 @@ export default class DropdownButton extends Clickable {
             (isHover || isOpen) && activeStyle,
           )}
         >
-          {title}
+          { title }
           <i
             className={c(
               "fa fa-sort-down",
               dropButtonStyles.dropDownIcon,
               isOpen ? dropButtonStyles.dropDownIconOpen : dropButtonStyles.dropDownIconClose,
-              arrowIcon ? {} : { display: 'none' },
+              // arrowIcon ? {} : { display: 'none' },
             )}
           />
         </span>
-        {isOpen}
         <Nav
           dropdownMenu
           className={c(
@@ -103,12 +99,11 @@ export default class DropdownButton extends Clickable {
           {
 
             React.Children.map(children, (child, index) => {
-              // console.log(child.props);
               return React.cloneElement(child, {
                 key: index,
                 className: c(
                   child.props.className,
-                  children.length === index + 1 ? { borderRadius: '0 0 4px 4px' } : {},
+                  children.length === index + 1 ? dropButtonStyles.dropDownIconborder : {},
                 ),
               });
             })

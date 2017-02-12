@@ -15,7 +15,7 @@ const NavItem = ({
   href,
   target,
   children,
-  style,
+  className,
   activeStyle,
   activeLinkStyle,
   ...props,
@@ -25,7 +25,7 @@ const NavItem = ({
       {...props}
       className={c(
         NavItemStyles.item,
-        style,
+        className,
         isHover && activeStyle,
       )}
     >
@@ -47,7 +47,7 @@ const NavItem = ({
 
 export default compose(
   pure,
-  withState('href', 'setHref', (props)=> props.href || '#'),
+  withState('href', 'setHref', (props) => props.href || '#'),
   withState('isHover', 'setIsHover', false),
   withHandlers({
     onOver: (props) => props.setIsHover(true),

@@ -13,6 +13,8 @@ import DropdownButton from './dropDownButton';
 
 import c from 'classnames';
 
+import MiDevelopment from 'mtk-icon/lib/MiDevelopment'
+
 import logo from './web_logo.png';
 import resourcesConfig from './configs/resources';
 
@@ -27,6 +29,7 @@ const Header = ({
 }) => {
   return (
     <header className={headerStyles.base}>
+      <div className={headerStyles.mask}></div>
       <div className={headerStyles.container}>
         <Nav>
           <NavItem href= "/prototypes"
@@ -47,7 +50,7 @@ const Header = ({
             activeStyle={headerStyles.activeStyle}
             title={
               <span>
-                <i className="fa fa-wrench" className={headerStyles.prefixIcon} />
+                <MiDevelopment className={headerStyles.prefixIcon}/>
                 Development
               </span>
             }
@@ -68,7 +71,7 @@ const Header = ({
               className={c(
                 headerStyles.menuItem,
                 isItemActive('devices') ? headerStyles.menuItemActive : {},
-                { borderRadius: '0 0 4px 4px' },
+                headerStyles.menuItemBorder,
               )}
               linkStyle={headerStyles.menuLink}
               activeStyle={headerStyles.menuItemActive}
@@ -77,7 +80,7 @@ const Header = ({
             </NavItem>
           </DropdownButton>
         </Nav>
-        <Nav className={{ float: 'right' }}>
+        <Nav className={headerStyles.optionalBlock}>
             <DropdownButton
               id='resources'
               buttonStyle={c(
@@ -87,7 +90,7 @@ const Header = ({
               activeStyle={headerStyles.activeStyle}
               title={
                 <span>
-                  <i className="fa fa-inbox" className={headerStyles.prefixIcon}/>
+                  <MiDevelopment className={headerStyles.prefixIcon}/>
                   Resources
                 </span>
               }
@@ -101,12 +104,12 @@ const Header = ({
                       className={c(
                         headerStyles.menuItem,
                         isItemActive(entry.path) ? headerStyles.menuItemActive : {},
-                        array.length === index + 1 ? { borderRadius: '0 0 4px 4px' } : {},
+                        array.length === index + 1 ? headerStyles.menuItemBorder : {},
                       )}
                       linkStyle={headerStyles.menuLink}
                       activeStyle={c(
                         headerStyles.menuItemActive,
-                        array.length === index + 1 ? { borderRadius: '0 0 4px 4px' } : {},
+                        array.length === index + 1 ? headerStyles.menuItemBorder : {},
                       )}
                     >
                       { entry.name }
@@ -124,7 +127,7 @@ const Header = ({
               activeStyle={headerStyles.activeStyle}
               title={
                 <span>
-                  <i className="fa fa-comments-o" className={headerStyles.prefixIcon}/>
+                  <MiDevelopment className={headerStyles.prefixIcon}/>
                   Help
                 </span>
               }
@@ -185,7 +188,7 @@ const Header = ({
                 linkStyle={headerStyles.menuLink}
                 activeStyle={c(
                   headerStyles.menuItemActive,
-                  { borderRadius: '0 0 4px 4px' },
+                  headerStyles.menuItemBorder,
                 )}
               >
                 Sign out

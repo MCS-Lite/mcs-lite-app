@@ -1,8 +1,14 @@
 require('babel/polyfill');
 require('../styles/main.css');
 
-window.apiUrl = 'http://localhost:3000/api';
-window.oauthUrl = 'http://localhost:3000/oauth';
+
+if (/\:8081/.test(window.location.host)) {
+  window.apiUrl = 'http://localhost:3000/api';
+  window.oauthUrl = 'http://localhost:3000/oauth';
+} else {
+  window.apiUrl = window.location.origin + '/api';
+  window.oauthUrl = window.location.origin + '/oauth';
+}
 
 import React from 'react';
 import Footer from '@mtk/mcs-components/lib/Footer';

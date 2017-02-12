@@ -7,7 +7,7 @@ class Nav extends Component {
 
   render() {
     let {
-      style: listStyle,
+      className: listStyle,
       children,
       dropdownMenu,
       ...props,
@@ -16,7 +16,7 @@ class Nav extends Component {
     return (
       <ul {...props} className={c(
         dropdownMenu ? navStyles.dropdownMenu : navStyles.list,
-        listStyle
+        listStyle,
       )}>
         {React.Children.map(children, this._renderChildren)}
       </ul>

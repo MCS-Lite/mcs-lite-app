@@ -19,11 +19,11 @@
 }
 
 .container {
-  /*width: 954px;*/
+  width: 954px;
   /*height: 50px;*/
   background: #00a1de;
   margin: 0 auto;
-  padding: 0px 0px 0 3px;
+  padding: 0px 0px 0 6px;
   position: relative;
 }
 
@@ -73,6 +73,10 @@
   background-color: #0c86bc;
 }
 
+.menuItemBorder {
+  border-radius: 0 0 4px 4px;
+}
+
 .prefixIcon {
   position: relative;
   margin-left: 5px;
@@ -86,6 +90,10 @@
   margin-right: 0px;
   font-size: 25px;
   top: 8px;
+}
+
+.optionalBlock {
+  float: right;
 }
 
 .userImage {

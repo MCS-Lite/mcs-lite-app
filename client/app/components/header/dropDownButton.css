@@ -29,6 +29,10 @@
   transition: transform .1s linear;
 }
 
+.dropDownIconDisplayNone{
+  display: none;
+}
+
 .dropDownIconOpen{
   top: 4px;
   transform: rotate(-180deg);
@@ -37,4 +41,8 @@
 .dropDownIconClose{
   top: -3px;
   transform: rotate(0deg);
+}
+
+.dropDownIconBorder{
+  border-radius: 0 0 4px 4px;
 }
