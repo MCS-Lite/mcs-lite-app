@@ -26,7 +26,7 @@ const Devices = ({ devices }) => {
         <div className={deviceStyles.content}>
           {
             devices.deviceList.map((device) => {
-              return (<DeviceCard {...device} />);
+              return (<DeviceCard {...device} key={device.deviceId} />);
             })
           }
         </div>

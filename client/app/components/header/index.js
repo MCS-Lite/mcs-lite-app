@@ -56,7 +56,7 @@ const Header = ({
               href="/prototypes"
               className={c(
                 headerStyles.menuItem,
-                isItemActive('development') ? headerStyles.menuItemActive : {},
+                isItemActive('prototypes') ? headerStyles.menuItemActive : {},
               )}
               linkStyle={headerStyles.menuLink}
               activeStyle={headerStyles.menuItemActive}
@@ -67,7 +67,7 @@ const Header = ({
               href="/devices"
               className={c(
                 headerStyles.menuItem,
-                isItemActive('testdevices') ? headerStyles.menuItemActive : {},
+                isItemActive('devices') ? headerStyles.menuItemActive : {},
                 { borderRadius: '0 0 4px 4px' },
               )}
               linkStyle={headerStyles.menuLink}
@@ -79,6 +79,7 @@ const Header = ({
         </Nav>
         <Nav className={{ float: 'right' }}>
             <DropdownButton
+              id='resources'
               buttonStyle={c(
                 headerStyles.link,
                 isMenuActive('resourcesList') && headerStyles.activeStyle,
@@ -155,6 +156,7 @@ const Header = ({
               </NavItem>
             </DropdownButton>
             <DropdownButton
+              id='profile'
               buttonStyle={headerStyles.link}
               activeStyle={headerStyles.activeStyle}
               title={

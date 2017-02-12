@@ -27,7 +27,7 @@ const Prototypes = ({ prototypes, ...props }) => {
           <NewPrototypeCard />
           {
             prototypes.prototypeList.map((prototype) => {
-              return (<PrototypeCard {...prototype} {...props} />);
+              return (<PrototypeCard key={prototype.prototypeId} {...prototype} {...props} />);
             })
           }
         </div>

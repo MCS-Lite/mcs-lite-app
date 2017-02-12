@@ -22,6 +22,7 @@ import Clickable from '../clickable'
   handleClick: props => (e) => {
 
     const hide = () => {
+      console.log(1);
       props.setIsOpen(false);
       if (props.onDocumentClickListener) {
         props.onDocumentClickListener.remove();
@@ -46,6 +47,7 @@ import Clickable from '../clickable'
 
     props.setOnDocumentClickListener(EventListener.listen(document, 'click', hide));
     props.setOnDocumentKeyupListener(EventListener.listen(document, 'keyup', hide));
+
   },
 })
 export default class DropdownButton extends Clickable {
@@ -61,11 +63,12 @@ export default class DropdownButton extends Clickable {
       arrowIcon,
       children,
       title,
+      id,
     } = this.props;
 
     return (
       <li
-        // id={id}
+        id={id}
         className={c(
           dropButtonStyles.item,
           (isHover || isOpen) && activeStyle,
@@ -89,6 +92,7 @@ export default class DropdownButton extends Clickable {
             )}
           />
         </span>
+        {isOpen}
         <Nav
           dropdownMenu
           className={c(
@@ -97,11 +101,13 @@ export default class DropdownButton extends Clickable {
           )}
         >
           {
+
             React.Children.map(children, (child, index) => {
+              // console.log(child.props);
               return React.cloneElement(child, {
                 key: index,
                 className: c(
-                  child.props.style,
+                  child.props.className,
                   children.length === index + 1 ? { borderRadius: '0 0 4px 4px' } : {},
                 ),
               });
