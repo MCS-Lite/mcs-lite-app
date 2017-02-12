@@ -16,5 +16,5 @@ cp -R package.json ./build/package.json
 cp -R ./node_modules/ ./build/node_modules
 
 mkdir out
-nwbuild -p win64,osx64,linux32,linux64 -v 0.14.6 ./build -o ./out
+nwbuild -p win64,osx64 -v 0.20.1 ./build -o ./out
 cp -R ./build/ ./out/mcs-lite-app/win64/package.nw

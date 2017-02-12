@@ -14,7 +14,8 @@ var dbConfig = require('../configs/db');
 var connectDB = connectToDB(dbConfig).init();
 var Oauth = new oauth(connectDB);
 
-global.oauthHost = $oauth.host + ':' + $oauth.port;
+global.oauthHost = 'http://' + $oauth.host + ':' + $oauth.port;
+console.log(oauthHost);
 global.host = $rest.host + ':' + $rest.port + $rest.apiRoute;
 
 app.oauth = new OAuthServer({

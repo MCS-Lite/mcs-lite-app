@@ -11,7 +11,7 @@ import assign from 'object-assign';
 const initialState = {
   prototypeList: [],
   prototypeDetail: {},
-}
+};
 
 export default function prototypes( state = initialState, action ) {
   switch ( action.type ) {

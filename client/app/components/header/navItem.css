@@ -1,0 +1,10 @@
+.item {
+  display: inline-block;
+  list-style-type: none;
+}
+
+.link {
+  text-decoration: none;
+  outline: 0;
+  white-space: nowrap;
+}

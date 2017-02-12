@@ -68,7 +68,7 @@ const CreateTestDeviceDialog = ({
       </DialogFooter>
     </Dialog>
   );
-}
+};
 
 export default compose(
   pure,
@@ -85,9 +85,7 @@ export default compose(
         deviceImageURL: '',
         prototypeId: props.prototypeId,
       };
-      // console.log(createTestDevice)
       return props.createTestDevice(data);
-      // return props.setIsCreateTestDevice(false);
     },
   }),
  )(CreateTestDeviceDialog)

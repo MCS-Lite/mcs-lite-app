@@ -1,0 +1,19 @@
+.list {
+  display: inline-block;
+  padding: 0px;
+  margin: 0px;
+}
+
+.dropdownMenu {
+  display: none;
+  position: absolute;
+  top: 50px;
+  min-width: 100px;
+  padding: 0px;
+  z-index: 1000;
+  float: left;
+  text-align: left;
+  list-style: none;
+  background-color: #1995cc;
+  border-radius: 0 0 4px 4px;
+}

@@ -1,0 +1,40 @@
+.item{
+  margin-left: -0.32em;
+  display: inline-block;
+  list-style-type: none;
+  cursor: pointer;
+  position: relative;
+}
+
+.desktopNav{
+  display: block;
+  transition: transform .2s linear;
+  z-index: 1003;
+}
+
+.desktopNavShow{
+  transform: translate3d(0, 0, 0);
+}
+
+.desktopNavHide{
+  transform: translate3d(0, -102%, 0);
+}
+
+.dropDownIcon{
+  position: relative;
+  margin-left: 10px;
+  margin-right: 5px;
+  top: -3px;
+  font-size: 15px;
+  transition: transform .1s linear;
+}
+
+.dropDownIconOpen{
+  top: 4px;
+  transform: rotate(-180deg);
+}
+
+.dropDownIconClose{
+  top: -3px;
+  transform: rotate(0deg);
+}

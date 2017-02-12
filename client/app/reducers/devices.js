@@ -7,7 +7,7 @@ import assign from 'object-assign';
 const initialState = {
   deviceList: [],
   deviceDetail: {},
-}
+};
 
 export default function menus( state = initialState, action ) {
   switch ( action.type ) {

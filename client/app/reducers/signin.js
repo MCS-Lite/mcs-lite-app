@@ -5,7 +5,7 @@ import assign from 'object-assign';
 
 const initialState = {
   errorMsg: '',
-}
+};
 
 export default function login( state = initialState, action ) {
   switch ( action.type ) {

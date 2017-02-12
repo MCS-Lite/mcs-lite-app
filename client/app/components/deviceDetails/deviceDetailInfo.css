@@ -44,14 +44,17 @@
   justify-content: center;
   height: 100%;
 }
+
 .testDeviceInfo span {
   font-size: 32px;
   margin: 0px;
 }
+
 .testDeviceInfo p {
   margin: 0px;
   color: #999a94;
 }
+
 .hint {
   padding: 0 10px;
   max-height: 36px;

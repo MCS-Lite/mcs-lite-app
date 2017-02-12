@@ -48,7 +48,7 @@
   "dependencies": {
     "@mtk/mcs-components": "https://cdn.mediatek.com/Mediatek-Cloud/mcs-components/2.1.111.tgz",
     "autoprefixer": "^6.1.0",
-    "classnames": "^2.2.1",
+    "classnames": "^2.2.5",
     "css-loader": "0.23.0",
     "fbjs": "^0.8.0",
     "file-loader": "^0.8.4",
