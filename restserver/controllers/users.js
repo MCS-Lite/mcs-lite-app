@@ -152,6 +152,10 @@ module.exports = function ($db) {
             info.access_token = token.access_token;
             info.expire_time  = token.expire_time;
             info.userId       = res.body.userId;
+            info.userName     = res.body.userName;
+            info.email       = res.body.email;
+            info.userImage   = res.body.userImage;
+            info.isAdmin     = res.body.isAdmin;
 
             var payload = {
               token: token
@@ -279,6 +283,7 @@ module.exports = function ($db) {
       userName: req.body.userName,
       email: req.body.email,
       password: req.body.password,
+      isAdmin: false,
     })
     .then(function(data) {
       return res.send(200, { message: 'success' });

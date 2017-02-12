@@ -105,6 +105,10 @@ module.exports = function($db) {
     Users.signInUser(email, password)
     .then(function(data) {
       callback(null, {
+        isAdmin: data.isAdmin,
+        userName: data.userName,
+        email: data.email,
+        userImage: data.userImage,
         userId: data.userId,
       });
     })

@@ -11,6 +11,7 @@ describe('NeDB connector: Users', function() {
         userName: faker.name.findName(),
         email: email,
         password: '123123213',
+        isAdmin: false,
       })
       .then(function(data) {done();})
       .catch(done);

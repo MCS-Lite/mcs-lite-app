@@ -37,10 +37,10 @@ module.exports = function(users) {
 
     addNewUser: function(field) {
       field.userId = shortid.generate();
-      field.isActive = false;
       field.createdAt = new Date().getTime();
       field.updatedAt = new Date().getTime();
       field.isActive = true;
+      field.userImage = '';
       field.password = crypto
         .createHmac('sha256', secretKey)
         .update(field.password)
