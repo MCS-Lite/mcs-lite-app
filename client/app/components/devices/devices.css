@@ -1,4 +1,4 @@
-.base{
+.base {
   padding-top: 50px;
   width: 954px;
   margin: 0 auto;
@@ -6,7 +6,7 @@
   margin-bottom: 30px;
 }
 
-.content{
+.content {
   display: flex;
   flex-direction: row;
   margin-top: 20px;

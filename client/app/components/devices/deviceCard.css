@@ -12,21 +12,21 @@
   box-sizing: border-box;
 }
 
-.img{
+.img {
   height: 160px;
   background-position: center center;
   background-repeat: no-repeat;
 }
 
-.content{
+.content {
   padding: 20px;
 }
 
-.button{
+.button {
   width: 100%;
 }
 
-.more{
+.more {
   position: absolute;
   cursor: pointer;
   margin-left: 250px;
@@ -35,7 +35,7 @@
   padding: 14px;
 }
 
-.deviceName{
+.deviceName {
   font-size: 15px;
   font-weight: 700;
   width: 100%;

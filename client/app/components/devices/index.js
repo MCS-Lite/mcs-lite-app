@@ -12,7 +12,6 @@ import c from 'classnames';
 import deviceStyles from './devices.css';
 
 const Devices = ({ devices, main }) => {
-  console.log(main)
   return (
     <div>
       <Header

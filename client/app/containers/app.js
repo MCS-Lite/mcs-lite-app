@@ -1,6 +1,5 @@
 import { connect } from 'react-redux';
 import React, { Component } from 'react';
-import Main from '../containers/main';
 import { checkToken } from '../actions/AppActions';
 
 class App extends Component {
@@ -12,7 +11,12 @@ class App extends Component {
   }
 
   render() {
-    const { children, location, main } = this.props;
+    const {
+      children,
+      location,
+      main
+    } = this.props;
+
     return (
       <div>
         { /(login)|(signin)/.test(location.pathname)  ?

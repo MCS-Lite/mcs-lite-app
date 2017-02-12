@@ -2,6 +2,7 @@ import { connect } from 'react-redux';
 import React, { Component } from 'react';
 import DeviceDetails from '../components/deviceDetails';
 import * as deviceDetailActions from '../actions/DeviceDetailActions'
+
 class DeviceDetail extends Component {
 
   componentDidMount() {

@@ -2,8 +2,8 @@ import { connect } from 'react-redux';
 import React, { Component } from 'react';
 import DeviceLayout from '../components/devices';
 import { retrieveDeviceList } from '../actions/DeviceActions'
-class Device extends Component {
 
+class Device extends Component {
   componentDidMount() {
     this.props.retrieveDeviceList()
   }

@@ -1,4 +1,4 @@
-.item{
+.item {
   margin-left: -0.32em;
   display: inline-block;
   list-style-type: none;
@@ -6,21 +6,21 @@
   position: relative;
 }
 
-.desktopNav{
+.desktopNav {
   display: block;
   transition: transform .2s linear;
   z-index: 1003;
 }
 
-.desktopNavShow{
+.desktopNavShow {
   transform: translate3d(0, 0, 0);
 }
 
-.desktopNavHide{
+.desktopNavHide {
   transform: translate3d(0, -102%, 0);
 }
 
-.dropDownIcon{
+.dropDownIcon {
   position: relative;
   margin-left: 10px;
   margin-right: 5px;
@@ -29,20 +29,20 @@
   transition: transform .1s linear;
 }
 
-.dropDownIconDisplayNone{
+.dropDownIconDisplayNone {
   display: none;
 }
 
-.dropDownIconOpen{
+.dropDownIconOpen {
   top: 4px;
   transform: rotate(-180deg);
 }
 
-.dropDownIconClose{
+.dropDownIconClose {
   top: -3px;
   transform: rotate(0deg);
 }
 
-.dropDownIconBorder{
+.dropDownIconBorder {
   border-radius: 0 0 4px 4px;
 }

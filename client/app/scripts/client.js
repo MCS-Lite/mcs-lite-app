@@ -1,7 +1,6 @@
 require('babel/polyfill');
 require('../styles/main.css');
 
-
 if (/\:8081/.test(window.location.host)) {
   window.apiUrl = 'http://localhost:3000/api';
   window.oauthUrl = 'http://localhost:3000/oauth';
@@ -28,6 +27,7 @@ var clientId;
 var clientSecret;
 Object.keys(oauth.clients).forEach(function(key) { clientId = key; clientSecret = oauth.clients[key].secret });
 var basic_token = new Buffer(clientId + ':' + clientSecret).toString('base64');
+
 window.basic_token = basic_token;
 
 if (document && document.getElementById('app')) {

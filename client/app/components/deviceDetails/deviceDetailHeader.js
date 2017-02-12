@@ -20,7 +20,6 @@ const DeviceDetailHeaderLayout = ({
   main,
   createTestDevice,
 }) => {
-  // more 要換成 DropdownButton
   return (
     <div className={deviceDetailHeaderStyles.base}>
       <div className={deviceDetailHeaderStyles.content}>

@@ -20,6 +20,10 @@ export const checkToken =  () => (dispatch) => {
       access_token: data.results.access_token,
       token: data.results.token,
       userId: data.results.userId,
+      userName: data.results.userName,
+      email: data.results.email,
+      userImage: data.results.userImage,
+      isAdmin: data.results.isAdmin,
     });
   })
   .catch(error => {

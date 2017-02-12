@@ -15,6 +15,10 @@ export default function main( state = initialState, action ) {
     case CHECKTOKEN:
       return assign({}, state, {
         userId: action.userId,
+        userName: action.userName,
+        isAdmin: action.isAdmin,
+        userImage: action.userImage || '',
+        email: action.email,
         access_token: action.access_token,
         token: action.token,
         isInitialized: true,
