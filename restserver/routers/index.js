@@ -37,7 +37,7 @@ module.exports = function($db, $app, $rest) {
     path: '/',
     methods: ['get'],
     handler: function(req, res, next) {
-      res.render('index.html');
+      res.render('app/build/index.html');
     },
   };
 
@@ -45,7 +45,7 @@ module.exports = function($db, $app, $rest) {
     path: '/prototypes',
     methods: ['get'],
     handler: function(req, res, next) {
-      res.render('index.html');
+      res.render('app/build/index.html');
     },
   };
 
@@ -53,7 +53,7 @@ module.exports = function($db, $app, $rest) {
     path: '/signin',
     methods: ['get'],
     handler: function(req, res, next) {
-      res.render('index.html');
+      res.render('app/build/index.html');
     },
   };
 
@@ -61,7 +61,7 @@ module.exports = function($db, $app, $rest) {
     path: '/prototypes/:prototypeId',
     methods: ['get'],
     handler: function(req, res, next) {
-      res.render('index.html');
+      res.render('app/build/index.html');
     },
   };
 
@@ -69,7 +69,7 @@ module.exports = function($db, $app, $rest) {
     path: '/devices',
     methods: ['get'],
     handler: function(req, res, next) {
-      res.render('index.html');
+      res.render('app/build/index.html');
     },
   };
 
@@ -77,7 +77,7 @@ module.exports = function($db, $app, $rest) {
     path: '/devices/:deviceId',
     methods: ['get'],
     handler: function(req, res, next) {
-      res.render('index.html');
+      res.render('app/build/index.html');
     },
   };
 

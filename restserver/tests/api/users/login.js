@@ -1,9 +1,8 @@
 var request = require('supertest-as-promised');
 
 var oauth = require('../../../../configs/oauth');
-var clientId;
-var clientSecret;
-Object.keys(oauth.clients).forEach(function(key) { clientId = key; clientSecret = oauth.clients[key].secret });
+var clientId = oauth.webClient.clientId;
+var clientSecret = oauth.webClient.secret;
 var basic_token = new Buffer(clientId + ':' + clientSecret).toString('base64');
 
 module.exports = function(userName, email, password, isAdmin, mcs, done) {

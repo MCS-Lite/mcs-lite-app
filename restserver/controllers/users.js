@@ -230,7 +230,7 @@ module.exports = function ($db) {
             .set('Cache-Control', 'no-cache')
             .set('Content-Type', 'application/x-www-form-urlencoded')
             .send(data)
-            .set('Authorization', `Basic ${basic_token}`)
+            .set('Authorization', `Basic ${req.basic_token}`)
             .end(function(err, res) {
               return res.ok ?  resolve(res.body) : reject(err.response.body.message);
             });
@@ -248,29 +248,29 @@ module.exports = function ($db) {
         }
 
         if (process.env.NODE_ENV === 'dev') {
-          return res.redirect('http://127.0.0.1:8081/prototypes');
+          return res.redirect(req.clientAppInfo.redirect + '/prototypes');
         }
-        return res.render('index.html');
+        return res.render('app/build/index.html');
 
       }).catch((err) => {
         /* 有任何錯誤就返回首頁 */
         res.clearCookie('token', { path: '/' });
         if (process.env.NODE_ENV === 'dev') {
-          return res.redirect('http://127.0.0.1:8081/');
+          return res.redirect(req.clientAppInfo.redirect + '/login');
         }
 
-        return res.render('index.html');
+        return res.render('app/build/index.html');
       });
     } else {
       /* 如果 cookie 沒有 token 就是以前未登入過狀態 */
       if (process.env.NODE_ENV === 'dev') {
         if (req.query.errorMsg) {
-          return res.redirect('http://127.0.0.1:8081?errorMsg=' + req.query.errorMsg);
+          return res.redirect(req.clientAppInfo.redirect + '?errorMsg=' + req.query.errorMsg);
         }
-        return res.redirect('http://127.0.0.1:8081/');
+        return res.redirect(req.clientAppInfo.redirect + '/');
       }
 
-      return res.render('index.html');
+      return res.render('app/build/index.html');
     }
   };
 

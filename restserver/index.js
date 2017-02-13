@@ -27,7 +27,7 @@ app.oauth = new OAuthServer({
 });
 
 app.engine('html', require('ejs').renderFile);
-app.set('views', __dirname.replace(__dirname.split('/')[__dirname.split('/').length - 1], '') + 'client/app/build');
+app.set('views', __dirname.replace(__dirname.split('/')[__dirname.split('/').length - 1], '') + 'client');
 app.use('/assets', express.static(__dirname.replace(__dirname.split('/')[__dirname.split('/').length - 1], '') + 'client/app/build/assets'));
 
 app.use(cookieParser());
