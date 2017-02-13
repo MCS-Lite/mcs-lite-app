@@ -25,6 +25,8 @@
 }
 
 .testDevice {
+  font-size: 12px;
+  box-sizing: border-box;
   height: 164px;
   background: #fff;
   border-radius: 4px;
@@ -34,6 +36,7 @@
   margin-left: 18px;
   flex-direction: column;
   justify-content: space-between;
+  padding: 20px;
 }
 
 .testDeviceInfo{
@@ -42,7 +45,6 @@
   align-items: center;
   text-align: center;
   justify-content: center;
-  height: 100%;
 }
 
 .testDeviceInfo span {
@@ -56,8 +58,9 @@
 }
 
 .hint {
-  padding: 0 10px;
-  max-height: 36px;
-  min-height: 36px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 60px;
   text-align: center;
 }
