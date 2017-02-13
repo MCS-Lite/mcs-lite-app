@@ -18,7 +18,7 @@ class Nav extends Component {
         dropdownMenu ? navStyles.dropdownMenu : navStyles.list,
         listStyle,
       )}>
-        {React.Children.map(children, this._renderChildren)}
+        { React.Children.map(children, this._renderChildren) }
       </ul>
     );
   }

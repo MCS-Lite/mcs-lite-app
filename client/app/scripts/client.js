@@ -23,11 +23,9 @@ const store = createStore(reducers, applyMiddleware(thunk));
 import routes from '../routes/routing';
 
 var oauth = require('../../../configs/oauth');
-var clientId;
-var clientSecret;
-Object.keys(oauth.clients).forEach(function(key) { clientId = key; clientSecret = oauth.clients[key].secret });
+var clientId = oauth.webClient.clientId;
+var clientSecret = oauth.webClient.secret;
 var basic_token = new Buffer(clientId + ':' + clientSecret).toString('base64');
-
 window.basic_token = basic_token;
 
 if (document && document.getElementById('app')) {

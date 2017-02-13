@@ -1,3 +1,13 @@
+var $oauth = require('../../configs/oauth');
+
+var webClientId = $oauth.webClient.clientId;
+var webClientSecret = $oauth.webClient.secret;
+var webBasicToken = new Buffer(webClientId + ':' + webClientSecret).toString('base64');
+
+var mobileClientId = $oauth.mobileClient.clientId;
+var mobileClientSecret = $oauth.mobileClient.secret;
+var mobileBasicToken = new Buffer(mobileClientId + ':' + mobileClientSecret).toString('base64');
+
 module.exports = function($db, $app, $rest) {
 
   var devicesController = new require('../controllers/devices')($db);
@@ -5,6 +15,23 @@ module.exports = function($db, $app, $rest) {
   var prototypesController = new require('../controllers/prototypes')($db);
   var datapointsController = new require('../controllers/datapoints')($db);
   var datachannelsController = new require('../controllers/datachannels')($db);
+
+  const parseBasicToken = function(req, res, next) {
+    if (/mobile/.test(req.route.path)) {
+      req.basicToken = mobileBasicToken;
+      req.clientAppInfo = {
+        isMobile: true,
+        redirect: $oauth.mobileClient.redirect,
+      };
+    } else {
+      req.basicToken = webBasicToken;
+      req.clientAppInfo = {
+        isMobile: false,
+        redirect: $oauth.webClient.redirect,
+      };
+    }
+    next();
+  };
 
   this.client = {
     path: '/',
@@ -81,12 +108,28 @@ module.exports = function($db, $app, $rest) {
   this.authLogin = {
     path: '/oauth/login',
     methods: ['post'],
+    middleware: [parseBasicToken],
     handler: usersController.login,
   };
 
   this.checkCookies = {
     path: '/oauth/cookies',
     methods: ['post'],
+    middleware: [parseBasicToken],
+    handler: usersController.checkCookies,
+  };
+
+  this.authLoginMobile = {
+    path: '/oauth/login/mobile',
+    methods: ['post'],
+    middleware: [parseBasicToken],
+    handler: usersController.login,
+  };
+
+  this.checkCookiesMobile = {
+    path: '/oauth/cookies/mobile',
+    methods: ['post'],
+    middleware: [parseBasicToken],
     handler: usersController.checkCookies,
   };
 
@@ -94,12 +137,6 @@ module.exports = function($db, $app, $rest) {
     path: '/oauth/signin',
     methods: ['post'],
     handler: usersController.signIn,
-  };
-
-  this.adminLoginInterface = {
-    path: '/admin/login',
-    methods: ['get'],
-    handler: usersController.adminLoginInterface,
   };
 
   this.registUser = {
@@ -192,11 +229,18 @@ module.exports = function($db, $app, $rest) {
     handler: devicesController.addNewDevice,
   };
 
-  this.editNewDevice = {
+  this.editDevice = {
     path: $rest.apiRoute + '/devices/:deviceId',
     methods: ['put'],
     middleware: [$app.oauth.authorise()],
-    handler: devicesController.editNewDevice,
+    handler: devicesController.editDevice,
+  };
+
+  this.setPublicDevice = {
+    path: $rest.apiRoute + '/devices/:deviceId/public',
+    methods: ['post'],
+    middleware: [$app.oauth.authorise()],
+    handler: devicesController.setPublicDevice,
   };
 
   this.uploadDatapoint = {

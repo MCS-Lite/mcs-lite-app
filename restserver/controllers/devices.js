@@ -51,7 +51,7 @@ module.exports = function ($db) {
     });
   };
 
-  var editNewDevice = function(req, res, next) {
+  var editDevice = function(req, res, next) {
     var userId = req.user.userId;
 
     return devices.editDevices({
@@ -71,11 +71,30 @@ module.exports = function ($db) {
     });
   };
 
+  var setPublicDevice = function(req, res, next) {
+    var userId = req.user.userId;
+    var isPublic = req.body.isPublic;
+
+    return devices.editDevices({
+      deviceId: req.params.deviceId,
+      isActive: true,
+      createUserId: userId,
+    }, {
+      isPublic: isPublic,
+    })
+    .then(function() {
+      return res.send(200, { message: 'success' });
+    })
+    .catch(function(err) {
+      return res.send(400, err);
+    });
+  };
+
   return {
     retrieveDevice: retrieveDevice,
     retrieveDeviceDetail: retrieveDeviceDetail,
     addNewDevice: addNewDevice,
-    editNewDevice: editNewDevice,
+    editDevice: editDevice,
+    setPublicDevice: setPublicDevice,
   };
-
 };

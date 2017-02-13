@@ -126,4 +126,20 @@ describe('Devices API:', function() {
       });
     });
   });
+
+  describe('Set device public api:', function() {
+    it('return 200.', function(done) {
+
+      request(mcs)
+      .post($rest.apiRoute + '/devices/' + deviceId + '/public')
+      .set('Authorization', 'Bearer ' + global.access_token)
+      .send({
+        isPublic: true,
+      })
+      .then(function(data) {
+        assert.equal(data.body.message, 'success', 'Response is not success.');
+        done();
+      });
+    });
+  });
 });

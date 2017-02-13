@@ -168,21 +168,24 @@ const Header = ({
                 </span>
               }
             >
-              <NavItem key="Profile"
+              <NavItem
+                key="Profile"
                 href="/profile"
                 className={headerStyles.menuItem}
                 linkStyle={headerStyles.menuLink}
                 activeStyle={headerStyles.menuItemActive}>
                 Profile
               </NavItem>
-              <NavItem key="TermsOfUse"
+              <NavItem
+                key="TermsOfUse"
                 href={`${basePath}terms_of_use/`}
                 className={headerStyles.menuItem}
                 linkStyle={headerStyles.menuLink}
                 activeStyle={headerStyles.menuItemActive}>
                 Terms of use
               </NavItem>
-              <NavItem key="SignOut"
+              <NavItem
+                key="SignOut"
                 onClick={()=>logoutFn()}
                 className={headerStyles.menuItem}
                 linkStyle={headerStyles.menuLink}

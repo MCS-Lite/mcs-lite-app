@@ -5,12 +5,6 @@ var request = require('superagent');
 var $oauth = require('../../configs/oauth');
 var $rest = require('../../configs/rest');
 
-/* fetch basic token */
-var clientId;
-var clientSecret;
-Object.keys($oauth.clients).forEach(function(key) { clientId = key; clientSecret = $oauth.clients[key].secret });
-var basicToken = new Buffer(clientId + ':' + clientSecret).toString('base64');
-
 module.exports = function ($db) {
   var users = $db.users;
 
@@ -68,7 +62,7 @@ module.exports = function ($db) {
         .set('Cache-Control', 'no-cache')
         .set('Content-Type', 'application/x-www-form-urlencoded')
         .send(data)
-        .set('Authorization', 'Basic ' + basicToken)
+        .set('Authorization', 'Basic ' + req.basicToken)
         .end(function(err, res) {
           return res.ok ?  resolve(res.body) : reject(err.response.body.message);
         });
@@ -92,10 +86,12 @@ module.exports = function ($db) {
         .set('Content-Type', 'application/x-www-form-urlencoded')
         .set('Authorization', `Bearer ${data.access_token}`)
         .end(function(err, data) {
-
           if (data.ok) {
             if (process.env.NODE_ENV === 'dev') {
-              return res.redirect('http://localhost:8081/prototypes');
+              return res.redirect(req.clientAppInfo.redirect.dev + '/prototypes');
+            }
+            if(req.clientAppInfo.isMobile) {
+              return res.redirect('/mobile/prototypes');
             }
             return res.redirect('/prototypes');
           } else {
@@ -107,7 +103,11 @@ module.exports = function ($db) {
       if (err === 'Your account is not activated yet!') {
         return res.redirect(`/user/${req.locale}/verify?email=${req.body.email}`);
       } else {
-        return res.redirect(`/login?errorMsg=${encodeURI(err)}`);
+        if(req.clientAppInfo.isMobile) {
+          return res.redirect(`/mobile/login?errorMsg=${encodeURI(err)}`);
+        } else {
+          return res.redirect(`/login?errorMsg=${encodeURI(err)}`);
+        }
       }
     });
   };
@@ -133,7 +133,7 @@ module.exports = function ($db) {
         .set('Cache-Control', 'no-cache')
         .set('Content-Type', 'application/x-www-form-urlencoded')
         .send(data)
-        .set('Authorization', 'Basic ' + basicToken)
+        .set('Authorization', 'Basic ' + req.basicToken)
         .end(function(err, res) {
           return res.ok ?  resolve(res.body) : reject(err.response.body.message);
         });
@@ -274,10 +274,6 @@ module.exports = function ($db) {
     }
   };
 
-  var adminLoginInterface = function(req, res, next) {
-    return res.send(200, '123123');
-  };
-
   var registUser = function(req, res, next) {
     return users.addNewUser({
       userName: req.body.userName,
@@ -297,7 +293,7 @@ module.exports = function ($db) {
     var userId = req.user.userId;
     return users.checkIsAdmin(userId)
     .then(function() {
-      return users.retrieveUserList()
+      return users.retrieveUserList();
     })
     .then(function(data) {
       return res.send(200, data);
@@ -313,7 +309,6 @@ module.exports = function ($db) {
     login: login,
     signIn: signIn,
     loginInterface: loginInterface,
-    adminLoginInterface: adminLoginInterface,
     checkCookies: checkCookies,
   };
 };

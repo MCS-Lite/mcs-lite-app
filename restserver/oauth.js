@@ -4,7 +4,10 @@ var jwt     = require('jsonwebtoken');
 module.exports = function($db) {
 
   var $config  = require('../configs/oauth');
-  var $clients = $config.clients;
+  var $clients = [];
+  $clients.push($config.webClient);
+  $clients.push($config.mobileClient);
+
   var Users = $db.users;
   var Apps = require('./libs/app');
   var $errors = require('./errors');
