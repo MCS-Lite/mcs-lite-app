@@ -252,9 +252,9 @@ module.exports = function ($db) {
 
         if (process.env.NODE_ENV === 'dev') {
           if (req.clientAppInfo.isMobile) {
-            return res.redirect(req.clientAppInfo.redirect + '/devices');
+            return res.redirect(req.clientAppInfo.redirect.dev + '/devices');
           }
-          return res.redirect(req.clientAppInfo.redirect + '/prototypes');
+          return res.redirect(req.clientAppInfo.redirect.dev + '/prototypes');
         }
         return res.render('app/build/index.html');
 
@@ -262,7 +262,7 @@ module.exports = function ($db) {
         /* 有任何錯誤就返回首頁 */
         res.clearCookie('token', { path: '/' });
         if (process.env.NODE_ENV === 'dev') {
-          return res.redirect(req.clientAppInfo.redirect + '/login');
+          return res.redirect(req.clientAppInfo.redirect.dev + '/login');
         }
 
         return res.render('app/build/index.html');
@@ -271,9 +271,9 @@ module.exports = function ($db) {
       /* 如果 cookie 沒有 token 就是以前未登入過狀態 */
       if (process.env.NODE_ENV === 'dev') {
         if (req.query.errorMsg) {
-          return res.redirect(req.clientAppInfo.redirect + '?errorMsg=' + req.query.errorMsg);
+          return res.redirect(req.clientAppInfo.redirect.dev + '?errorMsg=' + req.query.errorMsg);
         }
-        return res.redirect(req.clientAppInfo.redirect + '/');
+        return res.redirect(req.clientAppInfo.redirect.dev + '/');
       }
 
       return res.render('app/build/index.html');
