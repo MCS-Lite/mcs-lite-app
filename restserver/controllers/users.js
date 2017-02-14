@@ -88,10 +88,13 @@ module.exports = function ($db) {
         .end(function(err, data) {
           if (data.ok) {
             if (process.env.NODE_ENV === 'dev') {
+              if(req.clientAppInfo.isMobile) {
+                return res.redirect(req.clientAppInfo.redirect.dev + '/devices');
+              }
               return res.redirect(req.clientAppInfo.redirect.dev + '/prototypes');
             }
             if(req.clientAppInfo.isMobile) {
-              return res.redirect('/mobile/prototypes');
+              return res.redirect('/mobile/devices');
             }
             return res.redirect('/prototypes');
           } else {
@@ -248,6 +251,9 @@ module.exports = function ($db) {
         }
 
         if (process.env.NODE_ENV === 'dev') {
+          if (req.clientAppInfo.isMobile) {
+            return res.redirect(req.clientAppInfo.redirect + '/devices');
+          }
           return res.redirect(req.clientAppInfo.redirect + '/prototypes');
         }
         return res.render('app/build/index.html');
