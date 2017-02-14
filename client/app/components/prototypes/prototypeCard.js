@@ -19,14 +19,13 @@ import ClonePrototype from './dialogs/clonePrototype';
 import EditPrototype from './dialogs/editPrototype';
 import DeletePrototype from './dialogs/deletePrototype';
 
-
-
 const PrototypeCardLayout = ({
   prototypeName,
   prototypeId,
   prototypeDescription,
   version,
   isTemplate,
+  main,
   openPrototypeDetail,
   onSelectMenuValueChange,
   isSelectMenu,
@@ -44,11 +43,11 @@ const PrototypeCardLayout = ({
     { value: 'delete', children: 'Delete' },
   ];
 
-  if (isTemplate) {
+  if (isTemplate && !main.isAdmin) {
     items = [
       { value: 'clone', children: 'Clone' },
       { value: 'export', children: 'Export' },
-    ]
+    ];
   }
   return (
     <div className={prototypeCardStyles.base}>
@@ -76,7 +75,7 @@ const PrototypeCardLayout = ({
         >
           {prototypeName} {isTemplate ? '(Template)' : ''}
         </h3>
-        <Hr className={prototypeCardStyles.hr}/>
+        <Hr className={prototypeCardStyles.hr} />
           Version: {version}
         <Hr />
         <Button className={prototypeCardStyles.button} onClick={openPrototypeDetail}>

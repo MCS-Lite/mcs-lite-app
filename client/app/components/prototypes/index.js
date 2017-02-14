@@ -11,6 +11,7 @@ import PrototypeCard from './prototypeCard';
 import prototypeStyle from './prototypes.css';
 
 const Prototypes = ({ prototypes, ...props }) => {
+  console.log(props);
   return (
     <div>
       <Header

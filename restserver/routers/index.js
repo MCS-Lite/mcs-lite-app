@@ -1,3 +1,5 @@
+var connectMultiparty = require('connect-multiparty');
+
 var $oauth = require('../../configs/oauth');
 
 var webClientId = $oauth.webClient.clientId;
@@ -15,6 +17,7 @@ module.exports = function($db, $app, $rest) {
   var prototypesController = new require('../controllers/prototypes')($db);
   var datapointsController = new require('../controllers/datapoints')($db);
   var datachannelsController = new require('../controllers/datachannels')($db);
+  var imageController = new require('../controllers/image')($db);
 
   const parseBasicToken = function(req, res, next) {
     if (/mobile/.test(req.route.path)) {
@@ -253,5 +256,12 @@ module.exports = function($db, $app, $rest) {
     path: $rest.apiRoute + '/devices/:deviceId/datapoints/datachannel/:datachannelId',
     methods: ['get'],
     handler: datapointsController.retrieveDatapoints,
+  };
+
+  this.uploadImage = {
+    path: $rest.apiRoute + '/upload/image',
+    methods: ['post'],
+    middleware: [connectMultiparty],
+    handler: imageController.uploadImage,
   };
 };

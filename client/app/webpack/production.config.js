@@ -1,6 +1,6 @@
 import webpack from 'webpack';
 import baseConfig from './base.config';
-import I18nPlugin from 'i18n-webpack-plugin';
+// import I18nPlugin from 'i18n-webpack-plugin';
 
 // const languages = {
 //   en: null,
