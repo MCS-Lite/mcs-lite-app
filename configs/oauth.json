@@ -19,7 +19,7 @@
     "grantTypes": ["password", "refresh_token"],
     "redirect": {
       "dev": "http://localhost:8082",
-      "prod": ""
+      "prod": "http://mcs-lite-mobile-web.netlify.com"
     }
   }
 }
