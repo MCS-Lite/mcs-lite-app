@@ -17,18 +17,20 @@ const NewPrototypeCardLayout = ({
   isCreatePrototype,
   openCreatePrototype,
   setIsCreatePrototype,
+  createNewPrototype,
   prototypeName,
-  getMessages: t
+  getMessages: t,
 }) => {
   return (
     <div className={newPrototypeCardStyles.base}>
       <CreateNewPrototypeDialog
+        createNewPrototype={createNewPrototype}
         isCreatePrototype={isCreatePrototype}
         setIsCreatePrototype={setIsCreatePrototype}
       />
       {t('createYourPrototypeNow')}
       <Button type="submit" className={newPrototypeCardStyles.button} onClick={openCreatePrototype}>
-        Create
+        {t('create')}
       </Button>
     </div>
   );

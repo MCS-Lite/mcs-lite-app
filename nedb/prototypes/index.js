@@ -13,9 +13,8 @@ module.exports = function(prototypes) {
 
     retriveUserPrototypes: function(query, sort, skip, limit) {
       return new Promise(function(resolve, reject) {
-        if (sort && skip && limit) {
-          return
-            prototypes
+        if (typeof(skip) === 'number' && sort && limit) {
+          return prototypes
             .find(query)
             .sort(sort)
             .skip(skip)
@@ -35,7 +34,7 @@ module.exports = function(prototypes) {
 
     retriveAllPrototypes: function(query, sort, skip, limit) {
       return new Promise(function(resolve, reject) {
-        if (sort && skip && limit) {
+        if (typeof(skip) === 'number' && sort && limit) {
           return
             prototypes
             .find({})
@@ -57,7 +56,7 @@ module.exports = function(prototypes) {
 
     retriveAllTemplatesPrototypes: function(sort, skip, limit) {
       return new Promise(function(resolve, reject) {
-        if (sort && skip && limit) {
+        if (typeof(skip) === 'number' && sort && limit) {
           return
             prototypes
             .find({ isTemplate: true, isActive: true })
@@ -112,6 +111,7 @@ module.exports = function(prototypes) {
     },
 
     editPrototype: function(query, update) {
+      update.updatedAt = new Date().getTime();
       return new Promise(function(resolve, reject) {
         return prototypes.update(query, { $set: update }, {}, function(err, num) {
           if (err) return reject();
@@ -120,7 +120,8 @@ module.exports = function(prototypes) {
       });
     },
 
-    deletePrototype: function(updateContent, filter) {
+    deletePrototype: function(query, update) {
+      update.updatedAt = new Date().getTime();
       return new Promise(function(resolve, reject) {
         return prototypes.update(query, { $set: update }, {}, function(err, num) {
           if (err) return reject();

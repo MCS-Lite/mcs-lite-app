@@ -26,7 +26,7 @@ module.exports = function(devices) {
       query.isActive = true;
 
       return new Promise(function(resolve, reject) {
-        if (sort && skip && limit) {
+        if (sort && typeof(skip) === 'number' && limit) {
           return
             devices
             .find(query)
@@ -48,7 +48,7 @@ module.exports = function(devices) {
 
     retriveAllDevices: function(query, sort, skip, limit) {
       return new Promise(function(resolve, reject) {
-        if (sort && skip && limit) {
+        if (sort && typeof(skip) === 'number' && limit) {
           return
             devices
             .find({})
@@ -106,6 +106,7 @@ module.exports = function(devices) {
     },
 
     editDevices: function(query, update) {
+      update.updatedAt = new Date().getTime();
       return new Promise(function(resolve, reject) {
         return devices.update(query, { $set: update }, {}, function(err, num) {
           if (err) return reject();

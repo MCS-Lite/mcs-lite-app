@@ -2,6 +2,7 @@ import React from 'react'
 import { Route } from 'react-router'
 import App from '../containers/app'
 import Prototypes from '../containers/prototypes'
+import Dashboard from '../containers/dashboard'
 import PrototypeDetail from '../containers/prototypeDetail'
 import Devices from '../containers/devices'
 import DeviceDetail from '../containers/deviceDetail'
@@ -12,7 +13,10 @@ export default (
   <Route component={App}>
     <Route
       path="/"
-      components={Prototypes} />
+      components={Dashboard} />
+    <Route
+      path="/dashboard"
+      components={Dashboard} />
     <Route
       path="/login"
       components={Login} />

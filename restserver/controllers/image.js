@@ -29,27 +29,6 @@ module.exports = function ($db) {
     return res.send(200, {
       results: filename,
     });
-
-    // return fs.readFileAsync('/' + req.files.file.path).then(function(data) {
-    //   var params;
-    //   params = {
-    //     Bucket: 'mtk.linkit',
-    //     Key: filename,
-    //     Body: data,
-    //     ACL: 'public-read'
-    //   };
-    //   return $s3.putObject(params, function(err, data) {
-    //     if (!err) {
-    //       return res.ok({
-    //         results: filename
-    //       });
-    //     } else {
-    //       next($error.throw(400, {
-    //         results: 'error'
-    //       }));
-    //     }
-    //   });
-    // });
   };
 
   return {
