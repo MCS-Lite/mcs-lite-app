@@ -1,4 +1,5 @@
 var express = require('express');
+var path = require('path');
 var OAuthServer = require('oauth2-server');
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
@@ -24,6 +25,17 @@ app.oauth = new OAuthServer({
   debug: true,
   accessTokenLifetime: $oauth.ACCESS_TOKEN_EXP * 60,
   refreshTokenLifetime: $oauth.REFRESH_TOKEN_EXP * 60
+});
+
+/**
+ * Serving mobile website via npm.
+ * $npm i mcs-lite-mobile-web --save
+ * @author Michael Hsu
+ */
+const mobilePathname = '../node_modules/mcs-lite-mobile-web/build';
+app.use('/mobile', express.static(path.resolve(__dirname, mobilePathname)));
+app.get('/mobile/*', function (req, res) {
+  res.sendFile(path.resolve(__dirname, mobilePathname, 'index.html'));
 });
 
 app.engine('html', require('ejs').renderFile);
