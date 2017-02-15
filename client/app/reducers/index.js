@@ -4,6 +4,7 @@ import main from './main';
 import devices from './devices';
 import login from './login';
 import signin from './signin';
+import dashboard from './dashboard';
 
 const mcsLiteApp = combineReducers({
   main,
@@ -11,6 +12,7 @@ const mcsLiteApp = combineReducers({
   login,
   devices,
   signin,
+  dashboard,
 })
 
 export default mcsLiteApp

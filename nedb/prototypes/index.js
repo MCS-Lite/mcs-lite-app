@@ -13,9 +13,8 @@ module.exports = function(prototypes) {
 
     retriveUserPrototypes: function(query, sort, skip, limit) {
       return new Promise(function(resolve, reject) {
-        if (sort && skip && limit) {
-          return
-            prototypes
+        if (typeof(skip) === 'number' && sort && limit) {
+          return prototypes
             .find(query)
             .sort(sort)
             .skip(skip)
@@ -35,7 +34,7 @@ module.exports = function(prototypes) {
 
     retriveAllPrototypes: function(query, sort, skip, limit) {
       return new Promise(function(resolve, reject) {
-        if (sort && skip && limit) {
+        if (typeof(skip) === 'number' && sort && limit) {
           return
             prototypes
             .find({})
@@ -57,7 +56,7 @@ module.exports = function(prototypes) {
 
     retriveAllTemplatesPrototypes: function(sort, skip, limit) {
       return new Promise(function(resolve, reject) {
-        if (sort && skip && limit) {
+        if (typeof(skip) === 'number' && sort && limit) {
           return
             prototypes
             .find({ isTemplate: true, isActive: true })

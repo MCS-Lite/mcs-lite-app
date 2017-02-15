@@ -16,10 +16,7 @@ export const retrievePrototypeList =  () => (dispatch, getState) => {
 export const createNewPrototype =  (data) => (dispatch, getState) => {
   return request('/prototypes', 'POST', data, getState().main.access_token)
   .then((data) => {
-    return dispatch({
-      type: types.CREATENEWPROTOTYPE,
-      data: data.data,
-    });
+    retrievePrototypeList()(dispatch, getState);
   });
 }
 

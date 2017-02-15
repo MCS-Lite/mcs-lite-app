@@ -32,7 +32,7 @@ const Header = ({
       <div className={headerStyles.mask}></div>
       <div className={headerStyles.container}>
         <Nav>
-          <NavItem href= "/prototypes"
+          <NavItem href= "/dashboard"
             linkStyle={headerStyles.logoLink}
           >
             <img
