@@ -20,7 +20,7 @@ module.exports = function ($db) {
       prototypeData.userPrototypes = data[0];
       return devices.retrievePrototypeDevices({
         prototypeId: data[0].prototypeId,
-      })
+      });
     })
     .then(function(data) {
       prototypeData.userPrototypes.devices = data;
