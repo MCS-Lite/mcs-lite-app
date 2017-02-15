@@ -59,6 +59,9 @@
     "img-loader": "^1.2.0",
     "json-loader": "^0.5.2",
     "mcs-displaycard-integer": "0.0.2",
+    "mcs-lite-icon": "https://247-79562762-gh.circle-artifacts.com/0/tmp/circle-artifacts.4e5RmQE/beta/mcs-lite-icon-0.0.0.tgz?circle-token=ceb2f692f6144d9eb430483f121ffc47247e3259",
+    "mcs-lite-theme": "https://247-79562762-gh.circle-artifacts.com/0/tmp/circle-artifacts.4e5RmQE/beta/mcs-lite-theme-0.0.0.tgz?circle-token=ceb2f692f6144d9eb430483f121ffc47247e3259",
+    "mcs-lite-ui": "https://247-79562762-gh.circle-artifacts.com/0/tmp/circle-artifacts.4e5RmQE/beta/mcs-lite-ui-0.0.0.tgz?circle-token=ceb2f692f6144d9eb430483f121ffc47247e3259",
     "mtk-icon": "http://bamboo.mediatek.inc/packages/mtk-icon/1.0.11.tgz",
     "mtk-ui": "http://bamboo.mediatek.inc/packages/mtk-ui/2.11.0.tgz",
     "normalize.css": "^3.0.3",
@@ -87,6 +90,7 @@
     "redux-devtools": "^3.3.1",
     "redux-thunk": "^2.2.0",
     "style-loader": "^0.12.3",
+    "styled-components": "^1.4.3",
     "url-loader": "^0.5.6",
     "webpack-dev-server": "^1.16.2"
   }
