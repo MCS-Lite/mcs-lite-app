@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import prototypeBanner from '../prototypes/productBanner.png';
 import deviceDetailInfoStyles from './deviceDetailInfo.css';
+import CopyButtonGroup from './copyButtonGroup'
 
 const DeviceDetailInfoLayout = ({
   deviceDescription,
+  deviceId,
+  deviceKey,
 }) => {
   return (
     <div className={deviceDetailInfoStyles.base}>
@@ -20,10 +23,8 @@ const DeviceDetailInfoLayout = ({
           You will need the deviceId and deviceKey when calling our API to access this device
         </div>
         <div className={deviceDetailInfoStyles.hint}>
-          <ul>
-            <li>deviceId: </li>
-            <li>deviceKey: </li>
-          </ul>
+          <CopyButtonGroup label="DeviceId" value={deviceId} />
+          <CopyButtonGroup label="DeviceKey" value={deviceKey} />
         </div>
       </div>
     </div>

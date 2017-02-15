@@ -15,6 +15,7 @@ const DeviceDetail = ({ devices }) => {
     deviceName,
     deviceDescription,
     deviceId,
+    deviceKey,
   } = devices.deviceDetail;
 
   return (
@@ -25,7 +26,7 @@ const DeviceDetail = ({ devices }) => {
       <div className={deviceDetailStyle.base}>
         <Breadcrumb deviceName={deviceName} />
         <DeviceDetailHeader deviceId={deviceId} deviceName={deviceName} />
-        <DeviceDetailInfo deviceDescription={deviceDescription} />
+        <DeviceDetailInfo deviceId={deviceId} deviceKey={deviceKey} deviceDescription={deviceDescription} />
         <PanelHeader />
       </div>
       <Footer />
