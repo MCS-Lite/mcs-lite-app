@@ -2,6 +2,7 @@ var fs = require('fs');
 var gui = require('nw.gui');
 var websocketServer = require('./wotserver/index');
 var restServer = require('./restserver/index');
+var $rest = require('./configs/rest');
 
 /*  ws Server  */
 /*
@@ -12,7 +13,7 @@ var restServer = require('./restserver/index');
 */
 
 websocketServer.init();
-restServer.listen(3000);
+restServer.listen($rest.port);
 
 if (process.platform == "darwin") {
   var menu = new gui.Menu({ type: 'menubar' });

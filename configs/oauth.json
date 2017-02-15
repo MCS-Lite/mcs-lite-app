@@ -3,8 +3,7 @@
   "REFRESH_TOKEN_EXP": 20160,
   "JWT_SECRET": "superSecret",
   "host": "localhost",
-  "port": "3000",
-  "clientUrl": "http://localhost:3001/v2console/",
+  "port": 3000,
   "webClient": {
     "clientId": 1000000000000000001,
     "secret": "mcs_lite_app_secret",

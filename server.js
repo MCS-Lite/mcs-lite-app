@@ -1,5 +1,6 @@
 var websocketServer = require('./wotserver/index');
 var restServer = require('./restserver/index');
+var $rest = require('./configs/rest');
 
 websocketServer.init();
-restServer.listen(3000);
+restServer.listen($rest.port);
