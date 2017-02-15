@@ -94,7 +94,7 @@ module.exports = function ($db) {
               return res.redirect(req.clientAppInfo.redirect.dev + '/prototypes');
             }
             if(req.clientAppInfo.isMobile) {
-              return res.redirect('/mobile/devices');
+              return res.redirect(req.clientAppInfo.redirect.prod + '/devices');
             }
             return res.redirect('/prototypes');
           } else {
