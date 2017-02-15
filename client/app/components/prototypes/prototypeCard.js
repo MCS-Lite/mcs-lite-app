@@ -78,7 +78,7 @@ const PrototypeCardLayout = ({
         <Hr className={prototypeCardStyles.hr} />
           Version: {version}
         <Hr />
-        <Button className={prototypeCardStyles.button} onClick={openPrototypeDetail} block>
+        <Button onClick={openPrototypeDetail} block>
           Detail
         </Button>
       </div>
