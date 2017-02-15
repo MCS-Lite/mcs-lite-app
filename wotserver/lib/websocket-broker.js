@@ -42,6 +42,9 @@ var Framework = WoT.Framework
   , RequestHandlers = WoT.WebsocketRequestHandlers
   , Runtime = WoT.Runtime;
 
+
+var $wot = require('../../configs/wot');
+
 /**
  * Util Modules
  */
@@ -147,8 +150,8 @@ function createServer(options) {
  * @api public
  */
 Server.prototype.start = function(options) {
-  var port = process.env.PORT || 8000;
-  var host = process.env.HOST || 'localhost';
+  var port = $wot.port || process.env.PORT;
+  var host = $wot.host || process.env.HOST;
   var options = options || {};
 
   for (var prop in options) {
