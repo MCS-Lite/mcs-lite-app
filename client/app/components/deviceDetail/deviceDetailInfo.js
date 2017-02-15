@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import prototypeBanner from '../prototypes/productBanner.png';
 import deviceDetailInfoStyles from './deviceDetailInfo.css';
-import CopyButtonGroup from './copyButtonGroup'
+import CopyButtonGroup from '../common/copyButtonGroup';
 
 const DeviceDetailInfoLayout = ({
   deviceDescription,
