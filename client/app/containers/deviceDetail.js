@@ -4,7 +4,6 @@ import DeviceDetailLayout from '../components/deviceDetail';
 import * as deviceDetailActions from '../actions/DeviceDetailActions'
 
 class DeviceDetail extends Component {
-
   componentDidMount() {
     this.props.retrieveDevice(this.props.params.deviceId)
   }

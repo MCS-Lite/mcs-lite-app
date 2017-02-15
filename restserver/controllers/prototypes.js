@@ -54,12 +54,7 @@ module.exports = function ($db) {
       isActive: true,
     })
     .then(function(data) {
-      prototypesData = data;
-      return prototypes.retriveAllTemplatesPrototypes()
-    })
-    .then(function(data) {
-      prototypesData = prototypesData.concat(data);
-      return res.send(200, { data: prototypesData });
+      return res.send(200, { data: data });
     })
     .catch(function(err) {
       return res.send(400, err)
