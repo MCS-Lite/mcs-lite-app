@@ -5,14 +5,21 @@ import Panel from 'mtk-ui/lib/Panel';
 import PanelHeader from 'mtk-ui/lib/PanelHeader';
 import PanelIcon from 'mtk-ui/lib/PanelIcon';
 
-const PanelHeaderLayout = () => {
+import { default as compose } from 'recompose/compose';
+
+import messages from './messages';
+import withGetMessages from '../../utils/withGetMessage';
+
+const PanelHeaderLayout = ({
+  getMessages: t
+}) => {
   return (
     <div className={panelHeaderStyles.base}>
       <Panel>
         <PanelHeader>
           <PanelIcon iconName="bookmark" />
           <div className={panelHeaderStyles.content}>
-            Prototype List
+            {t('prototypeList')}
           </div>
         </PanelHeader>
       </Panel>
@@ -20,4 +27,6 @@ const PanelHeaderLayout = () => {
   );
 }
 
-export default PanelHeaderLayout;
+export default compose(
+  withGetMessages(messages, 'Prototypes'),
+)(PanelHeaderLayout);

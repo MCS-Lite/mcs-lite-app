@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
-import PrototypeLayout from '../components/prototypes';
+import PrototypesLayout from '../components/prototypes';
 import * as PrototypeActions from '../actions/PrototypeActions';
 
 class Prototype extends Component {
@@ -11,7 +11,7 @@ class Prototype extends Component {
 
   render() {
     return (
-      <PrototypeLayout {...this.props} />
+      <PrototypesLayout {...this.props} />
     );
   }
 }

@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import React, { Component } from 'react';
-import PrototypeDetails from '../components/prototypeDetails';
+import PrototypeDetailLayout from '../components/prototypeDetail';
 import * as prototypeDetailActions from '../actions/PrototypeDetailActions';
 
 class Prototype extends Component {
@@ -10,7 +10,7 @@ class Prototype extends Component {
 
   render() {
     return (
-      <PrototypeDetails {...this.props} />
+      <PrototypeDetailLayout {...this.props} />
     );
   }
 }

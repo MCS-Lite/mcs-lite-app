@@ -10,11 +10,15 @@ import { default as pure } from 'recompose/pure';
 import { default as withState } from 'recompose/withState';
 import { default as withHandlers } from 'recompose/withHandlers';
 
+import messages from './messages';
+import withGetMessages from '../../utils/withGetMessage';
+
 const NewPrototypeCardLayout = ({
   isCreatePrototype,
   openCreatePrototype,
   setIsCreatePrototype,
   prototypeName,
+  getMessages: t
 }) => {
   return (
     <div className={newPrototypeCardStyles.base}>
@@ -22,7 +26,7 @@ const NewPrototypeCardLayout = ({
         isCreatePrototype={isCreatePrototype}
         setIsCreatePrototype={setIsCreatePrototype}
       />
-      Create your prototype now!
+      {t('createYourPrototypeNow')}
       <Button type="submit" className={newPrototypeCardStyles.button} onClick={openCreatePrototype}>
         Create
       </Button>
@@ -36,4 +40,5 @@ export default compose(
   withHandlers({
     openCreatePrototype: props => () => props.setIsCreatePrototype(true),
   }),
+  withGetMessages(messages, 'Prototypes'),
 )(NewPrototypeCardLayout)

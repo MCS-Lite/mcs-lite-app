@@ -11,7 +11,7 @@ import c from 'classnames';
 
 import deviceStyles from './devices.css';
 
-const Devices = ({ devices, main }) => {
+const Devices = ({ devices, main, getMessages: t, ...props }) => {
   return (
     <div>
       <Header

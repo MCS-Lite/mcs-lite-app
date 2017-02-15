@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import React, { Component } from 'react';
-import DeviceDetails from '../components/deviceDetails';
+import DeviceDetailLayout from '../components/deviceDetail';
 import * as deviceDetailActions from '../actions/DeviceDetailActions'
 
 class DeviceDetail extends Component {
@@ -11,7 +11,7 @@ class DeviceDetail extends Component {
 
   render() {
     return (
-      <DeviceDetails {...this.props} />
+      <DeviceDetailLayout {...this.props} />
     );
   }
 }
@@ -20,4 +20,4 @@ const mapStateToProps = (state) => {
   return state;
 }
 
-export default connect(mapStateToProps, deviceDetailActions)(DeviceDetail);
+export default connect(mapStateToProps, deviceDetailActions)(DeviceDetail)

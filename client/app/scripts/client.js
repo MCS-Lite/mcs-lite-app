@@ -10,14 +10,13 @@ if (/\:8081/.test(window.location.host)) {
 }
 
 import React from 'react';
-import Footer from '@mtk/mcs-components/lib/Footer';
-import Header from '@mtk/mcs-components/lib/Header';
 import { default as dom } from 'react-dom';
 import { applyMiddleware, createStore, combineReducers, compose } from 'redux';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import reducers from '../reducers';
 import { Router, Route, RouterContext, browserHistory } from 'react-router';
+import IntlProvider from '../containers/IntlProvider';
 
 const store = createStore(reducers, applyMiddleware(thunk));
 import routes from '../routes/routing';
@@ -28,10 +27,14 @@ var clientSecret = oauth.webClient.secret;
 var basic_token = new Buffer(clientId + ':' + clientSecret).toString('base64');
 window.basic_token = basic_token;
 
+import '../utils/i18n';
+
 if (document && document.getElementById('app')) {
   dom.render(
     <Provider store={store}>
-      <Router history={browserHistory} routes={routes} />
+      <IntlProvider defaultLocale="zh-TW">
+        <Router history={browserHistory} routes={routes} />
+      </IntlProvider>
     </Provider>,
     document.getElementById('app')
   );
