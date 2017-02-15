@@ -69,15 +69,10 @@ module.exports = function ($db) {
       prototypeDescription: req.body.prototypeDescription,
       prototypeImageURL: req.body.prototypeImageURL,
       version: req.body.version || '0.0.1',
+      isTemplate: false,
     };
 
-    return users.checkIsAdmin(userId)
-    .then(function(data) {
-      if (data.length === 1) {
-        field.isTemplate = true;
-      }
-      return prototypes.addNewPrototype(field);
-    })
+    return prototypes.addNewPrototype(field)
     .then(function(data) {
       return res.send(200, { data: data });
     })

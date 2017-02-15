@@ -16,6 +16,9 @@ import { default as pure } from 'recompose/pure';
 import { default as withState } from 'recompose/withState';
 import { default as withHandlers } from 'recompose/withHandlers';
 
+import messages from '../messages';
+import withGetMessages from '../../../utils/withGetMessage';
+
 const CreateNewPrototypeDialog = ({
   isCreatePrototype,
   onVersionChange,
@@ -27,6 +30,7 @@ const CreateNewPrototypeDialog = ({
   version,
   prototypeDescription,
   submitCreateNewPrototype,
+  getMessages: t,
 }) => {
   return (
     <Dialog
@@ -49,23 +53,23 @@ const CreateNewPrototypeDialog = ({
         <InputText
           required
           value={prototypeName}
-          label="Prototype name"
-          placeholder="Input the prototype name."
+          label={t('prototypeName')}
+          placeholder={t('inputThePrototypeName')}
           onChange={onPrototypeNameChange}
         />
         <InputText
           required
           value={version}
-          label="Prototype version"
-          placeholder="Input the prototype version."
+          label={t('prototypeVersion')}
+          placeholder={t('inputThePrototypeVersion')}
           onChange={onVersionChange}
         />
         <InputTextarea
-          label="prototype description"
+          label={t('prototypeDescription')}
           rows="4"
           value={prototypeDescription}
           style={{ resize: 'none' }}
-          placeholder="Input the prototype description."
+          placeholder={t('inputThePrototypeDescription')}
           onChange={onPrototypeDescriptionChange}
         />
         </InputForm>
@@ -73,7 +77,7 @@ const CreateNewPrototypeDialog = ({
       <DialogFooter>
         <Button kind="cancel" onClick={closeCreatePrototype}>Cancel</Button>
         <Button kind="primary" onClick={submitCreateNewPrototype}>
-          Save
+          {t('save')}
         </Button>
       </DialogFooter>
     </Dialog>
@@ -85,9 +89,16 @@ export default compose(
   withState('prototypeName', 'setPrototypeName', ''),
   withState('version', 'setVersion', ''),
   withState('prototypeDescription', 'setPrototypeDescription', ''),
+  withState('prototypeImageURL', 'setPrototypeImageURL', ''),
   withHandlers({
     submitCreateNewPrototype: props => () => {
-      // console.log(props);
+      props.setIsCreatePrototype(false);
+      props.createNewPrototype({
+        prototypeName: props.prototypeName,
+        version: props.version,
+        prototypeDescription: props.prototypeDescription,
+        prototypeImageURL: props.prototypeImageURL,
+      });
     },
     onVersionChange: props => (e) => props.setVersion(e.target.value),
     onPrototypeDescriptionChange: props => (e) => props.setPrototypeDescription(e.target.value),
@@ -95,4 +106,5 @@ export default compose(
     openCreatePrototype: props => () => props.setIsCreatePrototype(true),
     closeCreatePrototype: props => () => props.setIsCreatePrototype(false),
   }),
+  withGetMessages(messages, 'Prototypes'),
  )(CreateNewPrototypeDialog)

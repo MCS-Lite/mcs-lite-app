@@ -50,7 +50,7 @@ module.exports = function(datapoints, devices) {
 
     retrieveDeviceAllDatapoint: function(query, sort, skip, limit) {
       return new Promise(function(resolve, reject) {
-        if (sort && skip && limit) {
+        if (sort && typeof(skip) === 'number' && limit) {
           return
             datapoints
             .find(query)
@@ -72,7 +72,7 @@ module.exports = function(datapoints, devices) {
 
     retrieveDatachannelDatapoint: function(query, sort, skip, limit) {
       return new Promise(function(resolve, reject) {
-        if (sort && skip && limit) {
+        if (sort && typeof(skip) === 'number' && limit) {
           datapoints
             .find(query)
             .sort(sort)

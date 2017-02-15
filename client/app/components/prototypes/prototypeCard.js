@@ -19,6 +19,9 @@ import ClonePrototype from './dialogs/clonePrototype';
 import EditPrototype from './dialogs/editPrototype';
 import DeletePrototype from './dialogs/deletePrototype';
 
+import messages from './messages';
+import withGetMessages from '../../utils/withGetMessage';
+
 const PrototypeCardLayout = ({
   prototypeName,
   prototypeId,
@@ -35,6 +38,7 @@ const PrototypeCardLayout = ({
   clonePrototype,
   deletePrototype,
   editPrototype,
+  getMessages: t,
 }) => {
   let items = [
     { value: 'edit', children: 'Edit' },
@@ -67,7 +71,6 @@ const PrototypeCardLayout = ({
         { selectMenuValue === 'clone' ? <ClonePrototype clonePrototype={clonePrototype} prototypeId={prototypeId} prototypeName={prototypeName} selectMenuValue={selectMenuValue} setSelectMenuValue={setSelectMenuValue} /> : ''}
         { selectMenuValue === 'edit' ? <EditPrototype editPrototype={editPrototype} prototypeId={prototypeId} prototypeName={prototypeName} version={version} prototypeDescription={prototypeDescription} selectMenuValue={selectMenuValue} setSelectMenuValue={setSelectMenuValue} /> : ''}
         { selectMenuValue === 'delete' ? <DeletePrototype deletePrototype={deletePrototype} prototypeId={prototypeId} selectMenuValue={selectMenuValue} setSelectMenuValue={setSelectMenuValue} /> : ''}
-
       </div>
       <div className={prototypeCardStyles.content}>
         <h3
@@ -76,10 +79,10 @@ const PrototypeCardLayout = ({
           {prototypeName} {isTemplate ? '(Template)' : ''}
         </h3>
         <Hr className={prototypeCardStyles.hr} />
-          Version: {version}
+          {t('version')}: {version}
         <Hr />
         <Button onClick={openPrototypeDetail} block>
-          Detail
+          {t('detail')}
         </Button>
       </div>
     </div>
@@ -98,4 +101,5 @@ export default compose(
     },
     openSelectMenu: props => (e) => props.setIsSelectMenu(!props.isSelectMenu),
   }),
+  withGetMessages(messages, 'Prototypes'),
 )(PrototypeCardLayout);
