@@ -112,6 +112,7 @@ module.exports = function(prototypes) {
     },
 
     editPrototype: function(query, update) {
+      update.updatedAt = new Date().getTime();
       return new Promise(function(resolve, reject) {
         return prototypes.update(query, { $set: update }, {}, function(err, num) {
           if (err) return reject();
@@ -120,7 +121,8 @@ module.exports = function(prototypes) {
       });
     },
 
-    deletePrototype: function(updateContent, filter) {
+    deletePrototype: function(query, update) {
+      update.updatedAt = new Date().getTime();
       return new Promise(function(resolve, reject) {
         return prototypes.update(query, { $set: update }, {}, function(err, num) {
           if (err) return reject();
