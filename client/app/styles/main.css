@@ -19,6 +19,10 @@
   src: url(../font/riona-sans-medium.otf);
 }
 
+html {
+  font-size:14px;
+}
+
 body {
   margin:0;
   padding:0;

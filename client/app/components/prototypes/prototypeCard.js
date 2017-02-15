@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 
 import prototypeCardStyles from './prototypeCard.css';
-import Button from 'mtk-ui/lib/Button';
+import { Button } from 'mcs-lite-ui';
 import Hr from 'mtk-ui/lib/Hr';
-import MiMoreVert from 'mtk-icon/lib/MiMoreVert';
+import IconEllipsisV from 'mcs-lite-icon/lib/IconEllipsisV';
 import Menu from 'mtk-ui/lib/Menu';
 
 import productBanner from './productBanner.png';
@@ -52,7 +52,7 @@ const PrototypeCardLayout = ({
   return (
     <div className={prototypeCardStyles.base}>
       <div>
-        <MiMoreVert className={prototypeCardStyles.more} onClick={openSelectMenu} />
+        <IconEllipsisV className={prototypeCardStyles.more} onClick={openSelectMenu} />
         <img src={productBanner} className={prototypeCardStyles.img} />
         {
           isSelectMenu ?
@@ -78,7 +78,7 @@ const PrototypeCardLayout = ({
         <Hr className={prototypeCardStyles.hr} />
           Version: {version}
         <Hr />
-        <Button className={prototypeCardStyles.button} onClick={openPrototypeDetail}>
+        <Button className={prototypeCardStyles.button} onClick={openPrototypeDetail} block>
           Detail
         </Button>
       </div>

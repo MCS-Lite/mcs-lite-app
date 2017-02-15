@@ -14,6 +14,8 @@ import { default as dom } from 'react-dom';
 import { applyMiddleware, createStore, combineReducers, compose } from 'redux';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
+import { ThemeProvider } from 'styled-components';
+import { theme } from 'mcs-lite-theme';
 import reducers from '../reducers';
 import { Router, Route, RouterContext, browserHistory } from 'react-router';
 import IntlProvider from '../containers/IntlProvider';
@@ -33,7 +35,9 @@ if (document && document.getElementById('app')) {
   dom.render(
     <Provider store={store}>
       <IntlProvider defaultLocale="zh-TW">
-        <Router history={browserHistory} routes={routes} />
+        <ThemeProvider theme={theme}>
+          <Router history={browserHistory} routes={routes} />
+        </ThemeProvider>
       </IntlProvider>
     </Provider>,
     document.getElementById('app')
