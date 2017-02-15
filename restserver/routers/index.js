@@ -18,6 +18,7 @@ module.exports = function($db, $app, $rest) {
   var datapointsController = new require('../controllers/datapoints')($db);
   var datachannelsController = new require('../controllers/datachannels')($db);
   var imageController = new require('../controllers/image')($db);
+  var dashboardController = new require('../controllers/dashboard')($db);
 
   const parseBasicToken = function(req, res, next) {
     if (/mobile/.test(req.route.path)) {
@@ -256,6 +257,13 @@ module.exports = function($db, $app, $rest) {
     path: $rest.apiRoute + '/devices/:deviceId/datapoints/datachannel/:datachannelId',
     methods: ['get'],
     handler: datapointsController.retrieveDatapoints,
+  };
+
+  this.retrieveUserDashBoard = {
+    path: $rest.apiRoute + '/dashboard',
+    methods: ['get'],
+    middleware: [$app.oauth.authorise()],
+    handler: dashboardController.dashboard,
   };
 
   this.uploadImage = {
