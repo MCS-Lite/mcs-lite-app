@@ -30,7 +30,8 @@ import productBanner from '../prototypes/productBanner.png';
 import moment from 'moment';
 import DeviceList from './deviceList';
 
-import IconChevronRight from 'mcs-lite-icon/lib/IconChevronRight';
+import MiUnfold from 'mtk-icon/lib/MiUnfold';
+import MiFold from 'mtk-icon/lib/MiFold';
 
 const MyPrototypeLayout = ({
   getMessages: t,
@@ -93,7 +94,10 @@ const MyPrototypeLayout = ({
               <a
                 className={myPrototypeStyles.link}
                 onClick={()=> setIsDeviceList(!isDeviceList)}
-              >{t('testDeviceList')}</a>
+              >
+                {t('testDeviceList')}
+                {isDeviceList ? <MiUnfold /> : <MiFold />}
+              </a>
               {
                 isDeviceList ?
                 <Table>
