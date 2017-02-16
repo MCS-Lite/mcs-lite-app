@@ -62,6 +62,7 @@
     "mcs-lite-icon": "https://247-79562762-gh.circle-artifacts.com/0/tmp/circle-artifacts.4e5RmQE/beta/mcs-lite-icon-0.0.0.tgz?circle-token=ceb2f692f6144d9eb430483f121ffc47247e3259",
     "mcs-lite-theme": "https://247-79562762-gh.circle-artifacts.com/0/tmp/circle-artifacts.4e5RmQE/beta/mcs-lite-theme-0.0.0.tgz?circle-token=ceb2f692f6144d9eb430483f121ffc47247e3259",
     "mcs-lite-ui": "https://247-79562762-gh.circle-artifacts.com/0/tmp/circle-artifacts.4e5RmQE/beta/mcs-lite-ui-0.0.0.tgz?circle-token=ceb2f692f6144d9eb430483f121ffc47247e3259",
+    "moment": "^2.17.1",
     "mtk-icon": "http://bamboo.mediatek.inc/packages/mtk-icon/1.0.11.tgz",
     "mtk-ui": "http://bamboo.mediatek.inc/packages/mtk-ui/2.11.0.tgz",
     "normalize.css": "^3.0.3",

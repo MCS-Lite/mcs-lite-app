@@ -74,7 +74,7 @@ const messages = defineMessages({
   'Dashboard.clonePrototype': {
     id: 'Dashboard.clonePrototype',
     description: '',
-    defaultMessage: '使用範例創造原型',
+    defaultMessage: '使用範例創建原型',
   },
   'Dashboard.prototypeName': {
     id: 'Dashboard.prototypeName',

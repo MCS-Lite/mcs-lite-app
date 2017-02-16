@@ -9,7 +9,13 @@ import Breadcrumb from './breadcrumb';
 import MyPrototype from './myPrototype';
 import Examples from './examples';
 
-const Dashboard = ({ createNewPrototype, dashboard, ...props }) => {
+const Dashboard = ({
+  createNewPrototype,
+  dashboard,
+  clonePrototype,
+  ...props,
+}) => {
+  console.log(dashboard);
   return (
     <div>
       <Header
@@ -18,7 +24,7 @@ const Dashboard = ({ createNewPrototype, dashboard, ...props }) => {
       <div className={dashboardStyles.base}>
         <Breadcrumb />
         <MyPrototype createNewPrototype={createNewPrototype} userPrototypes={dashboard.userPrototypes}/>
-        <Examples />
+        <Examples clonePrototype={clonePrototype} templates={dashboard.templates}/>
       </div>
       <Footer />
     </div>

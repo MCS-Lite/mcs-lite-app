@@ -14,6 +14,7 @@ import TableRow from 'mtk-ui/lib/table/TableRow';
 import Hr from '../common/hr';
 
 import { browserHistory } from 'react-router';
+import c from 'classnames';
 
 import { default as compose } from 'recompose/compose';
 import { default as pure } from 'recompose/pure';
@@ -24,6 +25,10 @@ import withGetMessages from '../../utils/withGetMessage';
 import messages from './messages';
 import CreateNewPrototypeDialog from '../prototypes/dialogs/createNewPrototype';
 
+import productBanner from '../prototypes/productBanner.png';
+
+import moment from 'moment';
+
 const MyPrototypeLayout = ({
   getMessages: t,
   createNewPrototype,
@@ -32,6 +37,7 @@ const MyPrototypeLayout = ({
   openCreatePrototype,
   userPrototypes,
   goToPrototypeList,
+  goToPrototypeDetail,
 }) => {
   return (
     <div className={myPrototypeStyles.base}>
@@ -42,9 +48,9 @@ const MyPrototypeLayout = ({
         isDashboard
       />
       <Panel>
-        <PanelHeader>
+        <PanelHeader className={myPrototypeStyles.panelHeader}>
           <PanelIcon iconName="bookmark" />
-          {t('myPrototype')}
+          <span>{t('myPrototype')}</span>
         </PanelHeader>
       </Panel>
       <PanelBody>
@@ -56,8 +62,48 @@ const MyPrototypeLayout = ({
         {
           userPrototypes.prototypeId ?
             <div>
+              <div className={myPrototypeStyles.prototypeContent}>
+                <Table>
+                  <TableRow className={myPrototypeStyles.tableRow}>
+                    <TableCell style={{ padding: 0, maxWidth: 113 }}>
+                      <img src={productBanner} className={myPrototypeStyles.prototypeImg} />
+                    </TableCell>
+                    <TableCell className={myPrototypeStyles.tableCell}>
+                      {t('prototypeName')}
+                      <a
+                        onClick={goToPrototypeDetail}
+                        className={myPrototypeStyles.link}>
+                        {userPrototypes.prototypeName}
+                      </a>
+                    </TableCell>
+                    <TableCell className={c(myPrototypeStyles.tableCell, myPrototypeStyles.updatedAt)}>
+                      <div style={{ width: 113 }}>
+                        {t('lastUpdateTime')}
+                        <p>{moment(userPrototypes.updatedAt).format('YYYY-MM-DD h:mm')}</p>
+                      </div>
+                    </TableCell>
+                  </TableRow>
+                </Table>
+              </div>
               <a className={myPrototypeStyles.link}>{t('testDeviceList')}</a>
-
+              <Table>
+                <TableHeader>
+                  <TableCell>{t('deviceName')}</TableCell>
+                  <TableCell>{t('deviceId')}</TableCell>
+                  <TableCell>{t('deviceKey')}</TableCell>
+                  <TableCell>{t('lastDataPointTime')}</TableCell>
+                </TableHeader>
+                <TableRow>
+                  <TableCell>1</TableCell>
+                  <TableCell>2</TableCell>
+                  <TableCell>3</TableCell>
+                  <TableCell>
+                    <div>
+                      123
+                    </div>
+                  </TableCell>
+                </TableRow>
+              </Table>
             </div>
           :
             <div className={myPrototypeStyles.noAnyPrototypes}>
@@ -78,6 +124,7 @@ export default compose(
   withHandlers({
     openCreatePrototype: props => () => props.setIsCreatePrototype(true),
     goToPrototypeList: props => () => browserHistory.push('/prototypes'),
+    goToPrototypeDetail: props => () => browserHistory.push('/prototypes/' + props.userPrototypes.prototypeId),
   }),
   withGetMessages(messages, 'Dashboard'),
 )(MyPrototypeLayout);
