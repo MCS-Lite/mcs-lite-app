@@ -6,8 +6,10 @@ import c from 'classnames';
 
 import dashboardStyles from './dashboard.css';
 import Breadcrumb from './breadcrumb';
+import MyPrototype from './myPrototype';
+import Examples from './examples';
 
-const Dashboard = ({ ...props }) => {
+const Dashboard = ({ createNewPrototype, dashboard, ...props }) => {
   return (
     <div>
       <Header
@@ -15,6 +17,8 @@ const Dashboard = ({ ...props }) => {
         imageUrl='http://img.mediatek.com/150/mtk.linkit/profile/3492e14e-f0fb-4718-a9a7-a49e95d8cb30.jpeg'/>
       <div className={dashboardStyles.base}>
         <Breadcrumb />
+        <MyPrototype createNewPrototype={createNewPrototype} userPrototypes={dashboard.userPrototypes}/>
+        <Examples />
       </div>
       <Footer />
     </div>

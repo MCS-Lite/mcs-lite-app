@@ -1,0 +1,33 @@
+.base {
+  padding: 9px;
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.link {
+  font-size: 13px;
+  color: #00A1DE;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.noAnyPrototypes {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.noAnyPrototypes p {
+  margin-top: 40px;
+  text-align: center;
+}
+
+.button {
+  width: 80px;
+}
