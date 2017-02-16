@@ -98,7 +98,7 @@ export default compose(
         version: props.version,
         prototypeDescription: props.prototypeDescription,
         prototypeImageURL: props.prototypeImageURL,
-      });
+      }, props.isDashboard);
     },
     onVersionChange: props => (e) => props.setVersion(e.target.value),
     onPrototypeDescriptionChange: props => (e) => props.setPrototypeDescription(e.target.value),
