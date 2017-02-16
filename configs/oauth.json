@@ -19,7 +19,7 @@
     "grantTypes": ["password", "refresh_token"],
     "redirect": {
       "dev": "http://localhost:8082/mobile",
-      "prod": "http://localhost:3000/mobile"
+      "prod": "/mobile"
     }
   }
 }
