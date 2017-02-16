@@ -1,6 +1,9 @@
 .base {
   padding: 9px;
 }
+.panelHeader span{
+  margin-left: 15px;
+}
 
 .header {
   display: flex;
@@ -30,4 +33,31 @@
 
 .button {
   width: 80px;
+}
+
+.prototypeContent {
+  /*padding: 10px 0px 0px 0px;*/
+  border-bottom: 1px solid #F1F2F7;
+}
+
+.prototypeImg {
+  width: 113px;
+  height: 60px;
+}
+
+.tableCell {
+  display: flex;
+  flex-direction: column;
+}
+
+.tableRow {
+  padding: 10px 0px !important;
+  margin: 0px;
+}
+
+.updatedAt {
+  padding: 0px;
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: row;
 }
