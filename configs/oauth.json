@@ -18,8 +18,8 @@
     "secret": "mcs_lite_mobile_app_secret",
     "grantTypes": ["password", "refresh_token"],
     "redirect": {
-      "dev": "http://localhost:8082",
-      "prod": ""
+      "dev": "http://localhost:8082/mobile",
+      "prod": "http://localhost:3000/mobile"
     }
   }
 }
