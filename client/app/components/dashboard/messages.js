@@ -31,6 +31,11 @@ const messages = defineMessages({
     description: '',
     defaultMessage: '目前還沒有任何產品原型',
   },
+  'Dashboard.noAnyDevice': {
+    id: 'Dashboard.noAnyDevice',
+    description: '',
+    defaultMessage: '目前還沒有任何測試裝置',
+  },
   'Dashboard.create': {
     id: 'Dashboard.create',
     description: '',
