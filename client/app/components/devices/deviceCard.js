@@ -1,30 +1,44 @@
 import React, { Component } from 'react';
 import { browserHistory } from 'react-router';
 import { FormattedMessage } from 'react-intl'
+
 import Button from 'mtk-ui/lib/Button';
 import Hr from 'mtk-ui/lib/Hr';
 import MiMoreVert from 'mtk-icon/lib/MiMoreVert';
+
 import compose from 'recompose/compose';
 import pure from 'recompose/pure';
 import withState from 'recompose/withState';
 import withHandlers from 'recompose/withHandlers';
+
 import productBanner from '../prototypes/productBanner.png';
-import DropdownButton from './dropdownButton'
+import DropdownButton from './dropdownButton';
+import EditDeviceDialog from './dialogs/editDeviceDialog';
+import DeleteDeviceDialog from './dialogs/deleteDeviceDialog';
 
 import styles from './deviceCard.css';
 
 const DeviceCardLayout = ({
+  deviceId,
   deviceName,
+  deviceVersion,
   deviceDescription,
   deviceImageURL,
   version,
   source,
   templateResource,
   openDeviceDetail,
+  setSeletedMenuValue,
+  seletedMenuValue,
+  editDevice,
+  deleteDevice,
 }) => {
   return (
     <div className={styles.base}>
-      <DropdownButton className={styles.more}/>
+      <DropdownButton
+        className={styles.more}
+        setSeletedMenuValue={setSeletedMenuValue}
+      />
       <img src={deviceImageURL || productBanner} className={styles.img} />
       <div className={styles.content}>
         <div>
@@ -74,12 +88,32 @@ const DeviceCardLayout = ({
           />
         </Button>
       </div>
+      {
+        seletedMenuValue === 'edit' &&
+        <EditDeviceDialog
+          deviceId={deviceId}
+          deviceName={deviceName}
+          deviceVersion={deviceVersion}
+          deviceDescription={deviceDescription}
+          setSeletedMenuValue={setSeletedMenuValue}
+          editDevice={editDevice}
+        />
+      }
+      {
+        seletedMenuValue === 'delete' &&
+        <DeleteDeviceDialog
+          deviceId={deviceId}
+          setSeletedMenuValue={setSeletedMenuValue}
+          deleteDevice={deleteDevice}
+        />
+      }
     </div>
   );
 }
 
 export default compose(
   pure,
+  withState('seletedMenuValue', 'setSeletedMenuValue', 'none'),
   withHandlers({
     openDeviceDetail: props => () => browserHistory.push('/devices/' + props.deviceId),
   }),

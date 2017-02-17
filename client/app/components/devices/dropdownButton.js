@@ -20,7 +20,8 @@ class DropdownButton extends React.Component {
 
   render() {
     const {
-      className
+      className,
+      setSeletedMenuValue,
     } = this.props;
 
     const items = [
@@ -29,14 +30,14 @@ class DropdownButton extends React.Component {
         children: <FormattedMessage
           id="DeviceCard.Edit"
           defaultMessage="Edit"
-        />
+        />,
       },
       {
         value: 'delete',
         children: <FormattedMessage
           id="DeviceCard.Delete"
           defaultMessage="Delete"
-        />
+        />,
       },
     ];
 
@@ -47,6 +48,7 @@ class DropdownButton extends React.Component {
           this.state.isMenuShow &&
           <Menu
             className={styles.menu}
+            onChange={(e, value) => setSeletedMenuValue(value)}
             items={items}
           />
         }

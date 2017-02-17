@@ -4,5 +4,19 @@
 }
 
 .content {
-  padding-left: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 0 15px;
+}
+
+.searchGroup {
+  width: 210px;
+}
+
+.searchButton {
+  min-width: inherit;
+  width: 32px;
+  padding: 0;
 }

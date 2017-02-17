@@ -10,3 +10,17 @@ export const retrieveDeviceList =  () => (dispatch, getState) => {
     });
   });
 }
+
+export const editDevice = (id, data) => (dispatch, getState) => {
+  return request('/devices/' + id, 'PUT', data, getState().main.access_token)
+  .then(function() {
+    retrieveDeviceList()(dispatch, getState);
+  });
+}
+
+export const deleteDevice =  (id) => (dispatch, getState) => {
+  return request('/devices/' + id, 'DELETE', {}, getState().main.access_token)
+  .then(function() {
+    retrieveDeviceList()(dispatch, getState);
+  });
+}
