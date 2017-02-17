@@ -28,6 +28,9 @@ import CreateNewPrototypeDialog from '../prototypes/dialogs/createNewPrototype';
 import productBanner from '../prototypes/productBanner.png';
 
 import moment from 'moment';
+import DeviceList from './deviceList';
+
+import IconChevronRight from 'mcs-lite-icon/lib/IconChevronRight';
 
 const MyPrototypeLayout = ({
   getMessages: t,
@@ -38,6 +41,8 @@ const MyPrototypeLayout = ({
   userPrototypes,
   goToPrototypeList,
   goToPrototypeDetail,
+  isDeviceList,
+  setIsDeviceList,
 }) => {
   return (
     <div className={myPrototypeStyles.base}>
@@ -85,25 +90,32 @@ const MyPrototypeLayout = ({
                   </TableRow>
                 </Table>
               </div>
-              <a className={myPrototypeStyles.link}>{t('testDeviceList')}</a>
-              <Table>
-                <TableHeader>
-                  <TableCell>{t('deviceName')}</TableCell>
-                  <TableCell>{t('deviceId')}</TableCell>
-                  <TableCell>{t('deviceKey')}</TableCell>
-                  <TableCell>{t('lastDataPointTime')}</TableCell>
-                </TableHeader>
-                <TableRow>
-                  <TableCell>1</TableCell>
-                  <TableCell>2</TableCell>
-                  <TableCell>3</TableCell>
-                  <TableCell>
-                    <div>
-                      123
-                    </div>
-                  </TableCell>
-                </TableRow>
-              </Table>
+              <a
+                className={myPrototypeStyles.link}
+                onClick={()=> setIsDeviceList(!isDeviceList)}
+              >{t('testDeviceList')}</a>
+              {
+                isDeviceList ?
+                <Table>
+                  <TableHeader>
+                    <TableCell>{t('deviceName')}</TableCell>
+                    <TableCell>{t('deviceId')}</TableCell>
+                    <TableCell>{t('deviceKey')}</TableCell>
+                    <TableCell>{t('lastDataPointTime')}</TableCell>
+                  </TableHeader>
+                  {
+                    userPrototypes.devices.length === 0 ?
+                      <div style={{marginTop: 40, marginBottom: 20, textAlign: 'center' }}>{t('noAnyDevice')}</div>
+                    :
+                      userPrototypes.devices.map((device) => {
+                        return (
+                          <DeviceList device={device} key={device.deviceId} />
+                        );
+                      })
+                  }
+                </Table>
+                : ''
+              }
             </div>
           :
             <div className={myPrototypeStyles.noAnyPrototypes}>
@@ -121,6 +133,7 @@ const MyPrototypeLayout = ({
 export default compose(
   pure,
   withState('isCreatePrototype', 'setIsCreatePrototype', false),
+  withState('isDeviceList', 'setIsDeviceList', false),
   withHandlers({
     openCreatePrototype: props => () => props.setIsCreatePrototype(true),
     goToPrototypeList: props => () => browserHistory.push('/prototypes'),
