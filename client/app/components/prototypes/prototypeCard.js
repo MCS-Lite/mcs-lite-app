@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import prototypeCardStyles from './prototypeCard.css';
 import { Button } from 'mcs-lite-ui';
 import Hr from 'mtk-ui/lib/Hr';
-import IconEllipsisV from 'mcs-lite-icon/lib/IconEllipsisV';
+import IconMoreVert from 'mcs-lite-icon/lib/IconMoreVert';
 import Menu from 'mtk-ui/lib/Menu';
 
 import productBanner from './productBanner.png';
@@ -56,7 +56,7 @@ const PrototypeCardLayout = ({
   return (
     <div className={prototypeCardStyles.base}>
       <div>
-        <IconEllipsisV className={prototypeCardStyles.more} onClick={openSelectMenu} />
+        <IconMoreVert className={prototypeCardStyles.more} onClick={openSelectMenu} />
         <img src={productBanner} className={prototypeCardStyles.img} />
         {
           isSelectMenu ?
