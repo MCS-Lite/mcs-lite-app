@@ -1,60 +1,58 @@
 import React from 'react'
 import c from 'classnames'
 import { FormattedMessage } from 'react-intl'
+
+import compose from 'recompose/compose'
+import pure from 'recompose/pure'
+import withState from 'recompose/withState'
+import withHandlers from 'recompose/withHandlers'
+
 import IconMoreVert from 'mcs-lite-icon/lib/IconMoreVert'
 import Menu from 'mtk-ui/lib/Menu';
 
 import styles from './dropdownButton.css'
 
-class DropdownButton extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      isMenuShow: false,
+const items = [
+  {
+    value: 'edit',
+    children: <FormattedMessage
+      id="DeviceCard.Edit"
+      defaultMessage="Edit"
+    />,
+  },
+  {
+    value: 'delete',
+    children: <FormattedMessage
+      id="DeviceCard.Delete"
+      defaultMessage="Delete"
+    />,
+  },
+];
+
+const DropdownButton = ({
+  isMenuShow,
+  onClick,
+  onMenuChange,
+  className,
+}) => (
+  <div className={c(className, styles.base)} onClick={onClick}>
+    <IconMoreVert size={24} />
+    {
+      isMenuShow &&
+      <Menu
+        className={styles.menu}
+        onChange={onMenuChange}
+        items={items}
+      />
     }
-  }
+  </div>
+)
 
-  onClick = () => {
-    this.setState({ isMenuShow: !this.state.isMenuShow})
-  }
-
-  render() {
-    const {
-      className,
-      setSeletedMenuValue,
-    } = this.props;
-
-    const items = [
-      {
-        value: 'edit',
-        children: <FormattedMessage
-          id="DeviceCard.Edit"
-          defaultMessage="Edit"
-        />,
-      },
-      {
-        value: 'delete',
-        children: <FormattedMessage
-          id="DeviceCard.Delete"
-          defaultMessage="Delete"
-        />,
-      },
-    ];
-
-    return (
-      <div className={c(className, styles.base)} onClick={this.onClick}>
-        <IconMoreVert />
-        {
-          this.state.isMenuShow &&
-          <Menu
-            className={styles.menu}
-            onChange={(e, value) => setSeletedMenuValue(value)}
-            items={items}
-          />
-        }
-      </div>
-    )
-  }
-}
-
-export default DropdownButton
+export default compose(
+  pure,
+  withState('isMenuShow', 'setIsMenuShow', false),
+  withHandlers({
+    onClick: props => () => props.setIsMenuShow(!props.isMenuShow),
+    onMenuChange: props => (e, value) => props.setSeletedMenuValue(value),
+  })
+)(DropdownButton)
