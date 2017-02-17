@@ -1,41 +1,77 @@
 import React, { Component } from 'react';
-
-import deviceCardStyles from './deviceCard.css';
+import { browserHistory } from 'react-router';
+import { FormattedMessage } from 'react-intl'
 import Button from 'mtk-ui/lib/Button';
 import Hr from 'mtk-ui/lib/Hr';
 import MiMoreVert from 'mtk-icon/lib/MiMoreVert';
-
+import compose from 'recompose/compose';
+import pure from 'recompose/pure';
+import withState from 'recompose/withState';
+import withHandlers from 'recompose/withHandlers';
 import productBanner from '../prototypes/productBanner.png';
+import DropdownButton from './dropdownButton'
 
-import { default as compose } from 'recompose/compose';
-import { default as pure } from 'recompose/pure';
-import { default as withState } from 'recompose/withState';
-import { default as withHandlers } from 'recompose/withHandlers';
-
-import { browserHistory } from 'react-router';
+import styles from './deviceCard.css';
 
 const DeviceCardLayout = ({
   deviceName,
-  deviceId,
   deviceDescription,
+  deviceImageURL,
+  version,
+  source,
+  templateResource,
   openDeviceDetail,
 }) => {
   return (
-    <div className={deviceCardStyles.base}>
-      <div>
-        <MiMoreVert className={deviceCardStyles.more} />
-        <img src={productBanner} className={deviceCardStyles.img} />
-      </div>
-      <div className={deviceCardStyles.content}>
-        <h3
-          className={deviceCardStyles.deviceName}
-        >
-          {deviceName}
-        </h3>
-        <Hr className={deviceCardStyles.hr}/>
-        <Hr />
-        <Button className={deviceCardStyles.button} onClick={openDeviceDetail}>
-          Detail
+    <div className={styles.base}>
+      <DropdownButton className={styles.more}/>
+      <img src={deviceImageURL || productBanner} className={styles.img} />
+      <div className={styles.content}>
+        <div>
+          <h3 className={styles.deviceName}>
+            {deviceName}
+          </h3>
+            {
+              (version || source) &&
+              <Hr className={styles.hr}/>
+            }
+            {
+              version && <h3>
+                <FormattedMessage
+                  id="DeviceCard.Version"
+                  defaultMessage="Version"
+                />
+                :{version}
+              </h3>
+            }
+            {
+              source && <h3>
+                <FormattedMessage
+                  id="DeviceCard.Source"
+                  defaultMessage="Source"
+                />
+                :{source}
+              </h3>
+            }
+            {
+              deviceDescription &&
+              <div>
+                <Hr className={styles.hr}/>
+                <div>
+                  <FormattedMessage
+                    id="DeviceCard.Description"
+                    defaultMessage="Description"
+                  />
+                  :{deviceDescription}
+                </div>
+              </div>
+            }
+        </div>
+        <Button className={styles.button} onClick={openDeviceDetail}>
+          <FormattedMessage
+            id="DeviceCard.Detail"
+            defaultMessage="Detail"
+          />
         </Button>
       </div>
     </div>
