@@ -11,7 +11,7 @@
 
 .mask {
   position: absolute;
-  width: 50%;
+  width: 70%;
   background-color: #00a1de;
   height: 49px;
   z-index: 1004;
@@ -81,7 +81,8 @@
   position: relative;
   margin-left: 5px;
   margin-right: 5px;
-  font-size: 13px
+  font-size: 18px;
+  top: 5px;
 }
 
 .navbar {

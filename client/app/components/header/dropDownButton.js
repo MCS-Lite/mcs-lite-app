@@ -12,6 +12,8 @@ import { default as withHandlers } from 'recompose/withHandlers';
 import dropButtonStyles from './dropDownButton.css';
 
 import Clickable from '../clickable'
+import MiUnfold from 'mtk-icon/lib/MiUnfold';
+import MiFold from 'mtk-icon/lib/MiFold';
 
 @pure
 @withState('isOpen', 'setIsOpen', false)
@@ -80,12 +82,10 @@ export default class DropdownButton extends Clickable {
           )}
         >
           { title }
-          <i
+          <MiUnfold
             className={c(
-              "fa fa-sort-down",
               dropButtonStyles.dropDownIcon,
               isOpen ? dropButtonStyles.dropDownIconOpen : dropButtonStyles.dropDownIconClose,
-              // arrowIcon ? {} : { display: 'none' },
             )}
           />
         </span>

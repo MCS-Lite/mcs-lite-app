@@ -13,10 +13,14 @@ import DropdownButton from './dropDownButton';
 
 import c from 'classnames';
 
-import MiDevelopment from 'mtk-icon/lib/MiDevelopment'
+import MiDevelopment from 'mtk-icon/lib/MiDevelopment';
+import IconResources from 'mcs-lite-icon/lib/IconResources';
 
 import logo from './web_logo.png';
 import resourcesConfig from './configs/resources';
+
+import messages from './messages';
+import withGetMessages from '../../utils/withGetMessage';
 
 const Header = ({
   isMenuActive,
@@ -26,6 +30,7 @@ const Header = ({
   basePath,
   imageUrl,
   logoutFn,
+  getMessages: t,
 }) => {
   return (
     <header className={headerStyles.base}>
@@ -51,7 +56,7 @@ const Header = ({
             title={
               <span>
                 <MiDevelopment className={headerStyles.prefixIcon}/>
-                Development
+                {t('development')}
               </span>
             }
           >
@@ -64,7 +69,7 @@ const Header = ({
               linkStyle={headerStyles.menuLink}
               activeStyle={headerStyles.menuItemActive}
             >
-              Prototype
+              {t('prototype')}
             </NavItem>
             <NavItem
               href="/devices"
@@ -76,88 +81,48 @@ const Header = ({
               linkStyle={headerStyles.menuLink}
               activeStyle={headerStyles.menuItemActive}
             >
-              Devices
+              {t('devices')}
             </NavItem>
+          </DropdownButton>
+          <DropdownButton
+            id='resources'
+            buttonStyle={c(
+              headerStyles.link,
+              isMenuActive('resourcesList') && headerStyles.activeStyle,
+            )}
+            activeStyle={headerStyles.activeStyle}
+            title={
+              <span>
+                <IconResources className={headerStyles.prefixIcon} />
+                {t('resources')}
+              </span>
+            }
+          >
+            {
+              resourcesList.map((entry, index, array) => {
+                return (
+                  <NavItem
+                    key={index}
+                    href={entry.path.startsWith('http') ? entry.path : basePath + entry.path}
+                    className={c(
+                      headerStyles.menuItem,
+                      isItemActive(entry.path) ? headerStyles.menuItemActive : {},
+                      array.length === index + 1 ? headerStyles.menuItemBorder : {},
+                    )}
+                    linkStyle={headerStyles.menuLink}
+                    activeStyle={c(
+                      headerStyles.menuItemActive,
+                      array.length === index + 1 ? headerStyles.menuItemBorder : {},
+                    )}
+                  >
+                    { entry.name }
+                  </NavItem>
+                );
+              })
+            }
           </DropdownButton>
         </Nav>
         <Nav className={headerStyles.optionalBlock}>
-            <DropdownButton
-              id='resources'
-              buttonStyle={c(
-                headerStyles.link,
-                isMenuActive('resourcesList') && headerStyles.activeStyle,
-              )}
-              activeStyle={headerStyles.activeStyle}
-              title={
-                <span>
-                  <MiDevelopment className={headerStyles.prefixIcon}/>
-                  Resources
-                </span>
-              }
-            >
-              {
-                resourcesList.map((entry, index, array) => {
-                  return (
-                    <NavItem
-                      key={index}
-                      href={entry.path.startsWith('http') ? entry.path : basePath + entry.path}
-                      className={c(
-                        headerStyles.menuItem,
-                        isItemActive(entry.path) ? headerStyles.menuItemActive : {},
-                        array.length === index + 1 ? headerStyles.menuItemBorder : {},
-                      )}
-                      linkStyle={headerStyles.menuLink}
-                      activeStyle={c(
-                        headerStyles.menuItemActive,
-                        array.length === index + 1 ? headerStyles.menuItemBorder : {},
-                      )}
-                    >
-                      { entry.name }
-                    </NavItem>
-                  );
-                })
-              }
-            </DropdownButton>
-            <DropdownButton
-              id='feedbackUserVoice'
-              buttonStyle={c(
-                headerStyles.link,
-                isMenuActive('helpList') && headerStyles.activeStyle,
-              )}
-              activeStyle={headerStyles.activeStyle}
-              title={
-                <span>
-                  <MiDevelopment className={headerStyles.prefixIcon}/>
-                  Help
-                </span>
-              }
-            >
-              {
-                helpList.map((entry, index) => {
-                  return (
-                    <NavItem key={index} href={`${basePath}${entry.path}`}
-                      className={c(
-                        headerStyles.menuItem,
-                        isItemActive(entry.path) ? headerStyles.menuItemActive : {},
-                      )}
-                      linkStyle={headerStyles.menuLink}
-                      activeStyle={headerStyles.menuItemActive}
-                    >
-                      { entry.name }
-                    </NavItem>
-                  );
-                })
-              }
-              <NavItem key="Forum"
-                href="http://labs.mediatek.com/forums/forums/show/48.page"
-                target="_blank"
-                className={headerStyles.menuItem}
-                linkStyle={headerStyles.menuLink}
-                activeStyle={headerStyles.menuItemActive}
-              >
-                Forum
-              </NavItem>
-            </DropdownButton>
             <DropdownButton
               id='profile'
               buttonStyle={headerStyles.link}
@@ -174,15 +139,7 @@ const Header = ({
                 className={headerStyles.menuItem}
                 linkStyle={headerStyles.menuLink}
                 activeStyle={headerStyles.menuItemActive}>
-                Profile
-              </NavItem>
-              <NavItem
-                key="TermsOfUse"
-                href={`${basePath}terms_of_use/`}
-                className={headerStyles.menuItem}
-                linkStyle={headerStyles.menuLink}
-                activeStyle={headerStyles.menuItemActive}>
-                Terms of use
+                {t('profile')}
               </NavItem>
               <NavItem
                 key="SignOut"
@@ -194,7 +151,7 @@ const Header = ({
                   headerStyles.menuItemBorder,
                 )}
               >
-                Sign out
+                {t('signout')}
               </NavItem>
             </DropdownButton>
         </Nav>
@@ -223,4 +180,5 @@ export default compose(
       return new RegExp(regPath).test(window.location.pathname);
     },
   }),
+  withGetMessages(messages, 'Header'),
 )(Header);
