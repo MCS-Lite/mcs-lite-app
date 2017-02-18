@@ -3,7 +3,7 @@ import myPrototypeStyles from './myPrototype.css';
 
 import Panel from 'mtk-ui/lib/Panel';
 import PanelHeader from 'mtk-ui/lib/PanelHeader';
-import PanelIcon from 'mtk-ui/lib/PanelIcon';
+import PanelIcon from '../common/panelIcon';
 import PanelBody from 'mtk-ui/lib/PanelBody';
 import Button from 'mtk-ui/lib/Button';
 import Table from 'mtk-ui/lib/table/Table';
@@ -33,6 +33,8 @@ import DeviceList from './deviceList';
 import MiUnfold from 'mtk-icon/lib/MiUnfold';
 import MiFold from 'mtk-icon/lib/MiFold';
 
+import IconOverview from 'mcs-lite-icon/lib/IconOverview';
+
 const MyPrototypeLayout = ({
   getMessages: t,
   createNewPrototype,
@@ -55,7 +57,9 @@ const MyPrototypeLayout = ({
       />
       <Panel>
         <PanelHeader className={myPrototypeStyles.panelHeader}>
-          <PanelIcon iconName="bookmark" />
+          <PanelIcon>
+            <IconOverview />
+          </PanelIcon>
           <span>{t('myPrototype')}</span>
         </PanelHeader>
       </Panel>

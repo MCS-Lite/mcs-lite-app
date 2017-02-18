@@ -4,7 +4,7 @@ import examplesStyles from './examples.css';
 import Panel from 'mtk-ui/lib/Panel';
 import Button from 'mtk-ui/lib/Button';
 import PanelHeader from 'mtk-ui/lib/PanelHeader';
-import PanelIcon from 'mtk-ui/lib/PanelIcon';
+import PanelIcon from '../common/panelIcon';
 import PanelBody from 'mtk-ui/lib/PanelBody';
 import Table from 'mtk-ui/lib/table/Table';
 import TableHeader from 'mtk-ui/lib/table/TableHeader';
@@ -25,6 +25,7 @@ import { browserHistory } from 'react-router';
 import ClonePrototype from '../prototypes/dialogs/clonePrototype';
 
 import ExampleList from './ExampleList';
+import IconPublic from 'mcs-lite-icon/lib/IconPublic';
 
 const ExamplesLayout = ({
   getMessages: t,
@@ -37,7 +38,9 @@ const ExamplesLayout = ({
     <div className={examplesStyles.base}>
       <Panel>
         <PanelHeader className={examplesStyles.panelHeader}>
-          <PanelIcon iconName="bookmark" />
+          <PanelIcon>
+            <IconPublic />
+          </PanelIcon>
           <span>{t('example')}</span>
         </PanelHeader>
       </Panel>
