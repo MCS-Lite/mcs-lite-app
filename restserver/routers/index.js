@@ -163,6 +163,13 @@ module.exports = function($db, $app, $rest) {
     handler: prototypesController.retrievePrototype,
   };
 
+  this.retrieveTemplatePrototypes = {
+    path: $rest.apiRoute + '/prototypes/templates',
+    methods: ['get'],
+    middleware: [$app.oauth.authorise()],
+    handler: prototypesController.retrievAllTemplates,
+  };
+
   this.retrievePrototypeDetail = {
     path: $rest.apiRoute + '/prototypes/:prototypeId',
     methods: ['get'],
@@ -272,4 +279,6 @@ module.exports = function($db, $app, $rest) {
     middleware: [connectMultiparty],
     handler: imageController.uploadImage,
   };
+
+
 };

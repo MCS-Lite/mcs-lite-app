@@ -11,3 +11,14 @@
   margin-top: 20px;
   flex-wrap: wrap;
 }
+
+.dialogBody {
+  margin-right: 50px;
+  margin-left: 50px;
+}
+
+.link {
+  color: #00A1DE;
+  text-decoration: none;
+  cursor: pointer;
+}

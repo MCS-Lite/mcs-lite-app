@@ -15,7 +15,6 @@ const Dashboard = ({
   clonePrototype,
   ...props,
 }) => {
-  console.log(dashboard);
   return (
     <div>
       <Header

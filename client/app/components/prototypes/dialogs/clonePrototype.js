@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 
-import newPrototypeCardStyles from '../newPrototypeCard.css';
 import Button from 'mtk-ui/lib/Button';
 
 import Dialog from 'mtk-ui/lib/Dialog';
@@ -15,6 +14,10 @@ import { default as compose } from 'recompose/compose';
 import { default as pure } from 'recompose/pure';
 import { default as withState } from 'recompose/withState';
 import { default as withHandlers } from 'recompose/withHandlers';
+import messages from '../messages';
+import withGetMessages from '../../../utils/withGetMessage';
+
+import prototypeStyles from '../prototypes.css';
 
 const ClonePrototypeDialog = ({
   selectMenuValue,
@@ -25,6 +28,7 @@ const ClonePrototypeDialog = ({
   onClonePrototypeDescriptionChange,
   prototypeName,
   submitClonePrototype,
+  getMessages: t,
 }) => {
   return (
     <Dialog
@@ -33,10 +37,9 @@ const ClonePrototypeDialog = ({
       onHide={closeClonePrototype}
     >
       <DialogHeader>
-        <div>Clone from existing prototype</div>
+        <div>{t('cloneFromExistingPrototype')}</div>
       </DialogHeader>
-      <DialogBody>
-        <p>To clone from an existing prototype enables you to build a similiar prototype base on the old one.</p>
+      <DialogBody className={prototypeStyles.dialogBody}>
         <InputForm
           kind="horizontal"
           style={{ backgroundColor: 'white' }}
@@ -44,24 +47,24 @@ const ClonePrototypeDialog = ({
         <InputText
           required
           value={clonePrototypeName}
-          label="Prototype name"
-          placeholder="Input the prototype name."
+          label={t('prototypeName')}
+          placeholder={t('inputThePrototypeName')}
           onChange={onClonePrototypeNameChange}
         />
         <InputTextarea
-          label="prototype description"
+          label={t('prototypeDescription')}
           rows="4"
           value={clonePrototypeDescription}
           style={{ resize: 'none' }}
-          placeholder="Input the prototype description."
+          placeholder={t('inputThePrototypeDescription')}
           onChange={onClonePrototypeDescriptionChange}
         />
         </InputForm>
       </DialogBody>
       <DialogFooter>
-        <Button kind="cancel" onClick={closeClonePrototype}>Cancel</Button>
+        <Button kind="cancel" onClick={closeClonePrototype}>{t('cancel')}</Button>
         <Button kind="primary" onClick={submitClonePrototype} >
-          Save
+          {t('save')}
         </Button>
       </DialogFooter>
     </Dialog>
@@ -84,4 +87,5 @@ export default compose(
       });
     },
   }),
+  withGetMessages(messages, 'Prototypes'),
  )(ClonePrototypeDialog)
