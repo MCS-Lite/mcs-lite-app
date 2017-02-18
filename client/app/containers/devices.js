@@ -1,7 +1,11 @@
 import { connect } from 'react-redux';
 import React, { Component } from 'react';
 import DevicesLayout from '../components/devices';
-import { retrieveDeviceList } from '../actions/DeviceActions'
+import {
+  retrieveDeviceList,
+  editDevice,
+  deleteDevice,
+} from '../actions/DeviceActions'
 
 class Device extends Component {
   componentDidMount() {
@@ -19,4 +23,8 @@ const mapStateToProps = (state) => {
   return state;
 }
 
-export default connect(mapStateToProps, { retrieveDeviceList })(Device);
+export default connect(mapStateToProps, {
+  retrieveDeviceList,
+  editDevice,
+  deleteDevice,
+})(Device);

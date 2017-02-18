@@ -1,4 +1,5 @@
 .base {
+  box-sizing: border-box;
   margin-left: 9px;
   margin-right: 9px;
   height: 385px;
@@ -14,11 +15,16 @@
 
 .img {
   height: 160px;
+  width: 100%;
   background-position: center center;
   background-repeat: no-repeat;
 }
 
 .content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 185px;
   padding: 20px;
 }
 
@@ -28,10 +34,7 @@
 
 .more {
   position: absolute;
-  cursor: pointer;
   margin-left: 250px;
-  color: #00a1de;
-  font-size: 24px;
   padding: 14px;
 }
 
@@ -40,11 +43,10 @@
   font-weight: 700;
   width: 100%;
   text-overflow: ellipsis;
-  display: inline-block;
   overflow: hidden;
   margin: 0px;
 }
 
 .hr {
-  margin: 0px;
+  margin: 0;
 }
