@@ -21,6 +21,7 @@ import resourcesConfig from './configs/resources';
 
 import messages from './messages';
 import withGetMessages from '../../utils/withGetMessage';
+import { browserHistory } from 'react-router';
 
 const Header = ({
   isMenuActive,
@@ -29,7 +30,6 @@ const Header = ({
   resourcesList,
   basePath,
   imageUrl,
-  logoutFn,
   getMessages: t,
 }) => {
   return (
@@ -143,7 +143,7 @@ const Header = ({
               </NavItem>
               <NavItem
                 key="SignOut"
-                onClick={()=>logoutFn()}
+                onClick={()=>browserHistory.push('/login')}
                 className={headerStyles.menuItem}
                 linkStyle={headerStyles.menuLink}
                 activeStyle={c(

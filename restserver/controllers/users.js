@@ -91,12 +91,12 @@ module.exports = function ($db) {
               if(req.clientAppInfo.isMobile) {
                 return res.redirect(req.clientAppInfo.redirect.dev + '/devices');
               }
-              return res.redirect(req.clientAppInfo.redirect.dev + '/prototypes');
+              return res.redirect(req.clientAppInfo.redirect.dev + '/dashboard');
             }
             if(req.clientAppInfo.isMobile) {
               return res.redirect(req.clientAppInfo.redirect.prod + '/devices');
             }
-            return res.redirect('/prototypes');
+            return res.redirect('/dashboard');
           } else {
             reject(err.response.body.message);
           }
@@ -254,7 +254,7 @@ module.exports = function ($db) {
           if (req.clientAppInfo.isMobile) {
             return res.redirect(req.clientAppInfo.redirect.dev + '/devices');
           }
-          return res.redirect(req.clientAppInfo.redirect.dev + '/prototypes');
+          return res.redirect(req.clientAppInfo.redirect.dev + '/dashboard');
         }
         return res.render('app/build/index.html');
 
