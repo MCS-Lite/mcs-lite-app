@@ -4,6 +4,16 @@ module.exports = function ($db) {
   var users = $db.users;
   var datachannels = $db.datachannels;
 
+  var retrievAllTemplates = function(req, res, next) {
+    return prototypes.retriveUserPrototypes({
+      isActive: true,
+      isTemplate: true,
+    })
+    .then(function(data) {
+      res.send(200, { data: data });
+    });
+  };
+
   var retrievePrototypeDetail = function(req, res, next) {
     var userId = req.user.userId;
     var isAdmin = req.user.isAdmin;
@@ -137,6 +147,7 @@ module.exports = function ($db) {
     editPrototype: editPrototype,
     deletePrototype: deletePrototype,
     clonePrototype: clonePrototype,
+    retrievAllTemplates: retrievAllTemplates,
   };
 
 };

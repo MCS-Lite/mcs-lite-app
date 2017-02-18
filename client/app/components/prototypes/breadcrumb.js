@@ -6,12 +6,22 @@ import BreadcrumbItem from 'mtk-ui/lib/BreadcrumbItem';
 
 import breadcrumbStyles from './breadcrumb.css';
 
-const Breadcrumbs = [
-  { children: 'Development' },
-  { children: 'Prototype', href: '/prototypes', active: true },
-];
+import { default as compose } from 'recompose/compose';
+import { default as pure } from 'recompose/pure';
+import { default as withState } from 'recompose/withState';
+import { default as withHandlers } from 'recompose/withHandlers';
 
-const BreadcrumbLayout = () => {
+import messages from './messages';
+import withGetMessages from '../../utils/withGetMessage';
+
+const BreadcrumbLayout = ({
+  getMessages: t,
+}) => {
+  const Breadcrumbs = [
+    { children: t('development') },
+    { children: t('prototype'), href: '/prototypes', active: true },
+  ];
+
   return (
     <div className={breadcrumbStyles.base}>
       <Breadcrumb items={Breadcrumbs} />
@@ -19,4 +29,7 @@ const BreadcrumbLayout = () => {
   );
 }
 
-export default BreadcrumbLayout;
+export default compose(
+  pure,
+  withGetMessages(messages, 'Prototypes'),
+)(BreadcrumbLayout);

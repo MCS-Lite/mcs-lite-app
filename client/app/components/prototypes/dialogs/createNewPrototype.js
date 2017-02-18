@@ -1,37 +1,47 @@
 import React, { Component } from 'react';
 
-import newPrototypeCardStyles from '../newPrototypeCard.css';
-import Button from 'mtk-ui/lib/Button';
-
 import Dialog from 'mtk-ui/lib/Dialog';
 import DialogHeader from 'mtk-ui/lib/DialogHeader';
 import DialogBody from 'mtk-ui/lib/DialogBody';
 import DialogFooter from 'mtk-ui/lib/DialogFooter';
 import InputForm from 'mtk-ui/lib/InputForm';
-import InputText from 'mtk-ui/lib/InputText';
-import InputTextarea from 'mtk-ui/lib/InputTextarea';
+import InputSelect from 'mtk-ui/lib/InputSelect';
 
 import { default as compose } from 'recompose/compose';
 import { default as pure } from 'recompose/pure';
 import { default as withState } from 'recompose/withState';
 import { default as withHandlers } from 'recompose/withHandlers';
-
 import messages from '../messages';
 import withGetMessages from '../../../utils/withGetMessage';
 
+import prototypeStyles from '../prototypes.css';
+import InputPrototypeInfo from './inputPrototypeInfo';
+import ImportJSON from './importJSON';
+import UseExample from './useExample';
+
 const CreateNewPrototypeDialog = ({
   isCreatePrototype,
-  onVersionChange,
-  onPrototypeNameChange,
-  onPrototypeDescriptionChange,
   closeCreatePrototype,
   openCreatePrototype,
-  prototypeName,
-  version,
-  prototypeDescription,
-  submitCreateNewPrototype,
+  createNewPrototype,
+  createPrototypeType,
+  setIsCreatePrototype,
+  onCreatePrototypeType,
+  isDashboard,
   getMessages: t,
 }) => {
+
+  const createPrototypeOptions = [{
+    value: 0,
+    children: t('inputPrototypeInfo'),
+  },{
+    value: 1,
+    children: t('importJSON'),
+  },{
+    value: 2,
+    children: t('useExample'),
+  }];
+
   return (
     <Dialog
       show={isCreatePrototype}
@@ -39,72 +49,59 @@ const CreateNewPrototypeDialog = ({
       onHide={closeCreatePrototype}
     >
       <DialogHeader>
-        <div>Create Prototype</div>
+        <div>{t('createPrototype')}</div>
       </DialogHeader>
-      <DialogBody>
-        <p>Fill in the following information or
-          <a href="">import from JSON file</a>
-          .
-        </p>
+      <DialogBody className={prototypeStyles.dialogBody} style={{ padding : '20px 20px 0px 20px'}}>
         <InputForm
           kind="horizontal"
           style={{ backgroundColor: 'white' }}
         >
-        <InputText
-          required
-          value={prototypeName}
-          label={t('prototypeName')}
-          placeholder={t('inputThePrototypeName')}
-          onChange={onPrototypeNameChange}
-        />
-        <InputText
-          required
-          value={version}
-          label={t('prototypeVersion')}
-          placeholder={t('inputThePrototypeVersion')}
-          onChange={onVersionChange}
-        />
-        <InputTextarea
-          label={t('prototypeDescription')}
-          rows="4"
-          value={prototypeDescription}
-          style={{ resize: 'none' }}
-          placeholder={t('inputThePrototypeDescription')}
-          onChange={onPrototypeDescriptionChange}
-        />
+          <InputSelect
+            placeholder={t('inputPrototypeInfo')}
+            items={createPrototypeOptions}
+            value={createPrototypeType}
+            label={t('prototypeName')}
+            filterFunc={() => true}
+            valueRenderer={(value = {}) => {
+              let children;
+              createPrototypeOptions.forEach((k, v) => {
+                if (k.value === value) {
+                  children = k.children;
+                }
+              })
+              return children;
+            }}
+            onChange={onCreatePrototypeType}
+          />
         </InputForm>
       </DialogBody>
-      <DialogFooter>
-        <Button kind="cancel" onClick={closeCreatePrototype}>Cancel</Button>
-        <Button kind="primary" onClick={submitCreateNewPrototype}>
-          {t('save')}
-        </Button>
-      </DialogFooter>
+      <DialogBody className={prototypeStyles.dialogBody}>
+        {
+          createPrototypeType === 0 ?
+            <InputPrototypeInfo
+              isDashboard={isDashboard}
+              createNewPrototype={createNewPrototype}
+              closeCreatePrototype={closeCreatePrototype}
+              setIsCreatePrototype={setIsCreatePrototype}
+            /> : ''
+        }
+        { createPrototypeType === 1 ? <ImportJSON /> : '' }
+        { createPrototypeType === 2 ? <UseExample /> : '' }
+      </DialogBody>
     </Dialog>
   );
 }
 
 export default compose(
   pure,
-  withState('prototypeName', 'setPrototypeName', ''),
-  withState('version', 'setVersion', ''),
-  withState('prototypeDescription', 'setPrototypeDescription', ''),
-  withState('prototypeImageURL', 'setPrototypeImageURL', ''),
+  withState('createPrototypeType', 'setCreatePrototypeType', 0),
   withHandlers({
-    submitCreateNewPrototype: props => () => {
-      props.setIsCreatePrototype(false);
-      props.createNewPrototype({
-        prototypeName: props.prototypeName,
-        version: props.version,
-        prototypeDescription: props.prototypeDescription,
-        prototypeImageURL: props.prototypeImageURL,
-      });
-    },
-    onVersionChange: props => (e) => props.setVersion(e.target.value),
-    onPrototypeDescriptionChange: props => (e) => props.setPrototypeDescription(e.target.value),
-    onPrototypeNameChange: props => (e) => props.setPrototypeName(e.target.value),
     openCreatePrototype: props => () => props.setIsCreatePrototype(true),
     closeCreatePrototype: props => () => props.setIsCreatePrototype(false),
+    onCreatePrototypeType: props => (e, value) => {
+      console.log(value);
+      props.setCreatePrototypeType(value);
+    },
   }),
   withGetMessages(messages, 'Prototypes'),
  )(CreateNewPrototypeDialog)

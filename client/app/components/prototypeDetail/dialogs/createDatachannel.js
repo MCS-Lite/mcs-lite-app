@@ -111,7 +111,7 @@ export default compose(
     onDataChannelNameChange: props => (e) => props.setDataChannelName(e.target.value),
     onDataChannelIdChange: props => (e) => props.setDataChannelId(e.target.value),
     onDataChannelDescriptionChange: props => (e) => props.setDataChannelDescription(e.target.value),
-    onDataChannelTypeChange: props => (e, vallue) => props.setDataChannelType(value),
+    onDataChannelTypeChange: props => (e, value) => props.setDataChannelType(value),
     submitCreateDataChannel: props => (e) => {
       let data = {};
       data.displayCardType = props.displayCardType;

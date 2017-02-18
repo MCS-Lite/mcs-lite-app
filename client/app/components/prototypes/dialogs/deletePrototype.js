@@ -16,6 +16,8 @@ import { default as compose } from 'recompose/compose';
 import { default as pure } from 'recompose/pure';
 import { default as withState } from 'recompose/withState';
 import { default as withHandlers } from 'recompose/withHandlers';
+import messages from '../messages';
+import withGetMessages from '../../../utils/withGetMessage';
 
 import notice from './notice.png';
 
@@ -23,6 +25,7 @@ const DeletePrototypeDialog = ({
   selectMenuValue,
   closeDeletePrototype,
   submitDeletePrototype,
+  getMessages: t,
 }) => {
   return (
     <Dialog
@@ -31,16 +34,16 @@ const DeletePrototypeDialog = ({
       onHide={closeDeletePrototype}
     >
       <DialogHeader>
-        <div>Notice!</div>
+        <div>{t('notice')}</div>
       </DialogHeader>
       <DialogBody className={deletePrototypeStyles.content}>
         <img src={notice} className={deletePrototypeStyles.img}/>
-        <p>Are you sure you want to delete? You cannot revert this action.</p>
+        <p>{t('deletePrototype')}</p>
       </DialogBody>
       <DialogFooter>
-        <Button kind="cancel" onClick={closeDeletePrototype}>Cancel</Button>
+        <Button kind="cancel" onClick={closeDeletePrototype}>{t('cancel')}</Button>
         <Button kind="primary" onClick={submitDeletePrototype}>
-          OK
+          {t('OK')}
         </Button>
       </DialogFooter>
     </Dialog>
@@ -56,4 +59,5 @@ export default compose(
       props.deletePrototype(props.prototypeId);
     },
   }),
+  withGetMessages(messages, 'Prototypes'),
  )(DeletePrototypeDialog)

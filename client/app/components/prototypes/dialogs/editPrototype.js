@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 
-import newPrototypeCardStyles from '../newPrototypeCard.css';
 import Button from 'mtk-ui/lib/Button';
 
 import Dialog from 'mtk-ui/lib/Dialog';
@@ -15,6 +14,10 @@ import { default as compose } from 'recompose/compose';
 import { default as pure } from 'recompose/pure';
 import { default as withState } from 'recompose/withState';
 import { default as withHandlers } from 'recompose/withHandlers';
+import messages from '../messages';
+import withGetMessages from '../../../utils/withGetMessage';
+
+import prototypeStyles from '../prototypes.css';
 
 const EditPrototypeDialog = ({
   selectMenuValue,
@@ -27,6 +30,7 @@ const EditPrototypeDialog = ({
   editVersion,
   onEditVersionChange,
   submitEditPrototype,
+  getMessages: t,
 }) => {
   return (
     <Dialog
@@ -35,9 +39,9 @@ const EditPrototypeDialog = ({
       onHide={closeEditPrototype}
     >
       <DialogHeader>
-        <div>Edit prototype</div>
+        <div>{t('editPrototype')}</div>
       </DialogHeader>
-      <DialogBody>
+      <DialogBody className={prototypeStyles.dialogBody}>
         <InputForm
           kind="horizontal"
           style={{ backgroundColor: 'white' }}
@@ -45,31 +49,31 @@ const EditPrototypeDialog = ({
         <InputText
           required
           value={editPrototypeName}
-          label="Prototype name"
-          placeholder="Input the prototype name."
+          label={t('prototypeName')}
+          placeholder={t('inputThePrototypeName')}
           onChange={onEditPrototypeNameChange}
         />
         <InputText
           required
           value={editVersion}
-          label="Prototype version"
-          placeholder="Input the prototype version."
+          label={t('prototypeVersion')}
+          placeholder={t('inputThePrototypeVersion')}
           onChange={onEditVersionChange}
         />
         <InputTextarea
-          label="prototype description"
+          label={t('prototypeDescription')}
           rows="4"
           value={editPrototypeDescription}
           style={{ resize: 'none' }}
-          placeholder="Input the prototype description."
+          placeholder={t('inputThePrototypeDescription')}
           onChange={onEditPrototypeDescriptionChange}
         />
         </InputForm>
       </DialogBody>
       <DialogFooter>
-        <Button kind="cancel" onClick={closeEditPrototype}>Cancel</Button>
+        <Button kind="cancel" onClick={closeEditPrototype}>{t('cancel')}</Button>
         <Button kind="primary" onClick={submitEditPrototype}>
-          Save
+          {t('save')}
         </Button>
       </DialogFooter>
     </Dialog>
@@ -95,4 +99,5 @@ export default compose(
       });
     },
   }),
+  withGetMessages(messages, 'Prototypes'),
  )(EditPrototypeDialog)

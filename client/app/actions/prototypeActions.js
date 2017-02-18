@@ -2,6 +2,7 @@ import types from '../constants/PrototypeActionTypes';
 import { request } from '../utils/fetch';
 import { browserHistory } from 'react-router';
 
+import { retrieveDashboard } from './DashboardActions';
 
 export const retrievePrototypeList =  () => (dispatch, getState) => {
   return request('/prototypes', 'GET', getState().main.access_token)
@@ -13,10 +14,14 @@ export const retrievePrototypeList =  () => (dispatch, getState) => {
   });
 }
 
-export const createNewPrototype =  (data) => (dispatch, getState) => {
+export const createNewPrototype =  (data, isDashboard) => (dispatch, getState) => {
   return request('/prototypes', 'POST', data, getState().main.access_token)
   .then((data) => {
-    retrievePrototypeList()(dispatch, getState);
+    if(isDashboard) {
+      retrieveDashboard()(dispatch, getState);
+    } else {
+      retrievePrototypeList()(dispatch, getState);
+    }
   });
 }
 

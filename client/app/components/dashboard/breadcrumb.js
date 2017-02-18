@@ -7,9 +7,15 @@ import breadcrumbStyles from './breadcrumb.css';
 import { default as compose } from 'recompose/compose';
 import { default as pure } from 'recompose/pure';
 
-const BreadcrumbLayout = ({ deviceName }) => {
+import withGetMessages from '../../utils/withGetMessage';
+import messages from './messages';
+
+const BreadcrumbLayout = ({
+  deviceName,
+  getMessages: t,
+}) => {
   const Breadcrumbs = [
-    { children: 'Development' },
+    { children: t('dashboard') },
   ];
 
   return (
@@ -21,4 +27,5 @@ const BreadcrumbLayout = ({ deviceName }) => {
 
 export default compose(
   pure,
+  withGetMessages(messages, 'Dashboard'),
 )(BreadcrumbLayout);

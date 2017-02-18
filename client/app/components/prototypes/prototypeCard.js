@@ -41,16 +41,16 @@ const PrototypeCardLayout = ({
   getMessages: t,
 }) => {
   let items = [
-    { value: 'edit', children: 'Edit' },
-    { value: 'clone', children: 'Clone' },
-    { value: 'export', children: 'Export' },
-    { value: 'delete', children: 'Delete' },
+    { value: 'edit', children: t('edit') },
+    { value: 'clone', children: t('clone') },
+    { value: 'export', children: t('export') },
+    { value: 'delete', children: t('delete') },
   ];
 
   if (isTemplate && !main.isAdmin) {
     items = [
-      { value: 'clone', children: 'Clone' },
-      { value: 'export', children: 'Export' },
+      { value: 'clone', children: t('clone') },
+      { value: 'export', children: t('export') },
     ];
   }
   return (
