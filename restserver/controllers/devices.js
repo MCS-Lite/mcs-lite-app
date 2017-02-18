@@ -90,11 +90,27 @@ module.exports = function ($db) {
     });
   };
 
+  var deleteDevice = function(req, res, next) {
+    var userId = req.user.userId;
+    return devices.deleteDevice({
+      deviceId: req.params.deviceId,
+      isActive: true,
+      createUserId: userId,
+    })
+    .then(function() {
+      return res.send(200, { message: 'success'});
+    })
+    .catch(function(err) {
+      return res.send(400, err);
+    });
+  };
+
   return {
     retrieveDevice: retrieveDevice,
     retrieveDeviceDetail: retrieveDeviceDetail,
     addNewDevice: addNewDevice,
     editDevice: editDevice,
     setPublicDevice: setPublicDevice,
+    deleteDevice: deleteDevice,
   };
 };

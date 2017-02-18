@@ -254,6 +254,13 @@ module.exports = function($db, $app, $rest) {
     handler: devicesController.setPublicDevice,
   };
 
+  this.deleteDevice = {
+    path: $rest.apiRoute + '/devices/:deviceId',
+    methods: ['delete'],
+    middleware: [$app.oauth.authorise()],
+    handler: devicesController.deleteDevice,
+  };
+
   this.uploadDatapoint = {
     path: $rest.apiRoute + '/devices/:deviceId/datapoints',
     methods: ['post'],
