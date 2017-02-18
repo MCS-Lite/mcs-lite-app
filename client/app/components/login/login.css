@@ -17,8 +17,8 @@
 
 .form {
   background: #fff;
-  width: 307px;
-  height: 412px;
+  width: 300px;
+  height: 307px;
   border-radius: 3px;
   padding: 20px;
   box-sizing: border-box;
@@ -31,13 +31,13 @@
 .logo{
   width: 100%;
   max-width: 220px;
-  margin: 20px auto 40px auto;
+  margin: 20px auto 20px auto;
   display: block;
 }
 
 .submit{
   width: 100%;
-  margin-top: 25px;
+  margin-top: 20px;
 }
 
 .createaccount{
@@ -49,5 +49,10 @@
 .createaccount a {
   color: #00a1de;
   cursor: pointer;
-  margin-top: 14px;
+  margin-top: 10px;
+}
+
+.createaccount p {
+  margin-bottom: 0px;
+  margin-top: 10px;
 }

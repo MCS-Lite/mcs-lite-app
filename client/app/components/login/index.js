@@ -16,7 +16,14 @@ import { default as pure } from 'recompose/pure';
 import { default as withState } from 'recompose/withState';
 import { default as withHandlers } from 'recompose/withHandlers';
 
-const Login = ({ login, openSignIn }) => {
+import messages from './messages';
+import withGetMessages from '../../utils/withGetMessage';
+
+const Login = ({
+  login,
+  openSignIn,
+  getMessages: t,
+}) => {
   return (
     <div>
       <div className={LoginStyles.base}>
@@ -29,18 +36,16 @@ const Login = ({ login, openSignIn }) => {
         >
           <img src={logo} className={LoginStyles.logo}/>
           {login.errorMsg}
-          <Hr className={LoginStyles.hr}>Welcome</Hr>
-          <InputText name="email" type="email" placeholder="Email address" className={LoginStyles.input}/>
-          <InputText name="password" type="password" placeholder="Password" />
-          <br />
-          <InputCheckbox label="Remember me" />
-          <Button type="submit" className={LoginStyles.submit}>
-            Sign In
-          </Button>
+          <Hr>{t('welcome')}</Hr>
+          <InputText name="email" type="email" placeholder={t('Email')} className={LoginStyles.input}/>
+          <InputText name="password" type="password" placeholder={t('password')} />
           <div className={LoginStyles.createaccount}>
-          <p>Do not have account?</p>
-          <a onClick={openSignIn}>Create an account.</a>
+            <p>{t('doNotHaveAccount')}</p>
+            <a onClick={openSignIn}>{t('createAnAccount')}</a>
           </div>
+          <Button type="submit" className={LoginStyles.submit}>
+            {t('signIn')}
+          </Button>
         </form>
       </div>
       <Footer />
@@ -53,4 +58,5 @@ export default compose(
   withHandlers({
     openSignIn: props => () => browserHistory.push('/signin'),
   }),
+  withGetMessages(messages, 'Login'),
 )(Login);

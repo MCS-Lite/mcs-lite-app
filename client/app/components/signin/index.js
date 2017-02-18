@@ -18,12 +18,21 @@ import { default as withHandlers } from 'recompose/withHandlers';
 import { browserHistory } from 'react-router';
 import logo from '../login/logo.png';
 
-const Signin = ({ signin, openLogin }) => {
+import c from 'classnames';
+
+import messages from './messages';
+import withGetMessages from '../../utils/withGetMessage';
+
+const Signin = ({
+  signin,
+  openLogin,
+  getMessages: t,
+}) => {
   return (
     <div>
       <div className={LoginStyles.base}>
         <form
-          className={LoginStyles.form}
+          className={c(LoginStyles.form, SigninStyles.form)}
           id="signinSubmit"
           role="form"
           action={ window.oauthUrl + "/signin" }
@@ -31,19 +40,18 @@ const Signin = ({ signin, openLogin }) => {
         >
           <img src={logo} className={LoginStyles.logo}/>
           {signin.errorMsg}
-          <Hr className={LoginStyles.hr}>Create an account</Hr>
-          <InputText name="userName" type="text" placeholder="Nick name" className={LoginStyles.input} />
-          <InputText name="email" type="email" placeholder="Email address" className={LoginStyles.input} />
-          <InputText name="password" type="password" placeholder="Password" className={LoginStyles.input} />
-          <InputText name="passwordAgain" type="password" placeholder="Confirm your password" className={LoginStyles.input} />
-          <InputCheckbox label="I agree" required /> <a className={SigninStyles.termofuseLink}> Terms of Service and Privacy Policy. </a>
+          <Hr className={LoginStyles.hr}>{t('createAnAccount')}</Hr>
+          <InputText name="userName" type="text" placeholder={t('nickname')} className={LoginStyles.input} />
+          <InputText name="email" type="email" placeholder={t('Email')} className={LoginStyles.input} />
+          <InputText name="password" type="password" placeholder={t('password')} className={LoginStyles.input} />
+          <InputText name="passwordAgain" type="password" placeholder={t('passwordAgain')} className={LoginStyles.input} />
           <div className={SigninStyles.submit}>
-          <Button kind="cancel" onClick={openLogin} className={SigninStyles.submitBtn}>
-            Cancel
-          </Button>
-          <Button type="submit" className={SigninStyles.submitBtn}>
-            Submit
-          </Button>
+            <Button kind="cancel" onClick={openLogin} className={SigninStyles.submitBtn}>
+              {t('cancel')}
+            </Button>
+            <Button type="submit" className={SigninStyles.submitBtn}>
+              {t('submit')}
+            </Button>
           </div>
         </form>
       </div>
@@ -59,4 +67,5 @@ export default compose(
     openTermOfUse: props => () => props.setIsOpenTermOfUse(!props.isOpenTermOfUse),
     openLogin: props => () => browserHistory.push('/login'),
   }),
+  withGetMessages(messages, 'Signin'),
 )(Signin);
