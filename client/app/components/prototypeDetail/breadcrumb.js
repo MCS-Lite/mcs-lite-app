@@ -9,10 +9,16 @@ import breadcrumbStyles from './breadcrumb.css';
 import { default as compose } from 'recompose/compose';
 import { default as pure } from 'recompose/pure';
 
-const BreadcrumbLayout = ({ prototypeName }) => {
+import withGetMessages from '../../utils/withGetMessage';
+import messages from './messages';
+
+const BreadcrumbLayout = ({
+  prototypeName,
+  getMessages: t,
+ }) => {
   const Breadcrumbs = [
-    { children: 'Development' },
-    { children: 'Prototype', href: '/prototypes' },
+    { children: t('dashboard') },
+    { children: t('prototype'), href: '/prototypes' },
     { children: prototypeName, href: '/prototypes', active: true },
   ];
 
@@ -25,4 +31,5 @@ const BreadcrumbLayout = ({ prototypeName }) => {
 
 export default compose(
   pure,
+  withGetMessages(messages, 'PrototypeDetail'),
 )(BreadcrumbLayout);

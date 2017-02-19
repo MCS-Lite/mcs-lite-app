@@ -17,6 +17,9 @@ import selectCreateDataChannelStyles from './selectCreateDataChannel.css'
 
 import CreateDataChannel from './createDataChannel';
 
+import withGetMessages from '../../../utils/withGetMessage';
+import messages from '../messages';
+
 const CreateDataChannelDialog = ({
   closeSelectCreateDataChannel,
   setIsCreateDataChannel,
@@ -25,6 +28,7 @@ const CreateDataChannelDialog = ({
   setDisplayCardType,
   isSelectCreateDataChannel,
   prototypeId,
+  getMessages: t,
 }) => {
   return (
     <Dialog
@@ -33,12 +37,28 @@ const CreateDataChannelDialog = ({
       onHide={closeSelectCreateDataChannel}
     >
       <DialogHeader>
-        <div>Add data channel</div>
+        <div>{t('addNewDataChannel')}</div>
       </DialogHeader>
       <DialogBody className={selectCreateDataChannelStyles.content}>
-        <SelectDisplayCard setIsCreateDataChannel={setIsCreateDataChannel} displayCardType={1} setDisplayCardType={setDisplayCardType} title="Controller" description="The controller data channels allow you to control the status of your devices. eg, ON/OFF for a switch" />
-        <SelectDisplayCard setIsCreateDataChannel={setIsCreateDataChannel} displayCardType={2} setDisplayCardType={setDisplayCardType} title="Display" description="The display data channels allow you to get the data from your devices." />
-        <CreateDataChannel prototypeId={prototypeId} displayCardType={displayCardType} isCreateDataChannel={isCreateDataChannel} setIsCreateDataChannel={setIsCreateDataChannel} />
+        <SelectDisplayCard
+          setIsCreateDataChannel={setIsCreateDataChannel}
+          displayCardType={1}
+          setDisplayCardType={setDisplayCardType}
+          title={t('control')}
+          description={t('controlHint')}
+        />
+        <SelectDisplayCard
+          setIsCreateDataChannel={setIsCreateDataChannel}
+          displayCardType={2}
+          setDisplayCardType={setDisplayCardType}
+          title={t('display')}
+          description={t('displayHint')} />
+        <CreateDataChannel
+          prototypeId={prototypeId}
+          displayCardType={displayCardType}
+          isCreateDataChannel={isCreateDataChannel}
+          setIsCreateDataChannel={setIsCreateDataChannel}
+        />
       </DialogBody>
     </Dialog>
   );
@@ -51,4 +71,5 @@ export default compose(
   withHandlers({
     closeSelectCreateDataChannel: props => () => props.setIsSelectCreateDataChannel(false),
   }),
+  withGetMessages(messages, 'PrototypeDetail'),
  )(CreateDataChannelDialog)

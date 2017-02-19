@@ -17,6 +17,9 @@ import EditPrototype from '../prototypes/dialogs/editPrototype'
 import DeletePrototype from '../prototypes/dialogs/deletePrototype'
 import ClonePrototype from '../prototypes/dialogs/clonePrototype'
 
+import withGetMessages from '../../utils/withGetMessage';
+import messages from './messages';
+
 const PrototypeDetailHeaderLayout = ({
   prototypeName,
   prototypeId,
@@ -33,6 +36,7 @@ const PrototypeDetailHeaderLayout = ({
   clonePrototype,
   deletePrototype,
   setSelectMenuValue,
+  getMessages: t,
 }) => {
   return (
     <div className={prototypeDetailHeaderStyles.base}>
@@ -41,7 +45,7 @@ const PrototypeDetailHeaderLayout = ({
           <div className={prototypeDetailHeaderStyles.infoHeader}>
             <h3>{prototypeName}</h3><span> (ID: {prototypeId}) </span>
           </div>
-          <div>version: {version} </div>
+          <div>{t('version')}: {version} </div>
         </div>
         <div className={prototypeDetailHeaderStyles.option}>
           <CreateTestDeviceDialog
@@ -51,21 +55,21 @@ const PrototypeDetailHeaderLayout = ({
             prototypeId={prototypeId}
           />
           <Button onClick={openCreateTestDevice}>
-            Create test device
+            {t('createTestDevice')}
           </Button>
           <DropdownButton
               onChange={onMoreButtonChange}
               items={[
-                { value: 'edit', children: 'Edit' },
-                { value: 'clone', children: 'Clone' },
-                { value: 'delete', children: 'Delete' },
-                { value: 'export', children: 'Export' },
+                { value: 'edit', children: t('edit') },
+                { value: 'clone', children: t('clone') },
+                { value: 'delete', children: t('delete') },
+                { value: 'export', children: t('export') },
               ]}
               buttonProps={{
                 kind: 'cancel',
               }}
             >
-            <div>More <Icon iconName="caret-down" /></div>
+            <div>{t('more')} <Icon iconName="caret-down" /></div>
         </DropdownButton>
         { selectMenuValue === 'clone' ? <ClonePrototype clonePrototype={clonePrototype} prototypeId={prototypeId} prototypeName={prototypeName} selectMenuValue={selectMenuValue} setSelectMenuValue={setSelectMenuValue} /> : ''}
         { selectMenuValue === 'edit' ? <EditPrototype editPrototype={editPrototype} prototypeId={prototypeId} prototypeName={prototypeName} version={version} prototypeDescription={prototypeDescription} selectMenuValue={selectMenuValue} setSelectMenuValue={setSelectMenuValue} /> : ''}
@@ -89,4 +93,5 @@ export default compose(
       props.setIsMoreButton(!props.isMoreButton)
     },
   }),
+  withGetMessages(messages, 'PrototypeDetail'),
 )(PrototypeDetailHeaderLayout);

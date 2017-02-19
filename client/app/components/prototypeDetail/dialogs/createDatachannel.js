@@ -23,6 +23,9 @@ import { default as withHandlers } from 'recompose/withHandlers';
 import { data } from '../../../utils/dataChannelTypes';
 import Preview from '../preview';
 
+import withGetMessages from '../../../utils/withGetMessage';
+import messages from '../messages';
+
 let dataChannelTypesOptions = []
 data.forEach((k,v)=>{
   dataChannelTypesOptions.push({
@@ -30,6 +33,8 @@ data.forEach((k,v)=>{
     children: k.dataChannelTypeName,
   });
 });
+
+import createDataChannelStyles from './createDatachannel.css'
 
 const CreateDataChannelDialog = ({
   isCreateDataChannel,
@@ -43,6 +48,7 @@ const CreateDataChannelDialog = ({
   submitCreateDataChannel,
   onDataChannelTypeChange,
   dataChannelType,
+  getMessages: t,
 }) => {
   return (
     <Dialog
@@ -53,41 +59,42 @@ const CreateDataChannelDialog = ({
       <DialogHeader>
         <div>Create test device</div>
       </DialogHeader>
-      <DialogBody>
+      <DialogBody className={createDataChannelStyles.dialogBody}>
         <InputForm
           kind="horizontal"
           style={{ backgroundColor: 'white' }}
         >
           <InputText
             required
-            label="Data channel name"
+            label={t('dataChannelName')}
             value={dataChannelName}
-            placeholder="Input the data channel name."
+            placeholder={t('inputDataChannelName')}
             onChange={onDataChannelNameChange}
           />
           <InputText
             required
-            label="Data channel id"
+            label={t('dataChannelId')}
             value={dataChannelId}
-            placeholder="Input the data channel id."
+            placeholder={t('inputDataChannelId')}
             onChange={onDataChannelIdChange}
           />
           <InputTextarea
-            label="Description"
+            label={t('description')}
             rows="4"
             value={dataChannelDescription}
             style={{ resize: 'none' }}
-            placeholder="Input the data channel description."
+            placeholder={t('inputDataChannelDescription')}
             onChange={onDataChannelDescriptionChange}
           />
           <InputSelect
-            placeholder="Input the data type."
+            label={t('dataChannelType')}
+            placeholder={t('inputDataChannelType')}
             items={dataChannelTypesOptions}
             value={dataChannelType}
             onChange={onDataChannelTypeChange}
           />
         </InputForm>
-        <p>Template preview: Select a template that suits your data channel.</p>
+        <p>{t('templateHint')}</p>
         <Preview />
       </DialogBody>
       <DialogFooter>
@@ -122,4 +129,6 @@ export default compose(
       // prototypeDetailActions.createDataChannel(props.prototypeId, data);
     },
   }),
+  withGetMessages(messages, 'PrototypeDetail'),
+
  )(CreateDataChannelDialog)

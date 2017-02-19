@@ -5,8 +5,9 @@ import { default as pure } from 'recompose/pure';
 import NewDisplayCard from './newDisplayCard';
 import { DataChannelCard, DataChannelAdapter } from 'mcs-lite-ui';
 
-
-const DataChannelContentLayout = ({ prototypeId }) => {
+const DataChannelContentLayout = ({
+  prototypeId,
+}) => {
   return (
     <div>
       <NewDisplayCard prototypeId={prototypeId} />

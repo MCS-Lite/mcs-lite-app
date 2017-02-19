@@ -10,10 +10,14 @@ import { default as pure } from 'recompose/pure';
 import { default as withState } from 'recompose/withState';
 import { default as withHandlers } from 'recompose/withHandlers';
 
+import withGetMessages from '../../utils/withGetMessage';
+import messages from './messages';
+
 const DisplayCardLayout = ({
   title,
   description,
   submitDisplayCard,
+  getMessages: t,
 }) => {
   return (
     <div className={displayCardStyles.base}>
@@ -24,7 +28,7 @@ const DisplayCardLayout = ({
       {description}
       </p>
       <Button className={displayCardStyles.button} onClick={submitDisplayCard}>
-      Add
+      {t('add')}
       </Button>
     </div>
   );
@@ -37,5 +41,6 @@ export default compose(
       props.setIsCreateDataChannel(true),
       props.setDisplayCardType(props.displayCardType)
     },
-  })
+  }),
+  withGetMessages(messages, 'PrototypeDetail'),
 )(DisplayCardLayout);

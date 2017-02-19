@@ -14,10 +14,14 @@ import { default as withHandlers } from 'recompose/withHandlers';
 import DataChannelContent from './dataChannelContent';
 import TestDeviceContent from './testDeviceContent';
 
+import withGetMessages from '../../utils/withGetMessage';
+import messages from './messages';
+
 const PanelContentLayout = ({
   prototypeId,
   setSelectPanelValue,
   selectPanelValue,
+  getMessages: t,
 }) => {
   return (
     <div className={panelContentStyles.base}>
@@ -26,8 +30,8 @@ const PanelContentLayout = ({
           <PanelIcon iconName="bookmark" />
           <div className={panelContentStyles.content}>
             <ul>
-              <li><a onClick={() => setSelectPanelValue('Data channel')}>Data channel</a></li>
-              <li><a onClick={() => setSelectPanelValue('Test device')}>Test device</a></li>
+              <li><a onClick={() => setSelectPanelValue('Data channel')}>{t('dataChannel')}</a></li>
+              <li><a onClick={() => setSelectPanelValue('Test device')}>{t('testDevices')}</a></li>
             </ul>
           </div>
         </PanelHeader>
@@ -43,4 +47,5 @@ const PanelContentLayout = ({
 export default compose(
   pure,
   withState('selectPanelValue', 'setSelectPanelValue', ''),
+  withGetMessages(messages, 'PrototypeDetail'),
 )(PanelContentLayout);
