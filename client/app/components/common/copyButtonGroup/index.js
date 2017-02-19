@@ -1,7 +1,10 @@
 import React from 'react'
+import { FormattedMessage } from 'react-intl'
+
 import compose from 'recompose/compose'
 import pure from 'recompose/pure'
-import { CopyButton } from 'mtk-ui'
+
+import CopyButton from 'mtk-ui/lib/CopyButton'
 
 import styles from './copyButtonGroup.css'
 
@@ -18,7 +21,12 @@ const copyButtonGroup = ({ label, value }) => (
       readOnly
       className={styles.input}
     />
-    <CopyButton text={() => value}/>
+    <CopyButton text={() => value}>
+      <FormattedMessage
+        id="CopyButtonGroup.ButtonText"
+        defaultMessage="複製"
+      />
+    </CopyButton>
   </div>
 )
 

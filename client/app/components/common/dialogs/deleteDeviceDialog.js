@@ -55,6 +55,9 @@ export default compose(
   pure,
   withHandlers({
     closeDialog: props => () => props.setSeletedMenuValue('none'),
-    onDeleteSubmit: props => () => props.deleteDevice(props.deviceId),
+    onDeleteSubmit: props => () => {
+      props.deleteDevice(props.deviceId);
+      props.setSeletedMenuValue('none');
+    },
   })
 )(DeleteDeviceDialog)
