@@ -1,5 +1,11 @@
 # mcs-lite-app
 
+> Note: Common UI and Mobile page are being developed at https://github.com/evenchange4/mcs-lite.
+
+-   Try desktop online - https://mcs-lite-server-iamblue.c9users.io/
+-   Try mobile online - https://mcs-lite-server-iamblue.c9users.io/mobile
+-   Try common UI online - http://mcs-lite-ui.netlify.com/
+
 ## For Usage
 * Only support Node.js version >= 6
 
