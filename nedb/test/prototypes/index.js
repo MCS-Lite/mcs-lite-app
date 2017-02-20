@@ -37,7 +37,7 @@ describe('NeDB connector: Prototypes', function() {
   describe('addNewPrototype api', function() {
     it('Add New prototypes should pass', function(done) {
       prototypes.addNewPrototype({
-        createdUserId: userId,
+        createUserId: userId,
         prototypeName: 'test prototype Name',
         prototypeDescription: '123123123',
         prototypeImageURL: 'http://www.google.com',

@@ -10,7 +10,7 @@ module.exports = function ($db) {
     .then(function(data) {
       prototypeData.templates = data;
       return prototypes.retriveUserPrototypes({
-        createdUserId: userId,
+        createUserId: userId,
         isActive: true,
       },{
         updatedAt: -1,

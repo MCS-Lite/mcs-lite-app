@@ -6,7 +6,7 @@ module.exports = {
     prototypeName: { type: 'string' },
     prototypeDescription: { type: 'string' },
     prototypeImageURL: { type: 'string' },
-    createdUserId: { type: 'string' },
+    createUserId: { type: 'string' },
     version: { type: 'string' },
     isPublic: { type: 'boolean' },
     isActive: { type: 'boolean' },
@@ -18,30 +18,10 @@ module.exports = {
     'prototypeName',
     'prototypeDescription',
     'prototypeImageURL',
-    'createdUserId',
+    'createUserId',
     'version',
     'isPublic',
     'isActive',
     'isTemplate',
   ],
 };
-
-
-  // {
-  //   "prototypeId": String,
-  //   "prototypeKey": String,
-  //   "prototypeName": String,
-  //   "prototypeDescription": String,
-  //   "prototypeImageURL": String,
-  //   "createdUserId": String,
-  //   "prototypeId": String,
-  //   "version": String,
-  //   "display": [ // Array
-  //     {
-
-  //     }
-  //   ],
-  //   "updatedAt": Int,
-  //   "createdAt": Int,
-  //   "isPublic": Boolean,
-  // }
