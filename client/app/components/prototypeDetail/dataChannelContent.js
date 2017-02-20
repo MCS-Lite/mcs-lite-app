@@ -3,33 +3,72 @@ import React, { Component } from 'react';
 import { default as compose } from 'recompose/compose';
 import { default as pure } from 'recompose/pure';
 import NewDisplayCard from './newDisplayCard';
-import { DataChannelCard, DataChannelAdapter } from 'mcs-lite-ui';
+
+import DisplayCardInteger from '../dataChannelCards/mcsDisplayCardInteger';
+import DisplayCardString from '../dataChannelCards/mcsDisplayCardString';
+import DisplayCardHex from '../dataChannelCards/mcsDisplayCardHex';
+import DisplayCardPWM from '../dataChannelCards/mcsDisplayCardPWM';
+import DisplayCardGPIO from '../dataChannelCards/mcsDisplayCardGPIO';
+import DisplayCardFloat from '../dataChannelCards/mcsDisplayCardFloat';
+import DisplayCardCategory from '../dataChannelCards/mcsDisplayCardCategory';
+import ControlCardCategory from '../dataChannelCards/mcsControlCardCategory';
+import ControlCardString from '../dataChannelCards/mcsControlCardString';
+import ControlCardFloat from '../dataChannelCards/mcsControlCardFloat';
+import ControlCardHex from '../dataChannelCards/mcsControlCardHex';
+import ControlCardPWM from '../dataChannelCards/mcsControlCardPWM';
+import ControlCardGPIO from '../dataChannelCards/mcsControlCardGPIO';
+import ControlCardInteger from '../dataChannelCards/mcsControlCardInteger';
+
+import PrototypeDetailStyles from './prototypeDetail.css';
 
 const DataChannelContentLayout = ({
   prototypeId,
 }) => {
   return (
-    <div>
+    <div className={PrototypeDetailStyles.dataChannelContent}>
       <NewDisplayCard prototypeId={prototypeId} />
-      <DataChannelCard
-        data-width="half"
-        title="Title"
-        subtitle="Last data point time : 2015-06-12 12:00"
-        description="You can input description of controller here. You can input description of You can input description of controller here. You can input description of"
-        header={<a href="">Link</a>}
-      >
-        <DataChannelAdapter
-          dataChannelProps={{
-            id: 'Integer Control id',
-            type: 'Integer_Control',
-            values: { value: 50 },
-            format: {
-              unit: 'ampere',
-            },
-          }}
-          eventHandler={console.log} // eslint-disable-line
-        />
-      </DataChannelCard>
+      <DisplayCardInteger
+        className={PrototypeDetailStyles.displayCard}
+        value={50}
+        updatedAt={1487505857839}
+        description="123123"
+      />
+      <DisplayCardString
+        className={PrototypeDetailStyles.displayCard}
+        value="abcd"
+        updatedAt={1487505857839}
+        description="123123"
+      />
+      <DisplayCardHex
+        className={PrototypeDetailStyles.displayCard}
+        value="abcd"
+        updatedAt={1487505857839}
+        description="123123"
+      />
+      <DisplayCardPWM
+        className={PrototypeDetailStyles.displayCard}
+        value="abcd"
+        updatedAt={1487505857839}
+        description="123123"
+      />
+      <DisplayCardGPIO
+        className={PrototypeDetailStyles.displayCard}
+        value="abcd"
+        updatedAt={1487505857839}
+        description="123123"
+      />
+      <DisplayCardFloat
+        className={PrototypeDetailStyles.displayCard}
+        value="abcd"
+        updatedAt={1487505857839}
+        description="123123"
+      />
+      <DisplayCardCategory
+        className={PrototypeDetailStyles.displayCard}
+        value="abcd"
+        updatedAt={1487505857839}
+        description="123123"
+      />
     </div>
   );
 }

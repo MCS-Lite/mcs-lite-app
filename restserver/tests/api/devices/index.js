@@ -142,4 +142,16 @@ describe('Devices API:', function() {
       });
     });
   });
+   describe('Delete device api:', function() {
+    it('return 200.', function(done) {
+      request(mcs)
+      .delete($rest.apiRoute + '/devices/' + deviceId)
+      .set('Authorization', 'Bearer ' + global.access_token)
+      .then(function(data) {
+        console.log(data.body);
+        assert.equal(data.body.message, 'success', 'Response is not success.');
+        done();
+      });
+    });
+  });
 });

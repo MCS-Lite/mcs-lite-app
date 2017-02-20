@@ -120,12 +120,10 @@ module.exports = function(devices) {
       update.updatedAt = new Date().getTime();
       update.isActive = false;
       return new Promise(function(resolve, reject) {
-        return new Promise(function(resolve, reject) {
         return devices.update(query, { $set: update }, {}, function(err, num) {
           if (err) return reject();
           resolve({ message: 'success' });
         });
-      });
       });
     },
   };

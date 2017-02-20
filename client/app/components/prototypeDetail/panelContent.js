@@ -9,7 +9,6 @@ import PanelIcon from 'mtk-ui/lib/PanelIcon';
 import { default as compose } from 'recompose/compose';
 import { default as pure } from 'recompose/pure';
 import { default as withState } from 'recompose/withState';
-import { default as withHandlers } from 'recompose/withHandlers';
 
 import DataChannelContent from './dataChannelContent';
 import TestDeviceContent from './testDeviceContent';
