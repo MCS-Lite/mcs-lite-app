@@ -49,7 +49,6 @@ module.exports = function ($db) {
     })
     .then(function(data) {
       prototypeData.datachannels = data;
-      console.log(prototypeData);
       return users.retrieveOneUser({
         userId: prototypeData.createUserId,
         isActive: true,
