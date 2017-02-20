@@ -11,6 +11,7 @@ import { default as lifecycle } from 'recompose/lifecycle';
 import DataChannelCard from 'mcs-lite-ui/lib/DataChannelCard';
 import DataChannelAdapter from 'mcs-lite-ui/lib/DataChannelAdapter';
 
+import More from '../common/more';
 import moment from 'moment';
 
 const DisplayStringLayout = ({
@@ -21,6 +22,9 @@ const DisplayStringLayout = ({
   className,
   title,
   id,
+  format,
+  isPrototype,
+  isDevice,
 }) => {
   return (
     <DataChannelCard
@@ -28,28 +32,16 @@ const DisplayStringLayout = ({
       title={title}
       subtitle={'Last data point time : ' + moment(updatedAt).format('YYYY-MM-DD h:mm')}
       description={description}
-      header={<a href="">Link</a>}
+      header={<More isPrototype={isPrototype} isDevice={isDevice}/>}
     >
       <DataChannelAdapter
         dataChannelProps={{
-          id: id,
+          id,
           type: 'CATEGORY_CONTROL',
           values: { value: value },
+          format,
         }}
-        eventHandler={({type, id, value}) => {
-          console.log(type);
-          switch(type) {
-            case 'clear':
-              setValue('');
-              break;
-            case 'change':
-              setValue(value);
-              break;
-            case 'submit':
-              break;
-            default:
-          }
-        }}
+        eventHandler={console.log}
       />
     </DataChannelCard>
   );

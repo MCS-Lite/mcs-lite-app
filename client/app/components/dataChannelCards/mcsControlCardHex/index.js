@@ -12,6 +12,7 @@ import DataChannelCard from 'mcs-lite-ui/lib/DataChannelCard';
 import DataChannelAdapter from 'mcs-lite-ui/lib/DataChannelAdapter';
 
 import moment from 'moment';
+import More from '../common/more';
 
 const DisplayStringLayout = ({
   updatedAt,
@@ -21,6 +22,9 @@ const DisplayStringLayout = ({
   className,
   title,
   id,
+  onSubmit,
+  isPrototype,
+  isDevice,
 }) => {
   return (
     <DataChannelCard
@@ -28,7 +32,7 @@ const DisplayStringLayout = ({
       title={title}
       subtitle={'Last data point time : ' + moment(updatedAt).format('YYYY-MM-DD h:mm')}
       description={description}
-      header={<a href="">Link</a>}
+      header={<More isPrototype={isPrototype} isDevice={isDevice}/>}
     >
       <DataChannelAdapter
         dataChannelProps={{
@@ -46,6 +50,7 @@ const DisplayStringLayout = ({
               setValue(value);
               break;
             case 'submit':
+              onSubmit();
               break;
             default:
           }
@@ -62,7 +67,8 @@ export default compose(
   withHandlers({
     onMessage: (props) => (data) =>{
       console.log(data);
-    }
+    },
+    onSubmit: (props) => () => {},
   }),
   lifecycle({
     componentWillMount() {
