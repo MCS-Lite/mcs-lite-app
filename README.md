@@ -5,6 +5,7 @@
 -   Try desktop online - https://mcs-lite-server-iamblue.c9users.io/
 -   Try mobile online - https://mcs-lite-server-iamblue.c9users.io/mobile
 -   Try common UI online - http://mcs-lite-ui.netlify.com/
+-   [WIP] MCS Lite Resources -  https://dariachen1.gitbooks.io/mcs-lite-introduction/content/
 
 ## For Usage
 * Only support Node.js version >= 6
