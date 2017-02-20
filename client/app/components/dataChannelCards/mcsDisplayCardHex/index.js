@@ -20,6 +20,7 @@ const DisplayHexLayout = ({
   description,
   className,
   title,
+  id,
 }) => {
   return (
     <DataChannelCard
@@ -31,7 +32,7 @@ const DisplayHexLayout = ({
     >
       <DataChannelAdapter
         dataChannelProps={{
-          id: 'Integer Control id',
+          id,
           type: 'HEX_DISPLAY',
           values: { value: value },
           format: {

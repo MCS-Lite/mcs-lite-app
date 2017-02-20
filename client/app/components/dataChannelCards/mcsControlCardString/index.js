@@ -20,6 +20,7 @@ const DisplayStringLayout = ({
   description,
   className,
   title,
+  id,
 }) => {
   return (
     <DataChannelCard
@@ -31,8 +32,8 @@ const DisplayStringLayout = ({
     >
       <DataChannelAdapter
         dataChannelProps={{
-          id: 'Integer Control id',
-          type: 'STRING_DISPLAY',
+          id,
+          type: 'STRING_CONTROL',
           values: { value: value },
         }}
         eventHandler={({type, id, value}) => {
