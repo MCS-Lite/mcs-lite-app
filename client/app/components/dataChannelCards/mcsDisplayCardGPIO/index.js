@@ -20,6 +20,7 @@ const DisplayGPIOLayout = ({
   description,
   className,
   title,
+  id,
 }) => {
   return (
     <DataChannelCard
@@ -31,7 +32,7 @@ const DisplayGPIOLayout = ({
     >
       <DataChannelAdapter
         dataChannelProps={{
-          id: 'Integer Control id',
+          id,
           type: 'GPIO_DISPLAY',
           values: { value: value },
           format: {

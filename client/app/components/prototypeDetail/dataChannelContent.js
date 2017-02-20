@@ -11,13 +11,13 @@ import DisplayCardPWM from '../dataChannelCards/mcsDisplayCardPWM';
 import DisplayCardGPIO from '../dataChannelCards/mcsDisplayCardGPIO';
 import DisplayCardFloat from '../dataChannelCards/mcsDisplayCardFloat';
 import DisplayCardCategory from '../dataChannelCards/mcsDisplayCardCategory';
-import ControlCardCategory from '../dataChannelCards/mcsControlCardCategory';
-import ControlCardString from '../dataChannelCards/mcsControlCardString';
-import ControlCardFloat from '../dataChannelCards/mcsControlCardFloat';
-import ControlCardHex from '../dataChannelCards/mcsControlCardHex';
-import ControlCardPWM from '../dataChannelCards/mcsControlCardPWM';
-import ControlCardGPIO from '../dataChannelCards/mcsControlCardGPIO';
-import ControlCardInteger from '../dataChannelCards/mcsControlCardInteger';
+// import ControlCardCategory from '../dataChannelCards/mcsControlCardCategory';
+// import ControlCardString from '../dataChannelCards/mcsControlCardString';
+// import ControlCardFloat from '../dataChannelCards/mcsControlCardFloat';
+// import ControlCardHex from '../dataChannelCards/mcsControlCardHex';
+// import ControlCardPWM from '../dataChannelCards/mcsControlCardPWM';
+// import ControlCardGPIO from '../dataChannelCards/mcsControlCardGPIO';
+// import ControlCardInteger from '../dataChannelCards/mcsControlCardInteger';
 
 import PrototypeDetailStyles from './prototypeDetail.css';
 

@@ -20,6 +20,7 @@ const DisplayIntegerLayout = ({
   description,
   className,
   title,
+  id,
 }) => {
   return (
     <DataChannelCard
@@ -31,7 +32,7 @@ const DisplayIntegerLayout = ({
     >
       <DataChannelAdapter
         dataChannelProps={{
-          id: 'Integer Control id',
+          id,
           type: 'INTEGER_DISPLAY',
           values: { value: value },
           format: {

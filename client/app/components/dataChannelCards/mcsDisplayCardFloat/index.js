@@ -20,6 +20,7 @@ const DisplayFloatLayout = ({
   description,
   className,
   title,
+  id,
 }) => {
   return (
     <DataChannelCard
@@ -31,7 +32,7 @@ const DisplayFloatLayout = ({
     >
       <DataChannelAdapter
         dataChannelProps={{
-          id: 'Integer Control id',
+          id,
           type: 'FLOAT_DISPLAY',
           values: { value: value },
           format: {

@@ -20,6 +20,7 @@ const DisplayPWMLayout = ({
   description,
   className,
   title,
+  id,
 }) => {
   return (
     <DataChannelCard
@@ -31,7 +32,7 @@ const DisplayPWMLayout = ({
     >
       <DataChannelAdapter
         dataChannelProps={{
-          id: 'Integer Control id',
+          id,
           type: 'PWM_DISPLAY',
           values: { value: value },
           format: {
