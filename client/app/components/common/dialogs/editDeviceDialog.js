@@ -20,10 +20,8 @@ import styles from './dialog.css'
 const EditDeviceDialog = ({
   closeDialog,
   deviceName,
-  deviceVersion,
   deviceDescription,
   onDeviceNameChange,
-  onDeviceVersionChange,
   onDescriptionChange,
   onSubmit,
 }) => (
@@ -43,17 +41,12 @@ const EditDeviceDialog = ({
           placeholder="Input the device name"
           onChange={onDeviceNameChange}
         />
-        <InputText
-          value={deviceVersion}
-          label="Device version"
-          placeholder="Input the device version"
-          onChange={onDeviceVersionChange}
-        />
-        <InputText
+        <InputTextarea
           value={deviceDescription}
           label="Description"
           placeholder="Input the description"
           onChange={onDescriptionChange}
+          rows={5}
         />
         {/* TODO: add upload photo block */}
       </InputForm>
@@ -70,18 +63,15 @@ const EditDeviceDialog = ({
 export default compose(
   pure,
   withState('deviceName', 'setDeviceName', props => props.deviceName),
-  withState('deviceVersion', 'setDeviceVersion', props => props.deviceVersion),
   withState('deviceDescription', 'setDescription', props => props.deviceDescription),
   withHandlers({
     closeDialog: props => () => props.setSeletedMenuValue('none'),
     onDeviceNameChange: props => e => props.setDeviceName(e.target.value),
-    onDeviceVersionChange: props => e => props.setDeviceVersion(e.target.value),
     onDescriptionChange: props => e => props.setDescription(e.target.value),
     onSubmit: props => () => {
       props.setSeletedMenuValue('none');
       props.editDevice(props.deviceId, {
         deviceName: props.deviceName,
-        deviceVersion: props.deviceVersion,
         deviceDescription: props.deviceDescription,
       })
     }

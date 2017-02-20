@@ -23,20 +23,27 @@
 
 .option button {
   margin-left: 5px;
+  height: 32px;
 }
 
-.infoHeader {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  margin: 0px 0px 10px 0px;
-}
-
-.infoHeader h3 {
-  margin: 0 5px 0 0;
+.deviceName {
   font-size: 22px;
-  font-weight: 500;
 }
-.infoHeader span {
-  color: #999A94;
+
+.otherInfo {
+  font-size: 13px;
+  margin-top: 15px;
+}
+
+.otherInfo > span:last-child {
+  margin-left: 20px;
+}
+
+.dropdownButton svg {
+  margin-left: 5px;
+}
+
+.dropdownMenu {
+  width: 80px;
+  margin-left: 2px;
 }

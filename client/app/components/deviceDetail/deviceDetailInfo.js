@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
+import { FormattedMessage } from 'react-intl';
+
 import prototypeBanner from '../prototypes/productBanner.png';
-import deviceDetailInfoStyles from './deviceDetailInfo.css';
+import styles from './deviceDetailInfo.css';
 import CopyButtonGroup from '../common/copyButtonGroup';
 
 const DeviceDetailInfoLayout = ({
@@ -9,20 +11,23 @@ const DeviceDetailInfoLayout = ({
   deviceKey,
 }) => {
   return (
-    <div className={deviceDetailInfoStyles.base}>
-      <div className={deviceDetailInfoStyles.info}>
+    <div className={styles.base}>
+      <div className={styles.info}>
         <img src={prototypeBanner} />
         <div>
-          <b>Status:</b> {deviceDescription}
-          <br/>
-          <b>Public url:</b> {deviceDescription}
+          <FormattedMessage
+            id="DeviceDetail.Description"
+            defaultMessage="描述："
+          />
+          {deviceDescription}
         </div>
       </div>
-      <div className={deviceDetailInfoStyles.testDevice}>
-        <div className={deviceDetailInfoStyles.testDeviceInfo}>
-          You will need the deviceId and deviceKey when calling our API to access this device
-        </div>
-        <div className={deviceDetailInfoStyles.hint}>
+      <div className={styles.deviceSecrets}>
+        <FormattedMessage
+          id="DeviceDetail.TestDeviceInfo"
+          defaultMessage="您在使用 API 呼叫裝置時，將會需要 deviceId 和 deviceKey。"
+        />
+        <div className={styles.hint}>
           <CopyButtonGroup label="DeviceId" value={deviceId} />
           <CopyButtonGroup label="DeviceKey" value={deviceKey} />
         </div>
