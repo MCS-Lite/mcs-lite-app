@@ -145,7 +145,7 @@ module.exports = function(prototypes) {
         .digest('hex');;
       field.prototypeName = data.prototypeName || '';
       field.prototypeDescription = data.prototypeDescription || '';
-      field.createdUserId = data.userId;
+      field.createUserId = data.userId;
       var validataSchema = v.validate(field, schema);
 
       return new Promise(function(resolve, reject) {

@@ -36,7 +36,7 @@ module.exports = function ($db) {
       } else {
         return devices.retrievePrototypeDevices({
           prototypeId: prototypeId,
-          createdUserId: userId,
+          createUserId: userId,
         });
       }
     })
@@ -49,6 +49,17 @@ module.exports = function ($db) {
     })
     .then(function(data) {
       prototypeData.datachannels = data;
+      console.log(prototypeData);
+      return users.retrieveOneUser({
+        userId: prototypeData.createUserId,
+        isActive: true,
+      });
+    })
+    .then(function(data) {
+      prototypeData.user = {
+        userId: data[0].userId,
+        userName: data[0].userName,
+      };
       return res.send(200, { data: prototypeData });
     })
     .catch(function(err) {
@@ -60,7 +71,7 @@ module.exports = function ($db) {
     var userId = req.user.userId;
     var prototypesData = [];
     return prototypes.retriveUserPrototypes({
-      createdUserId: userId,
+      createUserId: userId,
       isActive: true,
     })
     .then(function(data) {
@@ -74,7 +85,7 @@ module.exports = function ($db) {
   var addNewPrototype = function(req, res, next) {
     var userId = req.user.userId;
     var field = {
-      createdUserId: userId,
+      createUserId: userId,
       prototypeName: req.body.prototypeName,
       prototypeDescription: req.body.prototypeDescription,
       prototypeImageURL: req.body.prototypeImageURL,
@@ -94,7 +105,7 @@ module.exports = function ($db) {
   var editPrototype = function(req, res, next) {
     var userId = req.user.userId;
     return prototypes.editPrototype({
-      createdUserId: userId,
+      createUserId: userId,
       prototypeId: req.params.prototypeId,
       isActive: true,
     }, {
@@ -114,7 +125,7 @@ module.exports = function ($db) {
   var deletePrototype = function(req, res, next) {
     var userId = req.user.userId;
     return prototypes.editPrototype({
-      createdUserId: userId,
+      createUserId: userId,
       prototypeId: req.params.prototypeId,
     }, {
       isActive: false,

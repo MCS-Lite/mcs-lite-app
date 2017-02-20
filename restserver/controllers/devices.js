@@ -30,7 +30,7 @@ module.exports = function ($db) {
     .then(function(data) {
       deviceData = data[0];
       return users.retrieveOneUser({
-        userId: userId,
+        userId: deviceData.createUserId,
         isActive: true,
       });
     })

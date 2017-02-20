@@ -10,7 +10,7 @@ module.exports = function ($db) {
       datachannelDescription: req.body.datachannelDescription,
       datachannelTypeId: req.body.datachannelTypeId,
       prototypeId: prototypeId,
-      createdUserId: userId,
+      createUserId: userId,
       config: req.body.config,
     })
     .then(function(data) {
