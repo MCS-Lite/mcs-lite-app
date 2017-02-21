@@ -1,0 +1,29 @@
+.hoverInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-sizing: border-box;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 160px;
+  height: 65px;
+  padding: 10px;
+  border-radius: 3px;
+  border: solid 1px #D1D2D3;
+  background-color: #FAFAFA;
+  pointer-events: none;
+  overflow: visible;
+  filter: drop-shadow( 0 1px 5px rgba(0, 0, 0, 0.2));
+}
+
+.triangle {
+  position: absolute;
+  left: 76px;
+  top: 63px;
+}
+
+.time {
+  font-size: 12px;
+  color: #999A94;
+}
