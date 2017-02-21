@@ -50,6 +50,7 @@
     "autoprefixer": "^6.1.0",
     "classnames": "^2.2.5",
     "css-loader": "0.23.0",
+    "d3-shape": "^1.0.4",
     "fbjs": "^0.8.0",
     "file-loader": "^0.8.4",
     "flux": "^2.1.1",

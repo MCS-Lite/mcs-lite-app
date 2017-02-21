@@ -7,8 +7,19 @@ import Breadcrumb from './breadcrumb';
 import PanelHeader from './panelHeader';
 import DeviceDetailHeader from './deviceDetailHeader';
 import DeviceDetailInfo from './deviceDetailInfo';
+import Graph from './graph'
 
 import styles from './deviceDetail.css';
+
+const mockupGraphData = [
+  { value: 5, updatedAt: new Date('2017-02-18').valueOf() },
+  { value: 25, updatedAt: new Date('2017-02-19').valueOf() },
+  { value: 75, updatedAt: new Date('2017-02-20').valueOf() },
+  { value: 89, updatedAt: new Date('2017-02-21').valueOf() },
+  { value: 23, updatedAt: new Date('2017-02-22').valueOf() },
+  { value: 41, updatedAt: new Date('2017-02-23').valueOf() },
+  { value: 23, updatedAt: new Date('2017-02-24').valueOf() },
+]
 
 const DeviceDetail = ({ devices, editDevice, deleteDevice }) => {
   const {
@@ -45,6 +56,9 @@ const DeviceDetail = ({ devices, editDevice, deleteDevice }) => {
           deviceDescription={deviceDescription}
         />
         <PanelHeader />
+        <div className={styles.graphPreview}>
+          <Graph data={mockupGraphData}/>
+        </div>
       </div>
       <Footer />
     </div>
