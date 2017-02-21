@@ -8,7 +8,7 @@ import PanelIcon from 'mtk-ui/lib/PanelIcon';
 import { default as compose } from 'recompose/compose';
 
 import messages from './messages';
-import withGetMessages from '../../utils/withGetMessage';
+import { withGetMessages } from 'react-intl-inject-hoc';
 
 const PanelHeaderLayout = ({
   getMessages: t

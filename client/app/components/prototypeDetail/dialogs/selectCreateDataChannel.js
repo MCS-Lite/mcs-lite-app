@@ -17,7 +17,7 @@ import selectCreateDataChannelStyles from './selectCreateDataChannel.css'
 
 import CreateDataChannel from './createDataChannel';
 
-import withGetMessages from '../../../utils/withGetMessage';
+import { withGetMessages } from 'react-intl-inject-hoc';
 import messages from '../messages';
 
 const CreateDataChannelDialog = ({

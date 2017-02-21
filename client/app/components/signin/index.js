@@ -21,7 +21,7 @@ import logo from '../login/logo.png';
 import c from 'classnames';
 
 import messages from './messages';
-import withGetMessages from '../../utils/withGetMessage';
+import { withGetMessages } from 'react-intl-inject-hoc';
 
 const Signin = ({
   signin,
