@@ -39,7 +39,7 @@
     "jsonschema": "^1.1.1",
     "jsonwebtoken": "^7.2.1",
     "lodash": "^4.17.4",
-    "mcs-lite-mobile-web": "https://272-79562762-gh.circle-artifacts.com/0/tmp/circle-artifacts.K7NbWBf/beta/mcs-lite-mobile-web-0.0.0.tgz?circle-token=ceb2f692f6144d9eb430483f121ffc47247e3259",
+    "mcs-lite-mobile-web": "^0.0.1",
     "mocha": "^3.2.0",
     "nedb": "^1.8.0",
     "node-uuid": "^1.4.7",
