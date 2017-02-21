@@ -26,25 +26,30 @@ const DeleteDeviceDialog = ({
   >
     <DialogHeader>
       <FormattedMessage
-        id="DeleteDeviceDialog.Notice"
-        defaultMessage="Notice!"
+        id="Dialogs.Notice"
+        defaultMessage="注意!"
       />
     </DialogHeader>
     <DialogBody className={styles.dialogBody}>
       <img src={notice} className={styles.img}/>
-      <div>Are you sure you want to delete? You cannot revert this action.</div>
+      <div>
+        <FormattedMessage
+          id="Dialogs.Notification"
+          defaultMessage="是否確定刪除？一但刪除將無法復原。"
+        />
+      </div>
     </DialogBody>
     <DialogFooter>
       <Button kind="cancel" onClick={closeDialog}>
         <FormattedMessage
-          id="DeleteDeviceDialog.Cancel"
-          defaultMessage="Cancel"
+          id="Dialogs.Cancel"
+          defaultMessage="取消"
         />
       </Button>
       <Button kind="primary" onClick={onDeleteSubmit}>
         <FormattedMessage
-          id="DeleteDeviceDialog.Ok"
-          defaultMessage="Ok"
+          id="Dialogs.Confirm"
+          defaultMessage="確定"
         />
       </Button>
     </DialogFooter>
