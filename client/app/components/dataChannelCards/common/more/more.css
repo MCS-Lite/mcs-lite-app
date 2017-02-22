@@ -1,0 +1,13 @@
+.base {
+  color: #0080B4;
+  font-size: 24px;
+  cursor: pointer;
+  position: relative;
+  top: -20px;
+  right: -80px;
+}
+
+.menu {
+  top: 55px;
+  right: -10px;
+}
