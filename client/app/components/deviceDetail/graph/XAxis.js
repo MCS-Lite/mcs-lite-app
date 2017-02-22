@@ -1,11 +1,8 @@
-import React from 'react'
-import moment from 'moment'
-import {
-  CONTENT_WIDTH, CONTENT_HEIGHT, GRAPH_WIDTH,
-  PADDING_LEFT, PADDING_RIGHT
-} from '.'
+import React from 'react';
+import moment from 'moment';
+import { CONTENT_HEIGHT, PADDING_LEFT, PADDING_RIGHT } from '.';
 
-import pure from 'recompose/pure'
+import pure from 'recompose/pure';
 
 const LabelText = ({ x, timeValue }) => (
   <text
@@ -21,14 +18,15 @@ const LabelText = ({ x, timeValue }) => (
       {moment(timeValue).format('hh:mm')}
     </tspan>
   </text>
-)
+);
 
-const XLabels = ({ min, max }) => {
-  const deltaX = CONTENT_WIDTH / 6
-  const centerX = CONTENT_WIDTH / 2 + PADDING_LEFT
+const XLabels = ({ min, max, width }) => {
+  const contentWidth = width - (PADDING_LEFT + PADDING_RIGHT)
+  const deltaX = contentWidth / 6;
+  const centerX = contentWidth / 2 + PADDING_LEFT;
   const positionXs = min === max
   ? [centerX]
-  : [0, 1, 2, 3, 4, 5, 6].map(x => x * deltaX + PADDING_LEFT)
+  : [0, 1, 2, 3, 4, 5, 6].map(x => x * deltaX + PADDING_LEFT);
 
   return (
     <g>
@@ -51,25 +49,25 @@ const XLabels = ({ min, max }) => {
       {
         min !== max &&
         <LabelText
-          x={GRAPH_WIDTH - PADDING_RIGHT}
+          x={width - PADDING_RIGHT}
           timeValue={max}
         />
       }
     </g>
-  )
+  );
 }
 
-const XAxis = ({ min, max }) => (
+const XAxis = ({ min, max , width }) => (
   <g>
     <line
       x1={PADDING_LEFT}
-      x2={GRAPH_WIDTH}
+      x2={width}
       y1={CONTENT_HEIGHT}
       y2={CONTENT_HEIGHT}
       stroke="#D1D2D3"
     />
-    { min !== 0 && <XLabels min={min} max={max}/> }
+    { min !== 0 && <XLabels min={min} max={max} width={width}/> }
   </g>
-)
+);
 
-export default pure(XAxis)
+export default pure(XAxis);

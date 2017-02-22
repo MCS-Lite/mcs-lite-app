@@ -1,9 +1,9 @@
-import React from 'react'
-import pure from 'recompose/pure'
-import moment from 'moment'
-import { FormattedMessage } from 'react-intl'
+import React from 'react';
+import pure from 'recompose/pure';
+import moment from 'moment';
+import { FormattedMessage } from 'react-intl';
 
-import styles from './graph.css'
+import styles from './graph.css';
 
 const HoverInfo = ({ currentPointBox = {}, currentPoint = {} }) => (
   <div
@@ -28,6 +28,6 @@ const HoverInfo = ({ currentPointBox = {}, currentPoint = {} }) => (
       <polyline points="0,0 6,8 12,0" stroke="#D1D2D3" fill="#FAFAFA" />
     </svg>
   </div>
-)
+);
 
-export default pure(HoverInfo)
+export default pure(HoverInfo);
