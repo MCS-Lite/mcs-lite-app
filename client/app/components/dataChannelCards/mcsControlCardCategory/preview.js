@@ -30,6 +30,7 @@ const PreviewLayout = ({
 
 export default compose(
   pure,
+  withState('value', 'setValue', (props)=> props.value || ''),
   withState('format', 'setFormat', (props) => {
     props.format.items = [];
     if (!props.format.categoryNumber) {

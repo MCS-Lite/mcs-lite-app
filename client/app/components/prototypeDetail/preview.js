@@ -20,7 +20,7 @@ const PreviewLayout = ({
   return (
     <div>
       <div className={previewStyles.base}>
-        <PreviewWrapper displayName={displayName} />
+        <PreviewWrapper displayName={displayName} format={format} />
       </div>
       <div className={previewStyles.format}>
         <DisplayTypeWrapper displatName={displayName} format={format} setFormat={setFormat} onFormatChange={onFormatChange} />
@@ -30,10 +30,7 @@ const PreviewLayout = ({
 }
 
 export default compose(
-  withState('format', 'setFormat', {}),
-  withHandlers({
-    onFormatChange: props => (key, value) => {
-      props.format.key = value;
-    },
-  }),
+  // withHandlers({
+    
+  // }),
 )(PreviewLayout);

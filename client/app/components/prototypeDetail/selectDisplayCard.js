@@ -13,15 +13,26 @@ import { default as withHandlers } from 'recompose/withHandlers';
 import { withGetMessages } from 'react-intl-inject-hoc';
 import messages from './messages';
 
+import ControlSwitch from 'mcs-lite-ui/lib/DataChannel/ControlSwitch';
+import DisplayStatus from 'mcs-lite-ui/lib/DataChannel/DisplayStatus';
+
 const DisplayCardLayout = ({
   title,
   description,
   submitDisplayCard,
   getMessages: t,
+  displayCardType,
 }) => {
   return (
     <div className={displayCardStyles.base}>
-      <div className={displayCardStyles.content}></div>
+      <div className={displayCardStyles.content}>
+        {
+          displayCardType === 1 ?
+            <ControlSwitch onSubmit={()=>{}} value={1}/>
+          :
+            <DisplayStatus labels={["OFF", "ON"]} value={0} style={{ width: 110, height: 48 }}/>
+        }
+      </div>
       <b className={displayCardStyles.title}>{title}</b>
       <Hr className={displayCardStyles.hr}/>
       <p className={displayCardStyles.description}>

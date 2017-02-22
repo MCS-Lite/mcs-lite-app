@@ -26,14 +26,6 @@ import Preview from '../preview';
 import { withGetMessages } from 'react-intl-inject-hoc';
 import messages from '../messages';
 
-let dataChannelTypesOptions = []
-data.forEach((k,v)=>{
-  dataChannelTypesOptions.push({
-    value: k.dataChannelTypeId.toString(),
-    children: k.dataChannelTypeName,
-  });
-});
-
 import createDataChannelStyles from './createDatachannel.css'
 
 const CreateDataChannelDialog = ({
@@ -48,8 +40,29 @@ const CreateDataChannelDialog = ({
   submitCreateDataChannel,
   onDataChannelTypeChange,
   dataChannelType,
+  format,
+  setFormat,
+  onFormatChange,
+  displayCardType,
   getMessages: t,
 }) => {
+
+  let dataChannelTypesOptions = []
+  data.forEach((k,v)=>{
+    if (displayCardType === k.type) {
+      let value = '';
+      if (k.type === 1) {
+        value = k.dataChannelTypeName + '_Control';
+      } else if (k.type ===2){
+        value = k.dataChannelTypeName + '_Display';
+      }
+
+      dataChannelTypesOptions.push({
+        value: value,
+        children: k.dataChannelTypeName,
+      });
+    }
+  });
   return (
     <Dialog
       show={isCreateDataChannel}
@@ -90,12 +103,29 @@ const CreateDataChannelDialog = ({
             label={t('dataChannelType')}
             placeholder={t('inputDataChannelType')}
             items={dataChannelTypesOptions}
+            filterFunc={() => true}
+            valueRenderer={(value = {}) => {
+              let children;
+              dataChannelTypesOptions.forEach((k, v) => {
+                if (k.value === value) {
+                  children = k.children;
+                }
+              })
+              return children;
+            }}
             value={dataChannelType}
             onChange={onDataChannelTypeChange}
           />
         </InputForm>
         <p>{t('templateHint')}</p>
-        <Preview />
+        {dataChannelType}
+        <Preview
+
+          displayName={dataChannelType}
+          format={format}
+          setFormat={setFormat}
+          onFormatChange={onFormatChange}
+        />
       </DialogBody>
       <DialogFooter>
         <Button kind="cancel" onClick={closeCreateDataChannel}>Cancel</Button>
@@ -113,12 +143,19 @@ export default compose(
   withState('dataChannelId', 'setDataChannelId', ''),
   withState('dataChannelDescription', 'setDataChannelDescription', ''),
   withState('dataChannelType', 'setDataChannelType', ''),
+  withState('format', 'setFormat', {}),
   withHandlers({
     closeCreateDataChannel: props => (e) => props.setIsCreateDataChannel(false),
     onDataChannelNameChange: props => (e) => props.setDataChannelName(e.target.value),
     onDataChannelIdChange: props => (e) => props.setDataChannelId(e.target.value),
     onDataChannelDescriptionChange: props => (e) => props.setDataChannelDescription(e.target.value),
-    onDataChannelTypeChange: props => (e, value) => props.setDataChannelType(value),
+    onDataChannelTypeChange: props => (e, value) => {
+      props.setDataChannelType(value);
+      props.setFormat({});
+    },
+    onFormatChange: props => (key, value) => {
+      props.format.key = value;
+    },
     submitCreateDataChannel: props => (e) => {
       let data = {};
       data.displayCardType = props.displayCardType;

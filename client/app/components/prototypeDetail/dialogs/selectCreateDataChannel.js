@@ -53,12 +53,16 @@ const CreateDataChannelDialog = ({
           setDisplayCardType={setDisplayCardType}
           title={t('display')}
           description={t('displayHint')} />
-        <CreateDataChannel
-          prototypeId={prototypeId}
-          displayCardType={displayCardType}
-          isCreateDataChannel={isCreateDataChannel}
-          setIsCreateDataChannel={setIsCreateDataChannel}
-        />
+        {
+          isCreateDataChannel ?
+          <CreateDataChannel
+            prototypeId={prototypeId}
+            displayCardType={displayCardType}
+            isCreateDataChannel={isCreateDataChannel}
+            setIsCreateDataChannel={setIsCreateDataChannel}
+          /> :
+          ''
+        }
       </DialogBody>
     </Dialog>
   );

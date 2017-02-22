@@ -23,8 +23,9 @@ const WrapperLayout = ({
   displayName,
   ...props,
 }) => {
+  console.log(props);
   return (
-    <div>
+    <div style={{width: '100%'}}>
       {displayName === 'Integer_Display' ? <IntegerDisplayPreview {...props} /> : ''}
       {displayName === 'Hex_Display' ? <HexDisplayPreview {...props} />: ''}
       {displayName === 'PWM_Display' ? <PWMDisplayPreview {...props} />: ''}
@@ -33,7 +34,7 @@ const WrapperLayout = ({
       {displayName === 'Float_Display' ? <FloatDisplayPreview {...props} />: ''}
       {displayName === 'Category_Display' ? <CategoryDisplayPreview {...props} />: ''}
       {displayName === 'Integer_Control' ? <IntegerDisplayPreview {...props} />: ''}
-      {displayName === 'Hex_Control' ? <PWMControlPreview {...props} />: ''}
+      {displayName === 'Hex_Control' ? <HexControlPreview {...props} />: ''}
       {displayName === 'PWM_Control' ? <PWMControlPreview {...props} />: ''}
       {displayName === 'String_Control' ? <StringControlPreview {...props} />: ''}
       {displayName === 'GPIO_Control' ? <GPIOControlPreview {...props} />: ''}
