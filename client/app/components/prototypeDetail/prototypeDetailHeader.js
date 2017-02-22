@@ -17,7 +17,7 @@ import EditPrototype from '../prototypes/dialogs/editPrototype'
 import DeletePrototype from '../prototypes/dialogs/deletePrototype'
 import ClonePrototype from '../prototypes/dialogs/clonePrototype'
 
-import withGetMessages from '../../utils/withGetMessage';
+import { withGetMessages } from 'react-intl-inject-hoc';
 import messages from './messages';
 
 const PrototypeDetailHeaderLayout = ({

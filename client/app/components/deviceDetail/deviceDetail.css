@@ -4,3 +4,10 @@
   margin: 0 auto;
   box-sizing: border-box;
 }
+
+.graphPreview {
+  background-color: #fff;
+  margin: 20px 9px;
+  width: 556px;
+  height: 216px;
+}

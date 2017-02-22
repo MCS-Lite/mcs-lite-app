@@ -15,6 +15,9 @@ import pure from 'recompose/pure';
 import withState from 'recompose/withState';
 import withHandlers from 'recompose/withHandlers';
 
+import messages from './messages';
+import { withGetMessages } from 'react-intl-inject-hoc';
+
 import styles from './dialog.css'
 
 const EditDeviceDialog = ({
@@ -24,12 +27,13 @@ const EditDeviceDialog = ({
   onDeviceNameChange,
   onDescriptionChange,
   onSubmit,
+  getMessages: t,
 }) => (
   <Dialog show onHide={closeDialog} size="large">
     <DialogHeader>
       <FormattedMessage
-        id="Devices.EditDevice"
-        defaultMessage="Edit Device"
+        id="Dialogs.EditDevice"
+        defaultMessage="編輯測試裝置"
       />
     </DialogHeader>
     <DialogBody className={styles.dialogBody}>
@@ -37,14 +41,14 @@ const EditDeviceDialog = ({
         <InputText
           required
           value={deviceName}
-          label="Device name"
-          placeholder="Input the device name"
+          label={t('deviceNameLabel')}
+          placeholder={t('deviceNamePlaceholder')}
           onChange={onDeviceNameChange}
         />
         <InputTextarea
           value={deviceDescription}
-          label="Description"
-          placeholder="Input the description"
+          label={t('descriptionLabel')}
+          placeholder={t('descriptionPlaceholder')}
           onChange={onDescriptionChange}
           rows={5}
         />
@@ -52,9 +56,17 @@ const EditDeviceDialog = ({
       </InputForm>
     </DialogBody>
     <DialogFooter>
-      <Button kind="cancel" onClick={closeDialog}>Cancel</Button>
+      <Button kind="cancel" onClick={closeDialog}>
+        <FormattedMessage
+          id="Dialogs.Cancel"
+          defaultMessage="取消"
+        />
+      </Button>
       <Button kind="primary" onClick={onSubmit}>
-        Save
+        <FormattedMessage
+          id="Dialogs.Save"
+          defaultMessage="儲存"
+        />
       </Button>
     </DialogFooter>
   </Dialog>
@@ -62,6 +74,7 @@ const EditDeviceDialog = ({
 
 export default compose(
   pure,
+  withGetMessages(messages, 'Dialogs'),
   withState('deviceName', 'setDeviceName', props => props.deviceName),
   withState('deviceDescription', 'setDescription', props => props.deviceDescription),
   withHandlers({

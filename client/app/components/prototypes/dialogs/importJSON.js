@@ -6,7 +6,7 @@ import { default as withState } from 'recompose/withState';
 import { default as withHandlers } from 'recompose/withHandlers';
 
 import messages from '../messages';
-import withGetMessages from '../../../utils/withGetMessage';
+import { withGetMessages } from 'react-intl-inject-hoc';
 
 import prototypeStyles from '../prototypes.css';
 import CodeBlock from 'mtk-ui/lib/CodeBlock';

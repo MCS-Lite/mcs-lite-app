@@ -16,15 +16,15 @@ const items = [
   {
     value: 'edit',
     children: <FormattedMessage
-      id="DeviceCard.Edit"
-      defaultMessage="Edit"
+      id="Devices.Edit"
+      defaultMessage="編輯"
     />,
   },
   {
     value: 'delete',
     children: <FormattedMessage
-      id="DeviceCard.Delete"
-      defaultMessage="Delete"
+      id="Devices.Delete"
+      defaultMessage="刪除"
     />,
   },
 ];

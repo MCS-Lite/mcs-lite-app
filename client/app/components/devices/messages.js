@@ -11,6 +11,10 @@ const messages = defineMessages({
     description: 'dropdown',
     defaultMessage: '觸發條件與動作',
   },
+  'Devices.search': {
+    id: 'Devices.search',
+    defaultMessage: '搜尋',
+  },
 });
 
 export default messages;

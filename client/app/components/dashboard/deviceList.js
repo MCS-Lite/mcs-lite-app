@@ -10,7 +10,7 @@ import { default as withHandlers } from 'recompose/withHandlers';
 import { browserHistory } from 'react-router';
 import moment from 'moment';
 
-import withGetMessages from '../../utils/withGetMessage';
+import { withGetMessages } from 'react-intl-inject-hoc';
 import messages from './messages';
 import CopyButtonGroup from '../common/copyButtonGroup';
 

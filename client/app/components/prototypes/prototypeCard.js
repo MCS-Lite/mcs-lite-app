@@ -20,7 +20,7 @@ import EditPrototype from './dialogs/editPrototype';
 import DeletePrototype from './dialogs/deletePrototype';
 
 import messages from './messages';
-import withGetMessages from '../../utils/withGetMessage';
+import { withGetMessages } from 'react-intl-inject-hoc';
 
 const PrototypeCardLayout = ({
   prototypeName,

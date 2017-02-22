@@ -13,7 +13,7 @@ import InputText from 'mtk-ui/lib/InputText';
 import InputTextarea from 'mtk-ui/lib/InputTextarea';
 
 import messages from '../messages';
-import withGetMessages from '../../../utils/withGetMessage';
+import { withGetMessages } from 'react-intl-inject-hoc';
 
 const InputPrototypeInfoLayout = ({
   onVersionChange,

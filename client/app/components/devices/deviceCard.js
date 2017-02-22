@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { browserHistory } from 'react-router';
-import { FormattedMessage } from 'react-intl'
+import { FormattedMessage } from 'react-intl';
 
 import Button from 'mtk-ui/lib/Button';
 import Hr from 'mtk-ui/lib/Hr';
@@ -52,19 +52,19 @@ const DeviceCardLayout = ({
             {
               version && <h3>
                 <FormattedMessage
-                  id="DeviceCard.Version"
-                  defaultMessage="Version"
+                  id="Devices.Version"
+                  defaultMessage="版本："
                 />
-                :{version}
+                {version}
               </h3>
             }
             {
               source && <h3>
                 <FormattedMessage
-                  id="DeviceCard.Source"
-                  defaultMessage="Source"
+                  id="Devices.Source"
+                  defaultMessage="創建來源："
                 />
-                :{source}
+                {source}
               </h3>
             }
             {
@@ -73,18 +73,18 @@ const DeviceCardLayout = ({
                 <Hr className={styles.hr}/>
                 <div>
                   <FormattedMessage
-                    id="DeviceCard.Description"
-                    defaultMessage="Description"
+                    id="Devices.Description"
+                    defaultMessage="描述："
                   />
-                  :{deviceDescription}
+                  {deviceDescription}
                 </div>
               </div>
             }
         </div>
         <Button className={styles.button} onClick={openDeviceDetail}>
           <FormattedMessage
-            id="DeviceCard.Detail"
-            defaultMessage="Detail"
+            id="Devices.Detail"
+            defaultMessage="詳情"
           />
         </Button>
       </div>

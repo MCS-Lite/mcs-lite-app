@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { FormattedMessage } from 'react-intl';
 
 import compose from 'recompose/compose';
 import pure from 'recompose/pure';
@@ -14,21 +15,32 @@ import Button from 'mtk-ui/lib/Button';
 import IconDevice from 'mcs-lite-icon/lib/IconDevice';
 import IconSearch from 'mcs-lite-icon/lib/IconSearch';
 
+import messages from './messages';
+import { withGetMessages } from 'react-intl-inject-hoc';
+
 import styles from './panelHeader.css';
 
-const PanelHeaderLayout = ({ searchKey, onInputTextChange, onSearch }) => (
+const PanelHeaderLayout = ({
+  searchKey,
+  onInputTextChange,
+  onSearch,
+  getMessages: t,
+}) => (
   <div className={styles.base}>
     <Panel>
       <PanelHeader>
         <PanelIcon icon={<IconDevice size={24}/>} />
         <div className={styles.content}>
-          <span>Test device list</span>
+          <FormattedMessage
+            id="Devices.TestDeviceList"
+            defaultMessage="測試裝置列表"
+          />
           <form action={onSearch}>
             <InputGroup className={styles.searchGroup}>
               <InputText
                 value={searchKey}
                 onChange={onInputTextChange}
-                placeholder="Search"
+                placeholder={t('search')}
               />
               <Button
                 className={styles.searchButton}
@@ -47,6 +59,7 @@ const PanelHeaderLayout = ({ searchKey, onInputTextChange, onSearch }) => (
 export default compose(
   pure,
   withState('searchKey', 'setSearchKey', ''),
+  withGetMessages(messages, 'Devices'),
   withHandlers({
     onInputTextChange: props => e => props.setSearchKey(e.target.value),
     onSearch: props => e => {
