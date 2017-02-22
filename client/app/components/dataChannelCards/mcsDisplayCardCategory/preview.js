@@ -16,7 +16,7 @@ const PreviewLayout = ({
       <DataChannelAdapter
         dataChannelProps={{
           id: '',
-          type: 'CATEGORY_CONTROL',
+          type: 'CATEGORY_DISPLAY',
           values: { value: value },
           format: {
             items: format.items,

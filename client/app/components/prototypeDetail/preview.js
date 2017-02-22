@@ -7,23 +7,33 @@ import { default as pure } from 'recompose/pure';
 import { default as withState } from 'recompose/withState';
 import { default as withHandlers } from 'recompose/withHandlers';
 
-import CategoryControlPreview from '../dataChannelCards/mcsControlCardCategory/preview';
+import PreviewWrapper from '../dataChannelCards/common/previewWrapper';
+import DisplayTypeWrapper from '../dataChannelCards/common/displayTypeWrapper';
 
 const PreviewLayout = ({
   config,
+  displayName,
+  format,
+  setFormat,
+  onFormatChange,
 }) => {
   return (
     <div>
       <div className={previewStyles.base}>
-        <CategoryControlPreview />
+        <PreviewWrapper displayName={displayName} />
       </div>
       <div className={previewStyles.format}>
-      123123
+        <DisplayTypeWrapper displatName={displayName} format={format} setFormat={setFormat} onFormatChange={onFormatChange} />
       </div>
     </div>
   );
 }
 
 export default compose(
-  pure,
+  withState('format', 'setFormat', {}),
+  withHandlers({
+    onFormatChange: props => (key, value) => {
+      props.format.key = value;
+    },
+  }),
 )(PreviewLayout);
