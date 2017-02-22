@@ -1,14 +1,15 @@
-import React from 'react'
-import { PADDING_LEFT, CONTENT_WIDTH } from '.'
-import pure from 'recompose/pure'
+import React from 'react';
+import { PADDING_LEFT, PADDING_RIGHT } from '.';
+import pure from 'recompose/pure';
 
-import Point from './Point'
+import Point from './Point';
 
-const Points = ({ data, scaleY, setCurrentPointBox, setCurrentPoint }) => {
-  const dataLength = data.length
+const Points = ({ data, scaleY, setCurrentPointBox, setCurrentPoint, width }) => {
+  const contentWidth = width - (PADDING_LEFT + PADDING_RIGHT);
+  const dataLength = data.length;
   const deltaX = dataLength > 1
-  ? CONTENT_WIDTH / (dataLength - 1)
-  : CONTENT_WIDTH
+  ? contentWidth / (dataLength - 1)
+  : contentWidth;
 
   const formatedData = dataLength > 1
   ? data.map((d, index) => ({
@@ -18,11 +19,11 @@ const Points = ({ data, scaleY, setCurrentPointBox, setCurrentPoint }) => {
     time: d.updatedAt,
   }))
   : [{
-    cx: CONTENT_WIDTH / 2 + PADDING_LEFT,
+    cx: contentWidth / 2 + PADDING_LEFT,
     cy: scaleY(data[0].value),
     value: data[0].value,
     time: data[0].updatedAt,
-  }]
+  }];
 
   return (
     <g>
@@ -39,7 +40,7 @@ const Points = ({ data, scaleY, setCurrentPointBox, setCurrentPoint }) => {
         ))
       }
     </g>
-  )
+  );
 }
 
-export default pure(Points)
+export default pure(Points);

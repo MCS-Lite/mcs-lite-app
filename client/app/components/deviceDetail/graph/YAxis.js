@@ -1,10 +1,10 @@
-import React from 'react'
-import pure from 'recompose/pure'
-import { PADDING_LEFT, CONTENT_HEIGHT, GRAPH_WIDTH } from '.'
+import React from 'react';
+import pure from 'recompose/pure';
+import { PADDING_LEFT, CONTENT_HEIGHT } from '.';
 
-const YAxis = ({ max = 128, min = 0, scaleY }) => {
-  const deltaY = Math.floor((max - min) / 4.5)
-  const positionYs = [1, 2, 3, 4].map(v => (v * deltaY))
+const YAxis = ({ max = 128, min = 0, scaleY, width }) => {
+  const deltaY = Math.floor((max - min) / 4.5);
+  const positionYs = [1, 2, 3, 4].map(v => (v * deltaY));
 
   return (
     <g>
@@ -35,7 +35,7 @@ const YAxis = ({ max = 128, min = 0, scaleY }) => {
         positionYs.map((y, index) =>
           <line
             x1={PADDING_LEFT}
-            x2={GRAPH_WIDTH}
+            x2={width}
             y1={scaleY(y)}
             y2={scaleY(y)}
             stroke="#D1D2D3"
@@ -45,7 +45,7 @@ const YAxis = ({ max = 128, min = 0, scaleY }) => {
         )
       }
     </g>
-  )
+  );
 }
 
-export default pure(YAxis)
+export default pure(YAxis);

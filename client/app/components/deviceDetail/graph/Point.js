@@ -1,7 +1,7 @@
-import React, { Component } from 'react'
-import { CONTENT_HEIGHT } from '.'
+import React, { Component } from 'react';
+import { CONTENT_HEIGHT } from '.';
 
-import pure from 'recompose/pure'
+import pure from 'recompose/pure';
 
 class Point extends Component {
   constructor(props) {
@@ -14,21 +14,21 @@ class Point extends Component {
   componentDidUpdate() {
     let box
     if (this.point) {
-      box = this.point.getBoundingClientRect()
-      this.props.setCurrentPointBox(box)
+      box = this.point.getBoundingClientRect();
+      this.props.setCurrentPointBox(box);
     }
   }
 
   onMouseEnter = () => {
-    this.setState({ isHover: true })
+    this.setState({ isHover: true });
     this.props.setCurrentPoint({
       value: this.props.value,
       time: this.props.time,
-    })
+    });
   }
   onMouseLeave = () => {
-    this.setState({ isHover: false })
-    this.props.setCurrentPoint(false)
+    this.setState({ isHover: false });
+    this.props.setCurrentPoint(false);
   }
 
   render() {
@@ -37,7 +37,7 @@ class Point extends Component {
       cy,
       deltaX,
       firstPoint,
-    } = this.props
+    } = this.props;
 
     return (
       <g>
@@ -72,8 +72,8 @@ class Point extends Component {
           onMouseLeave={this.onMouseLeave}
         />
       </g>
-    )
+    );
   }
 }
 
-export default pure(Point)
+export default pure(Point);

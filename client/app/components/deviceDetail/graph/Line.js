@@ -1,5 +1,5 @@
 import React from 'react'
-import { PADDING_LEFT, CONTENT_WIDTH, CONTENT_HEIGHT } from '.'
+import { PADDING_LEFT, PADDING_RIGHT, CONTENT_HEIGHT } from '.'
 import { line, area } from 'd3-shape'
 
 import pure from 'recompose/pure'
@@ -13,11 +13,12 @@ const areaGenerator = area()
   .y1(d => d.y)
   .y0(() => CONTENT_HEIGHT)
 
-const Line = ({ data, scaleY }) => {
+const Line = ({ data, scaleY, width }) => {
+  const contentWidth = width - (PADDING_LEFT + PADDING_RIGHT)
   const dataLength = data.length
   const deltaX = dataLength > 1
-  ? CONTENT_WIDTH / (dataLength - 1)
-  : CONTENT_WIDTH
+  ? contentWidth / (dataLength - 1)
+  : contentWidth
 
   const formatedValues = dataLength > 1
   ? data.map((d, index) => ({
@@ -25,7 +26,7 @@ const Line = ({ data, scaleY }) => {
   }))
   : [
     { x: 0, y: scaleY(data[0].value)},
-    { x: CONTENT_WIDTH, y: scaleY(data[0].value) }
+    { x: contentWidth, y: scaleY(data[0].value) }
   ]
 
   return (
