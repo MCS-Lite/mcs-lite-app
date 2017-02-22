@@ -16,7 +16,7 @@ import IconDevice from 'mcs-lite-icon/lib/IconDevice';
 import IconSearch from 'mcs-lite-icon/lib/IconSearch';
 
 import messages from './messages';
-import withGetMessages from '../../utils/withGetMessage';
+import { withGetMessages } from 'react-intl-inject-hoc';
 
 import styles from './panelHeader.css';
 

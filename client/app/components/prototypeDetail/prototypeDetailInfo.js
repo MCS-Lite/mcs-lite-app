@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import prototypeBanner from '../prototypes/productBanner.png';
 import prototypeDetailInfoStyles from './prototypeDetailInfo.css';
 
-import withGetMessages from '../../utils/withGetMessage';
+import { withGetMessages } from 'react-intl-inject-hoc';
 import messages from './messages';
 
 import { default as compose } from 'recompose/compose';

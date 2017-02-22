@@ -10,7 +10,7 @@ import { default as pure } from 'recompose/pure';
 import { default as withState } from 'recompose/withState';
 import { default as withHandlers } from 'recompose/withHandlers';
 
-import withGetMessages from '../../utils/withGetMessage';
+import { withGetMessages } from 'react-intl-inject-hoc';
 import messages from './messages';
 
 const DisplayCardLayout = ({

@@ -16,7 +16,7 @@ import withState from 'recompose/withState';
 import withHandlers from 'recompose/withHandlers';
 
 import messages from './messages';
-import withGetMessages from '../../../utils/withGetMessage';
+import { withGetMessages } from 'react-intl-inject-hoc';
 
 import styles from './dialog.css'
 

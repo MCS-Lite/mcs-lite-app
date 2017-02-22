@@ -23,7 +23,7 @@ import { default as withHandlers } from 'recompose/withHandlers';
 import { data } from '../../../utils/dataChannelTypes';
 import Preview from '../preview';
 
-import withGetMessages from '../../../utils/withGetMessage';
+import { withGetMessages } from 'react-intl-inject-hoc';
 import messages from '../messages';
 
 let dataChannelTypesOptions = []

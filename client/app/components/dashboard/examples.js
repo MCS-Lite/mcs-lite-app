@@ -15,7 +15,7 @@ import { default as compose } from 'recompose/compose';
 import { default as withState } from 'recompose/withState';
 import { default as pure } from 'recompose/pure';
 
-import withGetMessages from '../../utils/withGetMessage';
+import { withGetMessages } from 'react-intl-inject-hoc';
 import messages from './messages';
 
 import productBanner from '../prototypes/productBanner.png';

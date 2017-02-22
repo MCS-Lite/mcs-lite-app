@@ -13,7 +13,7 @@ import { default as withState } from 'recompose/withState';
 import DataChannelContent from './dataChannelContent';
 import TestDeviceContent from './testDeviceContent';
 
-import withGetMessages from '../../utils/withGetMessage';
+import { withGetMessages } from 'react-intl-inject-hoc';
 import messages from './messages';
 
 const PanelContentLayout = ({

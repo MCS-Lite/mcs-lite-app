@@ -20,7 +20,7 @@ import logo from './web_logo.png';
 import resourcesConfig from './configs/resources';
 
 import messages from './messages';
-import withGetMessages from '../../utils/withGetMessage';
+import { withGetMessages } from 'react-intl-inject-hoc';
 import { browserHistory } from 'react-router';
 
 const Header = ({
