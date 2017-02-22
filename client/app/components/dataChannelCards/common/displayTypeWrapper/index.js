@@ -53,6 +53,7 @@ const DisplayTypeWrapper = ({
       setFormat(CategoryDisplayFormat);
       break;
     case 'Integer_Control':
+      console.log(IntegerControlFormat);
       setFormat(IntegerControlFormat);
       break;
     case 'Hex_Control':
@@ -76,7 +77,7 @@ const DisplayTypeWrapper = ({
   }
   // {displayType === 'text' ? <TextDisplayType {...props} />}
   //     {displayType === 'unitType' ? <UnitTypeDisplayType {...props} />}
-  console.log(format);
+  console.log(props);
   return (
     <div>
       {

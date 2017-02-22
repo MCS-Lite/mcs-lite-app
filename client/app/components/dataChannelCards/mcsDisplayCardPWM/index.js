@@ -17,14 +17,15 @@ import More from '../common/more';
 const DisplayPWMLayout = ({
   updatedAt,
   value,
+  period,
   setValue,
   description,
   className,
   title,
   id,
-  period,
   isPrototype,
   isDevice,
+  format,
 }) => {
   return (
     <DataChannelCard
@@ -39,9 +40,7 @@ const DisplayPWMLayout = ({
           id,
           type: 'PWM_DISPLAY',
           values: { value, period },
-          format: {
-            unit: 'ampere',
-          },
+          format,
         }}
         eventHandler={({type, id, value}) => {
           console.log(type);

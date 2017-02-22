@@ -24,6 +24,7 @@ const DisplayStringLayout = ({
   id,
   isPrototype,
   isDevice,
+  format,
 }) => {
   return (
     <DataChannelCard
@@ -38,6 +39,7 @@ const DisplayStringLayout = ({
           id,
           type: 'STRING_CONTROL',
           values: { value: value },
+          format,
         }}
         eventHandler={({type, id, value}) => {
           console.log(type);

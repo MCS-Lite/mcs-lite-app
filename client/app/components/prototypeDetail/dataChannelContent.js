@@ -32,6 +32,7 @@ const DataChannelContentLayout = ({
         id="123"
         className={PrototypeDetailStyles.displayCard}
         value={50}
+        title="Title"
         updatedAt={1487505857839}
         description="123123"
       />
@@ -39,8 +40,12 @@ const DataChannelContentLayout = ({
         displayName="String_Display"
         isPrototype
         id="123"
+        title="Title"
         className={PrototypeDetailStyles.displayCard}
         value="This is string!"
+        format={{
+          unit: 'abc',
+        }}
         updatedAt={1487505857839}
         description="123123"
       />
@@ -48,6 +53,7 @@ const DataChannelContentLayout = ({
         displayName="Hex_Display"
         isPrototype
         id="123"
+        title="Title"
         className={PrototypeDetailStyles.displayCard}
         value="WQEQWEQE123i123i123sqweqweQWEQEW"
         updatedAt={1487505857839}
@@ -58,8 +64,13 @@ const DataChannelContentLayout = ({
         isPrototype
         id="123"
         className={PrototypeDetailStyles.displayCard}
-        value="200"
+        value={200}
+        title="Title"
         period={100}
+        format={{
+          lowerbound: 1,
+          upperbound: 100,
+        }}
         updatedAt={1487505857839}
         description="123123"
       />
@@ -67,6 +78,7 @@ const DataChannelContentLayout = ({
         displayName="GPIO_Display"
         isPrototype
         id="123"
+        title="Title"
         className={PrototypeDetailStyles.displayCard}
         value={0}
         updatedAt={1487505857839}
@@ -76,6 +88,7 @@ const DataChannelContentLayout = ({
         displayName="Float_Display"
         isPrototype
         id="123"
+        title="Title"
         className={PrototypeDetailStyles.displayCard}
         value="0.0"
         updatedAt={1487505857839}
@@ -84,14 +97,23 @@ const DataChannelContentLayout = ({
       <DataChannelWrapper
         displayName="Category_Display"
         isPrototype
+        title="Title"
+        id="123"
         className={PrototypeDetailStyles.displayCard}
         value="v2"
+        format={{
+          items: [
+            { name: 'k1', value: 'v1' },
+            { name: 'k2', value: 'v2' },
+          ],
+        }}
         updatedAt={1487505857839}
         description="123123"
       />
       <DataChannelWrapper
         displayName="Hex_Control"
         isPrototype
+        title="Title"
         id="123"
         className={PrototypeDetailStyles.displayCard}
         value="v2"
@@ -102,6 +124,7 @@ const DataChannelContentLayout = ({
         displayName="String_Control"
         isPrototype
         id="123"
+        title="Title"
         className={PrototypeDetailStyles.displayCard}
         value="v2"
         updatedAt={1487505857839}
@@ -111,6 +134,7 @@ const DataChannelContentLayout = ({
         displayName="Float_Control"
         isPrototype
         id="123"
+        title="Title"
         className={PrototypeDetailStyles.displayCard}
         value="0.01"
         format={{
@@ -123,6 +147,7 @@ const DataChannelContentLayout = ({
         displayName="Category_Control"
         isPrototype
         id="123"
+        title="Title"
         className={PrototypeDetailStyles.displayCard}
         value="v2"
         format={{
@@ -138,6 +163,7 @@ const DataChannelContentLayout = ({
         displayName="GPIO_Control"
         isPrototype
         id="123"
+        title="Title"
         className={PrototypeDetailStyles.displayCard}
         value={0}
         updatedAt={1487505857839}
@@ -147,9 +173,10 @@ const DataChannelContentLayout = ({
         displayName="PWM_Control"
         isPrototype
         id="123"
+        title="Title"
         className={PrototypeDetailStyles.displayCard}
         value={1}
-        period="100"
+        period={100}
         updatedAt={1487505857839}
         description="123123"
         format={{
@@ -161,6 +188,7 @@ const DataChannelContentLayout = ({
         displayName="Integer_Control"
         isPrototype
         id="123"
+        title="Title"
         className={PrototypeDetailStyles.displayCard}
         value={1000}
         format={{

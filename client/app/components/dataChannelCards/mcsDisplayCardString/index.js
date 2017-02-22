@@ -18,6 +18,7 @@ const DisplayStringLayout = ({
   updatedAt,
   value,
   setValue,
+  format,
   description,
   className,
   title,
@@ -38,6 +39,7 @@ const DisplayStringLayout = ({
           id,
           type: 'STRING_DISPLAY',
           values: { value: value },
+          format,
         }}
         eventHandler={({type, id, value}) => {
           console.log(type);

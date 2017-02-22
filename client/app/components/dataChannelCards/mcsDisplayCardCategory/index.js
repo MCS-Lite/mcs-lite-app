@@ -24,6 +24,7 @@ const DisplayCategoryLayout = ({
   id,
   isPrototype,
   isDevice,
+  format,
 }) => {
   return (
     <DataChannelCard
@@ -36,11 +37,9 @@ const DisplayCategoryLayout = ({
       <DataChannelAdapter
         dataChannelProps={{
           id,
-          type: 'INTEGER_DISPLAY',
+          type: 'CATEGORY_DISPLAY',
           values: { value: value },
-          format: {
-            unit: 'ampere',
-          },
+          format,
         }}
         eventHandler={({type, id, value}) => {
           console.log(type);
