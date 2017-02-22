@@ -20,22 +20,23 @@ import ControlCardGPIO from '../dataChannelCards/mcsControlCardGPIO';
 import ControlCardInteger from '../dataChannelCards/mcsControlCardInteger';
 
 import PrototypeDetailStyles from './prototypeDetail.css';
-
+import DataChannelWrapper from '../dataChannelCards/common/wrapper';
 const DataChannelContentLayout = ({
   prototypeId,
 }) => {
   return (
     <div className={PrototypeDetailStyles.dataChannelContent}>
       <NewDisplayCard prototypeId={prototypeId} />
-      <DisplayCardInteger
-        isPrototype
+      <DataChannelWrapper
+        displayName="Integer_Display"
         id="123"
         className={PrototypeDetailStyles.displayCard}
         value={50}
         updatedAt={1487505857839}
         description="123123"
       />
-      <DisplayCardString
+      <DataChannelWrapper
+        displayName="String_Display"
         isPrototype
         id="123"
         className={PrototypeDetailStyles.displayCard}
@@ -43,7 +44,8 @@ const DataChannelContentLayout = ({
         updatedAt={1487505857839}
         description="123123"
       />
-      <DisplayCardHex
+      <DataChannelWrapper
+        displayName="Hex_Display"
         isPrototype
         id="123"
         className={PrototypeDetailStyles.displayCard}
@@ -51,7 +53,8 @@ const DataChannelContentLayout = ({
         updatedAt={1487505857839}
         description="123123"
       />
-      <DisplayCardPWM
+      <DataChannelWrapper
+        displayName="PWM_Display"
         isPrototype
         id="123"
         className={PrototypeDetailStyles.displayCard}
@@ -60,7 +63,8 @@ const DataChannelContentLayout = ({
         updatedAt={1487505857839}
         description="123123"
       />
-      <DisplayCardGPIO
+      <DataChannelWrapper
+        displayName="GPIO_Display"
         isPrototype
         id="123"
         className={PrototypeDetailStyles.displayCard}
@@ -68,7 +72,8 @@ const DataChannelContentLayout = ({
         updatedAt={1487505857839}
         description="123123"
       />
-      <DisplayCardFloat
+      <DataChannelWrapper
+        displayName="Float_Display"
         isPrototype
         id="123"
         className={PrototypeDetailStyles.displayCard}
@@ -76,22 +81,16 @@ const DataChannelContentLayout = ({
         updatedAt={1487505857839}
         description="123123"
       />
-      <DisplayCardCategory
+      <DataChannelWrapper
+        displayName="Category_Display"
         isPrototype
         className={PrototypeDetailStyles.displayCard}
         value="v2"
         updatedAt={1487505857839}
         description="123123"
       />
-      <ControlCardHex
-        isPrototype
-        id="123"
-        className={PrototypeDetailStyles.displayCard}
-        value="v2"
-        updatedAt={1487505857839}
-        description="123123"
-      />
-      <ControlCardString
+      <DataChannelWrapper
+        displayName="Hex_Control"
         isPrototype
         id="123"
         className={PrototypeDetailStyles.displayCard}
@@ -99,7 +98,17 @@ const DataChannelContentLayout = ({
         updatedAt={1487505857839}
         description="123123"
       />
-      <ControlCardFloat
+      <DataChannelWrapper
+        displayName="String_Control"
+        isPrototype
+        id="123"
+        className={PrototypeDetailStyles.displayCard}
+        value="v2"
+        updatedAt={1487505857839}
+        description="123123"
+      />
+      <DataChannelWrapper
+        displayName="Float_Control"
         isPrototype
         id="123"
         className={PrototypeDetailStyles.displayCard}
@@ -110,7 +119,8 @@ const DataChannelContentLayout = ({
         updatedAt={1487505857839}
         description="123123"
       />
-      <ControlCardCategory
+      <DataChannelWrapper
+        displayName="Category_Control"
         isPrototype
         id="123"
         className={PrototypeDetailStyles.displayCard}
@@ -124,7 +134,8 @@ const DataChannelContentLayout = ({
         updatedAt={1487505857839}
         description="123123"
       />
-      <ControlCardGPIO
+      <DataChannelWrapper
+        displayName="GPIO_Control"
         isPrototype
         id="123"
         className={PrototypeDetailStyles.displayCard}
@@ -132,7 +143,8 @@ const DataChannelContentLayout = ({
         updatedAt={1487505857839}
         description="123123"
       />
-      <ControlCardPWM
+      <DataChannelWrapper
+        displayName="PWM_Control"
         isPrototype
         id="123"
         className={PrototypeDetailStyles.displayCard}
@@ -145,7 +157,8 @@ const DataChannelContentLayout = ({
           upperbound: 100,
         }}
       />
-      <ControlCardInteger
+      <DataChannelWrapper
+        displayName="Integer_Control"
         isPrototype
         id="123"
         className={PrototypeDetailStyles.displayCard}
