@@ -17,6 +17,7 @@ const NewDisplayCardLayout = ({
   isSelectCreateDataChannel,
   setIsSelectCreateDataChannel,
   prototypeId,
+  createDataChannel,
   getMessages: t,
 }) => {
   return (
@@ -30,6 +31,7 @@ const NewDisplayCardLayout = ({
       </Button>
       <SelectCreateDataChannelDialog
         prototypeId={prototypeId}
+        createDataChannel={createDataChannel}
         isSelectCreateDataChannel={isSelectCreateDataChannel}
         setIsSelectCreateDataChannel={setIsSelectCreateDataChannel}
       />

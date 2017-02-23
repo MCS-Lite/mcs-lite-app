@@ -33,7 +33,11 @@ const NewPrototypeCardLayout = ({
         prototypeTemplates={prototypeTemplates}
       />
       {t('createYourPrototypeNow')}
-      <Button type="submit" className={newPrototypeCardStyles.button} onClick={openCreatePrototype}>
+      <Button
+        type="submit"
+        className={newPrototypeCardStyles.button}
+        onClick={openCreatePrototype}
+      >
         {t('create')}
       </Button>
     </div>

@@ -4,14 +4,27 @@ module.exports = function ($db) {
   var addNewDatachannels = function(req, res, next) {
     var userId = req.user.userId;
     var prototypeId = req.params.prototypeId;
+    var format = req.body.format || {};
+
+    if (Object.keys(format).length > 0) {
+      Object.keys(format).forEach(function(k, v) {
+        let formatObject = {};
+        formatObject.id = format[k].id;
+        formatObject.value = format[k].value;
+        format[k] = formatObject;
+      });
+    }
 
     return datachannels.addNewDatachannel({
-      datachannelId: req.body.datachannelId,
-      datachannelDescription: req.body.datachannelDescription,
-      datachannelTypeId: req.body.datachannelTypeId,
+      datachannelId: req.body.id,
+      datachannelName: req.body.name,
+      datachannelDescription: req.body.description,
+      type: req.body.type,
+      channelType: req.body.channelType,
+      isHidden: req.body.isHidden,
       prototypeId: prototypeId,
       createUserId: userId,
-      config: req.body.config,
+      format: format,
     })
     .then(function(data) {
       return res.send(200, { data: data });
@@ -25,14 +38,17 @@ module.exports = function ($db) {
     var userId = req.user.userId;
     var prototypeId = req.params.prototypeId;
     var datachannelId = req.params.datachannelId;
+    var format = req.params.format;
 
     return datachannels.editDatachannel({
-      datachannelId: datachannelId,
       prototypeId: prototypeId,
+      datachannelId: datachannelId,
+      createUserId: userId,
       isActive: true,
     }, {
+      datachannelName: req.body.datachannelName,
       datachannelDescription: req.body.datachannelDescription,
-      datachannelTypeId: req.body.datachannelTypeId,
+      format: format,
     })
     .then(function() {
       return res.send(200, { message: 'success' });
