@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { DataPointAreaChart } from 'mcs-lite-ui';
+import moment from 'moment';
 
 import Footer from '../footer';
 import Header from '../header';
@@ -57,7 +59,32 @@ const DeviceDetail = ({ devices, editDevice, deleteDevice }) => {
         />
         <PanelHeader />
         <div className={styles.graphPreview}>
-          <Graph data={mockupGraphData}/>
+          <DataPointAreaChart
+            data={mockupGraphData}
+            isAnimationActive
+            XAxisProps={{
+              tickFormatter: value => moment(value).format('MM-DD HH:mm')
+            }}
+            tooltipProps={{
+              formatter: value => `資料點:${value}`,
+              labelFormatter: value => `時間：${moment(value).format('YYYY-MM-DD HH:mm')}`,
+            }}
+          />
+        </div>
+        
+        <div className={styles.graphPreview}>
+          <DataPointAreaChart
+            data={mockupGraphData}
+            type="step"
+            isAnimationActive
+            XAxisProps={{
+              tickFormatter: value => moment(value).format('MM-DD HH:mm')
+            }}
+            tooltipProps={{
+              formatter: value => `資料點:${value}`,
+              labelFormatter: value => `時間：${moment(value).format('YYYY-MM-DD HH:mm')}`,
+            }}
+          />
         </div>
       </div>
       <Footer />

@@ -6,6 +6,9 @@
 }
 
 .graphPreview {
+  height: 200px;
+  width: 66%;
+  padding: 16px;
   background-color: #fff;
   margin: 20px 9px;
 }
