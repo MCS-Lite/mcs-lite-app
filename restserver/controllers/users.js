@@ -314,6 +314,7 @@ module.exports = function ($db) {
 
     return users.editUser({
       userId: userId,
+      isActive: true,
     }, {
       userName: req.body.userName,
     })
@@ -323,6 +324,19 @@ module.exports = function ($db) {
     .catch(function(err) {
       return res.send(400, err);
     });
+  };
+
+  var changePassword = function(req, res, next) {
+    var userId = req.user.userId;
+    var password = req.body.password;
+    return users.changePassword(userId, password)
+    .then(function() {
+      return res.send(200, { message: 'success' });
+    })
+    .catch(function(err) {
+      return res.send(400, err);
+    });
+
   };
 
   return {

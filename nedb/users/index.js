@@ -10,7 +10,25 @@ module.exports = function(users) {
     validateSchema: function(object) {
       return v.validate(object, schema);
     },
+    changePassword: function(userId, password) {
+      password = crypto
+        .createHmac('sha256', secretKey)
+        .update(password)
+        .digest('hex');
 
+      return new Promise(function(resolve, reject) {
+        return users.update({
+          userId: userId,
+          isActive: true,
+        }, {
+          $set: { password: password }
+        }, {
+        }, function(err, num) {
+          if (err) return reject();
+          resolve({ message: 'success' });
+        });
+      });
+    },
     signInUser: function(email, password) {
       password = crypto
         .createHmac('sha256', secretKey)
