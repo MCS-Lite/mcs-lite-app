@@ -8,11 +8,13 @@ import dashboardStyles from './dashboard.css';
 import Breadcrumb from './breadcrumb';
 import MyPrototype from './myPrototype';
 import Examples from './examples';
+import CreateNewPrototypeDialog from '../common/dialogs/createNewPrototype';
 
 const Dashboard = ({
   createNewPrototype,
   dashboard,
   clonePrototype,
+  retrievePrototypeTemplates,
   ...props,
 }) => {
   return (
@@ -22,7 +24,11 @@ const Dashboard = ({
       <div className={dashboardStyles.base}>
         <Breadcrumb />
         <MyPrototype createNewPrototype={createNewPrototype} userPrototypes={dashboard.userPrototypes}/>
-        <Examples clonePrototype={clonePrototype} templates={dashboard.templates}/>
+        <Examples
+          clonePrototype={clonePrototype}
+          createNewPrototype={createNewPrototype}
+          templates={dashboard.templates}
+        />
       </div>
       <Footer />
     </div>

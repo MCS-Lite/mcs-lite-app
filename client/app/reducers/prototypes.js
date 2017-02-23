@@ -1,10 +1,7 @@
 import {
   RETRIEVEPROTOTYPE,
   RETRIEVEPROTOTYPELIST,
-  CREATENEWPROTOTYPE,
-  CLONEPROTOTYPE,
-  EDITPROTOTYPE,
-  DELETEPROTOTYPE,
+  RETRIEVEPROTOTYPETEMPLATES,
 } from '../constants/PrototypeActionTypes';
 import assign from 'object-assign';
 
@@ -19,6 +16,8 @@ export default function prototypes( state = initialState, action ) {
       return assign({}, state, { prototypeDetail: action.data });
     case RETRIEVEPROTOTYPELIST:
       return assign({}, state, { prototypeList: action.data });
+    case RETRIEVEPROTOTYPETEMPLATES:
+      return assign({}, state, { prototypeTemplates: action.data });
     default:
       return state;
   }

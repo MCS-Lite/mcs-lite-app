@@ -11,9 +11,10 @@ import TableHeader from 'mtk-ui/lib/table/TableHeader';
 import TableCell from 'mtk-ui/lib/table/TableCell';
 import TableRow from 'mtk-ui/lib/table/TableRow';
 
-import { default as compose } from 'recompose/compose';
-import { default as withState } from 'recompose/withState';
-import { default as pure } from 'recompose/pure';
+import compose from 'recompose/compose';
+import withState from 'recompose/withState';
+import pure from 'recompose/pure';
+import withHandlers from 'recompose/withHandlers';
 
 import { withGetMessages } from 'react-intl-inject-hoc';
 import messages from './messages';
@@ -22,15 +23,18 @@ import productBanner from '../prototypes/productBanner.png';
 import Hr from '../common/hr';
 import { browserHistory } from 'react-router';
 
-import ClonePrototype from '../prototypes/dialogs/clonePrototype';
+import CreateNewPrototype from '../common/dialogs/createNewPrototype';
 import moment from 'moment';
 
 const ExampleListLayout = ({
   getMessages: t,
   clonePrototype,
   prototype,
-  selectMenuValue,
-  setSelectMenuValue,
+  isCreatePrototype,
+  setIsCreatePrototype,
+  templates,
+  createNewPrototype,
+  openCreatePrototype,
 }) => {
   return (
     <div key={prototype.prototypeId}>
@@ -54,22 +58,19 @@ const ExampleListLayout = ({
           </div>
         </TableCell>
         <TableCell>
-          <Button onClick={()=>{
-            setSelectMenuValue('clone');
-            console.log(1111);
-          }}>{t('clonePrototype')}</Button>
+          <Button onClick={()=>setIsCreatePrototype(true)}>{t('clonePrototype')}</Button>
         </TableCell>
       </TableRow>
       {
-        setSelectMenuValue === 'clone' ?
-        <ClonePrototype
-          clonePrototype={clonePrototype}
-          prototypeId={prototype.prototypeId}
-          prototypeName={prototype.prototypeName}
-          selectMenuValue={selectMenuValue}
-          setSelectMenuValue={setSelectMenuValue}
+        isCreatePrototype &&
+        <CreateNewPrototype
+          createNewPrototype={createNewPrototype}
+          isCreatePrototype
+          setIsCreatePrototype={setIsCreatePrototype}
+          prototypeTemplates={templates}
+          isDashboard
+          defaultPrototype={prototype}
         />
-        : ''
       }
     </div>
   );
@@ -77,6 +78,6 @@ const ExampleListLayout = ({
 
 export default compose(
   pure,
-  withState('selectMenuValue', 'setSelectMenuValue', ''),
+  withState('isCreatePrototype', 'setIsCreatePrototype', false),
   withGetMessages(messages, 'Dashboard'),
 )(ExampleListLayout);

@@ -12,7 +12,7 @@ import InputForm from 'mtk-ui/lib/InputForm';
 import InputText from 'mtk-ui/lib/InputText';
 import InputTextarea from 'mtk-ui/lib/InputTextarea';
 
-import messages from '../messages';
+import messages from './messages';
 import { withGetMessages } from 'react-intl-inject-hoc';
 
 const InputPrototypeInfoLayout = ({
@@ -93,5 +93,5 @@ export default compose(
     onPrototypeDescriptionChange: props => (e) => props.setPrototypeDescription(e.target.value),
     onPrototypeNameChange: props => (e) => props.setPrototypeName(e.target.value),
   }),
-  withGetMessages(messages, 'Prototypes'),
+  withGetMessages(messages, 'Dialogs'),
 )(InputPrototypeInfoLayout)
