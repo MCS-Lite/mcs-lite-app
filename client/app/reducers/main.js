@@ -1,6 +1,5 @@
-import {
-  CHECKTOKEN,
-} from '../constants/ActionTypes';
+import { CHECKTOKEN } from '../constants/ActionTypes';
+import { EDITUSERNAMESUCCESS } from '../constants/userTypes';
 import assign from 'object-assign';
 
 const initialState = {
@@ -22,6 +21,10 @@ export default function main( state = initialState, action ) {
         access_token: action.access_token,
         token: action.token,
         isInitialized: true,
+      });
+    case EDITUSERNAMESUCCESS:
+      return assign({}, state, {
+        userName: action.userName,
       });
     default:
       return state;

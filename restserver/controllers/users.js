@@ -309,6 +309,22 @@ module.exports = function ($db) {
     });
   };
 
+  var editUser = function(req, res, next) {
+    var userId = req.user.userId;
+
+    return users.editUser({
+      userId: userId,
+    }, {
+      userName: req.body.userName,
+    })
+    .then(function() {
+      return res.send(200, { message: 'success' });
+    })
+    .catch(function(err) {
+      return res.send(400, err);
+    });
+  };
+
   return {
     registUser: registUser,
     retrieveUserList: retrieveUserList,
@@ -316,5 +332,6 @@ module.exports = function ($db) {
     signIn: signIn,
     loginInterface: loginInterface,
     checkCookies: checkCookies,
+    editUser: editUser,
   };
 };

@@ -156,6 +156,13 @@ module.exports = function($db, $app, $rest) {
     handler: usersController.retrieveUserList,
   };
 
+  this.editUser = {
+    path: $rest.apiRoute + '/user',
+    methods: ['put'],
+    middleware: [$app.oauth.authorise()],
+    handler: usersController.editUser,
+  };
+
   this.retrievePrototypeList = {
     path: $rest.apiRoute + '/prototypes',
     methods: ['get'],

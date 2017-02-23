@@ -1,0 +1,43 @@
+.panel {
+  color: #353630;
+  margin-top: 10px;
+}
+
+.panelHeaderContent {
+  font-size: 13px;
+  margin-left: 15px;
+}
+
+.panelBody {
+  display: flex;
+}
+
+.panelBody > div:first-child {
+  box-sizing: border-box;
+  width: 230px;
+  height: 190px;
+  border-right: 1px solid #D8D8D8;
+  padding: 30px 20px;
+}
+
+.panelBody > div:nth-child(2) {
+  padding-left: 50px;
+  margin: auto 0;
+}
+
+.column {
+  display: flex;
+  align-items: center;
+}
+
+.column:not(:last-child) {
+  margin-bottom: 10px;
+}
+
+.column > div:first-child {
+  width: 66px;
+}
+
+.editUserName {
+  margin-left: 10px;
+}

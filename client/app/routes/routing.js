@@ -8,6 +8,7 @@ import Devices from '../containers/devices'
 import DeviceDetail from '../containers/deviceDetail'
 import Signin from '../containers/signin'
 import Login from '../containers/login'
+import Profile from '../containers/profile'
 
 export default (
   <Route component={App}>
@@ -35,5 +36,8 @@ export default (
     <Route
       path="/devices/:deviceId"
       components={DeviceDetail} />
+    <Route
+      path="/profile"
+      components={Profile} />
   </Route>
 )
