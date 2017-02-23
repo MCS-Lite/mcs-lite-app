@@ -33,6 +33,7 @@ const ExamplesLayout = ({
   clonePrototype,
   templates,
   selectMenuValue,
+  createNewPrototype,
 }) => {
   return (
     <div className={examplesStyles.base}>
@@ -51,7 +52,13 @@ const ExamplesLayout = ({
           {
             templates.map((prototype) => {
               return (
-                <ExampleList prototype={prototype} clonePrototype={clonePrototype} key={prototype.prototypeId} />
+                <ExampleList
+                  prototype={prototype}
+                  clonePrototype={clonePrototype}
+                  key={prototype.prototypeId}
+                  templates={templates}
+                  createNewPrototype={createNewPrototype}
+                />
               );
             })
           }

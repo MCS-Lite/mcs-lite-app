@@ -45,3 +45,11 @@ export const deletePrototype =  (id) => (dispatch, getState) => {
     retrievePrototypeList()(dispatch, getState);
   });
 }
+
+export const retrievePrototypeTemplates =  () => (dispatch, getState) => {
+  return request('/prototypes/templates', 'GET', getState().main.access_token)
+  .then((data) => dispatch({
+    type: types.RETRIEVEPROTOTYPETEMPLATES,
+    data: data.data,
+  }));
+}

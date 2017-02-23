@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import newPrototypeCardStyles from './newPrototypeCard.css';
-import CreateNewPrototypeDialog from './dialogs/createNewPrototype';
+import CreateNewPrototypeDialog from '../common/dialogs/createNewPrototype';
 
 import Button from 'mtk-ui/lib/Button';
 
@@ -19,6 +19,8 @@ const NewPrototypeCardLayout = ({
   setIsCreatePrototype,
   createNewPrototype,
   prototypeName,
+  retrievePrototypeTemplates,
+  prototypeTemplates,
   getMessages: t,
 }) => {
   return (
@@ -27,6 +29,8 @@ const NewPrototypeCardLayout = ({
         createNewPrototype={createNewPrototype}
         isCreatePrototype={isCreatePrototype}
         setIsCreatePrototype={setIsCreatePrototype}
+        retrievePrototypeTemplates={retrievePrototypeTemplates}
+        prototypeTemplates={prototypeTemplates}
       />
       {t('createYourPrototypeNow')}
       <Button type="submit" className={newPrototypeCardStyles.button} onClick={openCreatePrototype}>

@@ -10,7 +10,9 @@ import PrototypeCard from './prototypeCard';
 
 import prototypeStyle from './prototypes.css';
 
-const Prototypes = ({ prototypes, createNewPrototype, ...props }) => {
+const Prototypes = ({ prototypes, createNewPrototype, retrievePrototypeTemplates, ...props }) => {
+  const prototypeTemplates = prototypes.prototypeTemplates;
+
   return (
     <div>
       <Header
@@ -19,7 +21,11 @@ const Prototypes = ({ prototypes, createNewPrototype, ...props }) => {
         <Breadcrumb />
         <PanelHeader />
         <div className={prototypeStyle.content}>
-          <NewPrototypeCard createNewPrototype={createNewPrototype}/>
+          <NewPrototypeCard
+            createNewPrototype={createNewPrototype}
+            retrievePrototypeTemplates={retrievePrototypeTemplates}
+            prototypeTemplates={prototypeTemplates}
+          />
           {
             prototypes.prototypeList.map((prototype) => {
               return (<PrototypeCard key={prototype.prototypeId} {...prototype} {...props} />);

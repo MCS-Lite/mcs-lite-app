@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import PrototypesLayout from '../components/prototypes';
-import * as PrototypeActions from '../actions/PrototypeActions';
+import * as PrototypeActions from '../actions/prototypeActions';
 
 class Prototype extends Component {
   componentDidMount() {

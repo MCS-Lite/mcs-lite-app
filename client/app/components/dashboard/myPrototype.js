@@ -23,7 +23,7 @@ import { default as withHandlers } from 'recompose/withHandlers';
 
 import { withGetMessages } from 'react-intl-inject-hoc';
 import messages from './messages';
-import CreateNewPrototypeDialog from '../prototypes/dialogs/createNewPrototype';
+import CreateNewPrototypeDialog from '../common/dialogs/createNewPrototype';
 
 import productBanner from '../prototypes/productBanner.png';
 
@@ -49,12 +49,15 @@ const MyPrototypeLayout = ({
 }) => {
   return (
     <div className={myPrototypeStyles.base}>
-      <CreateNewPrototypeDialog
-        createNewPrototype={createNewPrototype}
-        isCreatePrototype={isCreatePrototype}
-        setIsCreatePrototype={setIsCreatePrototype}
-        isDashboard
-      />
+      {
+        isCreatePrototype &&
+          <CreateNewPrototypeDialog
+            createNewPrototype={createNewPrototype}
+            isCreatePrototype={isCreatePrototype}
+            setIsCreatePrototype={setIsCreatePrototype}
+            isDashboard
+          />
+      }
       <Panel>
         <PanelHeader className={myPrototypeStyles.panelHeader}>
           <PanelIcon>
