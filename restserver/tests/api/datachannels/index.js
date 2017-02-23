@@ -36,10 +36,16 @@ describe('Datachannel API:', function() {
       .post($rest.apiRoute + '/prototypes/' + prototypeId + '/datachannels')
       .set('Authorization', 'Bearer ' + global.access_token)
       .send({
-        datachannelId: '123123',
-        datachannelDescription: 'Test datachannel',
-        datachannelTypeId: 1,
-        config: {},
+        name: 'werwerwerwer',
+        id: '123123',
+        description: 'Test datachannel',
+        channelType: {
+          id: 1,
+          name: '123',
+        },
+        type: 1,
+        isHidden: true,
+        format: {},
       })
       .then(function(data) {
         assert.equal(data.status, 200, 'Response status is not 200.');
@@ -55,7 +61,6 @@ describe('Datachannel API:', function() {
       .set('Authorization', 'Bearer ' + global.access_token)
       .send({
         datachannelTypeId: 1,
-        config: {},
       })
       .expect(400)
       .end(done);
@@ -71,7 +76,7 @@ describe('Datachannel API:', function() {
       .set('Authorization', 'Bearer ' + global.access_token)
       .send({
         datachannelDescription: datachannelDescription,
-        datachannelTypeId: 1,
+        format: {},
       })
       .then(function(data) {
         assert.equal(data.body.message, 'success', 'Response is not success.');

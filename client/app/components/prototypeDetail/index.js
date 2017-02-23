@@ -11,13 +11,19 @@ import PrototypeDetailInfo from './prototypeDetailInfo';
 
 import prototypeDetailStyle from './prototypeDetail.css';
 
-const Prototypes = ({ prototypes,  createTestDevice, ...props }) => {
+const Prototypes = ({
+  prototypes,
+  createTestDevice,
+  createDataChannel,
+  ...props,
+}) => {
   const {
     prototypeName,
     version,
     prototypeDescription,
     prototypeId,
     devicesLength,
+    datachannels,
   } = prototypes.prototypeDetail;
   return (
     <div>
@@ -27,7 +33,7 @@ const Prototypes = ({ prototypes,  createTestDevice, ...props }) => {
         <Breadcrumb prototypeName={prototypeName} />
         <PrototypeDetailHeader prototypeId={prototypeId} prototypeName={prototypeName} version={version} createTestDevice={createTestDevice} {...props}/>
         <PrototypeDetailInfo prototypeDescription={prototypeDescription} devicesLength={devicesLength} />
-        <PanelContent prototypeId={prototypeId} />
+        <PanelContent datachannels={datachannels} createDataChannel={createDataChannel} prototypeId={prototypeId} />
       </div>
       <Footer />
     </div>

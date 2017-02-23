@@ -13,8 +13,6 @@ import Hr from 'mtk-ui/lib/Hr';
 import InputCheckbox from 'mtk-ui/lib/InputCheckbox';
 import InputSelect from 'mtk-ui/lib/InputSelect';
 
-import prototypeDetailActions from '../../../actions/prototypeDetailActions';
-
 import { default as compose } from 'recompose/compose';
 import { default as pure } from 'recompose/pure';
 import { default as withState } from 'recompose/withState';
@@ -57,7 +55,7 @@ const CreateDataChannelDialog = ({
       } else if (k.type ===2){
         value = k.dataChannelTypeName + '_Display';
       }
-
+      k.value= value;
       dataChannelTypesOptions.push({
         value: value,
         children: k.dataChannelTypeName,
@@ -109,7 +107,7 @@ const CreateDataChannelDialog = ({
             items={dataChannelTypesOptions}
             filterFunc={() => true}
             className={createDataChannelStyles.input}
-            style={{flex: 1}}
+            style={{ flex: 1 }}
             error={error.dataChannelType ? t('required'): ''}
             valueRenderer={(value = {}) => {
               let children;
@@ -150,6 +148,7 @@ export default compose(
   withState('dataChannelId', 'setDataChannelId', ''),
   withState('dataChannelDescription', 'setDataChannelDescription', ''),
   withState('dataChannelType', 'setDataChannelType', ''),
+  withState('channelType', 'setChannelType', {}),
   withState('format', 'setFormat', {}),
   withState('error', 'setError', {}),
   withHandlers({
@@ -166,6 +165,16 @@ export default compose(
     },
     onDataChannelDescriptionChange: props => (e) => props.setDataChannelDescription(e.target.value),
     onDataChannelTypeChange: props => (e, value) => {
+      let channelType = {};
+
+      data.forEach((k,v)=>{
+        if (k.value === value) {
+          channelType.id = k.dataChannelTypeId;
+          channelType.name = k.dataChannelTypeName;
+        }
+      });
+
+      props.setChannelType(channelType);
       props.setDataChannelType(value);
       props.setFormat({});
       props.setError({});
@@ -174,23 +183,32 @@ export default compose(
       props.format[key].value = value;
     },
     submitCreateDataChannel: props => (e) => {
-      console.log(props.format);
       props.setError({});
       let data = {};
 
-      data.displayCardType = props.displayCardType;
-      data.dataChannelId = props.dataChannelId;
-      data.dataChannelDescription = props.dataChannelDescription;
-      data.dataChannelName = props.dataChannelName;
+      data.type = props.displayCardType;
+      data.id = props.dataChannelId;
+      data.description = props.dataChannelDescription;
+      data.name = props.dataChannelName;
       data.format = props.format;
+      data.channelType = props.channelType;
+      data.isHidden = true;
 
       let error = {};
-      if (data.dataChannelId === '') error.dataChannelId = true;
-      if (data.dataChannelName === '') error.dataChannelName = true;
-      if (!data.dataChannelType) error.dataChannelType = true;
-      error.lowerbound = true;
+      if (data.id === '') error.dataChannelId = true;
+      if (data.name === '') error.dataChannelName = true;
+      if (!data.channelType.id) error.dataChannelType = true;
+
+      Object.keys(props.format).forEach((k, v) => {
+        if (props.format[k].required && (!props.format[k].value || props.format[k].value == '')) {
+          error[k] = true;
+        }
+      });
+
       props.setError(error);
-      // prototypeDetailActions.createDataChannel(props.prototypeId, data);
+      props.createDataChannel(props.prototypeId, data);
+      props.setIsCreateDataChannel(false);
+      props.setIsSelectCreateDataChannel(false);
     },
   }),
   withGetMessages(messages, 'PrototypeDetail'),

@@ -27,7 +27,9 @@ const CreateDataChannelDialog = ({
   displayCardType,
   setDisplayCardType,
   isSelectCreateDataChannel,
+  setIsSelectCreateDataChannel,
   prototypeId,
+  createDataChannel,
   getMessages: t,
 }) => {
   return (
@@ -56,10 +58,12 @@ const CreateDataChannelDialog = ({
         {
           isCreateDataChannel ?
           <CreateDataChannel
+            createDataChannel={createDataChannel}
             prototypeId={prototypeId}
             displayCardType={displayCardType}
             isCreateDataChannel={isCreateDataChannel}
             setIsCreateDataChannel={setIsCreateDataChannel}
+            setIsSelectCreateDataChannel={setIsSelectCreateDataChannel}
           /> :
           ''
         }

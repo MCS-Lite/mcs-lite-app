@@ -20,6 +20,8 @@ const PanelContentLayout = ({
   prototypeId,
   setSelectPanelValue,
   selectPanelValue,
+  createDataChannel,
+  datachannels,
   getMessages: t,
 }) => {
   return (
@@ -35,7 +37,7 @@ const PanelContentLayout = ({
           </div>
         </PanelHeader>
         <PanelBody className={panelContentStyles.body}>
-          { selectPanelValue === '' || selectPanelValue === 'Data channel' ? <DataChannelContent prototypeId={prototypeId} /> : ''}
+          { selectPanelValue === '' || selectPanelValue === 'Data channel' ? <DataChannelContent datachannels={datachannels} createDataChannel={createDataChannel} prototypeId={prototypeId} /> : ''}
           { selectPanelValue === 'Test device' ? <TestDeviceContent prototypeId={prototypeId} /> : ''}
         </PanelBody>
       </Panel>

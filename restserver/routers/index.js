@@ -262,13 +262,13 @@ module.exports = function($db, $app, $rest) {
   };
 
   this.uploadDatapoint = {
-    path: $rest.apiRoute + '/devices/:deviceId/datapoints',
+    path: $rest.apiRoute + '/devices/:deviceId/datachannel/:datachannelId/datapoints',
     methods: ['post'],
     handler: datapointsController.uploadDatapoints,
   };
 
   this.retrieveDatachannelDatapoint = {
-    path: $rest.apiRoute + '/devices/:deviceId/datapoints/datachannel/:datachannelId',
+    path: $rest.apiRoute + '/devices/:deviceId/datachannel/:datachannelId/datapoints',
     methods: ['get'],
     handler: datapointsController.retrieveDatapoints,
   };
@@ -286,6 +286,4 @@ module.exports = function($db, $app, $rest) {
     middleware: [connectMultiparty],
     handler: imageController.uploadImage,
   };
-
-
 };

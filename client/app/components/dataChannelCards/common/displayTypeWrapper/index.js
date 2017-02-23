@@ -80,9 +80,6 @@ const DisplayTypeWrapper = ({
       setFormat(CategoryControlFormat);
       break;
   }
-  console.log('==== format: =====');
-  console.log(format);
-  console.log('==================');
   return (
     <div className={styles.base}>
       {
