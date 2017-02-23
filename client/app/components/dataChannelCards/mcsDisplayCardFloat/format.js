@@ -1,5 +1,5 @@
 module.exports = {
-  'Unit': {
+  'unit': {
     displayType: 'unitType',
     required: true,
   },

@@ -11,26 +11,28 @@ import PreviewWrapper from '../dataChannelCards/common/previewWrapper';
 import DisplayTypeWrapper from '../dataChannelCards/common/displayTypeWrapper';
 
 const PreviewLayout = ({
-  config,
   displayName,
   format,
-  setFormat,
-  onFormatChange,
+  ...props,
 }) => {
   return (
     <div>
       <div className={previewStyles.base}>
-        <PreviewWrapper displayName={displayName} format={format} />
+        <PreviewWrapper
+          displayName={displayName}
+          format={format}
+        />
       </div>
       <div className={previewStyles.format}>
-        <DisplayTypeWrapper displatName={displayName} format={format} setFormat={setFormat} onFormatChange={onFormatChange} />
+        <DisplayTypeWrapper
+          displayName={displayName}
+          format={format}
+          {...props}
+        />
       </div>
     </div>
   );
 }
 
 export default compose(
-  // withHandlers({
-    
-  // }),
 )(PreviewLayout);

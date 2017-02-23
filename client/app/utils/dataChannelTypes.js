@@ -2,11 +2,14 @@ export const data = [{
   dataChannelTypeId: 7,
   dataChannelTypeName: "Switch",
   type: 1,
-},{
-  dataChannelTypeId: 10,
-  dataChannelTypeName: "Category",
-  type: 1,
-},{
+},
+
+// {
+//   dataChannelTypeId: 10,
+//   dataChannelTypeName: "Category",
+//   type: 1,
+// }
+,{
   dataChannelTypeId: 1,
   dataChannelTypeName: 'Integer',
   type: 1,
@@ -42,11 +45,15 @@ export const data = [{
   dataChannelTypeId: 3,
   dataChannelTypeName: "Switch",
   type: 2,
-},{
-  dataChannelTypeId: 10,
-  dataChannelTypeName: "Category",
-  type: 2,
-},{
+},
+
+// {
+//   dataChannelTypeId: 10,
+//   dataChannelTypeName: "Category",
+//   type: 2,
+// }
+
+,{
   dataChannelTypeId: 1,
   dataChannelTypeName: "Integer",
   type: 2,

@@ -221,6 +221,11 @@ const messages = defineMessages({
     description: '',
     defaultMessage: '模板預覽：選擇適合您資料通道的模板。',
   },
+  'PrototypeDetail.required': {
+    id: 'PrototypeDetail.required',
+    description: '',
+    defaultMessage: '此欄位必填',
+  },
 });
 
 export default messages;
