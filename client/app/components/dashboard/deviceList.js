@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import deviceListStyle from './deviceList.css';
+import styles from './deviceList.css';
 
 import { default as compose } from 'recompose/compose';
 import { default as pure } from 'recompose/pure';
@@ -14,18 +14,27 @@ import { withGetMessages } from 'react-intl-inject-hoc';
 import messages from './messages';
 import CopyButtonGroup from '../common/copyButtonGroup';
 
+import Table from 'mtk-ui/lib/table/Table';
+import TableHeader from 'mtk-ui/lib/table/TableHeader';
+import TableCell from 'mtk-ui/lib/table/TableCell';
+import TableRow from 'mtk-ui/lib/table/TableRow';
+
 var DeviceList = ({
   getMessages: t,
   device,
+  deviceId,
+  deviceKey,
+  updatedAt,
+  deviceName,
   goToDeviceDetail,
 }) => {
   return (
     <TableRow>
-      <TableCell><a onClick={goToDeviceDetail}>device.deviceName</a></TableCell>
-      <TableCell></TableCell>
-      <TableCell></TableCell>
+      <TableCell><a className={styles.link} onClick={goToDeviceDetail}>{deviceName}</a></TableCell>
+      <TableCell><CopyButtonGroup label="DeviceId" value={deviceId} /></TableCell>
+      <TableCell><CopyButtonGroup label="DeviceKey" value={deviceKey} /></TableCell>
       <TableCell>
-        {moment(device.updatedAt).format()}
+        {moment(updatedAt).format('YYYY-MM-DD h:mm')}
       </TableCell>
     </TableRow>
   );
@@ -34,7 +43,7 @@ var DeviceList = ({
 export default compose(
   pure,
   withHandlers({
-    goToDeviceDetail: props => () => browserHistory.push('/devices/' + props.device.deviceId),
+    goToDeviceDetail: props => () => browserHistory.push('/devices/' + props.deviceId),
   }),
   withGetMessages(messages, 'Dashboard'),
 )(DeviceList)

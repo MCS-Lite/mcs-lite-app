@@ -24,6 +24,7 @@ const Prototypes = ({
     prototypeId,
     devicesLength,
     datachannels,
+    devices,
   } = prototypes.prototypeDetail;
   return (
     <div>
@@ -33,7 +34,7 @@ const Prototypes = ({
         <Breadcrumb prototypeName={prototypeName} />
         <PrototypeDetailHeader prototypeId={prototypeId} prototypeName={prototypeName} version={version} createTestDevice={createTestDevice} {...props}/>
         <PrototypeDetailInfo prototypeDescription={prototypeDescription} devicesLength={devicesLength} />
-        <PanelContent datachannels={datachannels} createDataChannel={createDataChannel} prototypeId={prototypeId} />
+        <PanelContent createTestDevice={createTestDevice} devices={devices} datachannels={datachannels} createDataChannel={createDataChannel} prototypeId={prototypeId} />
       </div>
       <Footer />
     </div>

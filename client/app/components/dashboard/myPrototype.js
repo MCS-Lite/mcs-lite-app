@@ -113,11 +113,18 @@ const MyPrototypeLayout = ({
                   </TableHeader>
                   {
                     userPrototypes.devices.length === 0 ?
-                      <div style={{marginTop: 40, marginBottom: 20, textAlign: 'center' }}>{t('noAnyDevice')}</div>
+                      <div style={{ marginTop: 40, marginBottom: 20, textAlign: 'center' }}>{t('noAnyDevice')}</div>
                     :
                       userPrototypes.devices.map((device) => {
+                        console.log(device);
                         return (
-                          <DeviceList device={device} key={device.deviceId} />
+                          <DeviceList
+                            deviceId={device.deviceId}
+                            deviceKey={device.deviceKey}
+                            updatedAt={device.updatedAt}
+                            deviceName={device.deviceName}
+                            key={device.deviceId}
+                          />
                         );
                       })
                   }

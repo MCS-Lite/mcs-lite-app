@@ -194,7 +194,7 @@ const messages = defineMessages({
   'PrototypeDetail.addNewTestDevice': {
     id: 'PrototypeDetail.addNewTestDevice',
     description: '',
-    defaultMessage: '新增測試裝置',
+    defaultMessage: '+ 新增測試裝置',
   },
   'PrototypeDetail.inputDataChannelName': {
     id: 'PrototypeDetail.inputDataChannelName',
@@ -225,6 +225,26 @@ const messages = defineMessages({
     id: 'PrototypeDetail.required',
     description: '',
     defaultMessage: '此欄位必填',
+  },
+  'PrototypeDetail.deviceName': {
+    id: 'PrototypeDetail.deviceName',
+    description: '',
+    defaultMessage: '名稱',
+  },
+  'PrototypeDetail.deviceId': {
+    id: 'PrototypeDetail.deviceId',
+    description: '',
+    defaultMessage: 'deviceId',
+  },
+  'PrototypeDetail.deviceKey': {
+    id: 'PrototypeDetail.deviceKey',
+    description: '',
+    defaultMessage: 'deviceKey',
+  },
+  'PrototypeDetail.lastDataPointTime': {
+    id: 'PrototypeDetail.lastDataPointTime',
+    description: '',
+    defaultMessage: '註冊時間',
   },
 });
 
