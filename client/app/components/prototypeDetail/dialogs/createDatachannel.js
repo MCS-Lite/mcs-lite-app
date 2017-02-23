@@ -44,10 +44,11 @@ const CreateDataChannelDialog = ({
   setFormat,
   onFormatChange,
   displayCardType,
+  error,
+  setError,
   getMessages: t,
 }) => {
-
-  let dataChannelTypesOptions = []
+  let dataChannelTypesOptions = [];
   data.forEach((k,v)=>{
     if (displayCardType === k.type) {
       let value = '';
@@ -63,6 +64,7 @@ const CreateDataChannelDialog = ({
       });
     }
   });
+
   return (
     <Dialog
       show={isCreateDataChannel}
@@ -83,6 +85,7 @@ const CreateDataChannelDialog = ({
             value={dataChannelName}
             placeholder={t('inputDataChannelName')}
             onChange={onDataChannelNameChange}
+            error={error.dataChannelName ? t('required'): ''}
           />
           <InputText
             required
@@ -90,6 +93,7 @@ const CreateDataChannelDialog = ({
             value={dataChannelId}
             placeholder={t('inputDataChannelId')}
             onChange={onDataChannelIdChange}
+            error={error.dataChannelId ? t('required'): ''}
           />
           <InputTextarea
             label={t('description')}
@@ -104,6 +108,9 @@ const CreateDataChannelDialog = ({
             placeholder={t('inputDataChannelType')}
             items={dataChannelTypesOptions}
             filterFunc={() => true}
+            className={createDataChannelStyles.input}
+            style={{flex: 1}}
+            error={error.dataChannelType ? t('required'): ''}
             valueRenderer={(value = {}) => {
               let children;
               dataChannelTypesOptions.forEach((k, v) => {
@@ -118,12 +125,12 @@ const CreateDataChannelDialog = ({
           />
         </InputForm>
         <p>{t('templateHint')}</p>
-        {dataChannelType}
         <Preview
-
           displayName={dataChannelType}
           format={format}
           setFormat={setFormat}
+          error={error}
+          setError={setError}
           onFormatChange={onFormatChange}
         />
       </DialogBody>
@@ -144,28 +151,47 @@ export default compose(
   withState('dataChannelDescription', 'setDataChannelDescription', ''),
   withState('dataChannelType', 'setDataChannelType', ''),
   withState('format', 'setFormat', {}),
+  withState('error', 'setError', {}),
   withHandlers({
     closeCreateDataChannel: props => (e) => props.setIsCreateDataChannel(false),
-    onDataChannelNameChange: props => (e) => props.setDataChannelName(e.target.value),
-    onDataChannelIdChange: props => (e) => props.setDataChannelId(e.target.value),
+    onDataChannelNameChange: props => (e) => {
+      props.error.dataChannelName = false;
+      props.setError(props.error);
+      props.setDataChannelName(e.target.value)
+    },
+    onDataChannelIdChange: props => (e) => {
+      props.error.dataChannelId = false;
+      props.setError(props.error);
+      props.setDataChannelId(e.target.value)
+    },
     onDataChannelDescriptionChange: props => (e) => props.setDataChannelDescription(e.target.value),
     onDataChannelTypeChange: props => (e, value) => {
       props.setDataChannelType(value);
       props.setFormat({});
+      props.setError({});
     },
     onFormatChange: props => (key, value) => {
-      props.format.key = value;
+      props.format[key].value = value;
     },
     submitCreateDataChannel: props => (e) => {
+      console.log(props.format);
+      props.setError({});
       let data = {};
+
       data.displayCardType = props.displayCardType;
       data.dataChannelId = props.dataChannelId;
       data.dataChannelDescription = props.dataChannelDescription;
       data.dataChannelName = props.dataChannelName;
+      data.format = props.format;
 
+      let error = {};
+      if (data.dataChannelId === '') error.dataChannelId = true;
+      if (data.dataChannelName === '') error.dataChannelName = true;
+      if (!data.dataChannelType) error.dataChannelType = true;
+      error.lowerbound = true;
+      props.setError(error);
       // prototypeDetailActions.createDataChannel(props.prototypeId, data);
     },
   }),
   withGetMessages(messages, 'PrototypeDetail'),
-
  )(CreateDataChannelDialog)

@@ -24,10 +24,16 @@ import IntegerDisplayFormat from '../../mcsDisplayCardInteger/format';
 import PWMDisplayFormat from '../../mcsDisplayCardPWM/format';
 import StringDisplayFormat from '../../mcsDisplayCardString/format';
 
+import FormatWrapper from '../formatWrapper';
+import styles from './styles.css';
+
 const DisplayTypeWrapper = ({
   displayName,
   format,
   setFormat,
+  onFormatChange,
+  error,
+  onSetError,
   ...props,
 }) => {
   switch(displayName) {
@@ -53,7 +59,6 @@ const DisplayTypeWrapper = ({
       setFormat(CategoryDisplayFormat);
       break;
     case 'Integer_Control':
-      console.log(IntegerControlFormat);
       setFormat(IntegerControlFormat);
       break;
     case 'Hex_Control':
@@ -75,15 +80,24 @@ const DisplayTypeWrapper = ({
       setFormat(CategoryControlFormat);
       break;
   }
-  // {displayType === 'text' ? <TextDisplayType {...props} />}
-  //     {displayType === 'unitType' ? <UnitTypeDisplayType {...props} />}
-  console.log(props);
+  console.log('==== format: =====');
+  console.log(format);
+  console.log('==================');
   return (
-    <div>
+    <div className={styles.base}>
       {
-        Object.keys(format).forEach((k,v) => {
-          console.log(k);
-          console.log(v);
+        Object.keys(format).map((k,v) => {
+          return (
+            <FormatWrapper
+              displayType={format[k].displayType}
+              keyName={k}
+              value={format[k].value}
+              onFormatChange={onFormatChange}
+              onSetError={onSetError}
+              error={error[k] || false}
+              {...format[k]}
+            />
+          );
         })
       }
     </div>
@@ -92,5 +106,11 @@ const DisplayTypeWrapper = ({
 
 export default compose(
   pure,
+  withHandlers({
+    onSetError: (props) => (k) => {
+      props.error[k] = false;
+      props.setError(props.error);
+    },
+  }),
 )(DisplayTypeWrapper)
 
