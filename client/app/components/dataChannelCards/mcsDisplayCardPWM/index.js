@@ -12,14 +12,20 @@ import DataChannelCard from 'mcs-lite-ui/lib/DataChannelCard';
 import DataChannelAdapter from 'mcs-lite-ui/lib/DataChannelAdapter';
 
 import moment from 'moment';
+import More from '../common/more';
 
 const DisplayPWMLayout = ({
   updatedAt,
   value,
+  period,
   setValue,
   description,
   className,
   title,
+  id,
+  isPrototype,
+  isDevice,
+  format,
 }) => {
   return (
     <DataChannelCard
@@ -27,16 +33,14 @@ const DisplayPWMLayout = ({
       title={title}
       subtitle={'Last data point time : ' + moment(updatedAt).format('YYYY-MM-DD h:mm')}
       description={description}
-      header={<a href="">Link</a>}
+      header={<More isPrototype={isPrototype} isDevice={isDevice}/>}
     >
       <DataChannelAdapter
         dataChannelProps={{
-          id: 'Integer Control id',
+          id,
           type: 'PWM_DISPLAY',
-          values: { value: value },
-          format: {
-            unit: 'ampere',
-          },
+          values: { value, period },
+          format,
         }}
         eventHandler={({type, id, value}) => {
           console.log(type);
@@ -59,7 +63,8 @@ const DisplayPWMLayout = ({
 
 export default compose(
   pure,
-  withState('value', 'setValue', (props)=> props.value || ''),
+  withState('value', 'setValue', (props)=> props.value || 0),
+  withState('period', 'setPeriod', (props)=> props.period || 0),
   withState('updatedAt', 'setUpdatedAt', (props)=> props.updatedAt || ''),
   withHandlers({
     onMessage: (props) => (data) =>{

@@ -3,6 +3,8 @@ module.exports = function ($db) {
   var devices = $db.devices;
   var users = $db.users;
   var prototypes = $db.prototypes;
+  var datachannels = $db.datachannels;
+  var datapoints = $db.datapoints;
 
   var retrieveDevice = function (req, res, next) {
     var userId = req.user.userId;
@@ -49,6 +51,12 @@ module.exports = function ($db) {
         version: data[0].version,
         prototypeName: data[0].prototypeName,
       };
+      return datachannels.retrievDatachannel({
+        prototypeId: deviceData.prototypeId,
+      });
+    })
+    .then(function(data){
+      deviceData.datachannels = data;
       return res.send(200, { data: deviceData });
     })
     .catch(function(err) {

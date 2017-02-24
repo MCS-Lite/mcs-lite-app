@@ -1,0 +1,14 @@
+.base {
+  border: 1px solid #e0e0e0;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  padding: 0px 119px;
+  height: 200px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+}
+

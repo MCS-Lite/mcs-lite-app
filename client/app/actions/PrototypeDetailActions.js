@@ -53,3 +53,16 @@ export const createDataChannel = (id, data) => (dispatch, getState) => {
     });
   });
 }
+
+export const editDataChannel = (id, dataChannelId, data) => (dispatch, getState) => {
+  return request('/prototypes/' + id + '/datachannels/' + dataChannelId, 'PUT', data, getState().main.access_token)
+  .then(function() {
+    return request('/prototypes/' + id, 'GET', getState().main.access_token)
+  })
+  .then((data) => {
+    return dispatch({
+      type: types.RETRIEVEPROTOTYPE,
+      data: data.data,
+    });
+  });
+}

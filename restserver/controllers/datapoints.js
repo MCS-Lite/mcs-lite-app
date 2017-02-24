@@ -1,17 +1,29 @@
 module.exports = function ($db) {
   var datapoints = $db.datapoints;
+  var datachannels = $db.datachannels;
 
   var uploadDatapoints = function(req, res, next) {
     var field = {};
     field.deviceId = req.params.deviceId;
-    field.deviceKey = req.body.deviceKey;
-    field.datachannelId = req.body.datachannelId;
-    field.data = req.body.datachannel;
-    field.timestamp = req.body.timestamp || new Date().getTime();
+    field.deviceKey = req.header.deviceKey;
+    field.datachannelId = req.params.datachannelId;
+    field.data = req.body.data;
+    // field.timestamp = req.body.timestamp || new Date().getTime();
 
     return datapoints.uploadDatapoint(field)
     .then(function() {
-      return res.send(200, {message: 'success' });
+      return datachannels.editDatachannel({
+        deviceId: field.deviceId,
+        deviceKey: field.deviceKey,
+        datachannelId: field.datachannelId,
+        isActive: true,
+      },{
+        datapoint: field.data,
+        updatedAt: new Date().getTime(),
+      });
+    })
+    .then(function(data) {
+      return res.send(200, { message: 'success' });
     })
     .catch(function(err) {
       return res.send(400, err);

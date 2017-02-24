@@ -12,6 +12,7 @@ import DeviceDetailInfo from './deviceDetailInfo';
 import Graph from './graph'
 
 import styles from './deviceDetail.css';
+import DataChannelWrapper from '../dataChannelCards/common/wrapper';
 
 const mockupGraphData = [
   { value: 5, updatedAt: new Date('2017-02-18').valueOf() },
@@ -34,8 +35,9 @@ const DeviceDetail = ({ devices, editDevice, deleteDevice }) => {
       version,
     } = {},
     user: { userName } = {},
+    datachannels = [],
   } = devices.deviceDetail;
-
+  console.log(datachannels);
   return (
     <div>
       <Header
@@ -58,6 +60,32 @@ const DeviceDetail = ({ devices, editDevice, deleteDevice }) => {
           deviceDescription={deviceDescription}
         />
         <PanelHeader />
+        {
+          datachannels.map((dataChannel,v)=>{
+            console.log(dataChannel);
+            let displayName = dataChannel.channelType.name;
+            if (dataChannel.type === 1) {
+              displayName += '_Control';
+            } else {
+              displayName += '_Display';
+            }
+            return (
+              <DataChannelWrapper
+                key={dataChannel.datachannelId}
+                displayName={displayName}
+                isDevice
+                id={dataChannel.datachannelId}
+                title={dataChannel.datachannelName}
+                className={styles.displayCard}
+                value={{}}
+                format={dataChannel.format}
+                updatedAt={dataChannel.updatedAt}
+                description={dataChannel.datachannelDescription}
+              />
+            )
+          })
+        }
+
         <div className={styles.graphPreview}>
           <DataPointAreaChart
             data={mockupGraphData}
@@ -71,7 +99,6 @@ const DeviceDetail = ({ devices, editDevice, deleteDevice }) => {
             }}
           />
         </div>
-        
         <div className={styles.graphPreview}>
           <DataPointAreaChart
             data={mockupGraphData}
