@@ -8,7 +8,7 @@ module.exports = function ($db) {
     field.deviceKey = req.header.deviceKey;
     field.datachannelId = req.params.datachannelId;
     field.data = req.body.data;
-    field.timestamp = req.body.timestamp || new Date().getTime();
+    // field.timestamp = req.body.timestamp || new Date().getTime();
 
     return datapoints.uploadDatapoint(field)
     .then(function() {

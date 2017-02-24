@@ -42,6 +42,7 @@ var Framework = WoT.Framework
   , RequestHandlers = WoT.WebsocketRequestHandlers
   , Runtime = WoT.Runtime;
 
+var MCSHandler = require('./mcsHandler');
 
 var $wot = require('../../configs/wot');
 
@@ -50,43 +51,19 @@ var $wot = require('../../configs/wot');
  */
 var merge = require('utils-merge');
 
-var management = function(pathname, connection, clients) {
-    connection.pathname = pathname;
-
-    /*
-     * convert sender pathname to viewer pathname
-     * eg. '/object/mbedtaiwan/send' to '/object/mbedtaiwan/viewer'
-     */
-    var paths = pathname.split('/');
-
-    // remove the rear string 'send'
-    var viewer = paths.slice(0, -1).join('/').replace('/12312313123123', '');
-    // console.log('management: '+ viewer);
-    connection.viewer = viewer + '/viewer';
-    connection.statusViewer = viewer + '/status';
-
-    /*
-     * initial storage for this viewer
-     */
-    for (var path in clients) {
-        if (path === connection.viewer)
-            return;
-    }
-
-    clients[connection.viewer] = [];
-    clients[connection.statusViewer] = [];
-}
-
-
 /**
  * Websocket URL Router
  */
 var wsHandlers = {
-   "/object/([A-Za-z0-9/]+)/send$": RequestHandlers.send,
-   "/object/([A-Za-z0-9/]+)/viewer$": RequestHandlers.viewer,
-   "/object/([A-Za-z0-9/]+)/status$": RequestHandlers.status,
-   '/management/12312313123123/send': management,
-   '/management/viewer': RequestHandlers.viewer,
+   // "/object/([A-Za-z0-9/]+)/send$": RequestHandlers.send,
+   // "/object/([A-Za-z0-9/]+)/viewer$": RequestHandlers.viewer,
+   // "/object/([A-Za-z0-9/]+)/status$": RequestHandlers.status,
+   "/deviceId/([A-Za-z0-9]+)/deviceKey/([A-Za-z0-9]+)": MCSHandler.send,
+   "/deviceId/([A-Za-z0-9]+)/deviceKey/([A-Za-z0-9]+)/viewer$": MCSHandler.viewer,
+   "/deviceId/([A-Za-z0-9]+)/deviceKey/([A-Za-z0-9]+)/status$": MCSHandler.status,
+   // "/deviceId/([A-Za-z0-9]+)/deviceKey/([A-Za-z0-9]+)/datachannels/([A-Za-z0-9]+)": MCSHandler.send,
+   // "/deviceId/([A-Za-z0-9]+)/deviceKey/([A-Za-z0-9]+)/datachannels/([A-Za-z0-9]+)/viewer$": MCSHandler.viewer,
+   // "/deviceId/([A-Za-z0-9]+)/deviceKey/([A-Za-z0-9]+)/datachannels/([A-Za-z0-9]+)/status$": MCSHandler.status,
 };
 
 /*
