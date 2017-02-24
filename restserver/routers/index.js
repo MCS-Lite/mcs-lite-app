@@ -297,7 +297,7 @@ module.exports = function($db, $app, $rest) {
   this.changePassword = {
     path: $rest.apiRoute + '/users/changepassword',
     methods: ['put'],
-    middleware: [connectMultiparty],
+    middleware: [$app.oauth.authorise()],
     handler: usersController.changePassword,
   };
 };
