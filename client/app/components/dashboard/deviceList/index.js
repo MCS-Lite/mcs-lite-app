@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import styles from './deviceList.css';
+import styles from './styles.css';
 
 import { default as compose } from 'recompose/compose';
 import { default as pure } from 'recompose/pure';
@@ -11,8 +11,8 @@ import { browserHistory } from 'react-router';
 import moment from 'moment';
 
 import { withGetMessages } from 'react-intl-inject-hoc';
-import messages from './messages';
-import CopyButtonGroup from '../common/copyButtonGroup';
+import messages from '../messages';
+import CopyButtonGroup from '../../common/copyButtonGroup';
 
 import Table from 'mtk-ui/lib/table/Table';
 import TableHeader from 'mtk-ui/lib/table/TableHeader';

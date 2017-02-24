@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import myPrototypeStyles from './myPrototype.css';
+import styles from './styles.css';
 
 import Panel from 'mtk-ui/lib/Panel';
 import PanelHeader from 'mtk-ui/lib/PanelHeader';
-import PanelIcon from '../common/panelIcon';
+import PanelIcon from '../../common/panelIcon';
 import PanelBody from 'mtk-ui/lib/PanelBody';
 import Button from 'mtk-ui/lib/Button';
 import Table from 'mtk-ui/lib/table/Table';
@@ -11,7 +11,7 @@ import TableHeader from 'mtk-ui/lib/table/TableHeader';
 import TableCell from 'mtk-ui/lib/table/TableCell';
 import TableRow from 'mtk-ui/lib/table/TableRow';
 
-import Hr from '../common/hr';
+import Hr from '../../common/hr';
 
 import { browserHistory } from 'react-router';
 import c from 'classnames';
@@ -22,13 +22,13 @@ import { default as withState } from 'recompose/withState';
 import { default as withHandlers } from 'recompose/withHandlers';
 
 import { withGetMessages } from 'react-intl-inject-hoc';
-import messages from './messages';
-import CreateNewPrototypeDialog from '../common/dialogs/createNewPrototype';
+import messages from '../messages';
+import CreateNewPrototypeDialog from '../../common/dialogs/createNewPrototype';
 
-import productBanner from '../prototypes/productBanner.png';
+import productBanner from '../../prototypes/productBanner.png';
 
 import moment from 'moment';
-import DeviceList from './deviceList';
+import DeviceList from '../deviceList';
 
 import MiUnfold from 'mtk-icon/lib/MiUnfold';
 import MiFold from 'mtk-icon/lib/MiFold';
@@ -48,7 +48,7 @@ const MyPrototypeLayout = ({
   setIsDeviceList,
 }) => {
   return (
-    <div className={myPrototypeStyles.base}>
+    <div className={styles.base}>
       {
         isCreatePrototype &&
           <CreateNewPrototypeDialog
@@ -59,7 +59,7 @@ const MyPrototypeLayout = ({
           />
       }
       <Panel>
-        <PanelHeader className={myPrototypeStyles.panelHeader}>
+        <PanelHeader className={styles.panelHeader}>
           <PanelIcon>
             <IconOverview />
           </PanelIcon>
@@ -67,29 +67,29 @@ const MyPrototypeLayout = ({
         </PanelHeader>
       </Panel>
       <PanelBody>
-        <div className={myPrototypeStyles.header}>
+        <div className={styles.header}>
           {t('lastUpdatePrototype')}
-          <a onClick={goToPrototypeList}className={myPrototypeStyles.link}>{t('allPrototypes')}</a>
+          <a onClick={goToPrototypeList}className={styles.link}>{t('allPrototypes')}</a>
         </div>
         <Hr />
         {
           userPrototypes.prototypeId ?
             <div>
-              <div className={myPrototypeStyles.prototypeContent}>
+              <div className={styles.prototypeContent}>
                 <Table>
-                  <TableRow className={myPrototypeStyles.tableRow}>
+                  <TableRow className={styles.tableRow}>
                     <TableCell style={{ padding: 0, maxWidth: 113 }}>
-                      <img src={productBanner} className={myPrototypeStyles.prototypeImg} />
+                      <img src={productBanner} className={styles.prototypeImg} />
                     </TableCell>
-                    <TableCell className={myPrototypeStyles.tableCell}>
+                    <TableCell className={styles.tableCell}>
                       {t('prototypeName')}
                       <a
                         onClick={goToPrototypeDetail}
-                        className={myPrototypeStyles.link}>
+                        className={styles.link}>
                         {userPrototypes.prototypeName}
                       </a>
                     </TableCell>
-                    <TableCell className={c(myPrototypeStyles.tableCell, myPrototypeStyles.updatedAt)}>
+                    <TableCell className={c(styles.tableCell, styles.updatedAt)}>
                       <div style={{ width: 113 }}>
                         {t('lastUpdateTime')}
                         <p>{moment(userPrototypes.updatedAt).format('YYYY-MM-DD h:mm')}</p>
@@ -99,7 +99,7 @@ const MyPrototypeLayout = ({
                 </Table>
               </div>
               <a
-                className={myPrototypeStyles.link}
+                className={styles.link}
                 onClick={()=> setIsDeviceList(!isDeviceList)}
               >
                 {t('testDeviceList')}
@@ -136,9 +136,9 @@ const MyPrototypeLayout = ({
               }
             </div>
           :
-            <div className={myPrototypeStyles.noAnyPrototypes}>
+            <div className={styles.noAnyPrototypes}>
               <p>{t('noAnyPrototypes')}</p>
-              <Button type="submit" className={myPrototypeStyles.button} onClick={openCreatePrototype}>
+              <Button type="submit" className={styles.button} onClick={openCreatePrototype}>
                 {t('create')}
               </Button>
             </div>

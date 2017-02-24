@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import examplesStyles from './examples.css';
+import styles from './examples/styles.css';
 import Panel from 'mtk-ui/lib/Panel';
 import Button from 'mtk-ui/lib/Button';
 import PanelHeader from 'mtk-ui/lib/PanelHeader';
@@ -40,7 +40,7 @@ const ExampleListLayout = ({
     <div key={prototype.prototypeId}>
       <TableRow>
         <TableCell>
-          <img src={productBanner} className={examplesStyles.prototypeImg} />
+          <img src={productBanner} className={styles.prototypeImg} />
         </TableCell>
         <TableCell>
           <p>{t('prototypeName')}</p>
@@ -48,7 +48,7 @@ const ExampleListLayout = ({
             onClick={
               ()=> browserHistory.push('/prototypes/' + prototype.prototypeId)
             }
-            className={examplesStyles.link}
+            className={styles.link}
           >{prototype.prototypeName}</a>
         </TableCell>
         <TableCell>

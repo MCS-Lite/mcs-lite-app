@@ -4,7 +4,7 @@ import Footer from '../footer';
 import Header from '../header';
 import c from 'classnames';
 
-import dashboardStyles from './dashboard.css';
+import styles from './styles.css';
 import Breadcrumb from './breadcrumb';
 import MyPrototype from './myPrototype';
 import Examples from './examples';
@@ -21,7 +21,7 @@ const Dashboard = ({
     <div>
       <Header
         imageUrl='http://img.mediatek.com/150/mtk.linkit/profile/3492e14e-f0fb-4718-a9a7-a49e95d8cb30.jpeg'/>
-      <div className={dashboardStyles.base}>
+      <div className={styles.base}>
         <Breadcrumb />
         <MyPrototype createNewPrototype={createNewPrototype} userPrototypes={dashboard.userPrototypes}/>
         <Examples
