@@ -11,12 +11,12 @@ import pure from 'recompose/pure';
 import withState from 'recompose/withState';
 import withHandlers from 'recompose/withHandlers';
 
-import productBanner from '../prototypes/productBanner.png';
-import DropdownButton from './dropdownButton';
-import EditDeviceDialog from '../common/dialogs/editDeviceDialog';
-import DeleteDeviceDialog from '../common/dialogs/deleteDeviceDialog';
+import productBanner from '../../prototypes/productBanner.png';
+import DropdownButton from '../dropdownButton';
+import EditDeviceDialog from '../../common/dialogs/editDeviceDialog';
+import DeleteDeviceDialog from '../../common/dialogs/deleteDeviceDialog';
 
-import styles from './deviceCard.css';
+import styles from './styles.css';
 
 const DeviceCardLayout = ({
   deviceId,

@@ -10,7 +10,7 @@ import withHandlers from 'recompose/withHandlers'
 import IconMoreVert from 'mcs-lite-icon/lib/IconMoreVert'
 import Menu from 'mtk-ui/lib/Menu';
 
-import styles from './dropdownButton.css'
+import styles from './styles.css'
 
 const items = [
   {

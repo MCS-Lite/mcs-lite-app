@@ -7,11 +7,11 @@ import Header from '../header';
 
 import Breadcrumb from './breadcrumb';
 import PanelHeader from './panelHeader';
-import DeviceDetailHeader from './deviceDetailHeader';
-import DeviceDetailInfo from './deviceDetailInfo';
+import DeviceDetailHeader from './header';
+import DeviceDetailInfo from './info';
 import Graph from './graph'
 
-import styles from './deviceDetail.css';
+import styles from './styles.css';
 import DataChannelWrapper from '../dataChannelCards/common/wrapper';
 
 const mockupGraphData = [

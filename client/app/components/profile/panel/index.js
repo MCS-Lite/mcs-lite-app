@@ -11,10 +11,10 @@ import Avatar from 'mtk-ui/lib/Avatar';
 import A from 'mcs-lite-ui/lib/A';
 import IconAccount from 'mcs-lite-icon/lib/IconAccount';
 
-import messages from './messages';
+import messages from '../messages';
 import { withGetMessages } from 'react-intl-inject-hoc';
 
-import styles from './ProfilePanel.css';
+import styles from './styles.css';
 
 const Column = ({ label, children }) => (
   <div className={styles.column}>

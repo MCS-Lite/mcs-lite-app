@@ -1,24 +1,24 @@
 import React, { Component } from 'react';
 
-import panelHeaderStyles from './panelHeader.css';
+import styles from './styles.css';
 import Panel from 'mtk-ui/lib/Panel';
 import PanelHeader from 'mtk-ui/lib/PanelHeader';
 import PanelIcon from 'mtk-ui/lib/PanelIcon';
 
 import { default as compose } from 'recompose/compose';
 
-import messages from './messages';
+import messages from '../messages';
 import { withGetMessages } from 'react-intl-inject-hoc';
 
 const PanelHeaderLayout = ({
   getMessages: t
 }) => {
   return (
-    <div className={panelHeaderStyles.base}>
+    <div className={styles.base}>
       <Panel>
         <PanelHeader>
           <PanelIcon iconName="bookmark" />
-          <div className={panelHeaderStyles.content}>
+          <div className={styles.content}>
             {t('prototypeList')}
           </div>
         </PanelHeader>

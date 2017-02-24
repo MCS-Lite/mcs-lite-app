@@ -13,10 +13,10 @@ import pure from 'recompose/pure';
 import withState from 'recompose/withState';
 import withHandlers from 'recompose/withHandlers';
 
-import EditDeviceDialog from '../common/dialogs/editDeviceDialog';
-import DeleteDeviceDialog from '../common/dialogs/deleteDeviceDialog';
+import EditDeviceDialog from '../../common/dialogs/editDeviceDialog';
+import DeleteDeviceDialog from '../../common/dialogs/deleteDeviceDialog';
 
-import styles from './deviceDetailHeader.css';
+import styles from './styles.css';
 
 const dropdownItems = [
   {

@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { FormattedMessage } from 'react-intl';
 
-import prototypeBanner from '../prototypes/productBanner.png';
-import styles from './deviceDetailInfo.css';
-import CopyButtonGroup from '../common/copyButtonGroup';
+import prototypeBanner from '../../prototypes/productBanner.png';
+import styles from './styles.css';
+import CopyButtonGroup from '../../common/copyButtonGroup';
 
 const DeviceDetailInfoLayout = ({
   deviceDescription,

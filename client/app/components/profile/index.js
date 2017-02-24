@@ -7,14 +7,14 @@ import Breadcrumb from 'mtk-ui/lib/Breadcrumb';
 
 import Footer from '../footer';
 import Header from '../header';
-import ProfilePanel from './profilePanel';
+import ProfilePanel from './panel';
 import EditUserNameDialog from './dialogs/editUserNameDialog';
 import ChangePasswordDialog from './dialogs/changePasswordDialog';
 
 import messages from './messages';
 import { withGetMessages } from 'react-intl-inject-hoc';
 
-import styles from './profile.css';
+import styles from './styles.css';
 
 const Profile = ({
   main = {},

@@ -4,11 +4,11 @@ import Footer from '../footer';
 import Header from '../header';
 
 import Breadcrumb from './breadcrumb';
-import PanelHeader from './PanelHeader';
+import PanelHeader from './panelHeader';
 import NewPrototypeCard from './newPrototypeCard';
-import PrototypeCard from './prototypeCard';
+import PrototypeCard from './card';
 
-import prototypeStyle from './prototypes.css';
+import styles from './styles.css';
 
 const Prototypes = ({ prototypes, createNewPrototype, retrievePrototypeTemplates, ...props }) => {
   const prototypeTemplates = prototypes.prototypeTemplates;
@@ -17,10 +17,10 @@ const Prototypes = ({ prototypes, createNewPrototype, retrievePrototypeTemplates
     <div>
       <Header
         imageUrl='http://img.mediatek.com/150/mtk.linkit/profile/3492e14e-f0fb-4718-a9a7-a49e95d8cb30.jpeg'/>
-      <div className={prototypeStyle.base}>
+      <div className={styles.base}>
         <Breadcrumb />
         <PanelHeader />
-        <div className={prototypeStyle.content}>
+        <div className={styles.content}>
           <NewPrototypeCard
             createNewPrototype={createNewPrototype}
             retrievePrototypeTemplates={retrievePrototypeTemplates}

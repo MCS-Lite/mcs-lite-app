@@ -9,12 +9,12 @@ import Footer from '../footer';
 import Header from '../header';
 
 import Breadcrumb from './breadcrumb';
-import PanelHeader from './PanelHeader';
-import DeviceCard from './deviceCard';
+import PanelHeader from './panelHeader';
+import DeviceCard from './card';
 
 import c from 'classnames';
 
-import styles from './devices.css';
+import styles from './styles.css';
 
 const filteByName = key => ({ deviceName }) =>
   deviceName.toLowerCase().includes(key.toLowerCase())

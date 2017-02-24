@@ -1,17 +1,17 @@
 import React, { Component } from 'react';
 
-import panelHeaderStyles from './panelHeader.css';
+import styles from './styles.css';
 import Panel from 'mtk-ui/lib/Panel';
 import PanelHeader from 'mtk-ui/lib/PanelHeader';
 import PanelIcon from 'mtk-ui/lib/PanelIcon';
 
 const PanelHeaderLayout = () => {
   return (
-    <div className={panelHeaderStyles.base}>
+    <div className={styles.base}>
       <Panel>
         <PanelHeader>
           <PanelIcon iconName="bookmark" />
-          <div className={panelHeaderStyles.content}>
+          <div className={styles.content}>
             Data channel
             API hint
           </div>

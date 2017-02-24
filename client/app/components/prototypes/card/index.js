@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 
-import prototypeCardStyles from './prototypeCard.css';
+import styles from './styles.css';
 import { Button } from 'mcs-lite-ui';
 import Hr from 'mtk-ui/lib/Hr';
 import IconMoreVert from 'mcs-lite-icon/lib/IconMoreVert';
 import Menu from 'mtk-ui/lib/Menu';
 
-import productBanner from './productBanner.png';
+import productBanner from '../productBanner.png';
 
 import { default as compose } from 'recompose/compose';
 import { default as pure } from 'recompose/pure';
@@ -15,11 +15,11 @@ import { default as withHandlers } from 'recompose/withHandlers';
 
 import { browserHistory } from 'react-router';
 
-import ClonePrototype from './dialogs/clonePrototype';
-import EditPrototype from './dialogs/editPrototype';
-import DeletePrototype from './dialogs/deletePrototype';
+import ClonePrototype from '../dialogs/clonePrototype';
+import EditPrototype from '../dialogs/editPrototype';
+import DeletePrototype from '../dialogs/deletePrototype';
 
-import messages from './messages';
+import messages from '../messages';
 import { withGetMessages } from 'react-intl-inject-hoc';
 
 const PrototypeCardLayout = ({
@@ -54,14 +54,14 @@ const PrototypeCardLayout = ({
     ];
   }
   return (
-    <div className={prototypeCardStyles.base}>
+    <div className={styles.base}>
       <div>
-        <IconMoreVert className={prototypeCardStyles.more} onClick={openSelectMenu} />
-        <img src={productBanner} className={prototypeCardStyles.img} />
+        <IconMoreVert className={styles.more} onClick={openSelectMenu} />
+        <img src={productBanner} className={styles.img} />
         {
           isSelectMenu ?
             <Menu
-            className={prototypeCardStyles.menu}
+            className={styles.menu}
             onChange={onSelectMenuValueChange}
             selectedValue={selectMenuValue}
             items={items}
@@ -72,13 +72,13 @@ const PrototypeCardLayout = ({
         { selectMenuValue === 'edit' ? <EditPrototype editPrototype={editPrototype} prototypeId={prototypeId} prototypeName={prototypeName} version={version} prototypeDescription={prototypeDescription} selectMenuValue={selectMenuValue} setSelectMenuValue={setSelectMenuValue} /> : ''}
         { selectMenuValue === 'delete' ? <DeletePrototype deletePrototype={deletePrototype} prototypeId={prototypeId} selectMenuValue={selectMenuValue} setSelectMenuValue={setSelectMenuValue} /> : ''}
       </div>
-      <div className={prototypeCardStyles.content}>
+      <div className={styles.content}>
         <h3
-          className={prototypeCardStyles.prototypeName}
+          className={styles.prototypeName}
         >
           {prototypeName} {isTemplate ? '(Template)' : ''}
         </h3>
-        <Hr className={prototypeCardStyles.hr} />
+        <Hr className={styles.hr} />
           {t('version')}: {version}
         <Hr />
         <Button onClick={openPrototypeDetail} block>

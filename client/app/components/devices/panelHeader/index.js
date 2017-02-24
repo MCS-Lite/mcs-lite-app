@@ -15,10 +15,10 @@ import Button from 'mtk-ui/lib/Button';
 import IconDevice from 'mcs-lite-icon/lib/IconDevice';
 import IconSearch from 'mcs-lite-icon/lib/IconSearch';
 
-import messages from './messages';
+import messages from '../messages';
 import { withGetMessages } from 'react-intl-inject-hoc';
 
-import styles from './panelHeader.css';
+import styles from './styles.css';
 
 const PanelHeaderLayout = ({
   searchKey,

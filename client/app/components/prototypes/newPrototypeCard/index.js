@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
-import newPrototypeCardStyles from './newPrototypeCard.css';
-import CreateNewPrototypeDialog from '../common/dialogs/createNewPrototype';
+import styles from './styles.css';
+import CreateNewPrototypeDialog from '../../common/dialogs/createNewPrototype';
 
 import Button from 'mtk-ui/lib/Button';
 
@@ -10,7 +10,7 @@ import { default as pure } from 'recompose/pure';
 import { default as withState } from 'recompose/withState';
 import { default as withHandlers } from 'recompose/withHandlers';
 
-import messages from './messages';
+import messages from '../messages';
 import { withGetMessages } from 'react-intl-inject-hoc';
 
 const NewPrototypeCardLayout = ({
@@ -24,7 +24,7 @@ const NewPrototypeCardLayout = ({
   getMessages: t,
 }) => {
   return (
-    <div className={newPrototypeCardStyles.base}>
+    <div className={styles.base}>
       <CreateNewPrototypeDialog
         createNewPrototype={createNewPrototype}
         isCreatePrototype={isCreatePrototype}
@@ -35,7 +35,7 @@ const NewPrototypeCardLayout = ({
       {t('createYourPrototypeNow')}
       <Button
         type="submit"
-        className={newPrototypeCardStyles.button}
+        className={styles.button}
         onClick={openCreatePrototype}
       >
         {t('create')}

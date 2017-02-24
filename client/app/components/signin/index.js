@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
-import LoginStyles from '../login/login.css'
-import SigninStyles from './signin.css'
+import LoginStyles from '../login/styles.css'
+import styles from './styles.css'
 
 import InputText from 'mtk-ui/lib/InputText';
 import InputForm from 'mtk-ui/lib/InputForm';
@@ -32,7 +32,7 @@ const Signin = ({
     <div>
       <div className={LoginStyles.base}>
         <form
-          className={c(LoginStyles.form, SigninStyles.form)}
+          className={c(LoginStyles.form, styles.form)}
           id="signinSubmit"
           role="form"
           action={ window.oauthUrl + "/signin" }
@@ -45,11 +45,11 @@ const Signin = ({
           <InputText name="email" type="email" placeholder={t('Email')} className={LoginStyles.input} />
           <InputText name="password" type="password" placeholder={t('password')} className={LoginStyles.input} />
           <InputText name="passwordAgain" type="password" placeholder={t('passwordAgain')} className={LoginStyles.input} />
-          <div className={SigninStyles.submit}>
-            <Button kind="cancel" onClick={openLogin} className={SigninStyles.submitBtn}>
+          <div className={styles.submit}>
+            <Button kind="cancel" onClick={openLogin} className={styles.submitBtn}>
               {t('cancel')}
             </Button>
-            <Button type="submit" className={SigninStyles.submitBtn}>
+            <Button type="submit" className={styles.submitBtn}>
               {t('submit')}
             </Button>
           </div>

@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
 import { FormattedMessage } from 'react-intl';
-import Footer from '../footer';
-import Header from '@mtk/mcs-components/lib/Header';
 import Breadcrumb from 'mtk-ui/lib/Breadcrumb';
 import BreadcrumbItem from 'mtk-ui/lib/BreadcrumbItem';
 
-import breadcrumbStyles from './breadcrumb.css';
+import styles from './styles.css';
 
 const Breadcrumbs = [
   {
@@ -27,7 +25,7 @@ const Breadcrumbs = [
 
 const BreadcrumbLayout = () => {
   return (
-    <div className={breadcrumbStyles.base}>
+    <div className={styles.base}>
       <Breadcrumb items={Breadcrumbs} />
     </div>
   );

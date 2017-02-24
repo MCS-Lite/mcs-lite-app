@@ -4,7 +4,7 @@ import { FormattedMessage } from 'react-intl';
 import Breadcrumb from 'mtk-ui/lib/Breadcrumb';
 import BreadcrumbItem from 'mtk-ui/lib/BreadcrumbItem';
 
-import styles from './breadcrumb.css';
+import styles from './styles.css';
 
 import { default as compose } from 'recompose/compose';
 import { default as pure } from 'recompose/pure';

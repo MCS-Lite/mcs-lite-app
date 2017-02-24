@@ -1,7 +1,7 @@
 import { browserHistory } from 'react-router';
 
 import React, { Component } from 'react';
-import LoginStyles from './login.css';
+import styles from './styles.css';
 import logo from './logo.png';
 
 import InputText from 'mtk-ui/lib/InputText';
@@ -26,24 +26,24 @@ const Login = ({
 }) => {
   return (
     <div>
-      <div className={LoginStyles.base}>
+      <div className={styles.base}>
         <form
-          className={LoginStyles.form}
+          className={styles.form}
           id="loginSubmit"
           role="form"
           action={ window.oauthUrl + "/login" }
           method="post"
         >
-          <img src={logo} className={LoginStyles.logo}/>
+          <img src={logo} className={styles.logo}/>
           {login.errorMsg}
           <Hr>{t('welcome')}</Hr>
-          <InputText name="email" type="email" placeholder={t('Email')} className={LoginStyles.input}/>
+          <InputText name="email" type="email" placeholder={t('Email')} className={styles.input}/>
           <InputText name="password" type="password" placeholder={t('password')} />
-          <div className={LoginStyles.createaccount}>
+          <div className={styles.createaccount}>
             <p>{t('doNotHaveAccount')}</p>
             <a onClick={openSignIn}>{t('createAnAccount')}</a>
           </div>
-          <Button type="submit" className={LoginStyles.submit}>
+          <Button type="submit" className={styles.submit}>
             {t('signIn')}
           </Button>
         </form>

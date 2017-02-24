@@ -17,7 +17,7 @@ import { default as withHandlers } from 'recompose/withHandlers';
 import messages from '../messages';
 import { withGetMessages } from 'react-intl-inject-hoc';
 
-import prototypeStyles from '../prototypes.css';
+import prototypeStyles from '../styles.css';
 
 const ClonePrototypeDialog = ({
   selectMenuValue,
