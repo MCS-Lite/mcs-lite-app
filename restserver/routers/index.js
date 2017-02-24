@@ -77,6 +77,22 @@ module.exports = function($db, $app, $rest) {
     },
   };
 
+  this.dashboardInterface = {
+    path: '/dashboard',
+    methods: ['get'],
+    handler: function(req, res, next) {
+      res.render('app/build/index.html');
+    },
+  };
+
+  this.profileInterface = {
+    path: '/profile',
+    methods: ['get'],
+    handler: function(req, res, next) {
+      res.render('app/build/index.html');
+    },
+  };
+
   this.devicesDetailInterface = {
     path: '/devices/:deviceId',
     methods: ['get'],

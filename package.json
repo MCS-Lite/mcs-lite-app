@@ -8,7 +8,7 @@
     "watch:dfserver": "NODE_ENV=dev node server.js",
     "test:ws": "node ./node_modules/wotcity.io/tests/websocket-send.js",
     "build:global": "sh ./build.sh",
-    "test:nedb": "mocha --recursive ./nedb/test/",
+    "test:nedb": "mocha --recursive ./nedb/tests/",
     "test:api": "mocha ./restserver/tests/api --recursive"
   },
   "window": {
@@ -45,6 +45,7 @@
     "node-uuid": "^1.4.7",
     "oauth2-server": "https://github.com/iamblue/Oauth2-server.git",
     "shortid": "^2.2.6",
+    "superagent": "^3.5.0",
     "utils-merge": "^1.0.0",
     "wotcity.io": "^0.8.14"
   },
