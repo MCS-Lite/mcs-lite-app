@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
-import newDisplayCardStyles from './newDisplayCard.css';
+import styles from './styles.css';
 
 import Button from 'mtk-ui/lib/Button';
 
-import SelectCreateDataChannelDialog from './dialogs/selectCreateDatachannel';
+import SelectCreateDataChannelDialog from '../dialogs/selectCreateDatachannel';
 import { default as compose } from 'recompose/compose';
 import { default as pure } from 'recompose/pure';
 import { default as withState } from 'recompose/withState';
 import { default as withHandlers } from 'recompose/withHandlers';
 
 import { withGetMessages } from 'react-intl-inject-hoc';
-import messages from './messages';
+import messages from '../messages';
 
 const NewDisplayCardLayout = ({
   openSelectCreateDataChannel,
@@ -21,10 +21,10 @@ const NewDisplayCardLayout = ({
   getMessages: t,
 }) => {
   return (
-    <div className={newDisplayCardStyles.base}>
+    <div className={styles.base}>
       <p>{t('addDataChannelNow')}</p>
       <Button
-        className={newDisplayCardStyles.button}
+        className={styles.button}
         onClick={openSelectCreateDataChannel}
       >
         {t('add')}

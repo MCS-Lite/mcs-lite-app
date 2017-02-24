@@ -1,21 +1,20 @@
 import React, { Component } from 'react';
-import Footer from '../footer';
-import Header from '@mtk/mcs-components/lib/Header';
+
 import Breadcrumb from 'mtk-ui/lib/Breadcrumb';
 import BreadcrumbItem from 'mtk-ui/lib/BreadcrumbItem';
 
-import breadcrumbStyles from './breadcrumb.css';
+import styles from './styles.css';
 
 import { default as compose } from 'recompose/compose';
 import { default as pure } from 'recompose/pure';
-
 import { withGetMessages } from 'react-intl-inject-hoc';
-import messages from './messages';
+import messages from '../messages';
 
 const BreadcrumbLayout = ({
   prototypeName,
   getMessages: t,
  }) => {
+
   const Breadcrumbs = [
     { children: t('dashboard') },
     { children: t('prototype'), href: '/prototypes' },
@@ -23,7 +22,7 @@ const BreadcrumbLayout = ({
   ];
 
   return (
-    <div className={breadcrumbStyles.base}>
+    <div className={styles.base}>
       <Breadcrumb items={Breadcrumbs} />
     </div>
   );

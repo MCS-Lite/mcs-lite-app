@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
-import CreateTestDeviceDialog from './dialogs/createTestDevice';
-import prototypeDetailHeaderStyles from './prototypeDetailHeader.css';
+import CreateTestDeviceDialog from '../dialogs/createTestDevice';
+import styles from './styles.css';
 
 import Hr from 'mtk-ui/lib/Hr';
 import Button from 'mtk-ui/lib/Button';
@@ -13,12 +13,12 @@ import { default as pure } from 'recompose/pure';
 import { default as withState } from 'recompose/withState';
 import { default as withHandlers } from 'recompose/withHandlers';
 
-import EditPrototype from '../prototypes/dialogs/editPrototype'
-import DeletePrototype from '../prototypes/dialogs/deletePrototype'
-import ClonePrototype from '../prototypes/dialogs/clonePrototype'
+import EditPrototype from '../../prototypes/dialogs/editPrototype'
+import DeletePrototype from '../../prototypes/dialogs/deletePrototype'
+import ClonePrototype from '../../prototypes/dialogs/clonePrototype'
 
 import { withGetMessages } from 'react-intl-inject-hoc';
-import messages from './messages';
+import messages from '../messages';
 
 const PrototypeDetailHeaderLayout = ({
   prototypeName,
@@ -39,15 +39,15 @@ const PrototypeDetailHeaderLayout = ({
   getMessages: t,
 }) => {
   return (
-    <div className={prototypeDetailHeaderStyles.base}>
-      <div className={prototypeDetailHeaderStyles.content}>
-        <div className={prototypeDetailHeaderStyles.info}>
-          <div className={prototypeDetailHeaderStyles.infoHeader}>
+    <div className={styles.base}>
+      <div className={styles.content}>
+        <div className={styles.info}>
+          <div className={styles.infoHeader}>
             <h3>{prototypeName}</h3><span> (ID: {prototypeId}) </span>
           </div>
           <div>{t('version')}: {version} </div>
         </div>
-        <div className={prototypeDetailHeaderStyles.option}>
+        <div className={styles.option}>
           <CreateTestDeviceDialog
             createTestDevice={createTestDevice}
             isCreateTestDevice={isCreateTestDevice}
@@ -76,7 +76,7 @@ const PrototypeDetailHeaderLayout = ({
         { selectMenuValue === 'delete' ? <DeletePrototype deletePrototype={deletePrototype} prototypeId={prototypeId} selectMenuValue={selectMenuValue} setSelectMenuValue={setSelectMenuValue} /> : ''}
         </div>
       </div>
-      <Hr className={prototypeDetailHeaderStyles.hr} />
+      <Hr className={styles.hr} />
     </div>
   );
 }

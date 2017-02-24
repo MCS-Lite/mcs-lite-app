@@ -4,10 +4,10 @@ import { default as compose } from 'recompose/compose';
 import { default as pure } from 'recompose/pure';
 import { default as withState } from 'recompose/withState';
 
-import DataChannelWrapper from '../dataChannelCards/common/wrapper';
-import NewDisplayCard from './newDisplayCard';
+import DataChannelWrapper from '../../dataChannelCards/common/wrapper';
+import NewDisplayCard from '../newDisplayCard';
 
-import PrototypeDetailStyles from './prototypeDetail.css';
+import styles from '../styles.css';
 
 const DataChannelContentLayout = ({
   datachannels,
@@ -15,7 +15,7 @@ const DataChannelContentLayout = ({
   createDataChannel,
 }) => {
   return (
-    <div className={PrototypeDetailStyles.dataChannelContent}>
+    <div className={styles.dataChannelContent}>
       <NewDisplayCard
         createDataChannel={createDataChannel}
         prototypeId={prototypeId}
@@ -36,7 +36,7 @@ const DataChannelContentLayout = ({
                 isPrototype
                 id={dataChannel.datachannelId}
                 title={dataChannel.datachannelName}
-                className={PrototypeDetailStyles.displayCard}
+                className={styles.displayCard}
                 value={{}}
                 format={dataChannel.format}
                 updatedAt={dataChannel.updatedAt}

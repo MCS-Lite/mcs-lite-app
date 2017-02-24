@@ -6,17 +6,17 @@ import { default as withState } from 'recompose/withState';
 import { default as withHandlers } from 'recompose/withHandlers';
 
 import { withGetMessages } from 'react-intl-inject-hoc';
-import messages from './messages';
+import messages from '../messages';
 
-import DeviceList from '../dashboard/deviceList';
+import DeviceList from '../../dashboard/deviceList';
 
 import Table from 'mtk-ui/lib/table/Table';
 import TableHeader from 'mtk-ui/lib/table/TableHeader';
 import TableCell from 'mtk-ui/lib/table/TableCell';
 import TableRow from 'mtk-ui/lib/table/TableRow';
 
-import CreateTestDeviceDialog from './dialogs/createTestDevice';
-import styles from './testDeviceContent.css';
+import CreateTestDeviceDialog from '../dialogs/createTestDevice';
+import styles from './styles.css';
 
 const TestDeviceContentLayout = ({
   devices,

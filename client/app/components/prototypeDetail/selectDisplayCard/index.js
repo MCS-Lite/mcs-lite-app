@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import Button from 'mtk-ui/lib/Button';
 import Hr from 'mtk-ui/lib/Hr';
 
-import displayCardStyles from './selectDisplayCard.css';
+import styles from './styles.css';
 
 import { default as compose } from 'recompose/compose';
 import { default as pure } from 'recompose/pure';
@@ -11,7 +11,7 @@ import { default as withState } from 'recompose/withState';
 import { default as withHandlers } from 'recompose/withHandlers';
 
 import { withGetMessages } from 'react-intl-inject-hoc';
-import messages from './messages';
+import messages from '../messages';
 
 import ControlSwitch from 'mcs-lite-ui/lib/DataChannel/ControlSwitch';
 import DisplayStatus from 'mcs-lite-ui/lib/DataChannel/DisplayStatus';
@@ -24,8 +24,8 @@ const DisplayCardLayout = ({
   displayCardType,
 }) => {
   return (
-    <div className={displayCardStyles.base}>
-      <div className={displayCardStyles.content}>
+    <div className={styles.base}>
+      <div className={styles.content}>
         {
           displayCardType === 1 ?
             <ControlSwitch onSubmit={()=>{}} value={1}/>
@@ -33,12 +33,12 @@ const DisplayCardLayout = ({
             <DisplayStatus labels={["OFF", "ON"]} value={0} style={{ width: 110, height: 48 }}/>
         }
       </div>
-      <b className={displayCardStyles.title}>{title}</b>
-      <Hr className={displayCardStyles.hr}/>
-      <p className={displayCardStyles.description}>
+      <b className={styles.title}>{title}</b>
+      <Hr className={styles.hr}/>
+      <p className={styles.description}>
       {description}
       </p>
-      <Button className={displayCardStyles.button} onClick={submitDisplayCard}>
+      <Button className={styles.button} onClick={submitDisplayCard}>
       {t('add')}
       </Button>
     </div>
