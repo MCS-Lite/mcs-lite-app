@@ -18,13 +18,13 @@ import { default as pure } from 'recompose/pure';
 import { default as withState } from 'recompose/withState';
 import { default as withHandlers } from 'recompose/withHandlers';
 
-import { data } from '../../../utils/dataChannelTypes';
-import Preview from '../preview';
+import { data } from '../../../../utils/dataChannelTypes';
+import Preview from '../../preview';
 
 import { withGetMessages } from 'react-intl-inject-hoc';
-import messages from '../messages';
+import messages from '../../messages';
 
-import createDataChannelStyles from './createDatachannel.css'
+import styles from './styles.css'
 
 const CreateDataChannelDialog = ({
   isCreateDataChannel,
@@ -72,7 +72,7 @@ const CreateDataChannelDialog = ({
       <DialogHeader>
         <div>Create test device</div>
       </DialogHeader>
-      <DialogBody className={createDataChannelStyles.dialogBody}>
+      <DialogBody className={styles.dialogBody}>
         <InputForm
           kind="horizontal"
           style={{ backgroundColor: 'white' }}
@@ -106,7 +106,7 @@ const CreateDataChannelDialog = ({
             placeholder={t('inputDataChannelType')}
             items={dataChannelTypesOptions}
             filterFunc={() => true}
-            className={createDataChannelStyles.input}
+            className={styles.input}
             style={{ flex: 1 }}
             error={error.dataChannelType ? t('required'): ''}
             valueRenderer={(value = {}) => {

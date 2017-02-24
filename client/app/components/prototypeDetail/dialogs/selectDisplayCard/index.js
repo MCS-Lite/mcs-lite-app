@@ -11,7 +11,7 @@ import { default as withState } from 'recompose/withState';
 import { default as withHandlers } from 'recompose/withHandlers';
 
 import { withGetMessages } from 'react-intl-inject-hoc';
-import messages from '../messages';
+import messages from '../../messages';
 
 import ControlSwitch from 'mcs-lite-ui/lib/DataChannel/ControlSwitch';
 import DisplayStatus from 'mcs-lite-ui/lib/DataChannel/DisplayStatus';

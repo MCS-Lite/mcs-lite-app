@@ -13,12 +13,11 @@ import { default as withState } from 'recompose/withState';
 import { default as withHandlers } from 'recompose/withHandlers';
 
 import SelectDisplayCard from '../selectDisplayCard';
-import selectCreateDataChannelStyles from './selectCreateDataChannel.css'
-
-import CreateDataChannel from './createDataChannel';
+import CreateDataChannel from '../createDataChannel';
+import styles from './styles.css';
 
 import { withGetMessages } from 'react-intl-inject-hoc';
-import messages from '../messages';
+import messages from '../../messages';
 
 const CreateDataChannelDialog = ({
   closeSelectCreateDataChannel,
@@ -41,7 +40,7 @@ const CreateDataChannelDialog = ({
       <DialogHeader>
         <div>{t('addNewDataChannel')}</div>
       </DialogHeader>
-      <DialogBody className={selectCreateDataChannelStyles.content}>
+      <DialogBody className={styles.content}>
         <SelectDisplayCard
           setIsCreateDataChannel={setIsCreateDataChannel}
           displayCardType={1}

@@ -3,7 +3,7 @@ import styles from './styles.css';
 
 import Button from 'mtk-ui/lib/Button';
 
-import SelectCreateDataChannelDialog from '../dialogs/selectCreateDatachannel';
+import SelectCreateDataChannelDialog from '../dialogs/selectCreateDataChannel';
 import { default as compose } from 'recompose/compose';
 import { default as pure } from 'recompose/pure';
 import { default as withState } from 'recompose/withState';
