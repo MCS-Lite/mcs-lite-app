@@ -293,4 +293,11 @@ module.exports = function($db, $app, $rest) {
     middleware: [connectMultiparty],
     handler: imageController.uploadImage,
   };
+
+  this.changePassword = {
+    path: $rest.apiRoute + '/users/changepassword',
+    methods: ['put'],
+    middleware: [connectMultiparty],
+    handler: usersController.changePassword,
+  };
 };

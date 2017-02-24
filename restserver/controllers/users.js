@@ -347,5 +347,6 @@ module.exports = function ($db) {
     loginInterface: loginInterface,
     checkCookies: checkCookies,
     editUser: editUser,
+    changePassword: changePassword,
   };
 };
