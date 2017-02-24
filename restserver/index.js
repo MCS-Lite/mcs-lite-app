@@ -39,8 +39,8 @@ app.get('/mobile/*', function (req, res) {
 });
 
 app.engine('html', require('ejs').renderFile);
-app.set('views', __dirname.replace(__dirname.split('/')[__dirname.split('/').length - 1], '') + 'client');
-app.use('/assets', express.static(__dirname.replace(__dirname.split('/')[__dirname.split('/').length - 1], '') + 'client/app/build/assets'));
+app.set('views', path.resolve(__dirname, '../client'));
+app.use('/assets', express.static(path.resolve(__dirname, '../client/app/build/assets')));
 
 app.use(cookieParser());
 app.use(function(req, res, next) {

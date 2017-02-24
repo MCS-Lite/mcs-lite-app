@@ -6,7 +6,7 @@ import Footer from '../footer';
 import Header from '../header';
 
 import Breadcrumb from './breadcrumb';
-import PanelHeader from './panelHeader';
+import PanelContent from './panelContent';
 import DeviceDetailHeader from './header';
 import DeviceDetailInfo from './info';
 import Graph from './graph'
@@ -59,60 +59,9 @@ const DeviceDetail = ({ devices, editDevice, deleteDevice }) => {
           deviceKey={deviceKey}
           deviceDescription={deviceDescription}
         />
-        <PanelHeader />
-        {
-          datachannels.map((dataChannel,v)=>{
-            console.log(dataChannel);
-            let displayName = dataChannel.channelType.name;
-            if (dataChannel.type === 1) {
-              displayName += '_Control';
-            } else {
-              displayName += '_Display';
-            }
-            return (
-              <DataChannelWrapper
-                key={dataChannel.datachannelId}
-                displayName={displayName}
-                isDevice
-                id={dataChannel.datachannelId}
-                title={dataChannel.datachannelName}
-                className={styles.displayCard}
-                value={{}}
-                format={dataChannel.format}
-                updatedAt={dataChannel.updatedAt}
-                description={dataChannel.datachannelDescription}
-              />
-            )
-          })
-        }
-
-        <div className={styles.graphPreview}>
-          <DataPointAreaChart
-            data={mockupGraphData}
-            isAnimationActive
-            XAxisProps={{
-              tickFormatter: value => moment(value).format('MM-DD HH:mm')
-            }}
-            tooltipProps={{
-              formatter: value => `資料點:${value}`,
-              labelFormatter: value => `時間：${moment(value).format('YYYY-MM-DD HH:mm')}`,
-            }}
-          />
-        </div>
-        <div className={styles.graphPreview}>
-          <DataPointAreaChart
-            data={mockupGraphData}
-            type="step"
-            isAnimationActive
-            XAxisProps={{
-              tickFormatter: value => moment(value).format('MM-DD HH:mm')
-            }}
-            tooltipProps={{
-              formatter: value => `資料點:${value}`,
-              labelFormatter: value => `時間：${moment(value).format('YYYY-MM-DD HH:mm')}`,
-            }}
-          />
-        </div>
+        <PanelContent
+          datachannels={datachannels}
+        />
       </div>
       <Footer />
     </div>
