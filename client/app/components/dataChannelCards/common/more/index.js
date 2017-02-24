@@ -65,7 +65,6 @@ const MoreLayout = ({
       cursor: 'pointer',
       marginRight: -11,
       marginTop: 4,
-      
     };
   } else {
     iconStyle = {
