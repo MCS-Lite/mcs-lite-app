@@ -19,26 +19,32 @@ const PanelContentLayout = ({
   setSelectPanelValue,
   selectPanelValue,
   datachannels,
+  deviceId,
+  deviceKey,
   getMessages: t,
 }) => {
   return (
     <div className={styles.base}>
-      <Panel>
-        <PanelHeader>
-          <PanelIcon iconName="bookmark" />
-          <div className={styles.content}>
-            <ul>
-              <li><a onClick={() => setSelectPanelValue('Data channel')}>{t('dataChannel')}</a></li>
-            </ul>
-          </div>
-        </PanelHeader>
-        <PanelBody className={styles.body}>
-          { selectPanelValue === '' || selectPanelValue === 'Data channel' ? <DataChannelContent datachannels={datachannels} /> : ''}
-        </PanelBody>
-      </Panel>
+      {
+        deviceId && deviceKey ?
+          <Panel>
+            <PanelHeader>
+              <PanelIcon iconName="bookmark" />
+              <div className={styles.content}>
+                <ul>
+                  <li><a onClick={() => setSelectPanelValue('Data channel')}>{t('dataChannel')}</a></li>
+                </ul>
+              </div>
+            </PanelHeader>
+            <PanelBody className={styles.body}>
+              { selectPanelValue === '' || selectPanelValue === 'Data channel' ? <DataChannelContent server={"ws://localhost:8000/deviceId/" + deviceId + "/deviceKey/" + deviceKey} datachannels={datachannels} /> : ''}
+            </PanelBody>
+          </Panel>
+        : ''
+      }
     </div>
-  );
-}
+  )
+};
 
 export default compose(
   pure,

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
-import { WebsocketStore, WebsocketActions } from 'react-websocket-flux';
 
 import { default as compose } from 'recompose/compose';
 import { default as pure } from 'recompose/pure';
@@ -51,21 +50,5 @@ export default compose(
   pure,
   withState('value', 'setValue', (props)=> props.value || ''),
   withState('updatedAt', 'setUpdatedAt', (props)=> props.updatedAt || ''),
-  withHandlers({
-    onMessage: (props) => (data) =>{
-      console.log(data);
-    }
-  }),
-  lifecycle({
-    componentWillMount() {
-      WebsocketActions.connect(this.props.server);
-    },
-    componentDidMount() {
-      WebsocketStore.addMessageListener(this.props.onMessage);
-    },
-    componentWillUnmount() {
-      WebsocketStore.removeMessageListener(this.props.onMessage);
-    },
-  })
 )(DisplayStringLayout)
 
