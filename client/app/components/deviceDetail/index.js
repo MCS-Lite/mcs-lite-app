@@ -37,7 +37,6 @@ const DeviceDetail = ({ devices, editDevice, deleteDevice }) => {
     user: { userName } = {},
     datachannels = [],
   } = devices.deviceDetail;
-  console.log(datachannels);
   return (
     <div>
       <Header
@@ -60,6 +59,8 @@ const DeviceDetail = ({ devices, editDevice, deleteDevice }) => {
           deviceDescription={deviceDescription}
         />
         <PanelContent
+          deviceId={deviceId}
+          deviceKey={deviceKey}
           datachannels={datachannels}
         />
       </div>

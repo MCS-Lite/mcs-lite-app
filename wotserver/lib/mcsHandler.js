@@ -8,18 +8,18 @@ if (typeof(Handlers) == "undefined") {
   Handlers.send = function(pathname, connection, clients) {
     // the original sender pathname
 
-    var deviceId = pathname.split('/')[2];
-    var deviceKey = pathname.split('/')[4];
+    // var deviceId = pathname.split('/')[2];
+    // var deviceKey = pathname.split('/')[4];
     // var datachannel = pathname.split('/')[6] || '';
 
-    console.log (deviceId);
+    // console.log (deviceId);
     connection.pathname = pathname;
 
     /*
      * convert sender pathname to viewer pathname
      * eg. '/object/mbedtaiwan/send' to '/object/mbedtaiwan/viewer'
      */
-    var paths = pathname.split('/');
+    var paths = pathname;
 
     // remove the rear string 'send'
     // var viewer = paths;
