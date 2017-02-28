@@ -1,6 +1,4 @@
-import {
-  ERRORMSG,
-} from '../constants/LoginTypes';
+import loginTypes from '../constants/LoginTypes';
 import assign from 'object-assign';
 
 const initialState = {
@@ -9,7 +7,7 @@ const initialState = {
 
 export default function login( state = initialState, action ) {
   switch ( action.type ) {
-    case ERRORMSG:
+    case loginTypes.ERRORMSG:
       return assign({}, state, { errorMsg: action.errorMsg });
     default:
       return state;

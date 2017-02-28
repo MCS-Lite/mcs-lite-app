@@ -3,9 +3,10 @@ import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import autoprefixer from 'autoprefixer';
 import inputStyle from 'postcss-input-style';
 import webpack from 'webpack';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
 
-const vendorCssExtractor = new ExtractTextPlugin('webpack-vendor.css');
-const cssExtractor = new ExtractTextPlugin('webpack-client.css');
+const vendorCssExtractor = new ExtractTextPlugin('assets/webpack-vendor.css');
+const cssExtractor = new ExtractTextPlugin('assets/webpack-client.css');
 
 const CSS_LOADER_LIST = [
   'style',
@@ -13,18 +14,23 @@ const CSS_LOADER_LIST = [
   'postcss',
 ];
 
-const JS_FILENAME_FORMAT = '[name].js';
-
 export default {
   context: path.resolve(__dirname, '../'),
+  entry: [
+    path.resolve(__dirname, '../scripts/client.js'),
+  ],
   output: {
-    path: path.resolve(__dirname, '../build/assets'),
-    filename: JS_FILENAME_FORMAT,
-    publicPath: 'assets/',
+    path: path.resolve(__dirname, '../build/'),
+    filename: 'assets/client.js',
+    publicPath: './',
   },
   plugins: [
     new webpack.EnvironmentPlugin('NODE_ENV'),
     new webpack.EnvironmentPlugin('DOMAIN_ENV'),
+    new HtmlWebpackPlugin({
+      template: path.resolve(__dirname, '../index.html'),
+      filename: 'index.html',
+    }),
     cssExtractor,
     vendorCssExtractor,
   ],
@@ -42,7 +48,7 @@ export default {
           /normalize\.css/,
           /codemirror\.css/,
         ],
-        loader: cssExtractor.extract(CSS_LOADER_LIST[0], CSS_LOADER_LIST.slice(1).join('!'), { publicPath: '' }),
+        loader: cssExtractor.extract(CSS_LOADER_LIST[0], CSS_LOADER_LIST.slice(1).join('!'), { publicPath: '../' }),
       },
       {
         test: /\.css$/,
@@ -51,12 +57,12 @@ export default {
           /normalize\.css/,
           /codemirror\.css/,
         ],
-        loader: vendorCssExtractor.extract('style', 'css', { publicPath: '' }),
+        loader: vendorCssExtractor.extract('style', 'css', { publicPath: '../' }),
       },
-      { test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: 'url?limit=10000&minetype=application/font-woff&name=[name].[ext]' },
-      { test: /\.(ttf|eot|otf)(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: 'url?limit=10000&minetype=application/font-woff&name=[name].[ext]' },
+      { test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: 'url?limit=10000&minetype=application/font-woff&name=./assets/[name].[ext]' },
+      { test: /\.(ttf|eot|otf)(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: 'url?limit=10000&minetype=application/font-woff&name=./assets/[name].[ext]' },
       { test: /\.svg\?v=[0-9]\.[0-9]\.[0-9]$/, loaders: ['url?limit=10000&minetype=application/font-woff', 'img']},
-      { test: /\.(svg|png|jpg|jpeg)$/, loaders: ['url?limit=10000&name=[name].[ext]']},
+      { test: /\.(svg|png|jpg|jpeg)$/, loaders: ['url?limit=10000&name=./assets/[name].[ext]']},
       { test: /\.json$/, loaders: ['json']},
     ],
   },
@@ -64,4 +70,3 @@ export default {
     return [autoprefixer, inputStyle];
   },
 };
-
