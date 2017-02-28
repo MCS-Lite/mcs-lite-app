@@ -1,8 +1,4 @@
-import {
-  RETRIEVEPROTOTYPE,
-  RETRIEVEPROTOTYPELIST,
-  RETRIEVEPROTOTYPETEMPLATES,
-} from '../constants/PrototypeActionTypes';
+import prototypeActionTypes from '../constants/PrototypeActionTypes';
 import assign from 'object-assign';
 
 const initialState = {
@@ -12,11 +8,11 @@ const initialState = {
 
 export default function prototypes( state = initialState, action ) {
   switch ( action.type ) {
-    case RETRIEVEPROTOTYPE:
+    case prototypeActionTypes.RETRIEVEPROTOTYPE:
       return assign({}, state, { prototypeDetail: action.data });
-    case RETRIEVEPROTOTYPELIST:
+    case prototypeActionTypes.RETRIEVEPROTOTYPELIST:
       return assign({}, state, { prototypeList: action.data });
-    case RETRIEVEPROTOTYPETEMPLATES:
+    case prototypeActionTypes.RETRIEVEPROTOTYPETEMPLATES:
       return assign({}, state, { prototypeTemplates: action.data });
     default:
       return state;
