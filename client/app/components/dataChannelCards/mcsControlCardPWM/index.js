@@ -43,7 +43,7 @@ const DisplayStringLayout = ({
         eventHandler={({ type, id, values }) => {
           switch(type) {
             case 'clear':
-              setValue({value: '', period: ''});
+              setValue({ value: '', period: '' });
               break;
             case 'change':
               setValue({ value: values.value, period: values.period });
@@ -64,7 +64,7 @@ const DisplayStringLayout = ({
 
 export default compose(
   pure,
-  withState('value', 'setValue', (props)=> props.value || 0),
+  withState('value', 'setValue', (props)=> props.value || { value: 0, period: 0 }),
   withState('updatedAt', 'setUpdatedAt', (props)=> props.updatedAt || ''),
 )(DisplayStringLayout)
 
