@@ -86,6 +86,7 @@ const DisplayTypeWrapper = ({
         Object.keys(format).map((k,v) => {
           return (
             <FormatWrapper
+              key={k}
               displayType={format[k].displayType}
               keyName={k}
               value={format[k].value}

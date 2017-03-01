@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import { render } from 'react-dom';
-import { WebsocketStore, WebsocketActions } from 'react-websocket-flux';
 
 import { default as compose } from 'recompose/compose';
 import { default as pure } from 'recompose/pure';
@@ -24,6 +22,7 @@ const DisplayStringLayout = ({
   id,
   isPrototype,
   isDevice,
+  onSubmit,
 }) => {
   return (
     <DataChannelCard
@@ -39,16 +38,16 @@ const DisplayStringLayout = ({
           type: 'SWITCH_CONTROL',
           values: { value: value },
         }}
-        eventHandler={({type, id, value}) => {
-          console.log(type);
+        eventHandler={({type, id, values}) => {
           switch(type) {
             case 'clear':
               setValue('');
               break;
             case 'change':
-              setValue(value);
+              setValue(values.value);
               break;
             case 'submit':
+              onSubmit(id, values.value);
               break;
             default:
           }
@@ -62,21 +61,5 @@ export default compose(
   pure,
   withState('value', 'setValue', (props)=> props.value || 0),
   withState('updatedAt', 'setUpdatedAt', (props)=> props.updatedAt || ''),
-  withHandlers({
-    onMessage: (props) => (data) =>{
-      console.log(data);
-    }
-  }),
-  lifecycle({
-    componentWillMount() {
-      WebsocketActions.connect(this.props.server);
-    },
-    componentDidMount() {
-      WebsocketStore.addMessageListener(this.props.onMessage);
-    },
-    componentWillUnmount() {
-      WebsocketStore.removeMessageListener(this.props.onMessage);
-    },
-  })
 )(DisplayStringLayout)
 

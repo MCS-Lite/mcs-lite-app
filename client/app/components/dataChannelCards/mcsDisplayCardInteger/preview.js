@@ -2,12 +2,13 @@ import React, { Component } from 'react';
 
 import { default as compose } from 'recompose/compose';
 import { default as pure } from 'recompose/pure';
+import { default as withState } from 'recompose/withState';
 
 import DataChannelAdapter from 'mcs-lite-ui/lib/DataChannelAdapter';
 
 const PreviewLayout = ({
-  value,
   format,
+  value,
 }) => {
   let labels = [];
   return (
@@ -19,7 +20,6 @@ const PreviewLayout = ({
           values: { value: value },
           format,
         }}
-        eventHandler={console.log}
       />
     </div>
   );
@@ -27,4 +27,6 @@ const PreviewLayout = ({
 
 export default compose(
   pure,
+  withState('value', 'setValue', (props)=> props.value || 0),
+  withState('format', 'setFormat', (props) => props.format || { unit: '' }),
 )(PreviewLayout);

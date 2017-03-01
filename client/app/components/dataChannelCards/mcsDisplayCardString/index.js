@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import { render } from 'react-dom';
-import { WebsocketStore, WebsocketActions } from 'react-websocket-flux';
 
 import { default as compose } from 'recompose/compose';
 import { default as pure } from 'recompose/pure';
@@ -41,20 +39,6 @@ const DisplayStringLayout = ({
           values: { value: value },
           format,
         }}
-        eventHandler={({type, id, value}) => {
-          console.log(type);
-          switch(type) {
-            case 'clear':
-              setValue('');
-              break;
-            case 'change':
-              setValue(value);
-              break;
-            case 'submit':
-              break;
-            default:
-          }
-        }}
       />
     </DataChannelCard>
   );
@@ -64,21 +48,5 @@ export default compose(
   pure,
   withState('value', 'setValue', (props)=> props.value || ''),
   withState('updatedAt', 'setUpdatedAt', (props)=> props.updatedAt || ''),
-  withHandlers({
-    onMessage: (props) => (data) =>{
-      console.log(data);
-    }
-  }),
-  lifecycle({
-    componentWillMount() {
-      WebsocketActions.connect(this.props.server);
-    },
-    componentDidMount() {
-      WebsocketStore.addMessageListener(this.props.onMessage);
-    },
-    componentWillUnmount() {
-      WebsocketStore.removeMessageListener(this.props.onMessage);
-    },
-  })
 )(DisplayStringLayout)
 

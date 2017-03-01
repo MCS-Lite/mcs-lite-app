@@ -34,7 +34,7 @@ const WrapperLayout = ({
       {displayName === 'Switch_Display' ? <DisplayCardSwitch {...props} />: ''}
       {displayName === 'Float_Display' ? <DisplayCardFloat {...props} />: ''}
       {displayName === 'Category_Display' ? <DisplayCardCategory {...props} />: ''}
-      {displayName === 'Integer_Control' ? <DisplayCardInteger {...props} />: ''}
+      {displayName === 'Integer_Control' ? <ControlCardInteger {...props} />: ''}
       {displayName === 'Hex_Control' ? <ControlCardHex {...props} />: ''}
       {displayName === 'PWM_Control' ? <ControlCardPWM {...props} />: ''}
       {displayName === 'String_Control' ? <ControlCardString {...props} />: ''}

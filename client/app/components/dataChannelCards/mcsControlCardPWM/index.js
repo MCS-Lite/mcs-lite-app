@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import { render } from 'react-dom';
-import { WebsocketStore, WebsocketActions } from 'react-websocket-flux';
 
 import { default as compose } from 'recompose/compose';
 import { default as pure } from 'recompose/pure';
@@ -16,16 +14,16 @@ import More from '../common/more';
 
 const DisplayStringLayout = ({
   updatedAt,
-  value,
-  setValue,
   description,
   className,
   title,
   id,
   format,
-  period,
+  value,
+  setValue,
   isPrototype,
   isDevice,
+  onSubmit,
 }) => {
   return (
     <DataChannelCard
@@ -39,19 +37,22 @@ const DisplayStringLayout = ({
         dataChannelProps={{
           id,
           type: 'PWM_CONTROL',
-          values: { value, period },
+          values: { value: value.value, period: value.period },
           format,
         }}
-        eventHandler={({type, id, value}) => {
-          console.log(type);
+        eventHandler={({ type, id, values }) => {
           switch(type) {
             case 'clear':
-              setValue('');
+              setValue({ value: '', period: '' });
               break;
             case 'change':
-              setValue(value);
+              setValue({ value: values.value, period: values.period });
               break;
             case 'submit':
+              onSubmit(id, {
+                value: values.value,
+                period: values.period,
+              });
               break;
             default:
           }
@@ -63,23 +64,7 @@ const DisplayStringLayout = ({
 
 export default compose(
   pure,
-  withState('value', 'setValue', (props)=> props.value || ''),
+  withState('value', 'setValue', (props)=> props.value || { value: 0, period: 0 }),
   withState('updatedAt', 'setUpdatedAt', (props)=> props.updatedAt || ''),
-  withHandlers({
-    onMessage: (props) => (data) =>{
-      console.log(data);
-    }
-  }),
-  lifecycle({
-    componentWillMount() {
-      WebsocketActions.connect(this.props.server);
-    },
-    componentDidMount() {
-      WebsocketStore.addMessageListener(this.props.onMessage);
-    },
-    componentWillUnmount() {
-      WebsocketStore.removeMessageListener(this.props.onMessage);
-    },
-  })
 )(DisplayStringLayout)
 

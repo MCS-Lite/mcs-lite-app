@@ -23,10 +23,13 @@ module.exports = function ($db) {
 
   var retrieveDeviceDetail = function(req, res, next) {
     var userId = req.user.userId;
+    var deviceId = req.params.deviceId;
     var deviceData = {};
+    var datachannelIdArr = [];
+
     return devices.retriveUserDevices({
       createUserId: userId,
-      deviceId: req.params.deviceId,
+      deviceId: deviceId,
       isActive: true,
     })
     .then(function(data) {
@@ -56,7 +59,40 @@ module.exports = function ($db) {
       });
     })
     .then(function(data){
+      data.forEach(function(key, value) {
+        Object.keys(key.format).forEach(function(k,v) {
+          if (key.format[k].value) {
+            key.format[k] = key.format[k].value
+          }
+        });
+      });
+
       deviceData.datachannels = data;
+
+      var datachannelPromise = [];
+
+      for (var i = 0; i < data.length; i++) {
+        datachannelIdArr.push(data[i].datachannelId);
+        datachannelPromise.push(
+          datapoints.retrieveDatachannelDatapoint({
+            datachannelId: data[i].datachannelId,
+            deviceId: deviceId,
+            isActive: true,
+          },{
+            updatedAt: -1,
+          }, 0, 1)
+        );
+      }
+      return Promise.all(datachannelPromise);
+    })
+    .then(function(data) {
+      for(var i =0; i < datachannelIdArr.length; i++) {
+        if (data[i][0]) {
+          deviceData.datachannels[i].datapoints = data[i][0].data;
+        } else {
+          deviceData.datachannels[i].datapoints = null;
+        }
+      }
       return res.send(200, { data: deviceData });
     })
     .catch(function(err) {
