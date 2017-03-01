@@ -1,7 +1,4 @@
-import {
-  RETRIEVEDEVICELIST,
-  RETRIEVEDEVICE,
-} from '../constants/DeviceActionTypes';
+import deviceActionTypes from '../constants/DeviceActionTypes';
 import assign from 'object-assign';
 
 const initialState = {
@@ -11,9 +8,9 @@ const initialState = {
 
 export default function menus( state = initialState, action ) {
   switch ( action.type ) {
-    case RETRIEVEDEVICE:
+    case deviceActionTypes.RETRIEVEDEVICE:
       return assign({}, state, { deviceDetail: action.data });
-    case RETRIEVEDEVICELIST:
+    case deviceActionTypes.RETRIEVEDEVICELIST:
       return assign({}, state, { deviceList: action.data });
     default:
       return state;

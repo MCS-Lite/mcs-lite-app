@@ -1,5 +1,5 @@
 var webpackConfig;
-require('babel/register');
+require('babel-core/register');
 
 switch (process.env.NODE_ENV) {
 case 'production':

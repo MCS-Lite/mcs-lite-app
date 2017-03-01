@@ -1,4 +1,5 @@
 node_modules
 /build
 /appBuild
+client/app/build
 /out

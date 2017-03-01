@@ -1,5 +1,5 @@
-import { CHECKTOKEN } from '../constants/ActionTypes';
-import { EDITUSERNAMESUCCESS } from '../constants/userTypes';
+import actionTypes from '../constants/ActionTypes';
+import userTypes from '../constants/userTypes';
 import assign from 'object-assign';
 
 const initialState = {
@@ -11,7 +11,7 @@ const initialState = {
 
 export default function main( state = initialState, action ) {
   switch ( action.type ) {
-    case CHECKTOKEN:
+    case actionTypes.CHECKTOKEN:
       return assign({}, state, {
         userId: action.userId,
         userName: action.userName,
@@ -22,7 +22,7 @@ export default function main( state = initialState, action ) {
         token: action.token,
         isInitialized: true,
       });
-    case EDITUSERNAMESUCCESS:
+    case userTypes.EDITUSERNAMESUCCESS:
       return assign({}, state, {
         userName: action.userName,
       });
