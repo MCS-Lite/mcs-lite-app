@@ -5,8 +5,8 @@ import inputStyle from 'postcss-input-style';
 import webpack from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 
-const vendorCssExtractor = new ExtractTextPlugin('assets/webpack-vendor.css');
-const cssExtractor = new ExtractTextPlugin('assets/webpack-client.css');
+const vendorCssExtractor = new ExtractTextPlugin('webpack-vendor.css');
+const cssExtractor = new ExtractTextPlugin('webpack-client.css');
 
 const CSS_LOADER_LIST = [
   'style',
@@ -21,7 +21,7 @@ export default {
   ],
   output: {
     path: path.resolve(__dirname, '../build/'),
-    filename: 'assets/client.js',
+    filename: 'client.js',
     publicPath: './',
   },
   plugins: [
@@ -48,7 +48,7 @@ export default {
           /normalize\.css/,
           /codemirror\.css/,
         ],
-        loader: cssExtractor.extract(CSS_LOADER_LIST[0], CSS_LOADER_LIST.slice(1).join('!'), { publicPath: '../' }),
+        loader: cssExtractor.extract(CSS_LOADER_LIST[0], CSS_LOADER_LIST.slice(1).join('!')),
       },
       {
         test: /\.css$/,
@@ -57,12 +57,12 @@ export default {
           /normalize\.css/,
           /codemirror\.css/,
         ],
-        loader: vendorCssExtractor.extract('style', 'css', { publicPath: '../' }),
+        loader: vendorCssExtractor.extract('style', 'css'),
       },
-      { test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: 'url?limit=10000&minetype=application/font-woff&name=./assets/[name].[ext]' },
-      { test: /\.(ttf|eot|otf)(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: 'url?limit=10000&minetype=application/font-woff&name=./assets/[name].[ext]' },
+      { test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: 'url?limit=10000&minetype=application/font-woff&name=[name].[ext]' },
+      { test: /\.(ttf|eot|otf)(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: 'url?limit=10000&minetype=application/font-woff&name=[name].[ext]' },
       { test: /\.svg\?v=[0-9]\.[0-9]\.[0-9]$/, loaders: ['url?limit=10000&minetype=application/font-woff', 'img']},
-      { test: /\.(svg|png|jpg|jpeg)$/, loaders: ['url?limit=10000&name=./assets/[name].[ext]']},
+      { test: /\.(svg|png|jpg|jpeg)$/, loaders: ['url?limit=10000&name=[name].[ext]']},
       { test: /\.json$/, loaders: ['json']},
     ],
   },
