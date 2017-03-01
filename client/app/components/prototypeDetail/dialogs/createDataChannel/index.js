@@ -200,16 +200,22 @@ export default compose(
       if (!data.channelType.id) error.dataChannelType = true;
 
       Object.keys(props.format).forEach((k, v) => {
-        console.log(props.format[k]);
         if (props.format[k].required && (!props.format[k].value || props.format[k].value == '')) {
           error[k] = true;
         }
+
+        if (props.format[k].displayType === 'unitType') {
+          props.format[k].value = 'test';
+        }
       });
 
-      props.setError(error);
-      props.createDataChannel(props.prototypeId, data);
-      props.setIsCreateDataChannel(false);
-      props.setIsSelectCreateDataChannel(false);
+      if (Object.keys(error).length === 0) {
+        props.createDataChannel(props.prototypeId, data);
+        props.setIsCreateDataChannel(false);
+        props.setIsSelectCreateDataChannel(false);
+      } else {
+        props.setError(error);
+      }
     },
   }),
   withGetMessages(messages, 'PrototypeDetail'),
