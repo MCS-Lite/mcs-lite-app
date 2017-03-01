@@ -22,7 +22,7 @@ export default {
   output: {
     path: path.resolve(__dirname, '../build/'),
     filename: 'assets/client.js',
-    publicPath: './',
+    publicPath: '/',
   },
   plugins: [
     new webpack.EnvironmentPlugin('NODE_ENV'),
@@ -48,7 +48,7 @@ export default {
           /normalize\.css/,
           /codemirror\.css/,
         ],
-        loader: cssExtractor.extract(CSS_LOADER_LIST[0], CSS_LOADER_LIST.slice(1).join('!'), { publicPath: '../' }),
+        loader: cssExtractor.extract(CSS_LOADER_LIST[0], CSS_LOADER_LIST.slice(1).join('!'), { publicPath: '/' }),
       },
       {
         test: /\.css$/,
@@ -57,7 +57,7 @@ export default {
           /normalize\.css/,
           /codemirror\.css/,
         ],
-        loader: vendorCssExtractor.extract('style', 'css', { publicPath: '../' }),
+        loader: vendorCssExtractor.extract('style', 'css', { publicPath: '/' }),
       },
       { test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: 'url?limit=10000&minetype=application/font-woff&name=./assets/[name].[ext]' },
       { test: /\.(ttf|eot|otf)(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: 'url?limit=10000&minetype=application/font-woff&name=./assets/[name].[ext]' },
