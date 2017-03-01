@@ -1,4 +1,4 @@
 {
-  "presets": ["latest", "react", "stage-0"],
+  "presets": ["mcs-lite"],
   "plugins": ["transform-decorators-legacy"]
 }
