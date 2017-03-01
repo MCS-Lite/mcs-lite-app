@@ -11,7 +11,6 @@ const PreviewLayout = ({
   value,
 }) => {
   let labels = [];
-  console.log(format);
   return (
     <div style={{ width: '100%' }}>
       <DataChannelAdapter
@@ -29,5 +28,6 @@ const PreviewLayout = ({
 
 export default compose(
   pure,
+  withState('value', 'setValue', (props)=> props.value || 0),
   withState('format', 'setFormat', (props) => props.format || { unit: '' }),
 )(PreviewLayout);

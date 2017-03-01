@@ -2,11 +2,13 @@ import React, { Component } from 'react';
 
 import { default as compose } from 'recompose/compose';
 import { default as pure } from 'recompose/pure';
+import { default as withState} from 'recompose/withState';
 
 import DataChannelAdapter from 'mcs-lite-ui/lib/DataChannelAdapter';
 
 const PreviewLayout = ({
   value,
+  period,
   format,
 }) => {
   let labels = [];
@@ -16,7 +18,7 @@ const PreviewLayout = ({
         dataChannelProps={{
           id: "",
           type: 'PWM_CONTROL',
-          values: { value: value },
+          values: { value, period, },
           format,
         }}
         eventHandler={console.log}
@@ -27,4 +29,7 @@ const PreviewLayout = ({
 
 export default compose(
   pure,
+  withState('value', 'setValue', (props)=> props.value || 0),
+  withState('period', 'setPeriod', (props)=> props.period || 0),
+  withState('format', 'setFormat', (props) => props.format || { lowerbound: 0, upperbound: 1 }),
 )(PreviewLayout);

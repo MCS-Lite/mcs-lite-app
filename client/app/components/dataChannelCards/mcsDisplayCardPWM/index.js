@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { render } from 'react-dom';
 
 import { default as compose } from 'recompose/compose';
 import { default as pure } from 'recompose/pure';
@@ -40,20 +39,6 @@ const DisplayPWMLayout = ({
           type: 'PWM_DISPLAY',
           values: { value, period },
           format,
-        }}
-        eventHandler={({type, id, value}) => {
-          console.log(type);
-          switch(type) {
-            case 'clear':
-              setValue('');
-              break;
-            case 'change':
-              setValue(value);
-              break;
-            case 'submit':
-              break;
-            default:
-          }
         }}
       />
     </DataChannelCard>

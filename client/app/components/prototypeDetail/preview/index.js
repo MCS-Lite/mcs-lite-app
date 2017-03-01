@@ -15,6 +15,7 @@ const PreviewLayout = ({
   format,
   ...props,
 }) => {
+  console.log(displayName);
   return (
     <div>
       <div className={styles.base}>

@@ -37,7 +37,7 @@ const WrapperLayout = ({
       {displayName === 'Switch_Display' ? <SwitchDisplayPreview {...props} />: ''}
       {displayName === 'Float_Display' ? <FloatDisplayPreview {...props} />: ''}
       {displayName === 'Category_Display' ? <CategoryDisplayPreview {...props} />: ''}
-      {displayName === 'Integer_Control' ? <IntegerDisplayPreview {...props} />: ''}
+      {displayName === 'Integer_Control' ? <IntegerControlPreview {...props} />: ''}
       {displayName === 'Hex_Control' ? <HexControlPreview {...props} />: ''}
       {displayName === 'PWM_Control' ? <PWMControlPreview {...props} />: ''}
       {displayName === 'String_Control' ? <StringControlPreview {...props} />: ''}

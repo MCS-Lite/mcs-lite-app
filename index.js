@@ -18,8 +18,6 @@ var path = require('path');
 
 var nwPath = process.execPath;
 var nwDir = path.dirname(nwPath);
-console.log(nwPath);
-console.log(nwDir);
 
 if (process.platform == "darwin") {
   var menu = new gui.Menu({ type: 'menubar' });

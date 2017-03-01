@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { render } from 'react-dom';
 
 import { default as compose } from 'recompose/compose';
 import { default as pure } from 'recompose/pure';
@@ -23,6 +22,7 @@ const DisplayFloatLayout = ({
   id,
   isPrototype,
   isDevice,
+  format,
 }) => {
   return (
     <DataChannelCard
@@ -37,24 +37,9 @@ const DisplayFloatLayout = ({
           id,
           type: 'FLOAT_DISPLAY',
           values: { value: value },
-          format: {
-            unit: 'ampere',
-          },
+          format,
         }}
-        eventHandler={({type, id, value}) => {
-          console.log(type);
-          switch(type) {
-            case 'clear':
-              setValue('');
-              break;
-            case 'change':
-              setValue(value);
-              break;
-            case 'submit':
-              break;
-            default:
-          }
-        }}
+        eventHandler={console.log}
       />
     </DataChannelCard>
   );
@@ -62,7 +47,7 @@ const DisplayFloatLayout = ({
 
 export default compose(
   pure,
-  withState('value', 'setValue', (props)=> props.value || ''),
+  withState('value', 'setValue', (props)=> props.value || 0),
   withState('updatedAt', 'setUpdatedAt', (props)=> props.updatedAt || ''),
 )(DisplayFloatLayout)
 
