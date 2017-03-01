@@ -7,8 +7,8 @@ import { default as withState } from 'recompose/withState';
 import DataChannelAdapter from 'mcs-lite-ui/lib/DataChannelAdapter';
 
 const PreviewLayout = ({
-  value,
   format,
+  value,
 }) => {
   let labels = [];
   return (
@@ -17,10 +17,8 @@ const PreviewLayout = ({
         dataChannelProps={{
           id: '',
           type: 'INTEGER_CONTROL',
-          values: { value, },
-          format: {
-            unit: format.unit || '',
-          },
+          values: { value: value },
+          format,
         }}
         eventHandler={console.log}
       />
@@ -31,5 +29,5 @@ const PreviewLayout = ({
 export default compose(
   pure,
   withState('value', 'setValue', (props)=> props.value || 0),
-  withState('format', 'setFormat', (props) => { props.format || {} }),
+  withState('format', 'setFormat', (props) => props.format || { unit: '' }),
 )(PreviewLayout);

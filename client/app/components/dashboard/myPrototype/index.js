@@ -119,7 +119,6 @@ const MyPrototypeLayout = ({
                       <div style={{ marginTop: 40, marginBottom: 20, textAlign: 'center' }}>{t('noAnyDevice')}</div>
                     :
                       userPrototypes.devices.map((device) => {
-                        console.log(device);
                         return (
                           <DeviceList
                             deviceId={device.deviceId}

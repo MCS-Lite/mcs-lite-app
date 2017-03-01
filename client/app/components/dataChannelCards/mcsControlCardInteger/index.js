@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { render } from 'react-dom';
 
 import { default as compose } from 'recompose/compose';
 import { default as pure } from 'recompose/pure';
@@ -13,8 +12,6 @@ import DataChannelAdapter from 'mcs-lite-ui/lib/DataChannelAdapter';
 import moment from 'moment';
 import More from '../common/more';
 
-import IconMoreVert from 'mcs-lite-icon/lib/IconMoreVert';
-
 const DisplayStringLayout = ({
   updatedAt,
   value,
@@ -26,6 +23,7 @@ const DisplayStringLayout = ({
   format,
   isPrototype,
   isDevice,
+  onSubmit,
 }) => {
   return (
     <DataChannelCard
@@ -42,16 +40,16 @@ const DisplayStringLayout = ({
           values: { value },
           format,
         }}
-        eventHandler={({type, id, value}) => {
-          console.log(type);
+        eventHandler={({type, id, values}) => {
           switch(type) {
             case 'clear':
               setValue('');
               break;
             case 'change':
-              setValue(value);
+              setValue(Number(values.value));
               break;
             case 'submit':
+              onSubmit(id, values.value);
               break;
             default:
           }

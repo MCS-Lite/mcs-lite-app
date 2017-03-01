@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { render } from 'react-dom';
 
 import { default as compose } from 'recompose/compose';
 import { default as pure } from 'recompose/pure';
@@ -23,6 +22,7 @@ const DisplayStringLayout = ({
   id,
   isPrototype,
   isDevice,
+  onSubmit,
 }) => {
   return (
     <DataChannelCard
@@ -38,16 +38,16 @@ const DisplayStringLayout = ({
           type: 'SWITCH_CONTROL',
           values: { value: value },
         }}
-        eventHandler={({type, id, value}) => {
-          console.log(type);
+        eventHandler={({type, id, values}) => {
           switch(type) {
             case 'clear':
               setValue('');
               break;
             case 'change':
-              setValue(value);
+              setValue(values.value);
               break;
             case 'submit':
+              onSubmit(id, values.value);
               break;
             default:
           }

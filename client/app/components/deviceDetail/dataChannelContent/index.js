@@ -62,15 +62,11 @@ const DataChannelContentLayout = ({
 
 export default compose(
   pure,
-  withState('datapoints', 'setDatapoints', (props)=> {
-    // console.log(props.datachannels);
-  }),
+  withState('emitter', 'setEmitter', {}),
   withState('isUpdate', 'setIsUpdate', false),
   withHandlers({
     onMessage: (props) => (data) =>{
-      console.log(data);
       props.setIsUpdate(false);
-      console.log(props.datachannels);
       props.datachannels.forEach((k, v) => {
         if (k.datachannelId == data.datachannelId) {
           if (!k.datapoints) k.datapoints = {};
@@ -88,10 +84,11 @@ export default compose(
   lifecycle({
     componentWillMount() {
       WebsocketActions.connect(this.props.server + '/viewer');
+      let _this = this;
       assign(new w3cwebsocket(this.props.server), {
         onopen: function() {
           let _ = this;
-          emitter.addListener('submit', function(id, value) {
+          _this.props.setEmitter(emitter.addListener('submit', function(id, value) {
             _.send(JSON.stringify(
               {
                 datachannelId: id,
@@ -100,8 +97,7 @@ export default compose(
                 }
               }
             ));
-          });
-          // console.log(ws.send(JSON.stringify({datachannelId: 'float', data: { value: 123 }})));
+          }));
         }
       });
       this.props.setIsUpdate(true);
@@ -110,7 +106,7 @@ export default compose(
       WebsocketStore.addMessageListener(this.props.onMessage);
     },
     componentWillUnmount() {
-      emitter.remove();
+      this.props.emitter.remove();
       WebsocketStore.removeMessageListener(this.props.onMessage);
     },
   })

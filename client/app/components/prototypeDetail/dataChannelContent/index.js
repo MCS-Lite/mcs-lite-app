@@ -34,10 +34,11 @@ const DataChannelContentLayout = ({
                 key={dataChannel.datachannelId}
                 displayName={displayName}
                 isPrototype
+                onSubmit={()=>{}}
                 id={dataChannel.datachannelId}
                 title={dataChannel.datachannelName}
                 className={styles.displayCard}
-                value={{}}
+                value={null}
                 format={dataChannel.format}
                 updatedAt={dataChannel.updatedAt}
                 description={dataChannel.datachannelDescription}

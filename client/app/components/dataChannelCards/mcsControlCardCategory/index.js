@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { render } from 'react-dom';
 
 import { default as compose } from 'recompose/compose';
 import { default as pure } from 'recompose/pure';

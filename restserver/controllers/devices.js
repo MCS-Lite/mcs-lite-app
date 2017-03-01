@@ -59,6 +59,14 @@ module.exports = function ($db) {
       });
     })
     .then(function(data){
+      data.forEach(function(key, value) {
+        Object.keys(key.format).forEach(function(k,v) {
+          if (key.format[k].value) {
+            key.format[k] = key.format[k].value
+          }
+        });
+      });
+
       deviceData.datachannels = data;
 
       var datachannelPromise = [];

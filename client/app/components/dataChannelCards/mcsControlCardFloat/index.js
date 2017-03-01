@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { render } from 'react-dom';
 
 import { default as compose } from 'recompose/compose';
 import { default as pure } from 'recompose/pure';
@@ -55,7 +54,7 @@ const DisplayStringLayout = ({
               setValue(Number(values.value));
               break;
             case 'submit':
-              onSubmit(id, value);
+              onSubmit(id, values.value);
               break;
             default:
           }

@@ -17,7 +17,6 @@ class IntlProvider extends React.Component {
   }
 
   render() {
-    console.log(this.props);
     return (
       <ReactIntlProvider
         {...this.props}

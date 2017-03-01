@@ -200,6 +200,7 @@ export default compose(
       if (!data.channelType.id) error.dataChannelType = true;
 
       Object.keys(props.format).forEach((k, v) => {
+        console.log(props.format[k]);
         if (props.format[k].required && (!props.format[k].value || props.format[k].value == '')) {
           error[k] = true;
         }
