@@ -15,8 +15,8 @@ var onmessage = function(payload) {
 
   return new Promise(function(resolve, reject) {
     var data = JSON.parse(payload.data);
-    if (!data.data.updatedAt) {
-      data.data.updatedAt = new Date().getTime();
+    if (!data.updatedAt) {
+      data.updatedAt = new Date().getTime();
     }
     resolve(data);
   })
@@ -25,7 +25,7 @@ var onmessage = function(payload) {
       deviceId: deviceId,
       deviceKey: deviceKey,
       datachannelId: data.datachannelId,
-      data: data.data,
+      values: data.values,
     });
   })
   .then(function(data) {

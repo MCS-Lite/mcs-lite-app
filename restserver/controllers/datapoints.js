@@ -7,7 +7,7 @@ module.exports = function ($db) {
     field.deviceId = req.params.deviceId;
     field.deviceKey = req.header.deviceKey;
     field.datachannelId = req.params.datachannelId;
-    field.data = req.body.data;
+    // field.values = req.body.values;
     // field.timestamp = req.body.timestamp || new Date().getTime();
 
     return datapoints.uploadDatapoint(field)
@@ -18,7 +18,6 @@ module.exports = function ($db) {
         datachannelId: field.datachannelId,
         isActive: true,
       },{
-        datapoint: field.data,
         updatedAt: new Date().getTime(),
       });
     })

@@ -1,10 +1,7 @@
-import React, { Component } from 'react';
-
-import { default as compose } from 'recompose/compose';
-import { default as pure } from 'recompose/pure';
+import React from 'react';
+import { compose, pure } from 'recompose';
 
 import styles from './styles.css';
-
 import CategoryControlPreview from '../../mcsControlCardCategory/preview';
 import IntegerControlPreview from '../../mcsControlCardInteger/preview';
 import StringControlPreview from '../../mcsControlCardString/preview';
@@ -25,29 +22,27 @@ import SwitchDisplayPreview from '../../mcsDisplayCardSwitch/preview';
 
 const WrapperLayout = ({
   displayName,
-  ...props,
-}) => {
-  return (
-    <div className={styles.base}>
-      {displayName === 'Integer_Display' ? <IntegerDisplayPreview {...props} /> : ''}
-      {displayName === 'Hex_Display' ? <HexDisplayPreview {...props} />: ''}
-      {displayName === 'PWM_Display' ? <PWMDisplayPreview {...props} />: ''}
-      {displayName === 'String_Display' ? <StringDisplayPreview {...props} />: ''}
-      {displayName === 'GPIO_Display' ? <GPIODisplayPreview {...props} />: ''}
-      {displayName === 'Switch_Display' ? <SwitchDisplayPreview {...props} />: ''}
-      {displayName === 'Float_Display' ? <FloatDisplayPreview {...props} />: ''}
-      {displayName === 'Category_Display' ? <CategoryDisplayPreview {...props} />: ''}
-      {displayName === 'Integer_Control' ? <IntegerControlPreview {...props} />: ''}
-      {displayName === 'Hex_Control' ? <HexControlPreview {...props} />: ''}
-      {displayName === 'PWM_Control' ? <PWMControlPreview {...props} />: ''}
-      {displayName === 'String_Control' ? <StringControlPreview {...props} />: ''}
-      {displayName === 'GPIO_Control' ? <GPIOControlPreview {...props} />: ''}
-      {displayName === 'Switch_Control' ? <SwitchControlPreview {...props} />: ''}
-      {displayName === 'Float_Control' ? <FloatControlPreview {...props} />: ''}
-      {displayName === 'Category_Control' ? <CategoryControlPreview {...props} />: ''}
-    </div>
-  );
-}
+  ...props
+}) => (
+  <div className={styles.base}>
+    {displayName === 'Integer_Display' && <IntegerDisplayPreview {...props} />}
+    {displayName === 'Hex_Display' && <HexDisplayPreview {...props} />}
+    {displayName === 'PWM_Display' && <PWMDisplayPreview {...props} />}
+    {displayName === 'String_Display' && <StringDisplayPreview {...props} />}
+    {displayName === 'GPIO_Display' && <GPIODisplayPreview {...props} />}
+    {displayName === 'Switch_Display' && <SwitchDisplayPreview {...props} />}
+    {displayName === 'Float_Display' && <FloatDisplayPreview {...props} />}
+    {displayName === 'Category_Display' && <CategoryDisplayPreview {...props} />}
+    {displayName === 'Integer_Control' && <IntegerControlPreview {...props} />}
+    {displayName === 'Hex_Control' && <HexControlPreview {...props} />}
+    {displayName === 'PWM_Control' && <PWMControlPreview {...props} />}
+    {displayName === 'String_Control' && <StringControlPreview {...props} />}
+    {displayName === 'GPIO_Control' && <GPIOControlPreview {...props} />}
+    {displayName === 'Switch_Control' && <SwitchControlPreview {...props} />}
+    {displayName === 'Float_Control' && <FloatControlPreview {...props} />}
+    {displayName === 'Category_Control' && <CategoryControlPreview {...props} />}
+  </div>
+);
 
 export default compose(
   pure,

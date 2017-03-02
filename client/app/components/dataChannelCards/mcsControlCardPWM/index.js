@@ -43,7 +43,7 @@ const DisplayStringLayout = ({
         },
         format,
       }}
-      eventHandler={({ type, datachannelId, values }) => {
+      eventHandler={({ type, id: datachannelId, values }) => {
         switch (type) {
           case 'clear':
             setValue({

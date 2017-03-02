@@ -1,5 +1,5 @@
-var deviceId = process.env.deviceId || 'rkCeCRX9x';
-var deviceKey = process.env.deviceKey || '9961e887ff412082a2c9966e0a9b6f67a00b57176458df3d9246b91403d7cd0c';
+var deviceId = process.env.deviceId || 'S1Mart-9g';
+var deviceKey = process.env.deviceKey || '3a4eee2d697dc032334fcd9c1e1597fa2f56cfe8a222501f049dcb26a4e52f80';
 var datachannelId = process.env.datachannelId || 'switch';
 var value = process.env.value || 1;
 
@@ -31,7 +31,12 @@ client.on('connect', function(connection) {
             // 1 to 10
             var lucky = Math.round(Math.random() * 40 + 1);
             //var obj = {ax: number.toString(), ay: 0, az: 0};
-            var obj = {datachannelId: datachannelId, data: { value: value}};
+            var obj = {
+                datachannelId: datachannelId,
+                values: {
+                    value: value,
+                }
+            };
 
             console.log('Pushing: ' + JSON.stringify(obj));
 

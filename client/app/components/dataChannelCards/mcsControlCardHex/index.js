@@ -36,7 +36,7 @@ const DisplayStringLayout = ({
         type: 'HEX_CONTROL',
         values: { value },
       }}
-      eventHandler={({ type, datachannelId, values }) => {
+      eventHandler={({ type, id: datachannelId, values }) => {
         switch (type) {
           case 'clear':
             setValue('');

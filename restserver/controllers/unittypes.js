@@ -3,7 +3,6 @@ module.exports = function($db) {
   var unittypes = $db.unittypes;
 
   var addNewUnitTypes = function(req, res, next) {
-    // unittypes
     var userId = req.user.userId;
     var name = req.body.name;
     var symbol = req.body.symbol;
@@ -33,13 +32,11 @@ module.exports = function($db) {
     })
     .then(function(data) {
       unitTypeData = data;
-      console.log();
       return unittypes.retrieveUnitTypes({
         createUserId: userId
       });
     })
     .then(function(data) {
-      console.log(unitTypeData);
       unitTypeData = unitTypeData.concat(data)
       return res.send(200, { data: unitTypeData });
     })

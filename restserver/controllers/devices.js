@@ -87,10 +87,11 @@ module.exports = function ($db) {
     })
     .then(function(data) {
       for(var i =0; i < datachannelIdArr.length; i++) {
+        deviceData.datachannels[i].datapoints = {};
         if (data[i][0]) {
-          deviceData.datachannels[i].datapoints = data[i][0].data;
+          deviceData.datachannels[i].datapoints.values = data[i][0].values;
         } else {
-          deviceData.datachannels[i].datapoints = null;
+          deviceData.datachannels[i].datapoints.values = null;
         }
       }
       return res.send(200, { data: deviceData });
