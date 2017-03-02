@@ -1,0 +1,24 @@
+.base {
+  display: flex;
+  flex-direction: column;
+}
+
+.inputSelectWrap {
+  display: flex;
+  align-items: center;
+}
+
+.inputSelectWrap > div:first-child {
+  width: 150px;
+}
+
+.requiredLabel:after {
+  content: ' *';
+  color: #D0021B;
+}
+
+.errorMessage {
+  margin-top: 5px;
+  padding-left: 150px;
+  color: #D0021B;
+}

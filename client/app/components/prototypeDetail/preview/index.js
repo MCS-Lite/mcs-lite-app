@@ -1,39 +1,38 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-import styles from './styles.css';
-
-import { default as compose } from 'recompose/compose';
-import { default as pure } from 'recompose/pure';
-import { default as withState } from 'recompose/withState';
-import { default as withHandlers } from 'recompose/withHandlers';
+import pure from 'recompose/pure';
 
 import PreviewWrapper from '../../dataChannelCards/common/previewWrapper';
 import DisplayTypeWrapper from '../../dataChannelCards/common/displayTypeWrapper';
 
+import styles from './styles.css';
+
 const PreviewLayout = ({
   displayName,
   format,
-  ...props,
-}) => {
-  console.log(displayName);
-  return (
-    <div>
-      <div className={styles.base}>
-        <PreviewWrapper
-          displayName={displayName}
-          format={format}
-        />
-      </div>
-      <div className={styles.format}>
-        <DisplayTypeWrapper
-          displayName={displayName}
-          format={format}
-          {...props}
-        />
-      </div>
+  retrieveUnitTypes,
+  createUnitTypes,
+  unitTypes,
+  ...props
+}) => (
+  <div>
+    <div className={styles.base}>
+      <PreviewWrapper
+        displayName={displayName}
+        format={format}
+      />
     </div>
-  );
-}
+    <div className={styles.format}>
+      <DisplayTypeWrapper
+        displayName={displayName}
+        format={format}
+        retrieveUnitTypes={retrieveUnitTypes}
+        createUnitTypes={createUnitTypes}
+        unitTypes={unitTypes}
+        {...props}
+      />
+    </div>
+  </div>
+);
 
-export default compose(
-)(PreviewLayout);
+export default pure(PreviewLayout);

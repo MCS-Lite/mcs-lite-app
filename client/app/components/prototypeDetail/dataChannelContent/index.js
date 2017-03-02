@@ -9,14 +9,20 @@ const DataChannelContentLayout = ({
   datachannels,
   prototypeId,
   createDataChannel,
+  retrieveUnitTypes,
+  unitTypes,
+  createUnitTypes,
 }) => (
   <div className={styles.dataChannelContent}>
     <NewDisplayCard
       createDataChannel={createDataChannel}
       prototypeId={prototypeId}
+      retrieveUnitTypes={retrieveUnitTypes}
+      createUnitTypes={createUnitTypes}
+      unitTypes={unitTypes}
     />
     {
-      typeof datachannels === 'object' ?
+      typeof datachannels === 'object' &&
         datachannels.map((dataChannel) => {
           let displayName = dataChannel.channelType.name;
           if (dataChannel.type === 1) {
@@ -40,8 +46,6 @@ const DataChannelContentLayout = ({
             />
           );
         })
-      :
-      ''
     }
   </div>
 );

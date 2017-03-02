@@ -46,11 +46,10 @@ const WrapperLayout = ({
 
 export default compose(
   pure,
-  withState('value', 'setValue', props => {
+  withState('value', 'setValue', (props) => {
     if (!props.value) {
       return { value: null };
     }
     return props.value;
   }),
 )(WrapperLayout);
-

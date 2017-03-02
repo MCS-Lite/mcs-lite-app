@@ -1,23 +1,20 @@
-import React, { Component } from 'react';
-
-import Button from 'mtk-ui/lib/Button';
+import React from 'react';
 
 import Dialog from 'mtk-ui/lib/Dialog';
 import DialogHeader from 'mtk-ui/lib/DialogHeader';
 import DialogBody from 'mtk-ui/lib/DialogBody';
-import Hr from 'mtk-ui/lib/Hr';
 
-import { default as compose } from 'recompose/compose';
-import { default as pure } from 'recompose/pure';
-import { default as withState } from 'recompose/withState';
-import { default as withHandlers } from 'recompose/withHandlers';
+import compose from 'recompose/compose';
+import pure from 'recompose/pure';
+import withState from 'recompose/withState';
+import withHandlers from 'recompose/withHandlers';
+
+import { withGetMessages } from 'react-intl-inject-hoc';
+import messages from '../../messages';
 
 import SelectDisplayCard from '../selectDisplayCard';
 import CreateDataChannel from '../createDataChannel';
 import styles from './styles.css';
-
-import { withGetMessages } from 'react-intl-inject-hoc';
-import messages from '../../messages';
 
 const CreateDataChannelDialog = ({
   closeSelectCreateDataChannel,
@@ -30,46 +27,50 @@ const CreateDataChannelDialog = ({
   prototypeId,
   createDataChannel,
   getMessages: t,
-}) => {
-  return (
-    <Dialog
-      show={isSelectCreateDataChannel}
-      size="large"
-      onHide={closeSelectCreateDataChannel}
-    >
-      <DialogHeader>
-        <div>{t('addNewDataChannel')}</div>
-      </DialogHeader>
-      <DialogBody className={styles.content}>
-        <SelectDisplayCard
+  retrieveUnitTypes,
+  createUnitTypes,
+  unitTypes,
+}) => (
+  <Dialog
+    show={isSelectCreateDataChannel}
+    size="large"
+    onHide={closeSelectCreateDataChannel}
+  >
+    <DialogHeader>
+      <div>{t('addNewDataChannel')}</div>
+    </DialogHeader>
+    <DialogBody className={styles.content}>
+      <SelectDisplayCard
+        setIsCreateDataChannel={setIsCreateDataChannel}
+        displayCardType={1}
+        setDisplayCardType={setDisplayCardType}
+        title={t('control')}
+        description={t('controlHint')}
+      />
+      <SelectDisplayCard
+        setIsCreateDataChannel={setIsCreateDataChannel}
+        displayCardType={2}
+        setDisplayCardType={setDisplayCardType}
+        title={t('display')}
+        description={t('displayHint')}
+      />
+      {
+        isCreateDataChannel &&
+        <CreateDataChannel
+          createDataChannel={createDataChannel}
+          prototypeId={prototypeId}
+          displayCardType={displayCardType}
+          isCreateDataChannel={isCreateDataChannel}
           setIsCreateDataChannel={setIsCreateDataChannel}
-          displayCardType={1}
-          setDisplayCardType={setDisplayCardType}
-          title={t('control')}
-          description={t('controlHint')}
+          setIsSelectCreateDataChannel={setIsSelectCreateDataChannel}
+          retrieveUnitTypes={retrieveUnitTypes}
+          createUnitTypes={createUnitTypes}
+          unitTypes={unitTypes}
         />
-        <SelectDisplayCard
-          setIsCreateDataChannel={setIsCreateDataChannel}
-          displayCardType={2}
-          setDisplayCardType={setDisplayCardType}
-          title={t('display')}
-          description={t('displayHint')} />
-        {
-          isCreateDataChannel ?
-          <CreateDataChannel
-            createDataChannel={createDataChannel}
-            prototypeId={prototypeId}
-            displayCardType={displayCardType}
-            isCreateDataChannel={isCreateDataChannel}
-            setIsCreateDataChannel={setIsCreateDataChannel}
-            setIsSelectCreateDataChannel={setIsSelectCreateDataChannel}
-          /> :
-          ''
-        }
-      </DialogBody>
-    </Dialog>
-  );
-}
+      }
+    </DialogBody>
+  </Dialog>
+);
 
 export default compose(
   pure,
@@ -79,4 +80,4 @@ export default compose(
     closeSelectCreateDataChannel: props => () => props.setIsSelectCreateDataChannel(false),
   }),
   withGetMessages(messages, 'PrototypeDetail'),
- )(CreateDataChannelDialog)
+)(CreateDataChannelDialog);

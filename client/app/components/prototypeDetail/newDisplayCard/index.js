@@ -1,16 +1,17 @@
-import React, { Component } from 'react';
-import styles from './styles.css';
+import React from 'react';
 
 import Button from 'mtk-ui/lib/Button';
 
-import SelectCreateDataChannelDialog from '../dialogs/selectCreateDataChannel';
-import { default as compose } from 'recompose/compose';
-import { default as pure } from 'recompose/pure';
-import { default as withState } from 'recompose/withState';
-import { default as withHandlers } from 'recompose/withHandlers';
+import compose from 'recompose/compose';
+import pure from 'recompose/pure';
+import withState from 'recompose/withState';
+import withHandlers from 'recompose/withHandlers';
 
 import { withGetMessages } from 'react-intl-inject-hoc';
 import messages from '../messages';
+import SelectCreateDataChannelDialog from '../dialogs/selectCreateDataChannel';
+
+import styles from './styles.css';
 
 const NewDisplayCardLayout = ({
   openSelectCreateDataChannel,
@@ -19,25 +20,29 @@ const NewDisplayCardLayout = ({
   prototypeId,
   createDataChannel,
   getMessages: t,
-}) => {
-  return (
-    <div className={styles.base}>
-      <p>{t('addDataChannelNow')}</p>
-      <Button
-        className={styles.button}
-        onClick={openSelectCreateDataChannel}
-      >
-        {t('add')}
-      </Button>
-      <SelectCreateDataChannelDialog
-        prototypeId={prototypeId}
-        createDataChannel={createDataChannel}
-        isSelectCreateDataChannel={isSelectCreateDataChannel}
-        setIsSelectCreateDataChannel={setIsSelectCreateDataChannel}
-      />
-    </div>
-  );
-}
+  retrieveUnitTypes,
+  createUnitTypes,
+  unitTypes,
+}) => (
+  <div className={styles.base}>
+    <p>{t('addDataChannelNow')}</p>
+    <Button
+      className={styles.button}
+      onClick={openSelectCreateDataChannel}
+    >
+      {t('add')}
+    </Button>
+    <SelectCreateDataChannelDialog
+      prototypeId={prototypeId}
+      createDataChannel={createDataChannel}
+      isSelectCreateDataChannel={isSelectCreateDataChannel}
+      setIsSelectCreateDataChannel={setIsSelectCreateDataChannel}
+      retrieveUnitTypes={retrieveUnitTypes}
+      createUnitTypes={createUnitTypes}
+      unitTypes={unitTypes}
+    />
+  </div>
+);
 
 export default compose(
   pure,

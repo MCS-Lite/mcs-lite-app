@@ -1,68 +1,68 @@
+import { browserHistory } from 'react-router';
 import types from '../constants/PrototypeActionTypes';
 import { request } from '../utils/fetch';
-import { browserHistory } from 'react-router';
 
-export const retrievePrototype =  (id) => (dispatch, getState) => {
-  return request('/prototypes/' + id, 'GET', getState().main.access_token)
-  .then((data) => {
-    return dispatch({
+export const retrievePrototype = id => (dispatch, getState) =>
+  request(`/prototypes/${id}`, 'GET', getState().main.access_token)
+    .then(data => dispatch({
       type: types.RETRIEVEPROTOTYPE,
       data: data.data,
+    }));
+
+export const createTestDevice = data => (dispatch, getState) =>
+  request('/devices', 'POST', {
+    ...data,
+    createUserId: getState().main.userId,
+  }, getState().main.access_token)
+  .then((results) => {
+    browserHistory.push(`/devices/${results.data.deviceId}`);
+  });
+
+export const editPrototype = (id, data) => (dispatch, getState) =>
+  request(`/prototypes/${id}`, 'PUT', data, getState().main.access_token)
+    .then(() => {
+      retrievePrototype(id)(dispatch, getState);
     });
-  });
-}
 
-export const createTestDevice =  (data) => (dispatch, getState) => {
-  data.createUserId = getState().main.userId;
-  return request('/devices', 'POST', data, getState().main.access_token)
-  .then((data) => {
-    browserHistory.push('/devices/' + data.data.deviceId);
-  });
-}
+export const clonePrototype = (id, data) => (dispatch, getState) =>
+  request(`/prototypes/${id}/clone`, 'POST', data, getState().main.access_token)
+    .then((results) => {
+      browserHistory.push(`/prototypes/${results.data.prototypeId}`);
+    });
 
-export const editPrototype = (id, data) => (dispatch, getState) => {
-  return request('/prototypes/' + id, 'PUT', data, getState().main.access_token)
-  .then(function() {
-    retrievePrototype(id)(dispatch, getState);
-  });
-}
+export const deletePrototype = id => (dispatch, getState) =>
+  request(`/prototypes/${id}`, 'DELETE', {}, getState().main.access_token)
+    .then(() => {
+      browserHistory.push('/prototypes');
+    });
 
-export const clonePrototype =  (id, data) => (dispatch, getState) => {
-  return request('/prototypes/' + id + '/clone', 'POST', data, getState().main.access_token)
-  .then(function(data) {
-    browserHistory.push('/prototypes/' + data.data.prototypeId);
-  });
-}
-
-export const deletePrototype =  (id) => (dispatch, getState) => {
-  return request('/prototypes/' + id, 'DELETE', {}, getState().main.access_token)
-  .then(function() {
-    browserHistory.push('/prototypes');
-  });
-}
-
-export const createDataChannel = (id, data) => (dispatch, getState) => {
-  return request('/prototypes/' + id + '/datachannels', 'POST', data, getState().main.access_token)
-  .then(function() {
-    return request('/prototypes/' + id, 'GET', getState().main.access_token)
-  })
-  .then((data) => {
-    return dispatch({
+export const createDataChannel = (id, data) => (dispatch, getState) =>
+  request(`/prototypes/${id}/datachannels`, 'POST', data, getState().main.access_token)
+    .then(() => request(`/prototypes/${id}`, 'GET', getState().main.access_token))
+    .then(results => dispatch({
       type: types.RETRIEVEPROTOTYPE,
-      data: data.data,
-    });
-  });
-}
+      data: results.data,
+    }));
 
-export const editDataChannel = (id, dataChannelId, data) => (dispatch, getState) => {
-  return request('/prototypes/' + id + '/datachannels/' + dataChannelId, 'PUT', data, getState().main.access_token)
-  .then(function() {
-    return request('/prototypes/' + id, 'GET', getState().main.access_token)
-  })
-  .then((data) => {
-    return dispatch({
+export const editDataChannel = (id, dataChannelId, data) => (dispatch, getState) =>
+  request(`/prototypes/${id}/datachannels/${dataChannelId}`, 'PUT', data, getState().main.access_token)
+    .then(() => request(`/prototypes/${id}`, 'GET', getState().main.access_token))
+    .then(results => dispatch({
       type: types.RETRIEVEPROTOTYPE,
-      data: data.data,
-    });
-  });
-}
+      data: results.data,
+    }));
+
+export const retrieveUnitTypes = () => (dispatch, getState) =>
+  request('/unittypes', 'GET', getState().main.access_token)
+    .then(results => dispatch({
+      type: types.RETRIEVEUNITTYPES,
+      data: results.data,
+    }));
+
+export const createUnitTypes = ({ name, symbol }) => (dispatch, getState) =>
+  request('/unittypes', 'POST', ({ name, symbol }), getState().main.access_token)
+    .then(() => request('/unittypes', 'GET', getState().main.access_token))
+    .then(results => dispatch({
+      type: types.RETRIEVEUNITTYPES,
+      data: results.data,
+    }));
