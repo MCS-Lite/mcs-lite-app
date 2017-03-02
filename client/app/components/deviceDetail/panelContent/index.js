@@ -37,7 +37,7 @@ const PanelContentLayout = ({
               </div>
             </PanelHeader>
             <PanelBody className={styles.body}>
-              { selectPanelValue === '' || selectPanelValue === 'Data channel' ? <DataChannelContent server={"ws://localhost:8000/deviceId/" + deviceId + "/deviceKey/" + deviceKey} datachannels={datachannels} /> : ''}
+              { selectPanelValue === '' || selectPanelValue === 'Data channel' ? <DataChannelContent server={"ws://" + window.ws + "/deviceId/" + deviceId + "/deviceKey/" + deviceKey} datachannels={datachannels} /> : ''}
             </PanelBody>
           </Panel>
         : ''
