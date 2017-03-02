@@ -19,10 +19,9 @@ const DisplayStringLayout = ({
   className,
   title,
   id,
+  onSubmit,
   isPrototype,
   isDevice,
-  format,
-  onSubmit,
 }) => (
   <DataChannelCard
     className={className}
@@ -36,7 +35,6 @@ const DisplayStringLayout = ({
         id,
         type: 'STRING_CONTROL',
         values: { value },
-        format,
       }}
       eventHandler={({ type, id: datachannelId, values }) => {
         switch (type) {
@@ -47,7 +45,7 @@ const DisplayStringLayout = ({
             setValue(values.value);
             break;
           case 'submit':
-            onSubmit(datachannelId, values.value);
+            onSubmit(datachannelId, { value: values.value });
             break;
           default:
         }

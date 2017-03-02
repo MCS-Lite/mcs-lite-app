@@ -71,8 +71,8 @@ export default compose(
       props.setIsUpdate(true);
     },
 
-    onSubmit: () => (id, value) => {
-      emitter.emit('submit', id, value);
+    onSubmit: () => (id, values) => {
+      emitter.emit('submit', id, values);
     },
   }),
   lifecycle({
@@ -85,13 +85,11 @@ export default compose(
           _this.props.setEmitter(
             emitter.addListener(
               'submit',
-              (id, value) => {
+              (id, values) => {
                 _.send(JSON.stringify(
                   {
                     datachannelId: id,
-                    values: {
-                      value,
-                    },
+                    values,
                   },
                 ));
               },

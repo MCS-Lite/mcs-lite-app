@@ -49,10 +49,10 @@ const DisplayStringLayout = ({
             setValue('');
             break;
           case 'change':
-            setValue(Number(values.value));
+            setValue(values.value);
             break;
           case 'submit':
-            onSubmit(datachannelId, values.value);
+            onSubmit(datachannelId, { value: values.value });
             break;
           default:
         }
@@ -63,6 +63,6 @@ const DisplayStringLayout = ({
 
 export default compose(
   pure,
-  withState('value', 'setValue', props => props.value || 0),
+  withState('value', 'setValue', props => props.value || ''),
   withState('updatedAt', 'setUpdatedAt', props => props.updatedAt || ''),
 )(DisplayStringLayout);

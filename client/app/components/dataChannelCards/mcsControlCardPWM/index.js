@@ -19,7 +19,9 @@ const DisplayStringLayout = ({
   id,
   format,
   value,
+  period,
   setValue,
+  setPeriod,
   isPrototype,
   isDevice,
   onSubmit,
@@ -38,29 +40,26 @@ const DisplayStringLayout = ({
         id,
         type: 'PWM_CONTROL',
         values: {
-          value: value.value,
-          period: value.period,
+          value,
+          period,
         },
         format,
       }}
       eventHandler={({ type, id: datachannelId, values }) => {
+        console.log(values);
         switch (type) {
           case 'clear':
-            setValue({
-              value: '',
-              period: '',
-            });
+            setValue(0);
+            setPeriod(0);
             break;
           case 'change':
-            setValue({
-              value: values.value,
-              period: values.period,
-            });
+            setValue(Number(values.value));
+            setPeriod(Number(values.period));
             break;
           case 'submit':
             onSubmit(datachannelId, {
-              value: values.value,
-              period: values.period,
+              value: Number(values.value),
+              period: Number(values.period),
             });
             break;
           default:
@@ -72,6 +71,7 @@ const DisplayStringLayout = ({
 
 export default compose(
   pure,
-  withState('value', 'setValue', props => props.value || { value: 0, period: 0 }),
+  withState('value', 'setValue', props => props.value || 0),
+  withState('period', 'setPeriod', props => props.period || 0),
   withState('updatedAt', 'setUpdatedAt', props => props.updatedAt || ''),
 )(DisplayStringLayout);

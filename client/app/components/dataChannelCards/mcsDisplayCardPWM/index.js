@@ -14,6 +14,7 @@ import More from '../common/more';
 const DisplayPWMLayout = ({
   updatedAt,
   value,
+  period,
   description,
   className,
   title,
@@ -33,7 +34,7 @@ const DisplayPWMLayout = ({
       dataChannelProps={{
         id,
         type: 'PWM_DISPLAY',
-        values: { value: value.value, period: value.period },
+        values: { value, period },
         format,
       }}
     />
@@ -42,6 +43,7 @@ const DisplayPWMLayout = ({
 
 export default compose(
   pure,
-  withState('value', 'setValue', props => props.value || { value: 0, period: 0 }),
+  withState('value', 'setValue', props => props.value || 0),
+  withState('period', 'setPeriod', props => props.period || 0),
   withState('updatedAt', 'setUpdatedAt', props => props.updatedAt || ''),
 )(DisplayPWMLayout);

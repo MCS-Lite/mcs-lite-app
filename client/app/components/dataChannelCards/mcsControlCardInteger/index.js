@@ -49,7 +49,7 @@ const DisplayStringLayout = ({
             setValue(Number(values.value));
             break;
           case 'submit':
-            onSubmit(datachannelId, values.value);
+            onSubmit(datachannelId, { value: values.value });
             break;
           default:
         }

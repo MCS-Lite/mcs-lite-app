@@ -21,25 +21,26 @@ import ControlCardInteger from '../../mcsControlCardInteger';
 
 const WrapperLayout = ({
   displayName,
+  value,
   ...props
 }) => (
   <div>
-    {displayName === 'Integer_Display' && <DisplayCardInteger {...props} />}
-    {displayName === 'Hex_Display' && <DisplayCardHex {...props} />}
-    {displayName === 'PWM_Display' && <DisplayCardPWM {...props} />}
-    {displayName === 'String_Display' && <DisplayCardString {...props} />}
-    {displayName === 'GPIO_Display' && <DisplayCardGPIO {...props} />}
-    {displayName === 'Switch_Display' && <DisplayCardSwitch {...props} />}
-    {displayName === 'Float_Display' && <DisplayCardFloat {...props} />}
-    {displayName === 'Category_Display' && <DisplayCardCategory {...props} />}
-    {displayName === 'Integer_Control' && <ControlCardInteger {...props} />}
-    {displayName === 'Hex_Control' && <ControlCardHex {...props} />}
-    {displayName === 'PWM_Control' && <ControlCardPWM {...props} />}
-    {displayName === 'String_Control' && <ControlCardString {...props} />}
-    {displayName === 'GPIO_Control' && <ControlCardGPIO {...props} />}
-    {displayName === 'Switch_Control' && <ControlCardSwitch {...props} />}
-    {displayName === 'Float_Control' && <ControlCardFloat {...props} />}
-    {displayName === 'Category_Control' && <ControlCardCategory {...props} />}
+    {displayName === 'Integer_Display' && <DisplayCardInteger value={value.value} {...props} />}
+    {displayName === 'Hex_Display' && <DisplayCardHex value={value.value} {...props} />}
+    {displayName === 'PWM_Display' && <DisplayCardPWM value={value.value} period={value.period} {...props} />}
+    {displayName === 'String_Display' && <DisplayCardString value={value.value} {...props} />}
+    {displayName === 'GPIO_Display' && <DisplayCardGPIO value={value.value} {...props} />}
+    {displayName === 'Switch_Display' && <DisplayCardSwitch value={value.value} {...props} />}
+    {displayName === 'Float_Display' && <DisplayCardFloat value={value.value} {...props} />}
+    {displayName === 'Category_Display' && <DisplayCardCategory value={value.value} {...props} />}
+    {displayName === 'Integer_Control' && <ControlCardInteger value={value.value} {...props} />}
+    {displayName === 'Hex_Control' && <ControlCardHex value={value.value} {...props} />}
+    {displayName === 'PWM_Control' && <ControlCardPWM value={value.value} period={value.period} {...props} />}
+    {displayName === 'String_Control' && <ControlCardString value={value.value} {...props} />}
+    {displayName === 'GPIO_Control' && <ControlCardGPIO value={value.value} {...props} />}
+    {displayName === 'Switch_Control' && <ControlCardSwitch value={value.value} {...props} />}
+    {displayName === 'Float_Control' && <ControlCardFloat value={value.value} {...props} />}
+    {displayName === 'Category_Control' && <ControlCardCategory value={value.value} {...props} />}
   </div>
 );
 
@@ -47,9 +48,9 @@ export default compose(
   pure,
   withState('value', 'setValue', props => {
     if (!props.value) {
-      return null;
+      return { value: null };
     }
-    return props.value.value;
+    return props.value;
   }),
 )(WrapperLayout);
 
