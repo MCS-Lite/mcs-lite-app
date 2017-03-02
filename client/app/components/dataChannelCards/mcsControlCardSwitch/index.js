@@ -26,9 +26,9 @@ const DisplayStringLayout = ({
   <DataChannelCard
     className={className}
     title={title}
-    subtitle={'Last data point time : ' + moment(updatedAt).format('YYYY-MM-DD h:mm')}
+    subtitle={`Last data point time : ${moment(updatedAt).format('YYYY-MM-DD h:mm')}`}
     description={description}
-    header={<More isPrototype={isPrototype} isDevice={isDevice}/>}
+    header={<More isPrototype={isPrototype} isDevice={isDevice} />}
   >
     <DataChannelAdapter
       dataChannelProps={{
@@ -36,8 +36,8 @@ const DisplayStringLayout = ({
         type: 'SWITCH_CONTROL',
         values: { value },
       }}
-      eventHandler={({type, id, values}) => {
-        switch(type) {
+      eventHandler={({ type, datachannelId, values }) => {
+        switch (type) {
           case 'clear':
             setValue('');
             break;
@@ -45,7 +45,7 @@ const DisplayStringLayout = ({
             setValue(values.value);
             break;
           case 'submit':
-            onSubmit(id, values.value);
+            onSubmit(datachannelId, values.value);
             break;
           default:
         }
@@ -56,6 +56,6 @@ const DisplayStringLayout = ({
 
 export default compose(
   pure,
-  withState('value', 'setValue', (props)=> props.value || 0),
-  withState('updatedAt', 'setUpdatedAt', (props)=> props.updatedAt || ''),
+  withState('value', 'setValue', props => props.value || 0),
+  withState('updatedAt', 'setUpdatedAt', props => props.updatedAt || ''),
 )(DisplayStringLayout);

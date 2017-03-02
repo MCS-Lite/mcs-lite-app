@@ -4,21 +4,17 @@ import { DataChannelAdapter } from 'mcs-lite-ui';
 
 const PreviewLayout = ({
   value,
-}) => {
-  let labels = [];
-  return (
-    <div style={{ width: '100%' }}>
-      <DataChannelAdapter
-        dataChannelProps={{
-          id: '',
-          type: 'HEX_DISPLAY',
-          values: { value: value },
-        }}
-        eventHandler={console.log}
-      />
-    </div>
-  );
-}
+}) => (
+  <div style={{ width: '100%' }}>
+    <DataChannelAdapter
+      dataChannelProps={{
+        id: '',
+        type: 'HEX_DISPLAY',
+        values: { value },
+      }}
+    />
+  </div>
+);
 
 export default compose(
   pure,

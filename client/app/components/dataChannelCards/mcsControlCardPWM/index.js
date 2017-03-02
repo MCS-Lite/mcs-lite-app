@@ -27,27 +27,38 @@ const DisplayStringLayout = ({
   <DataChannelCard
     className={className}
     title={title}
-    subtitle={'Last data point time : ' + moment(updatedAt).format('YYYY-MM-DD h:mm')}
+    subtitle={`Last data point time : ${moment(updatedAt).format('YYYY-MM-DD h:mm')}`}
     description={description}
-    header={<More isPrototype={isPrototype} isDevice={isDevice}/>}
+    header={
+      <More isPrototype={isPrototype} isDevice={isDevice} />
+    }
   >
     <DataChannelAdapter
       dataChannelProps={{
         id,
         type: 'PWM_CONTROL',
-        values: { value: value.value, period: value.period },
+        values: {
+          value: value.value,
+          period: value.period,
+        },
         format,
       }}
-      eventHandler={({ type, id, values }) => {
-        switch(type) {
+      eventHandler={({ type, datachannelId, values }) => {
+        switch (type) {
           case 'clear':
-            setValue({ value: '', period: '' });
+            setValue({
+              value: '',
+              period: '',
+            });
             break;
           case 'change':
-            setValue({ value: values.value, period: values.period });
+            setValue({
+              value: values.value,
+              period: values.period,
+            });
             break;
           case 'submit':
-            onSubmit(id, {
+            onSubmit(datachannelId, {
               value: values.value,
               period: values.period,
             });
@@ -61,6 +72,6 @@ const DisplayStringLayout = ({
 
 export default compose(
   pure,
-  withState('value', 'setValue', (props)=> props.value || { value: 0, period: 0 }),
-  withState('updatedAt', 'setUpdatedAt', (props)=> props.updatedAt || ''),
+  withState('value', 'setValue', props => props.value || { value: 0, period: 0 }),
+  withState('updatedAt', 'setUpdatedAt', props => props.updatedAt || ''),
 )(DisplayStringLayout);

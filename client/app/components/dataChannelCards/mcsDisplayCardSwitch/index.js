@@ -14,7 +14,6 @@ import More from '../common/more';
 const DisplayGPIOLayout = ({
   updatedAt,
   value,
-  setValue,
   description,
   className,
   title,
@@ -25,9 +24,9 @@ const DisplayGPIOLayout = ({
   <DataChannelCard
     className={className}
     title={title}
-    subtitle={'Last data point time : ' + moment(updatedAt).format('YYYY-MM-DD h:mm')}
+    subtitle={`Last data point time : ${moment(updatedAt).format('YYYY-MM-DD h:mm')}`}
     description={description}
-    header={<More isPrototype={isPrototype} isDevice={isDevice}/>}
+    header={<More isPrototype={isPrototype} isDevice={isDevice} />}
   >
     <DataChannelAdapter
       dataChannelProps={{
@@ -39,9 +38,8 @@ const DisplayGPIOLayout = ({
   </DataChannelCard>
 );
 
-
 export default compose(
   pure,
-  withState('value', 'setValue', (props)=> props.value || 0),
-  withState('updatedAt', 'setUpdatedAt', (props)=> props.updatedAt || ''),
+  withState('value', 'setValue', props => props.value || 0),
+  withState('updatedAt', 'setUpdatedAt', props => props.updatedAt || ''),
 )(DisplayGPIOLayout);

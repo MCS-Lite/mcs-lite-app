@@ -24,7 +24,7 @@ const DisplayHexLayout = ({
   <DataChannelCard
     className={className}
     title={title}
-    subtitle={'Last data point time : ' + moment(updatedAt).format('YYYY-MM-DD h:mm')}
+    subtitle={`Last data point time : ${moment(updatedAt).format('YYYY-MM-DD h:mm')}`}
     description={description}
     header={<More isPrototype={isPrototype} isDevice={isDevice} />}
   >
@@ -32,15 +32,14 @@ const DisplayHexLayout = ({
       dataChannelProps={{
         id,
         type: 'HEX_DISPLAY',
-        values: { value: value },
+        values: { value },
       }}
     />
   </DataChannelCard>
 );
 
-
 export default compose(
   pure,
-  withState('value', 'setValue', (props)=> props.value || ''),
-  withState('updatedAt', 'setUpdatedAt', (props)=> props.updatedAt || ''),
+  withState('value', 'setValue', props => props.value || ''),
+  withState('updatedAt', 'setUpdatedAt', props => props.updatedAt || ''),
 )(DisplayHexLayout);

@@ -25,7 +25,7 @@ const DisplayIntegerLayout = ({
   <DataChannelCard
     className={className}
     title={title}
-    subtitle={'Last data point time : ' + moment(updatedAt).format('YYYY-MM-DD h:mm')}
+    subtitle={`Last data point time : ${moment(updatedAt).format('YYYY-MM-DD h:mm')}`}
     description={description}
     header={<More isPrototype={isPrototype} isDevice={isDevice} />}
   >
@@ -33,7 +33,7 @@ const DisplayIntegerLayout = ({
       dataChannelProps={{
         id,
         type: 'INTEGER_DISPLAY',
-        values: { value: value },
+        values: { value },
         format,
       }}
     />
@@ -42,6 +42,6 @@ const DisplayIntegerLayout = ({
 
 export default compose(
   pure,
-  withState('value', 'setValue', (props)=> props.value || 0),
-  withState('updatedAt', 'setUpdatedAt', (props)=> props.updatedAt || ''),
+  withState('value', 'setValue', props => props.value || 0),
+  withState('updatedAt', 'setUpdatedAt', props => props.updatedAt || ''),
 )(DisplayIntegerLayout);

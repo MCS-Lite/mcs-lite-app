@@ -24,7 +24,7 @@ const DisplayGPIOLayout = ({
   <DataChannelCard
     className={className}
     title={title}
-    subtitle={'Last data point time : ' + moment(updatedAt).format('YYYY-MM-DD h:mm')}
+    subtitle={`Last data point time : ${moment(updatedAt).format('YYYY-MM-DD h:mm')}`}
     description={description}
     header={<More isPrototype={isPrototype} isDevice={isDevice} />}
   >
@@ -41,7 +41,6 @@ const DisplayGPIOLayout = ({
 
 export default compose(
   pure,
-  withState('value', 'setValue', (props)=> props.value || 0),
-  withState('updatedAt', 'setUpdatedAt', (props)=> props.updatedAt || ''),
-)(DisplayGPIOLayout)
-
+  withState('value', 'setValue', props => props.value || 0),
+  withState('updatedAt', 'setUpdatedAt', props => props.updatedAt || ''),
+)(DisplayGPIOLayout);

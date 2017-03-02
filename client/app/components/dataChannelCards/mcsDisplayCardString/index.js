@@ -25,7 +25,7 @@ const DisplayStringLayout = ({
   <DataChannelCard
     className={className}
     title={title}
-    subtitle={'Last data point time : ' + moment(updatedAt).format('YYYY-MM-DD h:mm')}
+    subtitle={`Last data point time : ${moment(updatedAt).format('YYYY-MM-DD h:mm')}`}
     description={description}
     header={<More isPrototype={isPrototype} isDevice={isDevice} />}
   >
@@ -43,7 +43,6 @@ const DisplayStringLayout = ({
 
 export default compose(
   pure,
-  withState('value', 'setValue', (props)=> props.value || ''),
-  withState('updatedAt', 'setUpdatedAt', (props)=> props.updatedAt || ''),
-)(DisplayStringLayout)
-
+  withState('value', 'setValue', props => props.value || ''),
+  withState('updatedAt', 'setUpdatedAt', props => props.updatedAt || ''),
+)(DisplayStringLayout);

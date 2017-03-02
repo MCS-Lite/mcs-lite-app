@@ -14,7 +14,6 @@ import More from '../common/more';
 const DisplayFloatLayout = ({
   updatedAt,
   value,
-  setValue,
   description,
   className,
   title,
@@ -26,7 +25,7 @@ const DisplayFloatLayout = ({
   <DataChannelCard
     className={className}
     title={title}
-    subtitle={'Last data point time : ' + moment(updatedAt).format('YYYY-MM-DD h:mm')}
+    subtitle={`Last data point time : ${moment(updatedAt).format('YYYY-MM-DD h:mm')}`}
     description={description}
     header={<More isPrototype={isPrototype} isDevice={isDevice} />}
   >
@@ -37,14 +36,12 @@ const DisplayFloatLayout = ({
         values: { value },
         format,
       }}
-      eventHandler={console.log}
     />
   </DataChannelCard>
 );
 
-
 export default compose(
   pure,
-  withState('value', 'setValue', (props)=> props.value || 0),
-  withState('updatedAt', 'setUpdatedAt', (props)=> props.updatedAt || ''),
+  withState('value', 'setValue', props => props.value || 0),
+  withState('updatedAt', 'setUpdatedAt', props => props.updatedAt || ''),
 )(DisplayFloatLayout);

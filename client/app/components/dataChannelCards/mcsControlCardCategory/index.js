@@ -15,7 +15,6 @@ import More from '../common/more';
 const DisplayStringLayout = ({
   updatedAt,
   value,
-  setValue,
   description,
   className,
   title,
@@ -23,31 +22,27 @@ const DisplayStringLayout = ({
   format,
   isPrototype,
   isDevice,
-}) => {
-  return (
-    <DataChannelCard
-      className={className}
-      title={title}
-      subtitle={'Last data point time : ' + moment(updatedAt).format('YYYY-MM-DD h:mm')}
-      description={description}
-      header={<More isPrototype={isPrototype} isDevice={isDevice}/>}
-    >
-      <DataChannelAdapter
-        dataChannelProps={{
-          id,
-          type: 'CATEGORY_CONTROL',
-          values: { value: value },
-          format,
-        }}
-        eventHandler={console.log}
-      />
-    </DataChannelCard>
-  );
-}
+}) => (
+  <DataChannelCard
+    className={className}
+    title={title}
+    subtitle={`Last data point time : ${moment(updatedAt).format('YYYY-MM-DD h:mm')}`}
+    description={description}
+    header={<More isPrototype={isPrototype} isDevice={isDevice} />}
+  >
+    <DataChannelAdapter
+      dataChannelProps={{
+        id,
+        type: 'CATEGORY_CONTROL',
+        values: { value },
+        format,
+      }}
+    />
+  </DataChannelCard>
+);
 
 export default compose(
   pure,
-  withState('value', 'setValue', (props)=> props.value || ''),
-  withState('updatedAt', 'setUpdatedAt', (props)=> props.updatedAt || ''),
-)(DisplayStringLayout)
-
+  withState('value', 'setValue', props => props.value || ''),
+  withState('updatedAt', 'setUpdatedAt', props => props.updatedAt || ''),
+)(DisplayStringLayout);

@@ -19,6 +19,7 @@ module.exports = function($db, $app, $rest) {
   var datachannelsController = new require('../controllers/datachannels')($db);
   var imageController = new require('../controllers/image')($db);
   var dashboardController = new require('../controllers/dashboard')($db);
+  var unittypesController = new require('../controllers/unittypes')($db);
 
   const parseBasicToken = function(req, res, next) {
     if (/mobile/.test(req.route.path)) {
@@ -316,4 +317,19 @@ module.exports = function($db, $app, $rest) {
     middleware: [$app.oauth.authorise()],
     handler: usersController.changePassword,
   };
+
+  this.addNewUnitTypes = {
+    path: $rest.apiRoute + '/unittypes',
+    methods: ['post'],
+    middleware: [$app.oauth.authorise()],
+    handler: unittypesController.addNewUnitTypes,
+  };
+
+  this.retrieveUnitTypes = {
+    path: $rest.apiRoute + '/unittypes',
+    methods: ['get'],
+    middleware: [$app.oauth.authorise()],
+    handler: unittypesController.retrieveUnitTypes,
+  };
+
 };

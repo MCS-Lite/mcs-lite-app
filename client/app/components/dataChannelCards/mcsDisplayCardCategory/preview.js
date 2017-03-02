@@ -5,24 +5,20 @@ import { DataChannelAdapter } from 'mcs-lite-ui';
 const PreviewLayout = ({
   value,
   format,
-}) => {
-  let labels = [];
-  return (
-    <div style={{ width: '100%' }}>
-      <DataChannelAdapter
-        dataChannelProps={{
-          id: '',
-          type: 'CATEGORY_DISPLAY',
-          values: { value: value },
-          format: {
-            items: format.items,
-          },
-        }}
-        eventHandler={console.log}
-      />
-    </div>
-  );
-}
+}) => (
+  <div style={{ width: '100%' }}>
+    <DataChannelAdapter
+      dataChannelProps={{
+        id: '',
+        type: 'CATEGORY_DISPLAY',
+        values: { value },
+        format: {
+          items: format.items,
+        },
+      }}
+    />
+  </div>
+);
 
 export default compose(
   pure,
@@ -31,8 +27,8 @@ export default compose(
     if (!props.format.categoryNumber) {
       props.format.categoryNumber = 2;
     }
-    for (var i = 0; i< props.format.categoryNumber; i++) {
-      props.format.items.push({name: '', value: ''});
+    for (let i = 0; i < props.format.categoryNumber; i++) {
+      props.format.items.push({ name: '', value: '' });
     }
     return props.format;
   }),

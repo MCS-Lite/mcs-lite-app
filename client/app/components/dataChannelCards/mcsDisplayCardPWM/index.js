@@ -25,9 +25,9 @@ const DisplayPWMLayout = ({
   <DataChannelCard
     className={className}
     title={title}
-    subtitle={'Last data point time : ' + moment(updatedAt).format('YYYY-MM-DD h:mm')}
+    subtitle={`Last data point time : ${moment(updatedAt).format('YYYY-MM-DD h:mm')}`}
     description={description}
-    header={<More isPrototype={isPrototype} isDevice={isDevice}/>}
+    header={<More isPrototype={isPrototype} isDevice={isDevice} />}
   >
     <DataChannelAdapter
       dataChannelProps={{
@@ -40,9 +40,8 @@ const DisplayPWMLayout = ({
   </DataChannelCard>
 );
 
-
 export default compose(
   pure,
-  withState('value', 'setValue', (props)=> props.value || { value: 0, period: 0 }),
-  withState('updatedAt', 'setUpdatedAt', (props)=> props.updatedAt || ''),
+  withState('value', 'setValue', props => props.value || { value: 0, period: 0 }),
+  withState('updatedAt', 'setUpdatedAt', props => props.updatedAt || ''),
 )(DisplayPWMLayout);

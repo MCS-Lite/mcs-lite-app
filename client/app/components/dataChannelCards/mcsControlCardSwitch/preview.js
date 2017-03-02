@@ -6,21 +6,17 @@ import styles from './styles.css';
 
 const PreviewLayout = ({
   value,
-}) => {
-  let labels = [];
-  return (
-    <div className={styles.base}>
-      <DataChannelAdapter
-        dataChannelProps={{
-          id: '',
-          type: 'SWITCH_CONTROL',
-          values: { value: value },
-        }}
-        eventHandler={console.log}
-      />
-    </div>
-  );
-}
+}) => (
+  <div className={styles.base}>
+    <DataChannelAdapter
+      dataChannelProps={{
+        id: '',
+        type: 'SWITCH_CONTROL',
+        values: { value },
+      }}
+    />
+  </div>
+);
 
 export default compose(
   pure,
