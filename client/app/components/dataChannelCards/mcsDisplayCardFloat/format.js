@@ -1,16 +1,16 @@
 module.exports = {
-  'unit': {
+  unit: {
     displayType: 'unitType',
     required: true,
   },
-  'lowerbound': {
+  lowerbound: {
     displayType: 'text',
     required: true,
-    type: 'number'
+    type: 'number',
   },
-  'upperbound': {
+  upperbound: {
     displayType: 'text',
     required: true,
-    type: 'number'
+    type: 'number',
   },
 };

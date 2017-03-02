@@ -3,19 +3,19 @@ module.exports = {
     displayType: 'text',
     limit: 5,
     required: true,
-    type: 'string'
+    type: 'string',
   },
   'key1 value': {
     displayType: 'text',
     limit: 5,
     required: true,
-    type: 'string'
+    type: 'string',
   },
   'key2 name': {
     displayType: 'text',
     limit: 5,
     required: true,
-    type: 'string'
+    type: 'string',
   },
   'key2 value': {
     displayType: 'text',

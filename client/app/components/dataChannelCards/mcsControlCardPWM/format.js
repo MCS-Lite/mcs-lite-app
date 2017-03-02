@@ -1,12 +1,12 @@
 module.exports = {
-  'lowerbound': {
+  lowerbound: {
     displayType: 'text',
     required: true,
-    type: 'number'
+    type: 'number',
   },
-  'upperbound': {
+  upperbound: {
     displayType: 'text',
     required: true,
-    type: 'number'
+    type: 'number',
   },
 };

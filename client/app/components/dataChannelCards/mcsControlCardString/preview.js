@@ -1,9 +1,6 @@
-import React, { Component } from 'react';
-
-import { default as compose } from 'recompose/compose';
-import { default as pure } from 'recompose/pure';
-
-import DataChannelAdapter from 'mcs-lite-ui/lib/DataChannelAdapter';
+import React from 'react';
+import { compose, pure } from 'recompose';
+import { DataChannelAdapter } from 'mcs-lite-ui';
 
 const PreviewLayout = ({
   format,

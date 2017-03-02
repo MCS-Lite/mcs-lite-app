@@ -1,14 +1,13 @@
-import React, { Component } from 'react';
-
-import { default as compose } from 'recompose/compose';
-import { default as pure } from 'recompose/pure';
-import { default as withState } from 'recompose/withState';
-import { default as withHandlers } from 'recompose/withHandlers';
-import { default as lifecycle } from 'recompose/lifecycle';
-
-import DataChannelCard from 'mcs-lite-ui/lib/DataChannelCard';
-import DataChannelAdapter from 'mcs-lite-ui/lib/DataChannelAdapter';
-
+import React from 'react';
+import {
+  compose,
+  pure,
+  withState,
+} from 'recompose';
+import {
+  DataChannelCard,
+  DataChannelAdapter,
+} from 'mcs-lite-ui';
 import moment from 'moment';
 import More from '../common/more';
 
@@ -30,7 +29,7 @@ const DisplayStringLayout = ({
       title={title}
       subtitle={'Last data point time : ' + moment(updatedAt).format('YYYY-MM-DD h:mm')}
       description={description}
-      header={<More isPrototype={isPrototype} isDevice={isDevice}/>}
+      header={<More isPrototype={isPrototype} isDevice={isDevice} />}
     >
       <DataChannelAdapter
         dataChannelProps={{

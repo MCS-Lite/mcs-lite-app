@@ -1,16 +1,11 @@
-import React, { Component } from 'react';
-
-import { default as compose } from 'recompose/compose';
-import { default as pure } from 'recompose/pure';
-import { default as withState } from 'recompose/withState';
-
-import DataChannelAdapter from 'mcs-lite-ui/lib/DataChannelAdapter';
+import React from 'react';
+import { compose, pure, withState } from 'recompose';
+import { DataChannelAdapter } from 'mcs-lite-ui';
 
 const PreviewLayout = ({
   value,
   format,
 }) => {
-  let labels = [];
   return (
     <div style={{ width: '100%' }}>
       <DataChannelAdapter
