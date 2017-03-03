@@ -25,6 +25,10 @@ const messages = defineMessages({
     id: 'Profile.editUserName',
     defaultMessage: '修改暱稱',
   },
+  'Profile.editUserNameSuccess': {
+    id: 'Profile.editUserNameSuccess',
+    defaultMessage: '成功！你已經成功修改暱稱。',
+  },
   'Profile.userNamePlaceholder': {
     id: 'Profile.userNamePlaceholder',
     defaultMessage: '請輸入暱稱',
@@ -52,6 +56,18 @@ const messages = defineMessages({
   'Profile.save': {
     id: 'Profile.save',
     defaultMessage: '儲存',
+  },
+  'Profile.passwordLengthError': {
+    id: 'Profile.passwordLengthError',
+    defaultMessage: '密碼長度需要長於 8 個字元',
+  },
+  'Profile.confirmPasswordError': {
+    id: 'Profile.confirmPasswordError',
+    defaultMessage: '確認密碼與密碼不一至',
+  },
+  'Profile.changePasswordSuccess': {
+    id: 'Profile.changePasswordSuccess',
+    defaultMessage: '成功！你已經成功修改密碼。',
   },
 });
 
