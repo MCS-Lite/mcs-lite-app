@@ -146,12 +146,19 @@ module.exports = function ($db) {
   };
 
   var clonePrototype = function(req, res, next) {
+    var prototypeData;
     var prototypeId = req.params.prototypeId;
+    var userId = req.user.userId;
     var data = req.body;
     data.userId = req.user.userId;
     return prototypes.clonePrototype(prototypeId, data)
     .then(function(data) {
-      return res.send(200, {data: data});
+      prototypeData = data;
+      return datachannels.cloneDatachannel(prototypeId, data.prototypeId, userId)
+    })
+    .then(function(data) {
+      prototypeData.datachannels = data;
+      return res.send(200, { data: prototypeData });
     })
     .catch(function(err) {
       return res.send(400, err);

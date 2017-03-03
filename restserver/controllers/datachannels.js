@@ -72,7 +72,6 @@ module.exports = function ($db) {
       return res.send(200, { message: 'success' });
     })
     .catch(function(err) {
-      console.log(err);
       return res.send(400, err);
     })
   };

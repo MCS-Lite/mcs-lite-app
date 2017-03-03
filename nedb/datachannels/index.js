@@ -72,5 +72,28 @@ module.exports = function(datachannels, prototypes) {
         });
       });
     },
+
+    cloneDatachannel: function(fromPrototypeId, toPrototypeId, userId) {
+      var _this = this;
+      return new Promise(function(resolve, reject) {
+        return datachannels.find({
+            prototypeId: fromPrototypeId,
+            isActive: true,
+          }, function(err, data) {
+          if (err) return reject();
+          resolve(data);
+        });
+      })
+      .then(function(data) {
+        var datachannelPromise = []
+        data.forEach(function(k, v) {
+          k.prototypeId = toPrototypeId;
+          k.createUserId = userId;
+          delete k._id;
+          datachannelPromise.push(_this.addNewDatachannel(k));
+        });
+        return Promise.all(datachannelPromise)
+      });
+    }
   };
 }
