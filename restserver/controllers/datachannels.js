@@ -1,7 +1,7 @@
 module.exports = function ($db) {
   var datachannels = $db.datachannels;
 
-  var addNewDatachannels = function(req, res, next) {
+  var addNewDatachannel = function(req, res, next) {
     var userId = req.user.userId;
     var prototypeId = req.params.prototypeId;
     var format = req.body.format || {};
@@ -34,7 +34,7 @@ module.exports = function ($db) {
     });
   };
 
-  var editDatachannels = function(req, res, next) {
+  var editDatachannel = function(req, res, next) {
     var userId = req.user.userId;
     var prototypeId = req.params.prototypeId;
     var datachannelId = req.params.datachannelId;
@@ -58,9 +58,29 @@ module.exports = function ($db) {
     });
   };
 
+  var deleteDatachannel = function(req, res, next) {
+    var datachannelId = req.params.datachannelId;
+    var createUserId = req.user.userId;
+    var prototypeId = req.params.prototypeId;
+
+    return datachannels.deleteDatachannel({
+      prototypeId: prototypeId,
+      datachannelId: datachannelId,
+      createUserId: createUserId,
+    })
+    .then(function() {
+      return res.send(200, { message: 'success' });
+    })
+    .catch(function(err) {
+      console.log(err);
+      return res.send(400, err);
+    })
+  };
+
   return {
-    addNewDatachannels: addNewDatachannels,
-    editDatachannels: editDatachannels,
+    addNewDatachannel: addNewDatachannel,
+    editDatachannel: editDatachannel,
+    deleteDatachannel: deleteDatachannel,
   };
 
 };

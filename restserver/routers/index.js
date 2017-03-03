@@ -229,18 +229,25 @@ module.exports = function($db, $app, $rest) {
     handler: prototypesController.deletePrototype,
   };
 
-  this.addDataChannel = {
+  this.addDatachannel = {
     path: $rest.apiRoute + '/prototypes/:prototypeId/datachannels',
     methods: ['post'],
     middleware: [$app.oauth.authorise()],
-    handler: datachannelsController.addNewDatachannels,
+    handler: datachannelsController.addNewDatachannel,
   };
 
-  this.editDataChannel = {
+  this.deleteDatachannel = {
+    path: $rest.apiRoute + '/prototypes/:prototypeId/datachannels/:datachannelId',
+    methods: ['delete'],
+    middleware: [$app.oauth.authorise()],
+    handler: datachannelsController.deleteDatachannel,
+  };
+
+  this.editDatachannel = {
     path: $rest.apiRoute + '/prototypes/:prototypeId/datachannels/:datachannelId',
     methods: ['put'],
     middleware: [$app.oauth.authorise()],
-    handler: datachannelsController.editDatachannels,
+    handler: datachannelsController.editDatachannel,
   };
 
   this.retrieveDeviceList = {

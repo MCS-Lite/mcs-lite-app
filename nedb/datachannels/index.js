@@ -63,5 +63,14 @@ module.exports = function(datachannels, prototypes) {
         });
       });
     },
+
+    deleteDatachannel: function(query) {
+      return new Promise(function(resolve, reject) {
+        return datachannels.update(query, { $set: { updatedAt: new Date().getTime(), isActive: false } }, {}, function(err, num) {
+          if (err) return reject();
+          resolve({ message: 'success.' });
+        });
+      });
+    },
   };
 }
