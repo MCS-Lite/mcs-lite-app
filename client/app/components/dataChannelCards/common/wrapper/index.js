@@ -1,5 +1,9 @@
 import React from 'react';
+import moment from 'moment';
 import { compose, pure, mapProps } from 'recompose';
+import { DataChannelCard } from 'mcs-lite-ui';
+
+import More from '../more';
 
 import DisplayCardInteger from '../../mcsDisplayCardInteger';
 import DisplayCardString from '../../mcsDisplayCardString';
@@ -21,27 +25,47 @@ import ControlCardInteger from '../../mcsControlCardInteger';
 
 const WrapperLayout = ({
   displayName,
-  value,
+  value: {
+    value,
+    period,
+  } = {},
+  className,
+  title,
+  updatedAt = '',
+  description,
+  isPrototype,
+  isDevice,
   ...props
 }) => (
-  <div>
-    {displayName === 'Integer_Display' && <DisplayCardInteger value={value.value} {...props} />}
-    {displayName === 'Hex_Display' && <DisplayCardHex value={value.value} {...props} />}
-    {displayName === 'PWM_Display' && <DisplayCardPWM value={value.value} period={value.period} {...props} />}
-    {displayName === 'String_Display' && <DisplayCardString value={value.value} {...props} />}
-    {displayName === 'GPIO_Display' && <DisplayCardGPIO value={value.value} {...props} />}
-    {displayName === 'Switch_Display' && <DisplayCardSwitch value={value.value} {...props} />}
-    {displayName === 'Float_Display' && <DisplayCardFloat value={value.value} {...props} />}
-    {displayName === 'Category_Display' && <DisplayCardCategory value={value.value} {...props} />}
-    {displayName === 'Integer_Control' && <ControlCardInteger value={value.value} {...props} />}
-    {displayName === 'Hex_Control' && <ControlCardHex value={value.value} {...props} />}
-    {displayName === 'PWM_Control' && <ControlCardPWM value={value.value} period={value.period} {...props} />}
-    {displayName === 'String_Control' && <ControlCardString value={value.value} {...props} />}
-    {displayName === 'GPIO_Control' && <ControlCardGPIO value={value.value} {...props} />}
-    {displayName === 'Switch_Control' && <ControlCardSwitch value={value.value} {...props} />}
-    {displayName === 'Float_Control' && <ControlCardFloat value={value.value} {...props} />}
-    {displayName === 'Category_Control' && <ControlCardCategory value={value.value} {...props} />}
-  </div>
+  <DataChannelCard
+    className={className}
+    title={title}
+    subtitle={`Last data point time : ${moment(updatedAt).format('YYYY-MM-DD h:mm')}`}
+    description={description}
+    header={
+      <More
+        isPrototype={isPrototype}
+        isDevice={isDevice}
+      />
+    }
+  >
+    {displayName === 'Integer_Display' && <DisplayCardInteger value={value} {...props} />}
+    {displayName === 'Hex_Display' && <DisplayCardHex value={value} {...props} />}
+    {displayName === 'PWM_Display' && <DisplayCardPWM value={value} period={period} {...props} />}
+    {displayName === 'String_Display' && <DisplayCardString value={value} {...props} />}
+    {displayName === 'GPIO_Display' && <DisplayCardGPIO value={value} {...props} />}
+    {displayName === 'Switch_Display' && <DisplayCardSwitch value={value} {...props} />}
+    {displayName === 'Float_Display' && <DisplayCardFloat value={value} {...props} />}
+    {displayName === 'Category_Display' && <DisplayCardCategory value={value} {...props} />}
+    {displayName === 'Integer_Control' && <ControlCardInteger value={value} {...props} />}
+    {displayName === 'Hex_Control' && <ControlCardHex value={value} {...props} />}
+    {displayName === 'PWM_Control' && <ControlCardPWM value={value} period={period} {...props} />}
+    {displayName === 'String_Control' && <ControlCardString value={value} {...props} />}
+    {displayName === 'GPIO_Control' && <ControlCardGPIO value={value} {...props} />}
+    {displayName === 'Switch_Control' && <ControlCardSwitch value={value} {...props} />}
+    {displayName === 'Float_Control' && <ControlCardFloat value={value} {...props} />}
+    {displayName === 'Category_Control' && <ControlCardCategory value={value} {...props} />}
+  </DataChannelCard>
 );
 
 export default compose(
