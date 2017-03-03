@@ -9,7 +9,7 @@ module.exports = function ($db) {
   var users = $db.users;
 
   var signIn = function(req, res, next) {
-    return new Promise((resolve, reject) => {
+    return new Promise(function(resolve, reject) {
       if (!req.body.email || !req.body.password || !req.body.userName) {
         return reject('Email or password or userName is not define.');
       }
@@ -23,7 +23,7 @@ module.exports = function ($db) {
         password: req.body.password,
       };
 
-      return new Promise((resolve, reject) => {
+      return new Promise(function(resolve, reject) {
         request
         .post(host + '/users/regist')
         .set('Cache-Control', 'no-cache')
@@ -37,26 +37,26 @@ module.exports = function ($db) {
     .then(function(data) {
       return res.redirect('/login');
     })
-    .catch((err)=> {
-      return res.redirect(`/signin?errorMsg=${encodeURI(err)}`);
+    .catch(function(err) {
+      return res.redirect('/signin?errorMsg=' + encodeURI(err));
     });
   };
 
   var login = function(req, res, next) {
-    return new Promise((resolve, reject) => {
+    return new Promise(function(resolve, reject) {
       if (!req.body.email || !req.body.password) {
         return reject('Email or password is not define.');
       }
       return resolve();
     })
-    .then(() => {
+    .then(function() {
       var data = {
         email: req.body.email,
         grant_type: 'password',
         password: req.body.password
       };
 
-      return new Promise((resolve, reject) => {
+      return new Promise(function(resolve, reject) {
         request
         .post(oauthHost + '/oauth/token')
         .set('Cache-Control', 'no-cache')
@@ -67,7 +67,7 @@ module.exports = function ($db) {
           return res.ok ?  resolve(res.body) : reject(err.response.body.message);
         });
       });
-    }).then((data)=> {
+    }).then(function(data) {
       var payload = {
         token: data
       };
@@ -79,12 +79,12 @@ module.exports = function ($db) {
 
       res.cookie('token', token, { maxAge: $rest.session.maxAge });
 
-      return new Promise((resolve, reject) => {
+      return new Promise(function(resolve, reject) {
         request
         .get(oauthHost + '/oauth/users/info')
         .set('Cache-Control', 'no-cache')
         .set('Content-Type', 'application/x-www-form-urlencoded')
-        .set('Authorization', `Bearer ${data.access_token}`)
+        .set('Authorization', 'Bearer ' + data.access_token)
         .end(function(err, data) {
           if (data.ok) {
             if (process.env.NODE_ENV === 'dev') {
@@ -102,14 +102,14 @@ module.exports = function ($db) {
           }
         });
       });
-    }).catch((err)=> {
+    }).catch(function(err) {
       if (err === 'Your account is not activated yet!') {
-        return res.redirect(`/user/${req.locale}/verify?email=${req.body.email}`);
+        return res.redirect('/user/' + req.locale + '/verify?email=' + req.body.email);
       } else {
         if(req.clientAppInfo.isMobile) {
-          return res.redirect(`/mobile/login?errorMsg=${encodeURI(err)}`);
+          return res.redirect('/mobile/login?errorMsg=' + encodeURI(err));
         } else {
-          return res.redirect(`/login?errorMsg=${encodeURI(err)}`);
+          return res.redirect('/login?errorMsg=' + encodeURI(err));
         }
       }
     });
@@ -117,20 +117,20 @@ module.exports = function ($db) {
 
   var checkCookies = function(req, res, next) {
     var info = {};
-    return new Promise((resolve, reject) => {
+    return new Promise(function(resolve, reject) {
       /* 檢查cookie中的token是否合法 */
       jwt.verify(req.body.token, $oauth.JWT_SECRET, function(err, payload) {
         return err ? reject(err) : resolve(payload.token);
       });
 
-    }).then((token) => {
+    }).then(function(token) {
       /* 帶去 Oauth 檢查 */
       var data = {
         refresh_token: token.refresh_token,
         grant_type: 'refresh_token'
       };
 
-      return new Promise((resolve, reject) => {
+      return new Promise(function(resolve, reject) {
         request
         .post(oauthHost + '/oauth/token')
         .set('Cache-Control', 'no-cache')
@@ -142,14 +142,14 @@ module.exports = function ($db) {
         });
       });
 
-    }).then((token) => {
+    }).then(function(token) {
       /* 去抓 user info */
-      return new Promise((resolve, reject) => {
+      return new Promise(function(resolve, reject) {
         request
         .get(oauthHost + '/oauth/users/info')
         .set('Cache-Control', 'no-cache')
         .set('Content-Type', 'application/x-www-form-urlencoded')
-        .set('Authorization', `Bearer ${token.access_token}`)
+        .set('Authorization', 'Bearer ' + token.access_token)
         .end(function(err, res) {
           if (res.ok) {
             info.access_token = token.access_token;
@@ -178,11 +178,11 @@ module.exports = function ($db) {
         });
       });
 
-    }).then((info) => {
+    }).then(function(info) {
       return res.send(200, {
         results: info
       });
-    }).catch((err) => {
+    }).catch(function(err) {
       return res.send(401, {
         error: err,
         message: 'token is invalid.',
@@ -192,22 +192,22 @@ module.exports = function ($db) {
 
   var loginInterface = function(req, res, next) {
     if (req.cookies.token) {
-      return new Promise((resolve, reject) => {
+      return new Promise(function(resolve, reject) {
         /* 解碼 cookie 內的 token */
         jwt.verify(req.cookies.token, $oauth.JWT_SECRET, function(err, payload) {
           return err ? reject(err) : resolve(payload.token);
         });
 
-      }).then((token) => {
+      }).then(function(token) {
 
         req.body.token = token;
-        return new Promise((resolve, reject) => {
+        return new Promise(function(resolve, reject) {
           /* 檢查 token 是否 active */
           request
           .get(oauthHost + '/oauth/users/info')
           .set('Cache-Control', 'no-cache')
           .set('Content-Type', 'application/x-www-form-urlencoded')
-          .set('Authorization', `Bearer ${token.access_token}`)
+          .set('Authorization', 'Bearer ' + token.access_token)
           .end(function(err, res) {
             return res.ok ? resolve('active') : reject({
               code: err.response.body.code,
@@ -216,30 +216,30 @@ module.exports = function ($db) {
             });
           });
 
-        }).then((data) => {
+        }).then(function(data) {
 
           return data;
 
-        }).catch((err) => {
+        }).catch(function(err) {
 
           var data = {
             refresh_token: token.refresh_token,
             grant_type: 'refresh_token'
           };
           /* 若非 active 則拿 refreshtoken 重新洗新的 token  */
-          return new Promise((resolve, reject) => {
+          return new Promise(function(resolve, reject) {
             request
             .post(oauthHost + '/oauth/token')
             .set('Cache-Control', 'no-cache')
             .set('Content-Type', 'application/x-www-form-urlencoded')
             .send(data)
-            .set('Authorization', `Basic ${req.basic_token}`)
+            .set('Authorization', 'Basic ' + req.basic_token)
             .end(function(err, res) {
               return res.ok ?  resolve(res.body) : reject(err.response.body.message);
             });
           });
         });
-      }).then((data) => {
+      }).then(function(data) {
 
         if (data !== 'active') {
           /* 如果非 active，就會把這些製作好的 token 塞入 cookie 中 */
@@ -258,7 +258,7 @@ module.exports = function ($db) {
         }
         return res.render('app/build/index.html');
 
-      }).catch((err) => {
+      }).catch(function(err) {
         /* 有任何錯誤就返回首頁 */
         res.clearCookie('token', { path: '/' });
         if (process.env.NODE_ENV === 'dev') {

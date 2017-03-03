@@ -116,7 +116,7 @@ module.exports = function(devices) {
     },
 
     deleteDevice: function(query) {
-      let update = {};
+      var update = {};
       update.updatedAt = new Date().getTime();
       update.isActive = false;
       return new Promise(function(resolve, reject) {

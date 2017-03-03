@@ -8,7 +8,7 @@ module.exports = function ($db) {
 
     if (Object.keys(format).length > 0) {
       Object.keys(format).forEach(function(k, v) {
-        let formatObject = {};
+        var formatObject = {};
         formatObject.id = format[k].id;
         formatObject.value = format[k].value;
         format[k] = formatObject;
