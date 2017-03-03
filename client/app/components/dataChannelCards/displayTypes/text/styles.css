@@ -1,10 +1,18 @@
 .base {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  flex-direction: row;
+}
+
+.base > div:first-child {
+  width: 150px;
 }
 
 .input {
   width: 84px;
+  flex-grow: 1;
+}
+
+.requiredLabel:after {
+  content: ' *';
+  color: #D0021B;
 }

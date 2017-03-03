@@ -1,6 +1,6 @@
 .dialogBody {
-  margin-right: 50px;
-  margin-left: 50px;
+  padding: 20px 70px;
+  padding-bottom: 10px;
 }
 .input > div{
   width: 100%;

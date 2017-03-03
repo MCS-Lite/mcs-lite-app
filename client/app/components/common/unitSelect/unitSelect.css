@@ -1,0 +1,81 @@
+.base {
+  width: 328px;
+}
+
+.inputSelectError input,
+.inputSelectError input:focus {
+  border: 1px solid #F5364E;
+  box-shadow: 0 0 3px 0 rgba(245, 54, 77, 0.5);
+  border-right: 0;
+}
+
+.inputSelectError button {
+  border: 1px solid #F5364E;
+  box-shadow: 0 0 3px 0 rgba(245, 54, 77, 0.5);
+  border-left: 0;
+}
+
+.hint {
+  color: red;
+  margin-left: 3px;
+}
+
+.noResultsContent {
+  background: white;
+  border: 1px solid #D1D2D3;
+  box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+  position: absolute;
+  z-index: 99;
+  margin-top: 5px;
+  width: 100%;
+  padding: 10px 15px 20px 15px;
+}
+
+.noResultsHint {
+  font-size: 13px;
+  color: #999A94;
+  line-height: 17px;
+}
+
+.column {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.noResultsContentInput,
+.noResultsContentInputWrapper {
+  width: 230px;
+  flex-grow: 0;
+}
+
+.buttonWrap {
+  display: flex;
+  margin-top: 40px;
+}
+
+.unitList {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.unitName {
+  font-family: RionaSans-Light;
+  font-size: 13px;
+  line-height: 16px;
+}
+
+.unitSymbol {
+  float: right;
+  font-family: RionaSans-Light;
+  font-size: 13px;
+  color: #999A94;
+  line-height: 16px;
+}
+
+.save {
+  margin-left: 10px;
+}

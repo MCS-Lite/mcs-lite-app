@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 import Button from 'mtk-ui/lib/Button';
 
@@ -9,22 +9,21 @@ import DialogFooter from 'mtk-ui/lib/DialogFooter';
 import InputForm from 'mtk-ui/lib/InputForm';
 import InputText from 'mtk-ui/lib/InputText';
 import InputTextarea from 'mtk-ui/lib/InputTextarea';
-import Hr from 'mtk-ui/lib/Hr';
-import InputCheckbox from 'mtk-ui/lib/InputCheckbox';
 import InputSelect from 'mtk-ui/lib/InputSelect';
 
-import { default as compose } from 'recompose/compose';
-import { default as pure } from 'recompose/pure';
-import { default as withState } from 'recompose/withState';
-import { default as withHandlers } from 'recompose/withHandlers';
-
-import { data } from '../../../../utils/dataChannelTypes';
-import Preview from '../../preview';
+import compose from 'recompose/compose';
+import pure from 'recompose/pure';
+import withState from 'recompose/withState';
+import withHandlers from 'recompose/withHandlers';
+import withProps from 'recompose/withProps';
 
 import { withGetMessages } from 'react-intl-inject-hoc';
 import messages from '../../messages';
 
-import styles from './styles.css'
+import { data } from '../../../../utils/dataChannelTypes';
+import Preview from '../../preview';
+
+import styles from './styles.css';
 
 const CreateDataChannelDialog = ({
   isCreateDataChannel,
@@ -38,109 +37,96 @@ const CreateDataChannelDialog = ({
   submitCreateDataChannel,
   onDataChannelTypeChange,
   dataChannelType,
+  dataChannelTypesOptions,
   format,
   setFormat,
   onFormatChange,
-  displayCardType,
   error,
   setError,
   getMessages: t,
-}) => {
-  let dataChannelTypesOptions = [];
-  data.forEach((k,v)=>{
-    if (displayCardType === k.type) {
-      let value = '';
-      if (k.type === 1) {
-        value = k.dataChannelTypeName + '_Control';
-      } else if (k.type ===2){
-        value = k.dataChannelTypeName + '_Display';
-      }
-      k.value= value;
-      dataChannelTypesOptions.push({
-        value: value,
-        children: k.dataChannelTypeName,
-      });
-    }
-  });
-
-  return (
-    <Dialog
-      show={isCreateDataChannel}
-      size="large"
-      onHide={closeCreateDataChannel}
-    >
-      <DialogHeader>
-        <div>Create test device</div>
-      </DialogHeader>
-      <DialogBody className={styles.dialogBody}>
-        <InputForm
-          kind="horizontal"
-          style={{ backgroundColor: 'white' }}
-        >
-          <InputText
-            required
-            label={t('dataChannelName')}
-            value={dataChannelName}
-            placeholder={t('inputDataChannelName')}
-            onChange={onDataChannelNameChange}
-            error={error.dataChannelName ? t('required'): ''}
-          />
-          <InputText
-            required
-            label={t('dataChannelId')}
-            value={dataChannelId}
-            placeholder={t('inputDataChannelId')}
-            onChange={onDataChannelIdChange}
-            error={error.dataChannelId ? t('required'): ''}
-          />
-          <InputTextarea
-            label={t('description')}
-            rows="4"
-            value={dataChannelDescription}
-            style={{ resize: 'none' }}
-            placeholder={t('inputDataChannelDescription')}
-            onChange={onDataChannelDescriptionChange}
-          />
-          <InputSelect
-            label={t('dataChannelType')}
-            placeholder={t('inputDataChannelType')}
-            items={dataChannelTypesOptions}
-            filterFunc={() => true}
-            className={styles.input}
-            style={{ flex: 1 }}
-            error={error.dataChannelType ? t('required'): ''}
-            valueRenderer={(value = {}) => {
-              let children;
-              dataChannelTypesOptions.forEach((k, v) => {
-                if (k.value === value) {
-                  children = k.children;
-                }
-              })
-              return children;
-            }}
-            value={dataChannelType}
-            onChange={onDataChannelTypeChange}
-          />
-        </InputForm>
-        <p>{t('templateHint')}</p>
-        <Preview
-          displayName={dataChannelType}
-          format={format}
-          setFormat={setFormat}
-          error={error}
-          setError={setError}
-          onFormatChange={onFormatChange}
+  retrieveUnitTypes,
+  createUnitTypes,
+  unitTypes,
+}) => (
+  <Dialog
+    show={isCreateDataChannel}
+    size="large"
+    onHide={closeCreateDataChannel}
+  >
+    <DialogHeader>
+      <div>{t('addNewDataChannel')}</div>
+    </DialogHeader>
+    <DialogBody className={styles.dialogBody}>
+      <InputForm
+        kind="horizontal"
+        style={{ backgroundColor: 'white' }}
+      >
+        <InputText
+          required
+          label={t('dataChannelName')}
+          value={dataChannelName}
+          placeholder={t('inputDataChannelName')}
+          onChange={onDataChannelNameChange}
+          error={error.dataChannelName ? t('required') : ''}
         />
-      </DialogBody>
-      <DialogFooter>
-        <Button kind="cancel" onClick={closeCreateDataChannel}>Cancel</Button>
-        <Button kind="primary" onClick={submitCreateDataChannel}>
-          Create
-        </Button>
-      </DialogFooter>
-    </Dialog>
-  );
-}
+        <InputText
+          required
+          label={t('dataChannelId')}
+          value={dataChannelId}
+          placeholder={t('inputDataChannelId')}
+          onChange={onDataChannelIdChange}
+          error={error.dataChannelId ? t('required') : ''}
+        />
+        <InputTextarea
+          label={t('description')}
+          rows="4"
+          value={dataChannelDescription}
+          style={{ resize: 'none' }}
+          placeholder={t('inputDataChannelDescription')}
+          onChange={onDataChannelDescriptionChange}
+        />
+        <InputSelect
+          label={t('dataChannelType')}
+          placeholder={t('inputDataChannelType')}
+          items={dataChannelTypesOptions}
+          filterFunc={() => true}
+          className={styles.input}
+          style={{ flex: 1 }}
+          error={error.dataChannelType ? t('required') : ''}
+          valueRenderer={(value = {}) => {
+            let children;
+            dataChannelTypesOptions.forEach((k) => {
+              if (k.value === value) {
+                children = k.children;
+              }
+            });
+            return children;
+          }}
+          value={dataChannelType}
+          onChange={onDataChannelTypeChange}
+        />
+      </InputForm>
+      <p>{t('templateHint')}</p>
+      <Preview
+        displayName={dataChannelType}
+        format={format}
+        setFormat={setFormat}
+        error={error}
+        setError={setError}
+        onFormatChange={onFormatChange}
+        retrieveUnitTypes={retrieveUnitTypes}
+        createUnitTypes={createUnitTypes}
+        unitTypes={unitTypes}
+      />
+    </DialogBody>
+    <DialogFooter>
+      <Button kind="cancel" onClick={closeCreateDataChannel}>Cancel</Button>
+      <Button kind="primary" onClick={submitCreateDataChannel}>
+        Create
+      </Button>
+    </DialogFooter>
+  </Dialog>
+);
 
 export default compose(
   pure,
@@ -151,28 +137,53 @@ export default compose(
   withState('channelType', 'setChannelType', {}),
   withState('format', 'setFormat', {}),
   withState('error', 'setError', {}),
+  withProps(({ displayCardType }) => {
+    const treatedData = data.map((k) => {
+      const value = k.type === 1
+        ? `${k.dataChannelTypeName}_Control`
+        : `${k.dataChannelTypeName}_Display`;
+      return { ...k, value };
+    });
+
+    const dataChannelTypesOptions = treatedData.reduce((acc, k) => {
+      if (displayCardType === k.type) {
+        return [
+          ...acc,
+          { value: k.value, children: k.dataChannelTypeName },
+        ];
+      }
+      return acc;
+    }, []);
+
+    return {
+      data: treatedData,
+      dataChannelTypesOptions,
+    };
+  }),
   withHandlers({
-    closeCreateDataChannel: props => (e) => props.setIsCreateDataChannel(false),
+    closeCreateDataChannel: props => () => props.setIsCreateDataChannel(false),
     onDataChannelNameChange: props => (e) => {
-      props.error.dataChannelName = false;
-      props.setError(props.error);
-      props.setDataChannelName(e.target.value)
+      props.setError({
+        ...props.error,
+        dataChannelName: false,
+      });
+      props.setDataChannelName(e.target.value);
     },
     onDataChannelIdChange: props => (e) => {
-      props.error.dataChannelId = false;
-      props.setError(props.error);
-      props.setDataChannelId(e.target.value)
-    },
-    onDataChannelDescriptionChange: props => (e) => props.setDataChannelDescription(e.target.value),
-    onDataChannelTypeChange: props => (e, value) => {
-      let channelType = {};
-
-      data.forEach((k,v)=>{
-        if (k.value === value) {
-          channelType.id = k.dataChannelTypeId;
-          channelType.name = k.dataChannelTypeName;
-        }
+      props.setError({
+        ...props.error,
+        dataChannelId: false,
       });
+      props.setDataChannelId(e.target.value);
+    },
+    onDataChannelDescriptionChange: props => e => props.setDataChannelDescription(e.target.value),
+    onDataChannelTypeChange: props => (e, value) => {
+      const { dataChannelTypeId, dataChannelTypeName } =
+        props.data.find((k = {}) => k.value === value) || {};
+      const channelType = {
+        id: dataChannelTypeId,
+        name: dataChannelTypeName,
+      };
 
       props.setChannelType(channelType);
       props.setDataChannelType(value);
@@ -180,9 +191,19 @@ export default compose(
       props.setError({});
     },
     onFormatChange: props => (key, value) => {
-      props.format[key].value = value;
+      props.setFormat({
+        ...props.format,
+        [key]: {
+          ...props.format[key],
+          value,
+        },
+      });
+      props.setError({
+        ...props.error,
+        [key]: false,
+      });
     },
-    submitCreateDataChannel: props => (e) => {
+    submitCreateDataChannel: props => () => {
       props.setError({});
       let data = {};
 
@@ -199,13 +220,9 @@ export default compose(
       if (data.name === '') error.dataChannelName = true;
       if (!data.channelType.id) error.dataChannelType = true;
 
-      Object.keys(props.format).forEach((k, v) => {
-        if (props.format[k].required && (!props.format[k].value || props.format[k].value == '')) {
+      Object.keys(props.format).forEach((k) => {
+        if (props.format[k].required && (!props.format[k].value || props.format[k].value === '')) {
           error[k] = true;
-        }
-
-        if (props.format[k].displayType === 'unitType') {
-          props.format[k].value = 'test';
         }
       });
 
@@ -219,4 +236,4 @@ export default compose(
     },
   }),
   withGetMessages(messages, 'PrototypeDetail'),
- )(CreateDataChannelDialog)
+)(CreateDataChannelDialog);

@@ -231,16 +231,6 @@ const messages = defineMessages({
     description: '',
     defaultMessage: '名稱',
   },
-  'PrototypeDetail.deviceId': {
-    id: 'PrototypeDetail.deviceId',
-    description: '',
-    defaultMessage: 'deviceId',
-  },
-  'PrototypeDetail.deviceKey': {
-    id: 'PrototypeDetail.deviceKey',
-    description: '',
-    defaultMessage: 'deviceKey',
-  },
   'PrototypeDetail.lastDataPointTime': {
     id: 'PrototypeDetail.lastDataPointTime',
     description: '',

@@ -1,0 +1,14 @@
+.textWrap {
+  width: 50%;
+  margin-bottom: 10px;
+}
+
+.textWrap:last-child {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.unitTypeWrap {
+  width: 100%;
+  margin-bottom: 10px;
+}
