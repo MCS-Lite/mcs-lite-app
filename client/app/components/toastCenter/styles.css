@@ -1,0 +1,34 @@
+.base {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding-bottom: 20px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.message {
+  width: 400px;
+}
+
+.transitionEnter {
+  opacity: 0.01;
+}
+
+.transitionEnter.transitionEnterActive {
+  opacity: 1;
+  transition: opacity 300ms ease-in;
+}
+
+.transitionLeave {
+  display: 1;
+}
+
+.transitionLeave.transitionLeaveActive {
+  opacity: 0.01;
+  transition: opacity 300ms ease-in;
+}
