@@ -5,14 +5,14 @@ import withState from 'recompose/withState';
 
 import Breadcrumb from 'mtk-ui/lib/Breadcrumb';
 
+import { withGetMessages } from 'react-intl-inject-hoc';
+import messages from './messages';
+
 import Footer from '../footer';
 import Header from '../header';
 import ProfilePanel from './panel';
 import EditUserNameDialog from './dialogs/editUserNameDialog';
 import ChangePasswordDialog from './dialogs/changePasswordDialog';
-
-import messages from './messages';
-import { withGetMessages } from 'react-intl-inject-hoc';
 
 import styles from './styles.css';
 
@@ -21,6 +21,8 @@ const Profile = ({
   setDialogShow,
   dialogShow,
   editUserName,
+  changePassword,
+  pushToast,
   getMessages: t,
 }) => {
   const breadcrumbs = [
@@ -33,7 +35,7 @@ const Profile = ({
   return (
     <div>
       <Header
-        imageUrl='http://img.mediatek.com/150/mtk.linkit/profile/3492e14e-f0fb-4718-a9a7-a49e95d8cb30.jpeg'
+        imageUrl="http://img.mediatek.com/150/mtk.linkit/profile/3492e14e-f0fb-4718-a9a7-a49e95d8cb30.jpeg"
       />
       <div className={styles.base}>
         <Breadcrumb items={breadcrumbs} />
@@ -50,11 +52,19 @@ const Profile = ({
           userName={main.userName}
           setDialogShow={setDialogShow}
           editUserName={editUserName}
+          pushToast={pushToast}
         />
       }
-      { dialogShow === 'changePassword' && <ChangePasswordDialog setDialogShow={setDialogShow} />}
+      {
+        dialogShow === 'changePassword' &&
+        <ChangePasswordDialog
+          setDialogShow={setDialogShow}
+          changePassword={changePassword}
+          pushToast={pushToast}
+        />
+      }
     </div>
-  )
+  );
 };
 
 export default compose(

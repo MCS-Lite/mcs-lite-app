@@ -1,5 +1,6 @@
 import constants from 'react-constants';
 
 export default constants([
-  "EDITUSERNAMESUCCESS",
+  'EDITUSERNAMESUCCESS',
+  'CHANGEPASSWORDSUCCESS',
 ]);

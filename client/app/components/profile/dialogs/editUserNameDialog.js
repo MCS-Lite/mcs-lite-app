@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 import { Button } from 'mcs-lite-ui';
 import Dialog from 'mtk-ui/lib/Dialog';
@@ -13,10 +13,10 @@ import pure from 'recompose/pure';
 import withState from 'recompose/withState';
 import withHandlers from 'recompose/withHandlers';
 
-import messages from '../messages'
 import { withGetMessages } from 'react-intl-inject-hoc';
+import messages from '../messages';
 
-import styles from './dialog.css'
+import styles from './dialog.css';
 
 const EditUserNameDialog = ({
   closeDialog,
@@ -53,7 +53,7 @@ const EditUserNameDialog = ({
       </Button>
     </DialogFooter>
   </Dialog>
-)
+);
 
 export default compose(
   pure,
@@ -63,8 +63,11 @@ export default compose(
     closeDialog: props => () => props.setDialogShow('none'),
     onUserNameChange: props => e => props.setUserName(e.target.value),
     onSave: props => () => {
-      props.editUserName(props.userName);
+      props.editUserName(props.userName)
+        .then(() => {
+          props.pushToast({ kind: 'success', message: props.getMessages('editUserNameSuccess') });
+        });
       props.setDialogShow('none');
     },
-  })
-)(EditUserNameDialog)
+  }),
+)(EditUserNameDialog);
