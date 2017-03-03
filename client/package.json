@@ -74,6 +74,7 @@
     "img-loader": "^1.2.0",
     "json-loader": "^0.5.2",
     "mcs-displaycard-integer": "0.0.2",
+    "mcs-lite-connect": "^0.1.0",
     "mcs-lite-icon": "^0.1.1",
     "mcs-lite-theme": "^0.1.0",
     "mcs-lite-ui": "^0.1.2",

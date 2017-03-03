@@ -60,6 +60,5 @@ const DisplayStringLayout = ({
 
 export default compose(
   pure,
-  withState('value', 'setValue', props => props.value || 0),
   withState('updatedAt', 'setUpdatedAt', props => props.updatedAt || ''),
 )(DisplayStringLayout);
