@@ -14,8 +14,10 @@ const Prototypes = ({
   prototypes,
   createTestDevice,
   createDataChannel,
+  deleteDataChannel,
   retrieveUnitTypes,
   createUnitTypes,
+  pushToast,
   ...props
 }) => {
   const {
@@ -51,10 +53,12 @@ const Prototypes = ({
           devices={devices}
           datachannels={datachannels}
           createDataChannel={createDataChannel}
+          deleteDataChannel={deleteDataChannel}
           prototypeId={prototypeId}
           retrieveUnitTypes={retrieveUnitTypes}
           createUnitTypes={createUnitTypes}
           unitTypes={unitTypes}
+          pushToast={pushToast}
         />
       </div>
       <Footer />

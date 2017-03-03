@@ -16,7 +16,7 @@ import styles from './unitSelect.css';
 const wrapperProps = { className: styles.noResultsContentInputWrapper };
 
 const NoResultsContent = ({
-  errorMsg,
+  error,
   onCancelNewUnitValue,
   onSubmitNewUnit,
   generalUnitName,
@@ -39,7 +39,7 @@ const NoResultsContent = ({
         wrapperProps={wrapperProps}
         value={generalUnitName}
         onChange={onUnitNameChange}
-        error={errorMsg}
+        error={error}
         placeholder={t('unitNamePlaceholder')}
       />
     </div>
@@ -75,6 +75,7 @@ const NoResultsContent = ({
 export default compose(
   pure,
   withState('generalUnitSymbol', 'setGeneralUnitSymbol', ''),
+  withState('error', 'setError', false),
   withHandlers({
     onUnitNameChange: props => e => props.setGeneralUnitName(e.target.value),
     onUnitSymbolChange: props => e => props.setGeneralUnitSymbol(e.target.value),
@@ -87,10 +88,14 @@ export default compose(
         name: props.generalUnitName,
         symbol: props.generalUnitSymbol,
       };
-      props.createUnitTypes(newUnitType);
-      props.setGeneralUnitName(props.generalUnitName);
-      props.setGeneralUnitSymbol('');
-      props.onFormatChange('unit', newUnitType);
+      if (props.generalUnitName.length === 0) {
+        props.setError(true);
+      } else {
+        props.createUnitTypes(newUnitType);
+        props.setGeneralUnitName(props.generalUnitName);
+        props.setGeneralUnitSymbol('');
+        props.onFormatChange('unit', newUnitType);
+      }
     },
   }),
   withGetMessages(messages, 'UnitSelect'),

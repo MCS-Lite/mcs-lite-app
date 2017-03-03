@@ -36,7 +36,7 @@ const UnitType = ({
     {
       error &&
       <div className={styles.errorMessage}>
-        test
+        {t('unitTypeError')}
       </div>
     }
   </div>

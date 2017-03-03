@@ -35,6 +35,9 @@ const WrapperLayout = ({
   description,
   isPrototype,
   isDevice,
+  prototypeId,
+  deleteDataChannel,
+  pushToast,
   ...props
 }) => (
   <DataChannelCard
@@ -46,6 +49,10 @@ const WrapperLayout = ({
       <More
         isPrototype={isPrototype}
         isDevice={isDevice}
+        dataChannelId={props.id}
+        prototypeId={prototypeId}
+        deleteDataChannel={deleteDataChannel}
+        pushToast={pushToast}
       />
     }
   >

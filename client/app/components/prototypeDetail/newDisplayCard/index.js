@@ -23,6 +23,7 @@ const NewDisplayCardLayout = ({
   retrieveUnitTypes,
   createUnitTypes,
   unitTypes,
+  pushToast,
 }) => (
   <div className={styles.base}>
     <p>{t('addDataChannelNow')}</p>
@@ -40,6 +41,7 @@ const NewDisplayCardLayout = ({
       retrieveUnitTypes={retrieveUnitTypes}
       createUnitTypes={createUnitTypes}
       unitTypes={unitTypes}
+      pushToast={pushToast}
     />
   </div>
 );
