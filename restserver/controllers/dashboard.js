@@ -18,12 +18,20 @@ module.exports = function ($db) {
     })
     .then(function(data) {
       prototypeData.userPrototypes = data[0];
-      return devices.retrievePrototypeDevices({
-        prototypeId: data[0].prototypeId,
-      });
+      if (data.length !== 0) {
+        return devices.retrievePrototypeDevices({
+          prototypeId: data[0].prototypeId,
+        });
+      } else {
+        return [];
+      }
     })
     .then(function(data) {
-      prototypeData.userPrototypes.devices = data;
+      if (prototypeData.userPrototypes) {
+        prototypeData.userPrototypes.devices = data
+      } else {
+        prototypeData.userPrototypes = {};
+      }
       return res.send(200, { data: prototypeData });
     })
     .catch(function(err) {
