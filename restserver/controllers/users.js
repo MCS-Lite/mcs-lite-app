@@ -9,6 +9,7 @@ module.exports = function ($db) {
   var users = $db.users;
 
   var signIn = function(req, res, next) {
+
     return new Promise(function(resolve, reject) {
       if (!req.body.email || !req.body.password || !req.body.userName) {
         return reject('Email or password or userName is not define.');
@@ -24,7 +25,7 @@ module.exports = function ($db) {
       };
 
       return new Promise(function(resolve, reject) {
-        request
+        return request
         .post(host + '/users/regist')
         .set('Cache-Control', 'no-cache')
         .set('Content-Type', 'application/json')
@@ -35,9 +36,16 @@ module.exports = function ($db) {
       });
     })
     .then(function(data) {
+      if (process.env.NODE_ENV === 'dev') {
+        return res.redirect('http://localhost:8081/login');
+      }
       return res.redirect('/login');
+
     })
     .catch(function(err) {
+      if (process.env.NODE_ENV === 'dev') {
+        return res.redirect('http://localhost:8081/signin?errorMsg=' + encodeURI(err));
+      }
       return res.redirect('/signin?errorMsg=' + encodeURI(err));
     });
   };
@@ -45,7 +53,7 @@ module.exports = function ($db) {
   var login = function(req, res, next) {
     return new Promise(function(resolve, reject) {
       if (!req.body.email || !req.body.password) {
-        return reject('Email or password is not define.');
+        return reject('You don\'t input the Email or Password.');
       }
       return resolve();
     })
@@ -64,7 +72,15 @@ module.exports = function ($db) {
         .send(data)
         .set('Authorization', 'Basic ' + req.basicToken)
         .end(function(err, res) {
-          return res.ok ?  resolve(res.body) : reject(err.response.body.message);
+          var errMsg;
+          if (err) {
+            if(err.response.body.error_description.code === 401) {
+              errMsg = 'Email or password is not correct.';
+            } else {
+              errMsg = err.response.body.message;
+            }
+          }
+          return res.ok ?  resolve(res.body) : reject(errMsg);
         });
       });
     }).then(function(data) {
@@ -109,6 +125,9 @@ module.exports = function ($db) {
         if(req.clientAppInfo.isMobile) {
           return res.redirect('/mobile/login?errorMsg=' + encodeURI(err));
         } else {
+          if (process.env.NODE_ENV === 'dev') {
+            return res.redirect('http://localhost:8081/login?errorMsg=' + encodeURI(err));
+          }
           return res.redirect('/login?errorMsg=' + encodeURI(err));
         }
       }
