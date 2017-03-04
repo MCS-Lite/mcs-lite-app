@@ -1,5 +1,5 @@
 import React from 'react';
-import { compose, pure, withState } from 'recompose';
+import { compose, pure, mapProps } from 'recompose';
 
 import DisplayCardInteger from '../../mcsDisplayCardInteger';
 import DisplayCardString from '../../mcsDisplayCardString';
@@ -46,10 +46,8 @@ const WrapperLayout = ({
 
 export default compose(
   pure,
-  withState('value', 'setValue', (props) => {
-    if (!props.value) {
-      return { value: null };
-    }
-    return props.value;
-  }),
+  mapProps(props => ({
+    ...props,
+    value: props.value || { value: null },
+  })),
 )(WrapperLayout);

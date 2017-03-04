@@ -4,28 +4,18 @@ import {
   pure,
   withHandlers,
   withState,
-  lifecycle,
 } from 'recompose';
-import {
-  WebsocketStore,
-  WebsocketActions,
-} from 'react-websocket-flux';
-import { w3cwebsocket } from 'websocket';
-import assign from 'object-assign';
-import { EventEmitter } from 'fbemitter';
-
+import R from 'ramda';
+import { connectSocket } from 'mcs-lite-connect';
 import DataChannelWrapper from '../../dataChannelCards/common/wrapper';
 import styles from './styles.css';
 
-const emitter = new EventEmitter();
 const DataChannelContentLayout = ({
   datachannels,
   onSubmit,
-  isUpdate,
 }) => (
   <div className={styles.dataChannelContent}>
     {
-      typeof datachannels === 'object' && isUpdate &&
       datachannels.map((dataChannel) => {
         let displayName = dataChannel.channelType.name;
         if (dataChannel.type === 1) {
@@ -55,56 +45,29 @@ const DataChannelContentLayout = ({
 
 export default compose(
   pure,
-  withState('emitter', 'setEmitter', {}),
-  withState('isUpdate', 'setIsUpdate', false),
   withState('datachannels', 'setDatachannels', props => props.datachannels),
   withHandlers({
     onMessage: props => (data) => {
-      props.setIsUpdate(false);
-      props.datachannels.forEach((k) => {
+      const datachannels = R.clone(props.datachannels);
+      datachannels.forEach((k) => {
         if (k.datachannelId === data.datachannelId) {
-          if (!k.datapoints) k.datapoints = {values: {}};
+          if (!k.datapoints) k.datapoints = { values: {}};
           k.datapoints.values = data.values;
           k.datapoints.updatedAt = data.updatedAt || new Date().getTime();
         }
       });
-      props.setIsUpdate(true);
-    },
-
-    onSubmit: () => (id, values) => {
-      emitter.emit('submit', id, values);
+      props.setDatachannels(datachannels);
     },
   }),
-  lifecycle({
-    componentWillMount() {
-      WebsocketActions.connect(this.props.server + '/viewer');
-      let _this = this;
-      assign(new w3cwebsocket(this.props.server), {
-        onopen: function() {
-          const _ = this;
-          _this.props.setEmitter(
-            emitter.addListener(
-              'submit',
-              (id, values) => {
-                _.send(JSON.stringify(
-                  {
-                    datachannelId: id,
-                    values,
-                  },
-                ));
-              },
-            ),
-          );
-        },
-      });
-      this.props.setIsUpdate(true);
-    },
-    componentDidMount() {
-      WebsocketStore.addMessageListener(this.props.onMessage);
-    },
-    componentWillUnmount() {
-      this.props.emitter.remove();
-      WebsocketStore.removeMessageListener(this.props.onMessage);
+  connectSocket(
+    props => props.server,                            // 1. WebSocket URL
+    props => datapoint => props.onMessage(datapoint), // 2. Viwer
+    'sendMessage',                                    // 3. Sender
+  ),
+  withHandlers({
+    onSubmit: props => (id, values) => {
+      const datapoint = { datachannelId: id, values };
+      props.sendMessage(JSON.stringify(datapoint)); // Remind: Upload datapoint via WebSocket.
     },
   }),
 )(DataChannelContentLayout);
