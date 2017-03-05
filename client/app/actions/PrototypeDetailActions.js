@@ -52,6 +52,14 @@ export const editDataChannel = (id, dataChannelId, data) => (dispatch, getState)
       data: results.data,
     }));
 
+export const deleteDataChannel = (id, dataChannelId) => (dispatch, getState) =>
+  request(`/prototypes/${id}/datachannels/${dataChannelId}`, 'DELETE', {}, getState().main.access_token)
+    .then(() => request(`/prototypes/${id}`, 'GET', getState().main.access_token))
+    .then(results => dispatch({
+      type: types.RETRIEVEPROTOTYPE,
+      data: results.data,
+    }));
+
 export const retrieveUnitTypes = () => (dispatch, getState) =>
   request('/unittypes', 'GET', getState().main.access_token)
     .then(results => dispatch({

@@ -9,9 +9,11 @@ const DataChannelContentLayout = ({
   datachannels,
   prototypeId,
   createDataChannel,
+  deleteDataChannel,
   retrieveUnitTypes,
   unitTypes,
   createUnitTypes,
+  pushToast,
 }) => (
   <div className={styles.dataChannelContent}>
     <NewDisplayCard
@@ -20,6 +22,7 @@ const DataChannelContentLayout = ({
       retrieveUnitTypes={retrieveUnitTypes}
       createUnitTypes={createUnitTypes}
       unitTypes={unitTypes}
+      pushToast={pushToast}
     />
     {
       typeof datachannels === 'object' &&
@@ -43,6 +46,9 @@ const DataChannelContentLayout = ({
               format={dataChannel.format}
               updatedAt={dataChannel.updatedAt}
               description={dataChannel.datachannelDescription}
+              deleteDataChannel={deleteDataChannel}
+              prototypeId={prototypeId}
+              pushToast={pushToast}
             />
           );
         })

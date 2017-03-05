@@ -1,5 +1,5 @@
-import React from 'react'
-import { FormattedMessage } from 'react-intl'
+import React from 'react';
+import { FormattedMessage } from 'react-intl';
 
 import Button from 'mtk-ui/lib/Button';
 import Dialog from 'mtk-ui/lib/Dialog';
@@ -13,9 +13,9 @@ import withHandlers from 'recompose/withHandlers';
 
 import notice from '../../prototypes/dialogs/notice.png';
 
-import styles from './dialog.css'
+import styles from './dialog.css';
 
-const DeleteDeviceDialog = ({
+const DeleteConfirmDialog = ({
   closeDialog,
   onDeleteSubmit,
 }) => (
@@ -31,7 +31,7 @@ const DeleteDeviceDialog = ({
       />
     </DialogHeader>
     <DialogBody className={styles.dialogBody}>
-      <img src={notice} className={styles.img}/>
+      <img src={notice} className={styles.img} alt="notice" />
       <div>
         <FormattedMessage
           id="Dialogs.Notification"
@@ -54,15 +54,11 @@ const DeleteDeviceDialog = ({
       </Button>
     </DialogFooter>
   </Dialog>
-)
+);
 
 export default compose(
   pure,
   withHandlers({
-    closeDialog: props => () => props.setSeletedMenuValue('none'),
-    onDeleteSubmit: props => () => {
-      props.deleteDevice(props.deviceId);
-      props.setSeletedMenuValue('none');
-    },
-  })
-)(DeleteDeviceDialog)
+    closeDialog: props => () => props.setSelectedMenuValue('none'),
+  }),
+)(DeleteConfirmDialog);

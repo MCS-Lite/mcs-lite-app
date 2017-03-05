@@ -41,6 +41,11 @@ const messages = defineMessages({
     description: '',
     defaultMessage: '馬上新增資料通道！',
   },
+  'PrototypeDetail.addNewDataChannelSuccess': {
+    id: 'PrototypeDetail.addNewDataChannelSuccess',
+    description: '',
+    defaultMessage: '成功！你已經成功新增一個資料通道。',
+  },
   'PrototypeDetail.limit': {
     id: 'PrototypeDetail.limit',
     description: '',
