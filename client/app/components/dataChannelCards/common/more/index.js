@@ -1,115 +1,79 @@
-import React, { Component } from 'react';
-
-import { default as compose } from 'recompose/compose';
-import { default as pure } from 'recompose/pure';
-import { default as withState } from 'recompose/withState';
-import { default as withHandlers } from 'recompose/withHandlers';
+import React from 'react';
+import compose from 'recompose/compose';
+import pure from 'recompose/pure';
+import withState from 'recompose/withState';
+import withHandlers from 'recompose/withHandlers';
 import IconMoreVert from 'mcs-lite-icon/lib/IconMoreVert';
 import Menu from 'mtk-ui/lib/Menu';
+import { withGetMessages } from 'react-intl-inject-hoc';
+import messages from './messages';
+import DeleteConfirmDialog from '../../../common/dialogs/deleteConfirmDialog';
 
-import moreStyles from './more.css';
-import {FormattedMessage} from 'react-intl';
+import styles from './more.css';
 
 const MoreLayout = ({
-  setIsOpen,
+  onMoreClick,
   isOpen,
-  onSelectMenuValueChange,
-  selectMenuValue,
+  onSelectedMenuValueChange,
+  selectedMenuValue,
+  setSelectedMenuValue,
+  onDeleteDataChannel,
   isPrototype,
   isDevice,
-  onDeleteDataChannel,
+  getMessages: t,
 }) => {
   let items = [];
 
   if (isPrototype) {
     items = [
-      {
-        value: 'edit',
-        children:
-          <div>
-            <FormattedMessage
-              id='edit'
-              defaultMessage='編輯'
-            />
-          </div>
-      },{
-        value: 'delete',
-        children:
-          <div>
-            <FormattedMessage
-              id='delete'
-              defaultMessage='刪除'
-            />
-          </div>
-      },
+      { value: 'edit', children: t('edit') },
+      { value: 'delete', children: t('delete') },
     ];
   } else if (isDevice) {
-    items = [
-      {
-        value: 'apiHint',
-        children:
-          <div onClick={()=>{onDeleteDataChannel(prototypeId, id)}}>
-            <FormattedMessage
-              id='apiHint'
-              defaultMessage='API Hint'
-            />
-          </div>
-      },
-    ];
-  }
-  let iconStyle = {};
-  if (!isOpen) {
-    iconStyle = {
-      color: '#0080B4',
-      fontSize: 24,
-      cursor: 'pointer',
-      marginRight: -11,
-      marginTop: 4,
-    };
-  } else {
-    iconStyle = {
-      color: '#0080B4',
-      fontSize: 24,
-      cursor: 'pointer',
-      top: -24,
-      right: -80,
-      position: 'relative',
-    };
+    items = [];
   }
 
   return (
-    <div>
+    <div className={styles.base} onClick={onMoreClick}>
+      <IconMoreVert size={24} className={styles.icon} />
       {
-        (isPrototype || isDevice) ?
-          <div>
-            <IconMoreVert
-              onClick={()=>{setIsOpen(!isOpen)}}
-              style={iconStyle}
-            />
-            {
-              isOpen ?
-                <Menu
-                  className={moreStyles.menu}
-                  onChange={onSelectMenuValueChange}
-                  selectedValue={selectMenuValue}
-                  items={items}
-                />
-              : ''
-            }
-          </div>
-        : ''
+        isOpen &&
+        <div>
+          <div className={styles.backdrop} />
+          <Menu
+            className={styles.menu}
+            onChange={onSelectedMenuValueChange}
+            items={items}
+          />
+        </div>
+      }
+      {
+        selectedMenuValue === 'delete' &&
+        <DeleteConfirmDialog
+          onDeleteSubmit={onDeleteDataChannel}
+          setSelectedMenuValue={setSelectedMenuValue}
+        />
       }
     </div>
   );
-}
+};
 
 export default compose(
   pure,
+  withGetMessages(messages, 'More'),
   withState('isOpen', 'setIsOpen', false),
-  withState('selectMenuValue', 'setSelectMenuValue', ''),
+  withState('selectedMenuValue', 'setSelectedMenuValue', 'none'),
   withHandlers({
-    onSelectMenuValueChange: (props) => () => {
-      // props.setIsOpen(!props.isOpen)
+    onMoreClick: props => () => props.setIsOpen(!props.isOpen),
+    onSelectedMenuValueChange: props => (e, value) => {
+      props.setSelectedMenuValue(value);
+      props.setIsOpen(false);
+    },
+    onDeleteDataChannel: props => () => {
+      props.deleteDataChannel(props.prototypeId, props.dataChannelId)
+        .then(() => props.pushToast({ kind: 'success', message: props.getMessages('deleteSuccess') }))
+        .catch(() => props.pushToast({ kind: 'error', message: props.getMessages('deleteFailed') }));
+      props.setSelectedMenuValue('none');
     },
   }),
-)(MoreLayout)
+)(MoreLayout);

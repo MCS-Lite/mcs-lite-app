@@ -14,7 +14,7 @@ import withHandlers from 'recompose/withHandlers';
 import productBanner from '../../prototypes/productBanner.png';
 import DropdownButton from '../dropdownButton';
 import EditDeviceDialog from '../../common/dialogs/editDeviceDialog';
-import DeleteDeviceDialog from '../../common/dialogs/deleteDeviceDialog';
+import DeleteConfirmDialog from '../../common/dialogs/deleteConfirmDialog';
 
 import styles from './styles.css';
 
@@ -101,7 +101,7 @@ const DeviceCardLayout = ({
       }
       {
         seletedMenuValue === 'delete' &&
-        <DeleteDeviceDialog
+        <DeleteConfirmDialog
           deviceId={deviceId}
           setSeletedMenuValue={setSeletedMenuValue}
           deleteDevice={deleteDevice}

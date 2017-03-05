@@ -14,7 +14,7 @@ import withState from 'recompose/withState';
 import withHandlers from 'recompose/withHandlers';
 
 import EditDeviceDialog from '../../common/dialogs/editDeviceDialog';
-import DeleteDeviceDialog from '../../common/dialogs/deleteDeviceDialog';
+import DeleteConfirmDialog from '../../common/dialogs/deleteConfirmDialog';
 
 import styles from './styles.css';
 
@@ -50,6 +50,7 @@ const DeviceDetailHeaderLayout = ({
   isMenuOpen,
   editDevice,
   deleteDevice,
+  onDeleteDevice,
 }) => {
   return (
     <div className={styles.base}>
@@ -113,10 +114,9 @@ const DeviceDetailHeaderLayout = ({
       }
       {
         seletedMenuValue === 'delete' &&
-        <DeleteDeviceDialog
-          deviceId={deviceId}
+        <DeleteConfirmDialog
           setSeletedMenuValue={setSeletedMenuValue}
-          deleteDevice={deleteDevice}
+          onDeleteSubmit={onDeleteDevice}
         />
       }
     </div>
@@ -132,5 +132,9 @@ export default compose(
     backToPrototype: props => () => browserHistory.push('/prototypes/' + props.prototypeId),
     onDropdownChange: props => (e, value) => props.setSeletedMenuValue(value),
     onDropdownClick: props => () => props.setIsMenuOpen(!props.isMenuOpen),
+    onDeleteDevice: props => () => {
+      props.deleteDevice(props.deviceId);
+      props.setSeletedMenuValue('none');
+    },
   }),
 )(DeviceDetailHeaderLayout);

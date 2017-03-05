@@ -1,11 +1,13 @@
 import { connect } from 'react-redux';
+import { identity } from 'ramda';
 import React, { Component } from 'react';
 import PrototypeDetailLayout from '../components/prototypeDetail';
 import * as prototypeDetailActions from '../actions/PrototypeDetailActions';
+import { pushToast } from '../actions/toastActions';
 
 class Prototype extends Component {
   componentDidMount() {
-    this.props.retrievePrototype(this.props.params.prototypeId)
+    this.props.retrievePrototype(this.props.params.prototypeId);
   }
 
   render() {
@@ -15,8 +17,10 @@ class Prototype extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  return state;
-}
-
-export default connect(mapStateToProps, prototypeDetailActions)(Prototype);
+export default connect(
+  identity,
+  {
+    ...prototypeDetailActions,
+    pushToast,
+  },
+)(Prototype);

@@ -30,6 +30,7 @@ const CreateDataChannelDialog = ({
   retrieveUnitTypes,
   createUnitTypes,
   unitTypes,
+  pushToast,
 }) => (
   <Dialog
     show={isSelectCreateDataChannel}
@@ -66,6 +67,7 @@ const CreateDataChannelDialog = ({
           retrieveUnitTypes={retrieveUnitTypes}
           createUnitTypes={createUnitTypes}
           unitTypes={unitTypes}
+          pushToast={pushToast}
         />
       }
     </DialogBody>

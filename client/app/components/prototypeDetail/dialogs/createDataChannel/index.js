@@ -130,6 +130,7 @@ const CreateDataChannelDialog = ({
 
 export default compose(
   pure,
+  withGetMessages(messages, 'PrototypeDetail'),
   withState('dataChannelName', 'setDataChannelName', ''),
   withState('dataChannelId', 'setDataChannelId', ''),
   withState('dataChannelDescription', 'setDataChannelDescription', ''),
@@ -227,7 +228,11 @@ export default compose(
       });
 
       if (Object.keys(error).length === 0) {
-        props.createDataChannel(props.prototypeId, data);
+        props.createDataChannel(props.prototypeId, data)
+          .then(() => props.pushToast({
+            kind: 'success',
+            message: props.getMessages('addNewDataChannelSuccess'),
+          }));
         props.setIsCreateDataChannel(false);
         props.setIsSelectCreateDataChannel(false);
       } else {
@@ -235,5 +240,4 @@ export default compose(
       }
     },
   }),
-  withGetMessages(messages, 'PrototypeDetail'),
 )(CreateDataChannelDialog);

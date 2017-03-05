@@ -22,6 +22,7 @@ const PanelContentLayout = ({
   setSelectPanelValue,
   selectPanelValue,
   createDataChannel,
+  deleteDataChannel,
   datachannels,
   devices,
   createTestDevice,
@@ -29,6 +30,7 @@ const PanelContentLayout = ({
   retrieveUnitTypes,
   createUnitTypes,
   unitTypes,
+  pushToast,
 }) => (
   <div className={styles.base}>
     <Panel>
@@ -47,10 +49,12 @@ const PanelContentLayout = ({
             <DataChannelContent
               datachannels={datachannels}
               createDataChannel={createDataChannel}
+              deleteDataChannel={deleteDataChannel}
               prototypeId={prototypeId}
               retrieveUnitTypes={retrieveUnitTypes}
               createUnitTypes={createUnitTypes}
               unitTypes={unitTypes}
+              pushToast={pushToast}
             />
         }
         { selectPanelValue === 'Test device' ? <TestDeviceContent createTestDevice={createTestDevice} devices={devices} prototypeId={prototypeId} /> : ''}

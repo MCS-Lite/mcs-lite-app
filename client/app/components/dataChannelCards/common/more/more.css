@@ -1,13 +1,25 @@
 .base {
-  color: #0080B4;
-  font-size: 24px;
-  cursor: pointer;
+  display: flex;
+  flex-direction: column;
   position: relative;
-  top: -20px;
-  right: -80px;
+  color: #00A1DE;
+  margin-right: -10px;
 }
 
 .menu {
-  top: 55px;
-  right: -10px;
+  position: absolute;
+  margin-top: 5px;
+  margin-left: -40px;
+}
+
+.backdrop {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.icon {
+  cursor: pointer;
 }
