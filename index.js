@@ -1,24 +1,23 @@
 var fs = require('fs');
 var gui = require('nw.gui');
 var path = require('path');
-// var websocketServer = require('./wotserver/index');
-// var restServer = require('./restserver/index');
-// var $rest = require('./configs/rest');
-
-/*  ws Server  */
-/*
-
- for test
- node ./node_modules/wotcity.io/tests/websocket-send.js
-
-*/
-
-// websocketServer.init();
-// restServer.listen($rest.port);
-
 var nwPath = process.execPath;
 var nwDir = path.dirname(nwPath);
+var os = require('os');
 
+var interfaces = os.networkInterfaces();
+var addresses = [];
+console.log(interfaces);
+for (var k in interfaces) {
+    for (var k2 in interfaces[k]) {
+        var address = interfaces[k][k2];
+        if (address.family === 'IPv4' && !address.internal) {
+            addresses.push(address.address);
+        }
+    }
+}
+
+console.log(addresses);
 if (process.platform == "darwin") {
   var menu = new gui.Menu({ type: 'menubar' });
   menu.createMacBuiltin && menu.createMacBuiltin(window.document.title);
@@ -27,19 +26,19 @@ if (process.platform == "darwin") {
 
 gui.Window.get().show();
 
-
 initApp();
 
 function initApp(){
   setTimeout(function(){
     if (process.platform == "darwin") {
-      ///Users/blue-mtk/mtk/mcs-lite-app/out/mcs-lite-app/osx64/mcs-lite-app.app/Contents/Versions/56.0.2924.87/nwjs Helper.app/Contents/MacOS
-      var folderDir = nwDir.replace(/Contents\/Versions[\-\/\. 0-9a-zA-Z]+/g, '');
-      folderDir = folderDir.replace('mcs-lite-app.app/', '');
-      folderDir += 'mcs-lite-app';
-      console.log(folderDir);
-
-      var server = require(folderDir + '/server')();
+      if (process.env.NODE_ENV === 'dev') {
+        var server = require('./regist')();
+      } else {
+        var folderDir = nwDir.replace(/Contents\/Versions[\-\/\. 0-9a-zA-Z]+/g, '');
+        folderDir = folderDir.replace('mcs-lite-app.app/', '');
+        folderDir += 'mcs-lite-app';
+        var server = require(folderDir + '/server')();
+      }
     }
 
     if (/^win/.test(process.platform)) {

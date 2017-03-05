@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.html",
   "scripts": {
-    "watch:global": "~/Downloads/nwjs-sdk-v0.19.3-osx-x64/nwjs.app/Contents/MacOS/nwjs --enable-logging .",
+    "watch:global": "NODE_ENV=dev ./nw.js-sdk/nwjs.app/Contents/MacOS/nwjs --enable-logging .",
     "watch:dfserver": "NODE_ENV=dev node server.js",
+    "install:nwjs": "sh ./install.sh",
     "test:ws": "node ./node_modules/wotcity.io/tests/websocket-send.js",
     "build:global": "sh ./build.sh",
     "test:nedb": "mocha --recursive ./nedb/tests/",

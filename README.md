@@ -9,6 +9,8 @@
 
 ## For Usage
 * Only support Node.js version >= 6
+* npm install && cd client && npm install && cd ..
+* npm run install:nwjs
 
 ### Windows
 
