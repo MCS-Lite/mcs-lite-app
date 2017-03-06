@@ -11,7 +11,7 @@ import NavItemStyles from './navItem.css';
 const NavItem = ({
   isHover,
   linkStyle,
-  to = '#',
+  to,
   target,
   children,
   className,
@@ -19,6 +19,7 @@ const NavItem = ({
   activeLinkStyle,
   onMouseEnter,
   onMouseLeave,
+  ...props
 }) => (
   <li
     onMouseEnter={onMouseEnter}
@@ -38,12 +39,12 @@ const NavItem = ({
         isHover && activeLinkStyle,
       )}
       activeClassName={activeLinkStyle}
+      {...props}
     >
       { children }
     </Link>
   </li>
 );
-
 
 export default compose(
   pure,

@@ -4,6 +4,7 @@ import { browserHistory } from 'react-router';
 import compose from 'recompose/compose';
 import pure from 'recompose/pure';
 import withState from 'recompose/withState';
+import withHandlers from 'recompose/withHandlers';
 
 import MiDevelopment from 'mtk-icon/lib/MiDevelopment';
 import IconResources from 'mcs-lite-icon/lib/IconResources';
@@ -37,6 +38,7 @@ const Header = ({
   basePath,
   imageUrl,
   pathname,
+  onSignOut,
   getMessages: t,
 }) => (
   <header className={headerStyles.base}>
@@ -156,7 +158,7 @@ const Header = ({
           </NavItem>
           <NavItem
             key="SignOut"
-            onClick={() => browserHistory.push('/login')}
+            onClick={onSignOut}
             className={headerStyles.menuItem}
             linkStyle={headerStyles.menuLink}
             activeStyle={c(
@@ -177,5 +179,11 @@ export default compose(
   withState('helpList', 'setHelpList', resourcesConfig.helpList),
   withState('resourcesList', 'setResourcesList', resourcesConfig.resourcesList),
   withState('basePath', 'setBasePath', () => `${window.location.origin}/`),
+  withHandlers({
+    onSignOut: props => () => {
+      browserHistory.push('/login');
+      props.signOut();
+    },
+  }),
   withGetMessages(messages, 'Header'),
 )(Header);

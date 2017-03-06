@@ -1,6 +1,6 @@
+import assign from 'object-assign';
 import actionTypes from '../constants/ActionTypes';
 import userTypes from '../constants/userTypes';
-import assign from 'object-assign';
 
 const initialState = {
   userId: '',
@@ -34,6 +34,8 @@ export default function main(state = initialState, action) {
           ? window.apiUrl.replace('api', 'images/') + action.data
           : '',
       });
+    case actionTypes.SIGNOUT:
+      return initialState;
     default:
       return state;
   }
