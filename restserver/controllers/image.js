@@ -6,6 +6,8 @@ var Promise = require('bluebird');
 var fs = Promise.promisifyAll(require('fs'));
 
 module.exports = function ($db) {
+  var users = $db.users;
+
   var uploadImage = function(req, res, next) {
     var typeArray = ['prototype', 'device', 'profile'];
 
@@ -33,9 +35,20 @@ module.exports = function ($db) {
       return fs.writeFileSync(path.resolve(__dirname, '../../uploadImages/', filename), data)
     })
     .then(function() {
-      return res.send(200, {
-        data: filename,
-      });
+      if (req.query.type === 'profile') {
+        var userId = req.user.userId;
+
+        return users.editUser({ userId: userId }, { userImage: filename })
+          .then(function() {
+            return res.send(200, {
+              data: filename,
+            });
+          })
+      } else {
+        return res.send(200, {
+          data: filename,
+        });
+      }
     })
     .catch(function(err) {
       console.log(err);
