@@ -27,6 +27,24 @@ app.oauth = new OAuthServer({
   refreshTokenLifetime: $oauth.REFRESH_TOKEN_EXP * 60
 });
 
+app.engine('html', require('ejs').renderFile);
+app.set('views', path.resolve(__dirname, '../client'));
+
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
+  next();
+});
+
+app.use(bodyParser.json({ limit: '1mb' }));
+app.use(bodyParser.urlencoded({
+  parameterLimit: 10000,
+  limit: 1024 * 1024 * 10,
+  extended: true,
+}));
+app.use(cookieParser());
+
 /**
  * Serving mobile website via npm.
  * $npm i mcs-lite-mobile-web --save
@@ -38,19 +56,8 @@ app.get('/mobile/*', function (req, res) {
   res.sendFile(path.resolve(__dirname, mobilePathname, 'index.html'));
 });
 
-app.engine('html', require('ejs').renderFile);
-app.set('views', path.resolve(__dirname, '../client'));
 app.use('/assets', express.static(path.resolve(__dirname, '../client/app/build/assets')));
 
-app.use(cookieParser());
-app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
-  next();
-});
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
 app.all('/oauth/token', app.oauth.grant());
 app.db = connectDB;
 handleRouters(app, new routers(connectDB, app, $rest));
