@@ -1,31 +1,17 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-import navStyles from './nav.css';
 import c from 'classnames';
+import navStyles from './nav.css';
 
-class Nav extends Component {
-
-  render() {
-    let {
-      className: listStyle,
-      children,
-      dropdownMenu,
-      ...props,
-    } = this.props;
-
-    return (
-      <ul {...props} className={c(
-        dropdownMenu ? navStyles.dropdownMenu : navStyles.list,
-        listStyle,
-      )}>
-        { React.Children.map(children, this._renderChildren) }
-      </ul>
-    );
-  }
-
-  _renderChildren(child, index) {
-    return React.cloneElement(child, {key: index});
-  }
-}
+const Nav = ({ className, children, dropdownMenu }) => (
+  <ul
+    className={c(
+      dropdownMenu ? navStyles.dropdownMenu : navStyles.list,
+      className,
+    )}
+  >
+    {children}
+  </ul>
+);
 
 export default Nav;

@@ -1,7 +1,4 @@
-import React, { Component } from 'react';
-
-import Footer from '../footer';
-import Header from '../header';
+import React from 'react';
 
 import Breadcrumb from './breadcrumb';
 import PanelHeader from './panelHeader';
@@ -15,8 +12,6 @@ const Prototypes = ({ prototypes, createNewPrototype, retrievePrototypeTemplates
 
   return (
     <div>
-      <Header
-        imageUrl='http://img.mediatek.com/150/mtk.linkit/profile/3492e14e-f0fb-4718-a9a7-a49e95d8cb30.jpeg'/>
       <div className={styles.base}>
         <Breadcrumb />
         <PanelHeader />
@@ -27,15 +22,14 @@ const Prototypes = ({ prototypes, createNewPrototype, retrievePrototypeTemplates
             prototypeTemplates={prototypeTemplates}
           />
           {
-            prototypes.prototypeList.map((prototype) => {
-              return (<PrototypeCard key={prototype.prototypeId} {...prototype} {...props} />);
-            })
+            prototypes.prototypeList.map(prototype =>
+              <PrototypeCard key={prototype.prototypeId} {...prototype} {...props} />,
+            )
           }
         </div>
       </div>
-      <Footer />
     </div>
   );
-}
+};
 
 export default Prototypes;

@@ -62,6 +62,7 @@
     "@mtk/mcs-components": "https://cdn.mediatek.com/Mediatek-Cloud/mcs-components/2.1.111.tgz",
     "autoprefixer": "^6.1.0",
     "classnames": "^2.2.5",
+    "cookie-dough": "^0.1.0",
     "css-loader": "0.23.0",
     "d3-shape": "^1.0.4",
     "fbjs": "^0.8.0",

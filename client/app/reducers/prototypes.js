@@ -1,5 +1,6 @@
 import assign from 'object-assign';
 import prototypeActionTypes from '../constants/PrototypeActionTypes';
+import actionTypes from '../constants/ActionTypes';
 
 const initialState = {
   prototypeList: [],
@@ -16,6 +17,8 @@ export default function prototypes(state = initialState, action) {
       return assign({}, state, { prototypeTemplates: action.data });
     case prototypeActionTypes.RETRIEVEUNITTYPES:
       return assign({}, state, { unitTypes: action.data });
+    case actionTypes.SIGNOUT:
+      return initialState;
     default:
       return state;
   }

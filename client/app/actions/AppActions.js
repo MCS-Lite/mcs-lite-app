@@ -1,6 +1,9 @@
-import types from '../constants/ActionTypes';
 import { browserHistory } from 'react-router';
+import cookieDough from 'cookie-dough'
+import types from '../constants/ActionTypes';
 import { requestOauth } from '../utils/fetch';
+
+const cookie = cookieDough();
 
 export const getCookie = (name) => {
   var value = "; " + document.cookie;
@@ -30,3 +33,9 @@ export const checkToken =  () => (dispatch) => {
     return browserHistory.push('/login?errorMsg=' + error);
   });
 }
+
+export const signOut = () => (dispatch) => {
+  cookie.remove('token');
+
+  return dispatch({ type: types.SIGNOUT });
+};
