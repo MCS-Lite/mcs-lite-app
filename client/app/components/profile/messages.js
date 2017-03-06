@@ -69,6 +69,22 @@ const messages = defineMessages({
     id: 'Profile.changePasswordSuccess',
     defaultMessage: '成功！你已經成功修改密碼。',
   },
+  'Profile.uploadImage': {
+    id: 'Profile.uploadImage',
+    defaultMessage: '上傳圖片',
+  },
+  'Profile.errorWhenUploadImage': {
+    id: 'Profile.errorWhenUploadImage',
+    defaultMessage: '錯誤！上傳圖片時發生錯誤。',
+  },
+  'Profile.fileSizeExceeds': {
+    id: 'Profile.fileSizeExceeds',
+    defaultMessage: '錯誤！圖片檔案過大。',
+  },
+  'Profile.imageUploadSuccess': {
+    id: 'Profile.imageUploadSuccess',
+    defaultMessage: '成功！你已經成功更新圖片。',
+  },
 });
 
 export default messages;

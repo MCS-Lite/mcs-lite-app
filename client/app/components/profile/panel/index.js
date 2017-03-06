@@ -7,12 +7,13 @@ import Panel from 'mtk-ui/lib/Panel';
 import PanelIcon from 'mtk-ui/lib/PanelIcon';
 import PanelHeader from 'mtk-ui/lib/PanelHeader';
 import PanelBody from 'mtk-ui/lib/PanelBody';
-import Avatar from 'mtk-ui/lib/Avatar';
 import A from 'mcs-lite-ui/lib/A';
 import IconAccount from 'mcs-lite-icon/lib/IconAccount';
 
-import messages from '../messages';
 import { withGetMessages } from 'react-intl-inject-hoc';
+import messages from '../messages';
+
+import ProfilePhoto from '../profilePhoto';
 
 import styles from './styles.css';
 
@@ -21,25 +22,32 @@ const Column = ({ label, children }) => (
     <div>{label}</div>
     <div>{children}</div>
   </div>
-)
+);
 
 const ProfilePanel = ({
   userName,
   email,
   onEditUserNameClick,
   onChangePasswordClick,
+  userImage,
+  uploadImage,
+  pushToast,
   getMessages: t,
 }) => (
   <Panel className={styles.panel}>
     <PanelHeader>
-      <PanelIcon icon={<IconAccount size={24}/>} />
+      <PanelIcon icon={<IconAccount size={24} />} />
       <div className={styles.panelHeaderContent}>
         {t('profile')}
       </div>
     </PanelHeader>
     <PanelBody className={styles.panelBody}>
       <div>
-        <Avatar size={150} />
+        <ProfilePhoto
+          userImage={userImage}
+          uploadImage={uploadImage}
+          pushToast={pushToast}
+        />
       </div>
       <div>
         <Column

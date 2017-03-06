@@ -22,6 +22,7 @@ const Profile = ({
   dialogShow,
   editUserName,
   changePassword,
+  uploadImage,
   pushToast,
   getMessages: t,
 }) => {
@@ -42,7 +43,10 @@ const Profile = ({
         <ProfilePanel
           userName={main.userName}
           email={main.email}
+          userImage={main.userImage}
           setDialogShow={setDialogShow}
+          uploadImage={uploadImage}
+          pushToast={pushToast}
         />
       </div>
       <Footer />
