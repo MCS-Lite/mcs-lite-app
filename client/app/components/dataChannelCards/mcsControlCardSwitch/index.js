@@ -4,7 +4,6 @@ import { DataChannelAdapter } from 'mcs-lite-ui';
 
 const DisplayStringLayout = ({
   value,
-  setValue,
   id,
   onSubmit,
 }) => (
@@ -14,24 +13,12 @@ const DisplayStringLayout = ({
       type: 'SWITCH_CONTROL',
       values: { value },
     }}
-    eventHandler={({
-      type,
-      id: datachannelId,
-      values,
-    }) => {
-      switch (type) {
-        case 'clear':
-          setValue('');
-          break;
-        case 'change':
-          setValue(values.value);
-          break;
-        case 'submit':
-          onSubmit(datachannelId, { value: values.value });
-          break;
-        default:
-      }
-    }}
+    eventHandler={
+      ({
+        id: datachannelId,
+        values,
+      }) => onSubmit(datachannelId, { value: values.value })
+    }
   />
 );
 

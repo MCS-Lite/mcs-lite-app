@@ -13,6 +13,7 @@ import styles from './styles.css';
 const DataChannelContentLayout = ({
   datachannels,
   onSubmit,
+  onChangeDatachannel,
 }) => (
   <div className={styles.dataChannelContent}>
     {
@@ -29,6 +30,7 @@ const DataChannelContentLayout = ({
             displayName={displayName}
             isDevice
             onSubmit={onSubmit}
+            onChangeDatachannel={onChangeDatachannel}
             id={dataChannel.datachannelId}
             title={dataChannel.datachannelName}
             className={styles.displayCard}
@@ -68,6 +70,15 @@ export default compose(
     onSubmit: props => (id, values) => {
       const datapoint = { datachannelId: id, values };
       props.sendMessage(JSON.stringify(datapoint)); // Remind: Upload datapoint via WebSocket.
+    },
+    onChangeDatachannel: props => (id, value) => {
+      const datachannels = R.clone(props.datachannels);
+      datachannels.forEach((k) => {
+        if (k.datachannelId === id) {
+          k.datapoints.values = value;
+        }
+      });
+      props.setDatachannels(datachannels);
     },
   }),
 )(DataChannelContentLayout);

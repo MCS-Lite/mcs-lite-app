@@ -2,14 +2,13 @@ import React from 'react';
 import {
   compose,
   pure,
-  withState,
 } from 'recompose';
 import { DataChannelAdapter } from 'mcs-lite-ui';
 
 const DisplayStringLayout = ({
   value,
-  setValue,
   id,
+  onChangeDatachannel,
   onSubmit,
 }) => (
   <DataChannelAdapter
@@ -21,10 +20,10 @@ const DisplayStringLayout = ({
     eventHandler={({ type, id: datachannelId, values }) => {
       switch (type) {
         case 'clear':
-          setValue('');
+          onChangeDatachannel(datachannelId, { value: '' });
           break;
         case 'change':
-          setValue(values.value);
+          onChangeDatachannel(datachannelId, { value: values.value });
           break;
         case 'submit':
           onSubmit(datachannelId, { value: values.value });
@@ -37,5 +36,4 @@ const DisplayStringLayout = ({
 
 export default compose(
   pure,
-  withState('value', 'setValue', props => props.value || ''),
 )(DisplayStringLayout);

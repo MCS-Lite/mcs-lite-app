@@ -2,13 +2,11 @@ import React from 'react';
 import {
   compose,
   pure,
-  withState,
 } from 'recompose';
 import { DataChannelAdapter } from 'mcs-lite-ui';
 
 const DisplayStringLayout = ({
   value,
-  setValue,
   id,
   onSubmit,
 }) => (
@@ -18,21 +16,12 @@ const DisplayStringLayout = ({
       type: 'GPIO_CONTROL',
       values: { value },
     }}
-    eventHandler={({ type, id: datachannelId, values }) => {
-      switch (type) {
-        case 'change':
-          setValue(values.value);
-          break;
-        case 'submit':
-          onSubmit(datachannelId, { value: values.value });
-          break;
-        default:
-      }
+    eventHandler={({ id: datachannelId, values }) => {
+      onSubmit(datachannelId, { value: Number(values.value) });
     }}
   />
 );
 
 export default compose(
   pure,
-  withState('value', 'setValue', props => props.value || 0),
 )(DisplayStringLayout);
