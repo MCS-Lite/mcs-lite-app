@@ -52,7 +52,7 @@
 }
 
 .activeStyle {
-  background-color: #1995cc;
+  background-color: #0097D4;
 }
 
 .menuLink {
@@ -67,10 +67,12 @@
   width: 100%;
   height: 40px;
   text-align: left;
+  display: flex;
+  align-items: center;
 }
 
 .menuItemActive {
-  background-color: #0c86bc;
+  background-color: #0097D4;
 }
 
 .menuItemBorder {

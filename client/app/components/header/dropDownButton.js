@@ -1,56 +1,20 @@
-import React, { Component } from 'react';
+import React from 'react';
 import EventListener from 'fbjs/lib/EventListener';
 
 import c from 'classnames';
-import Nav from './Nav';
 
-import { default as compose } from 'recompose/compose';
-import { default as pure } from 'recompose/pure';
-import { default as withState } from 'recompose/withState';
-import { default as withHandlers } from 'recompose/withHandlers';
+import pure from 'recompose/pure';
+import compose from 'recompose/compose';
+import withState from 'recompose/withState';
+import withHandlers from 'recompose/withHandlers';
+import MiUnfold from 'mtk-icon/lib/MiUnfold';
+
+import Nav from './Nav';
+import Clickable from '../clickable';
 
 import dropButtonStyles from './dropDownButton.css';
 
-import Clickable from '../clickable'
-import MiUnfold from 'mtk-icon/lib/MiUnfold';
-import MiFold from 'mtk-icon/lib/MiFold';
-
-@pure
-@withState('isOpen', 'setIsOpen', false)
-@withState('isHover', 'setIsHover', false)
-@withState('onDocumentClickListener', 'setOnDocumentClickListener', null)
-@withState('onDocumentKeyupListener', 'setOnDocumentKeyupListener', null)
-@withHandlers({
-  handleClick: props => (e) => {
-    const hide = () => {
-      props.setIsOpen(false);
-      if (props.onDocumentClickListener) {
-        props.onDocumentClickListener.remove();
-      }
-
-      if (props.onDocumentKeyupListener) {
-        props.onDocumentKeyupListener.remove();
-      }
-    };
-
-    e.preventDefault();
-    if (props.isOpen) {
-      return hide();
-    }
-
-    if (props.onDocumentClickListener) {
-      props.onDocumentClickListener.remove();
-    }
-
-    props.setIsOpen(true);
-
-    props.setOnDocumentClickListener(EventListener.listen(document, 'click', hide));
-    props.setOnDocumentKeyupListener(EventListener.listen(document, 'keyup', hide));
-
-  },
-})
-export default class DropdownButton extends Clickable {
-
+class DropdownButton extends Clickable {
   render() {
     const {
       isOpen,
@@ -59,10 +23,11 @@ export default class DropdownButton extends Clickable {
       className: menuStyle,
       buttonStyle,
       activeStyle,
-      arrowIcon,
       children,
       title,
       id,
+      onMouseEnter,
+      onMouseLeave,
     } = this.props;
 
     return (
@@ -71,11 +36,13 @@ export default class DropdownButton extends Clickable {
         className={c(
           dropButtonStyles.item,
           (isHover || isOpen) && activeStyle,
-          menuStyle
+          menuStyle,
         )}
+        onMouseEnter={onMouseEnter}
+        onMouseLeave={onMouseLeave}
       >
-        <span onClick={handleClick}
-          ref="title"
+        <span
+          onClick={handleClick}
           className={c(
             buttonStyle,
             (isHover || isOpen) && activeStyle,
@@ -97,19 +64,55 @@ export default class DropdownButton extends Clickable {
           )}
         >
           {
-
-            React.Children.map(children, (child, index) => {
-              return React.cloneElement(child, {
+            React.Children.map(children, (child, index) =>
+              React.cloneElement(child, {
                 key: index,
                 className: c(
                   child.props.className,
                   children.length === index + 1 ? dropButtonStyles.dropDownIconborder : {},
                 ),
-              });
-            })
+              }))
           }
         </Nav>
       </li>
     );
   }
-};
+}
+
+export default compose(
+  pure,
+  withState('isOpen', 'setIsOpen', false),
+  withState('isHover', 'setIsHover', false),
+  withState('onDocumentClickListener', 'setOnDocumentClickListener', null),
+  withState('onDocumentKeyupListener', 'setOnDocumentKeyupListener', null),
+  withHandlers({
+    onMouseEnter: props => () => props.setIsHover(true),
+    onMouseLeave: props => () => props.setIsHover(false),
+    handleClick: props => (e) => {
+      const hide = () => {
+        props.setIsOpen(false);
+        if (props.onDocumentClickListener) {
+          props.onDocumentClickListener.remove();
+        }
+
+        if (props.onDocumentKeyupListener) {
+          props.onDocumentKeyupListener.remove();
+        }
+      };
+
+      e.preventDefault();
+      if (props.isOpen) {
+        return hide();
+      }
+
+      if (props.onDocumentClickListener) {
+        props.onDocumentClickListener.remove();
+      }
+
+      props.setIsOpen(true);
+
+      props.setOnDocumentClickListener(EventListener.listen(document, 'click', hide));
+      props.setOnDocumentKeyupListener(EventListener.listen(document, 'keyup', hide));
+    },
+  }),
+)(DropdownButton);

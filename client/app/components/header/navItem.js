@@ -1,56 +1,55 @@
-import React, { Component } from 'react';
-
-import { default as compose } from 'recompose/compose';
-import { default as pure } from 'recompose/pure';
-import { default as withState } from 'recompose/withState';
-import { default as withHandlers } from 'recompose/withHandlers';
+import React from 'react';
+import { Link } from 'react-router';
+import c from 'classnames';
+import compose from 'recompose/compose';
+import pure from 'recompose/pure';
+import withState from 'recompose/withState';
+import withHandlers from 'recompose/withHandlers';
 
 import NavItemStyles from './navItem.css';
-
-import c from 'classnames';
 
 const NavItem = ({
   isHover,
   linkStyle,
-  href,
+  to = '#',
   target,
   children,
   className,
   activeStyle,
   activeLinkStyle,
-  ...props,
-}) => {
-  return (
-    <li
-      {...props}
+  onMouseEnter,
+  onMouseLeave,
+}) => (
+  <li
+    onMouseEnter={onMouseEnter}
+    onMouseLeave={onMouseLeave}
+    className={c(
+      NavItemStyles.item,
+      className,
+      isHover && activeStyle,
+    )}
+  >
+    <Link
+      target={target}
+      to={to}
       className={c(
-        NavItemStyles.item,
-        className,
-        isHover && activeStyle,
+        NavItemStyles.link,
+        linkStyle,
+        isHover && activeLinkStyle,
       )}
+      activeClassName={activeLinkStyle}
     >
-      <a
-        target={target}
-        href={href}
-        className={c(
-          NavItemStyles.link,
-          linkStyle,
-          isHover && activeLinkStyle,
-        )}
-      >
-        { children }
-      </a>
-    </li>
-  );
-};
+      { children }
+    </Link>
+  </li>
+);
 
 
 export default compose(
   pure,
-  withState('href', 'setHref', (props) => props.href || '#'),
   withState('isHover', 'setIsHover', false),
   withHandlers({
-    onOver: (props) => props.setIsHover(true),
-    onOut: (props) => props.setIsHover(false),
+    onMouseEnter: props => () => props.setIsHover(true),
+    onMouseLeave: props => () => props.setIsHover(false),
   }),
 )(NavItem);
