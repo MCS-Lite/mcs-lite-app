@@ -6,6 +6,10 @@
   margin-left: 15px
 }
 
+.panelBody > h4 {
+  margin-bottom: 5px;
+}
+
 .link {
   font-size: 13px;
   color: #00A1DE;
@@ -16,4 +20,29 @@
 .prototypeImg {
   width: 113px;
   height: 60px;
+}
+
+.exampleList {
+  display: flex;
+  padding: 10px 0;
+  align-items: center;
+}
+
+.exampleList:not(:last-child) {
+  border-bottom: 1px solid #F1F2F7;
+}
+
+.cell {
+  display: flex;
+  flex-direction: column;
+  margin-left: 20px;
+}
+
+.cell > span:first-child {
+  color: #999A94;
+  margin-bottom: 10px;
+}
+
+.cell:nth-of-type(2) {
+  margin-left: auto;
 }

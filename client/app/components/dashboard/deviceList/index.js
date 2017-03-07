@@ -1,49 +1,71 @@
-import React, { Component } from 'react';
-
-import styles from './styles.css';
-
-import { default as compose } from 'recompose/compose';
-import { default as pure } from 'recompose/pure';
-import { default as withState } from 'recompose/withState';
-import { default as withHandlers } from 'recompose/withHandlers';
-
+import React from 'react';
 import { browserHistory } from 'react-router';
 import moment from 'moment';
 
+import compose from 'recompose/compose';
+import pure from 'recompose/pure';
+import withHandlers from 'recompose/withHandlers';
+import withState from 'recompose/withState';
+
+import TableCell from 'mtk-ui/lib/table/TableCell';
+import TableRow from 'mtk-ui/lib/table/TableRow';
+import IconDelete from 'mcs-lite-icon/lib/IconDelete';
 import { withGetMessages } from 'react-intl-inject-hoc';
 import messages from '../messages';
 import CopyButtonGroup from '../../common/copyButtonGroup';
+import DeleteConfirmDialog from '../../common/dialogs/deleteConfirmDialog';
 
-import Table from 'mtk-ui/lib/table/Table';
-import TableHeader from 'mtk-ui/lib/table/TableHeader';
-import TableCell from 'mtk-ui/lib/table/TableCell';
-import TableRow from 'mtk-ui/lib/table/TableRow';
+import styles from './styles.css';
 
-var DeviceList = ({
+const DeviceList = ({
   getMessages: t,
-  device,
   deviceId,
   deviceKey,
   updatedAt,
   deviceName,
   goToDeviceDetail,
-}) => {
-  return (
-    <TableRow>
-      <TableCell><a className={styles.link} onClick={goToDeviceDetail}>{deviceName}</a></TableCell>
-      <TableCell><CopyButtonGroup label="DeviceId" value={deviceId} /></TableCell>
-      <TableCell><CopyButtonGroup label="DeviceKey" value={deviceKey} /></TableCell>
-      <TableCell>
-        {moment(updatedAt).format('YYYY-MM-DD h:mm')}
-      </TableCell>
-    </TableRow>
-  );
-}
+  onDeleteButtonClick,
+  dialogShow,
+  setDialogShow,
+  onDeleteSubmit,
+  deleteDevice,
+}) => (
+  <TableRow className={styles.base}>
+    <TableCell><a className={styles.link} onClick={goToDeviceDetail}>{deviceName}</a></TableCell>
+    <TableCell><CopyButtonGroup value={deviceId} /></TableCell>
+    <TableCell><CopyButtonGroup value={deviceKey} /></TableCell>
+    <TableCell>
+      {moment(updatedAt).format('YYYY-MM-DD h:mm')}
+    </TableCell>
+    {
+      deleteDevice &&
+        <IconDelete
+          size={18}
+          onClick={onDeleteButtonClick}
+          className={styles.deleteButton}
+        />
+    }
+    {
+      dialogShow === 'delete' &&
+        <DeleteConfirmDialog
+          setSelectedMenuValue={setDialogShow}
+          onDeleteSubmit={onDeleteSubmit}
+        />
+    }
+  </TableRow>
+);
 
 export default compose(
   pure,
+  withState('dialogShow', 'setDialogShow', 'none'),
   withHandlers({
-    goToDeviceDetail: props => () => browserHistory.push('/devices/' + props.deviceId),
+    goToDeviceDetail: props => () => browserHistory.push(`/devices/${props.deviceId}`),
+    onDeleteButtonClick: props => () => props.setDialogShow('delete'),
+    onDeleteSubmit: props => () => {
+      props.deleteDevice(props.deviceId)
+        .then(() => props.retrievePrototype(props.prototypeId));
+      props.setDialogShow('none');
+    },
   }),
   withGetMessages(messages, 'Dashboard'),
-)(DeviceList)
+)(DeviceList);

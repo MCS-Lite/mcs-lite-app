@@ -1,72 +1,59 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-import styles from './styles.css';
 import Panel from 'mtk-ui/lib/Panel';
-import Button from 'mtk-ui/lib/Button';
 import PanelHeader from 'mtk-ui/lib/PanelHeader';
-import PanelIcon from '../../common/panelIcon';
+import PanelIcon from 'mtk-ui/lib/panelIcon';
 import PanelBody from 'mtk-ui/lib/PanelBody';
 import Table from 'mtk-ui/lib/table/Table';
-import TableHeader from 'mtk-ui/lib/table/TableHeader';
-import TableCell from 'mtk-ui/lib/table/TableCell';
-import TableRow from 'mtk-ui/lib/table/TableRow';
+import { Heading } from 'mcs-lite-ui';
+import IconPublic from 'mcs-lite-icon/lib/IconPublic';
 
-import { default as compose } from 'recompose/compose';
-import { default as withState } from 'recompose/withState';
-import { default as pure } from 'recompose/pure';
+import compose from 'recompose/compose';
+import withState from 'recompose/withState';
+import pure from 'recompose/pure';
 
 import { withGetMessages } from 'react-intl-inject-hoc';
 import messages from '../messages';
-
-import productBanner from '../../prototypes/productBanner.png';
 import Hr from '../../common/hr';
-import { browserHistory } from 'react-router';
+import ExampleList from './exampleList';
 
-import ClonePrototype from '../../prototypes/dialogs/clonePrototype';
-
-import ExampleList from '../exampleList';
-import IconPublic from 'mcs-lite-icon/lib/IconPublic';
+import styles from './styles.css';
 
 const ExamplesLayout = ({
   getMessages: t,
-  setSelectMenuValue,
   clonePrototype,
   templates,
-  selectMenuValue,
   createNewPrototype,
-}) => {
-  return (
-    <div className={styles.base}>
-      <Panel>
-        <PanelHeader className={styles.panelHeader}>
-          <PanelIcon>
-            <IconPublic />
-          </PanelIcon>
-          <span>{t('example')}</span>
-        </PanelHeader>
-      </Panel>
-      <PanelBody>
+}) => (
+  <div className={styles.base}>
+    <Panel>
+      <PanelHeader className={styles.panelHeader}>
+        <PanelIcon icon={<IconPublic />} />
+        <span>{t('example')}</span>
+      </PanelHeader>
+    </Panel>
+    <PanelBody className={styles.panelBody}>
+      <Heading level={4}>
         {t('shareWithMeExample')}
-        <Hr />
-        <Table style={{ borderBottom: '1px solid #D1D2D3' }}>
-          {
-            templates.map((prototype) => {
-              return (
-                <ExampleList
-                  prototype={prototype}
-                  clonePrototype={clonePrototype}
-                  key={prototype.prototypeId}
-                  templates={templates}
-                  createNewPrototype={createNewPrototype}
-                />
-              );
-            })
-          }
-        </Table>
-      </PanelBody>
-    </div>
-  );
-}
+      </Heading>
+      <Hr />
+      <Table>
+        {
+          templates.map(prototype => (
+            <ExampleList
+              prototype={prototype}
+              clonePrototype={clonePrototype}
+              key={prototype.prototypeId}
+              templates={templates}
+              createNewPrototype={createNewPrototype}
+            />
+          ))
+        }
+      </Table>
+      <Hr />
+    </PanelBody>
+  </div>
+);
 
 export default compose(
   pure,
