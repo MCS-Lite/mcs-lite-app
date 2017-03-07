@@ -308,7 +308,7 @@ module.exports = function($db, $app, $rest) {
   };
 
   this.retrieveDatachannelDatapoint = {
-    path: $rest.apiRoute + '/devices/:deviceId/datachannel/:datachannelId/datapoints',
+    path: $rest.apiRoute + '/devices/:deviceId/datachannels/:datachannelId/datapoints',
     methods: ['get'],
     handler: datapointsController.retrieveDatapoints,
   };

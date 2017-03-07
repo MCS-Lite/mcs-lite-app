@@ -187,13 +187,23 @@ module.exports = function ($db) {
 
   var retrieveDatapoints = function(req, res, next) {
     var field = {};
-    field.deviceKey = req.header('deviceKey');
     field.deviceId = req.params.deviceId;
     field.datachannelId = req.params.datachannelId;
+    field.isActive = true;
 
-    return datapoints.retrieveDatachannelDatapoint(field)
+    return devices.retriveUserDevices({
+      deviceKey: req.header('deviceKey'),
+      deviceId: field.deviceId,
+      isActive: true,
+    })
     .then(function(data) {
-      return res.send(200, data);
+      if (data.length === 0) {
+        return res.send(400, { message: 'DeviceID or DeviceKey is not valid.' });
+      }
+      return datapoints.retrieveDatachannelDatapoint(field)
+    })
+    .then(function(data) {
+      return res.send(200, {data: data});
     })
     .catch(function(err) {
       return res.send(400, err);
