@@ -17,6 +17,7 @@ cp -R ./node_modules/ ./appBuild/node_modules
 cp -R ./regist.js ./appBuild/server.js
 cp -R package.json ./appBuild/package.json
 cp -R ./dbTemplates/ ./appBuild/db
+cp -R ./uploadImages/ ./appBuild/uploadImages
 
 cd appBuild
 npm remove nw-builder --save
