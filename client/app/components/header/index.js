@@ -7,6 +7,7 @@ import withState from 'recompose/withState';
 import withHandlers from 'recompose/withHandlers';
 
 import MiDevelopment from 'mtk-icon/lib/MiDevelopment';
+import Avatar from 'mtk-ui/lib/Avatar';
 import IconResources from 'mcs-lite-icon/lib/IconResources';
 import { withGetMessages } from 'react-intl-inject-hoc';
 import messages from './messages';
@@ -136,10 +137,11 @@ const Header = ({
           activeStyle={headerStyles.activeStyle}
           title={
             <span>
-              <img
+              <Avatar
+                size={30}
                 src={imageUrl}
                 className={headerStyles.userImage}
-                alt="logo"
+                alt="profilePhoto"
               />
             </span>
           }

@@ -1,4 +1,5 @@
 import assign from 'object-assign';
+import { isEmpty, isNil } from 'ramda';
 import actionTypes from '../constants/ActionTypes';
 import userTypes from '../constants/userTypes';
 
@@ -16,9 +17,9 @@ export default function main(state = initialState, action) {
         userId: action.userId,
         userName: action.userName,
         isAdmin: action.isAdmin,
-        userImage: action.userImage
-          ? window.apiUrl.replace('api', 'images/') + action.userImage
-          : '',
+        userImage: (isNil(action.userImage) || isEmpty(action.userImage))
+          ? undefined
+          : window.apiUrl.replace('api', 'images/') + action.userImage,
         email: action.email,
         access_token: action.access_token,
         token: action.token,
