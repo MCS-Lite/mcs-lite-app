@@ -208,7 +208,7 @@ module.exports = function ($db) {
       return datapoints.retrieveDatachannelDatapoint(field)
     })
     .then(function(data) {
-      return res.send(200, {data: data});
+      return res.send(200, { data: data });
     })
     .catch(function(err) {
       return res.send(400, err);

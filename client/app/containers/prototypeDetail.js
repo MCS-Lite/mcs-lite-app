@@ -1,26 +1,33 @@
 import { connect } from 'react-redux';
 import { identity } from 'ramda';
 import React, { Component } from 'react';
+import { compose, withState } from 'recompose';
 import PrototypeDetailLayout from '../components/prototypeDetail';
 import * as prototypeDetailActions from '../actions/PrototypeDetailActions';
 import { pushToast } from '../actions/toastActions';
 
 class Prototype extends Component {
   componentDidMount() {
-    this.props.retrievePrototype(this.props.params.prototypeId);
+    this.props.retrievePrototype(this.props.params.prototypeId)
+    .then(() => this.props.setIsInitialized(true));
   }
 
   render() {
     return (
-      <PrototypeDetailLayout {...this.props} />
+      <div>
+        { this.props.isInitialized && <PrototypeDetailLayout {...this.props} /> }
+      </div>
     );
   }
 }
 
-export default connect(
-  identity,
-  {
-    ...prototypeDetailActions,
-    pushToast,
-  },
+export default compose(
+  connect(
+    identity,
+    {
+      ...prototypeDetailActions,
+      pushToast,
+    },
+  ),
+  withState('isInitialized', 'setIsInitialized', false),
 )(Prototype);
