@@ -2,11 +2,12 @@ import { connect } from 'react-redux';
 import React, { Component } from 'react';
 import { compose, withState } from 'recompose';
 import DashboardLayout from '../components/dashboard';
+import LoadingPage from '../components/common/loadingPage';
 import * as dashboardActions from '../actions/DashboardActions';
 import * as prototypeActions from '../actions/PrototypeActions';
 
 class Dashboard extends Component {
-  componentDidMount() {
+  componentWillMount() {
     this.props.retrieveDashboard()
     .then(() => this.props.setIsInitialized(true));
   }
@@ -14,7 +15,7 @@ class Dashboard extends Component {
   render() {
     return (
       <div>
-        { this.props.isInitialized && <DashboardLayout {...this.props} /> }
+        { this.props.isInitialized ? <DashboardLayout {...this.props} /> : <LoadingPage /> }
       </div>
     );
   }

@@ -3,11 +3,12 @@ import { identity } from 'ramda';
 import React, { Component } from 'react';
 import { compose, withState } from 'recompose';
 import PrototypeDetailLayout from '../components/prototypeDetail';
+import LoadingPage from '../components/common/loadingPage';
 import * as prototypeDetailActions from '../actions/PrototypeDetailActions';
 import { pushToast } from '../actions/toastActions';
 
 class Prototype extends Component {
-  componentDidMount() {
+  componentWillMount() {
     this.props.retrievePrototype(this.props.params.prototypeId)
     .then(() => this.props.setIsInitialized(true));
   }
@@ -15,7 +16,7 @@ class Prototype extends Component {
   render() {
     return (
       <div>
-        { this.props.isInitialized && <PrototypeDetailLayout {...this.props} /> }
+        { this.props.isInitialized ? <PrototypeDetailLayout {...this.props} /> : <LoadingPage /> }
       </div>
     );
   }
