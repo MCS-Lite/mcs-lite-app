@@ -1,22 +1,28 @@
 import { connect } from 'react-redux';
 import React, { Component } from 'react';
+import { compose, withState } from 'recompose';
 import DeviceDetailLayout from '../components/deviceDetail';
-import * as deviceDetailActions from '../actions/DeviceDetailActions'
+import LoadingPage from '../components/common/loadingPage';
+import * as deviceDetailActions from '../actions/DeviceDetailActions';
 
 class DeviceDetail extends Component {
-  componentDidMount() {
+  componentWillMount() {
     this.props.retrieveDevice(this.props.params.deviceId)
+    .then(() => this.props.setIsInitialized(true));
   }
 
   render() {
     return (
-      <DeviceDetailLayout {...this.props} />
+      <div>
+        { this.props.isInitialized ? <DeviceDetailLayout {...this.props} /> : <LoadingPage /> }
+      </div>
     );
   }
 }
 
-const mapStateToProps = (state) => {
-  return state;
-}
+const mapStateToProps = state => state;
 
-export default connect(mapStateToProps, deviceDetailActions)(DeviceDetail)
+export default compose(
+  connect(mapStateToProps, deviceDetailActions),
+  withState('isInitialized', 'setIsInitialized', false),
+)(DeviceDetail);

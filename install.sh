@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+mkdir uploadImages && cd uploadImages && mkdir device && mkdir profile && mkdir prototype && cd ..
+
 rm -rf ./nw.js-sdk
 mkdir nw.js-sdk && cd nw.js-sdk
 

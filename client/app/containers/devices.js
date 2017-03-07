@@ -1,30 +1,36 @@
 import { connect } from 'react-redux';
 import React, { Component } from 'react';
+import { compose, withState } from 'recompose';
 import DevicesLayout from '../components/devices';
+import LoadingPage from '../components/common/loadingPage';
 import {
   retrieveDeviceList,
   editDevice,
   deleteDevice,
-} from '../actions/DeviceActions'
+} from '../actions/DeviceActions';
 
 class Device extends Component {
-  componentDidMount() {
+  componentWillMount() {
     this.props.retrieveDeviceList()
+    .then(() => this.props.setIsInitialized(true));
   }
 
   render() {
     return (
-      <DevicesLayout {...this.props} />
+      <div>
+        { this.props.isInitialized ? <DevicesLayout {...this.props} /> : <LoadingPage /> }
+      </div>
     );
   }
 }
 
-const mapStateToProps = (state) => {
-  return state;
-}
+const mapStateToProps = state => state;
 
-export default connect(mapStateToProps, {
-  retrieveDeviceList,
-  editDevice,
-  deleteDevice,
-})(Device);
+export default compose(
+  connect(mapStateToProps, {
+    retrieveDeviceList,
+    editDevice,
+    deleteDevice,
+  }),
+  withState('isInitialized', 'setIsInitialized', false),
+)(Device);
