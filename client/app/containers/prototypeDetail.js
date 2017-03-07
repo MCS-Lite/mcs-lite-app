@@ -5,6 +5,7 @@ import { compose, withState } from 'recompose';
 import PrototypeDetailLayout from '../components/prototypeDetail';
 import LoadingPage from '../components/common/loadingPage';
 import * as prototypeDetailActions from '../actions/PrototypeDetailActions';
+import * as deviceActions from '../actions/deviceActions';
 import { pushToast } from '../actions/toastActions';
 
 class Prototype extends Component {
@@ -27,6 +28,7 @@ export default compose(
     identity,
     {
       ...prototypeDetailActions,
+      ...deviceActions,
       pushToast,
     },
   ),
