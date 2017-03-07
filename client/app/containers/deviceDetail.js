@@ -2,10 +2,11 @@ import { connect } from 'react-redux';
 import React, { Component } from 'react';
 import { compose, withState } from 'recompose';
 import DeviceDetailLayout from '../components/deviceDetail';
+import LoadingPage from '../components/common/loadingPage';
 import * as deviceDetailActions from '../actions/DeviceDetailActions';
 
 class DeviceDetail extends Component {
-  componentDidMount() {
+  componentWillMount() {
     this.props.retrieveDevice(this.props.params.deviceId)
     .then(() => this.props.setIsInitialized(true));
   }
@@ -13,7 +14,7 @@ class DeviceDetail extends Component {
   render() {
     return (
       <div>
-        { this.props.isInitialized && <DeviceDetailLayout {...this.props} /> }
+        { this.props.isInitialized ? <DeviceDetailLayout {...this.props} /> : <LoadingPage /> }
       </div>
     );
   }

@@ -2,6 +2,7 @@ import { connect } from 'react-redux';
 import React, { Component } from 'react';
 import { compose, withState } from 'recompose';
 import DevicesLayout from '../components/devices';
+import LoadingPage from '../components/common/loadingPage';
 import {
   retrieveDeviceList,
   editDevice,
@@ -9,7 +10,7 @@ import {
 } from '../actions/DeviceActions';
 
 class Device extends Component {
-  componentDidMount() {
+  componentWillMount() {
     this.props.retrieveDeviceList()
     .then(() => this.props.setIsInitialized(true));
   }
@@ -17,7 +18,7 @@ class Device extends Component {
   render() {
     return (
       <div>
-        { this.props.isInitialized && <DevicesLayout {...this.props} /> }
+        { this.props.isInitialized ? <DevicesLayout {...this.props} /> : <LoadingPage /> }
       </div>
     );
   }

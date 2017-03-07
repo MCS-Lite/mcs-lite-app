@@ -2,10 +2,11 @@ import { connect } from 'react-redux';
 import React, { Component } from 'react';
 import { compose, withState } from 'recompose';
 import PrototypesLayout from '../components/prototypes';
+import LoadingPage from '../components/common/loadingPage';
 import * as PrototypeActions from '../actions/prototypeActions';
 
 class Prototype extends Component {
-  componentDidMount() {
+  componentWillMount() {
     this.props.retrievePrototypeList()
     .then(() => this.props.setIsInitialized(true));
   }
@@ -13,7 +14,7 @@ class Prototype extends Component {
   render() {
     return (
       <div>
-        { this.props.isInitialized && <PrototypesLayout {...this.props} /> }
+        { this.props.isInitialized ? <PrototypesLayout {...this.props} /> : <LoadingPage /> }
       </div>
     );
   }
