@@ -4,6 +4,10 @@
   margin: 0px;
 }
 
+.list:hover {
+  background-color: #0097D4;
+}
+
 .dropdownMenu {
   display: none;
   position: absolute;
@@ -14,6 +18,6 @@
   float: left;
   text-align: left;
   list-style: none;
-  background-color: #1995cc;
+  background-color: #00A1DE;
   border-radius: 0 0 4px 4px;
 }

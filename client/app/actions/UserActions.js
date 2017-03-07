@@ -14,3 +14,11 @@ export const changePassword = password => (dispatch, getState) =>
       type: types.CHANGEPASSWORDSUCCESS,
     }))
     .catch(() => Promise.reject());
+
+export const uploadImage = file => (dispatch, getState) =>
+  request('/upload/image?type=profile', 'POST_FORM_DATA', file, getState().main.access_token)
+  .then(({ data }) => dispatch({
+    type: types.UPLOADIMAGESUCCESS,
+    data,
+  }))
+  .catch(() => Promise.reject());

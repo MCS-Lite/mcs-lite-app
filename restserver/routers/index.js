@@ -323,7 +323,7 @@ module.exports = function($db, $app, $rest) {
   this.uploadImage = {
     path: $rest.apiRoute + '/upload/image',
     methods: ['post'],
-    middleware: [connectMultiparty()],
+    middleware: [connectMultiparty(), $app.oauth.authorise()],
     handler: imageController.uploadImage,
   };
 

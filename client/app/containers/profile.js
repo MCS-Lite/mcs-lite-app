@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import compose from 'recompose/compose';
 import pure from 'recompose/pure';
 
-import { editUserName, changePassword } from '../actions/userActions';
+import * as userActions from '../actions/userActions';
 import { pushToast } from '../actions/toastActions';
 import ProfileLayout from '../components/profile';
 
@@ -15,6 +15,6 @@ const Profile = ({ ...props }) => (
 const mapStateToProps = ({ main }) => ({ main });
 
 export default compose(
-  connect(mapStateToProps, { editUserName, changePassword, pushToast }),
+  connect(mapStateToProps, { ...userActions, pushToast }),
   pure,
 )(Profile);

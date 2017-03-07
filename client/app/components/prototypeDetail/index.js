@@ -1,8 +1,5 @@
 import React from 'react';
 
-import Footer from '../footer';
-import Header from '../header';
-
 import Breadcrumb from './breadcrumb';
 import PanelContent from './panelContent';
 import PrototypeDetailHeader from './header';
@@ -32,9 +29,6 @@ const Prototypes = ({
   const { unitTypes } = prototypes;
   return (
     <div>
-      <Header
-        imageUrl="http://img.mediatek.com/150/mtk.linkit/profile/3492e14e-f0fb-4718-a9a7-a49e95d8cb30.jpeg"
-      />
       <div className={styles.base}>
         <Breadcrumb prototypeName={prototypeName} />
         <PrototypeDetailHeader
@@ -61,7 +55,6 @@ const Prototypes = ({
           pushToast={pushToast}
         />
       </div>
-      <Footer />
     </div>
   );
 };

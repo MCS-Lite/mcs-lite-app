@@ -9,17 +9,40 @@ import DeviceDetail from '../containers/deviceDetail';
 import Signin from '../containers/signin';
 import Login from '../containers/login';
 import Profile from '../containers/profile';
+import CommonLayout from '../containers/commonLayout';
 
 export default (
   <Route component={App}>
-    <Route
-      path="/"
-      components={Dashboard}
-    />
-    <Route
-      path="/dashboard"
-      components={Dashboard}
-    />
+    <Route component={CommonLayout}>
+      <Route
+        path="/"
+        components={Dashboard}
+      />
+      <Route
+        path="/dashboard"
+        components={Dashboard}
+      />
+      <Route
+        path="/prototypes"
+        components={Prototypes}
+      />
+      <Route
+        path="/prototypes/:prototypeId"
+        components={PrototypeDetail}
+      />
+      <Route
+        path="/devices"
+        components={Devices}
+      />
+      <Route
+        path="/devices/:deviceId"
+        components={DeviceDetail}
+      />
+      <Route
+        path="/profile"
+        components={Profile}
+      />
+    </Route>
     <Route
       path="/login"
       components={Login}
@@ -27,26 +50,6 @@ export default (
     <Route
       path="/signin"
       components={Signin}
-    />
-    <Route
-      path="/prototypes"
-      components={Prototypes}
-    />
-    <Route
-      path="/prototypes/:prototypeId"
-      components={PrototypeDetail}
-    />
-    <Route
-      path="/devices"
-      components={Devices}
-    />
-    <Route
-      path="/devices/:deviceId"
-      components={DeviceDetail}
-    />
-    <Route
-      path="/profile"
-      components={Profile}
     />
   </Route>
 );

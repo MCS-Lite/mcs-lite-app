@@ -51,6 +51,7 @@ app.use(cookieParser());
  * @author Michael Hsu
  */
 const mobilePathname = '../node_modules/mcs-lite-mobile-web/build';
+app.use('/images', express.static(path.resolve(__dirname, '../uploadImages')));
 app.use('/mobile', express.static(path.resolve(__dirname, mobilePathname)));
 app.get('/mobile/*', function (req, res) {
   res.sendFile(path.resolve(__dirname, mobilePathname, 'index.html'));

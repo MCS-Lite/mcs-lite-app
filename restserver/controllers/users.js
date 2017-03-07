@@ -174,9 +174,7 @@ module.exports = function ($db) {
             info.access_token = token.access_token;
             info.expire_time  = token.expire_time;
             info.userId       = res.body.userId;
-            info.userName     = res.body.userName;
             info.email       = res.body.email;
-            info.userImage   = res.body.userImage;
             info.isAdmin     = res.body.isAdmin;
 
             var payload = {
@@ -186,7 +184,13 @@ module.exports = function ($db) {
             var _token = jwt.sign(payload, $oauth.JWT_SECRET);
             info.token  = _token;
 
-            return resolve(info);
+            return users.retrieveOneUser({ userId: res.body.userId})
+              .then(foundUsers => {
+                info.userName = foundUsers[0].userName;
+                info.userImage = foundUsers[0].userImage;
+
+                return resolve(info);
+              })
           } else {
             return reject({
               code: err.response.body.code,
