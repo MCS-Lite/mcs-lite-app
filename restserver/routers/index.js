@@ -10,6 +10,8 @@ var mobileClientId = $oauth.mobileClient.clientId;
 var mobileClientSecret = $oauth.mobileClient.secret;
 var mobileBasicToken = new Buffer(mobileClientId + ':' + mobileClientSecret).toString('base64');
 
+var bodyParser = require('body-parser');
+
 module.exports = function($db, $app, $rest) {
 
   var devicesController = new require('../controllers/devices')($db);
@@ -292,10 +294,17 @@ module.exports = function($db, $app, $rest) {
     handler: devicesController.deleteDevice,
   };
 
-  this.uploadDatapoint = {
-    path: $rest.apiRoute + '/devices/:deviceId/datachannel/:datachannelId/datapoints',
+  this.uploadDatapointByJSON = {
+    path: $rest.apiRoute + '/devices/:deviceId/datachannels/:datachannelId/datapoints',
     methods: ['post'],
-    handler: datapointsController.uploadDatapoints,
+    handler: datapointsController.uploadDatapointsByJSON,
+  };
+
+  this.uploadDatapointByCSV = {
+    path: $rest.apiRoute + '/devices/:deviceId/datapoints.csv',
+    methods: ['post'],
+    middleware: [bodyParser.raw({ type: 'text/csv' })],
+    handler: datapointsController.uploadDatapointsByCSV,
   };
 
   this.retrieveDatachannelDatapoint = {
