@@ -100,11 +100,6 @@
 }
 
 .userImage {
-  width: 29px;
-  height: 29px;
-  border-radius: 100%;
-  border: 1px solid #d1d3d4;
   padding: 1px;
-  background: #fff;
   vertical-align: middle;
 }
