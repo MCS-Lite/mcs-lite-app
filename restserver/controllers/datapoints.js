@@ -159,25 +159,30 @@ module.exports = function ($db) {
   };
 
   var uploadDatapointsByJSON = function(req, res, next) {
+    var datachannelId = req.params.datachannelId;
+    var deviceKey = req.header('deviceKey');
+    var deviceId = req.params.deviceId;
     var field = {};
-    field.deviceId = req.params.deviceId;
-    field.deviceKey = req.header.deviceKey;
-    field.datachannelId = req.params.datachannelId;
     field.values = req.body.values;
-    field.timestamp = req.body.timestamp || new Date().getTime();
+    field.timestamp = req.body.timestamp;
 
-    return datapoints.uploadDatapoint(field)
-    .then(function() {
-      return datachannels.editDatachannel({
-        deviceId: field.deviceId,
-        deviceKey: field.deviceKey,
-        datachannelId: field.datachannelId,
-        isActive: true,
-      },{
-        updatedAt: new Date().getTime(),
-      });
+    return devices.retriveUserDevices({
+      deviceKey: deviceKey,
+      deviceId: deviceId,
+      isActive: true,
     })
     .then(function(data) {
+      if (data.length === 0) {
+        return res.send(400, { message: 'DeviceId or deviceKey is not valid.' });
+      }
+
+      var client = new WebSocketClient();
+      client.on('connect', function(connection) {
+        connection.sendUTF(JSON.stringify(field));
+        connection.close();
+      });
+      client.connect('ws://localhost:8000/deviceId/' + deviceId + '/deviceKey/' + deviceKey, '');
+
       return res.send(200, { message: 'success' });
     })
     .catch(function(err) {
