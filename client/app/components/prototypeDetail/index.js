@@ -15,6 +15,8 @@ const Prototypes = ({
   retrieveUnitTypes,
   createUnitTypes,
   pushToast,
+  deleteDevice,
+  retrievePrototype,
   ...props
 }) => {
   const {
@@ -53,6 +55,8 @@ const Prototypes = ({
           createUnitTypes={createUnitTypes}
           unitTypes={unitTypes}
           pushToast={pushToast}
+          deleteDevice={deleteDevice}
+          retrievePrototype={retrievePrototype}
         />
       </div>
     </div>

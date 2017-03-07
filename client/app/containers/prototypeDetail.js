@@ -3,6 +3,7 @@ import { identity } from 'ramda';
 import React, { Component } from 'react';
 import PrototypeDetailLayout from '../components/prototypeDetail';
 import * as prototypeDetailActions from '../actions/PrototypeDetailActions';
+import * as deviceActions from '../actions/deviceActions';
 import { pushToast } from '../actions/toastActions';
 
 class Prototype extends Component {
@@ -21,6 +22,7 @@ export default connect(
   identity,
   {
     ...prototypeDetailActions,
+    ...deviceActions,
     pushToast,
   },
 )(Prototype);
