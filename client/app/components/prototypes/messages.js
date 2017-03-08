@@ -116,6 +116,11 @@ const messages = defineMessages({
     description: '',
     defaultMessage: '從既有的產品原型複製',
   },
+  'Prototypes.cloneFromExistingPrototypeIntro': {
+    id: 'Prototypes.cloneFromExistingPrototypeIntro',
+    description: '',
+    defaultMessage: '從既有的產品原型複製出一份相同的產品原型來做更進一步的開發。',
+  },
   'Prototypes.save': {
     id: 'Prototypes.save',
     description: '',

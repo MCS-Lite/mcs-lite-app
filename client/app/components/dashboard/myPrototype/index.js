@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router';
-import c from 'classnames';
 import moment from 'moment';
 
 import Panel from 'mtk-ui/lib/Panel';
@@ -23,7 +22,7 @@ import withHandlers from 'recompose/withHandlers';
 import { withGetMessages } from 'react-intl-inject-hoc';
 import messages from '../messages';
 
-import CreateNewPrototypeDialog from '../../common/dialogs/createNewPrototype';
+import CreatePrototype from '../../common/dialogs/createPrototype';
 import Hr from '../../common/hr';
 import productBanner from '../../prototypes/productBanner.png';
 import DeviceList from '../deviceList';
@@ -97,22 +96,27 @@ const LastUpdatePrototype = pure(({
 
 const MyPrototypeLayout = ({
   getMessages: t,
-  createNewPrototype,
   isCreatePrototype,
-  setIsCreatePrototype,
   openCreatePrototype,
   userPrototypes,
   isDeviceListShow,
   setIsDeviceListShow,
+  onCreate,
+  onClone,
+  onCancel,
+  retrievePrototypeTemplates,
+  templates,
 }) => (
   <div className={styles.base}>
     {
       isCreatePrototype &&
-        <CreateNewPrototypeDialog
-          createNewPrototype={createNewPrototype}
-          isCreatePrototype={isCreatePrototype}
-          setIsCreatePrototype={setIsCreatePrototype}
-          isDashboard
+        <CreatePrototype
+          type="new"
+          onCreate={onCreate}
+          onClone={onClone}
+          onCancel={onCancel}
+          retrievePrototypeTemplates={retrievePrototypeTemplates}
+          templates={templates}
         />
     }
     <Panel>
@@ -163,6 +167,11 @@ export default compose(
   withState('isDeviceListShow', 'setIsDeviceListShow', false),
   withHandlers({
     openCreatePrototype: props => () => props.setIsCreatePrototype(true),
+    onCreate: props => data => props.createNewPrototype(data)
+      .then(() => props.retrieveDashboard()),
+    onClone: props => (id, data) => props.clonePrototype(id, data)
+      .then(() => props.retrieveDashboard()),
+    onCancel: props => () => props.setIsCreatePrototype(false),
   }),
   withGetMessages(messages, 'Dashboard'),
 )(MyPrototypeLayout);
