@@ -12,7 +12,7 @@ import pure from 'recompose/pure';
 import { withGetMessages } from 'react-intl-inject-hoc';
 import messages from '../messages';
 import productBanner from '../../prototypes/productBanner.png';
-import CreateNewPrototype from '../../common/dialogs/createNewPrototype';
+import CreatePrototype from '../../common/dialogs/createPrototype';
 
 import styles from './styles.css';
 
@@ -20,10 +20,9 @@ const ExampleListLayout = ({
   getMessages: t,
   prototype,
   isCreatePrototype,
-  setIsCreatePrototype,
-  templates,
-  createNewPrototype,
   onCloneClick,
+  onClone,
+  onCancel,
 }) => (
   <div key={prototype.prototypeId} className={styles.exampleList}>
     <img
@@ -51,13 +50,11 @@ const ExampleListLayout = ({
     </div>
     {
       isCreatePrototype &&
-      <CreateNewPrototype
-        createNewPrototype={createNewPrototype}
-        isCreatePrototype
-        setIsCreatePrototype={setIsCreatePrototype}
-        prototypeTemplates={templates}
-        isDashboard
-        defaultPrototype={prototype}
+      <CreatePrototype
+        type="clone"
+        template={prototype}
+        onClone={onClone}
+        onCancel={onCancel}
       />
     }
   </div>
@@ -68,6 +65,9 @@ export default compose(
   withState('isCreatePrototype', 'setIsCreatePrototype', false),
   withHandlers({
     onCloneClick: props => () => props.setIsCreatePrototype(true),
+    onClone: props => (id, data) => props.clonePrototype(id, data)
+      .then(() => props.retrieveDashboard()),
+    onCancel: props => () => props.setIsCreatePrototype(false),
   }),
   withGetMessages(messages, 'Dashboard'),
 )(ExampleListLayout);

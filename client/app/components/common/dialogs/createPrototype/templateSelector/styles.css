@@ -1,0 +1,12 @@
+.form {
+  margin-bottom: 10px;
+  min-width: 328px;
+}
+
+.input {
+  min-width: 328px;
+}
+
+.input > div {
+  width: 100%;
+}

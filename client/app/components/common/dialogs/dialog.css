@@ -3,9 +3,16 @@
   padding: 20px 70px;
 }
 
-.createNewPrototypeDialogBody {
-  margin-right: 50px;
-  margin-left: 50px;
+.selectForm {
+  margin-bottom: 10px;
+}
+
+.paddingBottomZero {
+  padding-bottom: 0;
+}
+
+.input {
+  min-width: 328px;
 }
 
 .img {

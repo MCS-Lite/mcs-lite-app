@@ -7,7 +7,14 @@ import PrototypeCard from './card';
 
 import styles from './styles.css';
 
-const Prototypes = ({ prototypes, createNewPrototype, retrievePrototypeTemplates, ...props }) => {
+const Prototypes = ({
+  prototypes,
+  createNewPrototype,
+  retrievePrototypeTemplates,
+  retrievePrototypeList,
+  clonePrototype,
+  ...props
+}) => {
   const prototypeTemplates = prototypes.prototypeTemplates;
 
   return (
@@ -18,12 +25,20 @@ const Prototypes = ({ prototypes, createNewPrototype, retrievePrototypeTemplates
         <div className={styles.content}>
           <NewPrototypeCard
             createNewPrototype={createNewPrototype}
+            clonePrototype={clonePrototype}
             retrievePrototypeTemplates={retrievePrototypeTemplates}
+            retrievePrototypeList={retrievePrototypeList}
             prototypeTemplates={prototypeTemplates}
           />
           {
             prototypes.prototypeList.map(prototype =>
-              <PrototypeCard key={prototype.prototypeId} {...prototype} {...props} />,
+              <PrototypeCard
+                key={prototype.prototypeId}
+                prototype={prototype}
+                clonePrototype={clonePrototype}
+                retrievePrototypeList={retrievePrototypeList}
+                {...props}
+              />,
             )
           }
         </div>

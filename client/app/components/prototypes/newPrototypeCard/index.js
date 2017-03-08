@@ -1,54 +1,55 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { compose, pure, withState, withHandlers } from 'recompose';
+import Button from 'mtk-ui/lib/Button';
+import { withGetMessages } from 'react-intl-inject-hoc';
+import messages from '../messages';
+import CreatePrototype from '../../common/dialogs/createPrototype';
 
 import styles from './styles.css';
-import CreateNewPrototypeDialog from '../../common/dialogs/createNewPrototype';
-
-import Button from 'mtk-ui/lib/Button';
-
-import { default as compose } from 'recompose/compose';
-import { default as pure } from 'recompose/pure';
-import { default as withState } from 'recompose/withState';
-import { default as withHandlers } from 'recompose/withHandlers';
-
-import messages from '../messages';
-import { withGetMessages } from 'react-intl-inject-hoc';
 
 const NewPrototypeCardLayout = ({
   isCreatePrototype,
   openCreatePrototype,
-  setIsCreatePrototype,
-  createNewPrototype,
-  prototypeName,
   retrievePrototypeTemplates,
   prototypeTemplates,
   getMessages: t,
-}) => {
-  return (
-    <div className={styles.base}>
-      <CreateNewPrototypeDialog
-        createNewPrototype={createNewPrototype}
-        isCreatePrototype={isCreatePrototype}
-        setIsCreatePrototype={setIsCreatePrototype}
-        retrievePrototypeTemplates={retrievePrototypeTemplates}
-        prototypeTemplates={prototypeTemplates}
-      />
-      {t('createYourPrototypeNow')}
-      <Button
-        type="submit"
-        className={styles.button}
-        onClick={openCreatePrototype}
-      >
-        {t('create')}
-      </Button>
-    </div>
-  );
-}
+  onCreate,
+  onClone,
+  onCancel,
+}) => (
+  <div className={styles.base}>
+    {
+      isCreatePrototype &&
+        <CreatePrototype
+          type="new"
+          onCreate={onCreate}
+          onCancel={onCancel}
+          onClone={onClone}
+          templates={prototypeTemplates}
+          retrievePrototypeTemplates={retrievePrototypeTemplates}
+        />
+    }
+    {t('createYourPrototypeNow')}
+    <Button
+      type="submit"
+      className={styles.button}
+      onClick={openCreatePrototype}
+    >
+      {t('create')}
+    </Button>
+  </div>
+);
 
 export default compose(
   pure,
   withState('isCreatePrototype', 'setIsCreatePrototype', false),
   withHandlers({
     openCreatePrototype: props => () => props.setIsCreatePrototype(true),
+    onCreate: props => value => props.createNewPrototype(value)
+      .then(() => props.retrievePrototypeList()),
+    onClone: props => (id, data) => props.clonePrototype(id, data)
+      .then(() => props.retrievePrototypeList()),
+    onCancel: props => () => props.setIsCreatePrototype(false),
   }),
   withGetMessages(messages, 'Prototypes'),
-)(NewPrototypeCardLayout)
+)(NewPrototypeCardLayout);

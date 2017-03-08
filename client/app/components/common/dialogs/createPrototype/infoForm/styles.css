@@ -1,0 +1,8 @@
+.input {
+  min-width: 328px;
+}
+
+.textarea {
+  min-width: 328px;
+  resize: none;
+}
