@@ -57,6 +57,17 @@ app.get('/mobile/*', function (req, res) {
   res.sendFile(path.resolve(__dirname, mobilePathname, 'index.html'));
 });
 
+/**
+ * Serving GitBook website via npm.
+ * $npm i mcs-lite-introduction --save
+ * @author Michael Hsu
+ */
+const docsPathname = '../node_modules/mcs-lite-introduction/_book';
+app.use('/docs', express.static(path.resolve(__dirname, docsPathname)));
+app.get('/docs/*', function (req, res) {
+  res.sendFile(path.resolve(__dirname, docsPathname, 'index.html'));
+});
+
 app.use('/assets', express.static(path.resolve(__dirname, '../client/app/build/assets')));
 
 app.all('/oauth/token', app.oauth.grant());
