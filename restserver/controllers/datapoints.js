@@ -196,6 +196,19 @@ module.exports = function ($db) {
     field.datachannelId = req.params.datachannelId;
     field.isActive = true;
 
+    var skip = req.query.skip || 0;
+    var sort = req.query.sort || { updatedAt: -1 };
+    var start = req.query.start;
+    var end = req.query.end;
+    var limit = req.query.limit || 100;
+
+    if (start && end) {
+      field.updatedAt = {
+        $gte: Number(start),
+        $lte: Number(end),
+      };
+    }
+
     return devices.retriveUserDevices({
       deviceKey: req.header('deviceKey'),
       deviceId: field.deviceId,
@@ -205,7 +218,7 @@ module.exports = function ($db) {
       if (data.length === 0) {
         return res.send(400, { message: 'DeviceID or DeviceKey is not valid.' });
       }
-      return datapoints.retrieveDatachannelDatapoint(field)
+      return datapoints.retrieveDatachannelDatapoint(field, sort, skip, limit)
     })
     .then(function(data) {
       return res.send(200, { data: data });
