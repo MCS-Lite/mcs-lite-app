@@ -221,7 +221,7 @@ module.exports = function ($db) {
       return datapoints.retrieveDatachannelDatapoint(field, sort, skip, limit)
     })
     .then(function(data) {
-      return res.send(200, { data: data });
+      return res.send(200, { data: data.reverse() });
     })
     .catch(function(err) {
       return res.send(400, err);
