@@ -7,7 +7,12 @@ import DeviceDetailInfo from './info';
 
 import styles from './styles.css';
 
-const DeviceDetail = ({ devices, editDevice, deleteDevice }) => {
+const DeviceDetail = ({
+  devices,
+  editDevice,
+  deleteDevice,
+  retrieveDatachannelDatapoint,
+}) => {
   const {
     deviceId,
     deviceName,
@@ -20,6 +25,7 @@ const DeviceDetail = ({ devices, editDevice, deleteDevice }) => {
     user: { userName } = {},
     datachannels = [],
   } = devices.deviceDetail;
+  const datachannelDatapoints = devices.datachannelDatapoints[deviceId];
   return (
     <div>
       <div className={styles.base}>
@@ -43,6 +49,8 @@ const DeviceDetail = ({ devices, editDevice, deleteDevice }) => {
           deviceId={deviceId}
           deviceKey={deviceKey}
           datachannels={datachannels}
+          datachannelDatapoints={datachannelDatapoints}
+          retrieveDatachannelDatapoint={retrieveDatachannelDatapoint}
         />
       </div>
     </div>
