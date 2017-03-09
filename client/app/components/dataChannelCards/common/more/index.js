@@ -20,6 +20,7 @@ const MoreLayout = ({
   onDeleteDataChannel,
   isPrototype,
   isDevice,
+  isHistoryShow,
   getMessages: t,
 }) => {
   let items = [];
@@ -30,7 +31,13 @@ const MoreLayout = ({
       { value: 'delete', children: t('delete') },
     ];
   } else if (isDevice) {
-    items = [];
+    items = [
+      {
+        value: 'openHistory',
+        children: isHistoryShow ? t('closeHistory') : t('openHistory'),
+      },
+      { value: 'apiHint', children: t('apiHint') },
+    ];
   }
 
   return (
@@ -68,6 +75,9 @@ export default compose(
     onSelectedMenuValueChange: props => (e, value) => {
       props.setSelectedMenuValue(value);
       props.setIsOpen(false);
+      if (value === 'openHistory') {
+        props.onShowHistoryClick();
+      }
     },
     onDeleteDataChannel: props => () => {
       props.deleteDataChannel(props.prototypeId, props.dataChannelId)

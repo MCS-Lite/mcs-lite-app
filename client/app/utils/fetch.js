@@ -37,6 +37,19 @@ export const request = (url, method, data, token) => {
         },
       );
       break;
+    case 'GET_DATAPOINTS':
+      api = fetch(
+        window.apiUrl + url,
+        {
+          method: 'GET',
+          headers: {
+            deviceKey: data,
+            Authorization: `Bearer ${token}`,
+            'Content-Type': 'application/json',
+          },
+        },
+      );
+      break;
     default:
       api = fetch(
         window.apiUrl + url,
