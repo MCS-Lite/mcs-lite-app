@@ -102,6 +102,11 @@ const messages = defineMessages({
     description: '',
     defaultMessage: '取消',
   },
+  'Dialogs.editDevice': {
+    id: 'Dialogs.editDevice',
+    description: '',
+    defaultMessage: '編輯測試裝置',
+  },
 });
 
 export default messages;

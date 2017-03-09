@@ -6,7 +6,7 @@ import Dashboard from '../containers/dashboard';
 import PrototypeDetail from '../containers/prototypeDetail';
 import Devices from '../containers/devices';
 import DeviceDetail from '../containers/deviceDetail';
-import Signin from '../containers/signin';
+import Signup from '../containers/signup';
 import Login from '../containers/login';
 import Profile from '../containers/profile';
 import CommonLayout from '../containers/commonLayout';
@@ -48,8 +48,8 @@ export default (
       components={Login}
     />
     <Route
-      path="/signin"
-      components={Signin}
+      path="/signup"
+      components={Signup}
     />
   </Route>
 );

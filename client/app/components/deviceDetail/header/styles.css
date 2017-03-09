@@ -39,11 +39,22 @@
   margin-left: 20px;
 }
 
-.dropdownButton svg {
-  margin-left: 5px;
+.dropdownButtonContent {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.dropdownMenu {
+.dropdownButtonContent > svg {
+  margin-left: 5px;
+  transform: rotate(0deg);
+  transition: transform .2s linear;
+}
+
+.dropdownOpen > svg {
+  transform: rotate(180deg);
+}
+
+.menu {
   width: 80px;
-  margin-left: 2px;
 }

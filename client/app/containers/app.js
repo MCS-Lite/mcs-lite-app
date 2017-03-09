@@ -5,9 +5,9 @@ import ToastCenter from '../containers/ToastCenter';
 
 class App extends Component {
   componentWillMount() {
-    const { checkToken, location } = this.props;
-    if (!/(login)|(signin)/.test(location.pathname)) {
-      checkToken();
+    const { checkToken: doCheckToken, location } = this.props;
+    if (!/(login)|(signup)/.test(location.pathname)) {
+      doCheckToken();
     }
   }
 
@@ -21,7 +21,7 @@ class App extends Component {
     return (
       <div>
         {
-          /(login)|(signin)/.test(location.pathname)
+          /(login)|(signup)/.test(location.pathname)
           ? children : (main.isInitialized && children)
         }
         <ToastCenter />

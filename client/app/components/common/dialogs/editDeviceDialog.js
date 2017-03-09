@@ -1,6 +1,5 @@
-import React from 'react'
-import { FormattedMessage } from 'react-intl'
-
+import React from 'react';
+import { compose, pure, withState, withHandlers } from 'recompose';
 import Button from 'mtk-ui/lib/Button';
 import Dialog from 'mtk-ui/lib/Dialog';
 import DialogHeader from 'mtk-ui/lib/DialogHeader';
@@ -9,16 +8,10 @@ import DialogFooter from 'mtk-ui/lib/DialogFooter';
 import InputForm from 'mtk-ui/lib/InputForm';
 import InputText from 'mtk-ui/lib/InputText';
 import InputTextarea from 'mtk-ui/lib/InputTextarea';
-
-import compose from 'recompose/compose';
-import pure from 'recompose/pure';
-import withState from 'recompose/withState';
-import withHandlers from 'recompose/withHandlers';
-
-import messages from './messages';
 import { withGetMessages } from 'react-intl-inject-hoc';
+import messages from './messages';
 
-import styles from './dialog.css'
+import styles from './dialog.css';
 
 const EditDeviceDialog = ({
   closeDialog,
@@ -30,12 +23,7 @@ const EditDeviceDialog = ({
   getMessages: t,
 }) => (
   <Dialog show onHide={closeDialog} size="large">
-    <DialogHeader>
-      <FormattedMessage
-        id="Dialogs.EditDevice"
-        defaultMessage="編輯測試裝置"
-      />
-    </DialogHeader>
+    <DialogHeader>{t('editDevice')}</DialogHeader>
     <DialogBody className={styles.dialogBody}>
       <InputForm>
         <InputText
@@ -57,20 +45,14 @@ const EditDeviceDialog = ({
     </DialogBody>
     <DialogFooter>
       <Button kind="cancel" onClick={closeDialog}>
-        <FormattedMessage
-          id="Dialogs.Cancel"
-          defaultMessage="取消"
-        />
+        {t('cancel')}
       </Button>
       <Button kind="primary" onClick={onSubmit}>
-        <FormattedMessage
-          id="Dialogs.Save"
-          defaultMessage="儲存"
-        />
+        {t('save')}
       </Button>
     </DialogFooter>
   </Dialog>
-)
+);
 
 export default compose(
   pure,
@@ -78,15 +60,15 @@ export default compose(
   withState('deviceName', 'setDeviceName', props => props.deviceName),
   withState('deviceDescription', 'setDescription', props => props.deviceDescription),
   withHandlers({
-    closeDialog: props => () => props.setSeletedMenuValue('none'),
+    closeDialog: props => () => props.setSelectedMenuValue('none'),
     onDeviceNameChange: props => e => props.setDeviceName(e.target.value),
     onDescriptionChange: props => e => props.setDescription(e.target.value),
     onSubmit: props => () => {
-      props.setSeletedMenuValue('none');
+      props.setSelectedMenuValue('none');
       props.editDevice(props.deviceId, {
         deviceName: props.deviceName,
         deviceDescription: props.deviceDescription,
-      })
-    }
-  })
-)(EditDeviceDialog)
+      });
+    },
+  }),
+)(EditDeviceDialog);

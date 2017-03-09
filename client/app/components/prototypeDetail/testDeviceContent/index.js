@@ -4,10 +4,10 @@ import compose from 'recompose/compose';
 import pure from 'recompose/pure';
 import withState from 'recompose/withState';
 import withHandlers from 'recompose/withHandlers';
-
 import Table from 'mtk-ui/lib/table/Table';
 import TableHeader from 'mtk-ui/lib/table/TableHeader';
 import TableCell from 'mtk-ui/lib/table/TableCell';
+import IconAdd from 'mcs-lite-icon/lib/IconAdd';
 import { withGetMessages } from 'react-intl-inject-hoc';
 
 import messages from '../messages';
@@ -46,11 +46,15 @@ const TestDeviceContent = ({
             deleteDevice={deleteDevice}
             retrievePrototype={retrievePrototype}
             prototypeId={prototypeId}
+            key={`device-${k.deviceId}`}
           />,
         )
       }
     </Table>
-    <a onClick={openCreateTestDevice} className={styles.link}>{t('addNewTestDevice')} </a>
+    <a onClick={openCreateTestDevice} className={styles.link}>
+      <IconAdd size={18} />
+      {t('addNewTestDevice')}
+    </a>
     <CreateTestDeviceDialog
       createTestDevice={createTestDevice}
       isCreateTestDevice={isCreateTestDevice}

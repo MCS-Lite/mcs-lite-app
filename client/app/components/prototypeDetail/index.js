@@ -27,6 +27,7 @@ const Prototypes = ({
     devicesLength,
     datachannels,
     devices,
+    user,
   } = prototypes.prototypeDetail;
   const { unitTypes } = prototypes;
   return (
@@ -34,8 +35,10 @@ const Prototypes = ({
       <div className={styles.base}>
         <Breadcrumb prototypeName={prototypeName} />
         <PrototypeDetailHeader
+          user={user}
           prototypeId={prototypeId}
           prototypeName={prototypeName}
+          prototypeDescription={prototypeDescription}
           version={version}
           createTestDevice={createTestDevice}
           {...props}

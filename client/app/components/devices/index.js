@@ -18,7 +18,6 @@ const Devices = ({
   devices: {
     deviceList = [],
   } = {},
-  getMessages: t,
   editDevice,
   deleteDevice,
   filterKey,
@@ -27,7 +26,10 @@ const Devices = ({
   <div>
     <div className={styles.base}>
       <Breadcrumb />
-      <PanelHeader setFilterKey={setFilterKey} />
+      <PanelHeader
+        filterKey={filterKey}
+        setFilterKey={setFilterKey}
+      />
       <div className={styles.content}>
         {
           deviceList.length > 0 ? deviceList.filter(filteByName(filterKey)).map(device => (

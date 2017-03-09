@@ -1,58 +1,38 @@
-import React from 'react'
-import c from 'classnames'
-import { FormattedMessage } from 'react-intl'
+import React from 'react';
+import c from 'classnames';
+import { compose, pure, withHandlers, withProps } from 'recompose';
+import IconMoreVert from 'mcs-lite-icon/lib/IconMoreVert';
+import { withGetMessages } from 'react-intl-inject-hoc';
+import messages from '../messages';
+import WithDropdownMenu from '../../common/withDropdownMenu';
 
-import compose from 'recompose/compose'
-import pure from 'recompose/pure'
-import withState from 'recompose/withState'
-import withHandlers from 'recompose/withHandlers'
-
-import IconMoreVert from 'mcs-lite-icon/lib/IconMoreVert'
-import Menu from 'mtk-ui/lib/Menu';
-
-import styles from './styles.css'
-
-const items = [
-  {
-    value: 'edit',
-    children: <FormattedMessage
-      id="Devices.Edit"
-      defaultMessage="編輯"
-    />,
-  },
-  {
-    value: 'delete',
-    children: <FormattedMessage
-      id="Devices.Delete"
-      defaultMessage="刪除"
-    />,
-  },
-];
+import styles from './styles.css';
 
 const DropdownButton = ({
-  isMenuShow,
-  onClick,
+  dropdownItems,
   onMenuChange,
   className,
 }) => (
-  <div className={c(className, styles.base)} onClick={onClick}>
-    <IconMoreVert size={24} />
-    {
-      isMenuShow &&
-      <Menu
-        className={styles.menu}
-        onChange={onMenuChange}
-        items={items}
-      />
-    }
+  <div className={c(className, styles.base)}>
+    <WithDropdownMenu
+      onChange={onMenuChange}
+      dropdownItems={dropdownItems}
+    >
+      <IconMoreVert size={24} />
+    </WithDropdownMenu>
   </div>
-)
+);
 
 export default compose(
   pure,
-  withState('isMenuShow', 'setIsMenuShow', false),
+  withGetMessages(messages, 'Devices'),
+  withProps(({ getMessages: t }) => ({
+    dropdownItems: [
+      { value: 'edit', children: t('edit') },
+      { value: 'delete', children: t('delete') },
+    ],
+  })),
   withHandlers({
-    onClick: props => () => props.setIsMenuShow(!props.isMenuShow),
-    onMenuChange: props => (e, value) => props.setSeletedMenuValue(value),
-  })
-)(DropdownButton)
+    onMenuChange: props => value => props.setSelectedMenuValue(value),
+  }),
+)(DropdownButton);

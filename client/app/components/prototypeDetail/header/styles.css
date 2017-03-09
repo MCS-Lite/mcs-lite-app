@@ -20,6 +20,7 @@
 }
 
 .option {
+  position: relative;
   display: flex;
   align-items: flex-end;
 }
@@ -30,16 +31,35 @@
 
 .infoHeader {
   display: flex;
-  flex-direction: row;
-  align-items: center;
-  margin: 0px 0px 10px 0px;
+  align-items: baseline;
+  margin-bottom: 15px;
 }
 
-.infoHeader h3 {
-  margin: 0 5px 0 0;
-  font-size: 22px;
-  font-weight: 500;
-}
 .infoHeader span {
   color: #999A94;
+  margin-left: 10px;
+}
+
+.createUser {
+  margin-right: 20px;
+}
+
+.dropdownButtonContent {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dropdownButtonContent > svg {
+  margin-left: 5px;
+  transform: rotate(0deg);
+  transition: transform .2s linear;
+}
+
+.dropdownOpen > svg {
+  transform: rotate(180deg);
+}
+
+.menu {
+  width: 80px;
 }

@@ -41,7 +41,7 @@ const ExampleListLayout = ({
     </div>
     <div className={styles.cell}>
       <span>{t('lastUpdateTime')}</span>
-      {moment(prototype.updatedAt).format('YYYY-MM-DD h:mm')}
+      {moment(prototype.updatedAt).format('YYYY-MM-DD hh:mm')}
     </div>
     <div className={styles.cell}>
       <Button onClick={onCloneClick}>

@@ -19,7 +19,7 @@ const messages = defineMessages({
   'PrototypeDetail.description': {
     id: 'PrototypeDetail.description',
     description: '',
-    defaultMessage: '描述',
+    defaultMessage: '描述：',
   },
   'PrototypeDetail.dataChannelType': {
     id: 'PrototypeDetail.dataChannelType',
@@ -111,8 +111,8 @@ const messages = defineMessages({
     description: '',
     defaultMessage: '目前正在產品原型階段，請前往測試裝置來操控資料通道。',
   },
-  'PrototypeDetail.dataChannel': {
-    id: 'PrototypeDetail.dataChannel',
+  'PrototypeDetail.datachannel': {
+    id: 'PrototypeDetail.datachannel',
     description: '',
     defaultMessage: '資料通道',
   },
@@ -154,12 +154,12 @@ const messages = defineMessages({
   'PrototypeDetail.createUser': {
     id: 'PrototypeDetail.createUser',
     description: '',
-    defaultMessage: '創建者',
+    defaultMessage: '創建者：',
   },
   'PrototypeDetail.version': {
     id: 'PrototypeDetail.version',
     description: '',
-    defaultMessage: '版本',
+    defaultMessage: '版本：',
   },
   'PrototypeDetail.dashboard': {
     id: 'PrototypeDetail.dashboard',
@@ -199,12 +199,12 @@ const messages = defineMessages({
   'PrototypeDetail.addNewTestDevice': {
     id: 'PrototypeDetail.addNewTestDevice',
     description: '',
-    defaultMessage: '+ 新增測試裝置',
+    defaultMessage: '新增測試裝置',
   },
   'PrototypeDetail.inputDataChannelName': {
     id: 'PrototypeDetail.inputDataChannelName',
     description: '',
-    defaultMessage: '輸入資料通道名稱'
+    defaultMessage: '輸入資料通道名稱',
   },
   'PrototypeDetail.inputDataChannelId': {
     id: 'PrototypeDetail.inputDataChannelId',
