@@ -8,7 +8,7 @@ import { withGetMessages } from 'react-intl-inject-hoc';
 import messages from '../messages';
 import EditPrototype from '../../prototypes/dialogs/editPrototype';
 import DeletePrototype from '../../prototypes/dialogs/deletePrototype';
-import ClonePrototype from '../../prototypes/dialogs/clonePrototype';
+import CreatePrototype from '../../common/dialogs/createPrototype';
 import CreateTestDeviceDialog from '../dialogs/createTestDevice';
 import WithDropdownMenu from '../../common/withDropdownMenu';
 
@@ -21,6 +21,8 @@ const PrototypeDetailHeaderLayout = ({
   prototypeName,
   prototypeId,
   prototypeDescription,
+  prototypeImageURL,
+  prototype,
   version,
   isCreateTestDevice,
   isDropdownOpen,
@@ -31,10 +33,14 @@ const PrototypeDetailHeaderLayout = ({
   onMenuShowChange,
   selectMenuValue,
   editPrototype,
-  clonePrototype,
+  onClone,
+  onCancel,
   deletePrototype,
   setSelectMenuValue,
   dropdownItems,
+  uploadPrototypeImage,
+  uploadDeviceImage,
+  pushToast,
   getMessages: t,
 }) => (
   <div className={styles.base}>
@@ -55,6 +61,8 @@ const PrototypeDetailHeaderLayout = ({
           isCreateTestDevice={isCreateTestDevice}
           setIsCreateTestDevice={setIsCreateTestDevice}
           prototypeId={prototypeId}
+          uploadDeviceImage={uploadDeviceImage}
+          pushToast={pushToast}
         />
         <Button onClick={openCreateTestDevice}>
           {t('createTestDevice')}
@@ -78,14 +86,15 @@ const PrototypeDetailHeaderLayout = ({
         </WithDropdownMenu>
         {
           selectMenuValue === 'clone' &&
-            <ClonePrototype
-              clonePrototype={clonePrototype}
-              prototypeId={prototypeId}
-              prototypeName={prototypeName}
-              version={version}
-              prototypeDescription={prototypeDescription}
-              selectMenuValue={selectMenuValue}
-              setSelectMenuValue={setSelectMenuValue}
+            <CreatePrototype
+              type="clone"
+              title={t('cloneFromExistingPrototype')}
+              introduction={t('cloneFromExistingPrototypeIntro')}
+              template={prototype}
+              onClone={onClone}
+              onCancel={onCancel}
+              uploadPrototypeImage={uploadPrototypeImage}
+              pushToast={pushToast}
             />
         }
         {
@@ -94,10 +103,13 @@ const PrototypeDetailHeaderLayout = ({
               editPrototype={editPrototype}
               prototypeId={prototypeId}
               prototypeName={prototypeName}
+              prototypeImageURL={prototypeImageURL}
               version={version}
               prototypeDescription={prototypeDescription}
               selectMenuValue={selectMenuValue}
               setSelectMenuValue={setSelectMenuValue}
+              uploadPrototypeImage={uploadPrototypeImage}
+              pushToast={pushToast}
             />
         }
         {
@@ -133,5 +145,7 @@ export default compose(
     openCreateTestDevice: props => () => props.setIsCreateTestDevice(true),
     onMenuChange: props => value => props.setSelectMenuValue(value),
     onMenuShowChange: props => value => props.setIsDropdownOpen(value),
+    onClone: props => (id, data) => props.clonePrototype(id, data),
+    onCancel: props => () => props.setSelectMenuValue(''),
   }),
 )(PrototypeDetailHeaderLayout);

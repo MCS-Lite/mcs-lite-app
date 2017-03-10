@@ -1,3 +1,7 @@
+.toast {
+  z-index: 1004;
+}
+
 .base {
   position: fixed;
   top: 0;

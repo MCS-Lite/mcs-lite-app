@@ -31,6 +31,11 @@ const messages = defineMessages({
     description: '',
     defaultMessage: '描述',
   },
+  'CreateTestDevice.uploadImage': {
+    id: 'CreateTestDevice.uploadImage',
+    description: '',
+    defaultMessage: '上傳影像',
+  },
   'CreateTestDevice.descriptionPlaceholder': {
     id: 'CreateTestDevice.descriptionPlaceholder',
     description: '',

@@ -10,6 +10,7 @@ import Signup from '../containers/signup';
 import Login from '../containers/login';
 import Profile from '../containers/profile';
 import CommonLayout from '../containers/commonLayout';
+import ImageUploader from '../components/common/imageUploader';
 
 export default (
   <Route component={App}>
@@ -50,6 +51,10 @@ export default (
     <Route
       path="/signup"
       components={Signup}
+    />
+    <Route
+      path="/imageuploader"
+      components={ImageUploader}
     />
   </Route>
 );

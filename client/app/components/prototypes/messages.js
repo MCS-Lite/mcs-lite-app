@@ -66,6 +66,11 @@ const messages = defineMessages({
     description: '',
     defaultMessage: '描述：',
   },
+  'Prototypes.uploadImage': {
+    id: 'Prototypes.uploadImage',
+    description: '',
+    defaultMessage: '上傳影像',
+  },
   'Prototypes.inputThePrototypeDescription': {
     id: 'Prototypes.inputThePrototypeDescription',
     description: '',

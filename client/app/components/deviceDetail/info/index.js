@@ -10,11 +10,19 @@ const DeviceDetailInfoLayout = ({
   deviceDescription,
   deviceId,
   deviceKey,
+  deviceImageURL,
   getMessages: t,
 }) => (
   <div className={styles.base}>
     <div className={styles.info}>
-      <img src={prototypeBanner} alt="prototype" />
+      <img
+        src={
+          deviceImageURL
+          ? window.apiUrl.replace('api', 'images/') + deviceImageURL
+          : prototypeBanner
+        }
+        alt="device"
+      />
       <div>
         {t('description')}{deviceDescription}
       </div>

@@ -29,6 +29,7 @@ const PanelContentLayout = ({
   onNavChange,
   deleteDevice,
   retrievePrototype,
+  uploadDeviceImage,
 }) => (
   <div className={styles.base}>
     <Panel>
@@ -62,6 +63,8 @@ const PanelContentLayout = ({
               prototypeId={prototypeId}
               deleteDevice={deleteDevice}
               retrievePrototype={retrievePrototype}
+              uploadDeviceImage={uploadDeviceImage}
+              pushToast={pushToast}
             />
         }
       </PanelBody>

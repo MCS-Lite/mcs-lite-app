@@ -23,10 +23,16 @@ const ExampleListLayout = ({
   onCloneClick,
   onClone,
   onCancel,
+  uploadPrototypeImage,
+  pushToast,
 }) => (
   <div key={prototype.prototypeId} className={styles.exampleList}>
     <img
-      src={productBanner}
+      src={
+        prototype.prototypeImageURL
+        ? window.apiUrl.replace('api', 'images/') + prototype.prototypeImageURL
+        : productBanner
+      }
       className={styles.prototypeImg}
       alt="banner"
     />
@@ -55,6 +61,8 @@ const ExampleListLayout = ({
         template={prototype}
         onClone={onClone}
         onCancel={onCancel}
+        uploadPrototypeImage={uploadPrototypeImage}
+        pushToast={pushToast}
       />
     }
   </div>

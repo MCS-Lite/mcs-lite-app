@@ -20,6 +20,8 @@
 .prototypeImg {
   width: 113px;
   height: 60px;
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
 }
 
 .exampleList {

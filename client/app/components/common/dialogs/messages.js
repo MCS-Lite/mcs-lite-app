@@ -87,6 +87,11 @@ const messages = defineMessages({
     description: '',
     defaultMessage: '描述',
   },
+  'Dialogs.uploadImage': {
+    id: 'Dialogs.uploadImage',
+    description: '',
+    defaultMessage: '上傳影像',
+  },
   'Dialogs.inputThePrototypeDescription': {
     id: 'Dialogs.inputThePrototypeDescription',
     description: '',

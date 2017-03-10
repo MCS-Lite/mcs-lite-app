@@ -29,6 +29,8 @@ const DeviceCardLayout = ({
   selectedMenuValue,
   editDevice,
   onDeleteSubmit,
+  uploadDeviceImage,
+  pushToast,
   getMessages: t,
 }) => (
   <div className={styles.base}>
@@ -36,7 +38,15 @@ const DeviceCardLayout = ({
       className={styles.more}
       setSelectedMenuValue={setSelectedMenuValue}
     />
-    <img src={deviceImageURL || productBanner} className={styles.img} alt="product" />
+    <img
+      src={
+        deviceImageURL
+        ? window.apiUrl.replace('api', 'images/') + deviceImageURL
+        : productBanner
+      }
+      className={styles.img}
+      alt="product"
+    />
     <div className={styles.content}>
       <div>
         <Heading level={3}>{deviceName}</Heading>
@@ -73,6 +83,8 @@ const DeviceCardLayout = ({
         deviceDescription={deviceDescription}
         setSelectedMenuValue={setSelectedMenuValue}
         editDevice={editDevice}
+        uploadDeviceImage={uploadDeviceImage}
+        pushToast={pushToast}
       />
     }
     {

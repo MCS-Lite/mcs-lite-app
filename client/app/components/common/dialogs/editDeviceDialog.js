@@ -10,6 +10,7 @@ import InputText from 'mtk-ui/lib/InputText';
 import InputTextarea from 'mtk-ui/lib/InputTextarea';
 import { withGetMessages } from 'react-intl-inject-hoc';
 import messages from './messages';
+import ImageUploader from '../imageUploader';
 
 import styles from './dialog.css';
 
@@ -17,9 +18,13 @@ const EditDeviceDialog = ({
   closeDialog,
   deviceName,
   deviceDescription,
+  deviceImageURL,
   onDeviceNameChange,
   onDescriptionChange,
+  onDeviceImageURLChange,
   onSubmit,
+  uploadDeviceImage,
+  pushToast,
   getMessages: t,
 }) => (
   <Dialog show onHide={closeDialog} size="large">
@@ -32,6 +37,7 @@ const EditDeviceDialog = ({
           label={t('deviceNameLabel')}
           placeholder={t('deviceNamePlaceholder')}
           onChange={onDeviceNameChange}
+          className={styles.input}
         />
         <InputTextarea
           value={deviceDescription}
@@ -39,8 +45,15 @@ const EditDeviceDialog = ({
           placeholder={t('descriptionPlaceholder')}
           onChange={onDescriptionChange}
           rows={5}
+          className={styles.input}
         />
-        {/* TODO: add upload photo block */}
+        <ImageUploader
+          label={t('uploadImage')}
+          uploadImage={uploadDeviceImage}
+          onChange={onDeviceImageURLChange}
+          imageUrl={deviceImageURL}
+          pushToast={pushToast}
+        />
       </InputForm>
     </DialogBody>
     <DialogFooter>
@@ -59,15 +72,18 @@ export default compose(
   withGetMessages(messages, 'Dialogs'),
   withState('deviceName', 'setDeviceName', props => props.deviceName),
   withState('deviceDescription', 'setDescription', props => props.deviceDescription),
+  withState('deviceImageURL', 'setDeviceImageURL', props => props.deviceImageURL),
   withHandlers({
     closeDialog: props => () => props.setSelectedMenuValue('none'),
     onDeviceNameChange: props => e => props.setDeviceName(e.target.value),
     onDescriptionChange: props => e => props.setDescription(e.target.value),
+    onDeviceImageURLChange: props => imageURL => props.setDeviceImageURL(imageURL),
     onSubmit: props => () => {
       props.setSelectedMenuValue('none');
       props.editDevice(props.deviceId, {
         deviceName: props.deviceName,
         deviceDescription: props.deviceDescription,
+        deviceImageURL: props.deviceImageURL,
       });
     },
   }),

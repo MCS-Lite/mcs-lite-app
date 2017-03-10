@@ -10,6 +10,7 @@ import InputText from 'mtk-ui/lib/InputText';
 import InputTextarea from 'mtk-ui/lib/InputTextarea';
 import { withGetMessages } from 'react-intl-inject-hoc';
 import messages from './messages';
+import ImageUploader from '../../common/imageUploader';
 
 import styles from './styles.css';
 
@@ -19,9 +20,13 @@ const CreateTestDeviceDialog = ({
   submitCreateTestDevice,
   onTestDeviceNameChange,
   onTestDeviceDescriptionChange,
+  onTestDeviceImageURLChange,
   testDeviceName,
   testDeviceDescription,
+  testDeviceImageURL,
   error,
+  uploadDeviceImage,
+  pushToast,
   getMessages: t,
 }) => (
   <Dialog
@@ -51,6 +56,13 @@ const CreateTestDeviceDialog = ({
           onChange={onTestDeviceDescriptionChange}
           className={styles.input}
         />
+        <ImageUploader
+          label={t('uploadImage')}
+          uploadImage={uploadDeviceImage}
+          onChange={onTestDeviceImageURLChange}
+          imageUrl={testDeviceImageURL}
+          pushToast={pushToast}
+        />
       </InputForm>
     </DialogBody>
     <DialogFooter>
@@ -69,6 +81,7 @@ export default compose(
   withGetMessages(messages, 'CreateTestDevice'),
   withState('testDeviceName', 'setTestDeviceName', ''),
   withState('testDeviceDescription', 'setTestDeviceDescription', ''),
+  withState('testDeviceImageURL', 'setTestDeviceImageURL', ''),
   withState('error', 'setError', false),
   withHandlers({
     onTestDeviceNameChange: props => (e) => {
@@ -76,6 +89,7 @@ export default compose(
       props.setError(false);
     },
     onTestDeviceDescriptionChange: props => e => props.setTestDeviceDescription(e.target.value),
+    onTestDeviceImageURLChange: props => imageURL => props.setTestDeviceImageURL(imageURL),
     closeCreateTestDevice: props => () => props.setIsCreateTestDevice(false),
     submitCreateTestDevice: props => () => {
       if (props.testDeviceName.length === 0) {
@@ -84,7 +98,7 @@ export default compose(
         const data = {
           deviceName: props.testDeviceName,
           deviceDescription: props.testDeviceDescription,
-          deviceImageURL: '',
+          deviceImageURL: props.testDeviceImageURL,
           prototypeId: props.prototypeId,
         };
         props.createTestDevice(data);

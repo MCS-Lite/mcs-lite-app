@@ -24,7 +24,7 @@ const ToastCenter = ({ isToastShow, toast }) => (
     >
       {
         isToastShow &&
-        <Toast kind={toast.kind}>
+        <Toast kind={toast.kind} className={styles.toast}>
           <div className={styles.message}>
             {toast.message}
           </div>

@@ -5,4 +5,5 @@ export default constants([
   'RETRIEVEDEVICE',
   'EDITDEVICE',
   'RETRIVEDATACHANNELDATAPOINT',
+  'UPLOADDEVICEIMAGE',
 ]);

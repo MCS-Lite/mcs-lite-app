@@ -4,6 +4,8 @@ import { compose, withState } from 'recompose';
 import DeviceDetailLayout from '../components/deviceDetail';
 import LoadingPage from '../components/common/loadingPage';
 import * as deviceDetailActions from '../actions/DeviceDetailActions';
+import { uploadDeviceImage } from '../actions/deviceActions';
+import { pushToast } from '../actions/toastActions';
 
 class DeviceDetail extends Component {
   componentWillMount() {
@@ -23,6 +25,6 @@ class DeviceDetail extends Component {
 const mapStateToProps = state => state;
 
 export default compose(
-  connect(mapStateToProps, deviceDetailActions),
+  connect(mapStateToProps, { ...deviceDetailActions, uploadDeviceImage, pushToast }),
   withState('isInitialized', 'setIsInitialized', false),
 )(DeviceDetail);

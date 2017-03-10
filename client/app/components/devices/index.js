@@ -22,6 +22,8 @@ const Devices = ({
   deleteDevice,
   filterKey,
   setFilterKey,
+  pushToast,
+  uploadDeviceImage,
 }) => (
   <div>
     <div className={styles.base}>
@@ -38,6 +40,8 @@ const Devices = ({
               key={device.deviceId}
               editDevice={editDevice}
               deleteDevice={deleteDevice}
+              pushToast={pushToast}
+              uploadDeviceImage={uploadDeviceImage}
             />
           )) : <div className={styles.noDevices}>
             <FormattedMessage

@@ -26,6 +26,8 @@ const TestDeviceContent = ({
   setIsCreateTestDevice,
   deleteDevice,
   retrievePrototype,
+  uploadDeviceImage,
+  pushToast,
 }) => (
   <div className={styles.base}>
     {t('testDevices')}
@@ -60,6 +62,8 @@ const TestDeviceContent = ({
       isCreateTestDevice={isCreateTestDevice}
       setIsCreateTestDevice={setIsCreateTestDevice}
       prototypeId={prototypeId}
+      uploadDeviceImage={uploadDeviceImage}
+      pushToast={pushToast}
     />
   </div>
 );

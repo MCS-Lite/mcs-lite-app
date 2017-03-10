@@ -19,6 +19,7 @@ const DeviceDetailHeaderLayout = ({
   version,
   userName,
   deviceDescription,
+  deviceImageURL,
   setSelectedMenuValue,
   prototypeId,
   onMenuChange,
@@ -28,6 +29,8 @@ const DeviceDetailHeaderLayout = ({
   editDevice,
   onDeleteDevice,
   dropdownItems,
+  uploadDeviceImage,
+  pushToast,
   getMessages: t,
 }) => (
   <div className={styles.base}>
@@ -71,8 +74,11 @@ const DeviceDetailHeaderLayout = ({
         deviceId={deviceId}
         deviceName={deviceName}
         deviceDescription={deviceDescription}
+        deviceImageURL={deviceImageURL}
         setSelectedMenuValue={setSelectedMenuValue}
         editDevice={editDevice}
+        uploadDeviceImage={uploadDeviceImage}
+        pushToast={pushToast}
       />
     }
     {

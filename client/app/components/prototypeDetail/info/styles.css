@@ -18,6 +18,8 @@
 
 .info img{
   height: 164px;
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
 }
 
 .info div{

@@ -17,6 +17,8 @@
 .info img{
   height: 160px;
   width: 300px;
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
 }
 
 .info div{

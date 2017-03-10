@@ -60,6 +60,8 @@
 .prototypeImg {
   width: 115px;
   height: 60px;
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
 }
 
 .cell {

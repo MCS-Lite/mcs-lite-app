@@ -17,6 +17,8 @@ const Prototypes = ({
   pushToast,
   deleteDevice,
   retrievePrototype,
+  uploadPrototypeImage,
+  uploadDeviceImage,
   ...props
 }) => {
   const {
@@ -24,6 +26,7 @@ const Prototypes = ({
     version,
     prototypeDescription,
     prototypeId,
+    prototypeImageURL,
     devicesLength,
     datachannels,
     devices,
@@ -39,12 +42,18 @@ const Prototypes = ({
           prototypeId={prototypeId}
           prototypeName={prototypeName}
           prototypeDescription={prototypeDescription}
+          prototypeImageURL={prototypeImageURL}
+          prototype={prototypes.prototypeDetail}
           version={version}
           createTestDevice={createTestDevice}
+          uploadPrototypeImage={uploadPrototypeImage}
+          uploadDeviceImage={uploadDeviceImage}
+          pushToast={pushToast}
           {...props}
         />
         <PrototypeDetailInfo
           prototypeDescription={prototypeDescription}
+          prototypeImageURL={prototypeImageURL}
           devicesLength={devicesLength}
         />
         <PanelContent
@@ -60,6 +69,7 @@ const Prototypes = ({
           pushToast={pushToast}
           deleteDevice={deleteDevice}
           retrievePrototype={retrievePrototype}
+          uploadDeviceImage={uploadDeviceImage}
         />
       </div>
     </div>

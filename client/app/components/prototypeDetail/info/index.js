@@ -9,12 +9,20 @@ import styles from './styles.css';
 
 const PrototypeDetailInfoLayout = ({
   prototypeDescription,
+  prototypeImageURL,
   devicesLength,
   getMessages: t,
 }) => (
   <div className={styles.base}>
     <div className={styles.info}>
-      <img src={prototypeBanner} alt="banner" />
+      <img
+        src={
+          prototypeImageURL
+          ? window.apiUrl.replace('api', 'images/') + prototypeImageURL
+          : prototypeBanner
+        }
+        alt="banner"
+      />
       <div>
         {t('description')}{prototypeDescription}
       </div>

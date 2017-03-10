@@ -27,7 +27,8 @@ export const editPrototype = (id, data) => (dispatch, getState) =>
 export const clonePrototype = (id, data) => (dispatch, getState) =>
   request(`/prototypes/${id}/clone`, 'POST', data, getState().main.access_token)
     .then((results) => {
-      browserHistory.push(`/prototypes/${results.data.prototypeId}`);
+      retrievePrototype(results.data.prototypeId)(dispatch, getState)
+        .then(() => browserHistory.push(`/prototypes/${results.data.prototypeId}`));
     });
 
 export const deletePrototype = id => (dispatch, getState) =>

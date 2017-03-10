@@ -15,10 +15,10 @@ export const changePassword = password => (dispatch, getState) =>
     }))
     .catch(() => Promise.reject());
 
-export const uploadImage = file => (dispatch, getState) =>
+export const uploadProfileImage = file => (dispatch, getState) =>
   request('/upload/image?type=profile', 'POST_FORM_DATA', file, getState().main.access_token)
   .then(({ data }) => dispatch({
-    type: types.UPLOADIMAGESUCCESS,
+    type: types.UPLOADPROFILEIMAGE,
     data,
   }))
   .catch(() => Promise.reject());

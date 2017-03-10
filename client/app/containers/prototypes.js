@@ -3,7 +3,8 @@ import React, { Component } from 'react';
 import { compose, withState } from 'recompose';
 import PrototypesLayout from '../components/prototypes';
 import LoadingPage from '../components/common/loadingPage';
-import * as PrototypeActions from '../actions/prototypeActions';
+import * as prototypeActions from '../actions/prototypeActions';
+import * as toastActions from '../actions/toastActions';
 
 class Prototype extends Component {
   componentWillMount() {
@@ -23,6 +24,6 @@ class Prototype extends Component {
 const mapStateToProps = state => state;
 
 export default compose(
-  connect(mapStateToProps, PrototypeActions),
+  connect(mapStateToProps, { ...prototypeActions, ...toastActions }),
   withState('isInitialized', 'setIsInitialized', false),
 )(Prototype);

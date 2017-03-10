@@ -241,6 +241,16 @@ const messages = defineMessages({
     description: '',
     defaultMessage: '註冊時間',
   },
+  'PrototypeDetail.cloneFromExistingPrototype': {
+    id: 'PrototypeDetail.cloneFromExistingPrototype',
+    description: '',
+    defaultMessage: '從既有的產品原型複製',
+  },
+  'PrototypeDetail.cloneFromExistingPrototypeIntro': {
+    id: 'PrototypeDetail.cloneFromExistingPrototypeIntro',
+    description: '',
+    defaultMessage: '從既有的產品原型複製出一份相同的產品原型來做更進一步的開發。',
+  },
 });
 
 export default messages;

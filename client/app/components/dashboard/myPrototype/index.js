@@ -33,6 +33,7 @@ const LastUpdatePrototype = pure(({
   devices,
   prototypeId,
   prototypeName,
+  prototypeImageURL,
   updatedAt,
   isDeviceListShow,
   setIsDeviceListShow,
@@ -41,7 +42,11 @@ const LastUpdatePrototype = pure(({
   <div>
     <div className={styles.prototypeContent}>
       <img
-        src={productBanner}
+        src={
+          prototypeImageURL
+          ? window.apiUrl.replace('api', 'images/') + prototypeImageURL
+          : productBanner
+        }
         className={styles.prototypeImg}
         alt="banner"
       />
@@ -109,6 +114,8 @@ const MyPrototypeLayout = ({
   onCancel,
   retrievePrototypeTemplates,
   templates,
+  uploadPrototypeImage,
+  pushToast,
 }) => (
   <div className={styles.base}>
     {
@@ -120,6 +127,8 @@ const MyPrototypeLayout = ({
           onCancel={onCancel}
           retrievePrototypeTemplates={retrievePrototypeTemplates}
           templates={templates}
+          uploadPrototypeImage={uploadPrototypeImage}
+          pushToast={pushToast}
         />
     }
     <Panel>
@@ -146,6 +155,7 @@ const MyPrototypeLayout = ({
           <LastUpdatePrototype
             prototypeName={userPrototypes.prototypeName}
             prototypeId={userPrototypes.prototypeId}
+            prototypeImageURL={userPrototypes.prototypeImageURL}
             devices={userPrototypes.devices}
             updatedAt={userPrototypes.updatedAt}
             isDeviceListShow={isDeviceListShow}

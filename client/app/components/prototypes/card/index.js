@@ -26,6 +26,8 @@ const PrototypeCardLayout = ({
   editPrototype,
   onClone,
   onCancel,
+  uploadPrototypeImage,
+  pushToast,
   getMessages: t,
 }) => {
   const {
@@ -34,6 +36,7 @@ const PrototypeCardLayout = ({
     prototypeName,
     version,
     prototypeDescription,
+    prototypeImageURL,
   } = prototype;
 
   let items = [
@@ -60,7 +63,15 @@ const PrototypeCardLayout = ({
             <IconMoreVert />
           </WithDropdownMenu>
         </div>
-        <img src={productBanner} className={styles.img} alt="banner" />
+        <img
+          src={
+            prototypeImageURL
+            ? window.apiUrl.replace('api', 'images/') + prototypeImageURL
+            : productBanner
+          }
+          className={styles.img}
+          alt="banner"
+        />
         {
           selectMenuValue === 'clone' &&
           <CreatePrototype
@@ -70,6 +81,8 @@ const PrototypeCardLayout = ({
             template={prototype}
             onClone={onClone}
             onCancel={onCancel}
+            uploadPrototypeImage={uploadPrototypeImage}
+            pushToast={pushToast}
           />
         }
         {
@@ -79,9 +92,12 @@ const PrototypeCardLayout = ({
             prototypeId={prototypeId}
             prototypeName={prototypeName}
             version={version}
+            prototypeImageURL={prototypeImageURL}
             prototypeDescription={prototypeDescription}
             selectMenuValue={selectMenuValue}
             setSelectMenuValue={setSelectMenuValue}
+            uploadPrototypeImage={uploadPrototypeImage}
+            pushToast={pushToast}
           />
         }
         {
