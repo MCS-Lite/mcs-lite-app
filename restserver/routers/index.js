@@ -348,4 +348,11 @@ module.exports = function($db, $app, $rest) {
     handler: unittypesController.retrieveUnitTypes,
   };
 
+  this.exportJSON = {
+    path: $rest.apiRoute + '/prototypes/:prototypdId/export',
+    methods: ['post'],
+    middleware: [$app.oauth.authorise()],
+    handler: prototypesController.exportJSON,
+  };
+
 };

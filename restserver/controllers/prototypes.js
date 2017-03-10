@@ -4,6 +4,7 @@ module.exports = function ($db) {
   var users = $db.users;
   var datachannels = $db.datachannels;
 
+
   var retrievAllTemplates = function(req, res, next) {
     return prototypes.retriveUserPrototypes({
       isActive: true,
@@ -165,6 +166,41 @@ module.exports = function ($db) {
     });
   };
 
+  var exportJSON = function(req, res, next) {
+    var prototypeId = req.params.prototypeId;
+    var exportData;
+    return prototypes.exportPrototype(prototypeId)
+    .then(function(data) {
+      exportData = data;
+      return datachannels.find({
+        prototypeId: prototypeId,
+        isActive: true,
+      });
+    })
+    .then(function(data) {
+      console.log(data);
+    })
+    .then(function() {
+      return res.send(200, { data: exportData });
+    })
+    .catch(function(err) {
+      return res.send(400, err);
+    })
+  };
+
+  var importJSON = function(req, res, next) {
+    var content = req.body.content;
+    var userId = req.user.userId;
+
+    return prototypes.importPrototype(content, userId)
+    .then(function() {
+      return res.send(200, { message: 'success.' });
+    })
+    .catch(function(err) {
+      return res.send(400, err);
+    });
+  };
+
   return {
     retrievePrototypeDetail: retrievePrototypeDetail,
     retrievePrototype: retrievePrototype,
@@ -173,6 +209,8 @@ module.exports = function ($db) {
     deletePrototype: deletePrototype,
     clonePrototype: clonePrototype,
     retrievAllTemplates: retrievAllTemplates,
+    importJSON: importJSON,
+    exportJSON: exportJSON,
   };
 
 };

@@ -1,6 +1,7 @@
 var Validator = require('jsonschema').Validator;
 var v = new Validator();
 var schema = require('./schema');
+var prototypeSchema = require('./importSchema');
 var shortid = require('shortid');
 var crypto = require('crypto');
 var configs = require('../../configs/rest');
@@ -127,6 +128,63 @@ module.exports = function(prototypes) {
           if (err) return reject();
           resolve({ message: 'success' });
         });
+      });
+    },
+
+    exportPrototype: function(prototypeId) {
+      return new Promise(function(resolve, reject) {
+        return prototypes.find({
+          prototypeId: prototypeId,
+          isActive: true
+        }, function(err, data) {
+          if (err) return reject();
+          if (data.length != 1) {
+            return reject({ error: 'This prototypeId is not valid.' });
+          }
+          resolve(data);
+        });
+      })
+      .then(function(data) {
+        var field = {};
+        field.prodName = data[0].prototypeName;
+        field.version = data[0].version;
+        field.description = data[0].prototypeDescription;
+        field.prodImgURL = data[0].prototypeImageURL;
+        field.prodAppTypeId = 62;
+        field.prodRlsStatusTypeId = 1;
+        field.saleReleaseDate = null;
+        field.saleDiscontinuousDate = null;
+        field.isLongConnectionNeeded = true;
+        field.isSerialNeeded = false;
+        field.isInterpreterCloudNeeded = false;
+        field.status = true;
+        field.prodDesc = null;
+        field.chipId= 4;
+        field.triggerActions= [];
+        return field;
+      });
+    },
+
+    importPrototype: function(field, userId) {
+      var _this = this;
+      return new Promise(function(resolve, reject) {
+        var validataSchema = v.validate(field, schema);
+
+        if (validataSchema.errors.length === 0) {
+          return resolve();
+        } else {
+          return reject({ schema: validataSchema.errors })
+        }
+      })
+      .then(function() {
+        var clonePrototypeData = {};
+        clonePrototypeData.prototypeName = field.prodName;
+        clonePrototypeData.version = field.version;
+        clonePrototypeData.prototypeDescription = field.description;
+        clonePrototypeData.prototypeImageURL = field.prodImgURL || '';
+        clonePrototypeData.isTemplate = false;
+        clonePrototypeData.createUserId = userId;
+        return _this.addNewPrototype(clonePrototypeData);
       });
     },
 
