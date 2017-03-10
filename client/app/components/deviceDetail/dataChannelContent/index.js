@@ -4,6 +4,7 @@ import {
   pure,
   withHandlers,
   withState,
+  withProps,
 } from 'recompose';
 import R from 'ramda';
 import { connectSocket } from 'mcs-lite-connect';
@@ -14,6 +15,12 @@ const DataChannelContentLayout = ({
   datachannels,
   onSubmit,
   onChangeDatachannel,
+  retrieveDatachannelDatapoint,
+  datapointsSet = {},
+  deviceId,
+  deviceKey,
+  setNewDatapointsSet,
+  newDatapointsSet,
 }) => (
   <div className={styles.dataChannelContent}>
     {
@@ -32,12 +39,17 @@ const DataChannelContentLayout = ({
             onSubmit={onSubmit}
             onChangeDatachannel={onChangeDatachannel}
             id={dataChannel.datachannelId}
+            deviceId={deviceId}
+            deviceKey={deviceKey}
             title={dataChannel.datachannelName}
-            className={styles.displayCard}
-            value={dataChannel.datapoints.values || null}
+            value={dataChannel.datapoints.values || {}}
             format={dataChannel.format}
             updatedAt={dataChannel.updatedAt}
             description={dataChannel.datachannelDescription}
+            retrieveDatachannelDatapoint={retrieveDatachannelDatapoint}
+            datapoints={datapointsSet[dataChannel.datachannelId]}
+            setNewDatapointsSet={setNewDatapointsSet}
+            newDatapointsSet={newDatapointsSet}
           />
         );
       })
@@ -48,17 +60,33 @@ const DataChannelContentLayout = ({
 export default compose(
   pure,
   withState('datachannels', 'setDatachannels', props => props.datachannels),
+  withState('newDatapointsSet', 'setNewDatapointsSet', {}),
   withHandlers({
     onMessage: props => (data) => {
-      const datachannels = R.clone(props.datachannels);
-      datachannels.forEach((k) => {
-        if (k.datachannelId === data.datachannelId) {
-          if (!k.datapoints) k.datapoints = { values: {}};
-          k.datapoints.values = data.values;
-          k.datapoints.updatedAt = data.updatedAt || new Date().getTime();
-        }
-      });
-      props.setDatachannels(datachannels);
+      const { datachannelId } = data;
+      const index = R.findIndex(
+        R.propEq('datachannelId', datachannelId),
+      )(props.datachannels);
+
+      if (index > -1) {
+        const newDatapoint = {
+          values: data.values,
+          updatedAt: data.updatedAt || new Date().getTime(),
+        };
+
+        props.setDatachannels(R.update(
+          index,
+          R.merge(props.datachannels[index], { datapoints: newDatapoint }),
+          props.datachannels),
+        );
+
+        props.setNewDatapointsSet(
+          R.assoc(datachannelId, [
+            ...R.pathOr([], ['newDatapointsSet', datachannelId], props),
+            newDatapoint,
+          ], props.newDatapointsSet),
+        );
+      }
     },
   }),
   connectSocket(
@@ -66,6 +94,18 @@ export default compose(
     props => datapoint => props.onMessage(datapoint), // 2. Viwer
     'sendMessage',                                    // 3. Sender
   ),
+  withProps((props) => {
+    const retrievedDatachannelDatapointsSet = props.datachannelDatapoints;
+    const newDatachannelDatapointsSet = props.newDatapointsSet;
+
+    const datapointsSet = R.mergeWith(
+      R.concat,
+      retrievedDatachannelDatapointsSet,
+      newDatachannelDatapointsSet,
+    );
+
+    return { datapointsSet };
+  }),
   withHandlers({
     onSubmit: props => (id, values) => {
       const datapoint = { datachannelId: id, values };

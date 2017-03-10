@@ -112,7 +112,7 @@ export default compose(
   withState('selectMenuValue', 'setSelectMenuValue', ''),
   withState('isSelectMenu', 'setIsSelectMenu', false),
   withHandlers({
-    openPrototypeDetail: props => () => browserHistory.push(`/prototypes/${props.prototypeId}`),
+    openPrototypeDetail: props => () => browserHistory.push(`/prototypes/${props.prototype.prototypeId}`),
     onSelectMenuValueChange: props => (e, value) => {
       props.setIsSelectMenu(false);
       props.setSelectMenuValue(value);

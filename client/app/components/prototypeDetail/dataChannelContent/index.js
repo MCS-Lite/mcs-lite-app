@@ -42,7 +42,6 @@ const DataChannelContentLayout = ({
               id={dataChannel.datachannelId}
               title={dataChannel.datachannelName}
               className={styles.displayCard}
-              value={null}
               format={dataChannel.format}
               updatedAt={dataChannel.updatedAt}
               description={dataChannel.datachannelDescription}

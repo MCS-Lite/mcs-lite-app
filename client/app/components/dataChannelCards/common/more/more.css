@@ -7,9 +7,10 @@
 }
 
 .menu {
+  z-index: 2;
   position: absolute;
   margin-top: 5px;
-  margin-left: -40px;
+  right: 0;
 }
 
 .backdrop {

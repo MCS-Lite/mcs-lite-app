@@ -1,10 +1,6 @@
-.displayCard {
-  margin: 9px 9px 15px 9px;
-  width: 280px;
-}
-
 .dataChannelContent {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  width: 100%;
 }

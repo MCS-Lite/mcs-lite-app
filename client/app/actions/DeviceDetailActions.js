@@ -1,28 +1,34 @@
+import { browserHistory } from 'react-router';
 import types from '../constants/DeviceActionTypes';
+import { retrieveDeviceList } from './deviceActions';
 import { request } from '../utils/fetch';
-import { browserHistory } from 'react-router'
 
-export const retrieveDevice =  (id) => (dispatch, getState) => {
-  return request('/devices/' + id , 'GET', getState().main.access_token)
-  .then((data) => {
-    return dispatch({
+export const retrieveDevice = id => (dispatch, getState) =>
+  request(`/devices/${id}`, 'GET', getState().main.access_token)
+    .then(data => dispatch({
       type: types.RETRIEVEDEVICE,
       data: data.data,
+    }));
+
+export const editDevice = (id, data) => (dispatch, getState) =>
+  request(`/devices/${id}`, 'PUT', data, getState().main.access_token)
+    .then(() => {
+      retrieveDevice(id)(dispatch, getState);
     });
-  });
-}
 
-export const editDevice = (id, data) => (dispatch, getState) => {
-  return request('/devices/' + id, 'PUT', data, getState().main.access_token)
-  .then(function() {
-    retrieveDevice(id)(dispatch, getState);
-  });
-}
+export const deleteDevice = id => (dispatch, getState) =>
+  request(`/devices/${id}`, 'DELETE', {}, getState().main.access_token)
+    .then(() => {
+      browserHistory.push('/devices/');
+      retrieveDeviceList()(dispatch, getState);
+    });
 
-export const deleteDevice =  (id) => (dispatch, getState) => {
-  return request('/devices/' + id, 'DELETE', {}, getState().main.access_token)
-  .then(function() {
-    browserHistory.push('/devices/');
-    retrieveDeviceList()(dispatch, getState);
-  });
-}
+export const retrieveDatachannelDatapoint =
+  (deviceId, deviceKey, datachannelId) => (dispatch, getState) =>
+    request(`/devices/${deviceId}/datachannels/${datachannelId}/datapoints`, 'GET_DATAPOINTS', deviceKey, getState().main.access_token)
+      .then(data => dispatch({
+        type: types.RETRIVEDATACHANNELDATAPOINT,
+        data: data.data,
+        deviceId,
+        datachannelId,
+      }));

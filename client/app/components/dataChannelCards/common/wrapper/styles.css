@@ -1,0 +1,13 @@
+.dataChannelCard {
+  margin: 9px 9px 15px 9px;
+}
+
+.dataChannelCard.withGraph {
+  width: 100%;
+}
+
+.displayWrap {
+  display: flex;
+  justify-content: center;
+  min-width: 240px;
+}
