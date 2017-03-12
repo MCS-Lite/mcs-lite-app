@@ -1,5 +1,6 @@
 .dataChannelCard {
   margin: 9px 9px 15px 9px;
+  width: 280px;
 }
 
 .dataChannelCard.withGraph {
@@ -10,4 +11,5 @@
   display: flex;
   justify-content: center;
   min-width: 240px;
+  max-height: 209px;
 }
