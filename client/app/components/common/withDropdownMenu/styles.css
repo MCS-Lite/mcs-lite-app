@@ -1,0 +1,10 @@
+.base {
+  position: relative;
+}
+
+.menu {
+  z-index: 2;
+  position: absolute;
+  right: 0;
+  margin-top: 5px;
+}

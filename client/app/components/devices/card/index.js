@@ -1,16 +1,14 @@
-import React, { Component } from 'react';
-import { browserHistory } from 'react-router';
-import { FormattedMessage } from 'react-intl';
-
+import React from 'react';
+import { Link, browserHistory } from 'react-router';
+import { Heading } from 'mcs-lite-ui';
 import Button from 'mtk-ui/lib/Button';
 import Hr from 'mtk-ui/lib/Hr';
-import MiMoreVert from 'mtk-icon/lib/MiMoreVert';
-
 import compose from 'recompose/compose';
 import pure from 'recompose/pure';
 import withState from 'recompose/withState';
 import withHandlers from 'recompose/withHandlers';
-
+import { withGetMessages } from 'react-intl-inject-hoc';
+import messages from '../messages';
 import productBanner from '../../prototypes/productBanner.png';
 import DropdownButton from '../dropdownButton';
 import EditDeviceDialog from '../../common/dialogs/editDeviceDialog';
@@ -21,100 +19,95 @@ import styles from './styles.css';
 const DeviceCardLayout = ({
   deviceId,
   deviceName,
-  deviceVersion,
   deviceDescription,
   deviceImageURL,
+  prototypeId,
   version,
-  source,
-  templateResource,
+  source = '來源',
   openDeviceDetail,
-  setSeletedMenuValue,
-  seletedMenuValue,
+  setSelectedMenuValue,
+  selectedMenuValue,
   editDevice,
-  deleteDevice,
-}) => {
-  return (
-    <div className={styles.base}>
-      <DropdownButton
-        className={styles.more}
-        setSeletedMenuValue={setSeletedMenuValue}
-      />
-      <img src={deviceImageURL || productBanner} className={styles.img} />
-      <div className={styles.content}>
-        <div>
-          <h3 className={styles.deviceName}>
-            {deviceName}
-          </h3>
-            {
-              (version || source) &&
-              <Hr className={styles.hr}/>
-            }
-            {
-              version && <h3>
-                <FormattedMessage
-                  id="Devices.Version"
-                  defaultMessage="版本："
-                />
-                {version}
-              </h3>
-            }
-            {
-              source && <h3>
-                <FormattedMessage
-                  id="Devices.Source"
-                  defaultMessage="創建來源："
-                />
-                {source}
-              </h3>
-            }
-            {
-              deviceDescription &&
-              <div>
-                <Hr className={styles.hr}/>
-                <div>
-                  <FormattedMessage
-                    id="Devices.Description"
-                    defaultMessage="描述："
-                  />
-                  {deviceDescription}
-                </div>
-              </div>
-            }
-        </div>
-        <Button className={styles.button} onClick={openDeviceDetail}>
-          <FormattedMessage
-            id="Devices.Detail"
-            defaultMessage="詳情"
-          />
-        </Button>
+  onDeleteSubmit,
+  uploadDeviceImage,
+  pushToast,
+  getMessages: t,
+}) => (
+  <div className={styles.base}>
+    <DropdownButton
+      className={styles.more}
+      setSelectedMenuValue={setSelectedMenuValue}
+    />
+    <img
+      src={
+        deviceImageURL
+        ? window.apiUrl.replace('api', 'images/') + deviceImageURL
+        : productBanner
+      }
+      className={styles.img}
+      alt="product"
+    />
+    <div className={styles.content}>
+      <div>
+        <Heading level={3}>{deviceName}</Heading>
+        <Hr className={styles.hr} />
+        {version && `${t('version')}${version}`}
+        {
+          source && <div>
+            {t('source')}
+            <Link
+              to={`/prototypes/${prototypeId}`}
+              className={styles.link}
+            >
+              {source}
+            </Link>
+          </div>
+        }
+        {
+            deviceDescription &&
+            <div>
+              <Hr className={styles.hr} />
+              {`${t('description')}${deviceDescription}`}
+            </div>
+          }
       </div>
-      {
-        seletedMenuValue === 'edit' &&
-        <EditDeviceDialog
-          deviceId={deviceId}
-          deviceName={deviceName}
-          deviceVersion={deviceVersion}
-          deviceDescription={deviceDescription}
-          setSeletedMenuValue={setSeletedMenuValue}
-          editDevice={editDevice}
-        />
-      }
-      {
-        seletedMenuValue === 'delete' &&
-        <DeleteConfirmDialog
-          deviceId={deviceId}
-          setSeletedMenuValue={setSeletedMenuValue}
-          deleteDevice={deleteDevice}
-        />
-      }
+      <Button className={styles.button} onClick={openDeviceDetail}>
+        {t('detail')}
+      </Button>
     </div>
-  );
-}
+    {
+      selectedMenuValue === 'edit' &&
+      <EditDeviceDialog
+        deviceId={deviceId}
+        deviceName={deviceName}
+        deviceDescription={deviceDescription}
+        setSelectedMenuValue={setSelectedMenuValue}
+        editDevice={editDevice}
+        uploadDeviceImage={uploadDeviceImage}
+        pushToast={pushToast}
+      />
+    }
+    {
+      selectedMenuValue === 'delete' &&
+      <DeleteConfirmDialog
+        deviceId={deviceId}
+        setSelectedMenuValue={setSelectedMenuValue}
+        onDeleteSubmit={onDeleteSubmit}
+      />
+    }
+  </div>
+);
 
 export default compose(
   pure,
-  withState('seletedMenuValue', 'setSeletedMenuValue', 'none'),
+  withGetMessages(messages, 'Devices'),
+  withState('selectedMenuValue', 'setSelectedMenuValue', 'none'),
   withHandlers({
-    openDeviceDetail: props => () => browserHistory.push('/devices/' + props.deviceId),
+    openDeviceDetail: props => () => browserHistory.push(`/devices/${props.deviceId}`),
+    onDeleteSubmit: props => () => {
+      props.deleteDevice(props.deviceId)
+        .then(() => props.retrieveDeviceList());
+      props.setSelectedMenuValue('none');
+    },
   }),
 )(DeviceCardLayout);

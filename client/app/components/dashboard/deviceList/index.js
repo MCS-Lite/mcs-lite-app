@@ -10,15 +10,12 @@ import withState from 'recompose/withState';
 import TableCell from 'mtk-ui/lib/table/TableCell';
 import TableRow from 'mtk-ui/lib/table/TableRow';
 import IconDelete from 'mcs-lite-icon/lib/IconDelete';
-import { withGetMessages } from 'react-intl-inject-hoc';
-import messages from '../messages';
 import CopyButtonGroup from '../../common/copyButtonGroup';
 import DeleteConfirmDialog from '../../common/dialogs/deleteConfirmDialog';
 
 import styles from './styles.css';
 
 const DeviceList = ({
-  getMessages: t,
   deviceId,
   deviceKey,
   updatedAt,
@@ -35,7 +32,7 @@ const DeviceList = ({
     <TableCell><CopyButtonGroup value={deviceId} /></TableCell>
     <TableCell><CopyButtonGroup value={deviceKey} /></TableCell>
     <TableCell>
-      {moment(updatedAt).format('YYYY-MM-DD h:mm')}
+      {moment(updatedAt).format('YYYY-MM-DD hh:mm')}
     </TableCell>
     {
       deleteDevice &&
@@ -67,5 +64,4 @@ export default compose(
       props.setDialogShow('none');
     },
   }),
-  withGetMessages(messages, 'Dashboard'),
 )(DeviceList);

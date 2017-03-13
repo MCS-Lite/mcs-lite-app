@@ -28,6 +28,8 @@ const CreatePrototype = ({
   onCancel,
   error,
   setError,
+  uploadPrototypeImage,
+  pushToast,
   getMessages: t,
 }) => (
   <DialogWrapper
@@ -57,6 +59,8 @@ const CreatePrototype = ({
           setError={setError}
           prototypeInfo={prototypeInfo}
           setPrototypeInfo={setPrototypeInfo}
+          uploadPrototypeImage={uploadPrototypeImage}
+          pushToast={pushToast}
         />
     }
     { method === 'json' && <ImportJSON /> }
@@ -76,6 +80,8 @@ const CreatePrototype = ({
           setError={setError}
           prototypeInfo={template}
           setPrototypeInfo={setTemplate}
+          uploadPrototypeImage={uploadPrototypeImage}
+          pushToast={pushToast}
         />
     }
   </DialogWrapper>

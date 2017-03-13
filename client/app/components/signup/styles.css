@@ -13,7 +13,12 @@
   color: #00a1de;
   cursor: pointer;
 }
-
 .form {
-  height: 364px;
+  background: #FFFFFF;
+  width: 300px;
+  border-radius: 3px;
+  padding: 20px;
+  padding-bottom: 40px;
+  box-sizing: border-box;
+  box-shadow: 0 1px 5px 0 rgba(0,0,0,0.20);
 }

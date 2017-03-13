@@ -1,4 +1,5 @@
 import React from 'react';
+import c from 'classnames';
 import { Link } from 'react-router';
 import moment from 'moment';
 
@@ -10,8 +11,7 @@ import Button from 'mtk-ui/lib/Button';
 import Table from 'mtk-ui/lib/table/Table';
 import TableHeader from 'mtk-ui/lib/table/TableHeader';
 import TableCell from 'mtk-ui/lib/table/TableCell';
-import MiUnfold from 'mtk-icon/lib/MiUnfold';
-import MiFold from 'mtk-icon/lib/MiFold';
+import IconFold from 'mcs-lite-icon/lib/IconFold';
 import Heading from 'mcs-lite-ui/lib/Heading';
 import IconOverview from 'mcs-lite-icon/lib/IconOverview';
 
@@ -33,6 +33,7 @@ const LastUpdatePrototype = pure(({
   devices,
   prototypeId,
   prototypeName,
+  prototypeImageURL,
   updatedAt,
   isDeviceListShow,
   setIsDeviceListShow,
@@ -41,7 +42,11 @@ const LastUpdatePrototype = pure(({
   <div>
     <div className={styles.prototypeContent}>
       <img
-        src={productBanner}
+        src={
+          prototypeImageURL
+          ? window.apiUrl.replace('api', 'images/') + prototypeImageURL
+          : productBanner
+        }
         className={styles.prototypeImg}
         alt="banner"
       />
@@ -60,11 +65,14 @@ const LastUpdatePrototype = pure(({
       </div>
     </div>
     <a
-      className={styles.link}
+      className={c(
+        styles.link,
+        isDeviceListShow && styles.listOpen,
+      )}
       onClick={() => setIsDeviceListShow(!isDeviceListShow)}
     >
       {t('testDeviceList')}
-      {isDeviceListShow ? <MiUnfold /> : <MiFold />}
+      <IconFold size={18} />
     </a>
     {
       isDeviceListShow &&
@@ -106,6 +114,8 @@ const MyPrototypeLayout = ({
   onCancel,
   retrievePrototypeTemplates,
   templates,
+  uploadPrototypeImage,
+  pushToast,
 }) => (
   <div className={styles.base}>
     {
@@ -117,6 +127,8 @@ const MyPrototypeLayout = ({
           onCancel={onCancel}
           retrievePrototypeTemplates={retrievePrototypeTemplates}
           templates={templates}
+          uploadPrototypeImage={uploadPrototypeImage}
+          pushToast={pushToast}
         />
     }
     <Panel>
@@ -143,6 +155,7 @@ const MyPrototypeLayout = ({
           <LastUpdatePrototype
             prototypeName={userPrototypes.prototypeName}
             prototypeId={userPrototypes.prototypeId}
+            prototypeImageURL={userPrototypes.prototypeImageURL}
             devices={userPrototypes.devices}
             updatedAt={userPrototypes.updatedAt}
             isDeviceListShow={isDeviceListShow}

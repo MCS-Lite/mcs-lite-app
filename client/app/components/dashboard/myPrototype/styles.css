@@ -14,10 +14,22 @@
 }
 
 .link {
+  display: flex;
+  align-items: center;
   font-size: 13px;
   color: #00A1DE;
   text-decoration: none;
   cursor: pointer;
+}
+
+.link > svg {
+  margin-left: 3px;
+  transform: rotate(0deg);
+  transition: transform .2s linear;
+}
+
+.listOpen > svg {
+  transform: rotate(180deg);
 }
 
 .noAnyPrototypes {
@@ -30,6 +42,7 @@
 
 .noAnyPrototypes p {
   margin-top: 40px;
+  margin-bottom: 10px;
   text-align: center;
 }
 
@@ -47,6 +60,8 @@
 .prototypeImg {
   width: 115px;
   height: 60px;
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
 }
 
 .cell {

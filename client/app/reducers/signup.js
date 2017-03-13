@@ -6,7 +6,7 @@ const initialState = {
   errorMsg: '',
 };
 
-export default function login(state = initialState, action) {
+export default function signup(state = initialState, action) {
   switch (action.type) {
     case loginTypes.ERRORMSG:
       return assign({}, state, { errorMsg: action.errorMsg });

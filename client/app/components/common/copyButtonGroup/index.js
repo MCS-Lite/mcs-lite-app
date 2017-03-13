@@ -1,16 +1,10 @@
-import React from 'react'
-import { FormattedMessage } from 'react-intl'
+import React from 'react';
+import { FormattedMessage } from 'react-intl';
+import pure from 'recompose/pure';
 
-import compose from 'recompose/compose'
-import pure from 'recompose/pure'
+import CopyButton from 'mtk-ui/lib/CopyButton';
 
-import CopyButton from 'mtk-ui/lib/CopyButton'
-
-import styles from './copyButtonGroup.css'
-
-const enhance = compose(
-  pure,
-)
+import styles from './copyButtonGroup.css';
 
 const copyButtonGroup = ({ label, value }) => (
   <div className={styles.base}>
@@ -28,6 +22,6 @@ const copyButtonGroup = ({ label, value }) => (
       />
     </CopyButton>
   </div>
-)
+);
 
-export default copyButtonGroup
+export default pure(copyButtonGroup);

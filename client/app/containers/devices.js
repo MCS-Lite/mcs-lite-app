@@ -7,7 +7,9 @@ import {
   retrieveDeviceList,
   editDevice,
   deleteDevice,
+  uploadDeviceImage,
 } from '../actions/DeviceActions';
+import { pushToast } from '../actions/toastActions'
 
 class Device extends Component {
   componentWillMount() {
@@ -31,6 +33,8 @@ export default compose(
     retrieveDeviceList,
     editDevice,
     deleteDevice,
+    uploadDeviceImage,
+    pushToast,
   }),
   withState('isInitialized', 'setIsInitialized', false),
 )(Device);

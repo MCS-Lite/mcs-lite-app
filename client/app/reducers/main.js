@@ -29,7 +29,7 @@ export default function main(state = initialState, action) {
       return assign({}, state, {
         userName: action.userName,
       });
-    case userTypes.UPLOADIMAGESUCCESS:
+    case userTypes.UPLOADPROFILEIMAGE:
       return assign({}, state, {
         userImage: action.data
           ? window.apiUrl.replace('api', 'images/') + action.data

@@ -25,6 +25,8 @@ const ExamplesLayout = ({
   templates,
   createNewPrototype,
   retrieveDashboard,
+  uploadPrototypeImage,
+  pushToast,
 }) => (
   <div className={styles.base}>
     <Panel>
@@ -47,7 +49,9 @@ const ExamplesLayout = ({
               key={prototype.prototypeId}
               templates={templates}
               createNewPrototype={createNewPrototype}
+              uploadPrototypeImage={uploadPrototypeImage}
               retrieveDashboard={retrieveDashboard}
+              pushToast={pushToast}
             />
           ))
         }

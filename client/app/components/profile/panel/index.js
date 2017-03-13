@@ -30,7 +30,7 @@ const ProfilePanel = ({
   onEditUserNameClick,
   onChangePasswordClick,
   userImage,
-  uploadImage,
+  uploadProfileImage,
   pushToast,
   getMessages: t,
 }) => (
@@ -45,7 +45,7 @@ const ProfilePanel = ({
       <div>
         <ProfilePhoto
           userImage={userImage}
-          uploadImage={uploadImage}
+          uploadProfileImage={uploadProfileImage}
           pushToast={pushToast}
         />
       </div>

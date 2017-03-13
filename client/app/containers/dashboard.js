@@ -5,6 +5,7 @@ import DashboardLayout from '../components/dashboard';
 import LoadingPage from '../components/common/loadingPage';
 import * as dashboardActions from '../actions/DashboardActions';
 import * as prototypeActions from '../actions/PrototypeActions';
+import * as toastActions from '../actions/toastActions';
 
 class Dashboard extends Component {
   componentWillMount() {
@@ -24,6 +25,6 @@ class Dashboard extends Component {
 const mapStateToProps = state => state;
 
 export default compose(
-  connect(mapStateToProps, { ...dashboardActions, ...prototypeActions }),
+  connect(mapStateToProps, { ...dashboardActions, ...prototypeActions, ...toastActions }),
   withState('isInitialized', 'setIsInitialized', false),
 )(Dashboard);

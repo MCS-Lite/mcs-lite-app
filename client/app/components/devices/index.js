@@ -18,16 +18,20 @@ const Devices = ({
   devices: {
     deviceList = [],
   } = {},
-  getMessages: t,
   editDevice,
   deleteDevice,
   filterKey,
   setFilterKey,
+  pushToast,
+  uploadDeviceImage,
 }) => (
   <div>
     <div className={styles.base}>
       <Breadcrumb />
-      <PanelHeader setFilterKey={setFilterKey} />
+      <PanelHeader
+        filterKey={filterKey}
+        setFilterKey={setFilterKey}
+      />
       <div className={styles.content}>
         {
           deviceList.length > 0 ? deviceList.filter(filteByName(filterKey)).map(device => (
@@ -36,6 +40,8 @@ const Devices = ({
               key={device.deviceId}
               editDevice={editDevice}
               deleteDevice={deleteDevice}
+              pushToast={pushToast}
+              uploadDeviceImage={uploadDeviceImage}
             />
           )) : <div className={styles.noDevices}>
             <FormattedMessage

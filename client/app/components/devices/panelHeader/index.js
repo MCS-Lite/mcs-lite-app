@@ -1,9 +1,6 @@
-import React, { Component } from 'react';
-import { FormattedMessage } from 'react-intl';
-
+import React from 'react';
 import compose from 'recompose/compose';
 import pure from 'recompose/pure';
-import withState from 'recompose/withState';
 import withHandlers from 'recompose/withHandlers';
 
 import Panel from 'mtk-ui/lib/Panel';
@@ -15,13 +12,13 @@ import Button from 'mtk-ui/lib/Button';
 import IconDevice from 'mcs-lite-icon/lib/IconDevice';
 import IconSearch from 'mcs-lite-icon/lib/IconSearch';
 
-import messages from '../messages';
 import { withGetMessages } from 'react-intl-inject-hoc';
+import messages from '../messages';
 
 import styles from './styles.css';
 
 const PanelHeaderLayout = ({
-  searchKey,
+  filterKey,
   onInputTextChange,
   onSearch,
   getMessages: t,
@@ -29,27 +26,22 @@ const PanelHeaderLayout = ({
   <div className={styles.base}>
     <Panel>
       <PanelHeader>
-        <PanelIcon icon={<IconDevice size={24}/>} />
+        <PanelIcon icon={<IconDevice size={24} />} />
         <div className={styles.content}>
-          <FormattedMessage
-            id="Devices.TestDeviceList"
-            defaultMessage="測試裝置列表"
-          />
-          <form action={onSearch}>
-            <InputGroup className={styles.searchGroup}>
-              <InputText
-                value={searchKey}
-                onChange={onInputTextChange}
-                placeholder={t('search')}
-              />
-              <Button
-                className={styles.searchButton}
-                onClick={onSearch}
-              >
-                <IconSearch size={18} />
-              </Button>
-            </InputGroup>
-          </form>
+          {t('testDeviceList')}
+          <InputGroup className={styles.searchGroup}>
+            <InputText
+              value={filterKey}
+              onChange={onInputTextChange}
+              placeholder={t('search')}
+            />
+            <Button
+              className={styles.searchButton}
+              onClick={onSearch}
+            >
+              <IconSearch size={18} />
+            </Button>
+          </InputGroup>
         </div>
       </PanelHeader>
     </Panel>
@@ -58,13 +50,8 @@ const PanelHeaderLayout = ({
 
 export default compose(
   pure,
-  withState('searchKey', 'setSearchKey', ''),
   withGetMessages(messages, 'Devices'),
   withHandlers({
-    onInputTextChange: props => e => props.setSearchKey(e.target.value),
-    onSearch: props => e => {
-      props.setFilterKey(props.searchKey);
-      e.preventDefault();
-    }
-  })
+    onInputTextChange: props => e => props.setFilterKey(e.target.value),
+  }),
 )(PanelHeaderLayout);

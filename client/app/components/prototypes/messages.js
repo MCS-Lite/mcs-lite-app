@@ -9,12 +9,12 @@ const messages = defineMessages({
   'Prototypes.createYourPrototypeNow': {
     id: 'Prototypes.createYourPrototypeNow',
     description: '',
-    defaultMessage: '馬上創建你的原型!',
+    defaultMessage: '馬上創建原型！',
   },
   'Prototypes.version': {
     id: 'Prototypes.version',
     description: '',
-    defaultMessage: '版本',
+    defaultMessage: '版本：',
   },
   'Prototypes.development': {
     id: 'Prototypes.development',
@@ -64,7 +64,12 @@ const messages = defineMessages({
   'Prototypes.prototypeDescription': {
     id: 'Prototypes.prototypeDescription',
     description: '',
-    defaultMessage: '描述',
+    defaultMessage: '描述：',
+  },
+  'Prototypes.uploadImage': {
+    id: 'Prototypes.uploadImage',
+    description: '',
+    defaultMessage: '上傳影像',
   },
   'Prototypes.inputThePrototypeDescription': {
     id: 'Prototypes.inputThePrototypeDescription',
@@ -84,7 +89,7 @@ const messages = defineMessages({
   'Prototypes.deletePrototype': {
     id: 'Prototypes.deletePrototype',
     description: '',
-    defaultMessage: '是否確定刪除？ 一但刪除將無法復原。'
+    defaultMessage: '是否確定刪除？ 一但刪除將無法復原。',
   },
   'Prototypes.OK': {
     id: 'Prototypes.OK',
@@ -130,6 +135,10 @@ const messages = defineMessages({
     id: 'Prototypes.cancel',
     description: '',
     defaultMessage: '取消',
+  },
+  'Prototypes.search': {
+    id: 'Prototypes.search',
+    defaultMessage: '搜尋',
   },
 });
 

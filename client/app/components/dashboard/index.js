@@ -7,6 +7,8 @@ import Examples from './examples';
 
 const Dashboard = ({
   createNewPrototype,
+  uploadPrototypeImage,
+  pushToast,
   dashboard,
   clonePrototype,
   retrieveDashboard,
@@ -17,17 +19,21 @@ const Dashboard = ({
       <Breadcrumb />
       <MyPrototype
         createNewPrototype={createNewPrototype}
+        uploadPrototypeImage={uploadPrototypeImage}
         clonePrototype={clonePrototype}
         userPrototypes={dashboard.userPrototypes}
         retrieveDashboard={retrieveDashboard}
         retrievePrototypeTemplates={retrievePrototypeTemplates}
         templates={dashboard.templates}
+        pushToast={pushToast}
       />
       <Examples
         clonePrototype={clonePrototype}
+        uploadPrototypeImage={uploadPrototypeImage}
         createNewPrototype={createNewPrototype}
         templates={dashboard.templates}
         retrieveDashboard={retrieveDashboard}
+        pushToast={pushToast}
       />
     </div>
   </div>
