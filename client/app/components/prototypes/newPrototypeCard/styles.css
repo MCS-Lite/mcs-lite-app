@@ -5,7 +5,8 @@
   width: 300px;
   margin-bottom: 18px;
   position: relative;
-  border: 2px dashed #e0e0e0;
+  border: 2px dashed #D1D2D3;
+  border-radius: 3px;
   display: flex;
   flex-direction: column;
   align-items: center;

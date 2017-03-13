@@ -4,28 +4,7 @@
   margin-bottom: 20px;
 }
 
-.content {
-  background: #fafafa;
-}
-
 .body {
   display: flex;
   flex-wrap: wrap;
-}
-
-.content ul {
-  list-style: none;
-  padding: 0px;
-  display: flex;
-  flex-direction: row;
-  margin: 0px;
-}
-
-.content ul li {
-  padding: 18px 15px;
-  cursor: pointer;
-}
-
-.content ul li.active {
-  background: #fff;
 }

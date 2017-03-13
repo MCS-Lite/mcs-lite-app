@@ -17,6 +17,8 @@ const Prototypes = ({
   pushToast,
   deleteDevice,
   retrievePrototype,
+  uploadPrototypeImage,
+  uploadDeviceImage,
   ...props
 }) => {
   const {
@@ -24,9 +26,11 @@ const Prototypes = ({
     version,
     prototypeDescription,
     prototypeId,
+    prototypeImageURL,
     devicesLength,
     datachannels,
     devices,
+    user,
   } = prototypes.prototypeDetail;
   const { unitTypes } = prototypes;
   return (
@@ -34,14 +38,22 @@ const Prototypes = ({
       <div className={styles.base}>
         <Breadcrumb prototypeName={prototypeName} />
         <PrototypeDetailHeader
+          user={user}
           prototypeId={prototypeId}
           prototypeName={prototypeName}
+          prototypeDescription={prototypeDescription}
+          prototypeImageURL={prototypeImageURL}
+          prototype={prototypes.prototypeDetail}
           version={version}
           createTestDevice={createTestDevice}
+          uploadPrototypeImage={uploadPrototypeImage}
+          uploadDeviceImage={uploadDeviceImage}
+          pushToast={pushToast}
           {...props}
         />
         <PrototypeDetailInfo
           prototypeDescription={prototypeDescription}
+          prototypeImageURL={prototypeImageURL}
           devicesLength={devicesLength}
         />
         <PanelContent
@@ -57,6 +69,7 @@ const Prototypes = ({
           pushToast={pushToast}
           deleteDevice={deleteDevice}
           retrievePrototype={retrievePrototype}
+          uploadDeviceImage={uploadDeviceImage}
         />
       </div>
     </div>

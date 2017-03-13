@@ -1,0 +1,21 @@
+.panelHeaderNav {
+  height: 50px;
+  background: #FAFAFA;
+  display: flex;
+}
+
+.panelHeaderNavItem {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 82px;
+  cursor: pointer;
+}
+
+.panelHeaderNavItem:hover {
+  background-color: #FFFFFF;
+}
+
+.panelHeaderNavItemActive {
+  color: #00A1DE;
+}

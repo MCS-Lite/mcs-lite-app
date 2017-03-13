@@ -1,8 +1,6 @@
 import types from '../constants/PrototypeActionTypes';
 import { request } from '../utils/fetch';
 
-import { retrieveDashboard } from './DashboardActions';
-
 export const retrievePrototypeList = () => (dispatch, getState) =>
   request('/prototypes', 'GET', getState().main.access_token)
     .then(data => dispatch({
@@ -34,3 +32,7 @@ export const retrievePrototypeTemplates = () => (dispatch, getState) =>
       type: types.RETRIEVEPROTOTYPETEMPLATES,
       data: data.data,
     }));
+
+export const uploadPrototypeImage = file => (dispatch, getState) =>
+  request('/upload/image?type=prototype', 'POST_FORM_DATA', file, getState().main.access_token)
+  .catch(() => Promise.reject());

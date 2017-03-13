@@ -1,6 +1,7 @@
 .base {
   width: 100%;
-  padding: 10px 0;
+  padding-top: 10px;
+  padding-bottom: 20px;
 }
 
 .table {
@@ -8,9 +9,15 @@
 }
 
 .link {
+  display: flex;
+  align-items: center;
   color: #00A1DE;
   text-decoration: none;
   cursor: pointer;
   position: relative;
   top: 10px;
+}
+
+.link > svg {
+  margin-right: 5px;
 }

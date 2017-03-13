@@ -11,7 +11,6 @@
   display: flex;
   margin-top: 20px;
   flex-wrap: wrap;
-  height: calc(100% - 85px);
 }
 
 .noDevices {

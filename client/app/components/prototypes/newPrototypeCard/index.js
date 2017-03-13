@@ -16,6 +16,8 @@ const NewPrototypeCardLayout = ({
   onCreate,
   onClone,
   onCancel,
+  uploadPrototypeImage,
+  pushToast,
 }) => (
   <div className={styles.base}>
     {
@@ -27,6 +29,8 @@ const NewPrototypeCardLayout = ({
           onClone={onClone}
           templates={prototypeTemplates}
           retrievePrototypeTemplates={retrievePrototypeTemplates}
+          uploadPrototypeImage={uploadPrototypeImage}
+          pushToast={pushToast}
         />
     }
     {t('createYourPrototypeNow')}

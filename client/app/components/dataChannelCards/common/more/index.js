@@ -1,80 +1,60 @@
 import React from 'react';
-import compose from 'recompose/compose';
-import pure from 'recompose/pure';
-import withState from 'recompose/withState';
-import withHandlers from 'recompose/withHandlers';
+import { compose, pure, withState, withHandlers, withProps } from 'recompose';
 import IconMoreVert from 'mcs-lite-icon/lib/IconMoreVert';
-import Menu from 'mtk-ui/lib/Menu';
 import { withGetMessages } from 'react-intl-inject-hoc';
 import messages from './messages';
 import DeleteConfirmDialog from '../../../common/dialogs/deleteConfirmDialog';
+import WithDropdownMenu from '../../../common/withDropdownMenu';
 
 import styles from './more.css';
 
 const MoreLayout = ({
-  onMoreClick,
-  isOpen,
   onSelectedMenuValueChange,
   selectedMenuValue,
   setSelectedMenuValue,
   onDeleteDataChannel,
-  isPrototype,
-  isDevice,
-  isHistoryShow,
-  getMessages: t,
-}) => {
-  let items = [];
-
-  if (isPrototype) {
-    items = [
-      { value: 'edit', children: t('edit') },
-      { value: 'delete', children: t('delete') },
-    ];
-  } else if (isDevice) {
-    items = [
-      {
-        value: 'openHistory',
-        children: isHistoryShow ? t('closeHistory') : t('openHistory'),
-      },
-      { value: 'apiHint', children: t('apiHint') },
-    ];
-  }
-
-  return (
-    <div className={styles.base} onClick={onMoreClick}>
+  dropdownItems,
+}) => (
+  <div className={styles.base}>
+    <WithDropdownMenu
+      dropdownItems={dropdownItems}
+      onChange={onSelectedMenuValueChange}
+    >
       <IconMoreVert size={24} className={styles.icon} />
-      {
-        isOpen &&
-        <div>
-          <div className={styles.backdrop} />
-          <Menu
-            className={styles.menu}
-            onChange={onSelectedMenuValueChange}
-            items={items}
-          />
-        </div>
-      }
-      {
-        selectedMenuValue === 'delete' &&
-        <DeleteConfirmDialog
-          onDeleteSubmit={onDeleteDataChannel}
-          setSelectedMenuValue={setSelectedMenuValue}
-        />
-      }
-    </div>
-  );
-};
+    </WithDropdownMenu>
+    {
+      selectedMenuValue === 'delete' &&
+      <DeleteConfirmDialog
+        onDeleteSubmit={onDeleteDataChannel}
+        setSelectedMenuValue={setSelectedMenuValue}
+      />
+    }
+  </div>
+);
 
 export default compose(
   pure,
   withGetMessages(messages, 'More'),
-  withState('isOpen', 'setIsOpen', false),
+  withProps(({ getMessages: t, isPrototype, isDevice, isHistoryShow }) => {
+    if (isPrototype) {
+      return { dropdownItems: [{ value: 'delete', children: t('delete') }]};
+    } else if (isDevice) {
+      return {
+        dropdownItems: [
+          {
+            value: 'openHistory',
+            children: isHistoryShow ? t('closeHistory') : t('openHistory'),
+          },
+          { value: 'apiHint', children: t('apiHint') },
+        ],
+      };
+    }
+    return {};
+  }),
   withState('selectedMenuValue', 'setSelectedMenuValue', 'none'),
   withHandlers({
-    onMoreClick: props => () => props.setIsOpen(!props.isOpen),
-    onSelectedMenuValueChange: props => (e, value) => {
+    onSelectedMenuValueChange: props => (value) => {
       props.setSelectedMenuValue(value);
-      props.setIsOpen(false);
       if (value === 'openHistory') {
         props.onShowHistoryClick();
       }

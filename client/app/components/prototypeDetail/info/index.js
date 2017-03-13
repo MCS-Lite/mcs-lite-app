@@ -1,38 +1,43 @@
-import React, { Component } from 'react';
-import prototypeBanner from '../../prototypes/productBanner.png';
-import styles from './styles.css';
-
+import React from 'react';
+import { compose, pure } from 'recompose';
+import { Heading } from 'mcs-lite-ui';
 import { withGetMessages } from 'react-intl-inject-hoc';
 import messages from '../messages';
+import prototypeBanner from '../../prototypes/productBanner.png';
 
-import { default as compose } from 'recompose/compose';
-import { default as pure } from 'recompose/pure';
+import styles from './styles.css';
 
 const PrototypeDetailInfoLayout = ({
   prototypeDescription,
+  prototypeImageURL,
   devicesLength,
   getMessages: t,
-}) => {
-  return (
-    <div className={styles.base}>
-      <div className={styles.info}>
-        <img src={prototypeBanner} />
-        <div>
-          <b>{t('description')}:</b> {prototypeDescription}
-        </div>
-      </div>
-      <div className={styles.testDevice}>
-        <div className={styles.testDeviceInfo}>
-          <span>{devicesLength}</span>
-          <p>{t('testDevices')}</p>
-        </div>
-        <div className={styles.hint}>
-          {t('testDeviceHint')}
-        </div>
+}) => (
+  <div className={styles.base}>
+    <div className={styles.info}>
+      <img
+        src={
+          prototypeImageURL
+          ? window.apiUrl.replace('api', 'images/') + prototypeImageURL
+          : prototypeBanner
+        }
+        alt="banner"
+      />
+      <div>
+        {t('description')}{prototypeDescription}
       </div>
     </div>
-  );
-}
+    <div className={styles.testDevice}>
+      <div className={styles.testDeviceInfo}>
+        <Heading level={1}>{devicesLength}</Heading>
+        <span>{t('testDevices')}</span>
+      </div>
+      <div className={styles.hint}>
+        {t('testDeviceHint')}
+      </div>
+    </div>
+  </div>
+);
 
 export default compose(
   pure,

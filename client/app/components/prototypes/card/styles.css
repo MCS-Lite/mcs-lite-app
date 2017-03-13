@@ -5,48 +5,59 @@
   width: 300px;
   margin-bottom: 18px;
   position: relative;
-  background: #fff;
-  border: 1px solid #f1f2f7;
+  background: #FFF;
   border-radius: 3px;
-  box-shadow: 1px 2px 1px 0 #e0e0e0, 0 0 0 #e0e0e0;
+  box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.2);
   box-sizing: border-box;
 }
 
 .img{
   height: 160px;
+  width: 100%;
   background-position: center center;
   background-repeat: no-repeat;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
 }
 
 .content{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-sizing: border-box;
   padding: 20px;
+  height: calc(100% - 160px);
 }
 
 .more{
   position: absolute;
   cursor: pointer;
-  margin-left: 250px;
+  top: 10px;
+  right: 10px;
   color: #00a1de;
   font-size: 24px;
-  padding: 14px;
 }
 
 .prototypeName{
-  font-size: 15px;
-  font-weight: 700;
-  width: 100%;
   text-overflow: ellipsis;
-  display: inline-block;
   overflow: hidden;
-  margin: 0px;
 }
 
 .hr {
   margin: 0px;
+  height: 10px;
 }
 
 .menu {
-  position: absolute !important;
+  position: absolute;
   top: 40px;
-  right: 20px;
+  right: 10px;
+}
+
+.backdrop {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }

@@ -1,38 +1,38 @@
 import { defineMessages } from 'react-intl';
 
 const messages = defineMessages({
-  'Signin.nickname': {
-    id: 'Signin.nickname',
+  'Signup.nickname': {
+    id: 'Signup.nickname',
     description: '',
     defaultMessage: '暱稱',
   },
-  'Signin.Email': {
-    id: 'Signin.Email',
+  'Signup.Email': {
+    id: 'Signup.Email',
     description: '',
     defaultMessage: 'Email',
   },
-  'Signin.password': {
-    id: 'Signin.password',
+  'Signup.password': {
+    id: 'Signup.password',
     description: '',
     defaultMessage: '密碼',
   },
-  'Signin.passwordAgain': {
-    id: 'Signin.passwordAgain',
+  'Signup.passwordAgain': {
+    id: 'Signup.passwordAgain',
     description: '',
     defaultMessage: '確認您的密碼',
   },
-  'Signin.cancel': {
-    id: 'Signin.cancel',
+  'Signup.cancel': {
+    id: 'Signup.cancel',
     description: '',
     defaultMessage: '取消',
   },
-  'Signin.submit': {
-    id: 'Signin.submit',
+  'Signup.submit': {
+    id: 'Signup.submit',
     description: '',
     defaultMessage: '確認',
   },
-  'Signin.createAnAccount': {
-    id: 'Signin.createAnAccount',
+  'Signup.createAnAccount': {
+    id: 'Signup.createAnAccount',
     description: '',
     defaultMessage: '建立一個帳戶'
   }

@@ -20,7 +20,7 @@ const Profile = ({
   dialogShow,
   editUserName,
   changePassword,
-  uploadImage,
+  uploadProfileImage,
   pushToast,
   getMessages: t,
 }) => {
@@ -40,7 +40,7 @@ const Profile = ({
           email={main.email}
           userImage={main.userImage}
           setDialogShow={setDialogShow}
-          uploadImage={uploadImage}
+          uploadProfileImage={uploadProfileImage}
           pushToast={pushToast}
         />
       </div>

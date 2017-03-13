@@ -87,6 +87,11 @@ const messages = defineMessages({
     description: '',
     defaultMessage: '描述',
   },
+  'Dialogs.uploadImage': {
+    id: 'Dialogs.uploadImage',
+    description: '',
+    defaultMessage: '上傳影像',
+  },
   'Dialogs.inputThePrototypeDescription': {
     id: 'Dialogs.inputThePrototypeDescription',
     description: '',
@@ -101,6 +106,11 @@ const messages = defineMessages({
     id: 'Dialogs.cancel',
     description: '',
     defaultMessage: '取消',
+  },
+  'Dialogs.editDevice': {
+    id: 'Dialogs.editDevice',
+    description: '',
+    defaultMessage: '編輯測試裝置',
   },
 });
 

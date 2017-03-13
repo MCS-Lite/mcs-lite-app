@@ -1,46 +1,17 @@
 import React from 'react';
-import c from 'classnames';
 import Panel from 'mtk-ui/lib/Panel';
 import PanelHeader from 'mtk-ui/lib/PanelHeader';
 import PanelBody from 'mtk-ui/lib/PanelBody';
 import PanelIcon from 'mtk-ui/lib/PanelIcon';
 import IconSetting from 'mcs-lite-icon/lib/IconSetting';
-
-import compose from 'recompose/compose';
-import pure from 'recompose/pure';
-import withHandlers from 'recompose/withHandlers';
-import withState from 'recompose/withState';
-
+import { compose, pure, withHandlers, withState, withProps } from 'recompose';
 import { withGetMessages } from 'react-intl-inject-hoc';
 import messages from '../messages';
-
 import DataChannelContent from '../dataChannelContent';
 import TestDeviceContent from '../testDeviceContent';
+import PanelHeaderNav from '../../common/panelHeaderNav';
 
 import styles from './styles.css';
-
-const PanelHeaderNav = pure(({ onPanelNavClick, selectPanelValue, t }) => (
-  <div className={styles.panelHeaderNav}>
-    <div
-      onClick={onPanelNavClick('dataChannel')}
-      className={c(
-        styles.panelHeaderNavItem,
-        selectPanelValue === 'dataChannel' && styles.panelHeaderNavItemActive,
-      )}
-    >
-      {t('dataChannel')}
-    </div>
-    <div
-      onClick={onPanelNavClick('testDevices')}
-      className={c(
-        styles.panelHeaderNavItem,
-        selectPanelValue === 'testDevices' && styles.panelHeaderNavItemActive,
-      )}
-    >
-      {t('testDevices')}
-    </div>
-  </div>
-));
 
 const PanelContentLayout = ({
   prototypeId,
@@ -50,28 +21,29 @@ const PanelContentLayout = ({
   datachannels,
   devices,
   createTestDevice,
-  getMessages: t,
   retrieveUnitTypes,
   createUnitTypes,
   unitTypes,
   pushToast,
-  onPanelNavClick,
+  navItems,
+  onNavChange,
   deleteDevice,
   retrievePrototype,
+  uploadDeviceImage,
 }) => (
   <div className={styles.base}>
     <Panel>
       <PanelHeader>
         <PanelIcon icon={<IconSetting size={24} />} />
         <PanelHeaderNav
-          t={t}
-          selectPanelValue={selectPanelValue}
-          onPanelNavClick={onPanelNavClick}
+          items={navItems}
+          value={selectPanelValue}
+          onChange={onNavChange}
         />
       </PanelHeader>
       <PanelBody className={styles.body}>
         {
-          selectPanelValue === 'dataChannel' &&
+          selectPanelValue === 'datachannel' &&
             <DataChannelContent
               datachannels={datachannels}
               createDataChannel={createDataChannel}
@@ -91,6 +63,8 @@ const PanelContentLayout = ({
               prototypeId={prototypeId}
               deleteDevice={deleteDevice}
               retrievePrototype={retrievePrototype}
+              uploadDeviceImage={uploadDeviceImage}
+              pushToast={pushToast}
             />
         }
       </PanelBody>
@@ -100,9 +74,15 @@ const PanelContentLayout = ({
 
 export default compose(
   pure,
-  withState('selectPanelValue', 'setSelectPanelValue', 'dataChannel'),
+  withState('selectPanelValue', 'setSelectPanelValue', 'datachannel'),
   withHandlers({
-    onPanelNavClick: props => value => () => props.setSelectPanelValue(value),
+    onNavChange: props => value => props.setSelectPanelValue(value),
   }),
   withGetMessages(messages, 'PrototypeDetail'),
+  withProps(props => ({
+    navItems: [
+      { value: 'datachannel', children: props.getMessages('datachannel') },
+      { value: 'testDevices', children: props.getMessages('testDevices') },
+    ],
+  })),
 )(PanelContentLayout);

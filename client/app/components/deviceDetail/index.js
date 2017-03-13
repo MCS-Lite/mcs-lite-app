@@ -12,12 +12,15 @@ const DeviceDetail = ({
   editDevice,
   deleteDevice,
   retrieveDatachannelDatapoint,
+  uploadDeviceImage,
+  pushToast,
 }) => {
   const {
     deviceId,
     deviceName,
     deviceDescription,
     deviceKey,
+    deviceImageURL,
     prototype: {
       prototypeId,
       version,
@@ -36,14 +39,18 @@ const DeviceDetail = ({
           version={version}
           userName={userName}
           deviceDescription={deviceDescription}
+          deviceImageURL={deviceImageURL}
           prototypeId={prototypeId}
           editDevice={editDevice}
           deleteDevice={deleteDevice}
+          uploadDeviceImage={uploadDeviceImage}
+          pushToast={pushToast}
         />
         <DeviceDetailInfo
           deviceId={deviceId}
           deviceKey={deviceKey}
           deviceDescription={deviceDescription}
+          deviceImageURL={deviceImageURL}
         />
         <PanelContent
           deviceId={deviceId}

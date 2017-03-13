@@ -44,7 +44,7 @@ class ProfilePhoto extends React.Component {
     } else {
       const data = new FormData();
       data.append('file', uploadingFile);
-      this.props.uploadImage(data)
+      this.props.uploadProfileImage(data)
         .then(() => this.props.pushToast({ kind: 'success', message: this.props.getMessages('imageUploadSuccess') }))
         .catch(() => this.props.pushToast({ kind: 'error', message: this.props.getMessages('errorWhenUploadImage') }));
     }

@@ -11,21 +11,22 @@
 }
 
 .hr {
-  color: #999a94;
-  padding-bottom: 9px; /* 25-8-8 */
+  color: #999A94;
+  padding-bottom: 2px;
 }
 
 .form {
-  background: #fff;
+  background: #FFFFFF;
   width: 300px;
-  height: 307px;
   border-radius: 3px;
   padding: 20px;
+  padding-bottom: 40px;
   box-sizing: border-box;
+  box-shadow: 0 1px 5px 0 rgba(0,0,0,0.20);
 }
 
 .input{
-  margin-bottom: 8px;
+  margin-bottom: 10px;
 }
 
 .logo{
@@ -42,17 +43,19 @@
 
 .createaccount{
   display: flex;
-  flex-direction: row;
+  align-items: center;
   justify-content: space-between;
+  margin-top: 10px;
+  color: #999A94;
 }
 
 .createaccount a {
   color: #00a1de;
-  cursor: pointer;
-  margin-top: 10px;
+  text-decoration: none;
 }
 
-.createaccount p {
-  margin-bottom: 0px;
-  margin-top: 10px;
+.errorMsg {
+  color: #D0021B;
+  text-align: center;
+  margin-bottom: 20px;
 }
