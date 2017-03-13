@@ -145,6 +145,7 @@ module.exports = function(prototypes) {
         });
       })
       .then(function(data) {
+        // console.log(data);
         var field = {};
         field.prodName = data[0].prototypeName;
         field.version = data[0].version;
@@ -161,7 +162,9 @@ module.exports = function(prototypes) {
         field.prodDesc = null;
         field.chipId= 4;
         field.triggerActions= [];
-        return field;
+        return new Promise(function(resolve, reject) {
+          return resolve(field);
+        });
       });
     },
 

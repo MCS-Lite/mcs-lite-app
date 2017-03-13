@@ -172,9 +172,8 @@ module.exports = function ($db) {
     return prototypes.exportPrototype(prototypeId)
     .then(function(data) {
       exportData = data;
-      return datachannels.find({
+      return datachannels.retrievDatachannel({
         prototypeId: prototypeId,
-        isActive: true,
       });
     })
     .then(function(data) {

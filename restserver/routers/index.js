@@ -349,7 +349,7 @@ module.exports = function($db, $app, $rest) {
   };
 
   this.exportJSON = {
-    path: $rest.apiRoute + '/prototypes/:prototypdId/export',
+    path: $rest.apiRoute + '/prototypes/:prototypeId/export',
     methods: ['post'],
     middleware: [$app.oauth.authorise()],
     handler: prototypesController.exportJSON,
