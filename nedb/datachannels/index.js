@@ -101,15 +101,10 @@ module.exports = function(datachannels, prototypes) {
     importDataChannel: function(datachannel, userId, prototypeId, isMCSLite) {
       var _this = this;
       var channelPool = [];
-              console.log(123123);
       datachannel.forEach(function(key, index) {
-        try {
-          key.prototypeId = prototypeId;
-          key.createUserId = userId;
-          channelPool.push(_this.addNewDatachannel(key));
-        } catch (e) {
-          console.log(e)
-        }
+        key.prototypeId = prototypeId;
+        key.createUserId = userId;
+        channelPool.push(_this.addNewDatachannel(key));
       });
       return Promise.all(channelPool)
     },
