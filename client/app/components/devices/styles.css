@@ -18,5 +18,11 @@
   align-items: center;
   justify-content: center;
   padding: 0 9px;
-  width: 100%;
+  /*width: 100%;*/
+  position: fixed;
+  z-index: 10px;
+  margin-left: -80px;
+  margin-top: 40px;
+  left: 50%;
+  top: 50%;
 }
