@@ -8,6 +8,7 @@ module.exports = function(datachannels, prototypes) {
     validateSchema: function(object) {
       return v.validate(object, schema);
     },
+
     retrievDatachannel: function(field) {
       field.isActive = true;
       return new Promise(function(resolve, reject) {
@@ -17,6 +18,7 @@ module.exports = function(datachannels, prototypes) {
         });
       });
     },
+
     addNewDatachannel: function(field) {
       field.updatedAt = new Date().getTime();
       field.createdAt = new Date().getTime();
@@ -94,6 +96,22 @@ module.exports = function(datachannels, prototypes) {
         });
         return Promise.all(datachannelPromise)
       });
-    }
+    },
+
+    importDataChannel: function(datachannel, userId, prototypeId, isMCSLite) {
+      var _this = this;
+      var channelPool = [];
+              console.log(123123);
+      datachannel.forEach(function(key, index) {
+        try {
+          key.prototypeId = prototypeId;
+          key.createUserId = userId;
+          channelPool.push(_this.addNewDatachannel(key));
+        } catch (e) {
+          console.log(e)
+        }
+      });
+      return Promise.all(channelPool)
+    },
   };
 }

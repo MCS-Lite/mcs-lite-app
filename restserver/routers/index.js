@@ -22,6 +22,7 @@ module.exports = function($db, $app, $rest) {
   var imageController = new require('../controllers/image')($db);
   var dashboardController = new require('../controllers/dashboard')($db);
   var unittypesController = new require('../controllers/unittypes')($db);
+  var generatorController = new require('../controllers/generator')($db);
 
   const parseBasicToken = function(req, res, next) {
     if (/mobile/.test(req.route.path)) {
@@ -353,6 +354,19 @@ module.exports = function($db, $app, $rest) {
     methods: ['post'],
     middleware: [$app.oauth.authorise()],
     handler: prototypesController.exportJSON,
+  };
+
+  this.importJSON = {
+    path: $rest.apiRoute + '/prototypes/:prototypeId/import',
+    methods: ['post'],
+    middleware: [$app.oauth.authorise()],
+    handler: prototypesController.importJSON,
+  };
+
+  this.arduinoGenerator = {
+    path: $rest.apiRoute + '/arduino/generator',
+    methods: ['post'],
+    handler: generatorController.arduinoGenerator,
   };
 
 };

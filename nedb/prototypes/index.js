@@ -1,7 +1,9 @@
 var Validator = require('jsonschema').Validator;
 var v = new Validator();
 var schema = require('./schema');
-var prototypeSchema = require('./importSchema');
+var mcsOnlinePrototypeSchema = require('./importOnlineSchema');
+var mcsLitePrototypeSchema = require('./importLiteSchema');
+
 var shortid = require('shortid');
 var crypto = require('crypto');
 var configs = require('../../configs/rest');
@@ -145,33 +147,40 @@ module.exports = function(prototypes) {
         });
       })
       .then(function(data) {
-        // console.log(data);
         var field = {};
-        field.prodName = data[0].prototypeName;
+        field.prototypeName = data[0].prototypeName;
         field.version = data[0].version;
-        field.description = data[0].prototypeDescription;
-        field.prodImgURL = data[0].prototypeImageURL;
-        field.prodAppTypeId = 62;
-        field.prodRlsStatusTypeId = 1;
-        field.saleReleaseDate = null;
-        field.saleDiscontinuousDate = null;
-        field.isLongConnectionNeeded = true;
-        field.isSerialNeeded = false;
-        field.isInterpreterCloudNeeded = false;
-        field.status = true;
-        field.prodDesc = null;
-        field.chipId= 4;
-        field.triggerActions= [];
+        field.prototypeDescription = data[0].prototypeDescription;
+        field.prototypeImageURL = data[0].prototypeImageURL;
+        // field.prodAppTypeId = 62;
+        // field.prodRlsStatusTypeId = 1;
+        // field.saleReleaseDate = null;
+        // field.saleDiscontinuousDate = null;
+        // field.isLongConnectionNeeded = true;
+        // field.isSerialNeeded = false;
+        // field.isInterpreterCloudNeeded = false;
+        field.isActive = true;
+        field.isPublic = false;
+        // field.prodDesc = null;
+        // field.developmentNote = null;
+        // field.chipId= 4;
+        // field.triggerActions= [];
         return new Promise(function(resolve, reject) {
           return resolve(field);
         });
       });
     },
 
-    importPrototype: function(field, userId) {
+    importPrototype: function(field, userId, isMCSLite) {
       var _this = this;
       return new Promise(function(resolve, reject) {
-        var validataSchema = v.validate(field, schema);
+        var validataSchema;
+
+        if (isMCSLite) {
+          validataSchema = v.validate(field, mcsLitePrototypeSchema);
+        } else {
+          validataSchema = v.validate(field, mcsOnlinePrototypeSchema);
+        }
 
         if (validataSchema.errors.length === 0) {
           return resolve();
@@ -181,10 +190,19 @@ module.exports = function(prototypes) {
       })
       .then(function() {
         var clonePrototypeData = {};
-        clonePrototypeData.prototypeName = field.prodName;
-        clonePrototypeData.version = field.version;
-        clonePrototypeData.prototypeDescription = field.description;
-        clonePrototypeData.prototypeImageURL = field.prodImgURL || '';
+
+        if (isMCSLite) {
+          clonePrototypeData.prototypeName = field.prototypeName;
+          clonePrototypeData.version = field.version;
+          clonePrototypeData.prototypeDescription = field.prototypeDescription;
+          clonePrototypeData.prototypeImageURL = field.prototypeImageURL || '';
+        } else {
+          clonePrototypeData.prototypeName = field.prodName;
+          clonePrototypeData.version = field.version;
+          clonePrototypeData.prototypeDescription = field.description;
+          clonePrototypeData.prototypeImageURL = '';
+        }
+
         clonePrototypeData.isTemplate = false;
         clonePrototypeData.createUserId = userId;
         return _this.addNewPrototype(clonePrototypeData);
