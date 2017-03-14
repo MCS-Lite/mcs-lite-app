@@ -11,6 +11,11 @@ const messages = defineMessages({
     description: '',
     defaultMessage: '時間：',
   },
+  'HistoricalGraph.noData': {
+    id: 'HistoricalGraph.noData',
+    description: '',
+    defaultMessage: '無歷史資料',
+  },
 });
 
 export default messages;

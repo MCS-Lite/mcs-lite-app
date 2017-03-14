@@ -15,7 +15,6 @@ const DialogWrapper = ({
   children,
   onCancel,
   onConfirm,
-  onHide,
   confirmText,
   dialogBodyClassName,
   getMessages: t,

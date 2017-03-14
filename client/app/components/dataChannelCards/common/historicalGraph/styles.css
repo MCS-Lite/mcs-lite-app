@@ -1,6 +1,17 @@
 .base {
+  position: absolute;
+  display: flex;
+  top: 10px;
+  right: 20px;
+  justify-content: center;
+  flex-direction: column;
   margin-left: auto;
   width: 550px;
-  height: 180px;
+  height: 260px;
   margin-top: 10px;
+}
+
+.noData {
+  display: flex;
+  justify-content: center;
 }
