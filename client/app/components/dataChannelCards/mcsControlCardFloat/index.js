@@ -21,13 +21,13 @@ const DisplayStringLayout = ({
     }}
     eventHandler={({ type, id: datachannelId, values }) => {
       switch (type) {
-        case 'clear':
+        case 'CLEAR':
           onChangeDatachannel(datachannelId, { value: '' });
           break;
-        case 'change':
+        case 'CHANGE':
           onChangeDatachannel(datachannelId, { value: values.value });
           break;
-        case 'submit':
+        case 'SUBMIT':
           onSubmit(datachannelId, { value: values.value });
           break;
         default:
