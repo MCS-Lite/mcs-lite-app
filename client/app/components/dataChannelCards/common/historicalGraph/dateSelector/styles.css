@@ -1,0 +1,46 @@
+.base {
+  padding-top: 10px;
+  padding-right: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.iconBlock {
+  box-sizing: border-box;
+  height: 32px;
+  padding: 7px;
+  color: #FFFFFF;
+  background-color: #00A1DE;
+  border: 1px solid #0080B4;
+}
+
+.toBlock {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  height: 32px;
+  width: 32px;
+  padding: 7px;
+  color: #999A94;
+  background-color: #FAFAFA;
+  border: 1px solid #D1D2D3;
+}
+
+.reset{
+  height: 32px;
+  display: flex;
+  align-items: center;
+  color: #00A1DE;
+  cursor: pointer;
+}
+
+.reset > svg {
+  margin-right: 5px;
+}
+
+.search {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}

@@ -45,6 +45,7 @@ const WrapperLayout = ({
   isHistoryShow,
   onShowHistoryClick,
   retrieveDatachannelDatapoint,
+  setNewDatapointsSet,
   datapoints,
   ...props
 }) => (
@@ -96,6 +97,7 @@ const WrapperLayout = ({
         retrieveDatachannelDatapoint={retrieveDatachannelDatapoint}
         datapoints={datapoints}
         displayName={displayName}
+        setNewDatapointsSet={setNewDatapointsSet}
       />
     }
   </DataChannelCard>

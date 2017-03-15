@@ -24,8 +24,8 @@ export const deleteDevice = id => (dispatch, getState) =>
     });
 
 export const retrieveDatachannelDatapoint =
-  (deviceId, deviceKey, datachannelId) => (dispatch, getState) =>
-    request(`/devices/${deviceId}/datachannels/${datachannelId}/datapoints`, 'GET_DATAPOINTS', deviceKey, getState().main.access_token)
+  (deviceId, deviceKey, datachannelId, start, end) => (dispatch, getState) =>
+    request(`/devices/${deviceId}/datachannels/${datachannelId}/datapoints?${start ? `start=${start}&` : ''}${end ? `end=${end}` : ''}`, 'GET_DATAPOINTS', deviceKey, getState().main.access_token)
       .then(data => dispatch({
         type: types.RETRIVEDATACHANNELDATAPOINT,
         data: data.data,
