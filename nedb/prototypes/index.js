@@ -223,8 +223,10 @@ module.exports = function(prototypes) {
         .update(field.createdAt.toString() + field.prototypeId)
         .digest('hex');;
       field.prototypeName = data.prototypeName || '';
+      field.prototypeImageURL = data.prototypeImageURL || '';
       field.prototypeDescription = data.prototypeDescription || '';
       field.createUserId = data.userId;
+      field.version = data.version  || '';
       var validataSchema = v.validate(field, schema);
 
       return new Promise(function(resolve, reject) {
@@ -237,8 +239,8 @@ module.exports = function(prototypes) {
         });
       })
       .then(function(data) {
-        field.prototypeImageURL = data[0].prototypeImageURL || '';
-        field.version = data[0].version || '';
+        // field.prototypeImageURL = data[0].prototypeImageURL || '';
+        // field.version = data[0].version || '';
 
         return new Promise( function(resolve, reject) {
           /* validate schema */
