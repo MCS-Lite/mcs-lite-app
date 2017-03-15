@@ -369,4 +369,9 @@ module.exports = function($db, $app, $rest) {
     handler: generatorController.arduinoGenerator,
   };
 
+  this.apiHintGenerator = {
+    path: $rest.apiRoute + '/devices/:deviceId/datachannels/:datachannelId/datachanneltypes/:datachannelTypeId/methods/:method/types/:typeId/contents/:content',
+    methods: ['get'],
+    handler: generatorController.apiHintGenerator,
+  };
 };
