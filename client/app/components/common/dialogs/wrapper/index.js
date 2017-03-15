@@ -1,12 +1,12 @@
 import React from 'react';
 import { compose, pure } from 'recompose';
-import Dialog from 'mtk-ui/lib/Dialog';
 import DialogHeader from 'mtk-ui/lib/DialogHeader';
 import DialogBody from 'mtk-ui/lib/DialogBody';
 import DialogFooter from 'mtk-ui/lib/DialogFooter';
 import Button from 'mtk-ui/lib/Button';
 import { withGetMessages } from 'react-intl-inject-hoc';
 import messages from '../messages';
+import Dialog from '../../../common/dialog';
 
 const DialogWrapper = ({
   size,
@@ -23,7 +23,7 @@ const DialogWrapper = ({
   <Dialog
     show={show}
     size={size}
-    onHide={onHide}
+    onHide={onCancel}
   >
     <DialogHeader>{title}</DialogHeader>
     <DialogBody className={dialogBodyClassName}>{children}</DialogBody>

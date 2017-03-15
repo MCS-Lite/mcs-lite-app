@@ -9,9 +9,9 @@ import { withGetMessages } from 'react-intl-inject-hoc';
 import messages from '../messages';
 import productBanner from '../productBanner.png';
 import CreatePrototype from '../../common/dialogs/createPrototype';
+import DeleteConfirmDialog from '../../common/dialogs/deleteConfirmDialog';
 import WithDropdownMenu from '../../common/withDropdownMenu';
 import EditPrototype from '../dialogs/editPrototype';
-import DeletePrototype from '../dialogs/deletePrototype';
 
 import styles from './styles.css';
 
@@ -22,10 +22,10 @@ const PrototypeCardLayout = ({
   onSelectMenuValueChange,
   selectMenuValue,
   setSelectMenuValue,
-  deletePrototype,
   editPrototype,
   onClone,
   onCancel,
+  onDeleteSubmit,
   uploadPrototypeImage,
   pushToast,
   getMessages: t,
@@ -102,11 +102,9 @@ const PrototypeCardLayout = ({
         }
         {
           selectMenuValue === 'delete' &&
-          <DeletePrototype
-            deletePrototype={deletePrototype}
-            prototypeId={prototypeId}
-            selectMenuValue={selectMenuValue}
-            setSelectMenuValue={setSelectMenuValue}
+          <DeleteConfirmDialog
+            onDeleteSubmit={onDeleteSubmit}
+            setSelectedMenuValue={setSelectMenuValue}
           />
         }
       </div>
@@ -150,6 +148,10 @@ export default compose(
     onClone: props => (id, data) => props.clonePrototype(id, data)
       .then(() => props.retrievePrototypeList()),
     onCancel: props => () => props.setSelectMenuValue(''),
+    onDeleteSubmit: props => () => {
+      props.deletePrototype(props.prototype.prototypeId);
+      props.setSelectMenuValue('');
+    },
   }),
   withGetMessages(messages, 'Prototypes'),
 )(PrototypeCardLayout);

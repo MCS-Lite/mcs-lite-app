@@ -1,6 +1,5 @@
 import React from 'react';
 
-import Dialog from 'mtk-ui/lib/Dialog';
 import DialogHeader from 'mtk-ui/lib/DialogHeader';
 import DialogBody from 'mtk-ui/lib/DialogBody';
 
@@ -11,7 +10,7 @@ import withHandlers from 'recompose/withHandlers';
 
 import { withGetMessages } from 'react-intl-inject-hoc';
 import messages from '../../messages';
-
+import Dialog from '../../../common/dialog';
 import SelectDisplayCard from '../selectDisplayCard';
 import CreateDataChannel from '../createDataChannel';
 import styles from './styles.css';
