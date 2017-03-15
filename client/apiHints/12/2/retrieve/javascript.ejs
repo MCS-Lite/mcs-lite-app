@@ -1,0 +1,12 @@
+// In html , please add jQuery first.
+// In Node.js, please require('jQuery') first.
+
+$.ajax({
+  type: "GET",
+  url: "http://<%= host %>/api/devices/<%= deviceId %>/datapoints",
+  headers: { deviceKey: "<%= deviceKey %>" },
+  contentType: "application/json",
+})
+.done(function(data){
+  // Handle this data here!
+});
