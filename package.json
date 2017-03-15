@@ -9,6 +9,8 @@
     "install:nwjs": "sh ./install.sh",
     "test:ws": "node ./node_modules/wotcity.io/tests/websocket-send.js",
     "build:global": "sh ./build.sh",
+    "build:7688": "sh ./build.sh && sh ./build_7688.sh",
+    "build:nvidia_tx1": "sh ./build.sh && sh ./build_nvidia_tx1.sh",
     "test:nedb": "mocha --recursive ./nedb/tests/",
     "test:api": "mocha ./restserver/tests/api --recursive"
   },
@@ -36,7 +38,7 @@
     "ejs": "^2.5.5",
     "express": "^4.14.0",
     "faker": "^3.1.0",
-    "file-exists": "^3.0.2",
+    "file-exists": "^1.0.0",
     "is-image": "^1.0.1",
     "jsonschema": "^1.1.1",
     "jsonwebtoken": "^7.2.1",

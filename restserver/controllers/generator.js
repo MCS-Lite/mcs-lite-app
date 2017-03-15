@@ -18,7 +18,8 @@ module.exports = function ($db) {
     const templatePath = datachannelTypeId + '/' + typeId + '/' + method + '/';
     const filePath = path.resolve(__dirname, '../../client/apiHints/' + templatePath, content + '.ejs');
 
-    if (!fileExists.sync(filePath)) {
+    if (!fileExists(filePath)) {
+    // if (!fileExists.sync(filePath)) {
       return res.send(400, { message: 'Cannot find this file.'});
     }
 

@@ -185,7 +185,7 @@ module.exports = function ($db) {
             info.token  = _token;
 
             return users.retrieveOneUser({ userId: res.body.userId})
-              .then(foundUsers => {
+              .then(function(foundUsers) {
                 info.userName = foundUsers[0].userName;
                 info.userImage = foundUsers[0].userImage;
 
