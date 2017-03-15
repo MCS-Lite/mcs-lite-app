@@ -1,13 +1,13 @@
 import React from 'react';
 import { compose, pure, withHandlers } from 'recompose';
 import Button from 'mtk-ui/lib/Button';
-import Dialog from 'mtk-ui/lib/Dialog';
 import DialogHeader from 'mtk-ui/lib/DialogHeader';
 import DialogBody from 'mtk-ui/lib/DialogBody';
 import DialogFooter from 'mtk-ui/lib/DialogFooter';
 import { withGetMessages } from 'react-intl-inject-hoc';
 import messages from '../messages';
 import notice from './notice.png';
+import Dialog from '../../common/dialog';
 
 import styles from './deletePrototype.css';
 

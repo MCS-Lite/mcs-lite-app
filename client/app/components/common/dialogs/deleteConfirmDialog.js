@@ -2,7 +2,6 @@ import React from 'react';
 import { FormattedMessage } from 'react-intl';
 
 import Button from 'mtk-ui/lib/Button';
-import Dialog from 'mtk-ui/lib/Dialog';
 import DialogHeader from 'mtk-ui/lib/DialogHeader';
 import DialogBody from 'mtk-ui/lib/DialogBody';
 import DialogFooter from 'mtk-ui/lib/DialogFooter';
@@ -10,7 +9,7 @@ import DialogFooter from 'mtk-ui/lib/DialogFooter';
 import compose from 'recompose/compose';
 import pure from 'recompose/pure';
 import withHandlers from 'recompose/withHandlers';
-
+import Dialog from '../../common/dialog';
 import notice from '../../prototypes/dialogs/notice.png';
 
 import styles from './dialog.css';

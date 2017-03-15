@@ -1,7 +1,6 @@
 import React from 'react';
 
 import { Button } from 'mcs-lite-ui';
-import Dialog from 'mtk-ui/lib/Dialog';
 import DialogHeader from 'mtk-ui/lib/DialogHeader';
 import DialogBody from 'mtk-ui/lib/DialogBody';
 import DialogFooter from 'mtk-ui/lib/DialogFooter';
@@ -15,6 +14,7 @@ import withHandlers from 'recompose/withHandlers';
 
 import { withGetMessages } from 'react-intl-inject-hoc';
 import messages from '../messages';
+import Dialog from '../../common/dialog';
 
 import styles from './dialog.css';
 
