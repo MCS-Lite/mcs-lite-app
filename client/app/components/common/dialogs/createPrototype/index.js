@@ -30,6 +30,8 @@ const CreatePrototype = ({
   setError,
   uploadPrototypeImage,
   pushToast,
+  json,
+  onJsonChange,
   getMessages: t,
 }) => (
   <DialogWrapper
@@ -63,7 +65,14 @@ const CreatePrototype = ({
           pushToast={pushToast}
         />
     }
-    { method === 'json' && <ImportJSON /> }
+    {
+      method === 'json' &&
+      <ImportJSON
+        value={json}
+        onChange={onJsonChange}
+        error={error}
+      />
+    }
     {
       method === 'clone' &&
         <TemplateSelector
@@ -100,6 +109,7 @@ export default compose(
   withState('template', 'setTemplate', prop('template')),
   withState('selectedTemplateName', 'setSelectedTemplateName', ''),
   withState('error', 'setError', false),
+  withState('json', 'setJson', ''),
   withProps((props) => {
     const t = props.getMessages;
     let title;
@@ -118,14 +128,49 @@ export default compose(
         props.retrievePrototypeTemplates();
       }
     },
+    onJsonChange: props => (value) => {
+      try {
+        props.setJson(JSON.stringify(JSON.parse(value)));
+        props.setError(false);
+      } catch (error) {
+        props.setError(error.message);
+      }
+      props.setJson(value);
+    },
     onConfirm: props => () => {
       if (props.method === 'clone' || props.type === 'clone') {
         if (props.template.prototypeName.length === 0) {
           props.setError(true);
         } else {
-          props.onClone(props.template.prototypeId, props.template);
+          props.onClone(props.template.prototypeId, props.template)
+            .then(() => props.pushToast({
+              kind: 'success',
+              message: props.getMessages('createPrototypeSuccess'),
+            }));
           props.onCancel();
         }
+      } else if (props.method === 'json') {
+        let json;
+
+        try {
+          json = JSON.parse(props.json);
+        } catch (error) {
+          props.setError(error.message);
+        }
+
+        props.setError(false);
+        props.importJSON('importjson', json)
+          .then(() => {
+            props.onCancel();
+            props.retrievePrototypeList();
+            props.pushToast({
+              kind: 'success',
+              message: props.getMessages('createPrototypeSuccess'),
+            });
+          })
+          .catch(({ response }) => {
+            response.json().then(({ schema }) => props.setError(schema[0].message));
+          });
       } else if (props.prototypeInfo.prototypeName.length === 0) {
         props.setError(true);
       } else {

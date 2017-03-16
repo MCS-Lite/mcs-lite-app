@@ -140,6 +140,14 @@ const messages = defineMessages({
     id: 'Prototypes.search',
     defaultMessage: '搜尋',
   },
+  'Prototypes.exportSuccess': {
+    id: 'Prototypes.exportSuccess',
+    defaultMessage: '成功！你已經成功匯出產品原型。',
+  },
+  'Prototypes.createPrototypeSuccess': {
+    id: 'Prototypes.createPrototypeSuccess',
+    defaultMessage: '成功！你已經成功建立一個產品原型。',
+  },
 });
 
 export default messages;

@@ -20,6 +20,8 @@ const Prototypes = ({
   setFilterKey,
   uploadPrototypeImage,
   pushToast,
+  exportJSON,
+  importJSON,
   ...props
 }) => {
   const prototypeTemplates = prototypes.prototypeTemplates;
@@ -41,6 +43,7 @@ const Prototypes = ({
             prototypeTemplates={prototypeTemplates}
             uploadPrototypeImage={uploadPrototypeImage}
             pushToast={pushToast}
+            importJSON={importJSON}
           />
           {
             prototypes.prototypeList.filter(filteByName(filterKey)).map(prototype =>
@@ -51,6 +54,7 @@ const Prototypes = ({
                 retrievePrototypeList={retrievePrototypeList}
                 uploadPrototypeImage={uploadPrototypeImage}
                 pushToast={pushToast}
+                exportJSON={exportJSON}
                 {...props}
               />,
             )
