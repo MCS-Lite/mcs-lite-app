@@ -12,7 +12,7 @@ var mobileBasicToken = new Buffer(mobileClientId + ':' + mobileClientSecret).toS
 
 var bodyParser = require('body-parser');
 
-module.exports = function($db, $app, $rest) {
+module.exports = function($db, $app, $rest, $oauth, $wot) {
 
   var devicesController = new require('../controllers/devices')($db);
   var usersController = new require('../controllers/users')($db);
@@ -40,12 +40,12 @@ module.exports = function($db, $app, $rest) {
     }
     next();
   };
-
+  console.log($oauth);
   this.client = {
     path: '/',
     methods: ['get'],
     handler: function(req, res, next) {
-      res.render('app/build/index.html');
+      res.render('app/build/index.html', { wsPort: $wot.port });
     },
   };
 
@@ -53,7 +53,7 @@ module.exports = function($db, $app, $rest) {
     path: '/prototypes',
     methods: ['get'],
     handler: function(req, res, next) {
-      res.render('app/build/index.html');
+      res.render('app/build/index.html', { wsPort: $wot.port });
     },
   };
 
@@ -61,7 +61,7 @@ module.exports = function($db, $app, $rest) {
     path: '/signin',
     methods: ['get'],
     handler: function(req, res, next) {
-      res.render('app/build/index.html');
+      res.render('app/build/index.html', { wsPort: $wot.port });
     },
   };
 
@@ -69,7 +69,7 @@ module.exports = function($db, $app, $rest) {
     path: '/prototypes/:prototypeId',
     methods: ['get'],
     handler: function(req, res, next) {
-      res.render('app/build/index.html');
+      res.render('app/build/index.html', { wsPort: $wot.port });
     },
   };
 
@@ -77,7 +77,7 @@ module.exports = function($db, $app, $rest) {
     path: '/devices',
     methods: ['get'],
     handler: function(req, res, next) {
-      res.render('app/build/index.html');
+      res.render('app/build/index.html', { wsPort: $wot.port });
     },
   };
 
@@ -85,7 +85,7 @@ module.exports = function($db, $app, $rest) {
     path: '/dashboard',
     methods: ['get'],
     handler: function(req, res, next) {
-      res.render('app/build/index.html');
+      res.render('app/build/index.html', { wsPort: $wot.port });
     },
   };
 
@@ -93,7 +93,7 @@ module.exports = function($db, $app, $rest) {
     path: '/profile',
     methods: ['get'],
     handler: function(req, res, next) {
-      res.render('app/build/index.html');
+      res.render('app/build/index.html', { wsPort: $wot.port });
     },
   };
 
@@ -101,7 +101,7 @@ module.exports = function($db, $app, $rest) {
     path: '/devices/:deviceId',
     methods: ['get'],
     handler: function(req, res, next) {
-      res.render('app/build/index.html');
+      res.render('app/build/index.html', { wsPort: $wot.port });
     },
   };
 

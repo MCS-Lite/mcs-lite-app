@@ -8,7 +8,7 @@ if (/\:8081/.test(window.location.host)) {
 } else {
   window.apiUrl = window.location.origin + '/api';
   window.oauthUrl = window.location.origin + '/oauth';
-  window.ws = window.location.hostname + ':8000'
+  window.ws = window.location.hostname + ':' + window.wsPort;
 }
 
 import React from 'react';

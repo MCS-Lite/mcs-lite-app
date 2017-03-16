@@ -30,6 +30,7 @@ export default {
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, '../index.html'),
       filename: 'index.html',
+      temp: '<%= wsPort %>',
     }),
     cssExtractor,
     vendorCssExtractor,

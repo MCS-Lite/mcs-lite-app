@@ -5,6 +5,7 @@ var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 var $oauth = require('../configs/oauth');
 var $rest = require('../configs/rest');
+var $wot = require('../configs/wot');
 var app = express();
 var oauth = require('./oauth');
 var routers = require('./routers/index');
@@ -71,7 +72,7 @@ app.use('/assets', express.static(path.resolve(__dirname, '../client/app/build/a
 
 app.all('/oauth/token', app.oauth.grant());
 app.db = connectDB;
-handleRouters(app, new routers(connectDB, app, $rest));
+handleRouters(app, new routers(connectDB, app, $rest, $oauth, $wot));
 app.use(app.oauth.errorHandler());
 
 var os = require('os');
