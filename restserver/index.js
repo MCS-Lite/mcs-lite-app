@@ -16,7 +16,6 @@ var connectDB = connectToDB(dbConfig).init();
 var Oauth = new oauth(connectDB);
 
 global.oauthHost = 'http://' + $oauth.host + ':' + $oauth.port;
-console.log(oauthHost);
 global.host = $rest.host + ':' + $rest.port + $rest.apiRoute;
 
 app.oauth = new OAuthServer({
@@ -74,5 +73,12 @@ app.all('/oauth/token', app.oauth.grant());
 app.db = connectDB;
 handleRouters(app, new routers(connectDB, app, $rest));
 app.use(app.oauth.errorHandler());
+
+console.log('+-+-+-+ +-+-+-+-+');
+console.log(' M C S   L I T E ');
+console.log('+-+-+-+ +-+-+-+-+');
+
+console.log('Oauth server: ' + oauthHost);
+console.log('API server: ' + host);
 
 module.exports = app;

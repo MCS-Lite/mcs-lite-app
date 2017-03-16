@@ -5,19 +5,27 @@ var nwPath = process.execPath;
 var nwDir = path.dirname(nwPath);
 var os = require('os');
 
+var $ = function (selector) {
+  return document.querySelector(selector);
+}
+
 var interfaces = os.networkInterfaces();
 var addresses = [];
+var addressesList = '';
 console.log(interfaces);
 for (var k in interfaces) {
     for (var k2 in interfaces[k]) {
         var address = interfaces[k][k2];
         if (address.family === 'IPv4' && !address.internal) {
             addresses.push(address.address);
+            addressesList += '<li>' + address.address + '</li>';
         }
     }
 }
 
 console.log(addresses);
+
+
 if (process.platform == "darwin") {
   var menu = new gui.Menu({ type: 'menubar' });
   menu.createMacBuiltin && menu.createMacBuiltin(window.document.title);
@@ -25,8 +33,10 @@ if (process.platform == "darwin") {
 }
 
 gui.Window.get().show();
-
 initApp();
+
+var ipDOM = $("#ip");
+ipDOM.innerHTML = '' + addressesList;
 
 function initApp(){
   setTimeout(function(){
@@ -45,6 +55,8 @@ function initApp(){
       var folderDir = nwDir + '\\mcs-lite-app';
       var server = require(folderDir + '\\server')();
     }
+
+
   },2000);
 }
 

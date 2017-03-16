@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.html",
   "scripts": {
-    "watch:global": "NODE_ENV=dev ./nw.js-sdk/nwjs.app/Contents/MacOS/nwjs --enable-logging .",
+    "watch:global": "NODE_ENV=dev ./nw.js-sdk/nwjs.app/Contents/MacOS/nwjs --enable-logging --remote-debugging-port=9222 .",
     "watch:dfserver": "NODE_ENV=dev node server.js",
     "install:nwjs": "sh ./install.sh",
     "test:ws": "node ./node_modules/wotcity.io/tests/websocket-send.js",
@@ -15,14 +15,15 @@
     "test:api": "mocha ./restserver/tests/api --recursive"
   },
   "window": {
+    "icon": "./icon_mcs_lite_192.png",
     "toolbar": false,
     "show_in_taskbar": true,
-    "width": 1024,
-    "height": 728,
-    "min_width": 1024,
-    "min_height": 728,
-    "max_width": 1024,
-    "max_height": 728,
+    "width": 300,
+    "height": 380,
+    "min_width": 300,
+    "min_height": 380,
+    "max_width": 300,
+    "max_height": 380,
     "title": "MCS-Lite-app",
     "position": "center",
     "frame": true
