@@ -74,11 +74,24 @@ app.db = connectDB;
 handleRouters(app, new routers(connectDB, app, $rest));
 app.use(app.oauth.errorHandler());
 
+var os = require('os');
+
+var interfaces = os.networkInterfaces();
+var addresses = '';
+var addressesList = '';
+for (var k in interfaces) {
+    for (var k2 in interfaces[k]) {
+        var address = interfaces[k][k2];
+        if (address.family === 'IPv4' && !address.internal) {
+            addresses +=  '\'' + address.address + ':' + $rest.port + '\'\n';
+        }
+    }
+}
+
 console.log('+-+-+-+ +-+-+-+-+');
 console.log(' M C S   L I T E ');
 console.log('+-+-+-+ +-+-+-+-+');
-
-console.log('Oauth server: ' + oauthHost);
-console.log('API server: ' + host);
+console.log();
+console.log('MCS Lite server IP: \n\n' + addresses);
 
 module.exports = app;
