@@ -184,13 +184,7 @@ module.exports = function ($db) {
             var _token = jwt.sign(payload, $oauth.JWT_SECRET);
             info.token  = _token;
 
-            return users.retrieveOneUser({ userId: res.body.userId})
-              .then(function(foundUsers) {
-                info.userName = foundUsers[0].userName;
-                info.userImage = foundUsers[0].userImage;
-
-                return resolve(info);
-              })
+            return resolve(info);
           } else {
             return reject({
               code: err.response.body.code,
@@ -200,11 +194,19 @@ module.exports = function ($db) {
           }
         });
       });
-
     }).then(function(info) {
-      return res.send(200, {
-        results: info
-      });
+      return users.retrieveOneUser({ userId: info.userId})
+    })
+    .then(function(foundUsers) {
+      if (foundUsers.length != 0) {
+        info.userName = foundUsers[0].userName;
+        info.userImage = foundUsers[0].userImage;
+        return res.send(200, {
+          results: info
+        });
+      } else {
+        return res.send(401, { message: 'Cannot find this userId' });
+      }
     }).catch(function(err) {
       return res.send(401, {
         error: err,
