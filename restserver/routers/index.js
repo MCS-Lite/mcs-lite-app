@@ -40,7 +40,7 @@ module.exports = function($db, $app, $rest, $oauth, $wot) {
     }
     next();
   };
-  console.log($oauth);
+
   this.client = {
     path: '/',
     methods: ['get'],

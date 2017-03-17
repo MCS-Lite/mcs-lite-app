@@ -26,6 +26,10 @@ module.exports = function ($db) {
         password: req.body.password,
       };
 
+      if (req.body.passwordAgain !== req.body.password) {
+        throw('Twice password is not same.');
+      }
+
       return new Promise(function(resolve, reject) {
         return request
         .post(host + '/users/regist')
@@ -33,7 +37,7 @@ module.exports = function ($db) {
         .set('Content-Type', 'application/json')
         .send(data)
         .end(function(err, res) {
-          return res.ok ?  resolve(res.body) : reject(err.response.body.message);
+          return res.ok ?  resolve(res.body) : reject(err.response.body.error);
         });
       });
     })
@@ -45,7 +49,6 @@ module.exports = function ($db) {
 
     })
     .catch(function(err) {
-      console.log(err);
       if (process.env.NODE_ENV === 'dev') {
         return res.redirect('http://localhost:8081/signup?errorMsg=' + encodeURI(err));
       }

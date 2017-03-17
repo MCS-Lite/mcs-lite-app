@@ -12,6 +12,7 @@ var routers = require('./routers/index');
 var handleRouters = require('./libs/index').handleRouter;
 var connectToDB = require('./libs/index').connectToDB;
 var dbConfig = require('../configs/db');
+var os = require('os');
 
 var connectDB = connectToDB(dbConfig).init();
 var Oauth = new oauth(connectDB);
@@ -74,8 +75,6 @@ app.all('/oauth/token', app.oauth.grant());
 app.db = connectDB;
 handleRouters(app, new routers(connectDB, app, $rest, $oauth, $wot));
 app.use(app.oauth.errorHandler());
-
-var os = require('os');
 
 var interfaces = os.networkInterfaces();
 var addresses = '';

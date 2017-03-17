@@ -9,7 +9,7 @@ import {
   deleteDevice,
   uploadDeviceImage,
 } from '../actions/DeviceActions';
-import { pushToast } from '../actions/toastActions'
+import { pushToast } from '../actions/toastActions';
 
 class Device extends Component {
   componentWillMount() {
