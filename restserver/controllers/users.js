@@ -4,6 +4,8 @@ var request = require('superagent');
 /* config */
 var $oauth = require('../../configs/oauth');
 var $rest = require('../../configs/rest');
+var $wot = require('../../configs/wot');
+
 
 module.exports = function ($db) {
   var users = $db.users;
@@ -281,7 +283,7 @@ module.exports = function ($db) {
           }
           return res.redirect(req.clientAppInfo.redirect.dev + '/dashboard');
         }
-        return res.render('app/build/index.html');
+        return res.render('app/build/index.html', { wsPort: $wot.port });
 
       }).catch(function(err) {
         /* 有任何錯誤就返回首頁 */
@@ -290,7 +292,7 @@ module.exports = function ($db) {
           return res.redirect(req.clientAppInfo.redirect.dev + '/login');
         }
 
-        return res.render('app/build/index.html');
+        return res.render('app/build/index.html', { wsPort: $wot.port });
       });
     } else {
       /* 如果 cookie 沒有 token 就是以前未登入過狀態 */
@@ -301,7 +303,7 @@ module.exports = function ($db) {
         return res.redirect(req.clientAppInfo.redirect.dev + '/');
       }
 
-      return res.render('app/build/index.html');
+      return res.render('app/build/index.html', { wsPort: $wot.port });
     }
   };
 
