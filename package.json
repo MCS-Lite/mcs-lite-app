@@ -11,6 +11,7 @@
     "build:global": "sh ./build.sh",
     "build:7688": "sh ./build.sh && sh ./build_7688.sh",
     "build:nvidia_tx1": "sh ./build.sh && sh ./build_nvidia_tx1.sh",
+    "build:c9cloud": "sh ./build.sh && sh ./build_c9cloud.sh",
     "test:nedb": "mocha --recursive ./nedb/tests/",
     "test:api": "mocha ./restserver/tests/api --recursive"
   },
