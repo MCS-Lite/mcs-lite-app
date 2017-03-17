@@ -1,11 +1,9 @@
 import path from 'path';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import autoprefixer from 'autoprefixer';
-import inputStyle from 'postcss-input-style';
 import webpack from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 
-const vendorCssExtractor = new ExtractTextPlugin('assets/webpack-vendor.css');
 const cssExtractor = new ExtractTextPlugin('assets/webpack-client.css');
 
 const CSS_LOADER_LIST = [
@@ -33,7 +31,6 @@ export default {
       temp: '<%= wsPort %>',
     }),
     cssExtractor,
-    vendorCssExtractor,
   ],
   module: {
     loaders: [
@@ -44,21 +41,7 @@ export default {
       },
       {
         test: /\.css$/,
-        exclude: [
-          /font-awesome\.css/,
-          /normalize\.css/,
-          /codemirror\.css/,
-        ],
         loader: cssExtractor.extract(CSS_LOADER_LIST[0], CSS_LOADER_LIST.slice(1).join('!'), { publicPath: '/' }),
-      },
-      {
-        test: /\.css$/,
-        include: [
-          /font-awesome\.css/,
-          /normalize\.css/,
-          /codemirror\.css/,
-        ],
-        loader: vendorCssExtractor.extract('style', 'css', { publicPath: '/' }),
       },
       { test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: 'url?limit=10000&minetype=application/font-woff&name=./assets/[name].[ext]' },
       { test: /\.(ttf|eot|otf)(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: 'url?limit=10000&minetype=application/font-woff&name=./assets/[name].[ext]' },
@@ -68,6 +51,6 @@ export default {
     ],
   },
   postcss() {
-    return [autoprefixer, inputStyle];
+    return [autoprefixer];
   },
 };
