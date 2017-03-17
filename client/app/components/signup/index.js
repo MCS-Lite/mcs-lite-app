@@ -25,7 +25,7 @@ const Signup = ({
         className={styles.form}
         id="signupSubmit"
         role="form"
-        action={`${window.oauthUrl}/signin`}
+        action={`${window.oauthUrl}/signup`}
         method="post"
       >
         <img src={logo} className={LoginStyles.logo} alt="logo" />

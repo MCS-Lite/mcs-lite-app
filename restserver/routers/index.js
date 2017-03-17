@@ -57,8 +57,8 @@ module.exports = function($db, $app, $rest, $oauth, $wot) {
     },
   };
 
-  this.signinInterface = {
-    path: '/signin',
+  this.signUpInterface = {
+    path: '/signup',
     methods: ['get'],
     handler: function(req, res, next) {
       res.render('app/build/index.html', { wsPort: $wot.port });
@@ -157,10 +157,10 @@ module.exports = function($db, $app, $rest, $oauth, $wot) {
     handler: usersController.checkCookies,
   };
 
-  this.signIn = {
-    path: '/oauth/signin',
+  this.signUp = {
+    path: '/oauth/signup',
     methods: ['post'],
-    handler: usersController.signIn,
+    handler: usersController.signUp,
   };
 
   this.registUser = {

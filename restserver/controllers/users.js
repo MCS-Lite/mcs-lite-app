@@ -10,7 +10,7 @@ var $wot = require('../../configs/wot');
 module.exports = function ($db) {
   var users = $db.users;
 
-  var signIn = function(req, res, next) {
+  var signUp = function(req, res, next) {
 
     return new Promise(function(resolve, reject) {
       if (!req.body.email || !req.body.password || !req.body.userName) {
@@ -45,10 +45,11 @@ module.exports = function ($db) {
 
     })
     .catch(function(err) {
+      console.log(err);
       if (process.env.NODE_ENV === 'dev') {
-        return res.redirect('http://localhost:8081/signin?errorMsg=' + encodeURI(err));
+        return res.redirect('http://localhost:8081/signup?errorMsg=' + encodeURI(err));
       }
-      return res.redirect('/signin?errorMsg=' + encodeURI(err));
+      return res.redirect('/signup?errorMsg=' + encodeURI(err));
     });
   };
 
@@ -370,7 +371,7 @@ module.exports = function ($db) {
     registUser: registUser,
     retrieveUserList: retrieveUserList,
     login: login,
-    signIn: signIn,
+    signUp: signUp,
     loginInterface: loginInterface,
     checkCookies: checkCookies,
     editUser: editUser,
