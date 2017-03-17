@@ -90,9 +90,18 @@ export default compose(
     },
   }),
   connectSocket(
-    props => props.server,                            // 1. WebSocket URL
-    props => datapoint => props.onMessage(datapoint), // 2. Viwer
-    'sendMessage',                                    // 3. Sender
+    // 1. urlMapper => (ownerProps: Object) => string
+    props => props.server,
+
+    // 2. onMessage => (ownerProps: Object) => datapoint => void
+    props => datapoint => props.onMessage(datapoint),
+
+    // 3. propsMapper => state => props
+    ({ readyState, send, createWebSocket }) => ({
+      sendMessage: send,
+      isWebSocketClose: readyState.sender === 3 || readyState.viewer === 3,
+      reconnect: createWebSocket,
+    }),
   ),
   withProps((props) => {
     const retrievedDatachannelDatapointsSet = props.datachannelDatapoints;
