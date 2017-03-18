@@ -13,13 +13,7 @@
   justify-content: flex-start;
 }
 
+.dataChannelCard.withGraph > div:nth-child(2),
 .dataChannelCard.withGraph > div:nth-child(3) {
   width: 240px;
-}
-
-.displayWrap {
-  display: flex;
-  justify-content: center;
-  min-width: 240px;
-  max-height: 209px;
 }

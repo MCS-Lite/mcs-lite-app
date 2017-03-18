@@ -70,24 +70,22 @@ const WrapperLayout = ({
       />
     }
   >
-    <div className={styles.displayWrap}>
-      {displayName === 'Integer_Display' && <DisplayCardInteger value={value} {...props} />}
-      {displayName === 'Hex_Display' && <DisplayCardHex value={value} {...props} />}
-      {displayName === 'PWM_Display' && <DisplayCardPWM value={value} period={period} {...props} />}
-      {displayName === 'String_Display' && <DisplayCardString value={value} {...props} />}
-      {displayName === 'GPIO_Display' && <DisplayCardGPIO value={value} {...props} />}
-      {displayName === 'Switch_Display' && <DisplayCardSwitch value={value} {...props} />}
-      {displayName === 'Float_Display' && <DisplayCardFloat value={value} {...props} />}
-      {displayName === 'Category_Display' && <DisplayCardCategory value={value} {...props} />}
-      {displayName === 'Integer_Control' && <ControlCardInteger value={value} {...props} />}
-      {displayName === 'Hex_Control' && <ControlCardHex value={value} {...props} />}
-      {displayName === 'PWM_Control' && <ControlCardPWM value={value} period={period} {...props} />}
-      {displayName === 'String_Control' && <ControlCardString value={value} {...props} />}
-      {displayName === 'GPIO_Control' && <ControlCardGPIO value={value} {...props} />}
-      {displayName === 'Switch_Control' && <ControlCardSwitch value={value} {...props} />}
-      {displayName === 'Float_Control' && <ControlCardFloat value={value} {...props} />}
-      {displayName === 'Category_Control' && <ControlCardCategory value={value} {...props} />}
-    </div>
+    {displayName === 'Integer_Display' && <DisplayCardInteger value={value} {...props} />}
+    {displayName === 'Hex_Display' && <DisplayCardHex value={value} {...props} />}
+    {displayName === 'PWM_Display' && <DisplayCardPWM value={value} period={period} {...props} />}
+    {displayName === 'String_Display' && <DisplayCardString value={value} {...props} />}
+    {displayName === 'GPIO_Display' && <DisplayCardGPIO value={value} {...props} />}
+    {displayName === 'Switch_Display' && <DisplayCardSwitch value={value} {...props} />}
+    {displayName === 'Float_Display' && <DisplayCardFloat value={value} {...props} />}
+    {displayName === 'Category_Display' && <DisplayCardCategory value={value} {...props} />}
+    {displayName === 'Integer_Control' && <ControlCardInteger value={value} {...props} />}
+    {displayName === 'Hex_Control' && <ControlCardHex value={value} {...props} />}
+    {displayName === 'PWM_Control' && <ControlCardPWM value={value} period={period} {...props} />}
+    {displayName === 'String_Control' && <ControlCardString value={value} {...props} />}
+    {displayName === 'GPIO_Control' && <ControlCardGPIO value={value} {...props} />}
+    {displayName === 'Switch_Control' && <ControlCardSwitch value={value} {...props} />}
+    {displayName === 'Float_Control' && <ControlCardFloat value={value} {...props} />}
+    {displayName === 'Category_Control' && <ControlCardCategory value={value} {...props} />}
     {
       isHistoryShow &&
       <HistoricalGraph
