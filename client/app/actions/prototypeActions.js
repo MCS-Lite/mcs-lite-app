@@ -36,3 +36,10 @@ export const retrievePrototypeTemplates = () => (dispatch, getState) =>
 export const uploadPrototypeImage = file => (dispatch, getState) =>
   request('/upload/image?type=prototype', 'POST_FORM_DATA', file, getState().main.access_token)
   .catch(() => Promise.reject());
+
+export const exportJSON = id => (dispatch, getState) =>
+  request(`/prototypes/${id}/export`, 'POST', {}, getState().main.access_token);
+
+export const importJSON = (id, json) => (dispatch, getState) =>
+  request(`/prototypes/${id}/import`, 'POST', { content: json }, getState().main.access_token)
+  .catch(e => Promise.reject(e));

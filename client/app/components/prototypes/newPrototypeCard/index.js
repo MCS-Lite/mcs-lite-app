@@ -11,6 +11,7 @@ const NewPrototypeCardLayout = ({
   isCreatePrototype,
   openCreatePrototype,
   retrievePrototypeTemplates,
+  retrievePrototypeList,
   prototypeTemplates,
   getMessages: t,
   onCreate,
@@ -18,6 +19,7 @@ const NewPrototypeCardLayout = ({
   onCancel,
   uploadPrototypeImage,
   pushToast,
+  importJSON,
 }) => (
   <div className={styles.base}>
     {
@@ -29,8 +31,10 @@ const NewPrototypeCardLayout = ({
           onClone={onClone}
           templates={prototypeTemplates}
           retrievePrototypeTemplates={retrievePrototypeTemplates}
+          retrievePrototypeList={retrievePrototypeList}
           uploadPrototypeImage={uploadPrototypeImage}
           pushToast={pushToast}
+          importJSON={importJSON}
         />
     }
     {t('createYourPrototypeNow')}
@@ -46,14 +50,20 @@ const NewPrototypeCardLayout = ({
 
 export default compose(
   pure,
+  withGetMessages(messages, 'Prototypes'),
   withState('isCreatePrototype', 'setIsCreatePrototype', false),
   withHandlers({
     openCreatePrototype: props => () => props.setIsCreatePrototype(true),
     onCreate: props => value => props.createNewPrototype(value)
-      .then(() => props.retrievePrototypeList()),
+      .then(() => {
+        props.pushToast({
+          kind: 'success',
+          message: props.getMessages('createPrototypeSuccess'),
+        });
+        props.retrievePrototypeList();
+      }),
     onClone: props => (id, data) => props.clonePrototype(id, data)
       .then(() => props.retrievePrototypeList()),
     onCancel: props => () => props.setIsCreatePrototype(false),
   }),
-  withGetMessages(messages, 'Prototypes'),
 )(NewPrototypeCardLayout);

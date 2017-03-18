@@ -112,6 +112,21 @@ const messages = defineMessages({
     description: '',
     defaultMessage: '編輯測試裝置',
   },
+  'Dialogs.errorWhenUploadJSON': {
+    id: 'Dialogs.errorWhenUploadJSON',
+    description: '',
+    defaultMessage: '錯誤！上傳JSON檔時發生錯誤。',
+  },
+  'Dialogs.codeBlockPlaceholder': {
+    id: 'Dialogs.codeBlockPlaceholder',
+    description: '',
+    defaultMessage: '在此處貼上JSON...',
+  },
+  'Dialogs.createPrototypeSuccess': {
+    id: 'Dialogs.createPrototypeSuccess',
+    description: '',
+    defaultMessage: '成功！你已經成功建立一個產品原型。',
+  },
 });
 
 export default messages;

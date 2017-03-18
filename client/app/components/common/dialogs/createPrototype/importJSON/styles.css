@@ -3,3 +3,40 @@
   text-decoration: none;
   cursor: pointer;
 }
+
+.fileInput {
+  display: none;
+}
+
+.uploadJSONLink {
+  display: inline;
+}
+
+.codeBlock {
+  margin-top: 10px;
+  border-radius: 3px;
+  border: 1px solid #D1D2D3;
+  font-family: Menlo-Regular;
+}
+
+.codeBlockError {
+  border-color: #D0021B;
+}
+
+.codeBlock div:global(.CodeMirror) {
+  height: 175px;
+}
+
+.codeBlock div:global(.CodeMirror-lines) {
+  padding: 8px 0;
+}
+
+.codeBlockPlaceholder div:global(.CodeMirror) {
+  color: #D1D2D3;
+}
+
+.errorMessage {
+  margin-top: 10px;
+  height: 20px;
+  color: #D0021B;
+}

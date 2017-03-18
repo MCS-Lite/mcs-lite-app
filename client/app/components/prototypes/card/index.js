@@ -25,6 +25,7 @@ const PrototypeCardLayout = ({
   editPrototype,
   onClone,
   onCancel,
+  onExport,
   onDeleteSubmit,
   uploadPrototypeImage,
   pushToast,
@@ -42,7 +43,7 @@ const PrototypeCardLayout = ({
   let items = [
     { value: 'edit', children: t('edit') },
     { value: 'clone', children: t('clone') },
-    { value: 'export', children: t('export') },
+    { value: 'export', children: t('export'), onClick: onExport },
     { value: 'delete', children: t('delete') },
   ];
 
@@ -141,6 +142,7 @@ const PrototypeCardLayout = ({
 
 export default compose(
   pure,
+  withGetMessages(messages, 'Prototypes'),
   withState('selectMenuValue', 'setSelectMenuValue', ''),
   withHandlers({
     openPrototypeDetail: props => () => browserHistory.push(`/prototypes/${props.prototype.prototypeId}`),
@@ -152,6 +154,24 @@ export default compose(
       props.deletePrototype(props.prototype.prototypeId);
       props.setSelectMenuValue('');
     },
+    onExport: props => () => {
+      const { prototypeId } = props.prototype;
+      props.exportJSON(prototypeId)
+        .then(({ data }) => {
+          const json = JSON.stringify(data, null, '\t');
+          const blob = new Blob([json], { type: 'application/json' });
+          const url = window.URL.createObjectURL(blob);
+
+          const ghostLink = document.createElement('a');
+          ghostLink.href = url;
+          ghostLink.setAttribute('download', `${prototypeId}.json`);
+          ghostLink.setAttribute('target', '_blank');
+          document.body.appendChild(ghostLink);
+          ghostLink.click();
+          document.body.removeChild(ghostLink);
+
+          props.pushToast({ kind: 'success', message: props.getMessages('exportSuccess') });
+        });
+    },
   }),
-  withGetMessages(messages, 'Prototypes'),
 )(PrototypeCardLayout);

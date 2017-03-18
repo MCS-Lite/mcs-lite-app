@@ -18,6 +18,7 @@ import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import { ThemeProvider } from 'styled-components';
 import { theme } from 'mcs-lite-theme';
+import 'normalize.css';
 import reducers from '../reducers';
 import { Router, Route, RouterContext, browserHistory } from 'react-router';
 import IntlProvider from '../containers/IntlProvider';
