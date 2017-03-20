@@ -30,6 +30,7 @@ const PanelContentLayout = ({
   deleteDevice,
   retrievePrototype,
   uploadDeviceImage,
+  readOnly,
 }) => (
   <div className={styles.base}>
     <Panel>
@@ -53,6 +54,7 @@ const PanelContentLayout = ({
               createUnitTypes={createUnitTypes}
               unitTypes={unitTypes}
               pushToast={pushToast}
+              readOnly={readOnly}
             />
         }
         {
@@ -79,10 +81,17 @@ export default compose(
     onNavChange: props => value => props.setSelectPanelValue(value),
   }),
   withGetMessages(messages, 'PrototypeDetail'),
-  withProps(props => ({
-    navItems: [
-      { value: 'datachannel', children: props.getMessages('datachannel') },
-      { value: 'testDevices', children: props.getMessages('testDevices') },
-    ],
-  })),
+  withProps(props => props.readOnly
+    ? ({
+      navItems: [
+        { value: 'datachannel', children: props.getMessages('datachannel') },
+      ],
+    })
+    : ({
+      navItems: [
+        { value: 'datachannel', children: props.getMessages('datachannel') },
+        { value: 'testDevices', children: props.getMessages('testDevices') },
+      ],
+    }),
+  ),
 )(PanelContentLayout);

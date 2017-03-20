@@ -251,6 +251,21 @@ const messages = defineMessages({
     description: '',
     defaultMessage: '從既有的產品原型複製出一份相同的產品原型來做更進一步的開發。',
   },
+  'PrototypeDetail.noDatachannels': {
+    id: 'PrototypeDetail.noDatachannels',
+    description: '',
+    defaultMessage: '尚無資料通道',
+  },
+  'PrototypeDetail.prototypeTemplate': {
+    id: 'PrototypeDetail.prototypeTemplate',
+    description: '',
+    defaultMessage: '原型範例',
+  },
+  'PrototypeDetail.createPrototypeFromTemplate': {
+    id: 'PrototypeDetail.createPrototypeFromTemplate',
+    description: '',
+    defaultMessage: '使用範例創建原型',
+  },
 });
 
 export default messages;
