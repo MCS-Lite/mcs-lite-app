@@ -1,5 +1,6 @@
 var express = require('express');
 var path = require('path');
+var fs = require('fs');
 var OAuthServer = require('oauth2-server');
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
@@ -14,6 +15,7 @@ var connectToDB = require('./libs/index').connectToDB;
 var dbConfig = require('../configs/db');
 var os = require('os');
 var StreamServer = require('node-rtsp-rtmp-server');
+var socketPort = require('../configs/wot.json').port;
 
 var connectDB = connectToDB(dbConfig).init();
 var Oauth = new oauth(connectDB);
@@ -48,16 +50,20 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(cookieParser());
 
+app.use('/images', express.static(path.resolve(__dirname, '../uploadImages')));
+
 /**
  * Serving mobile website via npm.
  * $npm i mcs-lite-mobile-web --save
  * @author Michael Hsu
  */
 const mobilePathname = '../node_modules/mcs-lite-mobile-web/build';
-app.use('/images', express.static(path.resolve(__dirname, '../uploadImages')));
+const html = fs
+  .readFileSync(path.resolve(__dirname, mobilePathname, 'index.html'), 'utf-8')
+  .replace('__SOCKET_PORT_FROM_SERVER__', socketPort);
 app.use('/mobile', express.static(path.resolve(__dirname, mobilePathname)));
 app.get('/mobile/*', function (req, res) {
-  res.sendFile(path.resolve(__dirname, mobilePathname, 'index.html'));
+  res.send(html);
 });
 
 /**
