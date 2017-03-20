@@ -1,24 +1,3 @@
-@font-face {
-  font-family: RionaSans-Regular;
-  font-weight: normal;
-  font-style: normal;
-  src: url(../font/riona-sans-regular.otf);
-}
-
-@font-face {
-  font-family: RionaSans-Light;
-  font-weight: normal;
-  font-style: normal;
-  src: url(../font/riona-sans-light.otf);
-}
-
-@font-face {
-  font-family: RionaSans-Medium;
-  font-weight: normal;
-  font-style: normal;
-  src: url(../font/riona-sans-medium.otf);
-}
-
 html {
   font-size:13px;
 }
