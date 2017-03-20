@@ -34,6 +34,11 @@ export default {
     cssExtractor,
     vendorCssExtractor,
   ],
+  resolve: {
+    alias: {
+      images: path.resolve(__dirname, '../images'),
+    },
+  },
   module: {
     loaders: [
       {

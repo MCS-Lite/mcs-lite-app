@@ -9,13 +9,14 @@ import withHandlers from 'recompose/withHandlers';
 import MiDevelopment from 'mtk-icon/lib/MiDevelopment';
 import Avatar from 'mtk-ui/lib/Avatar';
 import IconResources from 'mcs-lite-icon/lib/IconResources';
+import logo from 'images/logo_mcs_lite_white.svg';
 import { withGetMessages } from 'react-intl-inject-hoc';
 import messages from './messages';
 
 import Nav from './nav';
 import NavItem from './navItem';
 import DropdownButton from './dropDownButton';
-import logo from './web_logo.png';
+
 import resourcesConfig from './configs/resources';
 
 import headerStyles from './header.css';
