@@ -28,10 +28,7 @@ body {
   padding:0;
   color:#000;
   background: #F1F2F7;
-}
-
-* {
-  font-family:RionaSans-Light,Arial,Helvetica,sans-serif;
+  font-family: "Noto Sans TC", "RionaSans", "Helvetica", "微軟正黑體", "Microsoft JhengHei", "黑體-繁", "Heiti TC", "新細明體", "PMingLiU", "sans-serif";
 }
 
 code {
