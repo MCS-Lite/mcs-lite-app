@@ -10,32 +10,33 @@ var datapoints = connectDB.datapoints;
 
 var onmessage = function(payload) {
   var path = payload.pathname;
-
   if (path) {
-    var deviceId = path.split('/')[2];
-    var deviceKey = path.split('/')[4];
+    if (!/\/stream\/viewer$/.test(path) && !/\/stream$/.test(path)) {
+      var deviceId = path.split('/')[2];
+      var deviceKey = path.split('/')[4];
 
-    return new Promise(function(resolve, reject) {
-      var data = JSON.parse(payload.data);
-      if (!data.updatedAt) {
-        data.updatedAt = new Date().getTime();
-      }
-      resolve(data);
-    })
-    .then(function(data) {
-      return datapoints.uploadDatapoint({
-        deviceId: deviceId,
-        deviceKey: deviceKey,
-        datachannelId: data.datachannelId,
-        values: data.values,
+      return new Promise(function(resolve, reject) {
+        var data = JSON.parse(payload.data);
+        if (!data.updatedAt) {
+          data.updatedAt = new Date().getTime();
+        }
+        resolve(data);
+      })
+      .then(function(data) {
+        return datapoints.uploadDatapoint({
+          deviceId: deviceId,
+          deviceKey: deviceKey,
+          datachannelId: data.datachannelId,
+          values: data.values,
+        });
+      })
+      .then(function(data) {
+        console.log('success!');
+      })
+      .catch(function(err) {
+        console.log(err);
       });
-    })
-    .then(function(data) {
-      console.log('success!');
-    })
-    .catch(function(err) {
-      console.log(err);
-    });
+    }
   } else {
     console.log('Invalid path name!');
   }

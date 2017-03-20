@@ -13,12 +13,14 @@ var handleRouters = require('./libs/index').handleRouter;
 var connectToDB = require('./libs/index').connectToDB;
 var dbConfig = require('../configs/db');
 var os = require('os');
+var StreamServer = require('node-rtsp-rtmp-server');
 
 var connectDB = connectToDB(dbConfig).init();
 var Oauth = new oauth(connectDB);
 
 global.oauthHost = 'http://' + $oauth.host + ':' + $oauth.port;
 global.host = $rest.host + ':' + $rest.port + $rest.apiRoute;
+global.wotHost = 'ws://' + $wot.host + ':' + $wot.port;
 
 app.oauth = new OAuthServer({
   model: Oauth,
@@ -87,6 +89,13 @@ for (var k in interfaces) {
         }
     }
 }
+
+
+var server = new StreamServer(null, {
+  serverPort: 8888,
+  rtmpServerPort: 1935,
+});
+server.start();
 
 console.log('+-+-+-+ +-+-+-+-+');
 console.log(' M C S   L I T E ');

@@ -32,12 +32,13 @@
  * Main WoT Framework
  */
 var WoT = require('wotcity.io');
+var server = require('./server');
 
 /**
  * WoT Modules
  */
 var Framework = WoT.Framework
-  , WebsocketBroker = WoT.WebsocketBroker
+  , WebsocketBroker = server
   , WebsocketRouter = WoT.WebsocketRouter
   , RequestHandlers = WoT.WebsocketRequestHandlers
   , Runtime = WoT.Runtime;
@@ -61,6 +62,9 @@ var wsHandlers = {
    "/deviceId/([-A-Za-z0-9_]+)/deviceKey/([A-Za-z0-9]+)": MCSHandler.send,
    "/deviceId/([-A-Za-z0-9_]+)/deviceKey/([A-Za-z0-9]+)/viewer$": MCSHandler.viewer,
    "/deviceId/([-A-Za-z0-9_]+)/deviceKey/([A-Za-z0-9]+)/status$": MCSHandler.status,
+   "/deviceId/([-A-Za-z0-9_]+)/deviceKey/([A-Za-z0-9]+)/[0-9]+/[0-9]+/stream$": MCSHandler.streamSender,
+   "/deviceId/([-A-Za-z0-9_]+)/deviceKey/([A-Za-z0-9]+)/[0-9]+/[0-9]+/stream/viewer$": MCSHandler.streamViewer,
+   "/deviceId/([-A-Za-z0-9_]+)/deviceKey/([A-Za-z0-9]+)/[0-9]+/[0-9]+/stream/status$": MCSHandler.streamStatus,
    // "/deviceId/([A-Za-z0-9]+)/deviceKey/([A-Za-z0-9]+)/datachannels/([A-Za-z0-9]+)": MCSHandler.send,
    // "/deviceId/([A-Za-z0-9]+)/deviceKey/([A-Za-z0-9]+)/datachannels/([A-Za-z0-9]+)/viewer$": MCSHandler.viewer,
    // "/deviceId/([A-Za-z0-9]+)/deviceKey/([A-Za-z0-9]+)/datachannels/([A-Za-z0-9]+)/status$": MCSHandler.status,
