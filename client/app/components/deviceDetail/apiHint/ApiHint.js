@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import R from 'ramda';
 import { createEventHandler, componentFromStream } from 'recompose';
 import { Observable } from 'rxjs/Observable';
@@ -28,6 +28,7 @@ const ApiHint = componentFromStream((propStream) => {
   const datachannels$ = props$.pluck('datachannels');
   const language$ = Observable.from(onTabChangeStream).startWith(DEFAULT_LANGUAGE);
   const datachannelId$ = datachannels$
+    .filter(R.complement(R.isEmpty))
     .map(R.pipe(R.head, R.prop('datachannelId'))) // Hint: Start with first value
     .merge(Observable.from(onDCIdChangeStream).map(R.path(['target', 'value'])));
   const datachannel$ = datachannelId$
@@ -45,7 +46,8 @@ const ApiHint = componentFromStream((propStream) => {
       deviceKey$.distinctUntilChanged(),
       method$.distinctUntilChanged(),
     )
-    .switchMap(array => fetchAPIHint(...array)); // Remind: The array MUST be in order.
+    .switchMap(array => fetchAPIHint(...array)) // Remind: The array MUST be in order.
+    .startWith('');
 
   return props$.combineLatest(
     code$,
@@ -120,5 +122,15 @@ const ApiHint = componentFromStream((propStream) => {
   );
 });
 
+ApiHint.displayName = 'ApiHint';
+ApiHint.propTypes = {
+  // Props
+  deviceId: PropTypes.string.isRequired,
+  deviceKey: PropTypes.string.isRequired,
+  datachannels: PropTypes.array.isRequired,
+
+  // React-intl i18n
+  getMessages: PropTypes.func.isRequired,
+};
 
 export default ApiHint;

@@ -1,0 +1,115 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should handle tab click 1`] = `
+Object {
+  "children": "Fake Code",
+  "language": "javascript",
+}
+`;
+
+exports[`should redner <ApiHint /> 1`] = `
+<styled.div>
+  <styled.div>
+    <div>
+      <Heading
+        level={4}
+      >
+        helpful
+      </Heading>
+      <Styled(Component)>
+        example
+      </Styled(Component)>
+    </div>
+    <select
+      onChange={[Function]}
+      value="datachannelId"
+    >
+      <option
+        value="datachannelId"
+      >
+        datachannelName
+      </option>
+    </select>
+  </styled.div>
+  <Styled(Hr) />
+  <styled.div>
+    <div>
+      datachannelName
+      datachannelName
+    </div>
+    <div>
+      datachannelId
+      datachannelId
+    </div>
+    <div>
+      apiType
+      <styled.span>
+        <span>
+          <input
+            checked={false}
+            id="upload"
+            name="upload"
+            onChange={[Function]}
+            type="radio"
+          />
+          <label
+            htmlFor="upload"
+          >
+            upload
+          </label>
+        </span>
+        <span>
+          <input
+            checked={true}
+            id="retrieve"
+            name="retrieve"
+            onChange={[Function]}
+            type="radio"
+          />
+          <label
+            htmlFor="retrieve"
+          >
+            retrieve
+          </label>
+        </span>
+      </styled.span>
+    </div>
+  </styled.div>
+  <div>
+    <TabItem
+      active={true}
+      color="primary"
+      onClick={[Function]}
+      value="javascript"
+    >
+      Javascript
+    </TabItem>
+    <TabItem
+      active={false}
+      color="primary"
+      onClick={[Function]}
+      value="arduino"
+    >
+      Arduino
+    </TabItem>
+    <TabItem
+      active={false}
+      color="primary"
+      onClick={[Function]}
+      value="talnet"
+    >
+      Talnet
+    </TabItem>
+  </div>
+  <styled.div>
+    <Styled(CopyButton)
+      text=""
+    >
+      copy
+    </Styled(CopyButton)>
+    <Code
+      language="javascript"
+    />
+  </styled.div>
+</styled.div>
+`;

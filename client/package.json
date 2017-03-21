@@ -17,13 +17,31 @@
     "watch": "webpack-dev-server",
     "watch:global": "NODE_ENV=development DOMAIN_ENV=global npm run watch",
     "watch:china": " NODE_ENV=development DOMAIN_ENV=china  npm run watch",
-    "lint": "eslint ./"
+    "lint": "eslint ./",
+    "test": "jest --coverage --runInBand",
+    "test:watch": "npm run test -- --watch"
+  },
+  "jest": {
+    "setupFiles": [],
+    "collectCoverageFrom": [
+      "app/components/**/*.{js,jsx}",
+      "!app/**/*.test.{js,jsx}"
+    ],
+    "testPathIgnorePatterns": [
+      "<rootDir>/node_modules/",
+      "<rootDir>/build/"
+    ],
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ],
+    "moduleNameMapper": {
+      "\\.(css|less|styl|scss|sass)$": "identity-obj-proxy"
+    }
   },
   "devDependencies": {
     "babel": "^6.23.x",
     "babel-core": "^6.23.x",
     "babel-eslint": "^7.1.1",
-    "babel-jest": "^5.0.1",
     "babel-loader": "^6.2.10",
     "babel-plugin-import": "^1.1.1",
     "babel-plugin-transform-decorators-legacy": "^1.3.4",
@@ -34,6 +52,8 @@
     "babel-preset-stage-0": "^6.22.0",
     "babel-register": "^6.23.0",
     "css-loader": "0.23.0",
+    "enzyme": "^2.7.1",
+    "enzyme-to-json": "^1.5.0",
     "eslint": "^3.16.1",
     "eslint-config-airbnb": "^14.0.0",
     "eslint-config-mcs-lite": "^0.1.0",
@@ -45,11 +65,14 @@
     "html-webpack-harddisk-plugin": "^0.1.0",
     "html-webpack-plugin": "^2.28.0",
     "http-server": "^0.8.5",
+    "identity-obj-proxy": "^3.0.0",
     "img-loader": "^1.2.0",
+    "jest": "^19.0.2",
     "json-loader": "^0.5.2",
     "postcss-loader": "0.8.0",
     "pre-commit": "Mediatek-Cloud/pre-commit",
     "prismjs": "git+https://github.com/PrismJS/prism.git#gh-pages",
+    "react-addons-test-utils": "^15.4.2",
     "style-loader": "^0.12.3",
     "url-loader": "^0.5.6",
     "webpack": "^1.12.6",
