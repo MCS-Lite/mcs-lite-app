@@ -14,6 +14,10 @@ import WithDropdownMenu from '../../common/withDropdownMenu';
 
 import styles from './styles.css';
 
+const TemplateTag = ({ getMessages }) => (
+  <div className={styles.isTemplateTag}>{getMessages('prototypeTemplate')}</div>
+);
+
 const PrototypeDetailHeaderLayout = ({
   user: {
     userName,
@@ -41,12 +45,16 @@ const PrototypeDetailHeaderLayout = ({
   uploadPrototypeImage,
   uploadDeviceImage,
   pushToast,
+  readOnly,
+  isTemplate,
+  openClonePrototype,
   getMessages: t,
 }) => (
   <div className={styles.base}>
     <div className={styles.content}>
       <div className={styles.info}>
         <div className={styles.infoHeader}>
+          { isTemplate && <TemplateTag getMessages={t} />}
           <Heading level={2}>{prototypeName}</Heading>
           <span>{`(ID: ${prototypeId})`}</span>
         </div>
@@ -64,26 +72,29 @@ const PrototypeDetailHeaderLayout = ({
           uploadDeviceImage={uploadDeviceImage}
           pushToast={pushToast}
         />
-        <Button onClick={openCreateTestDevice}>
-          {t('createTestDevice')}
+        <Button onClick={readOnly ? openClonePrototype : openCreateTestDevice}>
+          {readOnly ? t('createPrototypeFromTemplate') : t('createTestDevice')}
         </Button>
-        <WithDropdownMenu
-          dropdownItems={dropdownItems}
-          onChange={onMenuChange}
-          onMenuShowChange={onMenuShowChange}
-          menuClassName={styles.menu}
-        >
-          <Button kind="default">
-            <div
-              className={c(
-                styles.dropdownButtonContent,
-                isDropdownOpen && styles.dropdownOpen,
-              )}
+        {
+          !readOnly &&
+            <WithDropdownMenu
+              dropdownItems={dropdownItems}
+              onChange={onMenuChange}
+              onMenuShowChange={onMenuShowChange}
+              menuClassName={styles.menu}
             >
-              {t('more')}<IconFold size={18} />
-            </div>
-          </Button>
-        </WithDropdownMenu>
+              <Button kind="default">
+                <div
+                  className={c(
+                    styles.dropdownButtonContent,
+                    isDropdownOpen && styles.dropdownOpen,
+                  )}
+                >
+                  {t('more')}<IconFold size={18} />
+                </div>
+              </Button>
+            </WithDropdownMenu>
+        }
         {
           selectMenuValue === 'clone' &&
             <CreatePrototype
@@ -133,16 +144,27 @@ export default compose(
   withState('isCreateTestDevice', 'setIsCreateTestDevice', false),
   withState('isDropdownOpen', 'setIsDropdownOpen', false),
   withState('selectMenuValue', 'setSelectMenuValue', ''),
-  withProps(({ getMessages: t }) => ({
-    dropdownItems: [
-      { value: 'edit', children: t('edit') },
-      { value: 'clone', children: t('clone') },
-      { value: 'delete', children: t('delete') },
-      { value: 'export', children: t('export') },
-    ],
-  })),
+  withProps(({ getMessages: t, readOnly }) => {
+    if (readOnly) {
+      return {
+        dropdownItems: [
+          { value: 'clone', children: t('clone') },
+        ],
+      };
+    }
+
+    return {
+      dropdownItems: [
+        { value: 'edit', children: t('edit') },
+        { value: 'clone', children: t('clone') },
+        { value: 'delete', children: t('delete') },
+        { value: 'export', children: t('export') },
+      ],
+    };
+  }),
   withHandlers({
     openCreateTestDevice: props => () => props.setIsCreateTestDevice(true),
+    openClonePrototype: props => () => props.setSelectMenuValue('clone'),
     onMenuChange: props => value => props.setSelectMenuValue(value),
     onMenuShowChange: props => value => props.setIsDropdownOpen(value),
     onClone: props => (id, data) => props.clonePrototype(id, data),

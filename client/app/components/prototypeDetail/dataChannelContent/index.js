@@ -1,9 +1,10 @@
 import React from 'react';
 import { compose, pure } from 'recompose';
-
+import { withGetMessages } from 'react-intl-inject-hoc';
+import messages from '../messages';
 import DataChannelWrapper from '../../dataChannelCards/common/wrapper';
 import NewDisplayCard from '../newDisplayCard';
-import styles from '../styles.css';
+import styles from './styles.css';
 
 const DataChannelContentLayout = ({
   datachannels,
@@ -14,16 +15,25 @@ const DataChannelContentLayout = ({
   unitTypes,
   createUnitTypes,
   pushToast,
+  readOnly,
+  getMessages: t,
 }) => (
   <div className={styles.dataChannelContent}>
-    <NewDisplayCard
-      createDataChannel={createDataChannel}
-      prototypeId={prototypeId}
-      retrieveUnitTypes={retrieveUnitTypes}
-      createUnitTypes={createUnitTypes}
-      unitTypes={unitTypes}
-      pushToast={pushToast}
-    />
+    {
+      readOnly && datachannels.length === 0 &&
+      <div className={styles.noDatachannels}>{t('noDatachannels')}</div>
+    }
+    {
+      !readOnly &&
+      <NewDisplayCard
+        createDataChannel={createDataChannel}
+        prototypeId={prototypeId}
+        retrieveUnitTypes={retrieveUnitTypes}
+        createUnitTypes={createUnitTypes}
+        unitTypes={unitTypes}
+        pushToast={pushToast}
+      />
+    }
     {
       typeof datachannels === 'object' &&
         datachannels.map((dataChannel) => {
@@ -57,4 +67,5 @@ const DataChannelContentLayout = ({
 
 export default compose(
   pure,
+  withGetMessages(messages, 'PrototypeDetail'),
 )(DataChannelContentLayout);

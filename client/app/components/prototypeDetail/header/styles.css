@@ -27,11 +27,12 @@
 
 .option button {
   margin-left: 5px;
+  height: 32px;
 }
 
 .infoHeader {
   display: flex;
-  align-items: baseline;
+  align-items: center;
   margin-bottom: 15px;
 }
 
@@ -62,4 +63,13 @@
 
 .menu {
   width: 80px;
+}
+
+.isTemplateTag {
+  background: #FEFAF4;
+  border: 1px solid #F39A1E;
+  border-radius: 3px;
+  color: #F39A1E;
+  padding: 2px 5px;
+  margin-right: 10px;
 }

@@ -2,16 +2,31 @@
   min-width: 328px;
 }
 
-.preview {
+.imageUploadDescription {
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 134px;
-  width: 100%;
+  width: 328px;
   background: #FAFAFA;
   border: 1px dashed #D1D2D3;
   border-radius: 3px;
+  color: #D1D2D3;
+}
+
+.imageUploadDescription > div {
+  margin-top: 5px;
+}
+
+.dragEnter {
+  border-color: #00A1DE;
+  border-width: 2px;
+}
+
+.dragEnter * {
+  pointer-events: none;
 }
 
 .img {
