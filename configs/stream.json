@@ -1,0 +1,8 @@
+{
+  "serverPort": 8888,
+  "rtmpServerPort": 1935,
+  "videoControlReceiverPath": "/tmp/node_rtsp_rtmp_videoControl",
+  "audioControlReceiverPath": "/tmp/node_rtsp_rtmp_audioControl",
+  "videoDataReceiverPath": "/tmp/node_rtsp_rtmp_videoData",
+  "audioDataReceiverPath": "/tmp/node_rtsp_rtmp_audioData"
+}

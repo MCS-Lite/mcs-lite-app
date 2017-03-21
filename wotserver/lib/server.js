@@ -198,8 +198,8 @@ WebsocketBroker.prototype.start = function(route, handlers) {
         // self = this;
         streamHeader = new Buffer(8);
         streamHeader.write("jsmp");
-        streamHeader.writeUInt16BE(1024, 4);
-        streamHeader.writeUInt16BE(768, 6);
+        streamHeader.writeUInt16BE(width, 4);
+        streamHeader.writeUInt16BE(height, 6);
 
         // console.log(this.viewer);
         // if (typeof (this.viewer) !== 'undefined'){
