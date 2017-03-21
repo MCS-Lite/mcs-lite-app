@@ -121,15 +121,13 @@ const PrototypeCardLayout = ({
           {
             !(R.isNil(version) || R.isEmpty(version)) &&
             <div>
-              {t('version')} {version}
+              {t('version')}{version}
+              <Hr className={styles.hr} />
             </div>
           }
           {
             !(R.isNil(prototypeDescription) || R.isEmpty(prototypeDescription)) &&
-            <div>
-              <Hr className={styles.hr} />
-              {t('prototypeDescription')} {prototypeDescription}
-            </div>
+            <span>{prototypeDescription}</span>
           }
         </div>
         <Button onClick={openPrototypeDetail} block>

@@ -90,7 +90,13 @@ export default compose(
     },
     onTestDeviceDescriptionChange: props => e => props.setTestDeviceDescription(e.target.value),
     onTestDeviceImageURLChange: props => imageURL => props.setTestDeviceImageURL(imageURL),
-    closeCreateTestDevice: props => () => props.setIsCreateTestDevice(false),
+    closeCreateTestDevice: props => () => {
+      props.setTestDeviceName('');
+      props.setTestDeviceDescription('');
+      props.setTestDeviceImageURL('');
+      props.setError(false);
+      props.setIsCreateTestDevice(false);
+    },
     submitCreateTestDevice: props => () => {
       if (props.testDeviceName.length === 0) {
         props.setError(true);

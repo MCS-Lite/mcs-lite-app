@@ -8,6 +8,7 @@ import PrototypeDetailInfo from './info';
 import styles from './styles.css';
 
 const Prototypes = ({
+  main,
   prototypes,
   createTestDevice,
   createDataChannel,
@@ -31,8 +32,11 @@ const Prototypes = ({
     datachannels,
     devices,
     user,
+    isTemplate,
   } = prototypes.prototypeDetail;
+  const { isAdmin } = main;
   const { unitTypes } = prototypes;
+  const readOnly = !isAdmin && isTemplate;
   return (
     <div>
       <div className={styles.base}>
@@ -49,6 +53,8 @@ const Prototypes = ({
           uploadPrototypeImage={uploadPrototypeImage}
           uploadDeviceImage={uploadDeviceImage}
           pushToast={pushToast}
+          readOnly={readOnly}
+          isTemplate={isTemplate}
           {...props}
         />
         <PrototypeDetailInfo
@@ -70,6 +76,7 @@ const Prototypes = ({
           deleteDevice={deleteDevice}
           retrievePrototype={retrievePrototype}
           uploadDeviceImage={uploadDeviceImage}
+          readOnly={readOnly}
         />
       </div>
     </div>

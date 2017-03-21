@@ -3,9 +3,9 @@ import { compose, pure } from 'recompose';
 import { connect } from 'react-redux';
 import Header from '../components/header';
 import Footer from '../components/footer';
-import { signOut } from '../actions/AppActions';
+import { signOut as signOutAction } from '../actions/AppActions';
 
-const CommonLayout = ({ children, main, location: { pathname }}) => (
+const CommonLayout = ({ children, main, location: { pathname }, signOut }) => (
   <div>
     <Header
       imageUrl={main.userImage}
@@ -19,5 +19,5 @@ const CommonLayout = ({ children, main, location: { pathname }}) => (
 
 export default compose(
   pure,
-  connect(({ main }) => ({ main })),
+  connect(({ main }) => ({ main }), { signOut: signOutAction }),
 )(CommonLayout);

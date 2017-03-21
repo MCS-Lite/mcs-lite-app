@@ -1,5 +1,5 @@
 .base {
-  background-image:url("./background.jpg");
+  background-image:url("images/background.jpg");
   width: 100%;
   position: absolute;
   height: 100%;
@@ -31,7 +31,8 @@
 
 .logo{
   width: 100%;
-  max-width: 220px;
+  max-width: 200px;
+  height: 40px;
   margin: 20px auto 20px auto;
   display: block;
 }

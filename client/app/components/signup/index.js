@@ -5,10 +5,10 @@ import InputText from 'mtk-ui/lib/InputText';
 import Button from 'mtk-ui/lib/Button';
 import Hr from 'mtk-ui/lib/Hr';
 import { Small } from 'mcs-lite-ui';
+import logo from 'images/logo_mcs_lite_black.svg';
 import { withGetMessages } from 'react-intl-inject-hoc';
 import messages from './messages';
 import Footer from '../footer';
-import logo from '../login/logo.png';
 
 import LoginStyles from '../login/styles.css';
 import styles from './styles.css';

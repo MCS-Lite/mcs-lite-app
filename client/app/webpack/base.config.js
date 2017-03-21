@@ -34,6 +34,11 @@ export default {
     cssExtractor,
     vendorCssExtractor,
   ],
+  resolve: {
+    alias: {
+      images: path.resolve(__dirname, '../images'),
+    },
+  },
   module: {
     loaders: [
       {
@@ -57,8 +62,6 @@ export default {
         ],
         loader: vendorCssExtractor.extract('style', 'css', { publicPath: '/' }),
       },
-      { test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: 'url?limit=10000&minetype=application/font-woff&name=./assets/[name].[ext]' },
-      { test: /\.(ttf|eot|otf)(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: 'url?limit=10000&minetype=application/font-woff&name=./assets/[name].[ext]' },
       { test: /\.svg\?v=[0-9]\.[0-9]\.[0-9]$/, loaders: ['url?limit=10000&minetype=application/font-woff', 'img']},
       { test: /\.(svg|png|jpg|jpeg)$/, loaders: ['url?limit=10000&name=./assets/[name].[ext]']},
       { test: /\.json$/, loaders: ['json']},

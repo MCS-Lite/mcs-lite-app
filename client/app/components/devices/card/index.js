@@ -61,12 +61,12 @@ const DeviceCardLayout = ({
             >
               {source}
             </Link>
+            <Hr className={styles.hr} />
           </div>
         }
         {
             deviceDescription &&
             <div>
-              <Hr className={styles.hr} />
               {`${t('description')}${deviceDescription}`}
             </div>
           }
