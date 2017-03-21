@@ -1,9 +1,9 @@
 var express = require('express');
 var path = require('path');
-var fs = require('fs');
 var OAuthServer = require('oauth2-server');
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
+var R = require('ramda');
 var $oauth = require('../configs/oauth');
 var $rest = require('../configs/rest');
 var $wot = require('../configs/wot');
@@ -58,12 +58,14 @@ app.use('/images', express.static(path.resolve(__dirname, '../uploadImages')));
  * @author Michael Hsu
  */
 const mobilePathname = '../node_modules/mcs-lite-mobile-web/build';
-const html = fs
-  .readFileSync(path.resolve(__dirname, mobilePathname, 'index.html'), 'utf-8')
-  .replace('__SOCKET_PORT_FROM_SERVER__', socketPort);
+const replacePort = R.memoize(string =>
+  R.replace('__SOCKET_PORT_FROM_SERVER__', socketPort)(string)
+);
 app.use('/mobile', express.static(path.resolve(__dirname, mobilePathname)));
 app.get('/mobile/*', function (req, res) {
-  res.send(html);
+  res.render(path.resolve(__dirname, mobilePathname, 'index.html'), function(err, html) {
+    res.send(replacePort(html));
+  });
 });
 
 /**
