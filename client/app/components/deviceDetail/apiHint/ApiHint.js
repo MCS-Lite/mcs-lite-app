@@ -16,7 +16,12 @@ const LANGUAGES = [
   { value: 'talnet', children: 'Talnet' },
 ];
 const DEFAULT_LANGUAGE = 'javascript';
-const DEFAULT_METHOD = 'retrieve';
+const DEFAULT_METHOD = 'upload';
+
+const mapLanguageByValue = R.cond([
+  [R.equals('talnet'), R.always('javascript')],
+  [R.T, R.identity],
+]);
 
 const ApiHint = componentFromStream((propStream) => {
   const props$ = Observable.from(propStream);
@@ -115,7 +120,7 @@ const ApiHint = componentFromStream((propStream) => {
 
         <CodeWrapper>
           <StyledCopyButton text={code}>{t('copy')}</StyledCopyButton>
-          <Code>{code}</Code>
+          <Code language={mapLanguageByValue(language)}>{code}</Code>
         </CodeWrapper>
       </Container>
     ),

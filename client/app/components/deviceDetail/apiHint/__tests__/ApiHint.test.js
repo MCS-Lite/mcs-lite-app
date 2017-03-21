@@ -21,7 +21,7 @@ it('should redner <ApiHint />', () => {
   expect(wrapper).toMatchSnapshot();
 });
 
-it('should handle tab click', (done) => {
+it('should handle tab clicking', (done) => {
   const wrapper = shallow(
     <ApiHint
       deviceId="deviceId"
@@ -34,10 +34,11 @@ it('should handle tab click', (done) => {
   );
 
   const arduinoTab = wrapper.find(TabItem).at(1);
+
   // After clicking
   arduinoTab.simulate('click');
   setTimeout(() => {
     expect(wrapper.find(Code).props()).toMatchSnapshot();
     done();
-  }, 100);
+  }, 500);
 });

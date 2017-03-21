@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`should handle tab click 1`] = `
+exports[`should handle tab clicking 1`] = `
 Object {
   "children": "Fake Code",
   "language": "javascript",
@@ -46,7 +46,7 @@ exports[`should redner <ApiHint /> 1`] = `
       <styled.span>
         <span>
           <input
-            checked={false}
+            checked={true}
             id="upload"
             name="upload"
             onChange={[Function]}
@@ -60,7 +60,7 @@ exports[`should redner <ApiHint /> 1`] = `
         </span>
         <span>
           <input
-            checked={true}
+            checked={false}
             id="retrieve"
             name="retrieve"
             onChange={[Function]}
