@@ -45,7 +45,6 @@ export default compose(
             value: 'openHistory',
             children: isHistoryShow ? t('closeHistory') : t('openHistory'),
           },
-          { value: 'apiHint', children: t('apiHint') },
         ],
       };
     }
