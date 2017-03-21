@@ -1,4 +1,5 @@
 require('babel-polyfill');
+require('whatwg-fetch'); // fetch() polyfill for making API calls.
 require('normalize.css');
 require('../styles/main.css');
 

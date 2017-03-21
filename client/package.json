@@ -102,6 +102,7 @@
     "redux-thunk": "^2.2.0",
     "rxjs": "^5.2.0",
     "styled-components": "^1.4.3",
-    "webpack-dev-server": "^1.16.2"
+    "webpack-dev-server": "^1.16.2",
+    "whatwg-fetch": "^2.0.3"
   }
 }

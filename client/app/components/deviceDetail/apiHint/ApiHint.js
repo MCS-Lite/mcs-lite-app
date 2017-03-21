@@ -45,7 +45,7 @@ const ApiHint = componentFromStream((propStream) => {
       deviceKey$.distinctUntilChanged(),
       method$.distinctUntilChanged(),
     )
-    .switchMap(array => fetchAPIHint(...array)); // Remind: The array MUST in order.
+    .switchMap(array => fetchAPIHint(...array)); // Remind: The array MUST be in order.
 
   return props$.combineLatest(
     code$,
