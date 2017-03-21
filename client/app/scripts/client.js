@@ -1,4 +1,5 @@
 require('babel-polyfill');
+require('normalize.css');
 require('../styles/main.css');
 
 if (/\:8081/.test(window.location.host)) {
