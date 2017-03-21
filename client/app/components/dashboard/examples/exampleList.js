@@ -37,7 +37,7 @@ const ExampleListLayout = ({
       alt="banner"
     />
     <div className={styles.cell}>
-      {t('prototypeName')}
+      <span>{t('prototypeName')}</span>
       <Link
         to={`/prototypes/${prototype.prototypeId}`}
         className={styles.link}
