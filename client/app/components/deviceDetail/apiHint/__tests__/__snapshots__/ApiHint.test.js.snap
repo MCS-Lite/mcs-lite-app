@@ -3,7 +3,7 @@
 exports[`should handle tab clicking 1`] = `
 Object {
   "children": "Fake Code",
-  "language": "javascript",
+  "language": "arduino",
 }
 `;
 

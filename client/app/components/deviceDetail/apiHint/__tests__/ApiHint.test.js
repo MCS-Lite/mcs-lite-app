@@ -1,6 +1,8 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 import R from 'ramda';
+import { ThemeProvider } from 'styled-components';
+import { theme } from 'mcs-lite-theme';
 import { Code, TabItem } from 'mcs-lite-ui';
 import ApiHint from '../ApiHint';
 
@@ -22,15 +24,17 @@ it('should redner <ApiHint />', () => {
 });
 
 it('should handle tab clicking', (done) => {
-  const wrapper = shallow(
-    <ApiHint
-      deviceId="deviceId"
-      deviceKey="deviceKey"
-      datachannels={[
-        { datachannelId: 'datachannelId', datachannelName: 'datachannelName' },
-      ]}
-      getMessages={R.identity}
-    />,
+  const wrapper = mount(
+    <ThemeProvider theme={theme}>
+      <ApiHint
+        deviceId="deviceId"
+        deviceKey="deviceKey"
+        datachannels={[
+          { datachannelId: 'datachannelId', datachannelName: 'datachannelName' },
+        ]}
+        getMessages={R.identity}
+      />
+    </ThemeProvider>,
   );
 
   const arduinoTab = wrapper.find(TabItem).at(1);
