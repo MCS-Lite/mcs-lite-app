@@ -1,5 +1,6 @@
 html {
   font-size:13px;
+  line-height: 1.5em;
 }
 
 body {
@@ -8,10 +9,4 @@ body {
   color:#000;
   background: #F1F2F7;
   font-family: "Noto Sans TC", "RionaSans", "Helvetica", "微軟正黑體", "Microsoft JhengHei", "黑體-繁", "Heiti TC", "新細明體", "PMingLiU", "sans-serif";
-}
-
-code {
-  font-size: 11px !important;
-  line-height: 18px;
-  background: #FAFAFA !important;
 }

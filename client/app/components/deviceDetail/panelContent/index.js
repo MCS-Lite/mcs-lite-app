@@ -8,6 +8,7 @@ import { compose, pure, withState, withHandlers, withProps } from 'recompose';
 import { withGetMessages } from 'react-intl-inject-hoc';
 import messages from '../messages';
 import DataChannelContent from '../dataChannelContent';
+import ApiHint from '../apiHint';
 import PanelHeaderNav from '../../common/panelHeaderNav';
 
 import styles from './styles.css';
@@ -43,6 +44,15 @@ const PanelContentLayout = ({
             datachannelDatapoints={datachannelDatapoints}
             retrieveDatachannelDatapoint={retrieveDatachannelDatapoint}
           />
+        }
+        {
+          selectPanelValue === 'apiHint' && (
+            <ApiHint
+              deviceId={deviceId}
+              deviceKey={deviceKey}
+              datachannels={datachannels}
+            />
+          )
         }
       </PanelBody>
     </Panel>
