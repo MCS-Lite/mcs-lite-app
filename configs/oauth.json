@@ -1,5 +1,5 @@
 {
-  "ACCESS_TOKEN_EXP": 60,
+  "ACCESS_TOKEN_EXP": 720,
   "REFRESH_TOKEN_EXP": 20160,
   "JWT_SECRET": "superSecret",
   "host": "localhost",
