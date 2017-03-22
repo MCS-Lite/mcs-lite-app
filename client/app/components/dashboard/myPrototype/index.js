@@ -51,7 +51,7 @@ const LastUpdatePrototype = pure(({
         alt="banner"
       />
       <div className={styles.cell}>
-        {t('prototypeName')}
+        <span>{t('prototypeName')}</span>
         <Link
           to={`/prototypes/${prototypeId}`}
           className={styles.link}
@@ -60,7 +60,7 @@ const LastUpdatePrototype = pure(({
         </Link>
       </div>
       <div className={styles.cell}>
-        {t('lastUpdateTime')}
+        <span>{t('lastUpdateTime')}</span>
         <div>{moment(updatedAt).format('YYYY-MM-DD h:mm')}</div>
       </div>
     </div>
