@@ -46,3 +46,6 @@ mkdir mcs-lite-app
 cd ../../..
 cp -R ./appBuild/ ./out/mcs-lite-app/win64/mcs-lite-app
 cp -R ./appBuild/ ./out/mcs-lite-app/osx64/mcs-lite-app
+cp -R ./icon.icns ./out/mcs-lite-app/osx64/mcs-lite-app.app/Contents/Resources/app.icns
+cp -R ./icon.icns ./out/mcs-lite-app/osx64/mcs-lite-app.app/Contents/Resources/document.icns
+
