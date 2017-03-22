@@ -3,33 +3,33 @@ export default {
   version: 'latest',
   resourcesList: [
     {
-      name: 'Introduction',
-      path: 'introduction'
+      name: '認識 MCS LITE',
+      path: 'docs/zh-tw/',
     },
     {
-      name: 'Key concept',
-      path: 'key_concept'
+      name: '深入使用 MCS LITE',
+      path: 'docs/zh-tw/tutorial/example_01.html',
     },
-    {
-      name: 'API references',
-      path: 'api_references'
-    },
-    {
-      name: 'Tutorial',
-      path: 'tutorial'
-    },
-    {
-      name: 'Mobile application',
-      path: 'mobile_application'
-    },
-    {
-      name: 'Change log',
-      path: 'change_log'
-    },
-    {
-      name: 'System status',
-      path: 'http://status.mcs.mediatek.com/'
-    }
+    // {
+    //   name: 'API references',
+    //   path: 'api_references'
+    // },
+    // {
+    //   name: 'Tutorial',
+    //   path: 'tutorial'
+    // },
+    // {
+    //   name: 'Mobile application',
+    //   path: 'mobile_application'
+    // },
+    // {
+    //   name: 'Change log',
+    //   path: 'change_log'
+    // },
+    // {
+    //   name: 'System status',
+    //   path: 'http://status.mcs.mediatek.com/'
+    // }
   ],
   helpList: [
     {
