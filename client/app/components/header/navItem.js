@@ -19,6 +19,7 @@ const NavItem = ({
   activeLinkStyle,
   onMouseEnter,
   onMouseLeave,
+  isHref,
   ...props
 }) => (
   <li
@@ -30,19 +31,32 @@ const NavItem = ({
       isHover && activeStyle,
     )}
   >
-    <Link
-      target={target}
-      to={to}
-      className={c(
-        NavItemStyles.link,
-        linkStyle,
-        isHover && activeLinkStyle,
-      )}
-      activeClassName={activeLinkStyle}
-      {...props}
-    >
-      { children }
-    </Link>
+    {
+      isHref ?
+        <a
+          href={to}
+          className={c(
+            NavItemStyles.link,
+            linkStyle,
+            isHover && activeLinkStyle,
+          )}
+          target="_blank"
+        >{ children }</a> :
+        <Link
+        target={target}
+        to={to}
+        className={c(
+          NavItemStyles.link,
+          linkStyle,
+          isHover && activeLinkStyle,
+        )}
+        activeClassName={activeLinkStyle}
+        {...props}
+      >
+        { children }
+      </Link>
+    }
+
   </li>
 );
 

@@ -119,6 +119,7 @@ const Header = ({
                   isItemActive(entry.path, pathname) ? headerStyles.menuItemActive : {},
                   array.length === index + 1 ? headerStyles.menuItemBorder : {},
                 )}
+                isHref
                 linkStyle={headerStyles.menuLink}
                 activeStyle={c(
                   headerStyles.menuItemActive,
