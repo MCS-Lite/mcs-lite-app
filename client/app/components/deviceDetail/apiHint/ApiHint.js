@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import R from 'ramda';
 import { createEventHandler, componentFromStream } from 'recompose';
 import { Observable } from 'rxjs/Observable';
@@ -16,7 +16,12 @@ const LANGUAGES = [
   { value: 'talnet', children: 'Talnet' },
 ];
 const DEFAULT_LANGUAGE = 'javascript';
-const DEFAULT_METHOD = 'retrieve';
+const DEFAULT_METHOD = 'upload';
+
+const mapLanguageByValue = R.cond([
+  [R.equals('talnet'), R.always('javascript')],
+  [R.T, R.identity],
+]);
 
 const ApiHint = componentFromStream((propStream) => {
   const props$ = Observable.from(propStream);
@@ -28,6 +33,7 @@ const ApiHint = componentFromStream((propStream) => {
   const datachannels$ = props$.pluck('datachannels');
   const language$ = Observable.from(onTabChangeStream).startWith(DEFAULT_LANGUAGE);
   const datachannelId$ = datachannels$
+    .filter(R.complement(R.isEmpty))
     .map(R.pipe(R.head, R.prop('datachannelId'))) // Hint: Start with first value
     .merge(Observable.from(onDCIdChangeStream).map(R.path(['target', 'value'])));
   const datachannel$ = datachannelId$
@@ -45,7 +51,8 @@ const ApiHint = componentFromStream((propStream) => {
       deviceKey$.distinctUntilChanged(),
       method$.distinctUntilChanged(),
     )
-    .switchMap(array => fetchAPIHint(...array)); // Remind: The array MUST be in order.
+    .switchMap(array => fetchAPIHint(...array)) // Remind: The array MUST be in order.
+    .startWith('');
 
   return props$.combineLatest(
     code$,
@@ -113,12 +120,22 @@ const ApiHint = componentFromStream((propStream) => {
 
         <CodeWrapper>
           <StyledCopyButton text={code}>{t('copy')}</StyledCopyButton>
-          <Code>{code}</Code>
+          <Code language={mapLanguageByValue(language)}>{code}</Code>
         </CodeWrapper>
       </Container>
     ),
   );
 });
 
+ApiHint.displayName = 'ApiHint';
+ApiHint.propTypes = {
+  // Props
+  deviceId: PropTypes.string.isRequired,
+  deviceKey: PropTypes.string.isRequired,
+  datachannels: PropTypes.array.isRequired,
+
+  // React-intl i18n
+  getMessages: PropTypes.func.isRequired,
+};
 
 export default ApiHint;
