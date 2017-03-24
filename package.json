@@ -14,8 +14,7 @@
     "build:cloud": "sh ./build.sh && sh ./build_cloud.sh",
     "test:nedb": "mocha --recursive ./nedb/tests/",
     "test:api": "mocha ./restserver/tests/api --recursive",
-    "format": "prettier --trailing-comma es5 --single-quote --write 'client/app/*/*.js' 'client/!(node_modules|build|coverag)/**/*.js'",
-    "precommit": "lint-staged"
+    "format": "prettier --trailing-comma es5 --single-quote --write 'client/app/*/*.js' 'client/!(node_modules|build|coverage)/**/*.js'"
   },
   "window": {
     "icon": "./icon_mcs_lite_192.png",
@@ -61,17 +60,9 @@
     "wotcity.io": "^0.8.14"
   },
   "devDependencies": {
-    "husky": "^0.13.2",
-    "lint-staged": "^3.4.0",
     "nw-builder": "^3.1.2",
     "prettier": "^0.22.0",
     "supertest": "^2.0.1",
     "supertest-as-promised": "^4.0.2"
-  },
-  "lint-staged": {
-    "*.js": [
-      "prettier --trailing-comma es5 --single-quote --write",
-      "git add"
-    ]
   }
 }
