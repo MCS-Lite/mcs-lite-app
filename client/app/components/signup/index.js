@@ -15,10 +15,12 @@ import styles from './styles.css';
 
 const onCancel = () => browserHistory.push('/login');
 
-const Signup = ({
-  signup,
-  getMessages: t,
-}) => (
+const Signup = (
+  {
+    signup,
+    getMessages: t,
+  }
+) => (
   <div>
     <div className={LoginStyles.base}>
       <form
@@ -35,10 +37,30 @@ const Signup = ({
         <Hr className={LoginStyles.hr}>
           <Small>{t('createAnAccount')}</Small>
         </Hr>
-        <InputText name="userName" type="text" placeholder={t('nickname')} className={LoginStyles.input} />
-        <InputText name="email" type="email" placeholder={t('Email')} className={LoginStyles.input} />
-        <InputText name="password" type="password" placeholder={t('password')} className={LoginStyles.input} />
-        <InputText name="passwordAgain" type="password" placeholder={t('passwordAgain')} className={LoginStyles.input} />
+        <InputText
+          name="userName"
+          type="text"
+          placeholder={t('nickname')}
+          className={LoginStyles.input}
+        />
+        <InputText
+          name="email"
+          type="email"
+          placeholder={t('Email')}
+          className={LoginStyles.input}
+        />
+        <InputText
+          name="password"
+          type="password"
+          placeholder={t('password')}
+          className={LoginStyles.input}
+        />
+        <InputText
+          name="passwordAgain"
+          type="password"
+          placeholder={t('passwordAgain')}
+          className={LoginStyles.input}
+        />
         <div className={styles.submit}>
           <Button kind="cancel" onClick={onCancel} className={styles.submitBtn}>
             {t('cancel')}
@@ -57,7 +79,8 @@ export default compose(
   pure,
   withState('isOpenTermOfUse', 'setIsOpenTermOfUse', false),
   withHandlers({
-    openTermOfUse: props => () => props.setIsOpenTermOfUse(!props.isOpenTermOfUse),
+    openTermOfUse: props =>
+      () => props.setIsOpenTermOfUse(!props.isOpenTermOfUse),
   }),
-  withGetMessages(messages, 'Signup'),
+  withGetMessages(messages, 'Signup')
 )(Signup);

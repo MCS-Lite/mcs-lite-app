@@ -22,14 +22,12 @@ const ToastCenter = ({ isToastShow, toast }) => (
         leaveActive: styles.transitionLeaveActive,
       }}
     >
-      {
-        isToastShow &&
+      {isToastShow &&
         <Toast kind={toast.kind} className={styles.toast}>
           <div className={styles.message}>
             {toast.message}
           </div>
-        </Toast>
-      }
+        </Toast>}
     </ReactCSSTransitionGroup>
   </div>
 );
@@ -40,21 +38,23 @@ export default compose(
   withState('toast', 'setToast', {}),
   lifecycle({
     componentWillReceiveProps(nextProps) {
-      const toastCount = pipe(
-        pathOr([], ['toasts', 'toastList']),
-        length,
-      )(nextProps);
+      const toastCount = pipe(pathOr([], ['toasts', 'toastList']), length)(
+        nextProps
+      );
 
       if (toastCount > 0 && !nextProps.isToastShow) {
         const toast = pathOr({}, ['toasts', 'toastList', 0])(nextProps);
         this.props.setIsToastShow(true);
         this.props.setToast(toast);
 
-        setTimeout(() => {
-          this.props.dropToast();
-          this.props.setIsToastShow(false);
-        }, 3000);
+        setTimeout(
+          () => {
+            this.props.dropToast();
+            this.props.setIsToastShow(false);
+          },
+          3000
+        );
       }
     },
-  }),
+  })
 )(ToastCenter);

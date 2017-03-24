@@ -1,12 +1,12 @@
 import { defineMessages } from 'react-intl';
 
 const messages = defineMessages({
-  'Text.lowerbound' : {
+  'Text.lowerbound': {
     id: 'Text.lowerbound',
     description: '',
     defaultMessage: '資料通道下限',
   },
-  'Text.upperbound' : {
+  'Text.upperbound': {
     id: 'Text.upperbound',
     description: '',
     defaultMessage: '資料通道上限',

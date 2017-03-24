@@ -20,10 +20,12 @@ import GPIODisplayPreview from '../../mcsDisplayCardGPIO/preview';
 import PWMDisplayPreview from '../../mcsDisplayCardPWM/preview';
 import SwitchDisplayPreview from '../../mcsDisplayCardSwitch/preview';
 
-const WrapperLayout = ({
-  displayName,
-  ...props
-}) => (
+const WrapperLayout = (
+  {
+    displayName,
+    ...props
+  }
+) => (
   <div className={styles.base}>
     {displayName === 'Integer_Display' && <IntegerDisplayPreview {...props} />}
     {displayName === 'Hex_Display' && <HexDisplayPreview {...props} />}
@@ -32,7 +34,8 @@ const WrapperLayout = ({
     {displayName === 'GPIO_Display' && <GPIODisplayPreview {...props} />}
     {displayName === 'Switch_Display' && <SwitchDisplayPreview {...props} />}
     {displayName === 'Float_Display' && <FloatDisplayPreview {...props} />}
-    {displayName === 'Category_Display' && <CategoryDisplayPreview {...props} />}
+    {displayName === 'Category_Display' &&
+      <CategoryDisplayPreview {...props} />}
     {displayName === 'Integer_Control' && <IntegerControlPreview {...props} />}
     {displayName === 'Hex_Control' && <HexControlPreview {...props} />}
     {displayName === 'PWM_Control' && <PWMControlPreview {...props} />}
@@ -40,11 +43,9 @@ const WrapperLayout = ({
     {displayName === 'GPIO_Control' && <GPIOControlPreview {...props} />}
     {displayName === 'Switch_Control' && <SwitchControlPreview {...props} />}
     {displayName === 'Float_Control' && <FloatControlPreview {...props} />}
-    {displayName === 'Category_Control' && <CategoryControlPreview {...props} />}
+    {displayName === 'Category_Control' &&
+      <CategoryControlPreview {...props} />}
   </div>
 );
 
-export default compose(
-  pure,
-)(WrapperLayout);
-
+export default compose(pure)(WrapperLayout);

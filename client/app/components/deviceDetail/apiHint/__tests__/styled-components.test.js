@@ -12,7 +12,7 @@ it('should render components correctly', () => {
       <div>
         <CodeWrapper />
       </div>
-    </ThemeProvider>,
+    </ThemeProvider>
   );
 
   expect(wrapper.find('div')).toMatchSnapshot();

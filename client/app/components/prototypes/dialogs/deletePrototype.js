@@ -11,12 +11,14 @@ import Dialog from '../../common/dialog';
 
 import styles from './deletePrototype.css';
 
-const DeletePrototypeDialog = ({
-  selectMenuValue,
-  closeDeletePrototype,
-  submitDeletePrototype,
-  getMessages: t,
-}) => (
+const DeletePrototypeDialog = (
+  {
+    selectMenuValue,
+    closeDeletePrototype,
+    submitDeletePrototype,
+    getMessages: t,
+  }
+) => (
   <Dialog
     show={selectMenuValue === 'delete'}
     size="small"
@@ -30,7 +32,9 @@ const DeletePrototypeDialog = ({
       {t('deletePrototype')}
     </DialogBody>
     <DialogFooter>
-      <Button kind="cancel" onClick={closeDeletePrototype}>{t('cancel')}</Button>
+      <Button kind="cancel" onClick={closeDeletePrototype}>
+        {t('cancel')}
+      </Button>
       <Button kind="primary" onClick={submitDeletePrototype}>
         {t('OK')}
       </Button>
@@ -42,10 +46,11 @@ export default compose(
   pure,
   withHandlers({
     closeDeletePrototype: props => () => props.setSelectMenuValue(''),
-    submitDeletePrototype: props => () => {
-      props.setSelectMenuValue('');
-      props.deletePrototype(props.prototypeId);
-    },
+    submitDeletePrototype: props =>
+      () => {
+        props.setSelectMenuValue('');
+        props.deletePrototype(props.prototypeId);
+      },
   }),
-  withGetMessages(messages, 'Prototypes'),
+  withGetMessages(messages, 'Prototypes')
 )(DeletePrototypeDialog);

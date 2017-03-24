@@ -18,23 +18,21 @@ import Dialog from '../../common/dialog';
 
 import styles from './dialog.css';
 
-const ChangePasswordDialog = ({
-  closeDialog,
-  newPassword,
-  onNewPasswordChange,
-  confirmPassword,
-  onConfirmPasswordChange,
-  onBlur,
-  error,
-  touched,
-  onSubmit,
-  getMessages: t,
-}) => (
-  <Dialog
-    show
-    size="large"
-    onHide={closeDialog}
-  >
+const ChangePasswordDialog = (
+  {
+    closeDialog,
+    newPassword,
+    onNewPasswordChange,
+    confirmPassword,
+    onConfirmPasswordChange,
+    onBlur,
+    error,
+    touched,
+    onSubmit,
+    getMessages: t,
+  }
+) => (
+  <Dialog show size="large" onHide={closeDialog}>
     <DialogHeader>
       {t('editPassword')}
     </DialogHeader>
@@ -88,46 +86,62 @@ export default compose(
   }),
   withHandlers({
     closeDialog: props => () => props.setDialogShow('none'),
-    onBlur: props => field => () => {
-      props.setTouched({ ...props.touched, [field]: true });
-    },
-    onNewPasswordChange: props => (e) => {
-      const newPassword = e.target.value;
-      props.setNewPassword(newPassword);
+    onBlur: props =>
+      field =>
+        () => {
+          props.setTouched({ ...props.touched, [field]: true });
+        },
+    onNewPasswordChange: props =>
+      e => {
+        const newPassword = e.target.value;
+        props.setNewPassword(newPassword);
 
-      if (newPassword === '') {
-        props.setError({ ...props.error, newPassword: true });
-      } else if (newPassword.length < 8) {
-        props.setError({ ...props.error, newPassword: props.getMessages('passwordLengthError') });
-      } else {
-        props.setError({ ...props.error, newPassword: false });
-      }
-    },
-    onConfirmPasswordChange: props => (e) => {
-      const confirmPassword = e.target.value;
-      props.setConfirmPassword(confirmPassword);
+        if (newPassword === '') {
+          props.setError({ ...props.error, newPassword: true });
+        } else if (newPassword.length < 8) {
+          props.setError({
+            ...props.error,
+            newPassword: props.getMessages('passwordLengthError'),
+          });
+        } else {
+          props.setError({ ...props.error, newPassword: false });
+        }
+      },
+    onConfirmPasswordChange: props =>
+      e => {
+        const confirmPassword = e.target.value;
+        props.setConfirmPassword(confirmPassword);
 
-      if (confirmPassword === '') {
-        props.setError({ ...props.error, confirmPassword: true });
-      } else if (confirmPassword !== props.newPassword) {
-        props.setError({ ...props.error, confirmPassword: props.getMessages('confirmPasswordError') });
-      } else {
-        props.setError({ ...props.error, confirmPassword: false });
-      }
-    },
-    onSubmit: props => () => {
-      props.setTouched({ newPassword: true, confirmPassword: true });
-      if (!(props.error.newPassword || props.error.confirmPassword)) {
-        props.changePassword(props.newPassword)
-          .then(() => {
-            props.setDialogShow(false);
-            props.pushToast({ kind: 'success', message: props.getMessages('changePasswordSuccess') });
-          })
-          .catch(() => props.setError({
-            newPassword: true,
-            confirmPassword: true,
-          }));
-      }
-    },
-  }),
+        if (confirmPassword === '') {
+          props.setError({ ...props.error, confirmPassword: true });
+        } else if (confirmPassword !== props.newPassword) {
+          props.setError({
+            ...props.error,
+            confirmPassword: props.getMessages('confirmPasswordError'),
+          });
+        } else {
+          props.setError({ ...props.error, confirmPassword: false });
+        }
+      },
+    onSubmit: props =>
+      () => {
+        props.setTouched({ newPassword: true, confirmPassword: true });
+        if (!(props.error.newPassword || props.error.confirmPassword)) {
+          props
+            .changePassword(props.newPassword)
+            .then(() => {
+              props.setDialogShow(false);
+              props.pushToast({
+                kind: 'success',
+                message: props.getMessages('changePasswordSuccess'),
+              });
+            })
+            .catch(() =>
+              props.setError({
+                newPassword: true,
+                confirmPassword: true,
+              }));
+        }
+      },
+  })
 )(ChangePasswordDialog);

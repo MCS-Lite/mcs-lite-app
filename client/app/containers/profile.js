@@ -8,13 +8,11 @@ import * as userActions from '../actions/userActions';
 import { pushToast } from '../actions/toastActions';
 import ProfileLayout from '../components/profile';
 
-const Profile = ({ ...props }) => (
-  <ProfileLayout {...props} />
-);
+const Profile = ({ ...props }) => <ProfileLayout {...props} />;
 
 const mapStateToProps = ({ main }) => ({ main });
 
 export default compose(
   connect(mapStateToProps, { ...userActions, pushToast }),
-  pure,
+  pure
 )(Profile);

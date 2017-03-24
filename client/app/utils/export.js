@@ -1,10 +1,10 @@
-export const prototypeJSON = (data) => {
+export const prototypeJSON = data => {
   const JSONData = {};
   JSONData.prototype.prodName = data.prototypeName;
   JSONData.prototype.description = data.prototypeDescription;
   JSONData.prototype.version = data.version;
   JSONData.prototype.dataChannels = data.dataChannels;
-}
+};
 
 // {
 //   "prototype": {

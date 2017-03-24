@@ -7,7 +7,7 @@ const Nav = ({ className, children, dropdownMenu }) => (
   <ul
     className={c(
       dropdownMenu ? navStyles.dropdownMenu : navStyles.list,
-      className,
+      className
     )}
   >
     {children}

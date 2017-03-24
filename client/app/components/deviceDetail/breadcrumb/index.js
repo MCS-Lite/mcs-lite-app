@@ -12,18 +12,22 @@ import { default as pure } from 'recompose/pure';
 const BreadcrumbLayout = ({ deviceName }) => {
   const breadcrumbs = [
     {
-      children: <FormattedMessage
-        id="DeviceDetail.Breadcrumb.Dashboard"
-        defaultMessage="儀表板"
-      />,
+      children: (
+        <FormattedMessage
+          id="DeviceDetail.Breadcrumb.Dashboard"
+          defaultMessage="儀表板"
+        />
+      ),
       href: '/dashboard',
     },
     {
-      children: <FormattedMessage
+      children: (
+        <FormattedMessage
           id="DeviceDetail.Breadcrumb.Devices"
           defaultMessage="測試裝置"
-        />,
-      href: '/devices'
+        />
+      ),
+      href: '/devices',
     },
     { children: deviceName, href: '/devices', active: true },
   ];
@@ -33,8 +37,6 @@ const BreadcrumbLayout = ({ deviceName }) => {
       <Breadcrumb items={breadcrumbs} />
     </div>
   );
-}
+};
 
-export default compose(
-  pure,
-)(BreadcrumbLayout);
+export default compose(pure)(BreadcrumbLayout);

@@ -9,14 +9,17 @@ import * as toastActions from '../actions/toastActions';
 
 class Dashboard extends Component {
   componentWillMount() {
-    this.props.retrieveDashboard()
-    .then(() => this.props.setIsInitialized(true));
+    this.props
+      .retrieveDashboard()
+      .then(() => this.props.setIsInitialized(true));
   }
 
   render() {
     return (
       <div>
-        { this.props.isInitialized ? <DashboardLayout {...this.props} /> : <LoadingPage /> }
+        {this.props.isInitialized
+          ? <DashboardLayout {...this.props} />
+          : <LoadingPage />}
       </div>
     );
   }
@@ -25,6 +28,10 @@ class Dashboard extends Component {
 const mapStateToProps = state => state;
 
 export default compose(
-  connect(mapStateToProps, { ...dashboardActions, ...prototypeActions, ...toastActions }),
-  withState('isInitialized', 'setIsInitialized', false),
+  connect(mapStateToProps, {
+    ...dashboardActions,
+    ...prototypeActions,
+    ...toastActions,
+  }),
+  withState('isInitialized', 'setIsInitialized', false)
 )(Dashboard);

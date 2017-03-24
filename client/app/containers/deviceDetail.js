@@ -9,14 +9,17 @@ import { pushToast } from '../actions/toastActions';
 
 class DeviceDetail extends Component {
   componentWillMount() {
-    this.props.retrieveDevice(this.props.params.deviceId)
-    .then(() => this.props.setIsInitialized(true));
+    this.props
+      .retrieveDevice(this.props.params.deviceId)
+      .then(() => this.props.setIsInitialized(true));
   }
 
   render() {
     return (
       <div>
-        { this.props.isInitialized ? <DeviceDetailLayout {...this.props} /> : <LoadingPage /> }
+        {this.props.isInitialized
+          ? <DeviceDetailLayout {...this.props} />
+          : <LoadingPage />}
       </div>
     );
   }
@@ -25,6 +28,10 @@ class DeviceDetail extends Component {
 const mapStateToProps = state => state;
 
 export default compose(
-  connect(mapStateToProps, { ...deviceDetailActions, uploadDeviceImage, pushToast }),
-  withState('isInitialized', 'setIsInitialized', false),
+  connect(mapStateToProps, {
+    ...deviceDetailActions,
+    uploadDeviceImage,
+    pushToast,
+  }),
+  withState('isInitialized', 'setIsInitialized', false)
 )(DeviceDetail);

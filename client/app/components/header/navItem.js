@@ -8,54 +8,52 @@ import withHandlers from 'recompose/withHandlers';
 
 import NavItemStyles from './navItem.css';
 
-const NavItem = ({
-  isHover,
-  linkStyle,
-  to,
-  target,
-  children,
-  className,
-  activeStyle,
-  activeLinkStyle,
-  onMouseEnter,
-  onMouseLeave,
-  isHref,
-  ...props
-}) => (
+const NavItem = (
+  {
+    isHover,
+    linkStyle,
+    to,
+    target,
+    children,
+    className,
+    activeStyle,
+    activeLinkStyle,
+    onMouseEnter,
+    onMouseLeave,
+    isHref,
+    ...props
+  }
+) => (
   <li
     onMouseEnter={onMouseEnter}
     onMouseLeave={onMouseLeave}
-    className={c(
-      NavItemStyles.item,
-      className,
-      isHover && activeStyle,
-    )}
+    className={c(NavItemStyles.item, className, isHover && activeStyle)}
   >
-    {
-      isHref ?
-        <a
+    {isHref
+      ? <a
           href={to}
           className={c(
             NavItemStyles.link,
             linkStyle,
-            isHover && activeLinkStyle,
+            isHover && activeLinkStyle
           )}
           target="_blank"
-        >{ children }</a> :
-        <Link
-        target={target}
-        to={to}
-        className={c(
-          NavItemStyles.link,
-          linkStyle,
-          isHover && activeLinkStyle,
-        )}
-        activeClassName={activeLinkStyle}
-        {...props}
-      >
-        { children }
-      </Link>
-    }
+        >
+          {children}
+        </a>
+      : <Link
+          target={target}
+          to={to}
+          className={c(
+            NavItemStyles.link,
+            linkStyle,
+            isHover && activeLinkStyle
+          )}
+          activeClassName={activeLinkStyle}
+          {...props}
+        >
+          {children}
+        </Link>}
 
   </li>
 );
@@ -66,5 +64,5 @@ export default compose(
   withHandlers({
     onMouseEnter: props => () => props.setIsHover(true),
     onMouseLeave: props => () => props.setIsHover(false),
-  }),
+  })
 )(NavItem);

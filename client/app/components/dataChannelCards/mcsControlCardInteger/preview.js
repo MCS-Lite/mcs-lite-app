@@ -2,10 +2,12 @@ import React from 'react';
 import { compose, pure, withState } from 'recompose';
 import { DataChannelAdapter } from 'mcs-lite-ui';
 
-const PreviewLayout = ({
-  format,
-  value,
-}) => {
+const PreviewLayout = (
+  {
+    format,
+    value,
+  }
+) => {
   let labels = [];
   return (
     <div style={{ width: '100%' }}>
@@ -20,10 +22,10 @@ const PreviewLayout = ({
       />
     </div>
   );
-}
+};
 
 export default compose(
   pure,
-  withState('value', 'setValue', (props)=> props.value || 0),
-  withState('format', 'setFormat', (props) => props.format || { unit: '' }),
+  withState('value', 'setValue', props => props.value || 0),
+  withState('format', 'setFormat', props => props.format || { unit: '' })
 )(PreviewLayout);

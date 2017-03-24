@@ -19,15 +19,17 @@ import ExampleList from './exampleList';
 
 import styles from './styles.css';
 
-const ExamplesLayout = ({
-  getMessages: t,
-  clonePrototype,
-  templates,
-  createNewPrototype,
-  retrieveDashboard,
-  uploadPrototypeImage,
-  pushToast,
-}) => (
+const ExamplesLayout = (
+  {
+    getMessages: t,
+    clonePrototype,
+    templates,
+    createNewPrototype,
+    retrieveDashboard,
+    uploadPrototypeImage,
+    pushToast,
+  }
+) => (
   <div className={styles.base}>
     <Panel>
       <PanelHeader className={styles.panelHeader}>
@@ -41,20 +43,18 @@ const ExamplesLayout = ({
       </Heading>
       <Hr />
       <Table>
-        {
-          templates.map(prototype => (
-            <ExampleList
-              prototype={prototype}
-              clonePrototype={clonePrototype}
-              key={prototype.prototypeId}
-              templates={templates}
-              createNewPrototype={createNewPrototype}
-              uploadPrototypeImage={uploadPrototypeImage}
-              retrieveDashboard={retrieveDashboard}
-              pushToast={pushToast}
-            />
-          ))
-        }
+        {templates.map(prototype => (
+          <ExampleList
+            prototype={prototype}
+            clonePrototype={clonePrototype}
+            key={prototype.prototypeId}
+            templates={templates}
+            createNewPrototype={createNewPrototype}
+            uploadPrototypeImage={uploadPrototypeImage}
+            retrieveDashboard={retrieveDashboard}
+            pushToast={pushToast}
+          />
+        ))}
       </Table>
       <Hr />
     </PanelBody>
@@ -64,5 +64,5 @@ const ExamplesLayout = ({
 export default compose(
   pure,
   withState('selectMenuValue', 'setSelectMenuValue', ''),
-  withGetMessages(messages, 'Dashboard'),
+  withGetMessages(messages, 'Dashboard')
 )(ExamplesLayout);

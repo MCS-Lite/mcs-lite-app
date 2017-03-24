@@ -7,14 +7,16 @@ import DeviceDetailInfo from './info';
 
 import styles from './styles.css';
 
-const DeviceDetail = ({
-  devices,
-  editDevice,
-  deleteDevice,
-  retrieveDatachannelDatapoint,
-  uploadDeviceImage,
-  pushToast,
-}) => {
+const DeviceDetail = (
+  {
+    devices,
+    editDevice,
+    deleteDevice,
+    retrieveDatachannelDatapoint,
+    uploadDeviceImage,
+    pushToast,
+  }
+) => {
   const {
     deviceId,
     deviceName,

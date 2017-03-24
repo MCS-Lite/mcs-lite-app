@@ -2,23 +2,25 @@ import React from 'react';
 import { pure } from 'recompose';
 import { DataChannelAdapter } from 'mcs-lite-ui';
 
-const DisplayStringLayout = ({
-  value,
-  id,
-  onSubmit,
-}) => (
+const DisplayStringLayout = (
+  {
+    value,
+    id,
+    onSubmit,
+  }
+) => (
   <DataChannelAdapter
     dataChannelProps={{
       id,
       type: 'SWITCH_CONTROL',
       values: { value },
     }}
-    eventHandler={
-      ({
+    eventHandler={(
+      {
         id: datachannelId,
         values,
-      }) => onSubmit(datachannelId, { value: values.value })
-    }
+      }
+    ) => onSubmit(datachannelId, { value: values.value })}
   />
 );
 

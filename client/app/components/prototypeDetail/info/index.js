@@ -7,19 +7,21 @@ import prototypeBanner from '../../prototypes/productBanner.png';
 
 import styles from './styles.css';
 
-const PrototypeDetailInfoLayout = ({
-  prototypeDescription,
-  prototypeImageURL,
-  devicesLength,
-  getMessages: t,
-}) => (
+const PrototypeDetailInfoLayout = (
+  {
+    prototypeDescription,
+    prototypeImageURL,
+    devicesLength,
+    getMessages: t,
+  }
+) => (
   <div className={styles.base}>
     <div className={styles.info}>
       <img
         src={
           prototypeImageURL
-          ? window.apiUrl.replace('api', 'images/') + prototypeImageURL
-          : prototypeBanner
+            ? window.apiUrl.replace('api', 'images/') + prototypeImageURL
+            : prototypeBanner
         }
         alt="banner"
       />
@@ -39,7 +41,6 @@ const PrototypeDetailInfoLayout = ({
   </div>
 );
 
-export default compose(
-  pure,
-  withGetMessages(messages, 'PrototypeDetail'),
-)(PrototypeDetailInfoLayout);
+export default compose(pure, withGetMessages(messages, 'PrototypeDetail'))(
+  PrototypeDetailInfoLayout
+);

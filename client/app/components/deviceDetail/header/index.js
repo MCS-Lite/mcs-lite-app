@@ -13,26 +13,28 @@ import WithDropdownMenu from '../../common/withDropdownMenu';
 
 import styles from './styles.css';
 
-const DeviceDetailHeaderLayout = ({
-  deviceId,
-  deviceName,
-  version,
-  userName,
-  deviceDescription,
-  deviceImageURL,
-  setSelectedMenuValue,
-  prototypeId,
-  onMenuChange,
-  onMenuShowChange,
-  isMenuShow,
-  selectedMenuValue,
-  editDevice,
-  onDeleteDevice,
-  dropdownItems,
-  uploadDeviceImage,
-  pushToast,
-  getMessages: t,
-}) => (
+const DeviceDetailHeaderLayout = (
+  {
+    deviceId,
+    deviceName,
+    version,
+    userName,
+    deviceDescription,
+    deviceImageURL,
+    setSelectedMenuValue,
+    prototypeId,
+    onMenuChange,
+    onMenuShowChange,
+    isMenuShow,
+    selectedMenuValue,
+    editDevice,
+    onDeleteDevice,
+    dropdownItems,
+    uploadDeviceImage,
+    pushToast,
+    getMessages: t,
+  }
+) => (
   <div className={styles.base}>
     <div className={styles.content}>
       <div className={styles.info}>
@@ -58,7 +60,7 @@ const DeviceDetailHeaderLayout = ({
             <div
               className={c(
                 styles.dropdownButtonContent,
-                isMenuShow && styles.dropdownOpen,
+                isMenuShow && styles.dropdownOpen
               )}
             >
               {t('more')}<IconFold size={18} />
@@ -68,8 +70,7 @@ const DeviceDetailHeaderLayout = ({
       </div>
     </div>
     <Hr className={styles.hr} />
-    {
-      selectedMenuValue === 'edit' &&
+    {selectedMenuValue === 'edit' &&
       <EditDeviceDialog
         deviceId={deviceId}
         deviceName={deviceName}
@@ -79,15 +80,12 @@ const DeviceDetailHeaderLayout = ({
         editDevice={editDevice}
         uploadDeviceImage={uploadDeviceImage}
         pushToast={pushToast}
-      />
-    }
-    {
-      selectedMenuValue === 'delete' &&
+      />}
+    {selectedMenuValue === 'delete' &&
       <DeleteConfirmDialog
         setSelectedMenuValue={setSelectedMenuValue}
         onDeleteSubmit={onDeleteDevice}
-      />
-    }
+      />}
   </div>
 );
 
@@ -104,12 +102,14 @@ export default compose(
     ],
   })),
   withHandlers({
-    backToPrototype: props => () => browserHistory.push(`/prototypes/${props.prototypeId}`),
-    onDeleteDevice: props => () => {
-      props.deleteDevice(props.deviceId);
-      props.setSelectedMenuValue('none');
-    },
+    backToPrototype: props =>
+      () => browserHistory.push(`/prototypes/${props.prototypeId}`),
+    onDeleteDevice: props =>
+      () => {
+        props.deleteDevice(props.deviceId);
+        props.setSelectedMenuValue('none');
+      },
     onMenuChange: props => value => props.setSelectedMenuValue(value),
     onMenuShowChange: props => value => props.setIsMenuShow(value),
-  }),
+  })
 )(DeviceDetailHeaderLayout);

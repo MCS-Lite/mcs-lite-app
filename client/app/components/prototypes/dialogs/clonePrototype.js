@@ -13,19 +13,21 @@ import Dialog from '../../common/dialog';
 
 import prototypeStyles from '../styles.css';
 
-const ClonePrototypeDialog = ({
-  selectMenuValue,
-  closeClonePrototype,
-  clonePrototypeName,
-  onClonePrototypeNameChange,
-  cloneVersion,
-  onCloneVersionChange,
-  clonePrototypeDescription,
-  onClonePrototypeDescriptionChange,
-  submitClonePrototype,
-  error,
-  getMessages: t,
-}) => (
+const ClonePrototypeDialog = (
+  {
+    selectMenuValue,
+    closeClonePrototype,
+    clonePrototypeName,
+    onClonePrototypeNameChange,
+    cloneVersion,
+    onCloneVersionChange,
+    clonePrototypeDescription,
+    onClonePrototypeDescriptionChange,
+    submitClonePrototype,
+    error,
+    getMessages: t,
+  }
+) => (
   <Dialog
     show={selectMenuValue === 'clone'}
     size="large"
@@ -35,10 +37,7 @@ const ClonePrototypeDialog = ({
       <div>{t('cloneFromExistingPrototype')}</div>
     </DialogHeader>
     <DialogBody className={prototypeStyles.dialogBody}>
-      <InputForm
-        kind="horizontal"
-        style={{ backgroundColor: 'white' }}
-      >
+      <InputForm kind="horizontal" style={{ backgroundColor: 'white' }}>
         <InputText
           required
           value={clonePrototypeName}
@@ -65,7 +64,7 @@ const ClonePrototypeDialog = ({
     </DialogBody>
     <DialogFooter>
       <Button kind="cancel" onClick={closeClonePrototype}>{t('cancel')}</Button>
-      <Button kind="primary" onClick={submitClonePrototype} >
+      <Button kind="primary" onClick={submitClonePrototype}>
         {t('save')}
       </Button>
     </DialogFooter>
@@ -74,31 +73,41 @@ const ClonePrototypeDialog = ({
 
 export default compose(
   pure,
-  withState('clonePrototypeName', 'setClonePrototypeName', props => props.prototypeName),
-  withState('clonePrototypeDescription', 'setClonePrototypeDescription', props => props.prototypeDescription),
+  withState(
+    'clonePrototypeName',
+    'setClonePrototypeName',
+    props => props.prototypeName
+  ),
+  withState(
+    'clonePrototypeDescription',
+    'setClonePrototypeDescription',
+    props => props.prototypeDescription
+  ),
   withState('cloneVersion', 'setCloneVersion', props => props.version),
   withState('error', 'setError', false),
   withHandlers({
-    onClonePrototypeDescriptionChange: props => e =>
-      props.setClonePrototypeDescription(e.target.value),
+    onClonePrototypeDescriptionChange: props =>
+      e => props.setClonePrototypeDescription(e.target.value),
     onCloneVersionChange: props => e => props.setCloneVersion(e.target.value),
-    onClonePrototypeNameChange: props => (e) => {
-      props.setClonePrototypeName(e.target.value);
-      props.setError(false);
-    },
+    onClonePrototypeNameChange: props =>
+      e => {
+        props.setClonePrototypeName(e.target.value);
+        props.setError(false);
+      },
     closeClonePrototype: props => () => props.setSelectMenuValue(''),
-    submitClonePrototype: props => () => {
-      if (props.clonePrototypeName.length === 0) {
-        props.setError(true);
-      } else {
-        props.setSelectMenuValue('');
-        props.clonePrototype(props.prototypeId, {
-          prototypeName: props.clonePrototypeName,
-          prototypeDescription: props.clonePrototypeDescription,
-          version: props.cloneVersion,
-        });
-      }
-    },
+    submitClonePrototype: props =>
+      () => {
+        if (props.clonePrototypeName.length === 0) {
+          props.setError(true);
+        } else {
+          props.setSelectMenuValue('');
+          props.clonePrototype(props.prototypeId, {
+            prototypeName: props.clonePrototypeName,
+            prototypeDescription: props.clonePrototypeDescription,
+            version: props.cloneVersion,
+          });
+        }
+      },
   }),
-  withGetMessages(messages, 'Prototypes'),
+  withGetMessages(messages, 'Prototypes')
 )(ClonePrototypeDialog);

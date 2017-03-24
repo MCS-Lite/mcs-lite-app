@@ -13,28 +13,28 @@ class WithDropdownMenu extends Component {
   onSelectChange = (e, value) => {
     this.props.onChange(value);
     this.closeMenu();
-  }
+  };
 
   openMenu = () => {
     this.props.setIsMenuShow(true);
     this.props.onMenuShowChange(true);
     document.addEventListener('click', this.handleClick, false);
-  }
+  };
 
   closeMenu = () => {
     this.props.setIsMenuShow(false);
     this.props.onMenuShowChange(false);
     document.removeEventListener('click', this.handleClick, false);
-  }
+  };
 
-  handleClick = (e) => {
+  handleClick = e => {
     e.preventDefault();
     if (e.currentTarget === this.target) {
       this.openMenu();
     } else {
       this.closeMenu();
     }
-  }
+  };
 
   render() {
     const {
@@ -48,18 +48,18 @@ class WithDropdownMenu extends Component {
       <div className={styles.base}>
         <div
           onClick={this.handleClick}
-          ref={(component) => { this.target = component; }}
+          ref={component => {
+            this.target = component;
+          }}
         >
           {children}
         </div>
-        {
-          isMenuShow &&
+        {isMenuShow &&
           <Menu
             className={c(styles.menu, menuClassName)}
             onChange={this.onSelectChange}
             items={dropdownItems}
-          />
-        }
+          />}
       </div>
     );
   }
@@ -70,5 +70,5 @@ export default compose(
   defaultProps({
     onMenuShowChange: () => {},
   }),
-  withState('isMenuShow', 'setIsMenuShow', false),
+  withState('isMenuShow', 'setIsMenuShow', false)
 )(WithDropdownMenu);

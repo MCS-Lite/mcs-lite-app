@@ -16,23 +16,25 @@ import DeleteConfirmDialog from '../../common/dialogs/deleteConfirmDialog';
 
 import styles from './styles.css';
 
-const DeviceCardLayout = ({
-  deviceId,
-  deviceName,
-  deviceDescription,
-  deviceImageURL,
-  prototypeId,
-  version,
-  source = '來源',
-  openDeviceDetail,
-  setSelectedMenuValue,
-  selectedMenuValue,
-  editDevice,
-  onDeleteSubmit,
-  uploadDeviceImage,
-  pushToast,
-  getMessages: t,
-}) => (
+const DeviceCardLayout = (
+  {
+    deviceId,
+    deviceName,
+    deviceDescription,
+    deviceImageURL,
+    prototypeId,
+    version,
+    source = '來源',
+    openDeviceDetail,
+    setSelectedMenuValue,
+    selectedMenuValue,
+    editDevice,
+    onDeleteSubmit,
+    uploadDeviceImage,
+    pushToast,
+    getMessages: t,
+  }
+) => (
   <div className={styles.base}>
     <DropdownButton
       className={styles.more}
@@ -41,8 +43,8 @@ const DeviceCardLayout = ({
     <img
       src={
         deviceImageURL
-        ? window.apiUrl.replace('api', 'images/') + deviceImageURL
-        : productBanner
+          ? window.apiUrl.replace('api', 'images/') + deviceImageURL
+          : productBanner
       }
       className={styles.img}
       alt="product"
@@ -52,31 +54,24 @@ const DeviceCardLayout = ({
         <Heading level={3}>{deviceName}</Heading>
         <Hr className={styles.hr} />
         {version && `${t('version')}${version}`}
-        {
-          source && <div>
+        {source &&
+          <div>
             {t('source')}
-            <Link
-              to={`/prototypes/${prototypeId}`}
-              className={styles.link}
-            >
+            <Link to={`/prototypes/${prototypeId}`} className={styles.link}>
               {source}
             </Link>
             <Hr className={styles.hr} />
-          </div>
-        }
-        {
-            deviceDescription &&
-            <div>
-              {`${t('description')}${deviceDescription}`}
-            </div>
-          }
+          </div>}
+        {deviceDescription &&
+          <div>
+            {`${t('description')}${deviceDescription}`}
+          </div>}
       </div>
       <Button className={styles.button} onClick={openDeviceDetail}>
         {t('detail')}
       </Button>
     </div>
-    {
-      selectedMenuValue === 'edit' &&
+    {selectedMenuValue === 'edit' &&
       <EditDeviceDialog
         deviceId={deviceId}
         deviceName={deviceName}
@@ -85,16 +80,13 @@ const DeviceCardLayout = ({
         editDevice={editDevice}
         uploadDeviceImage={uploadDeviceImage}
         pushToast={pushToast}
-      />
-    }
-    {
-      selectedMenuValue === 'delete' &&
+      />}
+    {selectedMenuValue === 'delete' &&
       <DeleteConfirmDialog
         deviceId={deviceId}
         setSelectedMenuValue={setSelectedMenuValue}
         onDeleteSubmit={onDeleteSubmit}
-      />
-    }
+      />}
   </div>
 );
 
@@ -103,11 +95,14 @@ export default compose(
   withGetMessages(messages, 'Devices'),
   withState('selectedMenuValue', 'setSelectedMenuValue', 'none'),
   withHandlers({
-    openDeviceDetail: props => () => browserHistory.push(`/devices/${props.deviceId}`),
-    onDeleteSubmit: props => () => {
-      props.deleteDevice(props.deviceId)
-        .then(() => props.retrieveDeviceList());
-      props.setSelectedMenuValue('none');
-    },
-  }),
+    openDeviceDetail: props =>
+      () => browserHistory.push(`/devices/${props.deviceId}`),
+    onDeleteSubmit: props =>
+      () => {
+        props
+          .deleteDevice(props.deviceId)
+          .then(() => props.retrieveDeviceList());
+        props.setSelectedMenuValue('none');
+      },
+  })
 )(DeviceCardLayout);

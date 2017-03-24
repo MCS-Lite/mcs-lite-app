@@ -15,22 +15,24 @@ import SelectDisplayCard from '../selectDisplayCard';
 import CreateDataChannel from '../createDataChannel';
 import styles from './styles.css';
 
-const CreateDataChannelDialog = ({
-  closeSelectCreateDataChannel,
-  setIsCreateDataChannel,
-  isCreateDataChannel,
-  displayCardType,
-  setDisplayCardType,
-  isSelectCreateDataChannel,
-  setIsSelectCreateDataChannel,
-  prototypeId,
-  createDataChannel,
-  getMessages: t,
-  retrieveUnitTypes,
-  createUnitTypes,
-  unitTypes,
-  pushToast,
-}) => (
+const CreateDataChannelDialog = (
+  {
+    closeSelectCreateDataChannel,
+    setIsCreateDataChannel,
+    isCreateDataChannel,
+    displayCardType,
+    setDisplayCardType,
+    isSelectCreateDataChannel,
+    setIsSelectCreateDataChannel,
+    prototypeId,
+    createDataChannel,
+    getMessages: t,
+    retrieveUnitTypes,
+    createUnitTypes,
+    unitTypes,
+    pushToast,
+  }
+) => (
   <Dialog
     show={isSelectCreateDataChannel}
     size="large"
@@ -54,8 +56,7 @@ const CreateDataChannelDialog = ({
         title={t('display')}
         description={t('displayHint')}
       />
-      {
-        isCreateDataChannel &&
+      {isCreateDataChannel &&
         <CreateDataChannel
           createDataChannel={createDataChannel}
           prototypeId={prototypeId}
@@ -67,8 +68,7 @@ const CreateDataChannelDialog = ({
           createUnitTypes={createUnitTypes}
           unitTypes={unitTypes}
           pushToast={pushToast}
-        />
-      }
+        />}
     </DialogBody>
   </Dialog>
 );
@@ -78,7 +78,8 @@ export default compose(
   withState('displayCardType', 'setDisplayCardType', 0),
   withState('isCreateDataChannel', 'setIsCreateDataChannel', false),
   withHandlers({
-    closeSelectCreateDataChannel: props => () => props.setIsSelectCreateDataChannel(false),
+    closeSelectCreateDataChannel: props =>
+      () => props.setIsSelectCreateDataChannel(false),
   }),
-  withGetMessages(messages, 'PrototypeDetail'),
+  withGetMessages(messages, 'PrototypeDetail')
 )(CreateDataChannelDialog);

@@ -15,40 +15,40 @@ import DeleteConfirmDialog from '../../common/dialogs/deleteConfirmDialog';
 
 import styles from './styles.css';
 
-const DeviceList = ({
-  deviceId,
-  deviceKey,
-  updatedAt,
-  deviceName,
-  goToDeviceDetail,
-  onDeleteButtonClick,
-  dialogShow,
-  setDialogShow,
-  onDeleteSubmit,
-  deleteDevice,
-}) => (
+const DeviceList = (
+  {
+    deviceId,
+    deviceKey,
+    updatedAt,
+    deviceName,
+    goToDeviceDetail,
+    onDeleteButtonClick,
+    dialogShow,
+    setDialogShow,
+    onDeleteSubmit,
+    deleteDevice,
+  }
+) => (
   <TableRow className={styles.base}>
-    <TableCell><a className={styles.link} onClick={goToDeviceDetail}>{deviceName}</a></TableCell>
+    <TableCell>
+      <a className={styles.link} onClick={goToDeviceDetail}>{deviceName}</a>
+    </TableCell>
     <TableCell><CopyButtonGroup value={deviceId} /></TableCell>
     <TableCell><CopyButtonGroup value={deviceKey} /></TableCell>
     <TableCell>
       {moment(updatedAt).format('YYYY-MM-DD hh:mm')}
     </TableCell>
-    {
-      deleteDevice &&
-        <IconDelete
-          size={18}
-          onClick={onDeleteButtonClick}
-          className={styles.deleteButton}
-        />
-    }
-    {
-      dialogShow === 'delete' &&
-        <DeleteConfirmDialog
-          setSelectedMenuValue={setDialogShow}
-          onDeleteSubmit={onDeleteSubmit}
-        />
-    }
+    {deleteDevice &&
+      <IconDelete
+        size={18}
+        onClick={onDeleteButtonClick}
+        className={styles.deleteButton}
+      />}
+    {dialogShow === 'delete' &&
+      <DeleteConfirmDialog
+        setSelectedMenuValue={setDialogShow}
+        onDeleteSubmit={onDeleteSubmit}
+      />}
   </TableRow>
 );
 
@@ -56,12 +56,15 @@ export default compose(
   pure,
   withState('dialogShow', 'setDialogShow', 'none'),
   withHandlers({
-    goToDeviceDetail: props => () => browserHistory.push(`/devices/${props.deviceId}`),
+    goToDeviceDetail: props =>
+      () => browserHistory.push(`/devices/${props.deviceId}`),
     onDeleteButtonClick: props => () => props.setDialogShow('delete'),
-    onDeleteSubmit: props => () => {
-      props.deleteDevice(props.deviceId)
-        .then(() => props.retrievePrototype(props.prototypeId));
-      props.setDialogShow('none');
-    },
-  }),
+    onDeleteSubmit: props =>
+      () => {
+        props
+          .deleteDevice(props.deviceId)
+          .then(() => props.retrievePrototype(props.prototypeId));
+        props.setDialogShow('none');
+      },
+  })
 )(DeviceList);

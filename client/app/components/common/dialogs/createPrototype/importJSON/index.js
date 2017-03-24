@@ -10,13 +10,15 @@ import UploadJSONLink from './uploadJSONLink';
 
 import styles from './styles.css';
 
-const ImportJSONLayout = ({
-  value,
-  onChange,
-  error,
-  codeMirrorOptions,
-  getMessages: t,
-}) => (
+const ImportJSONLayout = (
+  {
+    value,
+    onChange,
+    error,
+    codeMirrorOptions,
+    getMessages: t,
+  }
+) => (
   <div>
     {t('uploadJSONhint')}
     <UploadJSONLink onChange={onChange} />
@@ -27,7 +29,7 @@ const ImportJSONLayout = ({
       className={c(
         styles.codeBlock,
         value.length === 0 && styles.codeBlockPlaceholder,
-        error && styles.codeBlockError,
+        error && styles.codeBlockError
       )}
     />
     <div className={styles.errorMessage}>{error}</div>
@@ -43,5 +45,5 @@ export default compose(
       placeholder: t('codeBlockPlaceholder'),
       mode: 'javascript',
     },
-  })),
+  }))
 )(ImportJSONLayout);

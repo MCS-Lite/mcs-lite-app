@@ -2,10 +2,12 @@ import React from 'react';
 import { pure } from 'recompose';
 import { DataChannelAdapter } from 'mcs-lite-ui';
 
-const DisplayGPIOLayout = ({
-  value = 0,
-  id,
-}) => (
+const DisplayGPIOLayout = (
+  {
+    value = 0,
+    id,
+  }
+) => (
   <DataChannelAdapter
     dataChannelProps={{
       id,

@@ -7,7 +7,7 @@ it('should render Container correctly with HOC', () => {
   const wrapper = shallow(
     <IntlProvider locale="en">
       <Container />
-    </IntlProvider>,
+    </IntlProvider>
   );
 
   expect(wrapper).toMatchSnapshot();

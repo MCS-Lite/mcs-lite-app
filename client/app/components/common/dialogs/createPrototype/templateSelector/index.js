@@ -8,16 +8,15 @@ import messages from '../../messages';
 
 import styles from './styles.css';
 
-const TemplateSelector = ({
-  inputSelectItems = [],
-  value,
-  onChange,
-  getMessages: t,
-}) => (
-  <InputForm
-    kind="horizontal"
-    className={styles.form}
-  >
+const TemplateSelector = (
+  {
+    inputSelectItems = [],
+    value,
+    onChange,
+    getMessages: t,
+  }
+) => (
+  <InputForm kind="horizontal" className={styles.form}>
     <InputSelect
       placeholder={t('selectExample')}
       items={inputSelectItems}
@@ -33,16 +32,17 @@ const TemplateSelector = ({
 export default compose(
   pure,
   withGetMessages(messages, 'Dialogs'),
-  withPropsOnChange(['templates'], ({ templates = []}) => ({
+  withPropsOnChange(['templates'], ({ templates = [] }) => ({
     inputSelectItems: templates.map(prototype => ({
       value: prototype,
       children: prototype.prototypeName,
     })),
   })),
   withHandlers({
-    onChange: props => (e, value) => {
-      props.setTemplate(value);
-      props.setSelectedTemplateName(value.prototypeName);
-    },
-  }),
+    onChange: props =>
+      (e, value) => {
+        props.setTemplate(value);
+        props.setSelectedTemplateName(value.prototypeName);
+      },
+  })
 )(TemplateSelector);

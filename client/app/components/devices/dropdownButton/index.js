@@ -8,16 +8,15 @@ import WithDropdownMenu from '../../common/withDropdownMenu';
 
 import styles from './styles.css';
 
-const DropdownButton = ({
-  dropdownItems,
-  onMenuChange,
-  className,
-}) => (
+const DropdownButton = (
+  {
+    dropdownItems,
+    onMenuChange,
+    className,
+  }
+) => (
   <div className={c(className, styles.base)}>
-    <WithDropdownMenu
-      onChange={onMenuChange}
-      dropdownItems={dropdownItems}
-    >
+    <WithDropdownMenu onChange={onMenuChange} dropdownItems={dropdownItems}>
       <IconMoreVert size={24} />
     </WithDropdownMenu>
   </div>
@@ -34,5 +33,5 @@ export default compose(
   })),
   withHandlers({
     onMenuChange: props => value => props.setSelectedMenuValue(value),
-  }),
+  })
 )(DropdownButton);

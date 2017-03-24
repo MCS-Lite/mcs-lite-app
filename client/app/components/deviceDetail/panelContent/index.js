@@ -13,16 +13,18 @@ import PanelHeaderNav from '../../common/panelHeaderNav';
 
 import styles from './styles.css';
 
-const PanelContentLayout = ({
-  selectPanelValue,
-  datachannels,
-  deviceId,
-  deviceKey,
-  retrieveDatachannelDatapoint,
-  datachannelDatapoints,
-  onNavChange,
-  navItems,
-}) => (
+const PanelContentLayout = (
+  {
+    selectPanelValue,
+    datachannels,
+    deviceId,
+    deviceKey,
+    retrieveDatachannelDatapoint,
+    datachannelDatapoints,
+    onNavChange,
+    navItems,
+  }
+) => (
   <div className={styles.base}>
     <Panel>
       <PanelHeader>
@@ -34,26 +36,23 @@ const PanelContentLayout = ({
         />
       </PanelHeader>
       <PanelBody className={styles.body}>
-        {
-          selectPanelValue === 'datachannel' &&
+        {selectPanelValue === 'datachannel' &&
           <DataChannelContent
-            server={`ws://${window.ws}/deviceId/${deviceId}/deviceKey/${deviceKey}`}
+            server={
+              `ws://${window.ws}/deviceId/${deviceId}/deviceKey/${deviceKey}`
+            }
             deviceId={deviceId}
             deviceKey={deviceKey}
             datachannels={datachannels}
             datachannelDatapoints={datachannelDatapoints}
             retrieveDatachannelDatapoint={retrieveDatachannelDatapoint}
-          />
-        }
-        {
-          selectPanelValue === 'apiHint' && (
-            <ApiHint
-              deviceId={deviceId}
-              deviceKey={deviceKey}
-              datachannels={datachannels}
-            />
-          )
-        }
+          />}
+        {selectPanelValue === 'apiHint' &&
+          <ApiHint
+            deviceId={deviceId}
+            deviceKey={deviceKey}
+            datachannels={datachannels}
+          />}
       </PanelBody>
     </Panel>
   </div>
@@ -71,5 +70,5 @@ export default compose(
   })),
   withHandlers({
     onNavChange: props => value => props.setSelectPanelValue(value),
-  }),
+  })
 )(PanelContentLayout);

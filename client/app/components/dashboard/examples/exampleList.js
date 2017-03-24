@@ -16,32 +16,32 @@ import CreatePrototype from '../../common/dialogs/createPrototype';
 
 import styles from './styles.css';
 
-const ExampleListLayout = ({
-  getMessages: t,
-  prototype,
-  isCreatePrototype,
-  onCloneClick,
-  onClone,
-  onCancel,
-  uploadPrototypeImage,
-  pushToast,
-}) => (
+const ExampleListLayout = (
+  {
+    getMessages: t,
+    prototype,
+    isCreatePrototype,
+    onCloneClick,
+    onClone,
+    onCancel,
+    uploadPrototypeImage,
+    pushToast,
+  }
+) => (
   <div key={prototype.prototypeId} className={styles.exampleList}>
     <img
       src={
         prototype.prototypeImageURL
-        ? window.apiUrl.replace('api', 'images/') + prototype.prototypeImageURL
-        : productBanner
+          ? window.apiUrl.replace('api', 'images/') +
+              prototype.prototypeImageURL
+          : productBanner
       }
       className={styles.prototypeImg}
       alt="banner"
     />
     <div className={styles.cell}>
       <span>{t('prototypeName')}</span>
-      <Link
-        to={`/prototypes/${prototype.prototypeId}`}
-        className={styles.link}
-      >
+      <Link to={`/prototypes/${prototype.prototypeId}`} className={styles.link}>
         {prototype.prototypeName}
       </Link>
     </div>
@@ -54,8 +54,7 @@ const ExampleListLayout = ({
         {t('clonePrototype')}
       </Button>
     </div>
-    {
-      isCreatePrototype &&
+    {isCreatePrototype &&
       <CreatePrototype
         type="clone"
         template={prototype}
@@ -63,8 +62,7 @@ const ExampleListLayout = ({
         onCancel={onCancel}
         uploadPrototypeImage={uploadPrototypeImage}
         pushToast={pushToast}
-      />
-    }
+      />}
   </div>
 );
 
@@ -73,9 +71,10 @@ export default compose(
   withState('isCreatePrototype', 'setIsCreatePrototype', false),
   withHandlers({
     onCloneClick: props => () => props.setIsCreatePrototype(true),
-    onClone: props => (id, data) => props.clonePrototype(id, data)
-      .then(() => props.retrieveDashboard()),
+    onClone: props =>
+      (id, data) =>
+        props.clonePrototype(id, data).then(() => props.retrieveDashboard()),
     onCancel: props => () => props.setIsCreatePrototype(false),
   }),
-  withGetMessages(messages, 'Dashboard'),
+  withGetMessages(messages, 'Dashboard')
 )(ExampleListLayout);

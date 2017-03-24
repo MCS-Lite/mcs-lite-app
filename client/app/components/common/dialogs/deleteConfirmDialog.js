@@ -14,20 +14,15 @@ import notice from '../../prototypes/dialogs/notice.png';
 
 import styles from './dialog.css';
 
-const DeleteConfirmDialog = ({
-  closeDialog,
-  onDeleteSubmit,
-}) => (
-  <Dialog
-    show
-    size="small"
-    onHide={closeDialog}
-  >
+const DeleteConfirmDialog = (
+  {
+    closeDialog,
+    onDeleteSubmit,
+  }
+) => (
+  <Dialog show size="small" onHide={closeDialog}>
     <DialogHeader>
-      <FormattedMessage
-        id="Dialogs.Notice"
-        defaultMessage="注意!"
-      />
+      <FormattedMessage id="Dialogs.Notice" defaultMessage="注意!" />
     </DialogHeader>
     <DialogBody className={styles.dialogBody}>
       <img src={notice} className={styles.img} alt="notice" />
@@ -40,16 +35,10 @@ const DeleteConfirmDialog = ({
     </DialogBody>
     <DialogFooter>
       <Button kind="cancel" onClick={closeDialog}>
-        <FormattedMessage
-          id="Dialogs.Cancel"
-          defaultMessage="取消"
-        />
+        <FormattedMessage id="Dialogs.Cancel" defaultMessage="取消" />
       </Button>
       <Button kind="primary" onClick={onDeleteSubmit}>
-        <FormattedMessage
-          id="Dialogs.Confirm"
-          defaultMessage="確定"
-        />
+        <FormattedMessage id="Dialogs.Confirm" defaultMessage="確定" />
       </Button>
     </DialogFooter>
   </Dialog>
@@ -59,5 +48,5 @@ export default compose(
   pure,
   withHandlers({
     closeDialog: props => () => props.setSelectedMenuValue('none'),
-  }),
+  })
 )(DeleteConfirmDialog);

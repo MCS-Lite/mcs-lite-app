@@ -2,11 +2,13 @@ import React from 'react';
 import { compose, pure, withState } from 'recompose';
 import { DataChannelAdapter } from 'mcs-lite-ui';
 
-const PreviewLayout = ({
-  value,
-  period,
-  format,
-}) => (
+const PreviewLayout = (
+  {
+    value,
+    period,
+    format,
+  }
+) => (
   <div style={{ width: '100%' }}>
     <DataChannelAdapter
       dataChannelProps={{
@@ -23,5 +25,9 @@ export default compose(
   pure,
   withState('value', 'setValue', props => props.value || 0),
   withState('period', 'setPeriod', props => props.period || 0),
-  withState('format', 'setFormat', props => props.format || { lowerbound: 0, upperbound: 1 }),
+  withState(
+    'format',
+    'setFormat',
+    props => props.format || { lowerbound: 0, upperbound: 1 }
+  )
 )(PreviewLayout);

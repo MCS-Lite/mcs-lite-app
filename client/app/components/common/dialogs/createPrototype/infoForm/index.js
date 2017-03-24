@@ -10,22 +10,24 @@ import ImageUploader from '../../../imageUploader';
 
 import styles from './styles.css';
 
-const InfoForm = ({
-  prototypeInfo: {
-    prototypeName,
-    version,
-    prototypeDescription,
-    prototypeImageURL,
-  } = {},
-  onNameChange,
-  onVersionChange,
-  onDescriptionChange,
-  onImageChange,
-  error,
-  uploadPrototypeImage,
-  getMessages: t,
-  pushToast,
-}) => (
+const InfoForm = (
+  {
+    prototypeInfo: {
+      prototypeName,
+      version,
+      prototypeDescription,
+      prototypeImageURL,
+    } = {},
+    onNameChange,
+    onVersionChange,
+    onDescriptionChange,
+    onImageChange,
+    error,
+    uploadPrototypeImage,
+    getMessages: t,
+    pushToast,
+  }
+) => (
   <InputForm kind="horizontal">
     <InputText
       required
@@ -65,15 +67,27 @@ export default compose(
   pure,
   withGetMessages(messages, 'Dialogs'),
   withHandlers({
-    onNameChange: props => (e) => {
-      props.setPrototypeInfo(assoc('prototypeName', e.target.value, props.prototypeInfo));
-      props.setError(false);
-    },
-    onVersionChange: props => e =>
-      props.setPrototypeInfo(assoc('version', e.target.value, props.prototypeInfo)),
-    onDescriptionChange: props => e =>
-      props.setPrototypeInfo(assoc('prototypeDescription', e.target.value, props.prototypeInfo)),
-    onImageChange: props => imageUrl =>
-      props.setPrototypeInfo(assoc('prototypeImageURL', imageUrl, props.prototypeInfo)),
-  }),
+    onNameChange: props =>
+      e => {
+        props.setPrototypeInfo(
+          assoc('prototypeName', e.target.value, props.prototypeInfo)
+        );
+        props.setError(false);
+      },
+    onVersionChange: props =>
+      e =>
+        props.setPrototypeInfo(
+          assoc('version', e.target.value, props.prototypeInfo)
+        ),
+    onDescriptionChange: props =>
+      e =>
+        props.setPrototypeInfo(
+          assoc('prototypeDescription', e.target.value, props.prototypeInfo)
+        ),
+    onImageChange: props =>
+      imageUrl =>
+        props.setPrototypeInfo(
+          assoc('prototypeImageURL', imageUrl, props.prototypeInfo)
+        ),
+  })
 )(InfoForm);

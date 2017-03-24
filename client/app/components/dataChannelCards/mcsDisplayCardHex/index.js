@@ -2,10 +2,12 @@ import React from 'react';
 import { pure } from 'recompose';
 import { DataChannelAdapter } from 'mcs-lite-ui';
 
-const DisplayHexLayout = ({
-  value = '',
-  id,
-}) => (
+const DisplayHexLayout = (
+  {
+    value = '',
+    id,
+  }
+) => (
   <DataChannelAdapter
     dataChannelProps={{
       id,

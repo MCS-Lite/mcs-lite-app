@@ -15,22 +15,24 @@ import EditPrototype from '../dialogs/editPrototype';
 
 import styles from './styles.css';
 
-const PrototypeCardLayout = ({
-  prototype = {},
-  main,
-  openPrototypeDetail,
-  onSelectMenuValueChange,
-  selectMenuValue,
-  setSelectMenuValue,
-  editPrototype,
-  onClone,
-  onCancel,
-  onExport,
-  onDeleteSubmit,
-  uploadPrototypeImage,
-  pushToast,
-  getMessages: t,
-}) => {
+const PrototypeCardLayout = (
+  {
+    prototype = {},
+    main,
+    openPrototypeDetail,
+    onSelectMenuValueChange,
+    selectMenuValue,
+    setSelectMenuValue,
+    editPrototype,
+    onClone,
+    onCancel,
+    onExport,
+    onDeleteSubmit,
+    uploadPrototypeImage,
+    pushToast,
+    getMessages: t,
+  }
+) => {
   const {
     isTemplate,
     prototypeId,
@@ -67,14 +69,13 @@ const PrototypeCardLayout = ({
         <img
           src={
             prototypeImageURL
-            ? window.apiUrl.replace('api', 'images/') + prototypeImageURL
-            : productBanner
+              ? window.apiUrl.replace('api', 'images/') + prototypeImageURL
+              : productBanner
           }
           className={styles.img}
           alt="banner"
         />
-        {
-          selectMenuValue === 'clone' &&
+        {selectMenuValue === 'clone' &&
           <CreatePrototype
             type="clone"
             title={t('cloneFromExistingPrototype')}
@@ -84,10 +85,8 @@ const PrototypeCardLayout = ({
             onCancel={onCancel}
             uploadPrototypeImage={uploadPrototypeImage}
             pushToast={pushToast}
-          />
-        }
-        {
-          selectMenuValue === 'edit' &&
+          />}
+        {selectMenuValue === 'edit' &&
           <EditPrototype
             editPrototype={editPrototype}
             prototypeId={prototypeId}
@@ -99,36 +98,27 @@ const PrototypeCardLayout = ({
             setSelectMenuValue={setSelectMenuValue}
             uploadPrototypeImage={uploadPrototypeImage}
             pushToast={pushToast}
-          />
-        }
-        {
-          selectMenuValue === 'delete' &&
+          />}
+        {selectMenuValue === 'delete' &&
           <DeleteConfirmDialog
             onDeleteSubmit={onDeleteSubmit}
             setSelectedMenuValue={setSelectMenuValue}
-          />
-        }
+          />}
       </div>
       <div className={styles.content}>
         <div>
-          <Heading
-            level={4}
-            className={styles.prototypeName}
-          >
+          <Heading level={4} className={styles.prototypeName}>
             {prototypeName} {isTemplate && '(Template)'}
           </Heading>
           <Hr className={styles.hr} />
-          {
-            !(R.isNil(version) || R.isEmpty(version)) &&
+          {!(R.isNil(version) || R.isEmpty(version)) &&
             <div>
               {t('version')}{version}
               <Hr className={styles.hr} />
-            </div>
-          }
-          {
-            !(R.isNil(prototypeDescription) || R.isEmpty(prototypeDescription)) &&
-            <span>{prototypeDescription}</span>
-          }
+            </div>}
+          {!(R.isNil(prototypeDescription) ||
+            R.isEmpty(prototypeDescription)) &&
+            <span>{prototypeDescription}</span>}
         </div>
         <Button onClick={openPrototypeDetail} block>
           {t('detail')}
@@ -143,19 +133,24 @@ export default compose(
   withGetMessages(messages, 'Prototypes'),
   withState('selectMenuValue', 'setSelectMenuValue', ''),
   withHandlers({
-    openPrototypeDetail: props => () => browserHistory.push(`/prototypes/${props.prototype.prototypeId}`),
+    openPrototypeDetail: props =>
+      () => browserHistory.push(`/prototypes/${props.prototype.prototypeId}`),
     onSelectMenuValueChange: props => value => props.setSelectMenuValue(value),
-    onClone: props => (id, data) => props.clonePrototype(id, data)
-      .then(() => props.retrievePrototypeList()),
+    onClone: props =>
+      (id, data) =>
+        props
+          .clonePrototype(id, data)
+          .then(() => props.retrievePrototypeList()),
     onCancel: props => () => props.setSelectMenuValue(''),
-    onDeleteSubmit: props => () => {
-      props.deletePrototype(props.prototype.prototypeId);
-      props.setSelectMenuValue('');
-    },
-    onExport: props => () => {
-      const { prototypeId } = props.prototype;
-      props.exportJSON(prototypeId)
-        .then(({ data }) => {
+    onDeleteSubmit: props =>
+      () => {
+        props.deletePrototype(props.prototype.prototypeId);
+        props.setSelectMenuValue('');
+      },
+    onExport: props =>
+      () => {
+        const { prototypeId } = props.prototype;
+        props.exportJSON(prototypeId).then(({ data }) => {
           const json = JSON.stringify(data, null, '\t');
           const blob = new Blob([json], { type: 'application/json' });
           const url = window.URL.createObjectURL(blob);
@@ -168,8 +163,11 @@ export default compose(
           ghostLink.click();
           document.body.removeChild(ghostLink);
 
-          props.pushToast({ kind: 'success', message: props.getMessages('exportSuccess') });
+          props.pushToast({
+            kind: 'success',
+            message: props.getMessages('exportSuccess'),
+          });
         });
-    },
-  }),
+      },
+  })
 )(PrototypeCardLayout);

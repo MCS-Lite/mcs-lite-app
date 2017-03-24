@@ -7,21 +7,23 @@ import PrototypeDetailInfo from './info';
 
 import styles from './styles.css';
 
-const Prototypes = ({
-  main,
-  prototypes,
-  createTestDevice,
-  createDataChannel,
-  deleteDataChannel,
-  retrieveUnitTypes,
-  createUnitTypes,
-  pushToast,
-  deleteDevice,
-  retrievePrototype,
-  uploadPrototypeImage,
-  uploadDeviceImage,
-  ...props
-}) => {
+const Prototypes = (
+  {
+    main,
+    prototypes,
+    createTestDevice,
+    createDataChannel,
+    deleteDataChannel,
+    retrieveUnitTypes,
+    createUnitTypes,
+    pushToast,
+    deleteDevice,
+    retrievePrototype,
+    uploadPrototypeImage,
+    uploadDeviceImage,
+    ...props
+  }
+) => {
   const {
     prototypeName,
     version,

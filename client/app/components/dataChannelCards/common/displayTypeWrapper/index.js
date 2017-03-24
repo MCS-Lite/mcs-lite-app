@@ -24,43 +24,44 @@ import StringDisplayFormat from '../../mcsDisplayCardString/format';
 import FormatWrapper from '../formatWrapper';
 import styles from './styles.css';
 
-const DisplayTypeWrapper = ({
-  format,
-  onFormatChange,
-  error,
-  onSetError,
-  retrieveUnitTypes,
-  createUnitTypes,
-  unitTypes,
-}) => (
+const DisplayTypeWrapper = (
+  {
+    format,
+    onFormatChange,
+    error,
+    onSetError,
+    retrieveUnitTypes,
+    createUnitTypes,
+    unitTypes,
+  }
+) => (
   <div className={styles.base}>
-    {
-      Object.keys(format).map(k => (
-        <FormatWrapper
-          key={k}
-          displayType={format[k].displayType}
-          keyName={k}
-          value={format[k].value}
-          onFormatChange={onFormatChange}
-          onSetError={onSetError}
-          error={error[k] || false}
-          retrieveUnitTypes={retrieveUnitTypes}
-          createUnitTypes={createUnitTypes}
-          unitTypes={unitTypes}
-          {...format[k]}
-        />
-      ))
-    }
+    {Object.keys(format).map(k => (
+      <FormatWrapper
+        key={k}
+        displayType={format[k].displayType}
+        keyName={k}
+        value={format[k].value}
+        onFormatChange={onFormatChange}
+        onSetError={onSetError}
+        error={error[k] || false}
+        retrieveUnitTypes={retrieveUnitTypes}
+        createUnitTypes={createUnitTypes}
+        unitTypes={unitTypes}
+        {...format[k]}
+      />
+    ))}
   </div>
 );
 
 export default compose(
   pure,
   withHandlers({
-    onSetError: props => (k) => {
-      props.error[k] = false;
-      props.setError(props.error);
-    },
+    onSetError: props =>
+      k => {
+        props.error[k] = false;
+        props.setError(props.error);
+      },
   }),
   lifecycle({
     componentWillReceiveProps({ displayName, setFormat }) {
@@ -113,5 +114,5 @@ export default compose(
         }
       }
     },
-  }),
+  })
 )(DisplayTypeWrapper);

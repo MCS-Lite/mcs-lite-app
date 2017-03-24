@@ -38,3 +38,11 @@
 ```
 $ npm run test:watch
 ```
+
+## CONTRIBUTING
+
+Use Prettier to format your code.
+
+```
+$ npm run prettier
+```

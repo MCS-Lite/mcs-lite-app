@@ -17,12 +17,14 @@ import messages from '../messages';
 
 import styles from './styles.css';
 
-const PanelHeaderLayout = ({
-  filterKey,
-  onInputTextChange,
-  onSearch,
-  getMessages: t,
-}) => (
+const PanelHeaderLayout = (
+  {
+    filterKey,
+    onInputTextChange,
+    onSearch,
+    getMessages: t,
+  }
+) => (
   <div className={styles.base}>
     <Panel>
       <PanelHeader>
@@ -35,10 +37,7 @@ const PanelHeaderLayout = ({
               onChange={onInputTextChange}
               placeholder={t('search')}
             />
-            <Button
-              className={styles.searchButton}
-              onClick={onSearch}
-            >
+            <Button className={styles.searchButton} onClick={onSearch}>
               <IconSearch size={18} />
             </Button>
           </InputGroup>
@@ -53,5 +52,5 @@ export default compose(
   withGetMessages(messages, 'Devices'),
   withHandlers({
     onInputTextChange: props => e => props.setFilterKey(e.target.value),
-  }),
+  })
 )(PanelHeaderLayout);

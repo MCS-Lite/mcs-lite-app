@@ -5,15 +5,17 @@ import Breadcrumb from './breadcrumb';
 import MyPrototype from './myPrototype';
 import Examples from './examples';
 
-const Dashboard = ({
-  createNewPrototype,
-  uploadPrototypeImage,
-  pushToast,
-  dashboard,
-  clonePrototype,
-  retrieveDashboard,
-  retrievePrototypeTemplates,
-}) => (
+const Dashboard = (
+  {
+    createNewPrototype,
+    uploadPrototypeImage,
+    pushToast,
+    dashboard,
+    clonePrototype,
+    retrieveDashboard,
+    retrievePrototypeTemplates,
+  }
+) => (
   <div>
     <div className={styles.base}>
       <Breadcrumb />

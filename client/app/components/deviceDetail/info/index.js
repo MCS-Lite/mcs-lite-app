@@ -6,20 +6,22 @@ import prototypeBanner from '../../prototypes/productBanner.png';
 import styles from './styles.css';
 import CopyButtonGroup from '../../common/copyButtonGroup';
 
-const DeviceDetailInfoLayout = ({
-  deviceDescription,
-  deviceId,
-  deviceKey,
-  deviceImageURL,
-  getMessages: t,
-}) => (
+const DeviceDetailInfoLayout = (
+  {
+    deviceDescription,
+    deviceId,
+    deviceKey,
+    deviceImageURL,
+    getMessages: t,
+  }
+) => (
   <div className={styles.base}>
     <div className={styles.info}>
       <img
         src={
           deviceImageURL
-          ? window.apiUrl.replace('api', 'images/') + deviceImageURL
-          : prototypeBanner
+            ? window.apiUrl.replace('api', 'images/') + deviceImageURL
+            : prototypeBanner
         }
         alt="device"
       />
@@ -37,7 +39,6 @@ const DeviceDetailInfoLayout = ({
   </div>
 );
 
-export default compose(
-  pure,
-  withGetMessages(messages, 'DeviceDetail'),
-)(DeviceDetailInfoLayout);
+export default compose(pure, withGetMessages(messages, 'DeviceDetail'))(
+  DeviceDetailInfoLayout
+);

@@ -11,28 +11,28 @@ import { pushToast } from '../actions/toastActions';
 
 class Prototype extends Component {
   componentWillMount() {
-    this.props.retrievePrototype(this.props.params.prototypeId)
-    .then(() => this.props.setIsInitialized(true));
+    this.props
+      .retrievePrototype(this.props.params.prototypeId)
+      .then(() => this.props.setIsInitialized(true));
   }
 
   render() {
     return (
       <div>
-        { this.props.isInitialized ? <PrototypeDetailLayout {...this.props} /> : <LoadingPage /> }
+        {this.props.isInitialized
+          ? <PrototypeDetailLayout {...this.props} />
+          : <LoadingPage />}
       </div>
     );
   }
 }
 
 export default compose(
-  connect(
-    identity,
-    {
-      ...prototypeDetailActions,
-      ...deviceActions,
-      pushToast,
-      uploadPrototypeImage,
-    },
-  ),
-  withState('isInitialized', 'setIsInitialized', false),
+  connect(identity, {
+    ...prototypeDetailActions,
+    ...deviceActions,
+    pushToast,
+    uploadPrototypeImage,
+  }),
+  withState('isInitialized', 'setIsInitialized', false)
 )(Prototype);

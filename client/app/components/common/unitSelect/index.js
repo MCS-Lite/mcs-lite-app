@@ -16,25 +16,24 @@ import styles from './unitSelect.css';
 
 const filterFunc = (item, inputValue) => item.value.name.includes(inputValue);
 
-const UnitSelect = ({
-  items = [],
-  value = {},
-  onInputChange,
-  onChange,
-  onFormatChange,
-  generalUnitName,
-  setGeneralUnitName,
-  createUnitTypes,
-  error,
-  getMessages: t,
-}) => (
+const UnitSelect = (
+  {
+    items = [],
+    value = {},
+    onInputChange,
+    onChange,
+    onFormatChange,
+    generalUnitName,
+    setGeneralUnitName,
+    createUnitTypes,
+    error,
+    getMessages: t,
+  }
+) => (
   <InputSelect
     items={items}
     value={value}
-    className={c(
-      styles.base,
-      error && styles.inputSelectError,
-    )}
+    className={c(styles.base, error && styles.inputSelectError)}
     placeholder={t('inputSelectPlaceholder')}
     onInputChange={onInputChange}
     onChange={onChange}
@@ -53,27 +52,28 @@ const UnitSelect = ({
 
 export default compose(
   pure,
-  withPropsOnChange(
-    ['data'],
-    ({ data = []}) => ({
-      items: data.map(({ name: value, symbol }) => ({
-        value: { name: value, symbol },
-        children: <div className={styles.unitList}>
+  withPropsOnChange(['data'], ({ data = [] }) => ({
+    items: data.map(({ name: value, symbol }) => ({
+      value: { name: value, symbol },
+      children: (
+        <div className={styles.unitList}>
           <span className={styles.unitName}>{value}</span>
           <span className={styles.unitSymbol}>{symbol}</span>
-        </div>,
-      })),
-    }),
-  ),
+        </div>
+      ),
+    })),
+  })),
   withState('generalUnitName', 'setGeneralUnitName', ''),
   withHandlers({
-    onInputChange: props => (e) => {
-      props.setGeneralUnitName(e.target.value);
-    },
-    onChange: props => (target, value = {}) => {
-      props.setGeneralUnitName(value.name);
-      props.onFormatChange('unit', value.name);
-    },
+    onInputChange: props =>
+      e => {
+        props.setGeneralUnitName(e.target.value);
+      },
+    onChange: props =>
+      (target, value = {}) => {
+        props.setGeneralUnitName(value.name);
+        props.onFormatChange('unit', value.name);
+      },
   }),
-  withGetMessages(messages, 'UnitSelect'),
+  withGetMessages(messages, 'UnitSelect')
 )(UnitSelect);

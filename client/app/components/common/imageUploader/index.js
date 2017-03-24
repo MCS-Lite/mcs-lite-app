@@ -13,13 +13,20 @@ import styles from './styles.css';
 const cropImage = (file, image, outH) => {
   const canvas = document.createElement('canvas');
   const context = canvas.getContext('2d');
-  const sourceX = Math.max((image.width - (1.875 * image.height)) / 2, 0);
-  const sourceY = Math.max((image.height - (image.width / 1.875)) / 2, 0);
+  const sourceX = Math.max((image.width - 1.875 * image.height) / 2, 0);
+  const sourceY = Math.max((image.height - image.width / 1.875) / 2, 0);
   canvas.width = 1.875 * outH;
   canvas.height = outH;
   context.drawImage(
-    image, sourceX, sourceY, 2 * outH, outH,
-    0, 0, 2 * outH, outH,
+    image,
+    sourceX,
+    sourceY,
+    2 * outH,
+    outH,
+    0,
+    0,
+    2 * outH,
+    outH
   );
 
   const dataUrl = canvas.toDataURL(file.type, 0.5);
@@ -30,32 +37,35 @@ const cropImage = (file, image, outH) => {
     imageArray[i] = byteString.charCodeAt(i);
   }
 
-  return new File([imageArray], file.name, { type: file.type, lastModified: Date.now() });
+  return new File([imageArray], file.name, {
+    type: file.type,
+    lastModified: Date.now(),
+  });
 };
 
 class ImageUploader extends Component {
   onUploadClick = () => this.inputFile.click();
 
   onDragOver = e => e.preventDefault();
-  onDragEnter = (e) => {
+  onDragEnter = e => {
     e.preventDefault();
     this.props.setIsDragEnter(true);
-  }
-  onDragLeave = (e) => {
+  };
+  onDragLeave = e => {
     e.preventDefault();
     this.props.setIsDragEnter(false);
-  }
+  };
 
-  onDrop = (e) => {
+  onDrop = e => {
     e.preventDefault();
     this.props.setIsDragEnter(false);
     const file = R.pathOr(null, ['dataTransfer', 'files', 0], e);
     if (file) {
       this.processFile(file);
     }
-  }
+  };
 
-  processFile = (file) => {
+  processFile = file => {
     const fr = new FileReader();
     const img = new Image();
 
@@ -63,7 +73,7 @@ class ImageUploader extends Component {
       let outH;
       const sourceH = img.height;
       const sourceW = img.width;
-      if ((sourceW / sourceH) >= 1.875) {
+      if (sourceW / sourceH >= 1.875) {
         outH = sourceH;
       } else {
         outH = sourceW / 1.875;
@@ -81,42 +91,54 @@ class ImageUploader extends Component {
     if (file) {
       fr.readAsDataURL(file);
     } else {
-      this.props.pushToast({ kind: 'error', message: this.props.getMessages('errorWhenUploadImage') });
+      this.props.pushToast({
+        kind: 'error',
+        message: this.props.getMessages('errorWhenUploadImage'),
+      });
     }
-  }
+  };
 
-  inputFileOnChange = (e) => {
+  inputFileOnChange = e => {
     const file = e.target.files[0];
     this.processFile(file);
-  }
+  };
 
-  handleUpload = (uploadingFile) => {
+  handleUpload = uploadingFile => {
     if (uploadingFile.size > 2048 * 1024) {
-      this.props.pushToast({ kind: 'error', message: this.props.getMessages('fileSizeExceeds') });
+      this.props.pushToast({
+        kind: 'error',
+        message: this.props.getMessages('fileSizeExceeds'),
+      });
     } else {
       const data = new FormData();
       data.append('file', uploadingFile);
-      this.props.uploadImage(data)
+      this.props
+        .uploadImage(data)
         .then(({ data: imagePath }) => {
-          this.props.pushToast({ kind: 'success', message: this.props.getMessages('imageUploadSuccess') });
+          this.props.pushToast({
+            kind: 'success',
+            message: this.props.getMessages('imageUploadSuccess'),
+          });
           this.props.onChange(imagePath);
         })
-        .catch(() => this.props.pushToast({ kind: 'error', message: this.props.getMessages('errorWhenUploadImage') }));
+        .catch(() =>
+          this.props.pushToast({
+            kind: 'error',
+            message: this.props.getMessages('errorWhenUploadImage'),
+          }));
     }
-  }
+  };
 
   render() {
     const { imageUrl, getMessages: t } = this.props;
 
     return (
       <div className={styles.base}>
-        {
-          (R.isEmpty(imageUrl) || R.isNil(imageUrl))
-          ?
-            <div
+        {R.isEmpty(imageUrl) || R.isNil(imageUrl)
+          ? <div
               className={c(
                 styles.imageUploadDescription,
-                this.props.isDragEnter && styles.dragEnter,
+                this.props.isDragEnter && styles.dragEnter
               )}
               onDragOver={this.onDragOver}
               onDragEnter={this.onDragEnter}
@@ -130,18 +152,19 @@ class ImageUploader extends Component {
               </div>
             </div>
           : <img
-            src={window.apiUrl.replace('api', 'images/') + this.props.imageUrl}
-            alt="preview"
-            className={c(
-              styles.img,
-              this.props.isDragEnter && styles.dragEnter,
-            )}
-            onDragOver={this.onDragOver}
-            onDragEnter={this.onDragEnter}
-            onDragLeave={this.onDragLeave}
-            onDrop={this.onDrop}
-          />
-        }
+              src={
+                window.apiUrl.replace('api', 'images/') + this.props.imageUrl
+              }
+              alt="preview"
+              className={c(
+                styles.img,
+                this.props.isDragEnter && styles.dragEnter
+              )}
+              onDragOver={this.onDragOver}
+              onDragEnter={this.onDragEnter}
+              onDragLeave={this.onDragLeave}
+              onDrop={this.onDrop}
+            />}
         <Button
           kind="primary"
           className={styles.upload}
@@ -152,7 +175,9 @@ class ImageUploader extends Component {
         <input
           type="file"
           accept=".png,.jpg"
-          ref={(component) => { this.inputFile = component; }}
+          ref={component => {
+            this.inputFile = component;
+          }}
           onChange={this.inputFileOnChange}
           className={styles.inputFile}
         />
@@ -164,5 +189,5 @@ class ImageUploader extends Component {
 export default compose(
   pure,
   withGetMessages(messages, 'ImageUploader'),
-  withState('isDragEnter', 'setIsDragEnter', false),
+  withState('isDragEnter', 'setIsDragEnter', false)
 )(ImageUploader);

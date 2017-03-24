@@ -16,19 +16,21 @@ import CreateTestDeviceDialog from '../dialogs/createTestDevice';
 
 import styles from './styles.css';
 
-const TestDeviceContent = ({
-  devices = [],
-  getMessages: t,
-  openCreateTestDevice,
-  createTestDevice,
-  prototypeId,
-  isCreateTestDevice,
-  setIsCreateTestDevice,
-  deleteDevice,
-  retrievePrototype,
-  uploadDeviceImage,
-  pushToast,
-}) => (
+const TestDeviceContent = (
+  {
+    devices = [],
+    getMessages: t,
+    openCreateTestDevice,
+    createTestDevice,
+    prototypeId,
+    isCreateTestDevice,
+    setIsCreateTestDevice,
+    deleteDevice,
+    retrievePrototype,
+    uploadDeviceImage,
+    pushToast,
+  }
+) => (
   <div className={styles.base}>
     {t('testDevices')}
     <Table className={styles.table}>
@@ -38,20 +40,18 @@ const TestDeviceContent = ({
         <TableCell>{t('deviceKey')}</TableCell>
         <TableCell>{t('lastDataPointTime')}</TableCell>
       </TableHeader>
-      {
-        devices.map(k =>
-          <DeviceList
-            deviceName={k.deviceName}
-            deviceKey={k.deviceKey}
-            deviceId={k.deviceId}
-            updatedAt={k.updatedAt}
-            deleteDevice={deleteDevice}
-            retrievePrototype={retrievePrototype}
-            prototypeId={prototypeId}
-            key={`device-${k.deviceId}`}
-          />,
-        )
-      }
+      {devices.map(k => (
+        <DeviceList
+          deviceName={k.deviceName}
+          deviceKey={k.deviceKey}
+          deviceId={k.deviceId}
+          updatedAt={k.updatedAt}
+          deleteDevice={deleteDevice}
+          retrievePrototype={retrievePrototype}
+          prototypeId={prototypeId}
+          key={`device-${k.deviceId}`}
+        />
+      ))}
     </Table>
     <a onClick={openCreateTestDevice} className={styles.link}>
       <IconAdd size={18} />
@@ -74,5 +74,5 @@ export default compose(
   withGetMessages(messages, 'PrototypeDetail'),
   withHandlers({
     openCreateTestDevice: props => () => props.setIsCreateTestDevice(true),
-  }),
+  })
 )(TestDeviceContent);

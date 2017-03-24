@@ -6,10 +6,7 @@ import prue from 'recompose/pure';
 import styles from './styles.css';
 
 const Dialog = ({ children, className, ...props }) => (
-  <MTKDialog
-    className={c(styles.dialog, className)}
-    {...props}
-  >
+  <MTKDialog className={c(styles.dialog, className)} {...props}>
     {children}
   </MTKDialog>
 );

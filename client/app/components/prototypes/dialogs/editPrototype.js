@@ -14,23 +14,25 @@ import Dialog from '../../common/dialog';
 
 import styles from '../styles.css';
 
-const EditPrototypeDialog = ({
-  selectMenuValue,
-  closeEditPrototype,
-  editPrototypeName,
-  onEditPrototypeNameChange,
-  editPrototypeDescription,
-  onEditPrototypeDescriptionChange,
-  editVersion,
-  onEditVersionChange,
-  editPrototypeImageURL,
-  onEditPrototypeImageURLChange,
-  uploadPrototypeImage,
-  submitEditPrototype,
-  error,
-  pushToast,
-  getMessages: t,
-}) => (
+const EditPrototypeDialog = (
+  {
+    selectMenuValue,
+    closeEditPrototype,
+    editPrototypeName,
+    onEditPrototypeNameChange,
+    editPrototypeDescription,
+    onEditPrototypeDescriptionChange,
+    editVersion,
+    onEditVersionChange,
+    editPrototypeImageURL,
+    onEditPrototypeImageURLChange,
+    uploadPrototypeImage,
+    submitEditPrototype,
+    error,
+    pushToast,
+    getMessages: t,
+  }
+) => (
   <Dialog
     show={selectMenuValue === 'edit'}
     size="large"
@@ -40,10 +42,7 @@ const EditPrototypeDialog = ({
       <div>{t('editPrototype')}</div>
     </DialogHeader>
     <DialogBody className={styles.dialogBody}>
-      <InputForm
-        kind="horizontal"
-        style={{ backgroundColor: 'white' }}
-      >
+      <InputForm kind="horizontal" style={{ backgroundColor: 'white' }}>
         <InputText
           required
           value={editPrototypeName}
@@ -89,34 +88,49 @@ const EditPrototypeDialog = ({
 
 export default compose(
   pure,
-  withState('editPrototypeName', 'setEditPrototypeName', props => props.prototypeName),
-  withState('editPrototypeDescription', 'setEditPrototypeDescription', props => props.prototypeDescription),
+  withState(
+    'editPrototypeName',
+    'setEditPrototypeName',
+    props => props.prototypeName
+  ),
+  withState(
+    'editPrototypeDescription',
+    'setEditPrototypeDescription',
+    props => props.prototypeDescription
+  ),
   withState('editVersion', 'setEditVersion', props => props.version),
-  withState('editPrototypeImageURL', 'setEditPrototypeImageURL', props => props.prototypeImageURL),
+  withState(
+    'editPrototypeImageURL',
+    'setEditPrototypeImageURL',
+    props => props.prototypeImageURL
+  ),
   withState('error', 'setError', false),
   withHandlers({
     onEditVersionChange: props => e => props.setEditVersion(e.target.value),
-    onEditPrototypeDescriptionChange: props => e =>
-      props.setEditPrototypeDescription(e.target.value),
-    onEditPrototypeNameChange: props => (e) => {
-      props.setError(false);
-      props.setEditPrototypeName(e.target.value);
-    },
-    onEditPrototypeImageURLChange: props => imageUrl => props.setEditPrototypeImageURL(imageUrl),
+    onEditPrototypeDescriptionChange: props =>
+      e => props.setEditPrototypeDescription(e.target.value),
+    onEditPrototypeNameChange: props =>
+      e => {
+        props.setError(false);
+        props.setEditPrototypeName(e.target.value);
+      },
+    onEditPrototypeImageURLChange: props =>
+      imageUrl => props.setEditPrototypeImageURL(imageUrl),
     closeEditPrototype: props => () => props.setSelectMenuValue(''),
-    submitEditPrototype: props => () => {
-      if (props.editPrototypeName.length === 0) {
-        props.setError(true);
-      } else {
-        props.setSelectMenuValue('');
-        props.editPrototype(props.prototypeId, {
-          prototypeName: props.editPrototypeName,
-          prototypeDescription: props.editPrototypeDescription,
-          version: props.editVersion,
-          prototypeImageURL: props.editPrototypeImageURL,
-        });
-      }
-    },
+    submitEditPrototype: props =>
+      () => {
+        if (props.editPrototypeName.length === 0) {
+          props.setError(true);
+        } else {
+          props.setSelectMenuValue('');
+          props.editPrototype(props.prototypeId, {
+            prototypeName: props.editPrototypeName,
+            prototypeDescription: props.editPrototypeDescription,
+            version: props.editVersion,
+            prototypeImageURL: props.editPrototypeImageURL,
+          });
+        }
+      },
   }),
-  withGetMessages(messages, 'Prototypes'),
+  withGetMessages(messages, 'Prototypes')
 )(EditPrototypeDialog);

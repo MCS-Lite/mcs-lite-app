@@ -10,8 +10,14 @@ class Clickable extends React.Component {
   }
 
   componentDidMount() {
-    ReactDOM.findDOMNode(this).addEventListener('mouseover', this.onOver.bind(this));
-    ReactDOM.findDOMNode(this).addEventListener('mouseout', this.onOut.bind(this));
+    ReactDOM.findDOMNode(this).addEventListener(
+      'mouseover',
+      this.onOver.bind(this)
+    );
+    ReactDOM.findDOMNode(this).addEventListener(
+      'mouseout',
+      this.onOut.bind(this)
+    );
   }
 
   componentWillUnmount() {

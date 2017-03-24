@@ -34,8 +34,8 @@ const messages = defineMessages({
   'Signup.createAnAccount': {
     id: 'Signup.createAnAccount',
     description: '',
-    defaultMessage: '建立一個帳戶'
-  }
+    defaultMessage: '建立一個帳戶',
+  },
 });
 
 export default messages;

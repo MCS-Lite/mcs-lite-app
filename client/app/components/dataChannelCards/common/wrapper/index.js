@@ -26,36 +26,37 @@ import ControlCardInteger from '../../mcsControlCardInteger';
 
 import styles from './styles.css';
 
-const WrapperLayout = ({
-  displayName,
-  value: {
-    value,
-    period,
-  } = {},
-  title,
-  updatedAt = '',
-  description,
-  isPrototype,
-  isDevice,
-  deviceId,
-  deviceKey,
-  prototypeId,
-  deleteDataChannel,
-  pushToast,
-  isHistoryShow,
-  onShowHistoryClick,
-  retrieveDatachannelDatapoint,
-  setNewDatapointsSet,
-  datapoints,
-  ...props
-}) => (
+const WrapperLayout = (
+  {
+    displayName,
+    value: {
+      value,
+      period,
+    } = {},
+    title,
+    updatedAt = '',
+    description,
+    isPrototype,
+    isDevice,
+    deviceId,
+    deviceKey,
+    prototypeId,
+    deleteDataChannel,
+    pushToast,
+    isHistoryShow,
+    onShowHistoryClick,
+    retrieveDatachannelDatapoint,
+    setNewDatapointsSet,
+    datapoints,
+    ...props
+  }
+) => (
   <DataChannelCard
-    className={c(
-      styles.dataChannelCard,
-      isHistoryShow && styles.withGraph,
-    )}
+    className={c(styles.dataChannelCard, isHistoryShow && styles.withGraph)}
     title={title}
-    subtitle={`Last data point time : ${moment(updatedAt).format('YYYY-MM-DD h:mm')}`}
+    subtitle={
+      `Last data point time : ${moment(updatedAt).format('YYYY-MM-DD h:mm')}`
+    }
     description={description}
     header={
       <More
@@ -70,24 +71,39 @@ const WrapperLayout = ({
       />
     }
   >
-    {displayName === 'Integer_Display' && <DisplayCardInteger value={value} {...props} />}
-    {displayName === 'Hex_Display' && <DisplayCardHex value={value} {...props} />}
-    {displayName === 'PWM_Display' && <DisplayCardPWM value={value} period={period} {...props} />}
-    {displayName === 'String_Display' && <DisplayCardString value={value} {...props} />}
-    {displayName === 'GPIO_Display' && <DisplayCardGPIO value={value} {...props} />}
-    {displayName === 'Switch_Display' && <DisplayCardSwitch value={value} {...props} />}
-    {displayName === 'Float_Display' && <DisplayCardFloat value={value} {...props} />}
-    {displayName === 'Category_Display' && <DisplayCardCategory value={value} {...props} />}
-    {displayName === 'Integer_Control' && <ControlCardInteger value={value} {...props} />}
-    {displayName === 'Hex_Control' && <ControlCardHex value={value} {...props} />}
-    {displayName === 'PWM_Control' && <ControlCardPWM value={value} period={period} {...props} />}
-    {displayName === 'String_Control' && <ControlCardString value={value} {...props} />}
-    {displayName === 'GPIO_Control' && <ControlCardGPIO value={value} {...props} />}
-    {displayName === 'Switch_Control' && <ControlCardSwitch value={value} {...props} />}
-    {displayName === 'Float_Control' && <ControlCardFloat value={value} {...props} />}
-    {displayName === 'Category_Control' && <ControlCardCategory value={value} {...props} />}
-    {
-      isHistoryShow &&
+    {displayName === 'Integer_Display' &&
+      <DisplayCardInteger value={value} {...props} />}
+    {displayName === 'Hex_Display' &&
+      <DisplayCardHex value={value} {...props} />}
+    {displayName === 'PWM_Display' &&
+      <DisplayCardPWM value={value} period={period} {...props} />}
+    {displayName === 'String_Display' &&
+      <DisplayCardString value={value} {...props} />}
+    {displayName === 'GPIO_Display' &&
+      <DisplayCardGPIO value={value} {...props} />}
+    {displayName === 'Switch_Display' &&
+      <DisplayCardSwitch value={value} {...props} />}
+    {displayName === 'Float_Display' &&
+      <DisplayCardFloat value={value} {...props} />}
+    {displayName === 'Category_Display' &&
+      <DisplayCardCategory value={value} {...props} />}
+    {displayName === 'Integer_Control' &&
+      <ControlCardInteger value={value} {...props} />}
+    {displayName === 'Hex_Control' &&
+      <ControlCardHex value={value} {...props} />}
+    {displayName === 'PWM_Control' &&
+      <ControlCardPWM value={value} period={period} {...props} />}
+    {displayName === 'String_Control' &&
+      <ControlCardString value={value} {...props} />}
+    {displayName === 'GPIO_Control' &&
+      <ControlCardGPIO value={value} {...props} />}
+    {displayName === 'Switch_Control' &&
+      <ControlCardSwitch value={value} {...props} />}
+    {displayName === 'Float_Control' &&
+      <ControlCardFloat value={value} {...props} />}
+    {displayName === 'Category_Control' &&
+      <ControlCardCategory value={value} {...props} />}
+    {isHistoryShow &&
       <HistoricalGraph
         dataChannelId={props.id}
         deviceId={deviceId}
@@ -96,8 +112,7 @@ const WrapperLayout = ({
         datapoints={datapoints}
         displayName={displayName}
         setNewDatapointsSet={setNewDatapointsSet}
-      />
-    }
+      />}
   </DataChannelCard>
 );
 
@@ -106,9 +121,12 @@ export default compose(
   withState('isHistoryShow', 'setIsHistoryShow', false),
   withState('commingDatapoints', 'setCommingDatapoints', []),
   withHandlers({
-    onShowHistoryClick: props => () => {
-      props.setIsHistoryShow(!props.isHistoryShow);
-      props.setNewDatapointsSet(R.assoc(props.id, [], props.newDatapointsSet));
-    },
-  }),
+    onShowHistoryClick: props =>
+      () => {
+        props.setIsHistoryShow(!props.isHistoryShow);
+        props.setNewDatapointsSet(
+          R.assoc(props.id, [], props.newDatapointsSet)
+        );
+      },
+  })
 )(WrapperLayout);
