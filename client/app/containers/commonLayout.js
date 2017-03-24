@@ -7,11 +7,7 @@ import { signOut as signOutAction } from '../actions/AppActions';
 
 const CommonLayout = ({ children, main, location: { pathname }, signOut }) => (
   <div>
-    <Header
-      imageUrl={main.userImage}
-      pathname={pathname}
-      signOut={signOut}
-    />
+    <Header imageUrl={main.userImage} pathname={pathname} signOut={signOut} />
     {children}
     <Footer />
   </div>
@@ -19,5 +15,5 @@ const CommonLayout = ({ children, main, location: { pathname }, signOut }) => (
 
 export default compose(
   pure,
-  connect(({ main }) => ({ main }), { signOut: signOutAction }),
+  connect(({ main }) => ({ main }), { signOut: signOutAction })
 )(CommonLayout);

@@ -9,9 +9,7 @@ class Login extends Component {
     this.props.detectErrorMsg();
   }
   render() {
-    return (
-      <LoginLayout {...this.props} />
-    );
+    return <LoginLayout {...this.props} />;
   }
 }
 

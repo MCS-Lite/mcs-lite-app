@@ -20,10 +20,9 @@ class App extends Component {
 
     return (
       <div>
-        {
-          /(login)|(signup)/.test(location.pathname)
-          ? children : (main.isInitialized && children)
-        }
+        {/(login)|(signup)/.test(location.pathname)
+          ? children
+          : main.isInitialized && children}
         <ToastCenter />
       </div>
     );

@@ -17,32 +17,38 @@ it('should redner <ApiHint />', () => {
         { datachannelId: 'datachannelId', datachannelName: 'datachannelName' },
       ]}
       getMessages={R.identity}
-    />,
+    />
   );
 
   expect(wrapper).toMatchSnapshot();
 });
 
-it('should handle tab clicking', (done) => {
+it('should handle tab clicking', done => {
   const wrapper = mount(
     <ThemeProvider theme={theme}>
       <ApiHint
         deviceId="deviceId"
         deviceKey="deviceKey"
         datachannels={[
-          { datachannelId: 'datachannelId', datachannelName: 'datachannelName' },
+          {
+            datachannelId: 'datachannelId',
+            datachannelName: 'datachannelName',
+          },
         ]}
         getMessages={R.identity}
       />
-    </ThemeProvider>,
+    </ThemeProvider>
   );
 
   const arduinoTab = wrapper.find(TabItem).at(1);
 
   // After clicking
   arduinoTab.simulate('click');
-  setTimeout(() => {
-    expect(wrapper.find(Code).props()).toMatchSnapshot();
-    done();
-  }, 500);
+  setTimeout(
+    () => {
+      expect(wrapper.find(Code).props()).toMatchSnapshot();
+      done();
+    },
+    500
+  );
 });

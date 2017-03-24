@@ -36,23 +36,22 @@ class DropdownButton extends Clickable {
         className={c(
           dropButtonStyles.item,
           (isHover || isOpen) && activeStyle,
-          menuStyle,
+          menuStyle
         )}
         onMouseEnter={onMouseEnter}
         onMouseLeave={onMouseLeave}
       >
         <span
           onClick={handleClick}
-          className={c(
-            buttonStyle,
-            (isHover || isOpen) && activeStyle,
-          )}
+          className={c(buttonStyle, (isHover || isOpen) && activeStyle)}
         >
-          { title }
+          {title}
           <MiUnfold
             className={c(
               dropButtonStyles.dropDownIcon,
-              isOpen ? dropButtonStyles.dropDownIconOpen : dropButtonStyles.dropDownIconClose,
+              isOpen
+                ? dropButtonStyles.dropDownIconOpen
+                : dropButtonStyles.dropDownIconClose
             )}
           />
         </span>
@@ -60,19 +59,21 @@ class DropdownButton extends Clickable {
           dropdownMenu
           className={c(
             dropButtonStyles.desktopNav,
-            isOpen ? dropButtonStyles.desktopNavShow : dropButtonStyles.desktopNavHide,
+            isOpen
+              ? dropButtonStyles.desktopNavShow
+              : dropButtonStyles.desktopNavHide
           )}
         >
-          {
-            React.Children.map(children, (child, index) =>
-              React.cloneElement(child, {
-                key: index,
-                className: c(
-                  child.props.className,
-                  children.length === index + 1 ? dropButtonStyles.dropDownIconborder : {},
-                ),
-              }))
-          }
+          {React.Children.map(children, (child, index) =>
+            React.cloneElement(child, {
+              key: index,
+              className: c(
+                child.props.className,
+                children.length === index + 1
+                  ? dropButtonStyles.dropDownIconborder
+                  : {}
+              ),
+            }))}
         </Nav>
       </li>
     );
@@ -88,31 +89,36 @@ export default compose(
   withHandlers({
     onMouseEnter: props => () => props.setIsHover(true),
     onMouseLeave: props => () => props.setIsHover(false),
-    handleClick: props => (e) => {
-      const hide = () => {
-        props.setIsOpen(false);
+    handleClick: props =>
+      e => {
+        const hide = () => {
+          props.setIsOpen(false);
+          if (props.onDocumentClickListener) {
+            props.onDocumentClickListener.remove();
+          }
+
+          if (props.onDocumentKeyupListener) {
+            props.onDocumentKeyupListener.remove();
+          }
+        };
+
+        e.preventDefault();
+        if (props.isOpen) {
+          return hide();
+        }
+
         if (props.onDocumentClickListener) {
           props.onDocumentClickListener.remove();
         }
 
-        if (props.onDocumentKeyupListener) {
-          props.onDocumentKeyupListener.remove();
-        }
-      };
+        props.setIsOpen(true);
 
-      e.preventDefault();
-      if (props.isOpen) {
-        return hide();
-      }
-
-      if (props.onDocumentClickListener) {
-        props.onDocumentClickListener.remove();
-      }
-
-      props.setIsOpen(true);
-
-      props.setOnDocumentClickListener(EventListener.listen(document, 'click', hide));
-      props.setOnDocumentKeyupListener(EventListener.listen(document, 'keyup', hide));
-    },
-  }),
+        props.setOnDocumentClickListener(
+          EventListener.listen(document, 'click', hide)
+        );
+        props.setOnDocumentKeyupListener(
+          EventListener.listen(document, 'keyup', hide)
+        );
+      },
+  })
 )(DropdownButton);

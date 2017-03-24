@@ -9,16 +9,18 @@ import IconSearch from 'mcs-lite-icon/lib/IconSearch';
 
 import styles from './styles.css';
 
-const DateSelector = ({
-  startDate,
-  endDate,
-  startFilter,
-  endFilter,
-  onStartFileterChange,
-  onEndFilterChange,
-  onSerach,
-  onReset,
-}) => (
+const DateSelector = (
+  {
+    startDate,
+    endDate,
+    startFilter,
+    endFilter,
+    onStartFileterChange,
+    onEndFilterChange,
+    onSerach,
+    onReset,
+  }
+) => (
   <div className={styles.base}>
     <InputGroup>
       <div className={styles.iconBlock}>
@@ -61,10 +63,11 @@ export default compose(
     onSerach: props => () => props.onSearch(props.startFilter, props.endFilter),
     onStartFileterChange: props => (e, value) => props.setStartFilter(value),
     onEndFilterChange: props => (e, value) => props.setEndFilter(value),
-    onReset: props => () => {
-      props.setStartFilter(false);
-      props.setEndFilter(false);
-      props.onSearch();
-    },
-  }),
+    onReset: props =>
+      () => {
+        props.setStartFilter(false);
+        props.setEndFilter(false);
+        props.onSearch();
+      },
+  })
 )(DateSelector);

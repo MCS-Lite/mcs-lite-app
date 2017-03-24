@@ -2,10 +2,12 @@ import React from 'react';
 import { compose, pure } from 'recompose';
 import { DataChannelAdapter } from 'mcs-lite-ui';
 
-const PreviewLayout = ({
-  value,
-  format,
-}) => (
+const PreviewLayout = (
+  {
+    value,
+    format,
+  }
+) => (
   <div style={{ width: '100%' }}>
     <DataChannelAdapter
       dataChannelProps={{
@@ -18,6 +20,4 @@ const PreviewLayout = ({
   </div>
 );
 
-export default compose(
-  pure,
-)(PreviewLayout);
+export default compose(pure)(PreviewLayout);

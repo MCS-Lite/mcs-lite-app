@@ -24,45 +24,42 @@ import headerStyles from './header.css';
 const isMenuActive = (listName, pathname) => {
   switch (listName) {
     case 'prototypesList':
-      return (/prototypes/.test(pathname));
+      return /prototypes/.test(pathname);
     case 'devicesList':
-      return (/devices/.test(pathname));
+      return /devices/.test(pathname);
     case 'helpList':
     default:
-      return (/resources/.test(pathname));
+      return /resources/.test(pathname);
   }
 };
 
 const isItemActive = (regPath, pathname) => new RegExp(regPath).test(pathname);
 
-const Header = ({
-  resourcesList,
-  basePath,
-  imageUrl,
-  pathname,
-  onSignOut,
-  getMessages: t,
-}) => (
+const Header = (
+  {
+    resourcesList,
+    basePath,
+    imageUrl,
+    pathname,
+    onSignOut,
+    getMessages: t,
+  }
+) => (
   <header className={headerStyles.base}>
     <div className={headerStyles.mask} />
     <div className={headerStyles.container}>
       <Nav>
-        <NavItem
-          to="/dashboard"
-          linkStyle={headerStyles.logoLink}
-        >
-          <img
-            src={logo}
-            alt="logo"
-            className={headerStyles.logo}
-          />
+        <NavItem to="/dashboard" linkStyle={headerStyles.logoLink}>
+          <img src={logo} alt="logo" className={headerStyles.logo} />
         </NavItem>
       </Nav>
       <Nav>
         <DropdownButton
           buttonStyle={c(
             headerStyles.link,
-            isMenuActive('developmentList', pathname) && headerStyles.activeStyle)}
+            isMenuActive('developmentList', pathname) &&
+              headerStyles.activeStyle
+          )}
           activeStyle={headerStyles.activeStyle}
           title={
             <span>
@@ -75,7 +72,9 @@ const Header = ({
             to="/prototypes"
             className={c(
               headerStyles.menuItem,
-              isItemActive('prototypes', pathname) ? headerStyles.menuItemActive : {},
+              isItemActive('prototypes', pathname)
+                ? headerStyles.menuItemActive
+                : {}
             )}
             linkStyle={headerStyles.menuLink}
             activeStyle={headerStyles.menuItemActive}
@@ -86,8 +85,10 @@ const Header = ({
             to="/devices"
             className={c(
               headerStyles.menuItem,
-              isItemActive('devices', pathname) ? headerStyles.menuItemActive : {},
-              headerStyles.menuItemBorder,
+              isItemActive('devices', pathname)
+                ? headerStyles.menuItemActive
+                : {},
+              headerStyles.menuItemBorder
             )}
             linkStyle={headerStyles.menuLink}
             activeStyle={headerStyles.menuItemActive}
@@ -99,7 +100,7 @@ const Header = ({
           id="resources"
           buttonStyle={c(
             headerStyles.link,
-            isMenuActive('resourcesList', pathname) && headerStyles.activeStyle,
+            isMenuActive('resourcesList', pathname) && headerStyles.activeStyle
           )}
           activeStyle={headerStyles.activeStyle}
           title={
@@ -109,27 +110,31 @@ const Header = ({
             </span>
           }
         >
-          {
-            resourcesList.map((entry, index, array) => (
-              <NavItem
-                key={`nav-${entry.path}`}
-                to={entry.path.startsWith('http') ? entry.path : basePath + entry.path}
-                className={c(
-                  headerStyles.menuItem,
-                  isItemActive(entry.path, pathname) ? headerStyles.menuItemActive : {},
-                  array.length === index + 1 ? headerStyles.menuItemBorder : {},
-                )}
-                isHref
-                linkStyle={headerStyles.menuLink}
-                activeStyle={c(
-                  headerStyles.menuItemActive,
-                  array.length === index + 1 ? headerStyles.menuItemBorder : {},
-                )}
-              >
-                { entry.name }
-              </NavItem>
-            ))
-          }
+          {resourcesList.map((entry, index, array) => (
+            <NavItem
+              key={`nav-${entry.path}`}
+              to={
+                entry.path.startsWith('http')
+                  ? entry.path
+                  : basePath + entry.path
+              }
+              className={c(
+                headerStyles.menuItem,
+                isItemActive(entry.path, pathname)
+                  ? headerStyles.menuItemActive
+                  : {},
+                array.length === index + 1 ? headerStyles.menuItemBorder : {}
+              )}
+              isHref
+              linkStyle={headerStyles.menuLink}
+              activeStyle={c(
+                headerStyles.menuItemActive,
+                array.length === index + 1 ? headerStyles.menuItemBorder : {}
+              )}
+            >
+              {entry.name}
+            </NavItem>
+          ))}
         </DropdownButton>
       </Nav>
       <Nav className={headerStyles.optionalBlock}>
@@ -153,7 +158,9 @@ const Header = ({
             to="/profile"
             className={c(
               headerStyles.menuItem,
-              isItemActive('profile', pathname) ? headerStyles.menuItemActive : {},
+              isItemActive('profile', pathname)
+                ? headerStyles.menuItemActive
+                : {}
             )}
             linkStyle={headerStyles.menuLink}
             activeStyle={headerStyles.menuItemActive}
@@ -167,7 +174,7 @@ const Header = ({
             linkStyle={headerStyles.menuLink}
             activeStyle={c(
               headerStyles.menuItemActive,
-              headerStyles.menuItemBorder,
+              headerStyles.menuItemBorder
             )}
           >
             {t('signout')}
@@ -184,10 +191,11 @@ export default compose(
   withState('resourcesList', 'setResourcesList', resourcesConfig.resourcesList),
   withState('basePath', 'setBasePath', () => `${window.location.origin}/`),
   withHandlers({
-    onSignOut: props => () => {
-      browserHistory.push('/login');
-      props.signOut();
-    },
+    onSignOut: props =>
+      () => {
+        browserHistory.push('/login');
+        props.signOut();
+      },
   }),
-  withGetMessages(messages, 'Header'),
+  withGetMessages(messages, 'Header')
 )(Header);

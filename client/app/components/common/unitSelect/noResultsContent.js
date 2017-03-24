@@ -15,16 +15,18 @@ import styles from './unitSelect.css';
 
 const wrapperProps = { className: styles.noResultsContentInputWrapper };
 
-const NoResultsContent = ({
-  error,
-  onCancelNewUnitValue,
-  onSubmitNewUnit,
-  generalUnitName,
-  generalUnitSymbol,
-  onUnitNameChange,
-  onUnitSymbolChange,
-  getMessages: t,
-}) => (
+const NoResultsContent = (
+  {
+    error,
+    onCancelNewUnitValue,
+    onSubmitNewUnit,
+    generalUnitName,
+    generalUnitSymbol,
+    onUnitNameChange,
+    onUnitSymbolChange,
+    getMessages: t,
+  }
+) => (
   <div className={styles.noResultsContent}>
     <div className={styles.noResultsHint}>
       {t('noResultsFound')}
@@ -56,16 +58,10 @@ const NoResultsContent = ({
       />
     </div>
     <div className={styles.buttonWrap}>
-      <Button
-        kind="cancel"
-        onClick={onCancelNewUnitValue}
-      >
+      <Button kind="cancel" onClick={onCancelNewUnitValue}>
         {t('cancel')}
       </Button>
-      <Button
-        className={styles.save}
-        onClick={onSubmitNewUnit}
-      >
+      <Button className={styles.save} onClick={onSubmitNewUnit}>
         {t('save')}
       </Button>
     </div>
@@ -78,25 +74,28 @@ export default compose(
   withState('error', 'setError', false),
   withHandlers({
     onUnitNameChange: props => e => props.setGeneralUnitName(e.target.value),
-    onUnitSymbolChange: props => e => props.setGeneralUnitSymbol(e.target.value),
-    onCancelNewUnitValue: props => () => {
-      props.setGeneralUnitName('');
-      props.setGeneralUnitSymbol('');
-    },
-    onSubmitNewUnit: props => () => {
-      const newUnitType = {
-        name: props.generalUnitName,
-        symbol: props.generalUnitSymbol,
-      };
-      if (props.generalUnitName.length === 0) {
-        props.setError(true);
-      } else {
-        props.createUnitTypes(newUnitType);
-        props.setGeneralUnitName(props.generalUnitName);
+    onUnitSymbolChange: props =>
+      e => props.setGeneralUnitSymbol(e.target.value),
+    onCancelNewUnitValue: props =>
+      () => {
+        props.setGeneralUnitName('');
         props.setGeneralUnitSymbol('');
-        props.onFormatChange('unit', newUnitType);
-      }
-    },
+      },
+    onSubmitNewUnit: props =>
+      () => {
+        const newUnitType = {
+          name: props.generalUnitName,
+          symbol: props.generalUnitSymbol,
+        };
+        if (props.generalUnitName.length === 0) {
+          props.setError(true);
+        } else {
+          props.createUnitTypes(newUnitType);
+          props.setGeneralUnitName(props.generalUnitName);
+          props.setGeneralUnitSymbol('');
+          props.onFormatChange('unit', newUnitType);
+        }
+      },
   }),
-  withGetMessages(messages, 'UnitSelect'),
+  withGetMessages(messages, 'UnitSelect')
 )(NoResultsContent);

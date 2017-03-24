@@ -18,48 +18,52 @@ const TemplateTag = ({ getMessages }) => (
   <div className={styles.isTemplateTag}>{getMessages('prototypeTemplate')}</div>
 );
 
-const PrototypeDetailHeaderLayout = ({
-  user: {
-    userName,
-  } = {},
-  prototypeName,
-  prototypeId,
-  prototypeDescription,
-  prototypeImageURL,
-  prototype,
-  version,
-  isCreateTestDevice,
-  isDropdownOpen,
-  setIsCreateTestDevice,
-  openCreateTestDevice,
-  createTestDevice,
-  onMenuChange,
-  onMenuShowChange,
-  selectMenuValue,
-  editPrototype,
-  onClone,
-  onCancel,
-  deletePrototype,
-  setSelectMenuValue,
-  dropdownItems,
-  uploadPrototypeImage,
-  uploadDeviceImage,
-  pushToast,
-  readOnly,
-  isTemplate,
-  openClonePrototype,
-  getMessages: t,
-}) => (
+const PrototypeDetailHeaderLayout = (
+  {
+    user: {
+      userName,
+    } = {},
+    prototypeName,
+    prototypeId,
+    prototypeDescription,
+    prototypeImageURL,
+    prototype,
+    version,
+    isCreateTestDevice,
+    isDropdownOpen,
+    setIsCreateTestDevice,
+    openCreateTestDevice,
+    createTestDevice,
+    onMenuChange,
+    onMenuShowChange,
+    selectMenuValue,
+    editPrototype,
+    onClone,
+    onCancel,
+    deletePrototype,
+    setSelectMenuValue,
+    dropdownItems,
+    uploadPrototypeImage,
+    uploadDeviceImage,
+    pushToast,
+    readOnly,
+    isTemplate,
+    openClonePrototype,
+    getMessages: t,
+  }
+) => (
   <div className={styles.base}>
     <div className={styles.content}>
       <div className={styles.info}>
         <div className={styles.infoHeader}>
-          { isTemplate && <TemplateTag getMessages={t} />}
+          {isTemplate && <TemplateTag getMessages={t} />}
           <Heading level={2}>{prototypeName}</Heading>
           <span>{`(ID: ${prototypeId})`}</span>
         </div>
         <div>
-          <span className={styles.createUser}>{`${t('createUser')}${userName}`}</span>
+          <span className={styles.createUser}>
+            {`${t('createUser')}${userName}`}
+          </span>
           <span>{`${t('version')}${version}`}</span>
         </div>
       </div>
@@ -75,63 +79,55 @@ const PrototypeDetailHeaderLayout = ({
         <Button onClick={readOnly ? openClonePrototype : openCreateTestDevice}>
           {readOnly ? t('createPrototypeFromTemplate') : t('createTestDevice')}
         </Button>
-        {
-          !readOnly &&
-            <WithDropdownMenu
-              dropdownItems={dropdownItems}
-              onChange={onMenuChange}
-              onMenuShowChange={onMenuShowChange}
-              menuClassName={styles.menu}
-            >
-              <Button kind="default">
-                <div
-                  className={c(
-                    styles.dropdownButtonContent,
-                    isDropdownOpen && styles.dropdownOpen,
-                  )}
-                >
-                  {t('more')}<IconFold size={18} />
-                </div>
-              </Button>
-            </WithDropdownMenu>
-        }
-        {
-          selectMenuValue === 'clone' &&
-            <CreatePrototype
-              type="clone"
-              title={t('cloneFromExistingPrototype')}
-              introduction={t('cloneFromExistingPrototypeIntro')}
-              template={prototype}
-              onClone={onClone}
-              onCancel={onCancel}
-              uploadPrototypeImage={uploadPrototypeImage}
-              pushToast={pushToast}
-            />
-        }
-        {
-          selectMenuValue === 'edit' &&
-            <EditPrototype
-              editPrototype={editPrototype}
-              prototypeId={prototypeId}
-              prototypeName={prototypeName}
-              prototypeImageURL={prototypeImageURL}
-              version={version}
-              prototypeDescription={prototypeDescription}
-              selectMenuValue={selectMenuValue}
-              setSelectMenuValue={setSelectMenuValue}
-              uploadPrototypeImage={uploadPrototypeImage}
-              pushToast={pushToast}
-            />
-        }
-        {
-          selectMenuValue === 'delete' &&
-            <DeletePrototype
-              deletePrototype={deletePrototype}
-              prototypeId={prototypeId}
-              selectMenuValue={selectMenuValue}
-              setSelectMenuValue={setSelectMenuValue}
-            />
-          }
+        {!readOnly &&
+          <WithDropdownMenu
+            dropdownItems={dropdownItems}
+            onChange={onMenuChange}
+            onMenuShowChange={onMenuShowChange}
+            menuClassName={styles.menu}
+          >
+            <Button kind="default">
+              <div
+                className={c(
+                  styles.dropdownButtonContent,
+                  isDropdownOpen && styles.dropdownOpen
+                )}
+              >
+                {t('more')}<IconFold size={18} />
+              </div>
+            </Button>
+          </WithDropdownMenu>}
+        {selectMenuValue === 'clone' &&
+          <CreatePrototype
+            type="clone"
+            title={t('cloneFromExistingPrototype')}
+            introduction={t('cloneFromExistingPrototypeIntro')}
+            template={prototype}
+            onClone={onClone}
+            onCancel={onCancel}
+            uploadPrototypeImage={uploadPrototypeImage}
+            pushToast={pushToast}
+          />}
+        {selectMenuValue === 'edit' &&
+          <EditPrototype
+            editPrototype={editPrototype}
+            prototypeId={prototypeId}
+            prototypeName={prototypeName}
+            prototypeImageURL={prototypeImageURL}
+            version={version}
+            prototypeDescription={prototypeDescription}
+            selectMenuValue={selectMenuValue}
+            setSelectMenuValue={setSelectMenuValue}
+            uploadPrototypeImage={uploadPrototypeImage}
+            pushToast={pushToast}
+          />}
+        {selectMenuValue === 'delete' &&
+          <DeletePrototype
+            deletePrototype={deletePrototype}
+            prototypeId={prototypeId}
+            selectMenuValue={selectMenuValue}
+            setSelectMenuValue={setSelectMenuValue}
+          />}
       </div>
     </div>
     <Hr className={styles.hr} />
@@ -147,9 +143,7 @@ export default compose(
   withProps(({ getMessages: t, readOnly }) => {
     if (readOnly) {
       return {
-        dropdownItems: [
-          { value: 'clone', children: t('clone') },
-        ],
+        dropdownItems: [{ value: 'clone', children: t('clone') }],
       };
     }
 
@@ -169,5 +163,5 @@ export default compose(
     onMenuShowChange: props => value => props.setIsDropdownOpen(value),
     onClone: props => (id, data) => props.clonePrototype(id, data),
     onCancel: props => () => props.setSelectMenuValue(''),
-  }),
+  })
 )(PrototypeDetailHeaderLayout);

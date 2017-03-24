@@ -24,16 +24,18 @@ const Column = ({ label, children }) => (
   </div>
 );
 
-const ProfilePanel = ({
-  userName,
-  email,
-  onEditUserNameClick,
-  onChangePasswordClick,
-  userImage,
-  uploadProfileImage,
-  pushToast,
-  getMessages: t,
-}) => (
+const ProfilePanel = (
+  {
+    userName,
+    email,
+    onEditUserNameClick,
+    onChangePasswordClick,
+    userImage,
+    uploadProfileImage,
+    pushToast,
+    getMessages: t,
+  }
+) => (
   <Panel className={styles.panel}>
     <PanelHeader>
       <PanelIcon icon={<IconAccount size={24} />} />
@@ -50,28 +52,19 @@ const ProfilePanel = ({
         />
       </div>
       <div>
-        <Column
-          label={t('userName')}
-        >
+        <Column label={t('userName')}>
           {userName}
-          <A
-            className={styles.editUserName}
-            onClick={onEditUserNameClick}
-          >
+          <A className={styles.editUserName} onClick={onEditUserNameClick}>
             {t('editUserName')}
           </A>
         </Column>
         <Column label="Email">{email}</Column>
-        <Column
-          label={t('password')}
-        >
+        <Column label={t('password')}>
           <A onClick={onChangePasswordClick}>
             {t('editPassword')}
           </A>
         </Column>
-        <Column
-          label={t('language')}
-        >
+        <Column label={t('language')}>
           繁體中文
         </Column>
       </div>
@@ -85,5 +78,5 @@ export default compose(
     onEditUserNameClick: props => () => props.setDialogShow('editUserName'),
     onChangePasswordClick: props => () => props.setDialogShow('changePassword'),
   }),
-  withGetMessages(messages, 'Profile'),
+  withGetMessages(messages, 'Profile')
 )(ProfilePanel);

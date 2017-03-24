@@ -6,7 +6,7 @@ import messages from '../../messages';
 import styles from './styles.css';
 
 class UploadJSONLink extends Component {
-  inputFileOnChange = (e) => {
+  inputFileOnChange = e => {
     const fr = new FileReader();
     const file = e.target.files[0];
 
@@ -17,9 +17,12 @@ class UploadJSONLink extends Component {
     if (file) {
       fr.readAsText(file);
     } else {
-      this.props.pushToast({ kind: 'error', message: this.props.getMessages('errorWhenUploadJSON') });
+      this.props.pushToast({
+        kind: 'error',
+        message: this.props.getMessages('errorWhenUploadJSON'),
+      });
     }
-  }
+  };
 
   render() {
     const { getMessages: t } = this.props;
@@ -32,7 +35,9 @@ class UploadJSONLink extends Component {
         <input
           type="file"
           accept=".json"
-          ref={(c) => { this.fileInput = c; }}
+          ref={c => {
+            this.fileInput = c;
+          }}
           className={styles.fileInput}
           onChange={this.inputFileOnChange}
         />
@@ -41,7 +46,6 @@ class UploadJSONLink extends Component {
   }
 }
 
-export default compose(
-  pure,
-  withGetMessages(messages, 'Dialogs'),
-)(UploadJSONLink);
+export default compose(pure, withGetMessages(messages, 'Dialogs'))(
+  UploadJSONLink
+);

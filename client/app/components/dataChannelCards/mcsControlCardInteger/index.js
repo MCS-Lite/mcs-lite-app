@@ -1,17 +1,16 @@
 import React from 'react';
-import {
-  compose,
-  pure,
-} from 'recompose';
+import { compose, pure } from 'recompose';
 import { DataChannelAdapter } from 'mcs-lite-ui';
 
-const DisplayStringLayout = ({
-  value,
-  onChangeDatachannel,
-  id,
-  format,
-  onSubmit,
-}) => (
+const DisplayStringLayout = (
+  {
+    value,
+    onChangeDatachannel,
+    id,
+    format,
+    onSubmit,
+  }
+) => (
   <DataChannelAdapter
     dataChannelProps={{
       id,
@@ -36,6 +35,4 @@ const DisplayStringLayout = ({
   />
 );
 
-export default compose(
-  pure,
-)(DisplayStringLayout);
+export default compose(pure)(DisplayStringLayout);

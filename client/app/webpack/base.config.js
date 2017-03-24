@@ -15,9 +15,7 @@ const CSS_LOADER_LIST = [
 
 export default {
   context: path.resolve(__dirname, '../'),
-  entry: [
-    path.resolve(__dirname, '../scripts/client.js'),
-  ],
+  entry: [path.resolve(__dirname, '../scripts/client.js')],
   output: {
     path: path.resolve(__dirname, '../build/'),
     filename: 'assets/client.js',
@@ -48,23 +46,27 @@ export default {
       },
       {
         test: /\.css$/,
-        exclude: [
-          /normalize\.css/,
-          /codemirror\.css/,
-        ],
-        loader: cssExtractor.extract(CSS_LOADER_LIST[0], CSS_LOADER_LIST.slice(1).join('!'), { publicPath: '/' }),
+        exclude: [/normalize\.css/, /codemirror\.css/],
+        loader: cssExtractor.extract(
+          CSS_LOADER_LIST[0],
+          CSS_LOADER_LIST.slice(1).join('!'),
+          { publicPath: '/' }
+        ),
       },
       {
         test: /\.css$/,
-        include: [
-          /normalize\.css/,
-          /codemirror\.css/,
-        ],
+        include: [/normalize\.css/, /codemirror\.css/],
         loader: vendorCssExtractor.extract('style', 'css', { publicPath: '/' }),
       },
-      { test: /\.svg\?v=[0-9]\.[0-9]\.[0-9]$/, loaders: ['url?limit=10000&minetype=application/font-woff', 'img']},
-      { test: /\.(svg|png|jpg|jpeg)$/, loaders: ['url?limit=10000&name=./assets/[name].[ext]']},
-      { test: /\.json$/, loaders: ['json']},
+      {
+        test: /\.svg\?v=[0-9]\.[0-9]\.[0-9]$/,
+        loaders: ['url?limit=10000&minetype=application/font-woff', 'img'],
+      },
+      {
+        test: /\.(svg|png|jpg|jpeg)$/,
+        loaders: ['url?limit=10000&name=./assets/[name].[ext]'],
+      },
+      { test: /\.json$/, loaders: ['json'] },
     ],
   },
   postcss() {

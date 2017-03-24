@@ -7,36 +7,36 @@ import CreatePrototype from '../../common/dialogs/createPrototype';
 
 import styles from './styles.css';
 
-const NewPrototypeCardLayout = ({
-  isCreatePrototype,
-  openCreatePrototype,
-  retrievePrototypeTemplates,
-  retrievePrototypeList,
-  prototypeTemplates,
-  getMessages: t,
-  onCreate,
-  onClone,
-  onCancel,
-  uploadPrototypeImage,
-  pushToast,
-  importJSON,
-}) => (
+const NewPrototypeCardLayout = (
+  {
+    isCreatePrototype,
+    openCreatePrototype,
+    retrievePrototypeTemplates,
+    retrievePrototypeList,
+    prototypeTemplates,
+    getMessages: t,
+    onCreate,
+    onClone,
+    onCancel,
+    uploadPrototypeImage,
+    pushToast,
+    importJSON,
+  }
+) => (
   <div className={styles.base}>
-    {
-      isCreatePrototype &&
-        <CreatePrototype
-          type="new"
-          onCreate={onCreate}
-          onCancel={onCancel}
-          onClone={onClone}
-          templates={prototypeTemplates}
-          retrievePrototypeTemplates={retrievePrototypeTemplates}
-          retrievePrototypeList={retrievePrototypeList}
-          uploadPrototypeImage={uploadPrototypeImage}
-          pushToast={pushToast}
-          importJSON={importJSON}
-        />
-    }
+    {isCreatePrototype &&
+      <CreatePrototype
+        type="new"
+        onCreate={onCreate}
+        onCancel={onCancel}
+        onClone={onClone}
+        templates={prototypeTemplates}
+        retrievePrototypeTemplates={retrievePrototypeTemplates}
+        retrievePrototypeList={retrievePrototypeList}
+        uploadPrototypeImage={uploadPrototypeImage}
+        pushToast={pushToast}
+        importJSON={importJSON}
+      />}
     {t('createYourPrototypeNow')}
     <Button
       type="submit"
@@ -54,16 +54,18 @@ export default compose(
   withState('isCreatePrototype', 'setIsCreatePrototype', false),
   withHandlers({
     openCreatePrototype: props => () => props.setIsCreatePrototype(true),
-    onCreate: props => value => props.createNewPrototype(value)
-      .then(() => {
-        props.pushToast({
-          kind: 'success',
-          message: props.getMessages('createPrototypeSuccess'),
-        });
-        props.retrievePrototypeList();
-      }),
-    onClone: props => (id, data) => props.clonePrototype(id, data)
-      .then(() => props.retrievePrototypeList()),
+    onCreate: props => value => props.createNewPrototype(value).then(() => {
+          props.pushToast({
+            kind: 'success',
+            message: props.getMessages('createPrototypeSuccess'),
+          });
+          props.retrievePrototypeList();
+        }),
+    onClone: props =>
+      (id, data) =>
+        props
+          .clonePrototype(id, data)
+          .then(() => props.retrievePrototypeList()),
     onCancel: props => () => props.setIsCreatePrototype(false),
-  }),
+  })
 )(NewPrototypeCardLayout);

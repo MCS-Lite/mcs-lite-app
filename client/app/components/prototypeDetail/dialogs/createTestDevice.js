@@ -14,26 +14,24 @@ import Dialog from '../../common/dialog';
 
 import styles from './styles.css';
 
-const CreateTestDeviceDialog = ({
-  isCreateTestDevice,
-  closeCreateTestDevice,
-  submitCreateTestDevice,
-  onTestDeviceNameChange,
-  onTestDeviceDescriptionChange,
-  onTestDeviceImageURLChange,
-  testDeviceName,
-  testDeviceDescription,
-  testDeviceImageURL,
-  error,
-  uploadDeviceImage,
-  pushToast,
-  getMessages: t,
-}) => (
-  <Dialog
-    show={isCreateTestDevice}
-    size="large"
-    onHide={closeCreateTestDevice}
-  >
+const CreateTestDeviceDialog = (
+  {
+    isCreateTestDevice,
+    closeCreateTestDevice,
+    submitCreateTestDevice,
+    onTestDeviceNameChange,
+    onTestDeviceDescriptionChange,
+    onTestDeviceImageURLChange,
+    testDeviceName,
+    testDeviceDescription,
+    testDeviceImageURL,
+    error,
+    uploadDeviceImage,
+    pushToast,
+    getMessages: t,
+  }
+) => (
+  <Dialog show={isCreateTestDevice} size="large" onHide={closeCreateTestDevice}>
     <DialogHeader>
       <div>{t('title')}</div>
     </DialogHeader>
@@ -84,31 +82,36 @@ export default compose(
   withState('testDeviceImageURL', 'setTestDeviceImageURL', ''),
   withState('error', 'setError', false),
   withHandlers({
-    onTestDeviceNameChange: props => (e) => {
-      props.setTestDeviceName(e.target.value);
-      props.setError(false);
-    },
-    onTestDeviceDescriptionChange: props => e => props.setTestDeviceDescription(e.target.value),
-    onTestDeviceImageURLChange: props => imageURL => props.setTestDeviceImageURL(imageURL),
-    closeCreateTestDevice: props => () => {
-      props.setTestDeviceName('');
-      props.setTestDeviceDescription('');
-      props.setTestDeviceImageURL('');
-      props.setError(false);
-      props.setIsCreateTestDevice(false);
-    },
-    submitCreateTestDevice: props => () => {
-      if (props.testDeviceName.length === 0) {
-        props.setError(true);
-      } else {
-        const data = {
-          deviceName: props.testDeviceName,
-          deviceDescription: props.testDeviceDescription,
-          deviceImageURL: props.testDeviceImageURL,
-          prototypeId: props.prototypeId,
-        };
-        props.createTestDevice(data);
-      }
-    },
-  }),
- )(CreateTestDeviceDialog);
+    onTestDeviceNameChange: props =>
+      e => {
+        props.setTestDeviceName(e.target.value);
+        props.setError(false);
+      },
+    onTestDeviceDescriptionChange: props =>
+      e => props.setTestDeviceDescription(e.target.value),
+    onTestDeviceImageURLChange: props =>
+      imageURL => props.setTestDeviceImageURL(imageURL),
+    closeCreateTestDevice: props =>
+      () => {
+        props.setTestDeviceName('');
+        props.setTestDeviceDescription('');
+        props.setTestDeviceImageURL('');
+        props.setError(false);
+        props.setIsCreateTestDevice(false);
+      },
+    submitCreateTestDevice: props =>
+      () => {
+        if (props.testDeviceName.length === 0) {
+          props.setError(true);
+        } else {
+          const data = {
+            deviceName: props.testDeviceName,
+            deviceDescription: props.testDeviceDescription,
+            deviceImageURL: props.testDeviceImageURL,
+            prototypeId: props.prototypeId,
+          };
+          props.createTestDevice(data);
+        }
+      },
+  })
+)(CreateTestDeviceDialog);

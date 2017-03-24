@@ -14,19 +14,12 @@ export default class PanelIcon extends React.Component {
     const {
       className,
       children,
-      ...otherProps,
+      ...otherProps
     } = this.props;
 
     return (
-      <div {...otherProps}
-        className={c(
-          styles.base,
-          className,
-        )}
-      >
-        {
-          children
-        }
+      <div {...otherProps} className={c(styles.base, className)}>
+        {children}
       </div>
     );
   }

@@ -34,51 +34,51 @@ export default {
   helpList: [
     {
       name: 'FAQ',
-      path: 'faq'
-    }
+      path: 'faq',
+    },
   ],
   tutorialList: [
     {
       name: 'Development cycle',
-      path: 'development_cycle'
+      path: 'development_cycle',
     },
     {
       name: 'Getting started',
-      path: 'tutorial/getting_started'
+      path: 'tutorial/getting_started',
     },
     {
       name: 'Connect device',
-      path: 'tutorial/connect_device'
+      path: 'tutorial/connect_device',
     },
     {
       name: 'Linkit ONE',
-      path: 'tutorial/implementing_using_linkit_one'
+      path: 'tutorial/implementing_using_linkit_one',
     },
     {
       name: 'LinkIt Connect 7681',
-      path: 'tutorial/implementing_using_mt7681_development_board'
+      path: 'tutorial/implementing_using_mt7681_development_board',
     },
     {
       name: 'Trigger and action',
-      path: 'tutorial/setting_notification'
+      path: 'tutorial/setting_notification',
     },
     {
       name: 'User privilege',
-      path: 'tutorial/setting_user_privilege'
+      path: 'tutorial/setting_user_privilege',
     },
     {
       name: 'Firmware',
-      path: 'tutorial/managing_firmware'
-    }
+      path: 'tutorial/managing_firmware',
+    },
   ],
   otherList: [
     {
       name: 'Terms of use',
-      path: 'terms_of_use'
+      path: 'terms_of_use',
     },
     {
       name: 'LinkIt™ Connect 7681 Firmware Update Instruction',
-      path: '7681_firmware_update'
-    }
-  ]
+      path: '7681_firmware_update',
+    },
+  ],
 };

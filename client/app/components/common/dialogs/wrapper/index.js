@@ -8,42 +8,33 @@ import { withGetMessages } from 'react-intl-inject-hoc';
 import messages from '../messages';
 import Dialog from '../../../common/dialog';
 
-const DialogWrapper = ({
-  size,
-  show,
-  title,
-  children,
-  onCancel,
-  onConfirm,
-  confirmText,
-  dialogBodyClassName,
-  getMessages: t,
-}) => (
-  <Dialog
-    show={show}
-    size={size}
-    onHide={onCancel}
-  >
+const DialogWrapper = (
+  {
+    size,
+    show,
+    title,
+    children,
+    onCancel,
+    onConfirm,
+    confirmText,
+    dialogBodyClassName,
+    getMessages: t,
+  }
+) => (
+  <Dialog show={show} size={size} onHide={onCancel}>
     <DialogHeader>{title}</DialogHeader>
     <DialogBody className={dialogBodyClassName}>{children}</DialogBody>
     <DialogFooter>
-      <Button
-        kind="cancel"
-        onClick={onCancel}
-      >
+      <Button kind="cancel" onClick={onCancel}>
         {t('cancel')}
       </Button>
-      <Button
-        kind="primary"
-        onClick={onConfirm}
-      >
+      <Button kind="primary" onClick={onConfirm}>
         {confirmText}
       </Button>
     </DialogFooter>
   </Dialog>
 );
 
-export default compose(
-  pure,
-  withGetMessages(messages, 'Dialogs'),
-)(DialogWrapper);
+export default compose(pure, withGetMessages(messages, 'Dialogs'))(
+  DialogWrapper
+);

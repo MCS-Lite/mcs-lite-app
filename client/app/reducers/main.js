@@ -17,7 +17,7 @@ export default function main(state = initialState, action) {
         userId: action.userId,
         userName: action.userName,
         isAdmin: action.isAdmin,
-        userImage: (isNil(action.userImage) || isEmpty(action.userImage))
+        userImage: isNil(action.userImage) || isEmpty(action.userImage)
           ? undefined
           : window.apiUrl.replace('api', 'images/') + action.userImage,
         email: action.email,

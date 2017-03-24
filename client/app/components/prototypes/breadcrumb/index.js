@@ -13,9 +13,11 @@ import { default as withHandlers } from 'recompose/withHandlers';
 import messages from '../messages';
 import { withGetMessages } from 'react-intl-inject-hoc';
 
-const BreadcrumbLayout = ({
-  getMessages: t,
-}) => {
+const BreadcrumbLayout = (
+  {
+    getMessages: t,
+  }
+) => {
   const Breadcrumbs = [
     { children: t('development') },
     { children: t('prototype'), href: '/prototypes', active: true },
@@ -26,9 +28,8 @@ const BreadcrumbLayout = ({
       <Breadcrumb items={Breadcrumbs} />
     </div>
   );
-}
+};
 
-export default compose(
-  pure,
-  withGetMessages(messages, 'Prototypes'),
-)(BreadcrumbLayout);
+export default compose(pure, withGetMessages(messages, 'Prototypes'))(
+  BreadcrumbLayout
+);

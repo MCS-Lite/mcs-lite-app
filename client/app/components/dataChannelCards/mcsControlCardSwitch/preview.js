@@ -4,9 +4,11 @@ import { DataChannelAdapter } from 'mcs-lite-ui';
 
 import styles from './styles.css';
 
-const PreviewLayout = ({
-  value,
-}) => (
+const PreviewLayout = (
+  {
+    value,
+  }
+) => (
   <div className={styles.base}>
     <DataChannelAdapter
       dataChannelProps={{
@@ -18,6 +20,4 @@ const PreviewLayout = ({
   </div>
 );
 
-export default compose(
-  pure,
-)(PreviewLayout);
+export default compose(pure)(PreviewLayout);

@@ -9,7 +9,7 @@ const PanelHeaderNavItem = ({ onClick, children, active }) => (
     onClick={onClick}
     className={c(
       styles.panelHeaderNavItem,
-      active && styles.panelHeaderNavItemActive,
+      active && styles.panelHeaderNavItemActive
     )}
   >
     {children}
@@ -22,18 +22,16 @@ const PanelHeaderNav = pure(({
   onItemClick,
 }) => (
   <div className={styles.panelHeaderNav}>
-    {
-      items.map((item = {}) => (
-        <PanelHeaderNavItem
-          value={item.value}
-          active={value === item.value}
-          onClick={onItemClick(item.value)}
-          key={`navItem-${item.value}`}
-        >
-          {item.children}
-        </PanelHeaderNavItem>
-      ))
-    }
+    {items.map((item = {}) => (
+      <PanelHeaderNavItem
+        value={item.value}
+        active={value === item.value}
+        onClick={onItemClick(item.value)}
+        key={`navItem-${item.value}`}
+      >
+        {item.children}
+      </PanelHeaderNavItem>
+    ))}
   </div>
 ));
 
@@ -42,5 +40,5 @@ export default compose(
   withState('activeValue', 'setActiveValue', ''),
   withHandlers({
     onItemClick: props => value => () => props.onChange(value),
-  }),
+  })
 )(PanelHeaderNav);

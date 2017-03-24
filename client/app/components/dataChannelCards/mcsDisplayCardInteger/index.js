@@ -2,11 +2,13 @@ import React from 'react';
 import { pure } from 'recompose';
 import { DataChannelAdapter } from 'mcs-lite-ui';
 
-const DisplayIntegerLayout = ({
-  value = 0,
-  id,
-  format,
-}) => (
+const DisplayIntegerLayout = (
+  {
+    value = 0,
+    id,
+    format,
+  }
+) => (
   <DataChannelAdapter
     dataChannelProps={{
       id,

@@ -24,29 +24,31 @@ import Preview from '../../preview';
 
 import styles from './styles.css';
 
-const CreateDataChannelDialog = ({
-  isCreateDataChannel,
-  closeCreateDataChannel,
-  onDataChannelNameChange,
-  onDataChannelIdChange,
-  onDataChannelDescriptionChange,
-  dataChannelName,
-  dataChannelId,
-  dataChannelDescription,
-  submitCreateDataChannel,
-  onDataChannelTypeChange,
-  dataChannelType,
-  dataChannelTypesOptions,
-  format,
-  setFormat,
-  onFormatChange,
-  error,
-  setError,
-  getMessages: t,
-  retrieveUnitTypes,
-  createUnitTypes,
-  unitTypes,
-}) => (
+const CreateDataChannelDialog = (
+  {
+    isCreateDataChannel,
+    closeCreateDataChannel,
+    onDataChannelNameChange,
+    onDataChannelIdChange,
+    onDataChannelDescriptionChange,
+    dataChannelName,
+    dataChannelId,
+    dataChannelDescription,
+    submitCreateDataChannel,
+    onDataChannelTypeChange,
+    dataChannelType,
+    dataChannelTypesOptions,
+    format,
+    setFormat,
+    onFormatChange,
+    error,
+    setError,
+    getMessages: t,
+    retrieveUnitTypes,
+    createUnitTypes,
+    unitTypes,
+  }
+) => (
   <Dialog
     show={isCreateDataChannel}
     size="large"
@@ -57,10 +59,7 @@ const CreateDataChannelDialog = ({
       <div>{t('addNewDataChannel')}</div>
     </DialogHeader>
     <DialogBody className={styles.dialogBody}>
-      <InputForm
-        kind="horizontal"
-        style={{ backgroundColor: 'white' }}
-      >
+      <InputForm kind="horizontal" style={{ backgroundColor: 'white' }}>
         <InputText
           required
           label={t('dataChannelName')}
@@ -95,7 +94,7 @@ const CreateDataChannelDialog = ({
           error={error.dataChannelType ? t('required') : ''}
           valueRenderer={(value = {}) => {
             let children;
-            dataChannelTypesOptions.forEach((k) => {
+            dataChannelTypesOptions.forEach(k => {
               if (k.value === value) {
                 children = k.children;
               }
@@ -139,22 +138,22 @@ export default compose(
   withState('format', 'setFormat', {}),
   withState('error', 'setError', {}),
   withProps(({ displayCardType }) => {
-    const treatedData = data.map((k) => {
+    const treatedData = data.map(k => {
       const value = k.type === 1
         ? `${k.dataChannelTypeName}_Control`
         : `${k.dataChannelTypeName}_Display`;
       return { ...k, value };
     });
 
-    const dataChannelTypesOptions = treatedData.reduce((acc, k) => {
-      if (displayCardType === k.type) {
-        return [
-          ...acc,
-          { value: k.value, children: k.dataChannelTypeName },
-        ];
-      }
-      return acc;
-    }, []);
+    const dataChannelTypesOptions = treatedData.reduce(
+      (acc, k) => {
+        if (displayCardType === k.type) {
+          return [...acc, { value: k.value, children: k.dataChannelTypeName }];
+        }
+        return acc;
+      },
+      []
+    );
 
     return {
       data: treatedData,
@@ -163,81 +162,91 @@ export default compose(
   }),
   withHandlers({
     closeCreateDataChannel: props => () => props.setIsCreateDataChannel(false),
-    onDataChannelNameChange: props => (e) => {
-      props.setError({
-        ...props.error,
-        dataChannelName: false,
-      });
-      props.setDataChannelName(e.target.value);
-    },
-    onDataChannelIdChange: props => (e) => {
-      props.setError({
-        ...props.error,
-        dataChannelId: false,
-      });
-      props.setDataChannelId(e.target.value);
-    },
-    onDataChannelDescriptionChange: props => e => props.setDataChannelDescription(e.target.value),
-    onDataChannelTypeChange: props => (e, value) => {
-      const { dataChannelTypeId, dataChannelTypeName } =
-        props.data.find((k = {}) => k.value === value) || {};
-      const channelType = {
-        id: dataChannelTypeId,
-        name: dataChannelTypeName,
-      };
+    onDataChannelNameChange: props =>
+      e => {
+        props.setError({
+          ...props.error,
+          dataChannelName: false,
+        });
+        props.setDataChannelName(e.target.value);
+      },
+    onDataChannelIdChange: props =>
+      e => {
+        props.setError({
+          ...props.error,
+          dataChannelId: false,
+        });
+        props.setDataChannelId(e.target.value);
+      },
+    onDataChannelDescriptionChange: props =>
+      e => props.setDataChannelDescription(e.target.value),
+    onDataChannelTypeChange: props =>
+      (e, value) => {
+        const { dataChannelTypeId, dataChannelTypeName } = props.data.find(
+          (k = {}) => k.value === value
+        ) || {};
+        const channelType = {
+          id: dataChannelTypeId,
+          name: dataChannelTypeName,
+        };
 
-      props.setChannelType(channelType);
-      props.setDataChannelType(value);
-      props.setFormat({});
-      props.setError({});
-    },
-    onFormatChange: props => (key, value) => {
-      props.setFormat({
-        ...props.format,
-        [key]: {
-          ...props.format[key],
-          value,
-        },
-      });
-      props.setError({
-        ...props.error,
-        [key]: false,
-      });
-    },
-    submitCreateDataChannel: props => () => {
-      props.setError({});
-      let data = {};
+        props.setChannelType(channelType);
+        props.setDataChannelType(value);
+        props.setFormat({});
+        props.setError({});
+      },
+    onFormatChange: props =>
+      (key, value) => {
+        props.setFormat({
+          ...props.format,
+          [key]: {
+            ...props.format[key],
+            value,
+          },
+        });
+        props.setError({
+          ...props.error,
+          [key]: false,
+        });
+      },
+    submitCreateDataChannel: props =>
+      () => {
+        props.setError({});
+        let data = {};
 
-      data.type = props.displayCardType;
-      data.id = props.dataChannelId;
-      data.description = props.dataChannelDescription;
-      data.name = props.dataChannelName;
-      data.format = props.format;
-      data.channelType = props.channelType;
-      data.isHidden = true;
+        data.type = props.displayCardType;
+        data.id = props.dataChannelId;
+        data.description = props.dataChannelDescription;
+        data.name = props.dataChannelName;
+        data.format = props.format;
+        data.channelType = props.channelType;
+        data.isHidden = true;
 
-      let error = {};
-      if (data.id === '') error.dataChannelId = true;
-      if (data.name === '') error.dataChannelName = true;
-      if (!data.channelType.id) error.dataChannelType = true;
+        let error = {};
+        if (data.id === '') error.dataChannelId = true;
+        if (data.name === '') error.dataChannelName = true;
+        if (!data.channelType.id) error.dataChannelType = true;
 
-      Object.keys(props.format).forEach((k) => {
-        if (props.format[k].required && (!props.format[k].value || props.format[k].value === '')) {
-          error[k] = true;
+        Object.keys(props.format).forEach(k => {
+          if (
+            props.format[k].required &&
+            (!props.format[k].value || props.format[k].value === '')
+          ) {
+            error[k] = true;
+          }
+        });
+
+        if (Object.keys(error).length === 0) {
+          props.createDataChannel(props.prototypeId, data).then(() =>
+            props.pushToast({
+              kind: 'success',
+              message: props.getMessages('addNewDataChannelSuccess'),
+            }));
+          props.setIsCreateDataChannel(false);
+          props.setIsSelectCreateDataChannel(false);
+        } else {
+          props.setError(error);
         }
-      });
-
-      if (Object.keys(error).length === 0) {
-        props.createDataChannel(props.prototypeId, data)
-          .then(() => props.pushToast({
-            kind: 'success',
-            message: props.getMessages('addNewDataChannelSuccess'),
-          }));
-        props.setIsCreateDataChannel(false);
-        props.setIsSelectCreateDataChannel(false);
-      } else {
-        props.setError(error);
-      }
-    },
-  }),
+      },
+  })
 )(CreateDataChannelDialog);

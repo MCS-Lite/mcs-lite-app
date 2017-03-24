@@ -7,33 +7,33 @@ import PrototypeCard from './card';
 
 import styles from './styles.css';
 
-const filteByName = key => ({ prototypeName }) =>
-  prototypeName.toLowerCase().includes(key.toLowerCase());
+const filteByName = key =>
+  ({ prototypeName }) =>
+    prototypeName.toLowerCase().includes(key.toLowerCase());
 
-const Prototypes = ({
-  prototypes,
-  createNewPrototype,
-  retrievePrototypeTemplates,
-  retrievePrototypeList,
-  clonePrototype,
-  filterKey,
-  setFilterKey,
-  uploadPrototypeImage,
-  pushToast,
-  exportJSON,
-  importJSON,
-  ...props
-}) => {
+const Prototypes = (
+  {
+    prototypes,
+    createNewPrototype,
+    retrievePrototypeTemplates,
+    retrievePrototypeList,
+    clonePrototype,
+    filterKey,
+    setFilterKey,
+    uploadPrototypeImage,
+    pushToast,
+    exportJSON,
+    importJSON,
+    ...props
+  }
+) => {
   const prototypeTemplates = prototypes.prototypeTemplates;
 
   return (
     <div>
       <div className={styles.base}>
         <Breadcrumb />
-        <PanelHeader
-          filterKey={filterKey}
-          setFilterKey={setFilterKey}
-        />
+        <PanelHeader filterKey={filterKey} setFilterKey={setFilterKey} />
         <div className={styles.content}>
           <NewPrototypeCard
             createNewPrototype={createNewPrototype}
@@ -45,8 +45,9 @@ const Prototypes = ({
             pushToast={pushToast}
             importJSON={importJSON}
           />
-          {
-            prototypes.prototypeList.filter(filteByName(filterKey)).map(prototype =>
+          {prototypes.prototypeList
+            .filter(filteByName(filterKey))
+            .map(prototype => (
               <PrototypeCard
                 key={prototype.prototypeId}
                 prototype={prototype}
@@ -56,16 +57,14 @@ const Prototypes = ({
                 pushToast={pushToast}
                 exportJSON={exportJSON}
                 {...props}
-              />,
-            )
-          }
+              />
+            ))}
         </div>
       </div>
     </div>
   );
 };
 
-export default compose(
-  pure,
-  withState('filterKey', 'setFilterKey', ''),
-)(Prototypes);
+export default compose(pure, withState('filterKey', 'setFilterKey', ''))(
+  Prototypes
+);

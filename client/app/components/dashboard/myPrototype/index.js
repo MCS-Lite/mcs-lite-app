@@ -44,18 +44,15 @@ const LastUpdatePrototype = pure(({
       <img
         src={
           prototypeImageURL
-          ? window.apiUrl.replace('api', 'images/') + prototypeImageURL
-          : productBanner
+            ? window.apiUrl.replace('api', 'images/') + prototypeImageURL
+            : productBanner
         }
         className={styles.prototypeImg}
         alt="banner"
       />
       <div className={styles.cell}>
         <span>{t('prototypeName')}</span>
-        <Link
-          to={`/prototypes/${prototypeId}`}
-          className={styles.link}
-        >
+        <Link to={`/prototypes/${prototypeId}`} className={styles.link}>
           {prototypeName}
         </Link>
       </div>
@@ -65,72 +62,64 @@ const LastUpdatePrototype = pure(({
       </div>
     </div>
     <a
-      className={c(
-        styles.link,
-        isDeviceListShow && styles.listOpen,
-      )}
+      className={c(styles.link, isDeviceListShow && styles.listOpen)}
       onClick={() => setIsDeviceListShow(!isDeviceListShow)}
     >
       {t('testDeviceList')}
       <IconFold size={18} />
     </a>
-    {
-      isDeviceListShow &&
-        <Table className={styles.deviceList}>
-          <TableHeader>
-            <TableCell>{t('deviceName')}</TableCell>
-            <TableCell>{t('deviceId')}</TableCell>
-            <TableCell>{t('deviceKey')}</TableCell>
-            <TableCell>{t('lastDataPointTime')}</TableCell>
-          </TableHeader>
-          {
-            devices.length === 0
-            ? <div className={styles.noDevices}>{t('noAnyDevice')}</div>
-            :
-              devices.map(device => (
-                <DeviceList
-                  deviceId={device.deviceId}
-                  deviceKey={device.deviceKey}
-                  updatedAt={device.updatedAt}
-                  deviceName={device.deviceName}
-                  key={device.deviceId}
-                />
-              ))
-          }
-        </Table>
-    }
+    {isDeviceListShow &&
+      <Table className={styles.deviceList}>
+        <TableHeader>
+          <TableCell>{t('deviceName')}</TableCell>
+          <TableCell>{t('deviceId')}</TableCell>
+          <TableCell>{t('deviceKey')}</TableCell>
+          <TableCell>{t('lastDataPointTime')}</TableCell>
+        </TableHeader>
+        {devices.length === 0
+          ? <div className={styles.noDevices}>{t('noAnyDevice')}</div>
+          : devices.map(device => (
+              <DeviceList
+                deviceId={device.deviceId}
+                deviceKey={device.deviceKey}
+                updatedAt={device.updatedAt}
+                deviceName={device.deviceName}
+                key={device.deviceId}
+              />
+            ))}
+      </Table>}
   </div>
 ));
 
-const MyPrototypeLayout = ({
-  getMessages: t,
-  isCreatePrototype,
-  openCreatePrototype,
-  userPrototypes,
-  isDeviceListShow,
-  setIsDeviceListShow,
-  onCreate,
-  onClone,
-  onCancel,
-  retrievePrototypeTemplates,
-  templates,
-  uploadPrototypeImage,
-  pushToast,
-}) => (
+const MyPrototypeLayout = (
+  {
+    getMessages: t,
+    isCreatePrototype,
+    openCreatePrototype,
+    userPrototypes,
+    isDeviceListShow,
+    setIsDeviceListShow,
+    onCreate,
+    onClone,
+    onCancel,
+    retrievePrototypeTemplates,
+    templates,
+    uploadPrototypeImage,
+    pushToast,
+  }
+) => (
   <div className={styles.base}>
-    {
-      isCreatePrototype &&
-        <CreatePrototype
-          type="new"
-          onCreate={onCreate}
-          onClone={onClone}
-          onCancel={onCancel}
-          retrievePrototypeTemplates={retrievePrototypeTemplates}
-          templates={templates}
-          uploadPrototypeImage={uploadPrototypeImage}
-          pushToast={pushToast}
-        />
-    }
+    {isCreatePrototype &&
+      <CreatePrototype
+        type="new"
+        onCreate={onCreate}
+        onClone={onClone}
+        onCancel={onCancel}
+        retrievePrototypeTemplates={retrievePrototypeTemplates}
+        templates={templates}
+        uploadPrototypeImage={uploadPrototypeImage}
+        pushToast={pushToast}
+      />}
     <Panel>
       <PanelHeader className={styles.panelHeader}>
         <PanelIcon icon={<IconOverview />} />
@@ -142,17 +131,13 @@ const MyPrototypeLayout = ({
         <Heading level={4}>
           {t('lastUpdatePrototype')}
         </Heading>
-        <Link
-          to="/prototypes"
-          className={styles.link}
-        >
+        <Link to="/prototypes" className={styles.link}>
           {t('allPrototypes')}
         </Link>
       </div>
       <Hr />
-      {
-        userPrototypes.prototypeId ?
-          <LastUpdatePrototype
+      {userPrototypes.prototypeId
+        ? <LastUpdatePrototype
             prototypeName={userPrototypes.prototypeName}
             prototypeId={userPrototypes.prototypeId}
             prototypeImageURL={userPrototypes.prototypeImageURL}
@@ -162,14 +147,16 @@ const MyPrototypeLayout = ({
             setIsDeviceListShow={setIsDeviceListShow}
             t={t}
           />
-        :
-          <div className={styles.noAnyPrototypes}>
+        : <div className={styles.noAnyPrototypes}>
             <p>{t('noAnyPrototypes')}</p>
-            <Button type="submit" className={styles.button} onClick={openCreatePrototype}>
+            <Button
+              type="submit"
+              className={styles.button}
+              onClick={openCreatePrototype}
+            >
               {t('create')}
             </Button>
-          </div>
-      }
+          </div>}
     </PanelBody>
   </div>
 );
@@ -180,11 +167,13 @@ export default compose(
   withState('isDeviceListShow', 'setIsDeviceListShow', false),
   withHandlers({
     openCreatePrototype: props => () => props.setIsCreatePrototype(true),
-    onCreate: props => data => props.createNewPrototype(data)
-      .then(() => props.retrieveDashboard()),
-    onClone: props => (id, data) => props.clonePrototype(id, data)
-      .then(() => props.retrieveDashboard()),
+    onCreate: props =>
+      data =>
+        props.createNewPrototype(data).then(() => props.retrieveDashboard()),
+    onClone: props =>
+      (id, data) =>
+        props.clonePrototype(id, data).then(() => props.retrieveDashboard()),
     onCancel: props => () => props.setIsCreatePrototype(false),
   }),
-  withGetMessages(messages, 'Dashboard'),
+  withGetMessages(messages, 'Dashboard')
 )(MyPrototypeLayout);

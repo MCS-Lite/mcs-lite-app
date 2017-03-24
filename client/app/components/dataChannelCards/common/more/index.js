@@ -8,13 +8,15 @@ import WithDropdownMenu from '../../../common/withDropdownMenu';
 
 import styles from './more.css';
 
-const MoreLayout = ({
-  onSelectedMenuValueChange,
-  selectedMenuValue,
-  setSelectedMenuValue,
-  onDeleteDataChannel,
-  dropdownItems,
-}) => (
+const MoreLayout = (
+  {
+    onSelectedMenuValueChange,
+    selectedMenuValue,
+    setSelectedMenuValue,
+    onDeleteDataChannel,
+    dropdownItems,
+  }
+) => (
   <div className={styles.base}>
     <WithDropdownMenu
       dropdownItems={dropdownItems}
@@ -22,13 +24,11 @@ const MoreLayout = ({
     >
       <IconMoreVert size={24} className={styles.icon} />
     </WithDropdownMenu>
-    {
-      selectedMenuValue === 'delete' &&
+    {selectedMenuValue === 'delete' &&
       <DeleteConfirmDialog
         onDeleteSubmit={onDeleteDataChannel}
         setSelectedMenuValue={setSelectedMenuValue}
-      />
-    }
+      />}
   </div>
 );
 
@@ -37,7 +37,7 @@ export default compose(
   withGetMessages(messages, 'More'),
   withProps(({ getMessages: t, isPrototype, isDevice, isHistoryShow }) => {
     if (isPrototype) {
-      return { dropdownItems: [{ value: 'delete', children: t('delete') }]};
+      return { dropdownItems: [{ value: 'delete', children: t('delete') }] };
     } else if (isDevice) {
       return {
         dropdownItems: [
@@ -52,17 +52,28 @@ export default compose(
   }),
   withState('selectedMenuValue', 'setSelectedMenuValue', 'none'),
   withHandlers({
-    onSelectedMenuValueChange: props => (value) => {
-      props.setSelectedMenuValue(value);
-      if (value === 'openHistory') {
-        props.onShowHistoryClick();
-      }
-    },
-    onDeleteDataChannel: props => () => {
-      props.deleteDataChannel(props.prototypeId, props.dataChannelId)
-        .then(() => props.pushToast({ kind: 'success', message: props.getMessages('deleteSuccess') }))
-        .catch(() => props.pushToast({ kind: 'error', message: props.getMessages('deleteFailed') }));
-      props.setSelectedMenuValue('none');
-    },
-  }),
+    onSelectedMenuValueChange: props =>
+      value => {
+        props.setSelectedMenuValue(value);
+        if (value === 'openHistory') {
+          props.onShowHistoryClick();
+        }
+      },
+    onDeleteDataChannel: props =>
+      () => {
+        props
+          .deleteDataChannel(props.prototypeId, props.dataChannelId)
+          .then(() =>
+            props.pushToast({
+              kind: 'success',
+              message: props.getMessages('deleteSuccess'),
+            }))
+          .catch(() =>
+            props.pushToast({
+              kind: 'error',
+              message: props.getMessages('deleteFailed'),
+            }));
+        props.setSelectedMenuValue('none');
+      },
+  })
 )(MoreLayout);

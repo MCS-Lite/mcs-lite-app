@@ -14,20 +14,24 @@ import messages from '../../messages';
 
 import styles from './styles.css';
 
-const DisplayCardLayout = ({
-  title,
-  description,
-  submitDisplayCard,
-  getMessages: t,
-  displayCardType,
-}) => (
+const DisplayCardLayout = (
+  {
+    title,
+    description,
+    submitDisplayCard,
+    getMessages: t,
+    displayCardType,
+  }
+) => (
   <div className={styles.base}>
     <div className={styles.content}>
-      {
-        displayCardType === 1
+      {displayCardType === 1
         ? <ControlSwitch onSubmit={() => {}} value={1} />
-        : <DisplayStatus labels={['OFF', 'ON']} value={0} style={{ width: 110, height: 48 }} />
-      }
+        : <DisplayStatus
+            labels={['OFF', 'ON']}
+            value={0}
+            style={{ width: 110, height: 48 }}
+          />}
     </div>
     <b className={styles.title}>{title}</b>
     <Hr className={styles.hr} />
@@ -43,10 +47,11 @@ const DisplayCardLayout = ({
 export default compose(
   pure,
   withHandlers({
-    submitDisplayCard: props => () => {
-      props.setIsCreateDataChannel(true);
-      props.setDisplayCardType(props.displayCardType);
-    },
+    submitDisplayCard: props =>
+      () => {
+        props.setIsCreateDataChannel(true);
+        props.setDisplayCardType(props.displayCardType);
+      },
   }),
-  withGetMessages(messages, 'PrototypeDetail'),
+  withGetMessages(messages, 'PrototypeDetail')
 )(DisplayCardLayout);

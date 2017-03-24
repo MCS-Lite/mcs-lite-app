@@ -13,25 +13,27 @@ import PanelHeaderNav from '../../common/panelHeaderNav';
 
 import styles from './styles.css';
 
-const PanelContentLayout = ({
-  prototypeId,
-  selectPanelValue,
-  createDataChannel,
-  deleteDataChannel,
-  datachannels,
-  devices,
-  createTestDevice,
-  retrieveUnitTypes,
-  createUnitTypes,
-  unitTypes,
-  pushToast,
-  navItems,
-  onNavChange,
-  deleteDevice,
-  retrievePrototype,
-  uploadDeviceImage,
-  readOnly,
-}) => (
+const PanelContentLayout = (
+  {
+    prototypeId,
+    selectPanelValue,
+    createDataChannel,
+    deleteDataChannel,
+    datachannels,
+    devices,
+    createTestDevice,
+    retrieveUnitTypes,
+    createUnitTypes,
+    unitTypes,
+    pushToast,
+    navItems,
+    onNavChange,
+    deleteDevice,
+    retrievePrototype,
+    uploadDeviceImage,
+    readOnly,
+  }
+) => (
   <div className={styles.base}>
     <Panel>
       <PanelHeader>
@@ -43,32 +45,28 @@ const PanelContentLayout = ({
         />
       </PanelHeader>
       <PanelBody className={styles.body}>
-        {
-          selectPanelValue === 'datachannel' &&
-            <DataChannelContent
-              datachannels={datachannels}
-              createDataChannel={createDataChannel}
-              deleteDataChannel={deleteDataChannel}
-              prototypeId={prototypeId}
-              retrieveUnitTypes={retrieveUnitTypes}
-              createUnitTypes={createUnitTypes}
-              unitTypes={unitTypes}
-              pushToast={pushToast}
-              readOnly={readOnly}
-            />
-        }
-        {
-          selectPanelValue === 'testDevices' &&
-            <TestDeviceContent
-              createTestDevice={createTestDevice}
-              devices={devices}
-              prototypeId={prototypeId}
-              deleteDevice={deleteDevice}
-              retrievePrototype={retrievePrototype}
-              uploadDeviceImage={uploadDeviceImage}
-              pushToast={pushToast}
-            />
-        }
+        {selectPanelValue === 'datachannel' &&
+          <DataChannelContent
+            datachannels={datachannels}
+            createDataChannel={createDataChannel}
+            deleteDataChannel={deleteDataChannel}
+            prototypeId={prototypeId}
+            retrieveUnitTypes={retrieveUnitTypes}
+            createUnitTypes={createUnitTypes}
+            unitTypes={unitTypes}
+            pushToast={pushToast}
+            readOnly={readOnly}
+          />}
+        {selectPanelValue === 'testDevices' &&
+          <TestDeviceContent
+            createTestDevice={createTestDevice}
+            devices={devices}
+            prototypeId={prototypeId}
+            deleteDevice={deleteDevice}
+            retrievePrototype={retrievePrototype}
+            uploadDeviceImage={uploadDeviceImage}
+            pushToast={pushToast}
+          />}
       </PanelBody>
     </Panel>
   </div>
@@ -81,17 +79,28 @@ export default compose(
     onNavChange: props => value => props.setSelectPanelValue(value),
   }),
   withGetMessages(messages, 'PrototypeDetail'),
-  withProps(props => props.readOnly
-    ? ({
-      navItems: [
-        { value: 'datachannel', children: props.getMessages('datachannel') },
-      ],
-    })
-    : ({
-      navItems: [
-        { value: 'datachannel', children: props.getMessages('datachannel') },
-        { value: 'testDevices', children: props.getMessages('testDevices') },
-      ],
-    }),
-  ),
+  withProps(
+    props =>
+      props.readOnly
+        ? {
+            navItems: [
+              {
+                value: 'datachannel',
+                children: props.getMessages('datachannel'),
+              },
+            ],
+          }
+        : {
+            navItems: [
+              {
+                value: 'datachannel',
+                children: props.getMessages('datachannel'),
+              },
+              {
+                value: 'testDevices',
+                children: props.getMessages('testDevices'),
+              },
+            ],
+          }
+  )
 )(PanelContentLayout);

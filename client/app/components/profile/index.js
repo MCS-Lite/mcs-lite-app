@@ -14,16 +14,18 @@ import ChangePasswordDialog from './dialogs/changePasswordDialog';
 
 import styles from './styles.css';
 
-const Profile = ({
-  main = {},
-  setDialogShow,
-  dialogShow,
-  editUserName,
-  changePassword,
-  uploadProfileImage,
-  pushToast,
-  getMessages: t,
-}) => {
+const Profile = (
+  {
+    main = {},
+    setDialogShow,
+    dialogShow,
+    editUserName,
+    changePassword,
+    uploadProfileImage,
+    pushToast,
+    getMessages: t,
+  }
+) => {
   const breadcrumbs = [
     {
       children: t('profile'),
@@ -44,23 +46,19 @@ const Profile = ({
           pushToast={pushToast}
         />
       </div>
-      {
-        dialogShow === 'editUserName' &&
+      {dialogShow === 'editUserName' &&
         <EditUserNameDialog
           userName={main.userName}
           setDialogShow={setDialogShow}
           editUserName={editUserName}
           pushToast={pushToast}
-        />
-      }
-      {
-        dialogShow === 'changePassword' &&
+        />}
+      {dialogShow === 'changePassword' &&
         <ChangePasswordDialog
           setDialogShow={setDialogShow}
           changePassword={changePassword}
           pushToast={pushToast}
-        />
-      }
+        />}
     </div>
   );
 };
@@ -68,5 +66,5 @@ const Profile = ({
 export default compose(
   pure,
   withState('dialogShow', 'setDialogShow', 'none'),
-  withGetMessages(messages, 'Profile'),
+  withGetMessages(messages, 'Profile')
 )(Profile);

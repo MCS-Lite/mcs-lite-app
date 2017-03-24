@@ -12,15 +12,17 @@ import styles from './styles.css';
 
 import messages from './messages';
 
-const TextDisplayType = ({
-  limit,
-  required,
-  keyName,
-  onChange,
-  value,
-  getMessages: t,
-  ...props
-}) => (
+const TextDisplayType = (
+  {
+    limit,
+    required,
+    keyName,
+    onChange,
+    value,
+    getMessages: t,
+    ...props
+  }
+) => (
   <div className={styles.base}>
     <div className={c(required && styles.requiredLabel)}>
       {t(keyName)}
@@ -39,10 +41,11 @@ const TextDisplayType = ({
 export default compose(
   pure,
   withHandlers({
-    onChange: props => (e) => {
-      props.onSetError(props.keyName);
-      props.onFormatChange(props.keyName, e.target.value);
-    },
+    onChange: props =>
+      e => {
+        props.onSetError(props.keyName);
+        props.onFormatChange(props.keyName, e.target.value);
+      },
   }),
-  withGetMessages(messages, 'Text'),
+  withGetMessages(messages, 'Text')
 )(TextDisplayType);

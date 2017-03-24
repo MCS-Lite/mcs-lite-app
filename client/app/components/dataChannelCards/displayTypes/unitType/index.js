@@ -11,15 +11,17 @@ import messages from './messages';
 
 import styles from './styles.css';
 
-const UnitType = ({
-  required,
-  onFormatChange,
-  getMessages: t,
-  value,
-  createUnitTypes,
-  unitTypes,
-  error,
-}) => (
+const UnitType = (
+  {
+    required,
+    onFormatChange,
+    getMessages: t,
+    value,
+    createUnitTypes,
+    unitTypes,
+    error,
+  }
+) => (
   <div className={styles.base}>
     <div className={styles.inputSelectWrap}>
       <div className={c(required && styles.requiredLabel)}>
@@ -33,12 +35,10 @@ const UnitType = ({
         error={error}
       />
     </div>
-    {
-      error &&
+    {error &&
       <div className={styles.errorMessage}>
         {t('unitTypeError')}
-      </div>
-    }
+      </div>}
   </div>
 );
 
@@ -49,5 +49,5 @@ export default compose(
     componentWillMount() {
       this.props.retrieveUnitTypes();
     },
-  }),
+  })
 )(UnitType);

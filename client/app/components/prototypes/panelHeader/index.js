@@ -13,11 +13,13 @@ import messages from '../messages';
 
 import styles from './styles.css';
 
-const PanelHeaderLayout = ({
-  getMessages: t,
-  filterKey,
-  onInputTextChange,
-}) => (
+const PanelHeaderLayout = (
+  {
+    getMessages: t,
+    filterKey,
+    onInputTextChange,
+  }
+) => (
   <div className={styles.base}>
     <Panel>
       <PanelHeader>
@@ -44,5 +46,5 @@ export default compose(
   withGetMessages(messages, 'Prototypes'),
   withHandlers({
     onInputTextChange: props => e => props.setFilterKey(e.target.value),
-  }),
+  })
 )(PanelHeaderLayout);

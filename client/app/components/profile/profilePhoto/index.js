@@ -18,8 +18,15 @@ const cropImage = (file, image, maxImageSize) => {
   canvas.width = destEdgeLength;
   canvas.height = destEdgeLength;
   context.drawImage(
-    image, sourceX, sourceY, sourceEdgeLength, sourceEdgeLength,
-    0, 0, destEdgeLength, destEdgeLength,
+    image,
+    sourceX,
+    sourceY,
+    sourceEdgeLength,
+    sourceEdgeLength,
+    0,
+    0,
+    destEdgeLength,
+    destEdgeLength
   );
 
   const dataUrl = canvas.toDataURL(file.type, 0.5);
@@ -30,27 +37,43 @@ const cropImage = (file, image, maxImageSize) => {
     imageArray[i] = byteString.charCodeAt(i);
   }
 
-  return new File([imageArray], file.name, { type: file.type, lastModified: Date.now() });
+  return new File([imageArray], file.name, {
+    type: file.type,
+    lastModified: Date.now(),
+  });
 };
 
 class ProfilePhoto extends React.Component {
+  onClick = () => this.inputFile.click();
+  bindInputFile = ref => {
+    this.inputFile = ref;
+  };
 
-  onClick = () => this.inputFile.click()
-  bindInputFile = (ref) => { this.inputFile = ref; }
-
-  handleUpload = (uploadingFile) => {
+  handleUpload = uploadingFile => {
     if (uploadingFile.size > 2048 * 1024) {
-      this.props.pushToast({ kind: 'error', message: this.props.getMessages('fileSizeExceeds') });
+      this.props.pushToast({
+        kind: 'error',
+        message: this.props.getMessages('fileSizeExceeds'),
+      });
     } else {
       const data = new FormData();
       data.append('file', uploadingFile);
-      this.props.uploadProfileImage(data)
-        .then(() => this.props.pushToast({ kind: 'success', message: this.props.getMessages('imageUploadSuccess') }))
-        .catch(() => this.props.pushToast({ kind: 'error', message: this.props.getMessages('errorWhenUploadImage') }));
+      this.props
+        .uploadProfileImage(data)
+        .then(() =>
+          this.props.pushToast({
+            kind: 'success',
+            message: this.props.getMessages('imageUploadSuccess'),
+          }))
+        .catch(() =>
+          this.props.pushToast({
+            kind: 'error',
+            message: this.props.getMessages('errorWhenUploadImage'),
+          }));
     }
-  }
+  };
 
-  inputFileOnChange = (e) => {
+  inputFileOnChange = e => {
     const fr = new FileReader();
     const img = new Image();
     const file = e.target.files[0];
@@ -67,9 +90,12 @@ class ProfilePhoto extends React.Component {
     if (file) {
       fr.readAsDataURL(file);
     } else {
-      this.props.pushToast({ kind: 'error', message: this.props.getMessages('errorWhenUploadImage') });
+      this.props.pushToast({
+        kind: 'error',
+        message: this.props.getMessages('errorWhenUploadImage'),
+      });
     }
-  }
+  };
 
   render() {
     return (
@@ -96,7 +122,6 @@ class ProfilePhoto extends React.Component {
   }
 }
 
-export default compose(
-  pure,
-  withGetMessages(messages, 'Profile'),
-)(ProfilePhoto);
+export default compose(pure, withGetMessages(messages, 'Profile'))(
+  ProfilePhoto
+);

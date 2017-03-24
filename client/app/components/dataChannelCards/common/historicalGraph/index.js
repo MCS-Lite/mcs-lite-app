@@ -9,35 +9,33 @@ import DateSelector from './dateSelector';
 
 import styles from './styles.css';
 
-const HistoricalGraph = ({
-  data,
-  XAxisProps,
-  tooltipProps,
-  type,
-  startDate,
-  endDate,
-  onDateSelectorSearch,
-  getMessages: t,
-}) => (
+const HistoricalGraph = (
+  {
+    data,
+    XAxisProps,
+    tooltipProps,
+    type,
+    startDate,
+    endDate,
+    onDateSelectorSearch,
+    getMessages: t,
+  }
+) => (
   <div className={styles.base}>
-    {
-      data.length > 0
+    {data.length > 0
       ? <DataPointAreaChart
-        data={data}
-        XAxisProps={XAxisProps}
-        tooltipProps={tooltipProps}
-        type={type}
-      />
-      : <div className={styles.noData}>{t('noData')}</div>
-    }
-    {
-      data.length > 0 &&
-        <DateSelector
-          startDate={startDate}
-          endDate={endDate}
-          onSearch={onDateSelectorSearch}
+          data={data}
+          XAxisProps={XAxisProps}
+          tooltipProps={tooltipProps}
+          type={type}
         />
-    }
+      : <div className={styles.noData}>{t('noData')}</div>}
+    {data.length > 0 &&
+      <DateSelector
+        startDate={startDate}
+        endDate={endDate}
+        onSearch={onDateSelectorSearch}
+      />}
   </div>
 );
 
@@ -50,7 +48,11 @@ export default compose(
         deviceKey,
         dataChannelId,
       } = this.props;
-      this.props.retrieveDatachannelDatapoint(deviceId, deviceKey, dataChannelId);
+      this.props.retrieveDatachannelDatapoint(
+        deviceId,
+        deviceKey,
+        dataChannelId
+      );
     },
   }),
   withGetMessages(messages, 'HistoricalGraph'),
@@ -65,28 +67,52 @@ export default compose(
     },
     tooltipProps: {
       formatter: value => `${t('datapoint')} ${value}`,
-      labelFormatter: value => `${t('time')} ${moment(value).format('YYYY-MM-DD HH:mm')}`,
+      labelFormatter: value =>
+        `${t('time')} ${moment(value).format('YYYY-MM-DD HH:mm')}`,
     },
-    type: R.contains(
-      displayName,
-      ['Switch_Display', 'Switch_Control', 'GPIO_Display', 'GPIO_Control'],
-    ) ? 'step' : 'linear',
-    startDate: R.pipe(R.head, R.propOr(new Date(), 'updatedAt'), u => new Date(u))(datapoints),
-    endDate: R.pipe(R.last, R.propOr(new Date(), 'updatedAt'), u => new Date(u))(datapoints),
+    type: R.contains(displayName, [
+      'Switch_Display',
+      'Switch_Control',
+      'GPIO_Display',
+      'GPIO_Control',
+    ])
+      ? 'step'
+      : 'linear',
+    startDate: R.pipe(
+      R.head,
+      R.propOr(new Date(), 'updatedAt'),
+      u => new Date(u)
+    )(datapoints),
+    endDate: R.pipe(
+      R.last,
+      R.propOr(new Date(), 'updatedAt'),
+      u => new Date(u)
+    )(datapoints),
   })),
   withHandlers({
-    onDateSelectorSearch: props => (startDate, endDate) => {
-      const { deviceId, deviceKey, dataChannelId } = props;
-      const start = startDate || props.startDate.getTime();
-      const end = endDate || props.endDate.getTime();
+    onDateSelectorSearch: props =>
+      (startDate, endDate) => {
+        const { deviceId, deviceKey, dataChannelId } = props;
+        const start = startDate || props.startDate.getTime();
+        const end = endDate || props.endDate.getTime();
 
-      if (startDate || endDate) {
-        props.retrieveDatachannelDatapoint(deviceId, deviceKey, dataChannelId, start, end);
-      } else {
-        props.retrieveDatachannelDatapoint(deviceId, deviceKey, dataChannelId);
-      }
+        if (startDate || endDate) {
+          props.retrieveDatachannelDatapoint(
+            deviceId,
+            deviceKey,
+            dataChannelId,
+            start,
+            end
+          );
+        } else {
+          props.retrieveDatachannelDatapoint(
+            deviceId,
+            deviceKey,
+            dataChannelId
+          );
+        }
 
-      props.setNewDatapointsSet([]);
-    },
-  }),
+        props.setNewDatapointsSet([]);
+      },
+  })
 )(HistoricalGraph);

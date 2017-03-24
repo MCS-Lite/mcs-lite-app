@@ -2,11 +2,13 @@ import React from 'react';
 import { pure } from 'recompose';
 import { DataChannelAdapter } from 'mcs-lite-ui';
 
-const DisplayCategoryLayout = ({
-  value = '',
-  id,
-  format,
-}) => (
+const DisplayCategoryLayout = (
+  {
+    value = '',
+    id,
+    format,
+  }
+) => (
   <DataChannelAdapter
     dataChannelProps={{
       id,

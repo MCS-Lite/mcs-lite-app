@@ -13,24 +13,23 @@ import SelectCreateDataChannelDialog from '../dialogs/selectCreateDataChannel';
 
 import styles from './styles.css';
 
-const NewDisplayCardLayout = ({
-  openSelectCreateDataChannel,
-  isSelectCreateDataChannel,
-  setIsSelectCreateDataChannel,
-  prototypeId,
-  createDataChannel,
-  getMessages: t,
-  retrieveUnitTypes,
-  createUnitTypes,
-  unitTypes,
-  pushToast,
-}) => (
+const NewDisplayCardLayout = (
+  {
+    openSelectCreateDataChannel,
+    isSelectCreateDataChannel,
+    setIsSelectCreateDataChannel,
+    prototypeId,
+    createDataChannel,
+    getMessages: t,
+    retrieveUnitTypes,
+    createUnitTypes,
+    unitTypes,
+    pushToast,
+  }
+) => (
   <div className={styles.base}>
     <p>{t('addDataChannelNow')}</p>
-    <Button
-      className={styles.button}
-      onClick={openSelectCreateDataChannel}
-    >
+    <Button className={styles.button} onClick={openSelectCreateDataChannel}>
       {t('add')}
     </Button>
     <SelectCreateDataChannelDialog
@@ -50,7 +49,8 @@ export default compose(
   pure,
   withState('isSelectCreateDataChannel', 'setIsSelectCreateDataChannel', false),
   withHandlers({
-    openSelectCreateDataChannel: props => () => props.setIsSelectCreateDataChannel(true),
+    openSelectCreateDataChannel: props =>
+      () => props.setIsSelectCreateDataChannel(true),
   }),
-  withGetMessages(messages, 'PrototypeDetail'),
+  withGetMessages(messages, 'PrototypeDetail')
 )(NewDisplayCardLayout);

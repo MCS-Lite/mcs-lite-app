@@ -15,5 +15,5 @@ export default class Url extends React.Component {
     }
   }
 
-  static url = {}
+  static url = {};
 }

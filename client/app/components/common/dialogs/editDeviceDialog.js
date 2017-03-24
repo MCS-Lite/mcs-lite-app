@@ -14,19 +14,21 @@ import Dialog from '../../common/dialog';
 
 import styles from './dialog.css';
 
-const EditDeviceDialog = ({
-  closeDialog,
-  deviceName,
-  deviceDescription,
-  deviceImageURL,
-  onDeviceNameChange,
-  onDescriptionChange,
-  onDeviceImageURLChange,
-  onSubmit,
-  uploadDeviceImage,
-  pushToast,
-  getMessages: t,
-}) => (
+const EditDeviceDialog = (
+  {
+    closeDialog,
+    deviceName,
+    deviceDescription,
+    deviceImageURL,
+    onDeviceNameChange,
+    onDescriptionChange,
+    onDeviceImageURLChange,
+    onSubmit,
+    uploadDeviceImage,
+    pushToast,
+    getMessages: t,
+  }
+) => (
   <Dialog show onHide={closeDialog} size="large">
     <DialogHeader>{t('editDevice')}</DialogHeader>
     <DialogBody className={styles.dialogBody}>
@@ -71,20 +73,30 @@ export default compose(
   pure,
   withGetMessages(messages, 'Dialogs'),
   withState('deviceName', 'setDeviceName', props => props.deviceName),
-  withState('deviceDescription', 'setDescription', props => props.deviceDescription),
-  withState('deviceImageURL', 'setDeviceImageURL', props => props.deviceImageURL),
+  withState(
+    'deviceDescription',
+    'setDescription',
+    props => props.deviceDescription
+  ),
+  withState(
+    'deviceImageURL',
+    'setDeviceImageURL',
+    props => props.deviceImageURL
+  ),
   withHandlers({
     closeDialog: props => () => props.setSelectedMenuValue('none'),
     onDeviceNameChange: props => e => props.setDeviceName(e.target.value),
     onDescriptionChange: props => e => props.setDescription(e.target.value),
-    onDeviceImageURLChange: props => imageURL => props.setDeviceImageURL(imageURL),
-    onSubmit: props => () => {
-      props.setSelectedMenuValue('none');
-      props.editDevice(props.deviceId, {
-        deviceName: props.deviceName,
-        deviceDescription: props.deviceDescription,
-        deviceImageURL: props.deviceImageURL,
-      });
-    },
-  }),
+    onDeviceImageURLChange: props =>
+      imageURL => props.setDeviceImageURL(imageURL),
+    onSubmit: props =>
+      () => {
+        props.setSelectedMenuValue('none');
+        props.editDevice(props.deviceId, {
+          deviceName: props.deviceName,
+          deviceDescription: props.deviceDescription,
+          deviceImageURL: props.deviceImageURL,
+        });
+      },
+  })
 )(EditDeviceDialog);

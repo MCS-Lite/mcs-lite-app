@@ -8,13 +8,15 @@ import messages from '../../messages';
 
 import styles from './styles.css';
 
-const MethodSelector = ({
-  options,
-  valueRenderer,
-  getMessages: t,
-  value,
-  onChange,
-}) => (
+const MethodSelector = (
+  {
+    options,
+    valueRenderer,
+    getMessages: t,
+    value,
+    onChange,
+  }
+) => (
   <InputForm
     kind="horizontal"
     style={{ backgroundColor: 'white' }}
@@ -36,7 +38,7 @@ const MethodSelector = ({
 export default compose(
   pure,
   withGetMessages(messages, 'Dialogs'),
-  withProps((props) => {
+  withProps(props => {
     const options = [
       { value: 'new', children: props.getMessages('inputPrototypeInfo') },
       { value: 'json', children: props.getMessages('importJSON') },
@@ -45,10 +47,8 @@ export default compose(
 
     return {
       options,
-      valueRenderer: value => pipe(
-        find(propEq('value', value)),
-        prop('children'),
-      )(options),
+      valueRenderer: value =>
+        pipe(find(propEq('value', value)), prop('children'))(options),
     };
-  }),
+  })
 )(MethodSelector);

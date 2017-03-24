@@ -9,9 +9,7 @@ class Signup extends Component {
     this.props.detectErrorMsg();
   }
   render() {
-    return (
-      <SignupLayout {...this.props} />
-    );
+    return <SignupLayout {...this.props} />;
   }
 }
 

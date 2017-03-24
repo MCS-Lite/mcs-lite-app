@@ -10,22 +10,21 @@ import { default as pure } from 'recompose/pure';
 import { withGetMessages } from 'react-intl-inject-hoc';
 import messages from '../messages';
 
-const BreadcrumbLayout = ({
-  deviceName,
-  getMessages: t,
-}) => {
-  const Breadcrumbs = [
-    { children: t('dashboard') },
-  ];
+const BreadcrumbLayout = (
+  {
+    deviceName,
+    getMessages: t,
+  }
+) => {
+  const Breadcrumbs = [{ children: t('dashboard') }];
 
   return (
     <div className={styles.base}>
       <Breadcrumb items={Breadcrumbs} />
     </div>
   );
-}
+};
 
-export default compose(
-  pure,
-  withGetMessages(messages, 'Dashboard'),
-)(BreadcrumbLayout);
+export default compose(pure, withGetMessages(messages, 'Dashboard'))(
+  BreadcrumbLayout
+);

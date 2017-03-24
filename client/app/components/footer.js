@@ -14,9 +14,11 @@ const footerStyle = {
 const Footer = () => {
   return (
     <div>
-      <footer style={ footerStyle }>© 2017 MediaTek Inc. All Rights Reserved.</footer>
+      <footer style={footerStyle}>
+        © 2017 MediaTek Inc. All Rights Reserved.
+      </footer>
     </div>
   );
-}
+};
 
-export default Footer
+export default Footer;

@@ -13,10 +13,12 @@ import Footer from '../footer';
 
 import styles from './styles.css';
 
-const Login = ({
-  login,
-  getMessages: t,
-}) => (
+const Login = (
+  {
+    login,
+    getMessages: t,
+  }
+) => (
   <div>
     <div className={styles.base}>
       <form
@@ -59,7 +61,4 @@ const Login = ({
   </div>
 );
 
-export default compose(
-  pure,
-  withGetMessages(messages, 'Login'),
-)(Login);
+export default compose(pure, withGetMessages(messages, 'Login'))(Login);

@@ -18,18 +18,16 @@ import Dialog from '../../common/dialog';
 
 import styles from './dialog.css';
 
-const EditUserNameDialog = ({
-  closeDialog,
-  userName,
-  onUserNameChange,
-  onSave,
-  getMessages: t,
-}) => (
-  <Dialog
-    show
-    size="large"
-    onHide={closeDialog}
-  >
+const EditUserNameDialog = (
+  {
+    closeDialog,
+    userName,
+    onUserNameChange,
+    onSave,
+    getMessages: t,
+  }
+) => (
+  <Dialog show size="large" onHide={closeDialog}>
     <DialogHeader>
       {t('editUserName')}
     </DialogHeader>
@@ -62,12 +60,15 @@ export default compose(
   withHandlers({
     closeDialog: props => () => props.setDialogShow('none'),
     onUserNameChange: props => e => props.setUserName(e.target.value),
-    onSave: props => () => {
-      props.editUserName(props.userName)
-        .then(() => {
-          props.pushToast({ kind: 'success', message: props.getMessages('editUserNameSuccess') });
+    onSave: props =>
+      () => {
+        props.editUserName(props.userName).then(() => {
+          props.pushToast({
+            kind: 'success',
+            message: props.getMessages('editUserNameSuccess'),
+          });
         });
-      props.setDialogShow('none');
-    },
-  }),
+        props.setDialogShow('none');
+      },
+  })
 )(EditUserNameDialog);

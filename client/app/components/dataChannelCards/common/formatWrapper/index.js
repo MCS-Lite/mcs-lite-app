@@ -6,24 +6,24 @@ import UnitType from '../../displayTypes/unitType';
 
 import styles from './styles.css';
 
-const FormatWrapper = ({
-  displayType = 'text',
-  retrieveUnitTypes,
-  createUnitTypes,
-  unitTypes,
-  ...props
-}) => (
+const FormatWrapper = (
+  {
+    displayType = 'text',
+    retrieveUnitTypes,
+    createUnitTypes,
+    unitTypes,
+    ...props
+  }
+) => (
   <div className={styles[`${displayType}Wrap`]}>
-    { displayType === 'text' && <Text {...props} /> }
-    {
-      displayType === 'unitType' &&
+    {displayType === 'text' && <Text {...props} />}
+    {displayType === 'unitType' &&
       <UnitType
         retrieveUnitTypes={retrieveUnitTypes}
         createUnitTypes={createUnitTypes}
         unitTypes={unitTypes}
         {...props}
-      />
-    }
+      />}
   </div>
 );
 

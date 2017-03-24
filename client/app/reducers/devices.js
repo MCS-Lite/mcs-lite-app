@@ -19,7 +19,7 @@ export default function menus(state = initialState, action) {
       return assocPath(
         ['datachannelDatapoints', action.deviceId, action.datachannelId],
         action.data,
-        state,
+        state
       );
     case actionTypes.SIGNOUT:
       return initialState;

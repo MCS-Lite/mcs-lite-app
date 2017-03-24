@@ -1,6 +1,3 @@
 import constants from 'react-constants';
 
-export default constants([
-  "CREATEUSERACCOUNT",
-  "ERRORMSG",
-]);
+export default constants(['CREATEUSERACCOUNT', 'ERRORMSG']);
