@@ -27,17 +27,20 @@ export const StyledP = styled(P)`
   margin-top: 5px;
 `;
 
-export const Header = styled.div`
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-`;
-
 export const Body = styled.div`
   margin: 20px 0;
   
   > div + div {
-    margin-top: 5px;
+    margin-top: 10px;
+  }
+`;
+
+export const SelectWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  
+  > * {
+    flex: 1;
   }
 `;
 
