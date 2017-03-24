@@ -14,7 +14,7 @@
     "build:cloud": "sh ./build.sh && sh ./build_cloud.sh",
     "test:nedb": "mocha --recursive ./nedb/tests/",
     "test:api": "mocha ./restserver/tests/api --recursive",
-    "format": "prettier --trailing-comma es5 --single-quote --write 'client/app/**/*.js' '!(node_modules|build)/**/*.js'",
+    "format": "prettier --trailing-comma es5 --single-quote --write 'client/app/*/*.js' 'client/!(node_modules|build|coverag)/**/*.js'",
     "precommit": "lint-staged"
   },
   "window": {
