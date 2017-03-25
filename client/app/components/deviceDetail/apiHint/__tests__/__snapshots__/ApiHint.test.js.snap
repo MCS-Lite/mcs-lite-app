@@ -9,34 +9,34 @@ Object {
 
 exports[`should redner <ApiHint /> 1`] = `
 <styled.div>
-  <styled.div>
-    <div>
-      <Heading
-        level={4}
-      >
-        helpful
-      </Heading>
-      <Styled(Component)>
-        example
-      </Styled(Component)>
-    </div>
-    <select
-      onChange={[Function]}
-      value="datachannelId"
+  <div>
+    <Heading
+      level={4}
     >
-      <option
-        value="datachannelId"
-      >
-        datachannelName
-      </option>
-    </select>
-  </styled.div>
+      helpful
+    </Heading>
+    <Styled(Component)>
+      example
+    </Styled(Component)>
+  </div>
   <Styled(Hr) />
   <styled.div>
-    <div>
+    <styled.div>
       datachannelName
-      datachannelName
-    </div>
+      <Select
+        items={
+          Array [
+            Object {
+              "children": "datachannelName",
+              "value": "datachannelId",
+            },
+          ]
+        }
+        kind="primary"
+        onChange={[Function]}
+        value="datachannelId"
+      />
+    </styled.div>
     <div>
       datachannelId
       datachannelId

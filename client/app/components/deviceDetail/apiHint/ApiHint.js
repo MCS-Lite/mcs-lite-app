@@ -2,9 +2,9 @@ import React, { PropTypes } from 'react';
 import R from 'ramda';
 import { createEventHandler, componentFromStream } from 'recompose';
 import { Observable } from 'rxjs/Observable';
-import { Code, Heading, TabItem } from 'mcs-lite-ui';
+import { Code, Heading, TabItem, Select } from 'mcs-lite-ui';
 import {
-  Container, CodeWrapper, StyledCopyButton, StyledP, Header, StyledHr, Body,
+  Container, CodeWrapper, StyledCopyButton, StyledP, SelectWrapper, StyledHr, Body,
   RadioGroup,
 } from './styled-components';
 import fetchAPIHint from './fetch';
@@ -65,23 +65,25 @@ const ApiHint = componentFromStream((propStream) => {
       code, datachannelId, language, datachannel, method,
     ) => (
       <Container>
-        <Header>
-          <div>
-            <Heading level={4}>{t('helpful')}</Heading>
-            <StyledP>{t('example')}</StyledP>
-          </div>
-          <select value={datachannelId} onChange={onDCIdChange}>
-            {datachannels.map(e =>
-              <option key={e.datachannelId} value={e.datachannelId}>
-                {e.datachannelName}
-              </option>,
-            )}
-          </select>
-        </Header>
+        <div>
+          <Heading level={4}>{t('helpful')}</Heading>
+          <StyledP>{t('example')}</StyledP>
+        </div>
+
         <StyledHr />
 
         <Body>
-          <div>{t('datachannelName')}{datachannel.datachannelName}</div>
+          <SelectWrapper>
+            {t('datachannelName')}
+            <Select
+              value={datachannelId}
+              onChange={onDCIdChange}
+              items={datachannels.map(e => ({
+                value: e.datachannelId,
+                children: e.datachannelName,
+              }))}
+            />
+          </SelectWrapper>
           <div>{t('datachannelId')}{datachannel.datachannelId}</div>
           <div>
             {t('apiType')}
