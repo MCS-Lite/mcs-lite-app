@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should return messages 1`] = `
+Object {
+  "ApiHint.apiType": Object {
+    "defaultMessage": "API 類型：",
+    "id": "ApiHint.apiType",
+  },
+  "ApiHint.copy": Object {
+    "defaultMessage": "複製",
+    "id": "ApiHint.copy",
+  },
+  "ApiHint.datachannelId": Object {
+    "defaultMessage": "資料通道 Id：",
+    "id": "ApiHint.datachannelId",
+  },
+  "ApiHint.datachannelName": Object {
+    "defaultMessage": "資料通道名稱：",
+    "id": "ApiHint.datachannelName",
+  },
+  "ApiHint.example": Object {
+    "defaultMessage": "您可以使用這邊提供的 API 來設定你所需要的動作。例如上傳和讀取資料點。",
+    "description": "description",
+    "id": "ApiHint.example",
+  },
+  "ApiHint.helpful": Object {
+    "defaultMessage": "這裡是可能有幫助的 API 提示",
+    "description": "Title 1",
+    "id": "ApiHint.helpful",
+  },
+  "ApiHint.retrieve": Object {
+    "defaultMessage": "取得資料點",
+    "id": "ApiHint.retrieve",
+  },
+  "ApiHint.upload": Object {
+    "defaultMessage": "上傳資料點",
+    "id": "ApiHint.upload",
+  },
+}
+`;

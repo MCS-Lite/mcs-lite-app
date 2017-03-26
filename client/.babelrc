@@ -1,5 +1,5 @@
 {
-  "presets": ["mcs-lite"],
+  "presets": ["babel-preset-mcs-lite"],
   "plugins": [
     "transform-decorators-legacy",
     [
@@ -8,12 +8,12 @@
         {
           "libraryName": "mtk-ui",
           "libraryDirectory": "lib",
-          "camel2DashComponentName": false,
+          "camel2DashComponentName": false
         },
         {
           "libraryName": "mtk-icon",
           "libraryDirectory": "lib",
-          "camel2DashComponentName": false,
+          "camel2DashComponentName": false
         }
       ]
     ]

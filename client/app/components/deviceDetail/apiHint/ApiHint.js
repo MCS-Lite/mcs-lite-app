@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import R from 'ramda';
 import { createEventHandler, componentFromStream } from 'recompose';
 import { Observable } from 'rxjs/Observable';
-import { Code, Heading, TabItem } from 'mcs-lite-ui';
+import { Code, Heading, TabItem, Select } from 'mcs-lite-ui';
 import {
-  Container, CodeWrapper, StyledCopyButton, StyledP, Header, StyledHr, Body,
+  Container, CodeWrapper, StyledCopyButton, StyledP, SelectWrapper, StyledHr, Body,
   RadioGroup,
 } from './styled-components';
 import fetchAPIHint from './fetch';
@@ -16,7 +16,12 @@ const LANGUAGES = [
   { value: 'talnet', children: 'Talnet' },
 ];
 const DEFAULT_LANGUAGE = 'javascript';
-const DEFAULT_METHOD = 'retrieve';
+const DEFAULT_METHOD = 'upload';
+
+const mapLanguageByValue = R.cond([
+  [R.equals('talnet'), R.always('javascript')],
+  [R.T, R.identity],
+]);
 
 const ApiHint = componentFromStream((propStream) => {
   const props$ = Observable.from(propStream);
@@ -28,6 +33,7 @@ const ApiHint = componentFromStream((propStream) => {
   const datachannels$ = props$.pluck('datachannels');
   const language$ = Observable.from(onTabChangeStream).startWith(DEFAULT_LANGUAGE);
   const datachannelId$ = datachannels$
+    .filter(R.complement(R.isEmpty))
     .map(R.pipe(R.head, R.prop('datachannelId'))) // Hint: Start with first value
     .merge(Observable.from(onDCIdChangeStream).map(R.path(['target', 'value'])));
   const datachannel$ = datachannelId$
@@ -45,7 +51,8 @@ const ApiHint = componentFromStream((propStream) => {
       deviceKey$.distinctUntilChanged(),
       method$.distinctUntilChanged(),
     )
-    .switchMap(array => fetchAPIHint(...array)); // Remind: The array MUST be in order.
+    .switchMap(array => fetchAPIHint(...array)) // Remind: The array MUST be in order.
+    .startWith('');
 
   return props$.combineLatest(
     code$,
@@ -58,23 +65,25 @@ const ApiHint = componentFromStream((propStream) => {
       code, datachannelId, language, datachannel, method,
     ) => (
       <Container>
-        <Header>
-          <div>
-            <Heading level={4}>{t('helpful')}</Heading>
-            <StyledP>{t('example')}</StyledP>
-          </div>
-          <select value={datachannelId} onChange={onDCIdChange}>
-            {datachannels.map(e =>
-              <option key={e.datachannelId} value={e.datachannelId}>
-                {e.datachannelName}
-              </option>,
-            )}
-          </select>
-        </Header>
+        <div>
+          <Heading level={4}>{t('helpful')}</Heading>
+          <StyledP>{t('example')}</StyledP>
+        </div>
+
         <StyledHr />
 
         <Body>
-          <div>{t('datachannelName')}{datachannel.datachannelName}</div>
+          <SelectWrapper>
+            {t('datachannelName')}
+            <Select
+              value={datachannelId}
+              onChange={onDCIdChange}
+              items={datachannels.map(e => ({
+                value: e.datachannelId,
+                children: e.datachannelName,
+              }))}
+            />
+          </SelectWrapper>
           <div>{t('datachannelId')}{datachannel.datachannelId}</div>
           <div>
             {t('apiType')}
@@ -113,12 +122,22 @@ const ApiHint = componentFromStream((propStream) => {
 
         <CodeWrapper>
           <StyledCopyButton text={code}>{t('copy')}</StyledCopyButton>
-          <Code>{code}</Code>
+          <Code language={mapLanguageByValue(language)}>{code}</Code>
         </CodeWrapper>
       </Container>
     ),
   );
 });
 
+ApiHint.displayName = 'ApiHint';
+ApiHint.propTypes = {
+  // Props
+  deviceId: PropTypes.string.isRequired,
+  deviceKey: PropTypes.string.isRequired,
+  datachannels: PropTypes.array.isRequired,
+
+  // React-intl i18n
+  getMessages: PropTypes.func.isRequired,
+};
 
 export default ApiHint;

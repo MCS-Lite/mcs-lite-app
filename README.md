@@ -32,3 +32,9 @@
 * `cd client && npm run watch:global`
 * go to `http://localhost:8081` (don't use 127.0.0.1)
 * If you want to build production version: `npm run build:global` (under /client path).
+
+## For Testing
+
+```
+$ npm run test:watch
+```
