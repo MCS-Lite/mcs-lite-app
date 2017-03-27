@@ -1,5 +1,4 @@
 import React, { PropTypes } from 'react';
-import { Link } from 'react-router';
 import Transition from 'react-motion-ui-pack';
 import { IconClose } from 'mcs-lite-icon';
 import MobileDetect from 'mobile-detect';
@@ -16,9 +15,12 @@ class Notification extends React.Component {
   }
   state = { show: md.mobile() }
   onClose = () => this.setState({ show: false });
+  onSwitch = () => {
+    window.location.pathname = switchToMobilePathname(window.location.pathname);
+  }
   render() {
     const { getMessages: t } = this.props;
-    const { onClose } = this;
+    const { onClose, onSwitch } = this;
 
     return this.state.show && (
       <Fixed>
@@ -31,9 +33,7 @@ class Notification extends React.Component {
             <P>{t('switchQuestion')}</P>
 
             <RightWrapper>
-              <Link to={switchToMobilePathname}>
-                <Button>{t('switchToMobile')}</Button>
-              </Link>
+              <Button onClick={onSwitch}>{t('switchToMobile')}</Button>
               <IconWrapper onClick={onClose}><IconClose /></IconWrapper>
             </RightWrapper>
           </MLNotification>

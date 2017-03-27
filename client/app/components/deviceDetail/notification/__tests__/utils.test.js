@@ -6,6 +6,6 @@ it('should return a function', () => {
 
 it('should return correct pathname', () => {
   expect(
-    switchToMobilePathname({ pathname: '/origin/pathname/' }).pathname,
+    switchToMobilePathname('/origin/pathname/'),
   ).toBe('/mobile/origin/pathname/');
 });

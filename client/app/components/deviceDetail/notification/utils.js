@@ -3,4 +3,4 @@
 import R from 'ramda';
 
 export const switchToMobilePathname =
-  R.evolve({ pathname: R.concat('/mobile') });
+  R.concat('/mobile');

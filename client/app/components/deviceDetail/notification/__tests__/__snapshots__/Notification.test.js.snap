@@ -30,23 +30,18 @@ exports[`should redner <Notification /> when it is mobile mode 1`] = `
         switchQuestion
       </P>
       <styled.div>
-        <Link
-          onlyActiveOnIndex={false}
-          style={Object {}}
-          to={[Function]}
+        <Button
+          active={false}
+          block={false}
+          component="button"
+          kind="primary"
+          onClick={[Function]}
+          round={false}
+          size="normal"
+          square={false}
         >
-          <Button
-            active={false}
-            block={false}
-            component="button"
-            kind="primary"
-            round={false}
-            size="normal"
-            square={false}
-          >
-            switchToMobile
-          </Button>
-        </Link>
+          switchToMobile
+        </Button>
         <styled.div
           onClick={[Function]}
         >

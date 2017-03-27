@@ -34,3 +34,27 @@ it('should handle onClose', () => {
   wrapper.instance().onClose();
   expect(wrapper.state('show')).toBe(false);
 });
+
+it('should handle onSwitch', () => {
+  /**
+   * window.location.href can't be changed in tests. #890
+   * ref: https://github.com/facebook/jest/issues/890#issuecomment-209698782
+   *
+   * @author Michael Hsu
+   */
+  Object.defineProperty(window.location, 'pathname', {
+    writable: true,
+    value: '/origin/path/',
+  });
+
+  const wrapper = shallow(
+    <Notification getMessages={R.identity} />,
+  );
+
+  // Before onClose
+  expect(window.location.pathname).toBe('/origin/path/');
+
+  // After onSwitch
+  wrapper.instance().onSwitch();
+  expect(window.location.pathname).toBe('/mobile/origin/path/');
+});
