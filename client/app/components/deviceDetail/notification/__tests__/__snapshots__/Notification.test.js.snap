@@ -1,0 +1,63 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should redner <Notification /> when it is mobile mode 1`] = `
+<styled.div>
+  <Transition
+    appear={
+      Object {
+        "opacity": 0.5,
+        "translateY": -40,
+      }
+    }
+    component={false}
+    enter={
+      Object {
+        "opacity": 1,
+        "translateY": 0,
+      }
+    }
+    leave={
+      Object {
+        "opacity": 0,
+      }
+    }
+    onEnter={[Function]}
+    onLeave={[Function]}
+    runOnMount={true}
+  >
+    <Notification>
+      <P>
+        switchQuestion
+      </P>
+      <styled.div>
+        <Link
+          onlyActiveOnIndex={false}
+          style={Object {}}
+          to={[Function]}
+        >
+          <Button
+            active={false}
+            block={false}
+            component="button"
+            kind="primary"
+            round={false}
+            size="normal"
+            square={false}
+          >
+            switchToMobile
+          </Button>
+        </Link>
+        <styled.div
+          onClick={[Function]}
+        >
+          <IconClose
+            size="1em"
+          />
+        </styled.div>
+      </styled.div>
+    </Notification>
+  </Transition>
+</styled.div>
+`;
+
+exports[`should redner <Notification /> when it is on server-side 1`] = `null`;

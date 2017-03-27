@@ -4,6 +4,7 @@ import Breadcrumb from './breadcrumb';
 import PanelContent from './panelContent';
 import DeviceDetailHeader from './header';
 import DeviceDetailInfo from './info';
+import Notification from './notification';
 
 import styles from './styles.css';
 
@@ -32,6 +33,7 @@ const DeviceDetail = ({
   return (
     <div>
       <div className={styles.base}>
+        <Notification />
         <Breadcrumb deviceName={deviceName} />
         <DeviceDetailHeader
           deviceId={deviceId}
