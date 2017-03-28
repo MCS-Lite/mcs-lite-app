@@ -8,20 +8,20 @@ Object {
 `;
 
 exports[`should redner <ApiHint /> 1`] = `
-<styled.div>
+<styled-components__Container>
   <div>
     <Heading
       level={4}
     >
       helpful
     </Heading>
-    <Styled(Component)>
+    <styled-components__StyledP>
       example
-    </Styled(Component)>
+    </styled-components__StyledP>
   </div>
-  <Styled(Hr) />
-  <styled.div>
-    <styled.div>
+  <styled-components__StyledHr />
+  <styled-components__Body>
+    <styled-components__SelectWrapper>
       datachannelName
       <Select
         items={
@@ -36,14 +36,14 @@ exports[`should redner <ApiHint /> 1`] = `
         onChange={[Function]}
         value="datachannelId"
       />
-    </styled.div>
+    </styled-components__SelectWrapper>
     <div>
       datachannelId
       datachannelId
     </div>
     <div>
       apiType
-      <styled.span>
+      <styled-components__RadioGroup>
         <span>
           <input
             checked={true}
@@ -72,9 +72,9 @@ exports[`should redner <ApiHint /> 1`] = `
             retrieve
           </label>
         </span>
-      </styled.span>
+      </styled-components__RadioGroup>
     </div>
-  </styled.div>
+  </styled-components__Body>
   <div>
     <TabItem
       active={true}
@@ -101,15 +101,15 @@ exports[`should redner <ApiHint /> 1`] = `
       Talnet
     </TabItem>
   </div>
-  <styled.div>
-    <Styled(CopyButton)
+  <styled-components__CodeWrapper>
+    <styled-components__StyledCopyButton
       text=""
     >
       copy
-    </Styled(CopyButton)>
+    </styled-components__StyledCopyButton>
     <Code
       language="javascript"
     />
-  </styled.div>
-</styled.div>
+  </styled-components__CodeWrapper>
+</styled-components__Container>
 `;
