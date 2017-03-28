@@ -2,8 +2,9 @@ import React from 'react';
 import moment from 'moment';
 import c from 'classnames';
 import R from 'ramda';
+import styled from 'styled-components';
 import { compose, pure, withState, withHandlers } from 'recompose';
-import { DataChannelCard } from 'mcs-lite-ui';
+import DataChannelCard, { Body, Footer } from 'mcs-lite-ui/lib/DataChannelCard/DataChannelCard';
 import More from '../more';
 import HistoricalGraph from '../historicalGraph';
 import DisplayCardInteger from '../../mcsDisplayCardInteger';
@@ -25,6 +26,13 @@ import ControlCardSwitch from '../../mcsControlCardSwitch';
 import ControlCardInteger from '../../mcsControlCardInteger';
 
 import styles from './styles.css';
+
+const StyledDataChannelCard = styled(DataChannelCard)`
+  ${Body},
+  ${Footer} {
+    width: ${props => props.isHistoryShow ? '240px' : 'initial'};
+  }
+`;
 
 const WrapperLayout = ({
   displayName,
@@ -49,7 +57,7 @@ const WrapperLayout = ({
   datapoints,
   ...props
 }) => (
-  <DataChannelCard
+  <StyledDataChannelCard
     className={c(
       styles.dataChannelCard,
       isHistoryShow && styles.withGraph,
@@ -57,6 +65,7 @@ const WrapperLayout = ({
     title={title}
     subtitle={`Last data point time : ${moment(updatedAt).format('YYYY-MM-DD h:mm')}`}
     description={description}
+    isHistoryShow={isHistoryShow}
     header={
       <More
         isPrototype={isPrototype}
@@ -98,7 +107,7 @@ const WrapperLayout = ({
         setNewDatapointsSet={setNewDatapointsSet}
       />
     }
-  </DataChannelCard>
+  </StyledDataChannelCard>
 );
 
 export default compose(

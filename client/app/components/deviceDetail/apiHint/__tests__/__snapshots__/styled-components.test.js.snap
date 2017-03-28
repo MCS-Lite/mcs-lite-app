@@ -3,14 +3,14 @@
 exports[`should render components correctly 1`] = `
 Array [
   <div>
-    <styled.div>
+    <styled-components__CodeWrapper>
         <div
-            className="gOWMJf"
+            className="styled-components__CodeWrapper-gQlBpv QjdJf"
         />
-    </styled.div>
+    </styled-components__CodeWrapper>
 </div>,
   <div
-    className="gOWMJf"
+    className="styled-components__CodeWrapper-gQlBpv QjdJf"
 />,
 ]
 `;
