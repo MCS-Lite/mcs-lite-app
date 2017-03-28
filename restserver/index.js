@@ -59,9 +59,9 @@ app.use('/images', express.static(path.resolve(__dirname, '../uploadImages')));
  * @author Michael Hsu
  */
 const mobilePathname = '../node_modules/mcs-lite-mobile-web/build';
-const replacePort = R.memoize(string =>
-  R.replace('__SOCKET_PORT_FROM_SERVER__', socketPort)(string)
-);
+const replacePort = R.memoize(function(string){
+  return R.replace('__SOCKET_PORT_FROM_SERVER__', socketPort)(string)
+});
 app.use('/mobile', express.static(path.resolve(__dirname, mobilePathname)));
 app.get('/mobile/*', function (req, res) {
   res.render(path.resolve(__dirname, mobilePathname, 'index.html'), function(err, html) {
