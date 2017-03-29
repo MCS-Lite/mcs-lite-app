@@ -8,7 +8,7 @@ export const Fixed = styled.div`
   right: 0;
   margin-top: 10px;
   z-index: ${Z_INDEX};
-  padding: 0 9px;
+  width: 100vw;
 `;
 
 export const RightWrapper = styled.div`
