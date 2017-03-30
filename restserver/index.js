@@ -16,6 +16,7 @@ var connectToDB = require('./libs/index').connectToDB;
 var dbConfig = require('../configs/db');
 var os = require('os');
 var StreamServer = require('node-rtsp-rtmp-server');
+var compression = require('compression')
 var socketPort = require('../configs/wot.json').port;
 
 var connectDB = connectToDB(dbConfig).init();
@@ -35,6 +36,17 @@ app.oauth = new OAuthServer({
 
 app.engine('html', require('ejs').renderFile);
 app.set('views', path.resolve(__dirname, '../client'));
+
+
+/**
+ * [Gzip] compress all responses
+ * https://github.com/expressjs/compression#expressconnect
+ *
+ * @author Michael Hsu
+ */
+if (process.env.GZIP_DISABLE !== 'true') {
+  app.use(compression())
+}
 
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");

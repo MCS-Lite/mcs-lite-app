@@ -38,3 +38,11 @@
 ```
 $ npm run test:watch
 ```
+
+## Gzip
+
+[Express compression middleware](https://github.com/expressjs/compression#expressconnect) is enabled by default. If you want to disable it, set `GZIP_DISABLE` to `true`.
+
+```
+$ NODE_ENV=prod GZIP_DISABLE='true' node server
+```
