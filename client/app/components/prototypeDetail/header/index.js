@@ -7,7 +7,7 @@ import { Heading, Button } from 'mcs-lite-ui';
 import { withGetMessages } from 'react-intl-inject-hoc';
 import messages from '../messages';
 import EditPrototype from '../../prototypes/dialogs/editPrototype';
-import DeletePrototype from '../../prototypes/dialogs/deletePrototype';
+import DeleteConfirmDialog from '../../common/dialogs/deleteConfirmDialog';
 import CreatePrototype from '../../common/dialogs/createPrototype';
 import CreateTestDeviceDialog from '../dialogs/createTestDevice';
 import WithDropdownMenu from '../../common/withDropdownMenu';
@@ -39,7 +39,7 @@ const PrototypeDetailHeaderLayout = ({
   editPrototype,
   onClone,
   onCancel,
-  deletePrototype,
+  onDeleteSubmit,
   setSelectMenuValue,
   dropdownItems,
   uploadPrototypeImage,
@@ -125,13 +125,11 @@ const PrototypeDetailHeaderLayout = ({
         }
         {
           selectMenuValue === 'delete' &&
-            <DeletePrototype
-              deletePrototype={deletePrototype}
-              prototypeId={prototypeId}
-              selectMenuValue={selectMenuValue}
-              setSelectMenuValue={setSelectMenuValue}
-            />
-          }
+          <DeleteConfirmDialog
+            onDeleteSubmit={onDeleteSubmit}
+            setSelectedMenuValue={setSelectMenuValue}
+          />
+        }
       </div>
     </div>
     <Hr className={styles.hr} />
@@ -169,5 +167,9 @@ export default compose(
     onMenuShowChange: props => value => props.setIsDropdownOpen(value),
     onClone: props => (id, data) => props.clonePrototype(id, data),
     onCancel: props => () => props.setSelectMenuValue(''),
+    onDeleteSubmit: props => () => {
+      props.deletePrototype(props.prototype.prototypeId);
+      props.setSelectMenuValue('');
+    },
   }),
 )(PrototypeDetailHeaderLayout);

@@ -2,8 +2,8 @@ import React from 'react';
 import { compose, pure } from 'recompose';
 import { Heading } from 'mcs-lite-ui';
 import { withGetMessages } from 'react-intl-inject-hoc';
+import defaultBanner from 'images/banner.svg';
 import messages from '../messages';
-import prototypeBanner from '../../prototypes/productBanner.png';
 
 import styles from './styles.css';
 
@@ -19,7 +19,7 @@ const PrototypeDetailInfoLayout = ({
         src={
           prototypeImageURL
           ? window.apiUrl.replace('api', 'images/') + prototypeImageURL
-          : prototypeBanner
+          : defaultBanner
         }
         alt="banner"
       />
