@@ -6,8 +6,8 @@ import Hr from 'mtk-ui/lib/Hr';
 import IconMoreVert from 'mcs-lite-icon/lib/IconMoreVert';
 import { browserHistory } from 'react-router';
 import { withGetMessages } from 'react-intl-inject-hoc';
+import defaultBanner from 'images/banner.svg';
 import messages from '../messages';
-import productBanner from '../productBanner.png';
 import CreatePrototype from '../../common/dialogs/createPrototype';
 import DeleteConfirmDialog from '../../common/dialogs/deleteConfirmDialog';
 import WithDropdownMenu from '../../common/withDropdownMenu';
@@ -68,7 +68,7 @@ const PrototypeCardLayout = ({
           src={
             prototypeImageURL
             ? window.apiUrl.replace('api', 'images/') + prototypeImageURL
-            : productBanner
+            : defaultBanner
           }
           className={styles.img}
           alt="banner"

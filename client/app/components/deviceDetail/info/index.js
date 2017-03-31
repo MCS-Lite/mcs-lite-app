@@ -1,8 +1,8 @@
 import React from 'react';
 import { compose, pure } from 'recompose';
 import { withGetMessages } from 'react-intl-inject-hoc';
+import defaultBanner from 'images/banner.svg';
 import messages from '../messages';
-import prototypeBanner from '../../prototypes/productBanner.png';
 import styles from './styles.css';
 import CopyButtonGroup from '../../common/copyButtonGroup';
 
@@ -19,7 +19,7 @@ const DeviceDetailInfoLayout = ({
         src={
           deviceImageURL
           ? window.apiUrl.replace('api', 'images/') + deviceImageURL
-          : prototypeBanner
+          : defaultBanner
         }
         alt="device"
       />
