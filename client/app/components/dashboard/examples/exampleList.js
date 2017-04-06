@@ -10,8 +10,8 @@ import withHandlers from 'recompose/withHandlers';
 import pure from 'recompose/pure';
 
 import { withGetMessages } from 'react-intl-inject-hoc';
+import defaultBanner from 'images/banner.svg';
 import messages from '../messages';
-import productBanner from '../../prototypes/productBanner.png';
 import CreatePrototype from '../../common/dialogs/createPrototype';
 
 import styles from './styles.css';
@@ -31,7 +31,7 @@ const ExampleListLayout = ({
       src={
         prototype.prototypeImageURL
         ? window.apiUrl.replace('api', 'images/') + prototype.prototypeImageURL
-        : productBanner
+        : defaultBanner
       }
       className={styles.prototypeImg}
       alt="banner"

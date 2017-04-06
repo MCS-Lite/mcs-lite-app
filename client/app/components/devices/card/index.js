@@ -8,8 +8,8 @@ import pure from 'recompose/pure';
 import withState from 'recompose/withState';
 import withHandlers from 'recompose/withHandlers';
 import { withGetMessages } from 'react-intl-inject-hoc';
+import defaultBanner from 'images/banner.svg';
 import messages from '../messages';
-import productBanner from '../../prototypes/productBanner.png';
 import DropdownButton from '../dropdownButton';
 import EditDeviceDialog from '../../common/dialogs/editDeviceDialog';
 import DeleteConfirmDialog from '../../common/dialogs/deleteConfirmDialog';
@@ -42,7 +42,7 @@ const DeviceCardLayout = ({
       src={
         deviceImageURL
         ? window.apiUrl.replace('api', 'images/') + deviceImageURL
-        : productBanner
+        : defaultBanner
       }
       className={styles.img}
       alt="product"

@@ -9,8 +9,8 @@ import DialogFooter from 'mtk-ui/lib/DialogFooter';
 import compose from 'recompose/compose';
 import pure from 'recompose/pure';
 import withHandlers from 'recompose/withHandlers';
+import warningImg from 'images/img_warning.svg';
 import Dialog from '../../common/dialog';
-import notice from '../../prototypes/dialogs/notice.png';
 
 import styles from './dialog.css';
 
@@ -30,7 +30,7 @@ const DeleteConfirmDialog = ({
       />
     </DialogHeader>
     <DialogBody className={styles.dialogBody}>
-      <img src={notice} className={styles.img} alt="notice" />
+      <img src={warningImg} className={styles.img} alt="notice" />
       <div>
         <FormattedMessage
           id="Dialogs.Notification"

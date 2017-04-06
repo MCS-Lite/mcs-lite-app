@@ -20,11 +20,11 @@ import pure from 'recompose/pure';
 import withState from 'recompose/withState';
 import withHandlers from 'recompose/withHandlers';
 import { withGetMessages } from 'react-intl-inject-hoc';
+import defaultBanner from 'images/banner.svg';
 import messages from '../messages';
 
 import CreatePrototype from '../../common/dialogs/createPrototype';
 import Hr from '../../common/hr';
-import productBanner from '../../prototypes/productBanner.png';
 import DeviceList from '../deviceList';
 
 import styles from './styles.css';
@@ -45,7 +45,7 @@ const LastUpdatePrototype = pure(({
         src={
           prototypeImageURL
           ? window.apiUrl.replace('api', 'images/') + prototypeImageURL
-          : productBanner
+          : defaultBanner
         }
         className={styles.prototypeImg}
         alt="banner"

@@ -4,7 +4,7 @@ import R from 'ramda';
 import { pure, compose, withState } from 'recompose';
 import { Button } from 'mcs-lite-ui';
 import { withGetMessages } from 'react-intl-inject-hoc';
-import imageUploadIcon from 'images/img_upload_icon.svg';
+import imageUploadImage from 'images/img_upload_img.svg';
 import messages from './messages';
 
 import styles from './styles.css';
@@ -123,7 +123,7 @@ class ImageUploader extends Component {
               onDragLeave={this.onDragLeave}
               onDrop={this.onDrop}
             >
-              <img src={imageUploadIcon} alt="upload" />
+              <img src={imageUploadImage} alt="upload" />
               <div>
                 <div>{t('descriptionL1')}</div>
                 <div>{t('descriptionL2')}</div>
