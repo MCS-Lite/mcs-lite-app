@@ -1,7 +1,7 @@
 import React from 'react';
 import { compose, pure } from 'recompose';
+import R from 'ramda';
 
-import styles from './styles.css';
 import CategoryControlPreview from '../../mcsControlCardCategory/preview';
 import IntegerControlPreview from '../../mcsControlCardInteger/preview';
 import StringControlPreview from '../../mcsControlCardString/preview';
@@ -23,28 +23,26 @@ import SwitchDisplayPreview from '../../mcsDisplayCardSwitch/preview';
 const WrapperLayout = ({
   displayName,
   ...props
-}) => (
-  <div className={styles.base}>
-    {displayName === 'Integer_Display' && <IntegerDisplayPreview {...props} />}
-    {displayName === 'Hex_Display' && <HexDisplayPreview {...props} />}
-    {displayName === 'PWM_Display' && <PWMDisplayPreview {...props} />}
-    {displayName === 'String_Display' && <StringDisplayPreview {...props} />}
-    {displayName === 'GPIO_Display' && <GPIODisplayPreview {...props} />}
-    {displayName === 'Switch_Display' && <SwitchDisplayPreview {...props} />}
-    {displayName === 'Float_Display' && <FloatDisplayPreview {...props} />}
-    {displayName === 'Category_Display' && <CategoryDisplayPreview {...props} />}
-    {displayName === 'Integer_Control' && <IntegerControlPreview {...props} />}
-    {displayName === 'Hex_Control' && <HexControlPreview {...props} />}
-    {displayName === 'PWM_Control' && <PWMControlPreview {...props} />}
-    {displayName === 'String_Control' && <StringControlPreview {...props} />}
-    {displayName === 'GPIO_Control' && <GPIOControlPreview {...props} />}
-    {displayName === 'Switch_Control' && <SwitchControlPreview {...props} />}
-    {displayName === 'Float_Control' && <FloatControlPreview {...props} />}
-    {displayName === 'Category_Control' && <CategoryControlPreview {...props} />}
-  </div>
-);
+}) => R.cond([
+  [R.equals('Integer_Display'), R.always(<IntegerDisplayPreview {...props} />)],
+  [R.equals('Hex_Display'), R.always(<HexDisplayPreview {...props} />)],
+  [R.equals('PWM_Display'), R.always(<PWMDisplayPreview {...props} />)],
+  [R.equals('String_Display'), R.always(<StringDisplayPreview {...props} />)],
+  [R.equals('GPIO_Display'), R.always(<GPIODisplayPreview {...props} />)],
+  [R.equals('Switch_Display'), R.always(<SwitchDisplayPreview {...props} />)],
+  [R.equals('Float_Display'), R.always(<FloatDisplayPreview {...props} />)],
+  [R.equals('Category_Display'), R.always(<CategoryDisplayPreview {...props} />)],
+  [R.equals('Integer_Control'), R.always(<IntegerControlPreview {...props} />)],
+  [R.equals('Hex_Control'), R.always(<HexControlPreview {...props} />)],
+  [R.equals('PWM_Control'), R.always(<PWMControlPreview {...props} />)],
+  [R.equals('String_Control'), R.always(<StringControlPreview {...props} />)],
+  [R.equals('GPIO_Control'), R.always(<GPIOControlPreview {...props} />)],
+  [R.equals('Switch_Control'), R.always(<SwitchControlPreview {...props} />)],
+  [R.equals('Float_Control'), R.always(<FloatControlPreview {...props} />)],
+  [R.equals('Category_Control'), R.always(<CategoryControlPreview {...props} />)],
+  [R.T, R.always(<div />)],
+])(displayName);
 
 export default compose(
   pure,
 )(WrapperLayout);
-

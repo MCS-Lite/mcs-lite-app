@@ -19,7 +19,7 @@ const messages = defineMessages({
   },
   'ImageUploader.descriptionL2': {
     id: 'ImageUploader.descriptionL2',
-    defaultMessage: '推薦大小為 600 x 320 pixels',
+    defaultMessage: '推薦大小為 1600 x 854 pixels',
   },
   'ImageUploader.upload': {
     id: 'ImageUploader.upload',

@@ -35,12 +35,12 @@
 
 .dropDownIconOpen {
   top: 3px;
-  transform: rotate(-180deg);
+  transform: rotate(0deg);
 }
 
 .dropDownIconClose {
   top: 3px;
-  transform: rotate(0deg);
+  transform: rotate(-180deg);
 }
 
 .dropDownIconBorder {
