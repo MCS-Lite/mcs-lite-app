@@ -142,7 +142,38 @@ export default compose(
   withState('isCreateTestDevice', 'setIsCreateTestDevice', false),
   withState('isDropdownOpen', 'setIsDropdownOpen', false),
   withState('selectMenuValue', 'setSelectMenuValue', ''),
-  withProps(({ getMessages: t, readOnly }) => {
+  withHandlers({
+    openCreateTestDevice: props => () => props.setIsCreateTestDevice(true),
+    openClonePrototype: props => () => props.setSelectMenuValue('clone'),
+    onMenuChange: props => value => props.setSelectMenuValue(value),
+    onMenuShowChange: props => value => props.setIsDropdownOpen(value),
+    onClone: props => (id, data) => props.clonePrototype(id, data),
+    onCancel: props => () => props.setSelectMenuValue(''),
+    onDeleteSubmit: props => () => {
+      props.deletePrototype(props.prototype.prototypeId);
+      props.setSelectMenuValue('');
+    },
+    onExport: props => () => {
+      const { prototypeId } = props;
+      props.exportJSON(prototypeId)
+        .then(({ data }) => {
+          const json = JSON.stringify(data, null, '\t');
+          const blob = new Blob([json], { type: 'application/json' });
+          const url = window.URL.createObjectURL(blob);
+
+          const ghostLink = document.createElement('a');
+          ghostLink.href = url;
+          ghostLink.setAttribute('download', `${prototypeId}.json`);
+          ghostLink.setAttribute('target', '_blank');
+          document.body.appendChild(ghostLink);
+          ghostLink.click();
+          document.body.removeChild(ghostLink);
+
+          props.pushToast({ kind: 'success', message: props.getMessages('exportSuccess') });
+        });
+    },
+  }),
+  withProps(({ getMessages: t, readOnly, onExport }) => {
     if (readOnly) {
       return {
         dropdownItems: [
@@ -156,20 +187,8 @@ export default compose(
         { value: 'edit', children: t('edit') },
         { value: 'clone', children: t('clone') },
         { value: 'delete', children: t('delete') },
-        { value: 'export', children: t('export') },
+        { value: 'export', children: t('export'), onClick: onExport },
       ],
     };
-  }),
-  withHandlers({
-    openCreateTestDevice: props => () => props.setIsCreateTestDevice(true),
-    openClonePrototype: props => () => props.setSelectMenuValue('clone'),
-    onMenuChange: props => value => props.setSelectMenuValue(value),
-    onMenuShowChange: props => value => props.setIsDropdownOpen(value),
-    onClone: props => (id, data) => props.clonePrototype(id, data),
-    onCancel: props => () => props.setSelectMenuValue(''),
-    onDeleteSubmit: props => () => {
-      props.deletePrototype(props.prototype.prototypeId);
-      props.setSelectMenuValue('');
-    },
   }),
 )(PrototypeDetailHeaderLayout);
