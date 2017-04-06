@@ -34,7 +34,7 @@ cp -R index.js ./build/index.js
 cp -R package.json ./build/package.json
 
 mkdir out
-nwbuild -p win64,osx64,linux32,linux64 -v 0.20.1 ./build -o ./out
+nwbuild -p win32,win64,osx64,linux32,linux64 -v 0.20.1 ./build -o ./out
 
 cd ./out/mcs-lite-app/win64
 mkdir mcs-lite-app
@@ -46,6 +46,8 @@ mkdir mcs-lite-app
 cd ../../..
 cp -R ./appBuild/ ./out/mcs-lite-app/win64/mcs-lite-app
 winresourcer --operation=Update --exeFile=./out/mcs-lite-app/win64/mcs-lite-app.exe --resourceType=Icongroup --resourceName=IDR_MAINFRAME --lang=1033 --resourceFile=./icon.ico
+cp -R ./appBuild/ ./out/mcs-lite-app/win32/mcs-lite-app
+winresourcer --operation=Update --exeFile=./out/mcs-lite-app/win32/mcs-lite-app.exe --resourceType=Icongroup --resourceName=IDR_MAINFRAME --lang=1033 --resourceFile=./icon.ico
 cp -R ./appBuild/ ./out/mcs-lite-app/osx64/mcs-lite-app
 cp -R ./icon.icns ./out/mcs-lite-app/osx64/mcs-lite-app.app/Contents/Resources/app.icns
 cp -R ./icon.icns ./out/mcs-lite-app/osx64/mcs-lite-app.app/Contents/Resources/document.icns
