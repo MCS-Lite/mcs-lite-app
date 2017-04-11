@@ -5,7 +5,7 @@ import { compose, withState } from 'recompose';
 import PrototypeDetailLayout from '../components/prototypeDetail';
 import LoadingPage from '../components/common/loadingPage';
 import * as prototypeDetailActions from '../actions/PrototypeDetailActions';
-import { uploadPrototypeImage } from '../actions/PrototypeActions';
+import { exportJSON, uploadPrototypeImage } from '../actions/PrototypeActions';
 import * as deviceActions from '../actions/deviceActions';
 import { pushToast } from '../actions/toastActions';
 
@@ -32,6 +32,7 @@ export default compose(
       ...deviceActions,
       pushToast,
       uploadPrototypeImage,
+      exportJSON,
     },
   ),
   withState('isInitialized', 'setIsInitialized', false),

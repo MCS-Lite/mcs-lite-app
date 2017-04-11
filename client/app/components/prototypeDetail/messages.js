@@ -266,6 +266,10 @@ const messages = defineMessages({
     description: '',
     defaultMessage: '使用範例創建原型',
   },
+  'PrototypeDetail.exportSuccess': {
+    id: 'PrototypeDetail.exportSuccess',
+    defaultMessage: '成功！你已經成功匯出產品原型。',
+  },
 });
 
 export default messages;
