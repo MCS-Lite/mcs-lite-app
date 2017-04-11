@@ -45,15 +45,17 @@ function initApp(){
         require('./regist')();
       } else {
         if (/^\/private/.test(nwDir)) {
-          var folderDir
+          var folderDir;
+          var server;
           try {
             folderDir = require(global.__dirname + '/config').path;
+            server = require(folderDir + '/mcs-lite-app/server');
           } catch(e) {
             $("#status-title").innerHTML = "<p>Please click \"setup\" file to setup your env and reopen this mcs-lite-app.app.<p>";
             $("#ip-title").innerHTML = "";
             $("#ip").innerHTML = "";
           }
-          require(folderDir + '/mcs-lite-app/server')();
+          server();
         } else {
           var folderDir = nwDir.replace(/Contents\/Versions[\-\/\. 0-9a-zA-Z]+/g, '');
           folderDir = folderDir.replace('mcs-lite-app.app/', '');
@@ -70,6 +72,6 @@ function initApp(){
     }
 
 
-  },2000);
+  },1000);
 }
 

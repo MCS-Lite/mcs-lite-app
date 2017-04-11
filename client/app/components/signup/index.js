@@ -17,6 +17,7 @@ const onCancel = () => browserHistory.push('/login');
 
 const Signup = ({
   signup,
+  onKeyDown,
   getMessages: t,
 }) => (
   <div>
@@ -27,6 +28,7 @@ const Signup = ({
         role="form"
         action={`${window.oauthUrl}/signup`}
         method="post"
+        onKeyDown={onKeyDown}
       >
         <img src={logo} className={LoginStyles.logo} alt="logo" />
         <div className={LoginStyles.errorMsg}>
@@ -58,6 +60,9 @@ export default compose(
   withState('isOpenTermOfUse', 'setIsOpenTermOfUse', false),
   withHandlers({
     openTermOfUse: props => () => props.setIsOpenTermOfUse(!props.isOpenTermOfUse),
+    onKeyDown: props => (e) => {
+      if (e.key === 'Enter') return e.preventDefault();
+    },
   }),
   withGetMessages(messages, 'Signup'),
 )(Signup);
