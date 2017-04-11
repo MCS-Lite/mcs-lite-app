@@ -6,16 +6,14 @@ const PreviewLayout = ({
   value,
   format,
 }) => (
-  <div style={{ width: '100%' }}>
-    <DataChannelAdapter
-      dataChannelProps={{
-        id: '',
-        type: 'STRING_DISPLAY',
-        values: { value },
-        format,
-      }}
-    />
-  </div>
+  <DataChannelAdapter
+    dataChannelProps={{
+      id: '',
+      type: 'STRING_DISPLAY',
+      values: { value },
+      format,
+    }}
+  />
 );
 
 export default compose(

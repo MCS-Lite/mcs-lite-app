@@ -7,16 +7,14 @@ const PreviewLayout = ({
   period,
   format,
 }) => (
-  <div style={{ width: '100%' }}>
-    <DataChannelAdapter
-      dataChannelProps={{
-        id: '',
-        type: 'PWM_CONTROL',
-        values: { value, period },
-        format,
-      }}
-    />
-  </div>
+  <DataChannelAdapter
+    dataChannelProps={{
+      id: '',
+      type: 'PWM_CONTROL',
+      values: { value, period },
+      format,
+    }}
+  />
 );
 
 export default compose(

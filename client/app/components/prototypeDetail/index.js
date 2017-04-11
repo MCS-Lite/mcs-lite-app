@@ -20,6 +20,7 @@ const Prototypes = ({
   retrievePrototype,
   uploadPrototypeImage,
   uploadDeviceImage,
+  exportJSON,
   ...props
 }) => {
   const {
@@ -55,6 +56,7 @@ const Prototypes = ({
           pushToast={pushToast}
           readOnly={readOnly}
           isTemplate={isTemplate}
+          exportJSON={exportJSON}
           {...props}
         />
         <PrototypeDetailInfo

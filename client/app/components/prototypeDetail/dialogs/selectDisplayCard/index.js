@@ -8,6 +8,7 @@ import Button from 'mtk-ui/lib/Button';
 import Hr from 'mtk-ui/lib/Hr';
 import ControlSwitch from 'mcs-lite-ui/lib/DataChannel/ControlSwitch';
 import DisplayStatus from 'mcs-lite-ui/lib/DataChannel/DisplayStatus';
+import { Heading } from 'mcs-lite-ui'
 
 import { withGetMessages } from 'react-intl-inject-hoc';
 import messages from '../../messages';
@@ -26,14 +27,12 @@ const DisplayCardLayout = ({
       {
         displayCardType === 1
         ? <ControlSwitch onSubmit={() => {}} value={1} />
-        : <DisplayStatus labels={['OFF', 'ON']} value={0} style={{ width: 110, height: 48 }} />
+        : <DisplayStatus labels={['OFF', 'ON']} value={0} style={{ width: 110, height: 52 }} />
       }
     </div>
-    <b className={styles.title}>{title}</b>
+    <Heading level={4}>{title}</Heading>
     <Hr className={styles.hr} />
-    <p className={styles.description}>
-      {description}
-    </p>
+    <span>{description}</span>
     <Button className={styles.button} onClick={submitDisplayCard}>
       {t('add')}
     </Button>
