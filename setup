@@ -1,0 +1,11 @@
+#!/bin/sh
+
+app_dir=$(echo "$0" | sed 's/setup/mcs-lite-app.app/g')
+global_dir=$(echo "$0" | sed 's/\/setup//g')
+echo ${global_dir}
+
+config_dir=${global_dir}/mcs-lite-app.app/Contents/Resources/app.nw/
+rm -rf ${config_dir}/config.json
+echo "{ \"path\": \"${global_dir}\" }" > ${config_dir}/config.json
+
+exit 0;

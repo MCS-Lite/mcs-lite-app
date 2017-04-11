@@ -42,18 +42,31 @@ function initApp(){
   setTimeout(function(){
     if (process.platform == "darwin") {
       if (process.env.NODE_ENV === 'dev') {
-        var server = require('./regist')();
+        require('./regist')();
       } else {
-        var folderDir = nwDir.replace(/Contents\/Versions[\-\/\. 0-9a-zA-Z]+/g, '');
-        folderDir = folderDir.replace('mcs-lite-app.app/', '');
-        folderDir += 'mcs-lite-app';
-        var server = require(folderDir + '/server')();
+        if (/^\/private/.test(nwDir)) {
+          var folderDir
+          try {
+            folderDir = require(global.__dirname + '/config').path;
+          } catch(e) {
+            $("#status-title").innerHTML = "<p>Please click \"setup\" file to setup your env and reopen this mcs-lite-app.app.<p>";
+            $("#ip-title").innerHTML = "";
+            $("#ip").innerHTML = "";
+          }
+          require(folderDir + '/mcs-lite-app/server')();
+        } else {
+          var folderDir = nwDir.replace(/Contents\/Versions[\-\/\. 0-9a-zA-Z]+/g, '');
+          folderDir = folderDir.replace('mcs-lite-app.app/', '');
+          folderDir += 'mcs-lite-app';
+          require(folderDir + '/server')();
+        }
+
       }
     }
 
     if (/^win/.test(process.platform)) {
       var folderDir = nwDir + '\\mcs-lite-app';
-      var server = require(folderDir + '\\server')();
+      require(folderDir + '\\server')();
     }
 
 
