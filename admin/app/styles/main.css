@@ -1,0 +1,41 @@
+@font-face {
+  font-family: RionaSans-Regular;
+  font-weight: normal;
+  font-style: normal;
+  src: url(../font/riona-sans-regular.otf);
+}
+
+@font-face {
+  font-family: RionaSans-Light;
+  font-weight: normal;
+  font-style: normal;
+  src: url(../font/riona-sans-light.otf);
+}
+
+@font-face {
+  font-family: RionaSans-Medium;
+  font-weight: normal;
+  font-style: normal;
+  src: url(../font/riona-sans-medium.otf);
+}
+
+html {
+  font-size:13px;
+}
+
+body {
+  margin:0;
+  padding:0;
+  color:#000;
+  background: #F1F2F7;
+}
+
+* {
+  font-family:RionaSans-Light,Arial,Helvetica,sans-serif;
+}
+
+code {
+  font-size: 11px !important;
+  line-height: 18px;
+  background: #FAFAFA !important;
+}

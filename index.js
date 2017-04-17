@@ -4,6 +4,7 @@ var path = require('path');
 var nwPath = process.execPath;
 var nwDir = path.dirname(nwPath);
 var os = require('os');
+var child = require('child_process');
 
 var $ = function (selector) {
   return document.querySelector(selector);
@@ -35,11 +36,11 @@ if (process.platform == "darwin") {
 gui.Window.get().show();
 initApp();
 
-var ipDOM = $("#ip");
-ipDOM.innerHTML = '' + addressesList;
+// var ipDOM = $("#ip");
+// ipDOM.innerHTML = '' + addressesList;
 
-function initApp(){
-  setTimeout(function(){
+function startMCSLiteService() {
+    setTimeout(function(){
     if (process.platform == "darwin") {
       if (process.env.NODE_ENV === 'dev') {
         require('./regist')();
@@ -51,9 +52,9 @@ function initApp(){
             folderDir = require(global.__dirname + '/config').path;
             server = require(folderDir + '/mcs-lite-app/server');
           } catch(e) {
-            $("#status-title").innerHTML = "<p>Please click \"setup\" file to setup your env and reopen this mcs-lite-app.app.<p>";
-            $("#ip-title").innerHTML = "";
-            $("#ip").innerHTML = "";
+            // $("#status-title").innerHTML = "<p>Please click \"setup\" file to setup your env and reopen this mcs-lite-app.app.<p>";
+            // $("#ip-title").innerHTML = "";
+            // $("#ip").innerHTML = "";
           }
           server();
         } else {
@@ -65,13 +66,29 @@ function initApp(){
 
       }
     }
-
     if (/^win/.test(process.platform)) {
       var folderDir = nwDir + '\\mcs-lite-app';
       require(folderDir + '\\server')();
     }
-
-
   },1000);
+}
+function initApp(){
+  var adminServer;
+  setTimeout(function() {
+    if (process.platform == "darwin") {
+      if (process.env.NODE_ENV === 'dev') {
+        adminServer = require('./adminServer/index');
+        child.exec('npm run watch:global', { cwd: './admin' });
+      } else {
+        // adminServer = require('./adminServer/index');
+      }
+    }
+    if (/^win/.test(process.platform)) {
+      var folderDir = nwDir + '\\adminServer';
+      adminServer = require(folderDir + '\\index');
+    }
+    var $admin = require('./configs/admin');
+    adminServer.listen($admin.port);
+  }, 1000);
 }
 
