@@ -1,0 +1,10 @@
+{
+  "host": "localhost",
+  "port": 3002,
+  "secretKey": "mcs_lite",
+  "session": {
+    "secret": "thisissession",
+    "maxAge": 1209600000
+  },
+  "apiRoute": "/api"
+}
