@@ -64,6 +64,7 @@ app.use(bodyParser.urlencoded({
 app.use(cookieParser());
 
 app.use('/images', express.static(path.resolve(__dirname, '../uploadImages')));
+app.use('/fota', express.static(path.resolve(__dirname, '../uploadFotaFiles')));
 
 /**
  * Serving mobile website via npm.
