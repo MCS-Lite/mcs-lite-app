@@ -2,6 +2,8 @@
 
 mkdir uploadImages && cd uploadImages && mkdir device && mkdir profile && mkdir prototype && cd ..
 
+mkdir uploadFotaFiles
+
 rm -rf ./nw.js-sdk
 mkdir nw.js-sdk && cd nw.js-sdk
 
