@@ -23,6 +23,7 @@ module.exports = function($db, $app, $rest, $oauth, $wot) {
   var dashboardController = new require('../controllers/dashboard')($db);
   var unittypesController = new require('../controllers/unittypes')($db);
   var generatorController = new require('../controllers/generator')($db);
+  var fotaController = new require('../controllers/fota')($db);
 
   const parseBasicToken = function(req, res, next) {
     if (/mobile/.test(req.route.path)) {
@@ -374,4 +375,12 @@ module.exports = function($db, $app, $rest, $oauth, $wot) {
     methods: ['get'],
     handler: generatorController.apiHintGenerator,
   };
+
+  this.uploadFotaFile = {
+    path: $rest.apiRoute + '/upload/fota',
+    methods: ['post'],
+    middleware: [connectMultiparty()],
+    handler: fotaController.uploadFotaFile,
+  };
+
 };

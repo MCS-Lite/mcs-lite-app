@@ -1,0 +1,17 @@
+{
+  "output" : "out-<%= file %>",
+  "bins": [
+    {
+      "file_path": "<%= file %>",
+      "start_addr": "0x79000",
+      "partition_size": "0x1ED000",
+      "is_compressed": true
+    },
+    {
+      "file_path": "WIFI_RAM_CODE_MT76X7_in_flash.bin",
+      "start_addr": "0x10000",
+      "partition_size": "0x69000",
+      "is_compressed": true
+    }
+  ]
+}
