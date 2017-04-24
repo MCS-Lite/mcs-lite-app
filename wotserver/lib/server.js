@@ -235,7 +235,28 @@ WebsocketBroker.prototype.start = function(route, handlers) {
         self.dispatchData(this.viewer, message.binaryData, { binary: true });
       } else {
         self.dispatchData(this.viewer, message.utf8Data);
+        try {
+          var data = JSON.parse(message.utf8Data);
+          var pathnameArr = this.pathname.split('/');
+          var deviceId = pathnameArr[2];
+          var deviceKey = pathnameArr[4];
+          
+          var timestamp;
+          if (!data.timestamp) { 
+            timestamp = new Date().getTime();
+          } else {
+            timestamp = data.timestamp;
+          }
+
+          var sendData = data.values.value;
+          if (data.values.period) sendData = sendData + ',' + data.values.period; 
+
+          self.dispatchData(this.csv, deviceId + ',' + deviceKey + ',' + timestamp + ',' + data.datachannelId + ',' + sendData);
+        } catch (e) {
+          console.log(e);
         }
+        
+      }
     }
 
     if (typeof (this.statusViewer) !== 'undefined')

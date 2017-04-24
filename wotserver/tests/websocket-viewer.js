@@ -25,4 +25,4 @@ client.on('connect', function(connection) {
     });
 });
 
-client.connect('ws://localhost:8000/deviceId/' + deviceId + '/deviceKey/' + deviceKey + '/viewer', '');
+client.connect('ws://localhost:8000/deviceId/' + deviceId + '/deviceKey/' + deviceKey + '/csv', '');
