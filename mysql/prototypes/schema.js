@@ -5,44 +5,44 @@ module.exports = function(Sequelize) {
       autoIncrement: true,
       primaryKey: true
     },
-    prototypeId: { 
+    prototypeId: {
       type: Sequelize.STRING,
       allowNull: false,
     },
-    prototypeKey: { 
-      type: Sequelize.STRING, 
-      allowNull: false,
-    },
-    prototypeName: { 
+    prototypeKey: {
       type: Sequelize.STRING,
       allowNull: false,
     },
-    prototypeDescription: { 
+    prototypeName: {
+      type: Sequelize.STRING,
+      allowNull: false,
+    },
+    prototypeDescription: {
       type: Sequelize.TEXT,
       allowNull: false,
     },
-    prototypeImageURL: { 
-      type: Sequelize.STRING, 
-      allowNull: false,
-    },
-    createUserId: { 
-      type: Sequelize.STRING, 
-      allowNull: false,
-    },
-    version: { 
+    prototypeImageURL: {
       type: Sequelize.STRING,
       allowNull: false,
     },
-    isPublic: { 
+    createUserId: {
+      type: Sequelize.STRING,
+      allowNull: false,
+    },
+    version: {
+      type: Sequelize.STRING,
+      allowNull: false,
+    },
+    isPublic: {
       type: Sequelize.BOOLEAN,
       allowNull: false,
     },
-    isActive: { 
+    isActive: {
       type: Sequelize.BOOLEAN,
       allowNull: false,
     },
-    isTemplate: { 
-      type: Sequelize.BOOLEAN, 
+    isTemplate: {
+      type: Sequelize.BOOLEAN,
       allowNull: false,
     },
     createdAt: {

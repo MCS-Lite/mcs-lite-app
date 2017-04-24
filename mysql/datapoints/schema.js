@@ -5,23 +5,23 @@ module.exports = function(Sequelize) {
       autoIncrement: true,
       primaryKey: true
     },
-    deviceId: { 
-      type: Sequelize.STRING, 
-      allowNull: false,
-    },
-    deviceKey: { 
+    deviceId: {
       type: Sequelize.STRING,
       allowNull: false,
     },
-    datachannelId: { 
+    deviceKey: {
       type: Sequelize.STRING,
       allowNull: false,
     },
-    values: { 
+    datachannelId: {
+      type: Sequelize.STRING,
+      allowNull: false,
+    },
+    values: {
       type: Sequelize.TEXT,
       allowNull: false,
     },
-    updatedAt: { 
+    updatedAt: {
       type: Sequelize.DATE,
       defaultValue: Sequelize.NOW,
       allowNull: false,
@@ -31,8 +31,8 @@ module.exports = function(Sequelize) {
       defaultValue: Sequelize.NOW,
       allowNull: false,
     },
-    isActive: { 
-      type: Sequelize.BOOLEAN, 
+    isActive: {
+      type: Sequelize.BOOLEAN,
       allowNull: false,
     },
   };

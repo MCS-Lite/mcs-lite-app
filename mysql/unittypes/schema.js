@@ -5,23 +5,23 @@ module.exports = function(Sequelize) {
       autoIncrement: true,
       primaryKey: true
     },
-    createUserId: { 
+    createUserId: {
       type: Sequelize.STRING,
       allowNull: false,
     },
-    name: { 
+    name: {
       type: Sequelize.STRING,
       allowNull: false,
     },
-    symbol: { 
+    symbol: {
       type: Sequelize.STRING,
       allowNull: false,
     },
-    isActive: { 
+    isActive: {
       type: Sequelize.BOOLEAN,
       allowNull: false,
     },
-    isTemplate: { 
+    isTemplate: {
       type: Sequelize.BOOLEAN,
       allowNull: false,
     },
