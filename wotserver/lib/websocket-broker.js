@@ -61,6 +61,7 @@ var wsHandlers = {
    // "/object/([A-Za-z0-9/]+)/status$": RequestHandlers.status,
    "/deviceId/([-A-Za-z0-9_]+)/deviceKey/([A-Za-z0-9]+)": MCSHandler.send,
    "/deviceId/([-A-Za-z0-9_]+)/deviceKey/([A-Za-z0-9]+)/viewer$": MCSHandler.viewer,
+   "/deviceId/([-A-Za-z0-9_]+)/deviceKey/([A-Za-z0-9]+)/csv$": MCSHandler.csv,
    "/deviceId/([-A-Za-z0-9_]+)/deviceKey/([A-Za-z0-9]+)/status$": MCSHandler.status,
    "/deviceId/([-A-Za-z0-9_]+)/deviceKey/([A-Za-z0-9]+)/[0-9]+/[0-9]+/stream$": MCSHandler.streamSender,
    "/deviceId/([-A-Za-z0-9_]+)/deviceKey/([A-Za-z0-9]+)/[0-9]+/[0-9]+/stream/viewer$": MCSHandler.streamViewer,

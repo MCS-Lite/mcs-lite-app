@@ -25,16 +25,18 @@ if (typeof(Handlers) == "undefined") {
     // var viewer = paths;
 
     connection.viewer = paths + '/viewer';
+    connection.csv = paths + '/csv';
     connection.statusViewer = paths + '/status';
     /*
      * initial storage for this viewer
      */
     for (var path in clients) {
-        if (path === connection.viewer)
-            return;
+        if (path === connection.viewer) { return; }
+        if (path === connection.csv) { return; }
     }
 
     clients[connection.viewer] = [];
+    clients[connection.csv] = [];
     clients[connection.statusViewer] = [];
   }
 
@@ -42,6 +44,24 @@ if (typeof(Handlers) == "undefined") {
     //console.log("Viewer Routed: " + pathname);
 
     // the original sender pathname
+    connection.pathname = pathname;
+
+    // Save viewer clients (unlimited clients)
+    for (var path in clients) {
+        if (path === pathname) {
+            clients[path].push(connection);
+            return;
+        }
+    }
+
+    /*
+     * Not found. There is not a existing sender.
+     */
+    clients[pathname] = [];
+    clients[pathname].push(connection);
+  }
+
+  Handlers.csv = function(pathname, connection, clients) {
     connection.pathname = pathname;
 
     // Save viewer clients (unlimited clients)
