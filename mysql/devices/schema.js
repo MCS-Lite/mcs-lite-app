@@ -5,19 +5,19 @@ module.exports = function(Sequelize) {
       autoIncrement: true,
       primaryKey: true
     },
-    createUserId: { 
+    createUserId: {
       type: Sequelize.STRING,
       allowNull: false,
     },
-    deviceId: { 
-      type: Sequelize.STRING, 
-      allowNull: false,
-    },
-    deviceKey: { 
+    deviceId: {
       type: Sequelize.STRING,
       allowNull: false,
     },
-    deviceName: { 
+    deviceKey: {
+      type: Sequelize.STRING,
+      allowNull: false,
+    },
+    deviceName: {
       type: Sequelize.STRING,
       allowNull: false,
     },
@@ -25,19 +25,19 @@ module.exports = function(Sequelize) {
       type: Sequelize.STRING,
       allowNull: false,
     },
-    deviceImageURL: { 
+    deviceImageURL: {
       type: Sequelize.STRING,
       allowNull: false,
     },
-    prototypeId: { 
+    prototypeId: {
       type: Sequelize.STRING,
       allowNull: false,
     },
-    isHeartbeating: { 
+    isHeartbeating: {
       type: Sequelize.BOOLEAN,
       allowNull: false,
     },
-    isPublic: { 
+    isPublic: {
       type: Sequelize.BOOLEAN,
       allowNull: false,
     },
@@ -45,7 +45,7 @@ module.exports = function(Sequelize) {
       type: Sequelize.STRING,
       allowNull: false,
     },
-    isActive: { 
+    isActive: {
       type: Sequelize.BOOLEAN,
       allowNull: false,
     },

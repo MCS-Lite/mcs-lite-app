@@ -5,53 +5,53 @@ module.exports = function(Sequelize) {
       autoIncrement: true,
       primaryKey: true
     },
-    prototypeId: { 
-      type: Sequelize.STRING, 
-      allowNull: false,
-    },
-    datachannelName: { 
+    prototypeId: {
       type: Sequelize.STRING,
       allowNull: false,
     },
-    datachannelId: { 
+    datachannelName: {
       type: Sequelize.STRING,
       allowNull: false,
     },
-    datachannelDescription: { 
+    datachannelId: {
+      type: Sequelize.STRING,
+      allowNull: false,
+    },
+    datachannelDescription: {
       type: Sequelize.TEXT,
       allowNull: false,
     },
-    type: { 
+    type: {
       type: Sequelize.INTEGER,
       allowNull: false,
     },
-    channelType: { 
+    channelType: {
       type: Sequelize.TEXT,
       allowNull: false,
     },
-    isHidden: { 
+    isHidden: {
       type: Sequelize.BOOLEAN,
       allowNull: false,
     },
-    format: { 
-      type: Sequelize.TEXT, 
+    format: {
+      type: Sequelize.TEXT,
       allowNull: false,
     },
-    createUserId: { 
+    createUserId: {
       type: Sequelize.STRING,
       allowNull: false,
     },
-    updatedAt: { 
+    updatedAt: {
       type: Sequelize.DATE,
       allowNull: false,
       defaultValue: Sequelize.NOW,
     },
-    createdAt: { 
+    createdAt: {
       type: Sequelize.DATE,
       allowNull: false,
       defaultValue: Sequelize.NOW,
     },
-    isActive: { 
+    isActive: {
       type: Sequelize.BOOLEAN,
       allowNull: false,
     },

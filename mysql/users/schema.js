@@ -5,31 +5,31 @@ module.exports = function(Sequelize) {
       autoIncrement: true,
       primaryKey: true,
     },
-    userId: { 
+    userId: {
       type: Sequelize.STRING,
       allowNull: false,
     },
-    email: { 
+    email: {
       type: Sequelize.STRING,
       allowNull: false,
     },
-    userName: { 
+    userName: {
       type: Sequelize.STRING,
       allowNull: false,
     },
     userImage: {
       type: Sequelize.STRING,
-      allowNull: false, 
+      allowNull: false,
     },
-    isActive: { 
+    isActive: {
       type: Sequelize.BOOLEAN,
       allowNull: false,
     },
-    isActive: { 
+    isActive: {
       type: Sequelize.BOOLEAN,
       allowNull: false,
     },
-    isAdmin: { 
+    isAdmin: {
       type: Sequelize.BOOLEAN,
       allowNull: false,
     },
