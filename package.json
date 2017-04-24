@@ -56,6 +56,7 @@
     "node-uuid": "^1.4.7",
     "oauth2-server": "https://github.com/iamblue/Oauth2-server.git",
     "ramda": "^0.23.0",
+    "sequelize": "^3.30.4",
     "shortid": "^2.2.6",
     "superagent": "^3.5.0",
     "utils-merge": "^1.0.0",
