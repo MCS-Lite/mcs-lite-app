@@ -1,42 +1,57 @@
 var connectMultiparty = require('connect-multiparty');
-
-var $oauth = require('../../configs/oauth');
-
-var webClientId = $oauth.webClient.clientId;
-var webClientSecret = $oauth.webClient.secret;
-var webBasicToken = new Buffer(webClientId + ':' + webClientSecret).toString('base64');
-
-var mobileClientId = $oauth.mobileClient.clientId;
-var mobileClientSecret = $oauth.mobileClient.secret;
-var mobileBasicToken = new Buffer(mobileClientId + ':' + mobileClientSecret).toString('base64');
-
 var bodyParser = require('body-parser');
 
-module.exports = function($db, $app, $rest, $oauth, $wot) {
+module.exports = function($db, $app, $admin) {
 
+  var webClientId = $admin.webClient.clientId;
+  var webClientSecret = $admin.webClient.secret;
+  var webBasicToken = new Buffer(webClientId + ':' + webClientSecret).toString('base64');
+
+  var usersController = new require('../controllers/users')($db);
+  
   const parseBasicToken = function(req, res, next) {
     if (/mobile/.test(req.route.path)) {
       req.basicToken = mobileBasicToken;
       req.clientAppInfo = {
         isMobile: true,
-        redirect: $oauth.mobileClient.redirect,
+        redirect: $admin.mobileClient.redirect,
       };
     } else {
       req.basicToken = webBasicToken;
       req.clientAppInfo = {
         isMobile: false,
-        redirect: $oauth.webClient.redirect,
+        redirect: $admin.webClient.redirect,
       };
     }
     next();
   };
 
   this.test = {
-    path: '/',
+    path: '/test',
     methods: ['get'],
     handler: function(req, res, next) {
       res.send(200, { aaa: '123' });
     },
+  };
+
+  this.userLoginInterface = {
+    path: '/login',
+    methods: ['get'],
+    handler: usersController.loginInterface,
+  };
+
+  this.authLogin = {
+    path: '/oauth/login',
+    methods: ['post'],
+    middleware: [parseBasicToken],
+    handler: usersController.login,
+  };
+
+  this.checkCookies = {
+    path: '/oauth/cookies',
+    methods: ['post'],
+    middleware: [parseBasicToken],
+    handler: usersController.checkCookies,
   };
 
 };

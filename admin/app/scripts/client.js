@@ -1,14 +1,14 @@
 require('babel-polyfill');
 require('../styles/main.css');
 
-if (/\:8081/.test(window.location.host)) {
-  window.apiUrl = 'http://localhost:3000/api';
-  window.oauthUrl = 'http://localhost:3000/oauth';
-  window.ws = 'localhost:8000';
+if (/\:8082/.test(window.location.host)) {
+  window.apiUrl = 'http://localhost:3002/api';
+  window.oauthUrl = 'http://localhost:3002/oauth';
+  // window.ws = 'localhost:8000';
 } else {
   window.apiUrl = window.location.origin + '/api';
   window.oauthUrl = window.location.origin + '/oauth';
-  window.ws = window.location.hostname + ':8000'
+  // window.ws = window.location.hostname + ':8000'
 }
 
 import React from 'react';

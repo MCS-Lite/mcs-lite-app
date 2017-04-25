@@ -1,8 +1,10 @@
 import { combineReducers } from 'redux';
 import main from './main';
+import login from './login';
 
-const mt7697App = combineReducers({
+const mcsLiteApp = combineReducers({
   main,
+  login,
 });
 
-export default mt7697App;
+export default mcsLiteApp;
