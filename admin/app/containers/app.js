@@ -1,12 +1,28 @@
 import { connect } from 'react-redux';
 import React, { Component } from 'react';
-import styles from './styles.css';
+import { checkToken } from '../actions/AppActions';
 
 class App extends Component {
+  componentWillMount() {
+    const { checkToken: doCheckToken, location } = this.props;
+    if (!/(login)|(signup)/.test(location.pathname)) {
+      doCheckToken();
+    }
+  }
+
   render() {
+    const {
+      children,
+      location,
+      main,
+    } = this.props;
+
     return (
-      <div className={styles.base}>
-        123123123
+      <div>
+        {
+          /(login)|(signup)/.test(location.pathname)
+          ? children : (main.isInitialized && children)
+        }
       </div>
     );
   }
@@ -14,4 +30,4 @@ class App extends Component {
 
 const mapStateToProps = state => state;
 
-export default connect(mapStateToProps, { })(App);
+export default connect(mapStateToProps, { checkToken })(App);

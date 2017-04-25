@@ -4,9 +4,7 @@ var OAuthServer = require('oauth2-server');
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 var R = require('ramda');
-var $oauth = require('../configs/oauth');
-var $rest = require('../configs/rest');
-var $wot = require('../configs/wot');
+var $admin = require('../configs/admin');
 var app = express();
 var oauth = require('./oauth');
 var routers = require('./routers/index');
@@ -16,15 +14,15 @@ var dbConfig = require('../configs/db');
 var connectDB = connectToDB(dbConfig).init();
 var Oauth = new oauth(connectDB);
 
-global.oauthHost = 'http://' + $oauth.host + ':' + $oauth.port;
-global.host = $rest.host + ':' + $rest.port + $rest.apiRoute;
+global.oauthHost = 'http://' + $admin.host + ':' + $admin.port;
+global.host = $admin.host + ':' + $admin.port + $admin.apiRoute;
 
 app.oauth = new OAuthServer({
   model: Oauth,
   grants: ['password', 'refresh_token'],
   debug: true,
-  accessTokenLifetime: $oauth.ACCESS_TOKEN_EXP * 60,
-  refreshTokenLifetime: $oauth.REFRESH_TOKEN_EXP * 60
+  accessTokenLifetime: $admin.ACCESS_TOKEN_EXP * 60,
+  refreshTokenLifetime: $admin.REFRESH_TOKEN_EXP * 60
 });
 
 app.engine('html', require('ejs').renderFile);
@@ -49,7 +47,7 @@ app.use('/assets', express.static(path.resolve(__dirname, '../admin/app/build/as
 
 app.all('/oauth/token', app.oauth.grant());
 app.db = connectDB;
-handleRouters(app, new routers(connectDB, app, $rest, $oauth, $wot));
+handleRouters(app, new routers(connectDB, app, $admin));
 app.use(app.oauth.errorHandler());
 
 module.exports = app;
