@@ -1,4 +1,4 @@
-# mcs-lite-app
+# mcs-lite-app [![Travis CI](https://travis-ci.com/MCS-Lite/mcs-lite-app.svg?token=M5W8N3UE7Z9icpshis3W&branch=master)](https://travis-ci.com/MCS-Lite/mcs-lite-app)
 
 > Note: Common UI and Mobile page are being developed at https://github.com/evenchange4/mcs-lite.
 

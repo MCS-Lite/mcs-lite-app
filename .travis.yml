@@ -1,0 +1,12 @@
+sudo: false
+language: node_js
+node_js:
+  - "6"
+  - "7"
+
+script:
+  - npm run build:global
+
+cache:
+  directories:
+    - node_modules
