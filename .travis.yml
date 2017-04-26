@@ -1,12 +1,25 @@
 sudo: false
 language: node_js
 node_js:
-  - "6"
-  - "7"
+  - '6'
 
 script:
   - npm run build:global
+  - cd ./out/mcs-lite-app
+  - find . -type d -maxdepth 1 -mindepth 1 -exec tar zcf {}.tar.gz {}  \;
+  - cd ../..
 
 cache:
   directories:
     - node_modules
+
+deploy:
+  provider: releases
+  api_key:
+    secure: Ii5Phu/1jnnXjtNbwt+FSH2CBq7Db7TXKoHoN7SrPJAs7w+J/ZDSTKf0Scbck+8woyImXTlh6pX+3qXU57u3FkigeOqX46i4OcT7SJQ+lVbgIVJRNojlw0gZmZ1hgTLWl5914xMnO82+99xjlU2amG4Cv7jkx61M8Os56pqR4kMo6uy1YkSEYNc06cZYNTkNWuGfxlCyMtz3G4WYgKEJXEqbfGJ7Hz6jWkaG+g03KuzBI1XbjNpT13VyxSkcC+xz4uaPO6ZRR5f6wKUbyGfl51xYmZkwYdqc2Zm2tfG+S1gHpyQwz9fXb5DOR5FbRWOmW+YSvbBZwELA67nxpempMT1Nx0v0sp6z8pOeJQLZKuyhMe2kRZD6nKY/feMSVC0ABnbqw4MiitgLcHMqVLpir45JuhoWqkEGU24zbu6Ut37UcrXgdcD7lXzTy2tEHptgsiRk0Y5oMMjZhRLiausD4g2cg7m4cfC4tuScEWwEXqTTScPZTrF5t0XhfOJoVwaz6x//kmx9drYbBTaWJSul4WMiVcxm9OmSxez7BKQx9Wa4i+IecbG5feFS6lKqtwL7hSbEoM9SYtof/F4QfJedE3pl43GwVNNpf+618HvNZMmwxtAXIiXzc7AAobXyT2JPOwKme9tx5ziUch7TSqZi3hnL/19cbndeb0GvuXcDHcc=
+  file_glob: true
+  file: "./out/mcs-lite-app/*.tar.gz"
+  skip_cleanup: true
+  on:
+    repo: MCS-Lite/mcs-lite-app
+    tags: true
