@@ -1,11 +1,6 @@
 # mcs-lite-app [![Travis CI](https://travis-ci.com/MCS-Lite/mcs-lite-app.svg?token=M5W8N3UE7Z9icpshis3W&branch=master)](https://travis-ci.com/MCS-Lite/mcs-lite-app)
 
-> Note: Common UI and Mobile page are being developed at https://github.com/evenchange4/mcs-lite.
-
--   Try desktop online - https://mcs-lite-server-iamblue.c9users.io/
--   Try mobile online - https://mcs-lite-server-iamblue.c9users.io/mobile
--   Try common UI online - http://mcs-lite-ui.netlify.com/
--   [WIP] MCS Lite Resources -  https://dariachen1.gitbooks.io/mcs-lite-introduction/content/
+> Note: Common UI and Mobile page are being developed at https://github.com/MCS-Lite/mcs-lite.
 
 ## For Usage
 * Only support Node.js version >= 6
