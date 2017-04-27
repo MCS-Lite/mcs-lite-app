@@ -10,19 +10,11 @@ module.exports = function($db, $app, $admin) {
   var usersController = new require('../controllers/users')($db);
   
   const parseBasicToken = function(req, res, next) {
-    if (/mobile/.test(req.route.path)) {
-      req.basicToken = mobileBasicToken;
-      req.clientAppInfo = {
-        isMobile: true,
-        redirect: $admin.mobileClient.redirect,
-      };
-    } else {
-      req.basicToken = webBasicToken;
-      req.clientAppInfo = {
-        isMobile: false,
-        redirect: $admin.webClient.redirect,
-      };
-    }
+    req.basicToken = webBasicToken;
+    req.clientAppInfo = {
+      isMobile: false,
+      redirect: $admin.webClient.redirect,
+    };
     next();
   };
 
