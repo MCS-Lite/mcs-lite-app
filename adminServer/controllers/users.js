@@ -2,9 +2,7 @@ var jwt = require('jsonwebtoken');
 var request = require('superagent');
 
 /* config */
-var $oauth = require('../../configs/oauth');
-var $rest = require('../../configs/rest');
-var $wot = require('../../configs/wot');
+var $admin = require('../../configs/oauth');
 
 module.exports = function ($db) {
 
@@ -12,11 +10,12 @@ module.exports = function ($db) {
     if (req.cookies.token) {
       return new Promise(function(resolve, reject) {
         /* 解碼 cookie 內的 token */
-        jwt.verify(req.cookies.token, $oauth.JWT_SECRET, function(err, payload) {
+        jwt.verify(req.cookies.token, $admin.JWT_SECRET, function(err, payload) {
           return err ? reject(err) : resolve(payload.token);
         });
-
+        console.log(123123);
       }).then(function(token) {
+        console.log(1);
 
         req.body.token = token;
         return new Promise(function(resolve, reject) {
@@ -35,15 +34,17 @@ module.exports = function ($db) {
           });
 
         }).then(function(data) {
+          console.log(2);
 
           return data;
 
         }).catch(function(err) {
-
+          console.log(3);
           var data = {
             refresh_token: token.refresh_token,
             grant_type: 'refresh_token'
           };
+          console.log(err);
           /* 若非 active 則拿 refreshtoken 重新洗新的 token  */
           return new Promise(function(resolve, reject) {
             request
@@ -53,37 +54,40 @@ module.exports = function ($db) {
             .send(data)
             .set('Authorization', 'Basic ' + req.basic_token)
             .end(function(err, res) {
+              console.log(err);
               return res.ok ?  resolve(res.body) : reject(err.response.body.message);
             });
           });
         });
       }).then(function(data) {
+          console.log(4);
 
         if (data !== 'active') {
           /* 如果非 active，就會把這些製作好的 token 塞入 cookie 中 */
           var payload = {
             token: data
           };
-          var token = jwt.sign(payload, $oauth.JWT_SECRET);
-          res.cookie('token', token, { maxAge: $rest.session.maxAge });
+          var token = jwt.sign(payload, $admin.JWT_SECRET);
+          res.cookie('token', token, { maxAge: $admin.session.maxAge });
         }
 
         if (process.env.NODE_ENV === 'dev') {
-          if (req.clientAppInfo.isMobile) {
-            return res.redirect(req.clientAppInfo.redirect.dev + '/devices');
-          }
           return res.redirect(req.clientAppInfo.redirect.dev + '/dashboard');
         }
-        return res.render('app/build/index.html', { wsPort: $wot.port });
+        return res.render('app/build/index.html');
 
       }).catch(function(err) {
+          console.log(5);
+          console.log(err);
+
         /* 有任何錯誤就返回首頁 */
         res.clearCookie('token', { path: '/' });
+
         if (process.env.NODE_ENV === 'dev') {
           return res.redirect(req.clientAppInfo.redirect.dev + '/login');
         }
 
-        return res.render('app/build/index.html', { wsPort: $wot.port });
+        return res.render('app/build/index.html');
       });
     } else {
       /* 如果 cookie 沒有 token 就是以前未登入過狀態 */
@@ -94,7 +98,7 @@ module.exports = function ($db) {
         return res.redirect(req.clientAppInfo.redirect.dev + '/');
       }
 
-      return res.render('app/build/index.html', { wsPort: $wot.port });
+      return res.render('app/build/index.html');
     }
   };
 
@@ -136,12 +140,12 @@ module.exports = function ($db) {
         token: data
       };
       try {
-        var token = jwt.sign(payload, $oauth.JWT_SECRET);
+        var token = jwt.sign(payload, $admin.JWT_SECRET);
       } catch (err) {
         return next(err);
       }
 
-      res.cookie('token', token, { maxAge: $rest.session.maxAge });
+      res.cookie('token', token, { maxAge: $admin.session.maxAge });
 
       return new Promise(function(resolve, reject) {
         request
@@ -152,13 +156,7 @@ module.exports = function ($db) {
         .end(function(err, data) {
           if (data.ok) {
             if (process.env.NODE_ENV === 'dev') {
-              if(req.clientAppInfo.isMobile) {
-                return res.redirect(req.clientAppInfo.redirect.dev + '/devices');
-              }
               return res.redirect(req.clientAppInfo.redirect.dev + '/dashboard');
-            }
-            if(req.clientAppInfo.isMobile) {
-              return res.redirect(req.clientAppInfo.redirect.prod + '/devices');
             }
             return res.redirect('/dashboard');
           } else {
@@ -170,14 +168,10 @@ module.exports = function ($db) {
       if (err === 'Your account is not activated yet!') {
         return res.redirect('/user/' + req.locale + '/verify?email=' + req.body.email);
       } else {
-        if(req.clientAppInfo.isMobile) {
-          return res.redirect('/mobile/login?errorMsg=' + encodeURI(err));
-        } else {
-          if (process.env.NODE_ENV === 'dev') {
-            return res.redirect('http://localhost:8081/login?errorMsg=' + encodeURI(err));
-          }
-          return res.redirect('/login?errorMsg=' + encodeURI(err));
+        if (process.env.NODE_ENV === 'dev') {
+          return res.redirect('http://localhost:8081/login?errorMsg=' + encodeURI(err));
         }
+        return res.redirect('/login?errorMsg=' + encodeURI(err));
       }
     });
   };
@@ -186,7 +180,7 @@ module.exports = function ($db) {
     var info = {};
     return new Promise(function(resolve, reject) {
       /* 檢查cookie中的token是否合法 */
-      jwt.verify(req.body.token, $oauth.JWT_SECRET, function(err, payload) {
+      jwt.verify(req.body.token, $admin.JWT_SECRET, function(err, payload) {
         return err ? reject(err) : resolve(payload.token);
       });
 
@@ -229,7 +223,7 @@ module.exports = function ($db) {
               token: token
             };
 
-            var _token = jwt.sign(payload, $oauth.JWT_SECRET);
+            var _token = jwt.sign(payload, $admin.JWT_SECRET);
             info.token  = _token;
 
             return resolve(info);

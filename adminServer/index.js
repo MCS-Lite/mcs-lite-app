@@ -26,7 +26,7 @@ app.oauth = new OAuthServer({
 });
 
 app.engine('html', require('ejs').renderFile);
-app.set('views', path.resolve(__dirname, '../client'));
+app.set('views', path.resolve(__dirname, '../admin'));
 
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
