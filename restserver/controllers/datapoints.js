@@ -228,10 +228,49 @@ module.exports = function ($db) {
     });
   };
 
+  var retrieveDatapointsByCSV = function(req, res, next) {
+    var field = {};
+    field.deviceId = req.params.deviceId;
+    field.datachannelId = req.params.datachannelId;
+    field.isActive = true;
+
+    var skip = req.query.skip || 0;
+    var sort = req.query.sort || { updatedAt: -1 };
+    var start = req.query.start;
+    var end = req.query.end;
+    var limit = req.query.limit || 1;
+
+    return devices.retriveUserDevices({
+      deviceKey: req.header('deviceKey'),
+      deviceId: field.deviceId,
+      isActive: true,
+    })
+    .then(function(data) {
+      if (data.length === 0) {
+        return res.send(400, { message: 'DeviceID or DeviceKey is not valid.' });
+      }
+      return datapoints.retrieveDatachannelDatapoint(field, sort, skip, limit)
+    })
+    .then(function(data) {
+      // var data = data.reverse();
+      var csvData = '';
+      data.forEach(function(k, v) {
+        csvData += k.datachannelId + ',' + k.createdAt + ',' + k.values.value;
+        if (k.values.period) csvData += ',' + k.values.period;
+        csvData += '\n';
+      });
+      return res.send(200, csvData);
+    })
+    .catch(function(err) {
+      return res.send(400, err);
+    });
+  };
+
   return {
     uploadDatapointsByJSON: uploadDatapointsByJSON,
     uploadDatapointsByCSV: uploadDatapointsByCSV,
     retrieveDatapoints: retrieveDatapoints,
+    retrieveDatapointsByCSV: retrieveDatapointsByCSV,
   };
 
 };

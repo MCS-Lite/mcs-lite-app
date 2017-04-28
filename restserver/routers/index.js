@@ -315,6 +315,12 @@ module.exports = function($db, $app, $rest, $oauth, $wot) {
     handler: datapointsController.retrieveDatapoints,
   };
 
+  this.retrieveDatachannelDatapointByCSV = {
+    path: $rest.apiRoute + '/devices/:deviceId/datachannels/:datachannelId/datapoints.csv',
+    methods: ['get'],
+    handler: datapointsController.retrieveDatapointsByCSV,
+  };
+
   this.retrieveUserDashBoard = {
     path: $rest.apiRoute + '/dashboard',
     methods: ['get'],
