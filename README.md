@@ -1,5 +1,7 @@
 # mcs-lite-app [![TravisCI](https://travis-ci.org/MCS-Lite/mcs-lite-app.svg?branch=master)](https://travis-ci.org/MCS-Lite/mcs-lite-app)
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/MCS-Lite/mcs-lite-app.svg)](https://greenkeeper.io/)
+
 > Note: Common UI and Mobile page are being developed at https://github.com/MCS-Lite/mcs-lite.
 
 ## For Usage
