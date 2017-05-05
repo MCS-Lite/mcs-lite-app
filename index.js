@@ -3,28 +3,10 @@ var gui = require('nw.gui');
 var path = require('path');
 var nwPath = process.execPath;
 var nwDir = path.dirname(nwPath);
-var os = require('os');
-var child = require('child_process');
 
 var $ = function (selector) {
   return document.querySelector(selector);
 }
-
-var interfaces = os.networkInterfaces();
-var addresses = [];
-var addressesList = '';
-console.log(interfaces);
-for (var k in interfaces) {
-    for (var k2 in interfaces[k]) {
-        var address = interfaces[k][k2];
-        if (address.family === 'IPv4' && !address.internal) {
-            addresses.push(address.address);
-            addressesList += '<li>' + address.address + '</li>';
-        }
-    }
-}
-
-console.log(addresses);
 
 if (process.platform == "darwin") {
   var menu = new gui.Menu({ type: 'menubar' });
@@ -73,13 +55,14 @@ function startMCSLiteService() {
 
 global.startMCSLiteService = startMCSLiteService;
 
-function initApp(){
+function initApp() {
   var adminServer;
   setTimeout(function() {
     if (process.platform == "darwin") {
-      if (process.env.NODE_ENV === 'dev') {
-        child.exec('npm run watch:global', { cwd: './admin' });
-      }
+      // if (process.env.NODE_ENV === 'dev') {
+        // var child = require('child_process');
+        // child.exec('npm run watch:global', { cwd: './admin' });
+      // }
       adminServer = require('./adminServer/index');
     }
     if (/^win/.test(process.platform)) {
