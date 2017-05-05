@@ -5,18 +5,10 @@
 > Note: Common UI and Mobile page are being developed at https://github.com/MCS-Lite/mcs-lite.
 
 ## For Usage
-* Only support Node.js version >= 6
-* npm install && cd client && npm install && cd ..
-* npm run install:nwjs
 
-### Windows
+Please see the [releases](https://github.com/MCS-Lite/mcs-lite-app/releases)
 
-### Mac
-
-### Linux or other Server
-* `node server`
-
-## For Dev
+## For Web Console Dev
 
 ### Env
 
@@ -26,9 +18,26 @@
 * `NODE_ENV=dev node server`
 
 #### Run mcs lite client
+
+* Open another screen and go to this project root path. 
 * `cd client && npm run watch:global`
 * go to `http://localhost:8081` (don't use 127.0.0.1)
 * If you want to build production version: `npm run build:global` (under /client path).
+
+
+## For Admin Service Dev
+
+### Env
+
+* Only support Node.js version >= 6
+
+#### Run admin page
+* `cd admin && npm run watch:global`
+
+#### Run mcs lite app
+
+* Open another screen and go to this project root path. 
+* `npm run watch:global`
 
 ## For Testing
 
