@@ -49,17 +49,15 @@ module.exports = function($db, $app, $admin) {
 
   this.startService = {
     path: '/service/start',
-    methods: ['post'],
-    middleware: [parseBasicToken],
-    handler: serviceController.retrieveServiceSetting,
+    methods: ['get'],
+    handler: serviceController.startService,
   };
 
   this.stopService = {
     path: '/service/stop',
-    methods: ['post'],
-    middleware: [parseBasicToken],
-    handler: serviceController.retrieveServiceSetting,
- 
+    methods: ['get'],
+    // middleware: [parseBasicToken],
+    handler: serviceController.stopService,
   };
 
   this.retrieveServiceSetting = {
@@ -86,7 +84,7 @@ module.exports = function($db, $app, $admin) {
   this.getServiceIp = {
     path: '/ip',
     methods: ['get'],
-    middleware: [parseBasicToken],
+    // middleware: [parseBasicToken],
     handler: serviceController.getServiceIp,
   };
 

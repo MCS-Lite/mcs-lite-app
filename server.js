@@ -6,4 +6,9 @@ var $admin = require('./configs/admin');
 
 websocketServer.init();
 restServer.listen($rest.port);
-adminServer.listen($admin.port);
+
+global.stopMCSLiteService = function () {
+  restServer.stop();
+};
+
+

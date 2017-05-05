@@ -168,8 +168,9 @@ module.exports = function ($db) {
       if (err === 'Your account is not activated yet!') {
         return res.redirect('/user/' + req.locale + '/verify?email=' + req.body.email);
       } else {
+        console.log(err);
         if (process.env.NODE_ENV === 'dev') {
-          return res.redirect('http://localhost:8081/login?errorMsg=' + encodeURI(err));
+          return res.redirect('http://localhost:8082/login?errorMsg=' + encodeURI(err));
         }
         return res.redirect('/login?errorMsg=' + encodeURI(err));
       }
