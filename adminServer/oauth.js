@@ -3,10 +3,10 @@ var jwt     = require('jsonwebtoken');
 
 module.exports = function($db) {
 
-  var $config  = require('../configs/oauth');
+  var $admin  = require('../configs/admin');
   var $clients = [];
-  $clients.push($config.webClient);
-  $clients.push($config.mobileClient);
+  $clients.push($admin.webClient);
+  $clients.push($admin.mobileClient);
 
   var Users = $db.users;
   var Apps = require('./libs/app');
@@ -25,9 +25,9 @@ module.exports = function($db) {
     var token;
     try {
       if (type === 'accessToken') {
-        token = jwt.sign(payload, $config.JWT_SECRET, { expiresIn: $config.ACCESS_TOKEN_EXP + 'm' });
+        token = jwt.sign(payload, $admin.JWT_SECRET, { expiresIn: $admin.ACCESS_TOKEN_EXP + 'm' });
       } else {
-        token = jwt.sign(payload, $config.JWT_SECRET, { expiresIn: $config.REFRESH_TOKEN_EXP + 'm' });
+        token = jwt.sign(payload, $admin.JWT_SECRET, { expiresIn: $admin.REFRESH_TOKEN_EXP + 'm' });
       }
     } catch (err) {
       if (callback) { return callback(err); }
@@ -41,7 +41,7 @@ module.exports = function($db) {
   };
 
   model.getAccessToken = function(bearerToken, callback) {
-    jwt.verify(bearerToken, $config.JWT_SECRET, function(err, payload) {
+    jwt.verify(bearerToken, $admin.JWT_SECRET, function(err, payload) {
       if (err) {
         return callback(err);
       }
@@ -54,7 +54,7 @@ module.exports = function($db) {
   };
 
   model.getRefreshToken = function(bearerToken, callback) {
-    jwt.verify(bearerToken, $config.JWT_SECRET, function(err, payload) {
+    jwt.verify(bearerToken, $admin.JWT_SECRET, function(err, payload) {
       if (err) {
         return callback(err);
       }
@@ -105,7 +105,7 @@ module.exports = function($db) {
   };
 
   model.getUser = function(email, password, callback) {
-    Users.signInUser(email, password)
+    Users.signInUser(email, password, true)
     .then(function(data) {
       callback(null, {
         isAdmin: data.isAdmin,

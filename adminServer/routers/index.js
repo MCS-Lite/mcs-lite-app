@@ -19,18 +19,41 @@ module.exports = function($db, $app, $admin) {
     next();
   };
 
-  this.test = {
-    path: '/test',
+  const redirectForDev = function(req, res, next) {
+    if (process.env.NODE_ENV === 'dev') {
+      return res.redirect('http://localhost:8082');
+    }
+  };
+
+  this.createAnAdmin = {
+    path: '/admin',
+    methods: ['post'],
+    handler: usersController.createAnAdmin,
+  };
+
+  this.client = {
+    path: '/',
     methods: ['get'],
+    middleware: [redirectForDev],
     handler: function(req, res, next) {
-      res.send(200, { aaa: '123' });
+      res.render('app/build/index.html');
     },
   };
 
   this.userLoginInterface = {
     path: '/login',
     methods: ['get'],
+    middleware: [parseBasicToken],
     handler: usersController.loginInterface,
+  };
+
+  this.dashboardInterface = {
+    path: '/dashboard',
+    methods: ['get'],
+    middleware: [redirectForDev],
+    handler: function(req, res, next) {
+      res.render('app/build/index.html');
+    },
   };
 
   this.authLogin = {
@@ -56,7 +79,7 @@ module.exports = function($db, $app, $admin) {
   this.stopService = {
     path: '/service/stop',
     methods: ['get'],
-    // middleware: [parseBasicToken],
+    middleware: [parseBasicToken],
     handler: serviceController.stopService,
   };
 
@@ -79,6 +102,15 @@ module.exports = function($db, $app, $admin) {
     methods: ['post'],
     middleware: [parseBasicToken],
     handler: serviceController.resetServiceSetting,
+  };
+
+  this.userInfo = {
+    path: '/oauth/users/info',
+    methods: ['get'],
+    middleware: [$app.oauth.authorise()],
+    handler: function(req, res, next) {
+      res.send(200, req.user);
+    },
   };
 
   this.getServiceIp = {

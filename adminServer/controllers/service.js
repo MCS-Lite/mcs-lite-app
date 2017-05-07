@@ -13,11 +13,17 @@ module.exports = function ($db) {
   };
 
   var retrieveServiceSetting = function(req, res, next) {
-    res.send(200, "123132");
+    try {
+      var settingContent = require('../../configs/' + settingId + '.json');  
+      res.send(200, { data: settingContent });
+    } catch (e) {
+      res.send(400, "Cannot find this file.");
+    }
   };
 
   var editServiceSetting = function(req, res, next) {
-    res.send(200, "123132");
+    var content = req.body.content;
+    res.send(200, "success.");
   };
 
   var resetServiceSetting = function(req, res, next) {
@@ -27,7 +33,6 @@ module.exports = function ($db) {
   var getServiceIp = function(req, res, next) {
     var interfaces = os.networkInterfaces();
     var addresses = [];
-    console.log(interfaces);
     for (var k in interfaces) {
         for (var k2 in interfaces[k]) {
             var address = interfaces[k][k2];
@@ -40,7 +45,7 @@ module.exports = function ($db) {
   };
 
   var getServiceLog = function(req, res, next) {
-    res.send(200, "123132");
+    res.send(200, "log.");
   };
 
   return {

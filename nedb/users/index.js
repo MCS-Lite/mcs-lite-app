@@ -29,18 +29,26 @@ module.exports = function(users) {
         });
       });
     },
-    signInUser: function(email, password) {
+
+    signInUser: function(email, password, admin) {
+      // admin is for admin console login 
       password = crypto
         .createHmac('sha256', secretKey)
         .update(password)
         .digest('hex');
 
+      var query = {
+        email: email,
+        password: password,
+        isActive: true,
+      };
+
+      if (admin) {
+        query.isAdmin = true;
+      }
+
       return new Promise( function(resolve, reject) {
-        return users.find({
-          email: email,
-          password: password,
-          isActive: true,
-        }, function(err, data) {
+        return users.find(query, function(err, data) {
           if (err) {
             return reject(err);
           }
@@ -125,6 +133,20 @@ module.exports = function(users) {
           } else {
             return resolve(data);
           }
+        });
+      });
+    },
+
+    checkDefaultUserCount: function() {
+      return new Promise(function(resolve, reject) {
+        return users.find({ 
+          isActive: true,
+        }, function(err, data) {
+          if (err) return reject();
+          if (data.length !== 0) {
+            return resolve(false);  
+          }
+          return resolve(true);  
         });
       });
     },

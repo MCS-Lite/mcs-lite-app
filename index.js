@@ -72,6 +72,13 @@ function initApp() {
     var $admin = require('./configs/admin');
     adminServer.listen($admin.port);
     gui.Window.get().show();
-  }, 1000);
+    if (process.env.NODE_ENV === 'dev') {
+      document.body.innerHTML += '<iframe frameborder="0" src="http://127.0.0.1:8082/" style="width: 100%; height: 580px" nwdisable nwfaketop>';  
+    } else {
+      document.body.innerHTML += '<iframe frameborder="0" src="http://127.0.0.1:3002/" style="width: 100%; height: 580px" nwdisable nwfaketop>';
+    }
+  }, 500);
 }
+
+
 

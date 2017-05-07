@@ -2,9 +2,10 @@ var jwt = require('jsonwebtoken');
 var request = require('superagent');
 
 /* config */
-var $admin = require('../../configs/oauth');
+var $admin = require('../../configs/admin');
 
 module.exports = function ($db) {
+  var users = $db.users;
 
   var loginInterface = function(req, res, next) {
     if (req.cookies.token) {
@@ -13,10 +14,7 @@ module.exports = function ($db) {
         jwt.verify(req.cookies.token, $admin.JWT_SECRET, function(err, payload) {
           return err ? reject(err) : resolve(payload.token);
         });
-        console.log(123123);
       }).then(function(token) {
-        console.log(1);
-
         req.body.token = token;
         return new Promise(function(resolve, reject) {
           /* 檢查 token 是否 active */
@@ -34,17 +32,12 @@ module.exports = function ($db) {
           });
 
         }).then(function(data) {
-          console.log(2);
-
           return data;
-
         }).catch(function(err) {
-          console.log(3);
           var data = {
             refresh_token: token.refresh_token,
             grant_type: 'refresh_token'
           };
-          console.log(err);
           /* 若非 active 則拿 refreshtoken 重新洗新的 token  */
           return new Promise(function(resolve, reject) {
             request
@@ -54,14 +47,11 @@ module.exports = function ($db) {
             .send(data)
             .set('Authorization', 'Basic ' + req.basic_token)
             .end(function(err, res) {
-              console.log(err);
               return res.ok ?  resolve(res.body) : reject(err.response.body.message);
             });
           });
         });
       }).then(function(data) {
-          console.log(4);
-
         if (data !== 'active') {
           /* 如果非 active，就會把這些製作好的 token 塞入 cookie 中 */
           var payload = {
@@ -77,9 +67,6 @@ module.exports = function ($db) {
         return res.render('app/build/index.html');
 
       }).catch(function(err) {
-          console.log(5);
-          console.log(err);
-
         /* 有任何錯誤就返回首頁 */
         res.clearCookie('token', { path: '/' });
 
@@ -95,7 +82,7 @@ module.exports = function ($db) {
         if (req.query.errorMsg) {
           return res.redirect(req.clientAppInfo.redirect.dev + '?errorMsg=' + req.query.errorMsg);
         }
-        return res.redirect(req.clientAppInfo.redirect.dev + '/');
+        return res.redirect(req.clientAppInfo.redirect.dev + '/login');
       }
 
       return res.render('app/build/index.html');
@@ -165,15 +152,10 @@ module.exports = function ($db) {
         });
       });
     }).catch(function(err) {
-      if (err === 'Your account is not activated yet!') {
-        return res.redirect('/user/' + req.locale + '/verify?email=' + req.body.email);
-      } else {
-        console.log(err);
-        if (process.env.NODE_ENV === 'dev') {
-          return res.redirect('http://localhost:8082/login?errorMsg=' + encodeURI(err));
-        }
-        return res.redirect('/login?errorMsg=' + encodeURI(err));
+      if (process.env.NODE_ENV === 'dev') {
+        return res.redirect('http://localhost:8082/login?errorMsg=' + encodeURI(err));
       }
+      return res.redirect('/login?errorMsg=' + encodeURI(err));
     });
   };
 
@@ -258,10 +240,38 @@ module.exports = function ($db) {
     });
   };
 
+  var retrieveUsers = function(req, res, next) {
+
+  };
+
+  var createAnAdmin = function(req, res, next) {
+    return users.checkDefaultUserCount()
+    .then(function(status) {
+      if (status) {
+        return users.addNewUser({
+          userName: req.body.userName,
+          email: req.body.email,
+          password: req.body.password,
+          isAdmin: true,
+        })
+        .then(function(data) {
+          return res.send(200, { message: 'success' });
+        })
+        .catch(function(err) {
+          return res.send(400, err);
+        });
+      } else {
+        return res.send(400, "Cannot regist admin Account.");
+      }
+    });
+  };
+
   return {
     login: login,
     loginInterface: loginInterface,
     checkCookies: checkCookies,
+    retrieveUsers: retrieveUsers, 
+    createAnAdmin: createAnAdmin,
   };
 
 }

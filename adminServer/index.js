@@ -50,5 +50,4 @@ app.db = connectDB;
 handleRouters(app, new routers(connectDB, app, $admin));
 app.use(app.oauth.errorHandler());
 
-console.log(global);
 module.exports = app;
