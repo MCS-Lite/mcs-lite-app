@@ -5,13 +5,7 @@
 > Note: Common UI and Mobile page are being developed at https://github.com/MCS-Lite/mcs-lite.
 
 ## For Usage
-* Only support Node.js version >= 6
-* npm install && cd client && npm install && cd ..
-* npm run install:nwjs
-
-### Windows
-
-### Mac
+* please go to [here](https://github.com/MCS-Lite/mcs-lite-app/releases), and download your application
 
 ### Linux or other Server
 * `node server`
