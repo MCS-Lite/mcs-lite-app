@@ -6,4 +6,3 @@ var $rest = require('./configs/rest');
 websocketServer.init();
 restServer.listen($rest.port);
 // adminServer.listen($admin.port);
-
