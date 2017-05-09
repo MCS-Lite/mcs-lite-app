@@ -15,8 +15,8 @@
     "secret": "mcs_lite_app_admin_secret",
     "grantTypes": ["password", "refresh_token"],
     "redirect": {
-      "dev": "http://localhost:8082",
-      "prod": ""
+      "dev": "http://localhost:8083/admin",
+      "prod": "/admin"
     }
   }
 }
