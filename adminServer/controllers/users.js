@@ -266,12 +266,20 @@ module.exports = function ($db) {
     });
   };
 
+  var checkAdminExist = function(req, res, next) {
+    return users.checkDefaultUserCount()
+    .then(function(status) {
+      res.send(200, status);
+    });
+  };
+
   return {
     login: login,
     loginInterface: loginInterface,
     checkCookies: checkCookies,
     retrieveUsers: retrieveUsers, 
     createAnAdmin: createAnAdmin,
+    checkAdminExist: checkAdminExist,
   };
 
 }

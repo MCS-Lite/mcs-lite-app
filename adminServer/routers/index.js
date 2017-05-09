@@ -31,6 +31,12 @@ module.exports = function($db, $app, $admin) {
     handler: usersController.createAnAdmin,
   };
 
+  this.checkAdminExist = {
+    path: '/admin/check',
+    methods: ['get'],
+    handler: usersController.checkAdminExist,
+  };
+
   this.client = {
     path: '/',
     methods: ['get'],
