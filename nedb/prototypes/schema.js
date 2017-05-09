@@ -10,6 +10,8 @@ module.exports = {
     version: { type: 'string' },
     isPublic: { type: 'boolean' },
     isActive: { type: 'boolean' },
+    updatedAt: { type: 'integer' },
+    createdAt: { type: 'integer' },
     isTemplate: { type: 'boolean' },
   },
   required: [

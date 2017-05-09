@@ -7,7 +7,7 @@ module.exports = {
     deviceName: { type: 'string' },
     deviceDescription: { type: 'string' },
     deviceImageURL: { type: 'string'},
-    prototypeId: { type: 'prototypeId' },
+    prototypeId: { type: 'string' },
     updatedAt: { type: 'integer' },
     createdAt: { type: 'integer' },
     isHeartbeating: { type: 'boolean' },
