@@ -1,4 +1,0 @@
-{
-  "presets": ["mcs-lite"],
-  "plugins": ["transform-decorators-legacy"]
-}

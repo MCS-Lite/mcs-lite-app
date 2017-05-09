@@ -21,29 +21,20 @@ module.exports = function($db, $app, $admin) {
 
   const redirectForDev = function(req, res, next) {
     if (process.env.NODE_ENV === 'dev') {
-      return res.redirect('http://localhost:8082');
+      return res.redirect($admin.webClient.redirect.dev);
     }
   };
 
   this.createAnAdmin = {
-    path: '/admin',
+    path: $admin.apiRoute + '/admin',
     methods: ['post'],
     handler: usersController.createAnAdmin,
   };
 
   this.checkAdminExist = {
-    path: '/admin/check',
+    path: $admin.apiRoute + '/admin/check',
     methods: ['get'],
     handler: usersController.checkAdminExist,
-  };
-
-  this.client = {
-    path: '/',
-    methods: ['get'],
-    middleware: [redirectForDev],
-    handler: function(req, res, next) {
-      res.render('app/build/index.html');
-    },
   };
 
   this.userLoginInterface = {
@@ -51,15 +42,6 @@ module.exports = function($db, $app, $admin) {
     methods: ['get'],
     middleware: [parseBasicToken],
     handler: usersController.loginInterface,
-  };
-
-  this.dashboardInterface = {
-    path: '/dashboard',
-    methods: ['get'],
-    middleware: [redirectForDev],
-    handler: function(req, res, next) {
-      res.render('app/build/index.html');
-    },
   };
 
   this.authLogin = {
@@ -77,34 +59,34 @@ module.exports = function($db, $app, $admin) {
   };
 
   this.startService = {
-    path: '/service/start',
+    path: $admin.apiRoute + '/service/start',
     methods: ['get'],
     handler: serviceController.startService,
   };
 
   this.stopService = {
-    path: '/service/stop',
+    path: $admin.apiRoute + '/service/stop',
     methods: ['get'],
     middleware: [parseBasicToken],
     handler: serviceController.stopService,
   };
 
   this.retrieveServiceSetting = {
-    path: '/service/:settingId',
+    path: $admin.apiRoute + '/service/:settingId',
     methods: ['get'],
     middleware: [parseBasicToken],
     handler: serviceController.retrieveServiceSetting,
   };
 
   this.editServiceSetting = {
-    path: '/service/:settingId',
+    path: $admin.apiRoute + '/service/:settingId',
     methods: ['put'],
     middleware: [parseBasicToken],
     handler: serviceController.editServiceSetting,
   };
 
   this.resetServiceSetting = {
-    path: '/service/:settingId/reset',
+    path: $admin.apiRoute + '/service/:settingId/reset',
     methods: ['post'],
     middleware: [parseBasicToken],
     handler: serviceController.resetServiceSetting,
@@ -120,14 +102,14 @@ module.exports = function($db, $app, $admin) {
   };
 
   this.getServiceIp = {
-    path: '/ip',
+    path: $admin.apiRoute + '/ip',
     methods: ['get'],
     // middleware: [parseBasicToken],
     handler: serviceController.getServiceIp,
   };
 
   this.getServiceLog = {
-    path: '/log',
+    path: $admin.apiRoute + '/log',
     methods: ['get'],
     middleware: [parseBasicToken],
     handler: serviceController.getServiceLog,

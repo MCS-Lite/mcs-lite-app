@@ -43,7 +43,18 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(cookieParser());
 
-app.use('/assets', express.static(path.resolve(__dirname, '../admin/app/build/assets')));
+/**
+ * Serving admin website via npm.
+ * $npm i mcs-lite-admin-web --save
+ * @author Michael Hsu
+ */
+const adminPathname = '../node_modules/mcs-lite-admin-web/build';
+app.use('/admin/', express.static(path.resolve(__dirname, adminPathname)));
+app.get('/admin/*', function (req, res) {
+  res.render(path.resolve(__dirname, adminPathname, 'index.html'), function(err, html) {
+    res.send(html);
+  });
+});
 
 app.all('/oauth/token', app.oauth.grant());
 app.db = connectDB;

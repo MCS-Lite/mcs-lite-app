@@ -62,7 +62,7 @@ module.exports = function ($db) {
         }
 
         if (process.env.NODE_ENV === 'dev') {
-          return res.redirect(req.clientAppInfo.redirect.dev + '/dashboard');
+          return res.redirect(req.clientAppInfo.redirect.dev + '/');
         }
         return res.render('app/build/index.html');
 
@@ -143,9 +143,9 @@ module.exports = function ($db) {
         .end(function(err, data) {
           if (data.ok) {
             if (process.env.NODE_ENV === 'dev') {
-              return res.redirect(req.clientAppInfo.redirect.dev + '/dashboard');
+              return res.redirect(req.clientAppInfo.redirect.dev + '/');
             }
-            return res.redirect('/dashboard');
+            return res.redirect(req.clientAppInfo.redirect.prod + '/');
           } else {
             reject(err.response.body.message);
           }
@@ -277,7 +277,7 @@ module.exports = function ($db) {
     login: login,
     loginInterface: loginInterface,
     checkCookies: checkCookies,
-    retrieveUsers: retrieveUsers, 
+    retrieveUsers: retrieveUsers,
     createAnAdmin: createAnAdmin,
     checkAdminExist: checkAdminExist,
   };
