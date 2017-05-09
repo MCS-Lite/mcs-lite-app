@@ -62,6 +62,11 @@ const messages = defineMessages({
     description: '',
     defaultMessage: '使用原型範例',
   },
+  'Dialogs.chooseCreateMethod': {
+    id: 'Dialogs.chooseCreateMethod',
+    description: '',
+    defaultMessage: '選擇創建方式',
+  },
   'Dialogs.prototypeName': {
     id: 'Dialogs.prototypeName',
     description: '',
