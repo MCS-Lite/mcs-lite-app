@@ -4,9 +4,16 @@ node_js:
   - '6'
 
 script:
+  - cd client
+  - npm install
+  - npm run build:global
+  - cd ..
+  - npm install
   - npm run build:global
   - cd ./out/mcs-lite-app
-  - find . -type d -maxdepth 1 -mindepth 1 -exec tar zcf {}.tar.gz {}  \;
+  - find . -type d -name "osx*" -maxdepth 1 -mindepth 1 -exec tar zcf {}.tar.gz {}  \;
+  - find . -type d -name "linux*" -maxdepth 1 -mindepth 1 -exec tar zcf {}.tar.gz {}  \;
+  - find . -type d -name "win*" -maxdepth 1 -mindepth 1 -exec zip -r {}.zip {}  \;
   - cd ../..
 
 cache:
