@@ -8,7 +8,6 @@ var $prototypes = sequelize.define('prototypes', require('../prototypes/schema')
 var $datachannels = sequelize.define('datachannels', require('../datachannels/schema')(Sequelize));
 var $unittypes = sequelize.define('unittypes', require('../unittypes/schema')(Sequelize));
 
-
 var users = require('./users/index')($users);
 var devices = require('./devices/index')($devices);
 var datapoints = require('./datapoints/index')($datapoints);
