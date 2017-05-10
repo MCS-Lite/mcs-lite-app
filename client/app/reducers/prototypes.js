@@ -1,6 +1,6 @@
 import assign from 'object-assign';
-import prototypeActionTypes from '../constants/PrototypeActionTypes';
-import actionTypes from '../constants/ActionTypes';
+import prototypeActionTypes from '../constants/prototypeActionTypes';
+import actionTypes from '../constants/actionTypes';
 
 const initialState = {
   prototypeList: [],
