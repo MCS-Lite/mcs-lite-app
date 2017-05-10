@@ -19,7 +19,7 @@ script:
   - find . -type d -name "osx*" -maxdepth 1 -mindepth 1 -exec tar zcf {}.tar.gz {}  \;
   # - find . -type d -name "linux*" -maxdepth 1 -mindepth 1 -exec tar zcf {}.tar.gz {}  \;
   - find . -type d -name "win*" -maxdepth 1 -mindepth 1 -exec zip -rq {}.zip {}  \;
-  - cd ../..
+  - ls . && cd ../..
 
 cache:
   directories:
