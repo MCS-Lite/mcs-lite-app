@@ -17,7 +17,6 @@
     "watch": "webpack-dev-server",
     "watch:global": "NODE_ENV=development DOMAIN_ENV=global npm run watch",
     "watch:china": " NODE_ENV=development DOMAIN_ENV=china  npm run watch",
-    "lint": "eslint ./",
     "test": "jest --coverage --runInBand",
     "test:watch": "npm run test -- --watch"
   },
@@ -41,7 +40,6 @@
   "devDependencies": {
     "babel": "^6.23.x",
     "babel-core": "^6.23.x",
-    "babel-eslint": "^7.1.1",
     "babel-loader": "^6.2.10",
     "babel-plugin-import": "^1.1.1",
     "babel-plugin-transform-decorators-legacy": "^1.3.4",
@@ -54,12 +52,6 @@
     "css-loader": "0.23.0",
     "enzyme": "^2.7.1",
     "enzyme-to-json": "^1.5.0",
-    "eslint": "^3.16.1",
-    "eslint-config-airbnb": "^14.0.0",
-    "eslint-config-mcs-lite": "^0.1.0",
-    "eslint-plugin-import": "^2.2.0",
-    "eslint-plugin-jsx-a11y": "^3.0.2",
-    "eslint-plugin-react": "^6.9.0",
     "extract-text-webpack-plugin": "0.9.1",
     "file-loader": "^0.10.1",
     "html-webpack-harddisk-plugin": "^0.1.0",
