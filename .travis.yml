@@ -5,10 +5,11 @@ node_js:
 
 install:
   - npm install
-  - cd client && npm install
+  - cd client && npm install && cd ..
 
 before_script:
-  - cd client && npm run build:global
+  # Remind: Build console
+  - cd client && npm run build:global && cd ..
 
 script:
   - npm run build:global
