@@ -1,6 +1,4 @@
-# mcs-lite-app [![TravisCI](https://travis-ci.org/MCS-Lite/mcs-lite-app.svg?branch=master)](https://travis-ci.org/MCS-Lite/mcs-lite-app)
-
-[![Greenkeeper badge](https://badges.greenkeeper.io/MCS-Lite/mcs-lite-app.svg)](https://greenkeeper.io/)
+# mcs-lite-app [![Travis][build-badge]][build] [![Github Tag][githubTag-badge]][githubTag] [![Greenkeeper badge](https://badges.greenkeeper.io/MCS-Lite/mcs-lite-app.svg)](https://greenkeeper.io/)
 
 > Note: Common UI and Mobile page are being developed at https://github.com/MCS-Lite/mcs-lite.
 
@@ -37,3 +35,8 @@ $ npm run test:watch
 ```
 $ NODE_ENV=prod GZIP_DISABLE='true' node server
 ```
+
+[build-badge]: https://img.shields.io/travis/MCS-Lite/mcs-lite-app/master.svg?style=flat-square
+[build]: https://travis-ci.org/MCS-Lite/mcs-lite-app
+[githubTag-badge]: https://img.shields.io/github/tag/MCS-Lite/mcs-lite-app.svg?style=flat-square
+[githubTag]: https://github.com/MCS-Lite/mcs-lite-app/releases
