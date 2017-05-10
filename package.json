@@ -13,7 +13,8 @@
     "build:nvidia_tx1": "sh ./build.sh && sh ./build_nvidia_tx1.sh",
     "build:cloud": "sh ./build.sh && sh ./build_cloud.sh",
     "test:nedb": "mocha --recursive ./nedb/tests/",
-    "test:api": "mocha ./restserver/tests/api --recursive"
+    "test:api": "mocha ./restserver/tests/api --recursive",
+    "lint": "eslint ./"
   },
   "window": {
     "icon": "./icon_mcs_lite_192.png",
@@ -61,8 +62,18 @@
     "youmeb-generator": "0.0.1"
   },
   "devDependencies": {
+    "babel-eslint": "^7.1.1",
     "nw-builder": "^3.1.2",
     "supertest": "^3.0.0",
-    "supertest-as-promised": "^4.0.2"
+    "supertest-as-promised": "^4.0.2",
+    "eslint": "^3.19.0",
+    "eslint-config-airbnb": "^14.1.0",
+    "eslint-config-mcs-lite": "^0.3.0",
+    "eslint-config-prettier": "^1.6.0",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jsx-a11y": "^4.0.0",
+    "eslint-plugin-prettier": "^2.0.1",
+    "eslint-plugin-react": "^6.10.3",
+    "prettier": "^1.1.0"
   }
 }
