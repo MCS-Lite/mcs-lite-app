@@ -139,7 +139,14 @@ module.exports = function ($db) {
       isActive: false,
     })
     .then(function() {
-      return res.send(200, {message: 'success'});
+      return devices.deleteDevice({
+        prototypeId: req.params.prototypeId,
+      }, {
+        isActive: false,
+      });
+    })
+    .then(function() {
+      return res.send(200, { message: 'success' });
     })
     .catch(function(err) {
       return res.send(400, err);
