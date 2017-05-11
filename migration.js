@@ -5,12 +5,14 @@ fs = require('fs');
 mkdirp = require('mkdirp');
 migrationPath = process.cwd() + '/' + config.dialect + '/migrations';
 Sequelize = require('sequelize');
+
 migratorOptions = {
   path: migrationPath
 };
+
 getSequelize = function(){
   var db, password, username, dialect, port, options;
-  db = 'mcslite';
+  db = config.database;
   password = config.password || null;
   username = config.username || null;
   dialect = config.dialect || 'mysql';
