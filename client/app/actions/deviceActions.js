@@ -1,4 +1,4 @@
-import types from '../constants/DeviceActionTypes';
+import types from '../constants/deviceActionTypes';
 import { request } from '../utils/fetch';
 
 export const retrieveDeviceList = () => (dispatch, getState) =>

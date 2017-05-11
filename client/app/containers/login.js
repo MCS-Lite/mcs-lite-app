@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import R from 'ramda';
 import React, { Component } from 'react';
-import { detectErrorMsg } from '../actions/LoginActions';
+import { detectErrorMsg } from '../actions/loginActions';
 import LoginLayout from '../components/login';
 
 class Login extends Component {

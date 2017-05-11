@@ -1,7 +1,7 @@
 import assign from 'object-assign';
 import { assocPath } from 'ramda';
-import actionTypes from '../constants/ActionTypes';
-import deviceActionTypes from '../constants/DeviceActionTypes';
+import actionTypes from '../constants/actionTypes';
+import deviceActionTypes from '../constants/deviceActionTypes';
 
 const initialState = {
   deviceList: [],

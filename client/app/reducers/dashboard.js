@@ -1,6 +1,6 @@
 import assign from 'object-assign';
-import dashboardActionTypes from '../constants/DashboardActionTypes';
-import actionTypes from '../constants/ActionTypes';
+import dashboardActionTypes from '../constants/dashboardActionTypes';
+import actionTypes from '../constants/actionTypes';
 
 const initialState = {
   templates: [],

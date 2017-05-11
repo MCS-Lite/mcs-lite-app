@@ -4,8 +4,8 @@ import React, { Component } from 'react';
 import { compose, withState } from 'recompose';
 import PrototypeDetailLayout from '../components/prototypeDetail';
 import LoadingPage from '../components/common/loadingPage';
-import * as prototypeDetailActions from '../actions/PrototypeDetailActions';
-import { exportJSON, uploadPrototypeImage } from '../actions/PrototypeActions';
+import * as prototypeDetailActions from '../actions/prototypeDetailActions';
+import { exportJSON, uploadPrototypeImage } from '../actions/prototypeActions';
 import * as deviceActions from '../actions/deviceActions';
 import { pushToast } from '../actions/toastActions';
 
