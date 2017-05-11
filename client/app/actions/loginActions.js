@@ -1,4 +1,4 @@
-import types from '../constants/LoginTypes';
+import types from '../constants/loginTypes';
 
 const getQuery =  function(name) {
   var match;

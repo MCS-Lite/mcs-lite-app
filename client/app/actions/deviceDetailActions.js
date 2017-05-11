@@ -1,5 +1,5 @@
 import { browserHistory } from 'react-router';
-import types from '../constants/DeviceActionTypes';
+import types from '../constants/deviceActionTypes';
 import { retrieveDeviceList } from './deviceActions';
 import { request } from '../utils/fetch';
 

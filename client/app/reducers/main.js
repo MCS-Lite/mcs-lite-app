@@ -1,6 +1,6 @@
 import assign from 'object-assign';
 import { isEmpty, isNil } from 'ramda';
-import actionTypes from '../constants/ActionTypes';
+import actionTypes from '../constants/actionTypes';
 import userTypes from '../constants/userTypes';
 
 const initialState = {

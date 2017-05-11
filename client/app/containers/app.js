@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import React, { Component } from 'react';
-import { checkToken } from '../actions/AppActions';
-import ToastCenter from '../containers/ToastCenter';
+import { checkToken } from '../actions/appActions';
+import ToastCenter from '../containers/toastCenter';
 
 class App extends Component {
   componentWillMount() {

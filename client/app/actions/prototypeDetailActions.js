@@ -1,5 +1,5 @@
 import { browserHistory } from 'react-router';
-import types from '../constants/PrototypeActionTypes';
+import types from '../constants/prototypeActionTypes';
 import { request } from '../utils/fetch';
 
 export const retrievePrototype = id => (dispatch, getState) =>

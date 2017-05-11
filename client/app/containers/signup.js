@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import { identity } from 'ramda';
 import React, { Component } from 'react';
 import SignupLayout from '../components/signup';
-import { detectErrorMsg } from '../actions/LoginActions';
+import { detectErrorMsg } from '../actions/loginActions';
 
 class Signup extends Component {
   componentWillMount() {

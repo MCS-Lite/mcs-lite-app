@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { compose, withState } from 'recompose';
 import DeviceDetailLayout from '../components/deviceDetail';
 import LoadingPage from '../components/common/loadingPage';
-import * as deviceDetailActions from '../actions/DeviceDetailActions';
+import * as deviceDetailActions from '../actions/deviceDetailActions';
 import { uploadDeviceImage } from '../actions/deviceActions';
 import { pushToast } from '../actions/toastActions';
 
