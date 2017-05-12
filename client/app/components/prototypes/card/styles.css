@@ -20,6 +20,13 @@
   border-top-right-radius: 3px;
 }
 
+.templateTag {
+  position: absolute;
+  width: 75px;
+  top: 125px;
+  right: 0;
+}
+
 .content{
   display: flex;
   flex-direction: column;

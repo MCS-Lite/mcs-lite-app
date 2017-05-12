@@ -256,19 +256,26 @@ const messages = defineMessages({
     description: '',
     defaultMessage: '尚無資料通道',
   },
-  'PrototypeDetail.prototypeTemplate': {
-    id: 'PrototypeDetail.prototypeTemplate',
-    description: '',
-    defaultMessage: '原型範例',
-  },
   'PrototypeDetail.createPrototypeFromTemplate': {
     id: 'PrototypeDetail.createPrototypeFromTemplate',
     description: '',
     defaultMessage: '使用範例創建原型',
   },
-  'PrototypeDetail.exportSuccess': {
-    id: 'PrototypeDetail.exportSuccess',
-    defaultMessage: '成功！你已經成功匯出產品原型。',
+  'PrototypeDetail.markTemplate': {
+    id: 'PrototypeDetail.markTemplate',
+    defaultMessage: '設為原型範例',
+  },
+  'PrototypeDetail.unmarkTemplate': {
+    id: 'PrototypeDetail.unmarkTemplate',
+    defaultMessage: '取消範例分享',
+  },
+  'PrototypeDetail.markTemplateSuccess': {
+    id: 'PrototypeDetail.markTemplateSuccess',
+    defaultMessage: '成功！此原型已設定為範例並分享。',
+  },
+  'PrototypeDetail.unmarkTemplateSuccess': {
+    id: 'PrototypeDetail.unmarkTemplateSuccess',
+    defaultMessage: '成功！此原型已取消範例設定。',
   },
 });
 
