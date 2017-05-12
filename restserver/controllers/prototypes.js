@@ -6,12 +6,13 @@ module.exports = function ($db) {
 
   var setPrototypeToTemplate = function(req, res, next) {
     var isAdmin = req.user.isAdmin;
+    var status = Boolean(req.body.status) || false ;
     if (isAdmin) {
       return prototypes.editPrototype({
         prototypeId: req.params.prototypeId,
         isActive: true,
       }, {
-        isTemplate: true,
+        isTemplate: status,
       })
       .then(function() {
         return res.send(200, {message: 'success'});
