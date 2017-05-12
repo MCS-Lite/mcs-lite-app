@@ -2,7 +2,7 @@ import React from 'react';
 import { compose, pure, withState, withHandlers } from 'recompose';
 import { Button } from 'mcs-lite-ui';
 import InputGroup from 'mtk-ui/lib/InputGroup';
-import InputDateTime from 'mtk-ui/lib/InputDateTime';
+import InputDateTime from 'mtk-ui/lib/InputDatetime';
 import IconCalendar from 'mcs-lite-icon/lib/IconCalendar';
 import IconRefresh from 'mcs-lite-icon/lib/IconRefresh';
 import IconSearch from 'mcs-lite-icon/lib/IconSearch';

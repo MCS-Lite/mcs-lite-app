@@ -4,6 +4,25 @@ module.exports = function ($db) {
   var users = $db.users;
   var datachannels = $db.datachannels;
 
+  var setPrototypeToTemplate = function(req, res, next) {
+    var isAdmin = req.user.isAdmin;
+    if (isAdmin) {
+      return prototypes.editPrototype({
+        prototypeId: req.params.prototypeId,
+        isActive: true,
+      }, {
+        isTemplate: true,
+      })
+      .then(function() {
+        return res.send(200, {message: 'success'});
+      })
+      .catch(function(err) {
+        return res.send(400, err);
+      });
+    } else {
+      return res.send(401, { message: "You don't have permission." });
+    }
+  }; 
 
   var retrievAllTemplates = function(req, res, next) {
     return prototypes.retriveUserPrototypes({
@@ -265,6 +284,7 @@ module.exports = function ($db) {
     deletePrototype: deletePrototype,
     clonePrototype: clonePrototype,
     retrievAllTemplates: retrievAllTemplates,
+    setPrototypeToTemplate: setPrototypeToTemplate,
     importJSON: importJSON,
     exportJSON: exportJSON,
   };

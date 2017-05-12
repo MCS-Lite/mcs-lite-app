@@ -198,6 +198,13 @@ module.exports = function($db, $app, $rest, $oauth, $wot) {
     handler: prototypesController.retrievAllTemplates,
   };
 
+  this.setPrototypeToTemplate = {
+    path: $rest.apiRoute + '/prototypes/:prototypeId/templates',
+    methods: ['post'],
+    middleware: [$app.oauth.authorise()],
+    handler: prototypesController.setPrototypeToTemplate,
+  };
+
   this.retrievePrototypeDetail = {
     path: $rest.apiRoute + '/prototypes/:prototypeId',
     methods: ['get'],

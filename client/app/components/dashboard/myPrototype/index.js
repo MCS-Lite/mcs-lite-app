@@ -5,7 +5,7 @@ import moment from 'moment';
 
 import Panel from 'mtk-ui/lib/Panel';
 import PanelHeader from 'mtk-ui/lib/PanelHeader';
-import PanelIcon from 'mtk-ui/lib/panelIcon';
+import PanelIcon from 'mtk-ui/lib/PanelIcon';
 import PanelBody from 'mtk-ui/lib/PanelBody';
 import Button from 'mtk-ui/lib/Button';
 import Table from 'mtk-ui/lib/table/Table';
