@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import R from 'ramda';
-import MethodSelector from '../MethodSelector';
+import MethodSelector from '../methodSelector';
 
 it('redner <MethodSelector /> with no options', () => {
   const wrapper = shallow(
