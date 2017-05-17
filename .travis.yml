@@ -9,7 +9,10 @@ install:
 
 script:
   # Build MCS-Lite console (Webpack)
-  - cd client && npm run build:global && cd ..
+  - cd client
+  - npm run test
+  - npm run build:global
+  - cd ..
 
   # Build App (NW.js)
   - npm run build:global
@@ -20,6 +23,9 @@ script:
   # - find . -type d -name "linux*" -maxdepth 1 -mindepth 1 -exec tar zcf {}.tar.gz {}  \;
   - find . -type d -name "win*" -maxdepth 1 -mindepth 1 -exec zip -rq {}.zip {}  \;
   - ls . && cd ../..
+
+after_success:
+  - ./node_modules/.bin/codecov
 
 cache:
   directories:
