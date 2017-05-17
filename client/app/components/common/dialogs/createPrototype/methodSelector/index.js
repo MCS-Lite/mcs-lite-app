@@ -2,7 +2,7 @@ import { compose, pure, withProps } from 'recompose';
 import { pipe, find, propEq, prop } from 'ramda';
 import { withGetMessages } from 'react-intl-inject-hoc';
 import messages from '../../messages';
-import MethodSelector from './MethodSelector';
+import MethodSelector from './methodSelector';
 
 export default compose(
   pure,
