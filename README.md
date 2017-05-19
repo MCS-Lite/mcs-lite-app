@@ -12,7 +12,7 @@ A on-premises IoT Cloud Platform.
 ## Get Started
 * Launch **mcs-lite-app** executable file to run MCS Lite platform and access the Admin Console.
 ![](./docs/images/mcs_lite_app.png)
-* Open browser and go to http://mcs\_lite\_server\_IP:3000 for web console to manage your devices.
+* Open browser and go to http://mcs_lite_server_IP:3000 for web console to manage your devices.
 ![](./docs/images/mcs_lite_console.png)
 
 ## Features
