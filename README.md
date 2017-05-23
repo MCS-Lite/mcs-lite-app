@@ -1,5 +1,5 @@
 # MCS Lite Application
-A on-premises IoT Cloud Platform.
+An on-premises IoT Cloud Platform.
 
 [![Travis][build-badge]][build] [![Github Tag][githubTag-badge]][githubTag] [![codecov](https://codecov.io/gh/MCS-Lite/mcs-lite-app/branch/master/graph/badge.svg)](https://codecov.io/gh/MCS-Lite/mcs-lite-app) [![Greenkeeper badge](https://badges.greenkeeper.io/MCS-Lite/mcs-lite-app.svg)](https://greenkeeper.io/)
 
@@ -11,7 +11,7 @@ A on-premises IoT Cloud Platform.
 
 ## Get Started
 * Launch **mcs-lite-app** executable file to run MCS Lite platform and access the Admin Console.
-![](./docs/images/mcs_lite_app.png)
+![](./docs/images/mcs_lite_app_launch.png)
 * Open browser and go to http://mcs_lite_server_IP:3000 for web console to manage your devices.
 ![](./docs/images/mcs_lite_console.png)
 
