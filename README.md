@@ -1,40 +1,41 @@
-# mcs-lite-app [![Travis][build-badge]][build] [![Github Tag][githubTag-badge]][githubTag] [![codecov](https://codecov.io/gh/MCS-Lite/mcs-lite-app/branch/master/graph/badge.svg)](https://codecov.io/gh/MCS-Lite/mcs-lite-app) [![Greenkeeper badge](https://badges.greenkeeper.io/MCS-Lite/mcs-lite-app.svg)](https://greenkeeper.io/)
+# MCS Lite Application
+An on-premises IoT Cloud Platform.
+
+[![Travis][build-badge]][build] [![Github Tag][githubTag-badge]][githubTag] [![codecov](https://codecov.io/gh/MCS-Lite/mcs-lite-app/branch/master/graph/badge.svg)](https://codecov.io/gh/MCS-Lite/mcs-lite-app) [![Greenkeeper badge](https://badges.greenkeeper.io/MCS-Lite/mcs-lite-app.svg)](https://greenkeeper.io/)
 
 > Note: Common UI and Mobile page are being developed at https://github.com/MCS-Lite/mcs-lite.
 
-## For Usage
-* please go to [here](https://github.com/MCS-Lite/mcs-lite-app/releases), and download your application
+## Download Binaries
+* You can always get the latest release from [GitHub Releases](https://github.com/MCS-Lite/mcs-lite-app/releases).
 
-### Linux or other Server
-* `node server`
 
-## For Dev
+## Get Started
+* Launch **mcs-lite-app** executable file to run MCS Lite platform and access the Admin Console.
+![](./docs/images/mcs_lite_app_launch.png)
+* Open browser and go to http://mcs_lite_server_IP:3000 for web console to manage your devices.
+![](./docs/images/mcs_lite_console.png)
 
-### Env
+## Features
+1. **Remote control** your device from MCS Lite console
+![](./docs/images/mcs_remote_control_onoff.gif)
+2. **Collect and visualize data** from your devices.
+![](./docs/images/mcs_lite_data_upload.png)
+3. **Manage your devices**.
+![](./docs/images/device_management.png)
 
-* Only support Node.js version >= 6
 
-#### Run restful server
-* `NODE_ENV=dev node server`
+## Appendix
+### MCS Lite Introduction
+For more detailed information, please refer to [MCS Lite Introduction](http://mcs-lite-introduction.netlify.com/). But there is only Traditional Chinese version available at this moment.
 
-#### Run mcs lite client
-* `cd client && npm run watch:global`
-* go to `http://localhost:8081` (don't use 127.0.0.1)
-* If you want to build production version: `npm run build:global` (under /client path).
 
-## For Testing
-
-```
-$ npm run test:watch
-```
-
-## Gzip
-
+### Gzip
 [Express compression middleware](https://github.com/expressjs/compression#expressconnect) is enabled by default. If you want to disable it, set `GZIP_DISABLE` to `true`.
 
 ```
 $ NODE_ENV=prod GZIP_DISABLE='true' node server
 ```
+
 
 [build-badge]: https://img.shields.io/travis/MCS-Lite/mcs-lite-app/master.svg?style=flat-square
 [build]: https://travis-ci.org/MCS-Lite/mcs-lite-app
