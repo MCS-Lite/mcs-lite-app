@@ -23,14 +23,17 @@ it('should redner <ApiHint />', () => {
   expect(wrapper).toMatchSnapshot();
 });
 
-it('should handle tab clicking', (done) => {
+it('should handle tab clicking', done => {
   const wrapper = mount(
     <ThemeProvider theme={theme}>
       <ApiHint
         deviceId="deviceId"
         deviceKey="deviceKey"
         datachannels={[
-          { datachannelId: 'datachannelId', datachannelName: 'datachannelName' },
+          {
+            datachannelId: 'datachannelId',
+            datachannelName: 'datachannelName',
+          },
         ]}
         getMessages={R.identity}
       />

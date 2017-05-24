@@ -8,8 +8,4 @@ injectGlobal`
     font-size: ${theme.base.fontSize};
     line-height: ${theme.base.lineHeight};
   }
-
-  body {
-    margin: 0;
-  }
 `;
