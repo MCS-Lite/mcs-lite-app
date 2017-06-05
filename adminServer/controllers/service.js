@@ -17,7 +17,7 @@ module.exports = function ($db) {
 
   var retrieveServiceSetting = function(req, res, next) {
     try {
-      var settingContent = require('../../configs/' + req.params.settingId + '.json');
+      var settingContent = require(path.resolve(__dirname, '../../configs/' + req.params.settingId + '.json'));
       res.send(200, { data: settingContent });
     } catch (e) {
       res.send(400, "Cannot find this file.");
@@ -72,7 +72,7 @@ module.exports = function ($db) {
   };
 
   var getServiceLog = function(req, res, next) {
-    return res.send(200, "log.");
+    return res.send(200, { data: global.logs });
   };
 
   return {

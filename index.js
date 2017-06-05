@@ -1,3 +1,14 @@
+global.logs = '';
+global.console = (function(){
+    var util = require('util');
+    return {
+        log:function(x){
+          global.logs += x + '\n';
+          process.stdout.write(util.format.apply(util, arguments));
+        }
+    }
+})();
+
 var fs = require('fs');
 var gui = require('nw.gui');
 var path = require('path');
