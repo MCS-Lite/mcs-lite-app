@@ -14,7 +14,7 @@ module.exports = function ($db) {
 
   var retrieveServiceSetting = function(req, res, next) {
     try {
-      var settingContent = require('../../configs/' + settingId + '.json');  
+      var settingContent = require('../../configs/' + req.params.settingId + '.json');
       res.send(200, { data: settingContent });
     } catch (e) {
       res.send(400, "Cannot find this file.");
