@@ -38,10 +38,16 @@ module.exports = function($db, $app, $admin) {
   };
 
   this.userLoginInterface = {
-    path: '/login',
+    path: '/admin/login',
     methods: ['get'],
     middleware: [parseBasicToken],
     handler: usersController.loginInterface,
+  };
+
+  this.userSignupInterface = {
+    path: '/admin/signup',
+    methods: ['get'],
+     handler: usersController.signupInterface,
   };
 
   this.authLogin = {

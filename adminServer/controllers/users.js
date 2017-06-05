@@ -1,92 +1,114 @@
 var jwt = require('jsonwebtoken');
 var request = require('superagent');
+var path = require('path');
 
 /* config */
 var $admin = require('../../configs/admin');
+const adminPathname = '../../node_modules/mcs-lite-admin-web/build';
 
 module.exports = function ($db) {
   var users = $db.users;
-
+  
+  var signupInterface = function(req, res, next) {
+    return res.render(path.resolve(__dirname, adminPathname, 'index.html'), function(err, html) {
+      res.send(html);
+    });
+  };
+  
   var loginInterface = function(req, res, next) {
-    if (req.cookies.token) {
-      return new Promise(function(resolve, reject) {
-        /* 解碼 cookie 內的 token */
-        jwt.verify(req.cookies.token, $admin.JWT_SECRET, function(err, payload) {
-          return err ? reject(err) : resolve(payload.token);
-        });
-      }).then(function(token) {
-        req.body.token = token;
-        return new Promise(function(resolve, reject) {
-          /* 檢查 token 是否 active */
-          request
-          .get(oauthHost + '/oauth/users/info')
-          .set('Cache-Control', 'no-cache')
-          .set('Content-Type', 'application/x-www-form-urlencoded')
-          .set('Authorization', 'Bearer ' + token.access_token)
-          .end(function(err, res) {
-            return res.ok ? resolve('active') : reject({
-              code: err.response.body.code,
-              message: err.response.body.message,
-              token: token
-            });
-          });
-
-        }).then(function(data) {
-          return data;
-        }).catch(function(err) {
-          var data = {
-            refresh_token: token.refresh_token,
-            grant_type: 'refresh_token'
-          };
-          /* 若非 active 則拿 refreshtoken 重新洗新的 token  */
+    return users.checkDefaultUserCount()
+    .then(function(status) {
+      if (!status) {
+        if (req.cookies.token) {
           return new Promise(function(resolve, reject) {
-            request
-            .post(oauthHost + '/oauth/token')
-            .set('Cache-Control', 'no-cache')
-            .set('Content-Type', 'application/x-www-form-urlencoded')
-            .send(data)
-            .set('Authorization', 'Basic ' + req.basic_token)
-            .end(function(err, res) {
-              return res.ok ?  resolve(res.body) : reject(err.response.body.message);
+            /* 解碼 cookie 內的 token */
+            jwt.verify(req.cookies.token, $admin.JWT_SECRET, function(err, payload) {
+              return err ? reject(err) : resolve(payload.token);
+            });
+          }).then(function(token) {
+            req.body.token = token;
+            return new Promise(function(resolve, reject) {
+              /* 檢查 token 是否 active */
+              request
+              .get(oauthHost + '/oauth/users/info')
+              .set('Cache-Control', 'no-cache')
+              .set('Content-Type', 'application/x-www-form-urlencoded')
+              .set('Authorization', 'Bearer ' + token.access_token)
+              .end(function(err, res) {
+                return res.ok ? resolve('active') : reject({
+                  code: err.response.body.code,
+                  message: err.response.body.message,
+                  token: token
+                });
+              });
+
+            }).then(function(data) {
+              return data;
+            }).catch(function(err) {
+              var data = {
+                refresh_token: token.refresh_token,
+                grant_type: 'refresh_token'
+              };
+              /* 若非 active 則拿 refreshtoken 重新洗新的 token  */
+              return new Promise(function(resolve, reject) {
+                request
+                .post(oauthHost + '/oauth/token')
+                .set('Cache-Control', 'no-cache')
+                .set('Content-Type', 'application/x-www-form-urlencoded')
+                .send(data)
+                .set('Authorization', 'Basic ' + req.basic_token)
+                .end(function(err, res) {
+                  return res.ok ?  resolve(res.body) : reject(err.response.body.message);
+                });
+              });
+            });
+          }).then(function(data) {
+            if (data !== 'active') {
+              /* 如果非 active，就會把這些製作好的 token 塞入 cookie 中 */
+              var payload = {
+                token: data
+              };
+              var token = jwt.sign(payload, $admin.JWT_SECRET);
+              res.cookie('token', token, { maxAge: $admin.session.maxAge });
+            }
+
+            if (process.env.NODE_ENV === 'dev') {
+              return res.redirect(req.clientAppInfo.redirect.dev + '/');
+            }
+
+            return res.render(path.resolve(__dirname, adminPathname, 'index.html'), function(err, html) {
+              res.send(html);
+            });
+            
+          }).catch(function(err) {
+            /* 有任何錯誤就返回首頁 */
+            res.clearCookie('token', { path: '/' });
+
+            if (process.env.NODE_ENV === 'dev') {
+              return res.redirect(req.clientAppInfo.redirect.dev + '/login');
+            }
+
+            return res.render(path.resolve(__dirname, adminPathname, 'index.html'), function(err, html) {
+              res.send(html);
             });
           });
-        });
-      }).then(function(data) {
-        if (data !== 'active') {
-          /* 如果非 active，就會把這些製作好的 token 塞入 cookie 中 */
-          var payload = {
-            token: data
-          };
-          var token = jwt.sign(payload, $admin.JWT_SECRET);
-          res.cookie('token', token, { maxAge: $admin.session.maxAge });
-        }
+        } else {
+          /* 如果 cookie 沒有 token 就是以前未登入過狀態 */
+          if (process.env.NODE_ENV === 'dev') {
+            if (req.query.errorMsg) {
+              return res.redirect(req.clientAppInfo.redirect.dev + '?errorMsg=' + req.query.errorMsg);
+            }
+            return res.redirect(req.clientAppInfo.redirect.dev + '/login');
+          }
 
-        if (process.env.NODE_ENV === 'dev') {
-          return res.redirect(req.clientAppInfo.redirect.dev + '/');
+          return res.render(path.resolve(__dirname, adminPathname, 'index.html'), function(err, html) {
+            res.send(html);
+          });
         }
-        return res.render('app/build/index.html');
-
-      }).catch(function(err) {
-        /* 有任何錯誤就返回首頁 */
-        res.clearCookie('token', { path: '/' });
-
-        if (process.env.NODE_ENV === 'dev') {
-          return res.redirect(req.clientAppInfo.redirect.dev + '/login');
-        }
-
-        return res.render('app/build/index.html');
-      });
-    } else {
-      /* 如果 cookie 沒有 token 就是以前未登入過狀態 */
-      if (process.env.NODE_ENV === 'dev') {
-        if (req.query.errorMsg) {
-          return res.redirect(req.clientAppInfo.redirect.dev + '?errorMsg=' + req.query.errorMsg);
-        }
-        return res.redirect(req.clientAppInfo.redirect.dev + '/login');
+      } else {
+        res.redirect(req.clientAppInfo.redirect.dev + '/signup');
       }
-
-      return res.render('app/build/index.html');
-    }
+    })
   };
 
   var login = function(req, res, next) {
@@ -280,6 +302,7 @@ module.exports = function ($db) {
     retrieveUsers: retrieveUsers,
     createAnAdmin: createAnAdmin,
     checkAdminExist: checkAdminExist,
+    signupInterface: signupInterface,
   };
 
 }

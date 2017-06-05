@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.html",
   "scripts": {
-    "watch:global": "NODE_ENV=dev ./nw.js-sdk/nwjs.app/Contents/MacOS/nwjs --enable-logging --remote-debugging-port=9222 .",
+    "watch:global": "NODE_ENV=prod ./nw.js-sdk/nwjs.app/Contents/MacOS/nwjs --enable-logging --remote-debugging-port=9222 .",
     "watch:dfserver": "NODE_ENV=dev node server.js",
     "install:nwjs": "sh ./install.sh",
     "test:ws": "node ./node_modules/wotcity.io/tests/websocket-send.js",

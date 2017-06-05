@@ -50,15 +50,15 @@ app.use(cookieParser());
  */
 const adminPathname = '../node_modules/mcs-lite-admin-web/build';
 app.use('/admin/', express.static(path.resolve(__dirname, adminPathname)));
+
+app.all('/oauth/token', app.oauth.grant());
+app.db = connectDB;
+handleRouters(app, new routers(connectDB, app, $admin));
 app.get('/admin/*', function (req, res) {
   res.render(path.resolve(__dirname, adminPathname, 'index.html'), function(err, html) {
     res.send(html);
   });
 });
-
-app.all('/oauth/token', app.oauth.grant());
-app.db = connectDB;
-handleRouters(app, new routers(connectDB, app, $admin));
 app.use(app.oauth.errorHandler());
 
 module.exports = app;
