@@ -45,6 +45,7 @@
     "is-image": "^1.0.1",
     "jsonschema": "^1.1.1",
     "jsonwebtoken": "^7.2.1",
+    "kill-port": "^1.0.0",
     "lodash": "^4.17.4",
     "mcs-lite-admin-web": "0.0.2",
     "mcs-lite-introduction": "^0.1.4",
