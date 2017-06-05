@@ -67,34 +67,35 @@ module.exports = function($db, $app, $admin) {
   this.startService = {
     path: $admin.apiRoute + '/service/start',
     methods: ['get'],
+    middleware: [$app.oauth.authorise()],
     handler: serviceController.startService,
   };
 
   this.stopService = {
     path: $admin.apiRoute + '/service/stop',
     methods: ['get'],
-    middleware: [parseBasicToken],
+    middleware: [$app.oauth.authorise()],
     handler: serviceController.stopService,
   };
 
   this.retrieveServiceSetting = {
     path: $admin.apiRoute + '/service/:settingId',
     methods: ['get'],
-    middleware: [parseBasicToken],
+    middleware: [$app.oauth.authorise()],
     handler: serviceController.retrieveServiceSetting,
   };
 
   this.editServiceSetting = {
     path: $admin.apiRoute + '/service/:settingId',
     methods: ['put'],
-    middleware: [parseBasicToken],
+    middleware: [$app.oauth.authorise()],
     handler: serviceController.editServiceSetting,
   };
 
   this.resetServiceSetting = {
-    path: $admin.apiRoute + '/service/:settingId/reset',
+    path: $admin.apiRoute + '/service/reset',
     methods: ['post'],
-    middleware: [parseBasicToken],
+    middleware: [$app.oauth.authorise()],
     handler: serviceController.resetServiceSetting,
   };
 
@@ -110,14 +111,14 @@ module.exports = function($db, $app, $admin) {
   this.getServiceIp = {
     path: $admin.apiRoute + '/ip',
     methods: ['get'],
-    // middleware: [parseBasicToken],
+    middleware: [$app.oauth.authorise()],
     handler: serviceController.getServiceIp,
   };
 
   this.getServiceLog = {
     path: $admin.apiRoute + '/log',
     methods: ['get'],
-    middleware: [parseBasicToken],
+    middleware: [$app.oauth.authorise()],
     handler: serviceController.getServiceLog,
   };
 

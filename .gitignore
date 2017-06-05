@@ -4,6 +4,7 @@ node_modules
 client/app/build
 /out
 /nw.js-sdk
+/defaultConfigs
 
 # jest
 coverage/

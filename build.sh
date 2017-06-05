@@ -15,6 +15,7 @@ cd ../..
 cp -R ./client/app/build/ ./appBuild/client/app/build
 cp -R ./restserver/ ./appBuild/restserver
 cp -R ./wotserver/ ./appBuild/wotserver
+cp -R ./configs/ ./appBuild/defaultConfigs
 cp -R ./configs/ ./appBuild/configs
 cp -R ./nedb/ ./appBuild/nedb
 cp -R ./node_modules/ ./appBuild/node_modules

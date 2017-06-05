@@ -1,15 +1,18 @@
 var os = require('os');
+var fs = require('fs');
+var path = require('path');
+var exec = require('child_process').exec;
 
 module.exports = function ($db) {
 
   var startService = function(req, res, next) {
     global.startMCSLiteService();
-    res.send(200, "success!");
+    return res.send(200, "success!");
   };
 
   var stopService = function(req, res, next) {
     global.stopMCSLiteService();
-    res.send(200, "success!");
+    return res.send(200, "success!");
   };
 
   var retrieveServiceSetting = function(req, res, next) {
@@ -22,12 +25,36 @@ module.exports = function ($db) {
   };
 
   var editServiceSetting = function(req, res, next) {
-    var content = req.body.content;
-    res.send(200, "success.");
+    var settingId = req.params.settingId;
+    
+    return new Promise(function(resolve, reject) {
+      var content = JSON.parse(req.body.content);
+      return fs.writeFile(path.resolve(__dirname, '../../configs/' + req.params.settingId + '.json'), JSON.stringify(content, null, 4), function(err) {
+        if (err) reject(err);
+        resolve();
+      });  
+    })
+    .then(function() {
+      return res.send(200, "success.");
+    })
+    .catch(function(err) {
+      return res.send(400, err);
+    });
   };
 
   var resetServiceSetting = function(req, res, next) {
-    res.send(200, "123132");
+    return new Promise(function(resolve, reject) {
+      return exec('rm -rf ./configs/ && mkdir configs && cp -R ./defaultConfigs/* ./configs', { cwd: path.resolve(__dirname, '../../')}, function(error, stdout, stderr) {
+        if (error) reject(error);
+        resolve();
+      });
+    })
+    .then(function() {
+      return res.send(200, "success.");
+    })
+    .catch(function(err) {
+      return (400, err);
+    });
   };
 
   var getServiceIp = function(req, res, next) {
@@ -41,11 +68,11 @@ module.exports = function ($db) {
             }
         }
     }
-    res.send(200, { data: addresses });
+    return res.send(200, { data: addresses });
   };
 
   var getServiceLog = function(req, res, next) {
-    res.send(200, "log.");
+    return res.send(200, "log.");
   };
 
   return {

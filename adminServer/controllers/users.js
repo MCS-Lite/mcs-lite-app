@@ -106,7 +106,7 @@ module.exports = function ($db) {
           });
         }
       } else {
-        res.redirect(req.clientAppInfo.redirect.prod + '/signup');
+        return res.redirect(req.clientAppInfo.redirect.prod + '/signup');
       }
     })
   };

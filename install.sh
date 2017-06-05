@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+cp -R ./configs/ ./defaultConfigs 
 mkdir uploadImages && cd uploadImages && mkdir device && mkdir profile && mkdir prototype && cd ..
 
 mkdir uploadFotaFiles
