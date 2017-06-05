@@ -277,7 +277,7 @@ module.exports = function ($db) {
           isAdmin: true,
         })
         .then(function(data) {
-          return res.send(200, { message: 'success' });
+          return res.redirect('/login');
         })
         .catch(function(err) {
           return res.send(400, err);
