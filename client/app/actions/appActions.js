@@ -1,6 +1,6 @@
 import { browserHistory } from 'react-router';
 import cookieDough from 'cookie-dough';
-import types from '../constants/ActionTypes';
+import types from '../constants/actionTypes';
 import { requestOauth } from '../utils/fetch';
 import { query } from '../utils/url';
 

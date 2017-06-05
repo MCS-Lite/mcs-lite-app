@@ -148,6 +148,10 @@ const messages = defineMessages({
     id: 'Prototypes.createPrototypeSuccess',
     defaultMessage: '成功！你已經成功建立一個產品原型。',
   },
+  'Prototypes.prototypeTemplate': {
+    id: 'Prototypes.prototypeTemplate',
+    defaultMessage: '原型範例',
+  },
 });
 
 export default messages;

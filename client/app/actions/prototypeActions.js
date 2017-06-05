@@ -1,4 +1,4 @@
-import types from '../constants/PrototypeActionTypes';
+import types from '../constants/prototypeActionTypes';
 import { request } from '../utils/fetch';
 
 export const retrievePrototypeList = () => (dispatch, getState) =>

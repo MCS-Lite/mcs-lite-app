@@ -1,0 +1,83 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`redner <MethodSelector /> with no options 1`] = `
+<pure(defaultProps(InputForm))
+  className="form"
+  kind="horizontal"
+  style={
+    Object {
+      "backgroundColor": "white",
+    }
+  }
+>
+  <InputSelect
+    className="input"
+    filterFunc={[Function]}
+    label="chooseCreateMethod"
+    noResultsContent={
+      <pure(withContext(Menu))
+        className="menu"
+        onChange={[Function]}
+      >
+        <pure(getContext(ThemedMenuItem))
+          disabled={true}
+          value=""
+        >
+          No results found
+        </pure(getContext(ThemedMenuItem))>
+      </pure(withContext(Menu))>
+    }
+    placeholder="inputPrototypeInfo"
+    valueRenderer={[Function]}
+  />
+</pure(defaultProps(InputForm))>
+`;
+
+exports[`redner <MethodSelector /> with options 1`] = `
+<pure(defaultProps(InputForm))
+  className="form"
+  kind="horizontal"
+  style={
+    Object {
+      "backgroundColor": "white",
+    }
+  }
+>
+  <InputSelect
+    className="input"
+    filterFunc={[Function]}
+    items={
+      Array [
+        Object {
+          "children": "option1",
+          "value": "option1",
+        },
+        Object {
+          "children": "option2",
+          "value": "option2",
+        },
+        Object {
+          "children": "option3",
+          "value": "option3",
+        },
+      ]
+    }
+    label="chooseCreateMethod"
+    noResultsContent={
+      <pure(withContext(Menu))
+        className="menu"
+        onChange={[Function]}
+      >
+        <pure(getContext(ThemedMenuItem))
+          disabled={true}
+          value=""
+        >
+          No results found
+        </pure(getContext(ThemedMenuItem))>
+      </pure(withContext(Menu))>
+    }
+    placeholder="inputPrototypeInfo"
+    valueRenderer={[Function]}
+  />
+</pure(defaultProps(InputForm))>
+`;

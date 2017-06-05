@@ -1,4 +1,4 @@
-import types from '../constants/DashboardActionTypes';
+import types from '../constants/dashboardActionTypes';
 import { request } from '../utils/fetch';
 
 export const retrieveDashboard =  () => (dispatch, getState) => {

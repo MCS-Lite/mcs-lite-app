@@ -1,6 +1,6 @@
 import assign from 'object-assign';
-import loginTypes from '../constants/LoginTypes';
-import actionTypes from '../constants/ActionTypes';
+import loginTypes from '../constants/loginTypes';
+import actionTypes from '../constants/actionTypes';
 
 const initialState = {
   errorMsg: '',

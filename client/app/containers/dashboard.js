@@ -3,8 +3,8 @@ import React, { Component } from 'react';
 import { compose, withState } from 'recompose';
 import DashboardLayout from '../components/dashboard';
 import LoadingPage from '../components/common/loadingPage';
-import * as dashboardActions from '../actions/DashboardActions';
-import * as prototypeActions from '../actions/PrototypeActions';
+import * as dashboardActions from '../actions/dashboardActions';
+import * as prototypeActions from '../actions/prototypeActions';
 import * as toastActions from '../actions/toastActions';
 
 class Dashboard extends Component {

@@ -8,7 +8,7 @@ import {
   editDevice,
   deleteDevice,
   uploadDeviceImage,
-} from '../actions/DeviceActions';
+} from '../actions/deviceActions';
 import { pushToast } from '../actions/toastActions';
 
 class Device extends Component {

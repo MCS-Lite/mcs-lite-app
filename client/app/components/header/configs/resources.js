@@ -3,12 +3,12 @@ export default {
   version: 'latest',
   resourcesList: [
     {
-      name: '認識 MCS LITE',
-      path: 'docs/zh-tw/',
+      name: '認識 MCS Lite',
+      path: './docs/zh-tw/index.html',
     },
     {
-      name: '深入使用 MCS LITE',
-      path: 'docs/zh-tw/tutorial/example_01.html',
+      name: '教學範例',
+      path: './docs/zh-tw/mcs_lite_tutorial/7697_overview.html',
     },
     // {
     //   name: 'API references',

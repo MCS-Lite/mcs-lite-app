@@ -23,7 +23,7 @@ import { ThemeProvider, injectGlobal } from 'styled-components';
 import { theme } from 'mcs-lite-theme';
 import reducers from '../reducers';
 import { Router, Route, RouterContext, browserHistory } from 'react-router';
-import IntlProvider from '../containers/IntlProvider';
+import IntlProvider from '../containers/intlProvider';
 
 const store = createStore(reducers, applyMiddleware(thunk));
 import routes from '../routes/routing';
