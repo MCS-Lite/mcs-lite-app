@@ -1,13 +1,9 @@
+var util = require('util');
 global.logs = '';
-global.console = (function(){
-    var util = require('util');
-    return {
-        log:function(x){
-          global.logs += x + '\n';
-          process.stdout.write(util.format.apply(util, arguments));
-        }
-    }
-})();
+global.console.log = function(x){
+  global.logs += JSON.stringify(x) + '\n';
+  process.stdout.write(util.format.apply(util, arguments));
+}; 
 
 var fs = require('fs');
 var gui = require('nw.gui');
@@ -84,7 +80,8 @@ function initApp() {
     adminServer.listen($admin.port);
     gui.Window.get().show();
     if (process.env.NODE_ENV === 'dev') {
-      document.body.innerHTML += '<iframe frameborder="0" src="' + $admin.webClient.redirect.dev + '" style="width: 100%; height: 580px; overflow: auto;" nwdisable nwfaketop>';
+      document.body.innerHTML += '<iframe frameborder="0" src="http://' + $admin.host + ':' + $admin.port + $admin.webClient.redirect.prod + '" style="width: 100%; height: 580px; overflow: auto;" nwdisable nwfaketop>';
+      // document.body.innerHTML += '<iframe frameborder="0" src="' + $admin.webClient.redirect.dev + '" style="width: 100%; height: 580px; overflow: auto;" nwdisable nwfaketop>';
     } else {
       document.body.innerHTML += '<iframe frameborder="0" src="http://' + $admin.host + ':' + $admin.port + $admin.webClient.redirect.prod + '" style="width: 100%; height: 580px; overflow: auto;" nwdisable nwfaketop>';
     }
