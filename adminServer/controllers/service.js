@@ -26,9 +26,8 @@ module.exports = function ($db) {
 
   var editServiceSetting = function(req, res, next) {
     var settingId = req.params.settingId;
-    
     return new Promise(function(resolve, reject) {
-      var content = JSON.parse(req.body.content);
+      var content = req.body.content;
       return fs.writeFile(path.resolve(__dirname, '../../configs/' + req.params.settingId + '.json'), JSON.stringify(content, null, 4), function(err) {
         if (err) reject(err);
         resolve();
@@ -72,7 +71,7 @@ module.exports = function ($db) {
   };
 
   var getServiceLog = function(req, res, next) {
-    return res.send(200, { data: global.logs });
+    return res.send(200, { data: JOSN.stringify(global.logs) });
   };
 
   return {
