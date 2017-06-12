@@ -17,8 +17,11 @@ module.exports = function ($db) {
 
   var retrieveServiceSetting = function(req, res, next) {
     try {
-      var settingContent = require(path.resolve(__dirname, '../../configs/' + req.params.settingId + '.json'));
-      res.send(200, { data: settingContent });
+      var configFilePath = path.resolve(__dirname, '../../configs/' + req.params.settingId + '.json');
+      return fs.readFile(configFilePath, 'utf8', function(err, data) {
+        if (err) throw err;
+        return res.send(200, { data: JSON.parse(data) });
+      });
     } catch (e) {
       res.send(400, "Cannot find this file.");
     }
