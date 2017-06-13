@@ -2,6 +2,10 @@ var os = require('os');
 var fs = require('fs');
 var path = require('path');
 var exec = require('child_process').exec;
+var $rest = require('../../configs/rest');
+var $wot = require('../../configs/wot');
+var $stream = require('../../configs/stream');
+var $admin = require('../../configs/admin');
 
 module.exports = function ($db) {
 
@@ -11,8 +15,12 @@ module.exports = function ($db) {
   };
 
   var stopService = function(req, res, next) {
-    global.stopMCSLiteService();
-    return res.send(200, "success!");
+    var kill = require('kill-port');
+    kill($rest.port);
+    kill($wot.port);
+    kill($stream.serverPort);
+    kill($stream.rtmpServerPort);
+    return res.send(200, "success.");
   };
 
   var retrieveServiceSetting = function(req, res, next) {

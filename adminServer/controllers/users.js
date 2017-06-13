@@ -73,7 +73,7 @@ module.exports = function ($db) {
             }
 
             if (process.env.NODE_ENV === 'dev') {
-              return res.redirect(req.clientAppInfo.redirect.dev + '/');
+              return res.redirect(req.clientAppInfo.redirect.prod + '/');
             }
 
             return res.render(path.resolve(__dirname, adminPathname, 'index.html'), function(err, html) {
@@ -85,7 +85,7 @@ module.exports = function ($db) {
             res.clearCookie('token', { path: '/' });
 
             if (process.env.NODE_ENV === 'dev') {
-              return res.redirect(req.clientAppInfo.redirect.dev + '/login');
+              return res.redirect(req.clientAppInfo.redirect.prod + '/login');
             }
 
             return res.render(path.resolve(__dirname, adminPathname, 'index.html'), function(err, html) {
@@ -96,9 +96,9 @@ module.exports = function ($db) {
           /* 如果 cookie 沒有 token 就是以前未登入過狀態 */
           if (process.env.NODE_ENV === 'dev') {
             if (req.query.errorMsg) {
-              return res.redirect(req.clientAppInfo.redirect.dev + '?errorMsg=' + req.query.errorMsg);
+              return res.redirect(req.clientAppInfo.redirect.prod + '?errorMsg=' + req.query.errorMsg);
             }
-            return res.redirect(req.clientAppInfo.redirect.dev + '/login');
+            return res.redirect(req.clientAppInfo.redirect.prod + '/login');
           }
 
           return res.render(path.resolve(__dirname, adminPathname, 'index.html'), function(err, html) {
@@ -164,9 +164,9 @@ module.exports = function ($db) {
         .set('Authorization', 'Bearer ' + data.access_token)
         .end(function(err, data) {
           if (data.ok) {
-            if (process.env.NODE_ENV === 'dev') {
-              return res.redirect(req.clientAppInfo.redirect.dev + '/');
-            }
+            // if (process.env.NODE_ENV === 'dev') {
+            //   return res.redirect(req.clientAppInfo.redirect.prod + '/');
+            // }
             return res.redirect(req.clientAppInfo.redirect.prod + '/');
           } else {
             reject(err.response.body.message);
@@ -175,8 +175,9 @@ module.exports = function ($db) {
       });
     }).catch(function(err) {
       if (process.env.NODE_ENV === 'dev') {
-        return res.redirect('http://localhost:8082/login?errorMsg=' + encodeURI(err));
+        return res.redirect('http://localhost:' + $admin.port + '/login?errorMsg=' + encodeURI(err));
       }
+      // console.log(err);
       return res.redirect('/login?errorMsg=' + encodeURI(err));
     });
   };
