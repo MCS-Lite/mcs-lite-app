@@ -74,7 +74,7 @@ module.exports = function ($db) {
         for (var k2 in interfaces[k]) {
             var address = interfaces[k][k2];
             if (address.family === 'IPv4' && !address.internal) {
-                addresses.push(address.address);
+                addresses.push(address.address + ':' + $rest.port);
             }
         }
     }
