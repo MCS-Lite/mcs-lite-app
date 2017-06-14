@@ -13,6 +13,9 @@
     "build": "webpack --config webpack.config.js",
     "build:global": "NODE_ENV=production DOMAIN_ENV=global npm run build",
     "build:china": " NODE_ENV=production DOMAIN_ENV=china  npm run build",
+    "build:i18n:json": "BABEL_ENV=production babel --quiet app > /dev/null",
+    "build:i18n:pot": "rip json2pot 'messages/**/*.json' -o ./mcs-layout.pot",
+    "build:i18n": "npm run build:i18n:json && npm run build:i18n:pot",
     "start": "http-server app/build/ -p 8081",
     "watch": "webpack-dev-server",
     "watch:global": "NODE_ENV=development DOMAIN_ENV=global npm run watch",
@@ -40,6 +43,7 @@
   },
   "devDependencies": {
     "babel": "^6.23.x",
+    "babel-cli": "^6.24.1",
     "babel-core": "^6.23.x",
     "babel-eslint": "^7.1.1",
     "babel-loader": "^6.2.10",
@@ -86,6 +90,7 @@
   "dependencies": {
     "@mtk/mcs-components": "https://cdn.mediatek.com/Mediatek-Cloud/mcs-components/2.1.111.tgz",
     "autoprefixer": "^6.1.0",
+    "babel-plugin-react-intl": "^2.3.1",
     "classnames": "^2.2.5",
     "cookie-dough": "^0.1.0",
     "fbjs": "^0.8.0",
@@ -118,6 +123,7 @@
     "react-dom": "^15.4.2",
     "react-intl": "^2.2.3",
     "react-intl-inject-hoc": "^0.1.7",
+    "react-intl-po": "^2.0.2",
     "react-motion-ui-pack": "^0.10.2",
     "react-redux": "^5.0.1",
     "react-router": "^3.0.2",

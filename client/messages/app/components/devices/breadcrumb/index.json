@@ -1,0 +1,10 @@
+[
+  {
+    "id": "Devices.Dashboard",
+    "defaultMessage": "儀表板"
+  },
+  {
+    "id": "Devices.TestDevices",
+    "defaultMessage": "測試裝置列表"
+  }
+]

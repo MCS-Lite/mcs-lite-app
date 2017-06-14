@@ -1,0 +1,45 @@
+[
+  {
+    "id": "Devices.testDeviceList",
+    "description": "",
+    "defaultMessage": "測試裝置列表"
+  },
+  {
+    "id": "Devices.deviceIntro",
+    "description": "",
+    "defaultMessage": "測試裝置介紹"
+  },
+  {
+    "id": "Devices.triggerAndAction",
+    "description": "",
+    "defaultMessage": "觸發條件與動作"
+  },
+  {
+    "id": "Devices.search",
+    "defaultMessage": "搜尋"
+  },
+  {
+    "id": "Devices.version",
+    "defaultMessage": "版本："
+  },
+  {
+    "id": "Devices.source",
+    "defaultMessage": "創建來源："
+  },
+  {
+    "id": "Devices.description",
+    "defaultMessage": "描述："
+  },
+  {
+    "id": "Devices.detail",
+    "defaultMessage": "詳情"
+  },
+  {
+    "id": "Devices.edit",
+    "defaultMessage": "編輯"
+  },
+  {
+    "id": "Devices.delete",
+    "defaultMessage": "刪除"
+  }
+]
