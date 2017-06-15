@@ -91,7 +91,7 @@ module.exports = function ($db) {
   };
 
   var getServiceLog = function(req, res, next) {
-    return res.send(200, { data: JOSN.stringify(global.logs) });
+    return res.send(200, { data: JSON.stringify(global.logs) });
   };
 
   return {

@@ -55,7 +55,6 @@ function startMCSLiteService() {
             folderDir = require(global.__dirname + '/config').path;
             // server = require(folderDir + '/mcs-lite-app/server');
             startNode(folderDir + '/mcs-lite-app/server');
-            
             // exec('node ' + folderDir + '/mcs-lite-app/server.js');
           } catch(e) {
             // $("#status-title").innerHTML = "<p>Please click \"setup\" file to setup your env and reopen this mcs-lite-app.app.<p>";
