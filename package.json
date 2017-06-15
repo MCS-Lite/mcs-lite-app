@@ -47,7 +47,7 @@
     "jsonwebtoken": "^7.2.1",
     "kill-port": "^1.0.0",
     "lodash": "^4.17.4",
-    "mcs-lite-admin-web": "^0.1.0",
+    "mcs-lite-admin-web": "^0.1.3",
     "mcs-lite-introduction": "^0.1.4",
     "mcs-lite-mobile-web": "^0.3.0",
     "mocha": "^3.2.0",

@@ -11,6 +11,7 @@ module.exports = function ($db) {
 
   var startService = function(req, res, next) {
     global.startMCSLiteService();
+    this.serviceStatus = true;
     return res.send(200, "success!");
   };
 
@@ -20,6 +21,7 @@ module.exports = function ($db) {
     kill($wot.port);
     kill($stream.serverPort);
     kill($stream.rtmpServerPort);
+    this.serviceStatus = false;
     return res.send(200, "success.");
   };
 
@@ -70,15 +72,22 @@ module.exports = function ($db) {
   var getServiceIp = function(req, res, next) {
     var interfaces = os.networkInterfaces();
     var addresses = [];
-    for (var k in interfaces) {
-        for (var k2 in interfaces[k]) {
+    var restPath = path.resolve(__dirname, '../../configs/rest.json');
+    
+    return fs.readFile(restPath, 'utf8', function(err, data) {
+      var data = JSON.parse(data);
+      if (this.serviceStatus) {
+        for (var k in interfaces) {
+          for (var k2 in interfaces[k]) {
             var address = interfaces[k][k2];
             if (address.family === 'IPv4' && !address.internal) {
-                addresses.push(address.address + ':' + $rest.port);
+              addresses.push(address.address + ':' + data.port);
             }
+          }
         }
-    }
-    return res.send(200, { data: addresses });
+      }
+      return res.send(200, { data: addresses });
+    });
   };
 
   var getServiceLog = function(req, res, next) {
@@ -86,6 +95,7 @@ module.exports = function ($db) {
   };
 
   return {
+    serviceStatus: false,
     retrieveServiceSetting: retrieveServiceSetting,
     editServiceSetting: editServiceSetting,
     resetServiceSetting: resetServiceSetting,

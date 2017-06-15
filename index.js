@@ -78,7 +78,7 @@ function startMCSLiteService() {
       startNode(folderDir + '\\server');
       // require(folderDir + '\\server')();
     }
-  },1000);
+  }, 0);
 }
 
 global.startMCSLiteService = startMCSLiteService;
