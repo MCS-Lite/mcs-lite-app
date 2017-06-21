@@ -20,6 +20,7 @@ const NavItem = ({
   onMouseEnter,
   onMouseLeave,
   isHref,
+  href,
   ...props
 }) => (
   <li
@@ -45,6 +46,7 @@ const NavItem = ({
         <Link
         target={target}
         to={to}
+        href={href}
         className={c(
           NavItemStyles.link,
           linkStyle,

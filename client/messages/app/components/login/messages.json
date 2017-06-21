@@ -28,5 +28,10 @@
     "id": "Login.welcome",
     "description": "",
     "defaultMessage": "歡迎"
+  },
+  {
+    "id": "Login.changeLanguage",
+    "description": "",
+    "defaultMessage": "切換語言"
   }
 ]

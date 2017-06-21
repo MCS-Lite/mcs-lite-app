@@ -2,17 +2,15 @@ import React from 'react';
 import pure from 'recompose/pure';
 import compose from 'recompose/compose';
 import withHandlers from 'recompose/withHandlers';
-
+import withProps from 'recompose/withProps';
 import Panel from 'mtk-ui/lib/Panel';
 import PanelIcon from 'mtk-ui/lib/PanelIcon';
 import PanelHeader from 'mtk-ui/lib/PanelHeader';
 import PanelBody from 'mtk-ui/lib/PanelBody';
 import A from 'mcs-lite-ui/lib/A';
 import IconAccount from 'mcs-lite-icon/lib/IconAccount';
-
 import { withGetMessages } from 'react-intl-inject-hoc';
 import messages from '../messages';
-
 import ProfilePhoto from '../profilePhoto';
 
 import styles from './styles.css';
@@ -32,6 +30,7 @@ const ProfilePanel = ({
   userImage,
   uploadProfileImage,
   pushToast,
+  language,
   getMessages: t,
 }) => (
   <Panel className={styles.panel}>
@@ -72,7 +71,7 @@ const ProfilePanel = ({
         <Column
           label={t('language')}
         >
-          繁體中文
+          {language}
         </Column>
       </div>
     </PanelBody>
@@ -86,4 +85,18 @@ export default compose(
     onChangePasswordClick: props => () => props.setDialogShow('changePassword'),
   }),
   withGetMessages(messages, 'Profile'),
+  withProps((language) => {
+    switch(localStorage.getItem('locale')) {
+      case 'en':
+        language = 'English';
+        break;
+      case 'zh-TW':
+        language = '繁體中文';
+        break;
+      case 'zh-CN':
+        language = '简体中文';
+        break;
+    }
+    return { language };
+  }),
 )(ProfilePanel);

@@ -28,5 +28,10 @@
     "id": "Header.signout",
     "description": "",
     "defaultMessage": "登出"
+  },
+  {
+    "id": "Header.language",
+    "description": "",
+    "defaultMessage": "語言"
   }
 ]
