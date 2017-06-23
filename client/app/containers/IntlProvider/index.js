@@ -9,7 +9,7 @@ const qs = query(window.location.search.substr(1).split('&'));
 const defaultLocale = 'zh-TW';
 
 class IntlProvider extends React.Component {
-  componentWillMount() {
+  componentDidMount() {
     // Hint: Set to default locale. "/" => "/?locale=zh-TW"
     if (!/locale\=/.test(window.location.search)) {
       let language;
@@ -20,13 +20,13 @@ class IntlProvider extends React.Component {
         localStorage.setItem('locale', navigator.language);
         language = navigator.language;
       }
-
-      if (!/\?/.test(window.location.href)) {
-        window.location.href = window.location.href + '?locale=' + language;
-      } else {
-        window.location.href = window.location.href + '&locale=' + language;
-      }
-
+      setTimeout(function() {
+        if (!/\?/.test(window.location.href)) {
+          window.location.href = window.location.href + '?locale=' + language;
+        } else {
+          window.location.href = window.location.href + '&locale=' + language;
+        }
+      }, 500)
     } else {
       localStorage.setItem('locale', qs['locale']);
     }
