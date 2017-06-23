@@ -1,0 +1,37 @@
+[
+  {
+    "id": "Devices.doNotHaveAccount",
+    "description": "",
+    "defaultMessage": "沒有帳戶嗎？"
+  },
+  {
+    "id": "Login.createAnAccount",
+    "description": "",
+    "defaultMessage": "建立一個帳戶！"
+  },
+  {
+    "id": "Login.signIn",
+    "description": "",
+    "defaultMessage": "登入"
+  },
+  {
+    "id": "Login.Email",
+    "description": "",
+    "defaultMessage": "Email"
+  },
+  {
+    "id": "Login.password",
+    "description": "",
+    "defaultMessage": "密碼"
+  },
+  {
+    "id": "Login.welcome",
+    "description": "",
+    "defaultMessage": "歡迎"
+  },
+  {
+    "id": "Login.changeLanguage",
+    "description": "",
+    "defaultMessage": "切換語言"
+  }
+]
