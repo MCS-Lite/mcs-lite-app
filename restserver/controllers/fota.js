@@ -30,7 +30,7 @@ module.exports = function ($db) {
         console.log(data.toString());
       });
 
-      mkdir.on('exit', (code) => {
+      mkdir.on('exit', function(code) {
         return resolve();
       });
     })
