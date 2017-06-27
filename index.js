@@ -84,19 +84,29 @@ global.startMCSLiteService = startMCSLiteService;
 
 function initApp() {
   var adminServer;
+  var $admin;
   setTimeout(function() {
     if (process.platform == "darwin") {
       // if (process.env.NODE_ENV === 'dev') {
         // var child = require('child_process');
         // child.exec('npm run watch:global', { cwd: './admin' });
       // }
-      adminServer = require('./adminServer/index');
+      if (process.env.NODE_ENV === 'dev') {
+        adminServer = require('./adminServer/index');
+        $admin = require('./configs/admin');
+
+      } else {
+        var folderDir = require(global.__dirname + '/config').path + '/mcs-lite-app';
+        adminServer = require(folderDir + '/adminServer');
+        $admin = require(folderDir + '/configs/admin');
+      }
     }
     if (/^win/.test(process.platform)) {
-      var folderDir = nwDir + '\\adminServer';
-      adminServer = require(folderDir + '\\index');
+      var folderDir = nwDir + '\\mcs-lite-app';
+      adminServer = require(folderDir + '\\adminServer\\index');
+      $admin = require(folderDir + '\\configs\\admin');
     }
-    var $admin = require('./configs/admin');
+     
     adminServer.listen($admin.port);
     
     gui.Window.get().show();

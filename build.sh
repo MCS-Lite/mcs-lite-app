@@ -14,6 +14,7 @@ cd ../..
 
 cp -R ./client/app/build/ ./appBuild/client/app/build
 cp -R ./restserver/ ./appBuild/restserver
+cp -R ./adminServer/ ./appBuild/adminServer
 cp -R ./wotserver/ ./appBuild/wotserver
 cp -R ./configs/ ./appBuild/defaultConfigs
 cp -R ./configs/ ./appBuild/configs
