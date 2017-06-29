@@ -26,7 +26,6 @@ app.oauth = new OAuthServer({
 });
 
 app.engine('html', require('ejs').renderFile);
-app.set('views', path.resolve(__dirname, '../admin'));
 
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
@@ -43,22 +42,14 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(cookieParser());
 
-/**
- * Serving admin website via npm.
- * $npm i mcs-lite-admin-web --save
- * @author Michael Hsu
- */
 const adminPathname = '../node_modules/mcs-lite-admin-web/build';
-app.use('/admin/', express.static(path.resolve(__dirname, adminPathname)));
+app.use('/admin/static', express.static(path.resolve(__dirname, adminPathname + '/static')));
+app.use('/admin/images', express.static(path.resolve(__dirname, adminPathname + '/images')));
 
 app.all('/oauth/token', app.oauth.grant());
 app.db = connectDB;
+
 handleRouters(app, new routers(connectDB, app, $admin));
-app.get('/admin/*', function (req, res) {
-  res.render(path.resolve(__dirname, adminPathname, 'index.html'), function(err, html) {
-    res.send(html);
-  });
-});
 app.use(app.oauth.errorHandler());
 
 module.exports = app;

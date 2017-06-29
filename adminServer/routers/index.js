@@ -1,5 +1,6 @@
 var connectMultiparty = require('connect-multiparty');
 var bodyParser = require('body-parser');
+var path = require('path');
 
 module.exports = function($db, $app, $admin) {
 
@@ -9,6 +10,8 @@ module.exports = function($db, $app, $admin) {
 
   var usersController = new require('../controllers/users')($db);
   var serviceController = new require('../controllers/service')($db);
+
+  const adminPathname = '../node_modules/mcs-lite-admin-web/build';
 
   const parseBasicToken = function(req, res, next) {
     req.basicToken = webBasicToken;
@@ -35,6 +38,28 @@ module.exports = function($db, $app, $admin) {
     path: $admin.apiRoute + '/admin/check',
     methods: ['get'],
     handler: usersController.checkAdminExist,
+  };
+    /**
+   * Serving admin website via npm.
+   * $npm i mcs-lite-admin-web --save
+   * @author Michael Hsu
+   */
+
+  this.adminInterface = {
+    path: '/admin/:type(ip|system|language|signup)',
+    methods: ['get'],
+    handler: function(req, res, next) {
+      return res.render(path.resolve(__dirname, adminPathname, 'index.html'), function(err, html) {
+        res.send(html);
+      });
+    }, 
+  };
+
+  this.loginInterface = {
+    path: '/login',
+    methods: ['get'],
+    middleware: [parseBasicToken],
+    handler: usersController.loginInterface,
   };
 
   this.userLoginInterface = {

@@ -20,7 +20,7 @@ cp -R ./configs/ ./appBuild/defaultConfigs
 cp -R ./configs/ ./appBuild/configs
 cp -R ./nedb/ ./appBuild/nedb
 cp -R ./node_modules/ ./appBuild/node_modules
-cp -R ./regist.js ./appBuild/server.js
+cp -R ./server.js ./appBuild/server.js
 cp -R package.json ./appBuild/package.json
 cp -R ./dbTemplates/ ./appBuild/db
 cp -R ./uploadImages/ ./appBuild/uploadImages
@@ -59,5 +59,9 @@ winresourcer --operation=Update --exeFile=./out/mcs-lite-app/win32/mcs-lite-app.
 cp -R ./appBuild/ ./out/mcs-lite-app/osx64/mcs-lite-app
 cp -R ./icon.icns ./out/mcs-lite-app/osx64/mcs-lite-app.app/Contents/Resources/app.icns
 cp -R ./icon.icns ./out/mcs-lite-app/osx64/mcs-lite-app.app/Contents/Resources/document.icns
+
+cd ./out/mcs-lite-app/osx64 && wget https://s3-ap-southeast-1.amazonaws.com/mtk.linkit/mcs-lite-app/nodejsv6.11.0/mac/node && chmod +x ./node && cd -
+cd ./out/mcs-lite-app/win32 && wget https://s3-ap-southeast-1.amazonaws.com/mtk.linkit/mcs-lite-app/nodejsv6.11.0/win32/node.exe && cd -
+cd ./out/mcs-lite-app/win64 && wget https://s3-ap-southeast-1.amazonaws.com/mtk.linkit/mcs-lite-app/nodejsv6.11.0/win64/node.exe && cd -
 
 cp -R ./setup ./out/mcs-lite-app/osx64/ && chmod +x ./out/mcs-lite-app/osx64/setup

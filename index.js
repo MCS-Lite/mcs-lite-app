@@ -25,57 +25,54 @@ if (process.platform == "darwin") {
 
 initApp();
 
-// var ipDOM = $("#ip");
-// ipDOM.innerHTML = '' + addressesList;
-
 function startNode(path) {
-  var lite_server = spawn('node', [path]);
+  var nodePath = 'node';
+
+  if (process.env.NODE_ENV === 'dev' && /^win/.test(process.platform)) nodePath = global.__dirname + '\\node\\win32\\node.exe';
+  if (process.env.NODE_ENV === 'dev' && /^darwin/.test(process.platform)) nodePath = global.__dirname + '/node/osx64/node';
+  
+  if (process.env.NODE_ENV != 'dev' && /^win/.test(process.platform)) {
+    nodePath = nwDir + '\\node.exe';
+  }
+
+  if (process.env.NODE_ENV != 'dev' && process.platform === 'darwin') {
+    var folderDir = require(global.__dirname + '/config').path;  
+    nodePath = folderDir + '/node';
+  }
+
+  var lite_server = spawn(nodePath, [path]);
+
   lite_server.stdout.on('data', function (data) {   
     console.log(data.toString());
   });
+
   lite_server.stderr.on('data', function (data) {   
     console.log(data.toString());  
   });
+  
   lite_server.on('close', function (status) { 
     console.log("Terminal MCS Lite server:" + status);
   });
 }
 
 function startMCSLiteService() {
-    setTimeout(function(){
+  setTimeout(function(){
     if (process.platform == "darwin") {
       if (process.env.NODE_ENV === 'dev') {
-        // require('./regist')();
         startNode('./server');
       } else {
-        if (/^\/private/.test(nwDir)) {
-          var folderDir;
-          // var server;
-          try {
-            folderDir = require(global.__dirname + '/config').path;
-            // server = require(folderDir + '/mcs-lite-app/server');
-            startNode(folderDir + '/mcs-lite-app/server');
-            // exec('node ' + folderDir + '/mcs-lite-app/server.js');
-          } catch(e) {
-            // $("#status-title").innerHTML = "<p>Please click \"setup\" file to setup your env and reopen this mcs-lite-app.app.<p>";
-            // $("#ip-title").innerHTML = "";
-            // $("#ip").innerHTML = "";
-          }
-          // server();
-        } else {
-          var folderDir = nwDir.replace(/Contents\/Versions[\-\/\. 0-9a-zA-Z]+/g, '');
-          folderDir = folderDir.replace('mcs-lite-app.app/', '');
-          folderDir += 'mcs-lite-app';
-          startNode(folderDir + '/server');
-          // require(folderDir + '/server')();
+        var folderDir;
+        try {
+          folderDir = require(global.__dirname + '/config').path;
+          startNode(folderDir + '/mcs-lite-app/server');
+        } catch(e) {
+          $("#app").innerHTML = "<p>Please click \"setup\" file to setup your env and reopen this mcs-lite-app.app.<p>";
         }
       }
     }
     if (/^win/.test(process.platform)) {
       var folderDir = nwDir + '\\mcs-lite-app';
-      // folderDir + '/mcs-lite-app/server'
       startNode(folderDir + '\\server');
-      // require(folderDir + '\\server')();
     }
   }, 0);
 }
@@ -87,14 +84,9 @@ function initApp() {
   var $admin;
   setTimeout(function() {
     if (process.platform == "darwin") {
-      // if (process.env.NODE_ENV === 'dev') {
-        // var child = require('child_process');
-        // child.exec('npm run watch:global', { cwd: './admin' });
-      // }
       if (process.env.NODE_ENV === 'dev') {
         adminServer = require('./adminServer/index');
         $admin = require('./configs/admin');
-
       } else {
         var folderDir = require(global.__dirname + '/config').path + '/mcs-lite-app';
         adminServer = require(folderDir + '/adminServer');
@@ -108,8 +100,41 @@ function initApp() {
     }
      
     adminServer.listen($admin.port);
+    var win = gui.Window.get();
+    win.show();
+
+    win.on('close', function(event) {
+      var $rest, $wot, $stream, $admin;
+
+      if (process.env.NODE_ENV === 'dev') {
+        $rest = require('./configs/rest');
+        $wot = require('./configs/wot');
+        $stream = require('./configs/stream');
+        $admin = require('./configs/admin');
+      } else {
+        if (/^win/.test(process.platform)) {
+          var folderDir = nwDir + '\\mcs-lite-app\\configs';
+          $rest = require(folderDir + '\\rest');
+          $wot = require(folderDir + '\\wot');
+          $stream = require(folderDir + '\\stream');
+          $admin = require(folderDir + '\\admin');
+        }
+        if (process.platform === 'darwin') {
+          var folderDir = require(global.__dirname + '/config').path + '/mcs-lite-app';
+          $rest = require(folderDir + '/configs/rest');
+          $wot = require(folderDir + '/configs/wot');
+          $stream = require(folderDir + '/configs/stream');
+          $admin = require(folderDir + '/configs/admin');
+        }
+      }
+      var kill = require('kill-port');  
+      kill($rest.port);
+      kill($wot.port);
+      kill($stream.serverPort);
+      kill($stream.rtmpServerPort);
+      win.close(true);
+    });
     
-    gui.Window.get().show();
     if (process.env.NODE_ENV === 'dev') {
       document.body.innerHTML += '<iframe frameborder="0" src="http://' + $admin.host + ':' + $admin.port + $admin.webClient.redirect.prod + '" style="width: 100%; height: 580px; overflow: auto;" nwdisable nwfaketop>';
       // document.body.innerHTML += '<iframe frameborder="0" src="' + $admin.webClient.redirect.dev + '" style="width: 100%; height: 580px; overflow: auto;" nwdisable nwfaketop>';
