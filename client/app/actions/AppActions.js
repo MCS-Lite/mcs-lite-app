@@ -20,8 +20,8 @@ export const checkToken = () => (dispatch) => {
       if (localStorage.getItem('locale')) {
         language = localStorage.getItem('locale');
       } else {
-        localStorage.setItem('locale', navigator.language);
-        language = navigator.language;
+        language = navigator.languages ? navigator.languages[0] : (navigator.language || navigator.userLanguage);
+        localStorage.setItem('locale', language);
         if (/^en/.test(language)) language = 'en';
       }
 
