@@ -1,13 +1,18 @@
 import { connect } from 'react-redux';
 import React, { Component } from 'react';
-import { checkToken } from '../actions/AppActions';
+import { checkToken, checkLocale } from '../actions/AppActions';
 import ToastCenter from '../containers/ToastCenter';
+import { query } from '../utils/url';
+
+const qs = query(window.location.search.substr(1).split('&'));
 
 class App extends Component {
   componentWillMount() {
     const { checkToken: doCheckToken, location } = this.props;
     if (!/(login)|(signup)/.test(location.pathname)) {
       doCheckToken();
+    } else {
+      checkLocale();
     }
   }
 

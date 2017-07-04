@@ -7,6 +7,30 @@ import { query } from '../utils/url';
 const qs = query(window.location.search.substr(1).split('&'));
 const cookie = cookieDough();
 
+export const checkLocale = () => {
+  if (!/locale\=/.test(window.location.search)) {
+    let language;
+
+    if (localStorage.getItem('locale')) {
+      language = localStorage.getItem('locale');
+    } else {
+      language = navigator.languages ? navigator.languages[0] : (navigator.language || navigator.userLanguage);
+      localStorage.setItem('locale', language);
+      if (/^en/.test(language)) language = 'en';
+    }
+
+    if (!/^(en|zh-tw|zh-cn)$/.test(language.toLowerCase())) language = 'en';
+
+    if (!/\?/.test(window.location.href)) {
+      window.location.href += '?locale=' + language;
+    } else {
+      window.location.href += '&locale=' + language;
+    }
+  } else {
+    localStorage.setItem('locale', qs['locale']);
+  }
+};
+
 export const checkToken = () => (dispatch) => {
   const token = cookie.get('token');
   if (!token) {
@@ -14,28 +38,7 @@ export const checkToken = () => (dispatch) => {
   }
   return requestOauth('/cookies', 'POST', { token })
   .then(data => {
-    if (!/locale\=/.test(window.location.search)) {
-      let language;
-
-      if (localStorage.getItem('locale')) {
-        language = localStorage.getItem('locale');
-      } else {
-        language = navigator.languages ? navigator.languages[0] : (navigator.language || navigator.userLanguage);
-        localStorage.setItem('locale', language);
-        if (/^en/.test(language)) language = 'en';
-      }
-
-      if (!/^(en|zh-tw|zh-cn)$/.test(language.toLowerCase())) language = 'en';
-
-      if (!/\?/.test(window.location.href)) {
-        window.location.href = window.location.href + '?locale=' + language;
-      } else {
-        window.location.href = window.location.href + '&locale=' + language;
-      }
-    } else {
-      localStorage.setItem('locale', qs['locale']);
-    }
-
+    checkLocale();
     return dispatch({
       type: types.CHECKTOKEN,
       access_token: data.results.access_token,
