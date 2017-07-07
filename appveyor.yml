@@ -9,7 +9,11 @@ install:
 - ps: >-
     npm install
 
-    cd client && npm install && cd ..
+    cd client
+
+    npm install
+
+    cd ..
 build_script:
 - ps: >-
     # Build MCS-Lite console (Webpack)
@@ -32,7 +36,9 @@ build_script:
 
     find . -type d -name "win*" -maxdepth 1 -mindepth 1 -exec zip -rq {}.zip {}  \;
 
-    ls . && cd ../..
+    ls .
+
+    cd ../..
 deploy:
 - provider: GitHub
   auth_token:
