@@ -39,16 +39,16 @@ cp -R index.html ./build/index.html
 cp -R index.js ./build/index.js
 cp -R package.json ./build/package.json
 
-mkdir out
+mkdir out_win
 nwbuild -p win32,win64 -v 0.20.1 ./build -o ./out_win
 
-cd ./out/mcs-lite-app/win64
+cd ./out_win/mcs-lite-app/win64
 mkdir mcs-lite-app
 cd ../../..
 
 
 cp -R ./appBuild/. ./out_win/mcs-lite-app/win64/mcs-lite-app
-winresourcer --operation=Update --exeFile=./out/mcs-lite-app/win64/mcs-lite-app.exe --resourceType=Icongroup --resourceName=IDR_MAINFRAME --lang=1033 --resourceFile=./icon.ico
+winresourcer --operation=Update --exeFile=./out_win/mcs-lite-app/win64/mcs-lite-app.exe --resourceType=Icongroup --resourceName=IDR_MAINFRAME --lang=1033 --resourceFile=./icon.ico
 cp -R ./appBuild/. ./out_win/mcs-lite-app/win32/mcs-lite-app
-winresourcer --operation=Update --exeFile=./out/mcs-lite-app/win32/mcs-lite-app.exe --resourceType=Icongroup --resourceName=IDR_MAINFRAME --lang=1033 --resourceFile=./icon.ico
+winresourcer --operation=Update --exeFile=./out_win/mcs-lite-app/win32/mcs-lite-app.exe --resourceType=Icongroup --resourceName=IDR_MAINFRAME --lang=1033 --resourceFile=./icon.ico
 
