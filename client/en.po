@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: mcs-lite\n"
-"POT-Creation-Date: 2017-06-23 11:27+0800\n"
-"PO-Revision-Date: 2017-06-23 11:27+0800\n"
+"POT-Creation-Date: 2017-07-05 17:51+0800\n"
+"PO-Revision-Date: 2017-07-05 17:58+0800\n"
 "Last-Translator: Daria Chen <smartexist@gmail.com>\n"
 "Language-Team: English\n"
 "Language: en_US\n"
@@ -20,7 +20,7 @@ msgstr ""
 #. API 類型：
 #: messages/app/components/deviceDetail/apiHint/messages.json
 msgid "API 類型："
-msgstr "API type:"
+msgstr "API type: "
 
 #. [Text.apiHint]
 #. defaultMessage is:
@@ -258,7 +258,7 @@ msgstr "Create"
 #. 創建來源：
 #: messages/app/components/devices/messages.json
 msgid "創建來源："
-msgstr "Created from:"
+msgstr "Created from: "
 
 #. [Dialogs.createPrototype]
 #. defaultMessage is:
@@ -283,7 +283,7 @@ msgstr "Create test device"
 #. 創建測試裝置來試看看並蒐集真實資料吧！
 #: messages/app/components/prototypeDetail/messages.json
 msgid "創建測試裝置來試看看並蒐集真實資料吧！"
-msgstr "Create test device to try out and collect real data!"
+msgstr "Create test device to try out and collect real data."
 
 #. [Devices.creator]
 #. defaultMessage is:
@@ -294,7 +294,7 @@ msgstr "Create test device to try out and collect real data!"
 #: messages/app/components/deviceDetail/messages.json
 #: messages/app/components/prototypeDetail/messages.json
 msgid "創建者："
-msgstr "Creator:"
+msgstr "Created by: "
 
 #. [Dialogs.importJSON]
 #. defaultMessage is:
@@ -444,7 +444,7 @@ msgstr "Back to prototype"
 #. 在此處貼上JSON...
 #: messages/app/components/common/dialogs/messages.json
 msgid "在此處貼上JSON..."
-msgstr "Paste your JSON file here…"
+msgstr "Paste your JSON file here."
 
 #. [Login.password]
 #. defaultMessage is:
@@ -691,7 +691,7 @@ msgstr "Description"
 #: messages/app/components/prototypeDetail/messages.json
 #: messages/app/components/prototypes/messages.json
 msgid "描述："
-msgstr "Description:"
+msgstr "Description: "
 
 #. [Devices.search]
 #. defaultMessage is:
@@ -755,7 +755,7 @@ msgstr "Are you sure you want to delete? You cannot revert this action."
 #. 時間：
 #: messages/app/components/dataChannelCards/common/historicalGraph/messages.json
 msgid "時間："
-msgstr "Time:"
+msgstr "Time: "
 
 #. [Profile.userName]
 #. defaultMessage is:
@@ -938,7 +938,7 @@ msgstr "No historical data available"
 #: messages/app/components/prototypeDetail/messages.json
 #: messages/app/components/prototypes/messages.json
 msgid "版本："
-msgstr "version:"
+msgstr "Version: "
 
 #. [Dialogs.prototypeName]
 #. defaultMessage is:
@@ -1235,7 +1235,7 @@ msgstr "Data channel ID"
 #. 資料通道 Id：
 #: messages/app/components/deviceDetail/apiHint/messages.json
 msgid "資料通道 Id："
-msgstr "Data channel ID:"
+msgstr "Data channel ID: "
 
 #. [Text.upperbound]
 #. defaultMessage is:
@@ -1267,14 +1267,14 @@ msgstr "Data channel name"
 #. 資料通道名稱：
 #: messages/app/components/deviceDetail/apiHint/messages.json
 msgid "資料通道名稱："
-msgstr "Data channel name:"
+msgstr "Data channel name: "
 
 #. [HistoricalGraph.datapoint]
 #. defaultMessage is:
 #. 資料點：
 #: messages/app/components/dataChannelCards/common/historicalGraph/messages.json
 msgid "資料點："
-msgstr "Data points:"
+msgstr "Data points: "
 
 #. [Header.resources]
 #. defaultMessage is:
