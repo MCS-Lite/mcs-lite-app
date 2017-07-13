@@ -18,28 +18,24 @@ module.exports = function ($db) {
     const templatePath = datachannelTypeId + '/' + typeId + '/' + method + '/';
     const filePath = path.resolve(__dirname, '../../client/apiHints/' + templatePath, content + '.ejs');
 
-    return fs.readFile('/etc/passwd', (err, data) => {
-      if (err) {
-        return res.send(400, { message: 'Cannot find this file.'}); 
-      };
+    
+    var apiHost = global.host.split(':')[0];
+    var apiPort = global.host.split(':')[1].split('/')[0];
 
-      var apiHost = global.host.split(':')[0];
-      var apiPort = global.host.split(':')[1].split('/')[0];
+    const configs = {
+      deviceId: deviceId,
+      deviceKey: deviceKey,
+      datachannelId: datachannelId,
+      host: apiHost,
+      port: apiPort
+    };
 
-      const configs = {
-        deviceId: deviceId,
-        deviceKey: deviceKey,
-        datachannelId: datachannelId,
-        host: apiHost,
-        port: apiPort
-      };
-
-      // Remind: Send the text as json format to keep whitespace / break-line / tab.
-      return res.render(filePath, configs, (err, html) => {
-        if (err) console.log(err);
-        return res.send(JSON.stringify(html));
-      });
+    // Remind: Send the text as json format to keep whitespace / break-line / tab.
+    return res.render(filePath, configs, function(err, html) {
+      if (err) console.log(err);
+      return res.send(JSON.stringify(html));
     });
+
   };
 
   return {
