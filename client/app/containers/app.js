@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import React, { Component } from 'react';
-import { checkToken, checkLocale } from '../actions/AppActions';
-import ToastCenter from '../containers/ToastCenter';
+import { checkToken, checkLocale } from '../actions/appActions';
+import ToastCenter from '../containers/toastCenter';
 import { query } from '../utils/url';
 
 const qs = query(window.location.search.substr(1).split('&'));
