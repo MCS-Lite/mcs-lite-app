@@ -139,7 +139,7 @@ function initApp() {
       document.body.innerHTML += '<iframe frameborder="0" src="http://' + $admin.host + ':' + $admin.port + $admin.webClient.redirect.prod + '" style="width: 100%; height: 580px; overflow: auto;" nwdisable nwfaketop>';
       // document.body.innerHTML += '<iframe frameborder="0" src="' + $admin.webClient.redirect.dev + '" style="width: 100%; height: 580px; overflow: auto;" nwdisable nwfaketop>';
     } else {
-      document.body.innerHTML += '<iframe frameborder="0" src="http://' + $admin.host + ':' + $admin.port + $admin.webClient.redirect.prod + '" style="width: 100%; height: 580px; overflow: auto;" nwdisable nwfaketop>';
+      document.body.innerHTML += '<iframe frameborder="0" src="http://' + $admin.host + ':' + $admin.port + '/login' + '" style="width: 100%; height: 580px; overflow: auto;" nwdisable nwfaketop>';
     }
   }, 500);
 }
