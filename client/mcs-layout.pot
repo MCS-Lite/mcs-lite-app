@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"POT-Creation-Date: 2017-06-23T03:43:37.201Z\n"
+"POT-Creation-Date: 2017-07-14T07:59:45.792Z\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "MIME-Version: 1.0\n"
@@ -339,8 +339,8 @@ msgstr ""
 #. [Dashboard.example]
 #. defaultMessage is:
 #. 原型範例
-#: ./messages/app/components/prototypeDetail/messages.json
-#. [PrototypeDetail.prototypeTemplate]
+#: ./messages/app/components/prototypes/messages.json
+#. [Prototypes.prototypeTemplate]
 #. defaultMessage is:
 #. 原型範例
 msgid "原型範例"
@@ -386,6 +386,13 @@ msgstr ""
 #. defaultMessage is:
 #. 取消
 msgid "取消"
+msgstr ""
+
+#: ./messages/app/components/prototypeDetail/messages.json
+#. [PrototypeDetail.unmarkTemplate]
+#. defaultMessage is:
+#. 取消範例分享
+msgid "取消範例分享"
 msgstr ""
 
 #: ./messages/app/components/dashboard/messages.json
@@ -553,10 +560,6 @@ msgstr ""
 msgid "成功！你已經成功刪除一個資料通道。"
 msgstr ""
 
-#: ./messages/app/components/prototypeDetail/messages.json
-#. [PrototypeDetail.exportSuccess]
-#. defaultMessage is:
-#. 成功！你已經成功匯出產品原型。
 #: ./messages/app/components/prototypes/messages.json
 #. [Prototypes.exportSuccess]
 #. defaultMessage is:
@@ -587,6 +590,20 @@ msgstr ""
 #. defaultMessage is:
 #. 成功！你已經成功更新圖片。
 msgid "成功！你已經成功更新圖片。"
+msgstr ""
+
+#: ./messages/app/components/prototypeDetail/messages.json
+#. [PrototypeDetail.unmarkTemplateSuccess]
+#. defaultMessage is:
+#. 成功！此原型已取消範例設定。
+msgid "成功！此原型已取消範例設定。"
+msgstr ""
+
+#: ./messages/app/components/prototypeDetail/messages.json
+#. [PrototypeDetail.markTemplateSuccess]
+#. defaultMessage is:
+#. 成功！此原型已設定為範例並分享。
+msgid "成功！此原型已設定為範例並分享。"
 msgstr ""
 
 #: ./messages/app/components/dashboard/messages.json
@@ -1110,6 +1127,13 @@ msgid "觸發條件與動作"
 msgstr ""
 
 #: ./messages/app/components/prototypeDetail/messages.json
+#. [PrototypeDetail.markTemplate]
+#. defaultMessage is:
+#. 設為原型範例
+msgid "設為原型範例"
+msgstr ""
+
+#: ./messages/app/components/prototypeDetail/messages.json
 #. [PrototypeDetail.createdAt]
 #. defaultMessage is:
 #. 註冊時間
@@ -1384,6 +1408,13 @@ msgstr ""
 #. defaultMessage is:
 #. 這裡是可能有幫助的 API 提示
 msgid "這裡是可能有幫助的 API 提示"
+msgstr ""
+
+#: ./messages/app/components/common/dialogs/messages.json
+#. [Dialogs.chooseCreateMethod]
+#. defaultMessage is:
+#. 選擇創建方式
+msgid "選擇創建方式"
 msgstr ""
 
 #: ./messages/app/components/common/unitSelect/messages.json

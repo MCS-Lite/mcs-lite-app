@@ -255,17 +255,24 @@
     "defaultMessage": "尚無資料通道"
   },
   {
-    "id": "PrototypeDetail.prototypeTemplate",
-    "description": "",
-    "defaultMessage": "原型範例"
-  },
-  {
     "id": "PrototypeDetail.createPrototypeFromTemplate",
     "description": "",
     "defaultMessage": "使用範例創建原型"
   },
   {
-    "id": "PrototypeDetail.exportSuccess",
-    "defaultMessage": "成功！你已經成功匯出產品原型。"
+    "id": "PrototypeDetail.markTemplate",
+    "defaultMessage": "設為原型範例"
+  },
+  {
+    "id": "PrototypeDetail.unmarkTemplate",
+    "defaultMessage": "取消範例分享"
+  },
+  {
+    "id": "PrototypeDetail.markTemplateSuccess",
+    "defaultMessage": "成功！此原型已設定為範例並分享。"
+  },
+  {
+    "id": "PrototypeDetail.unmarkTemplateSuccess",
+    "defaultMessage": "成功！此原型已取消範例設定。"
   }
 ]

@@ -1,0 +1,17 @@
+// In html , please add jQuery first.
+// In Node.js, please require('jQuery') first.
+
+var data = {
+  datapoints:
+    [{dataChnId: "<%= datachannelId %>", values: {value: 123}}]
+};
+$.ajax({
+  type: "POST",
+  url: "http://<%= host %>/api/devices/<%= deviceId %>/datapoints",
+  headers: { deviceKey: "<%= deviceKey %>" },
+  contentType: "application/json",
+  data: JSON.stringify(data),
+})
+.done(function(data){
+  // Handle this data here!
+});

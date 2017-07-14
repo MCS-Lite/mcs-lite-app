@@ -61,6 +61,11 @@
     "defaultMessage": "使用原型範例"
   },
   {
+    "id": "Dialogs.chooseCreateMethod",
+    "description": "",
+    "defaultMessage": "選擇創建方式"
+  },
+  {
     "id": "Dialogs.prototypeName",
     "description": "",
     "defaultMessage": "產品原型名稱"

@@ -9,10 +9,11 @@ rm -rf ./out
 mkdir build
 mkdir appBuild
 
-cd appBuild && mkdir client && cd client && mkdir app
+cd appBuild && mkdir client && cd client && mkdir app && mkdir apiHints
 cd ../..
 
 cp -R ./client/app/build/ ./appBuild/client/app/build
+cp -R ./client/apiHints/ ./appBuild/client/apiHints
 cp -R ./restserver/ ./appBuild/restserver
 cp -R ./adminServer/ ./appBuild/adminServer
 cp -R ./wotserver/ ./appBuild/wotserver
