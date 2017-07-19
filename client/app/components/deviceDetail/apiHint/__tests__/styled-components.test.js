@@ -1,5 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
+import 'jest-styled-components';
 import { ThemeProvider } from 'styled-components';
 import { theme } from 'mcs-lite-theme';
 import { CodeWrapper } from '../styled-components';
