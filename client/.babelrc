@@ -16,9 +16,15 @@
           "camel2DashComponentName": false
         }
       ]
-    ],
-    ["react-intl", {
-        "messagesDir": "./messages"
-    }]
-  ]
+    ]
+  ],
+  "env": {
+    "i18n": {
+      "plugins": [
+        [ "react-intl", {
+          "messagesDir": "./_translations"
+        }]
+      ]
+    }
+  }
 }
