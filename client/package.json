@@ -23,7 +23,7 @@
     "watch:global": "NODE_ENV=development DOMAIN_ENV=global npm run watch",
     "watch:china": " NODE_ENV=development DOMAIN_ENV=china  npm run watch",
     "lint": "eslint ./",
-    "test": "jest --coverage --runInBand",
+    "test": "NODE_ENV='test' TZ='UTC' jest --coverage --runInBand",
     "test:watch": "npm run test -- --watch"
   },
   "jest": {
