@@ -14,7 +14,7 @@
     "build:global": "npm run build:i18n && NODE_ENV=production DOMAIN_ENV=global npm run build",
     "build:china": "npm run build:i18n && NODE_ENV=production DOMAIN_ENV=china  npm run build",
     "build:i18n:clean": "rm -rf ./mcs-layout.pot && rm -rf ./messages",
-    "build:i18n:json": "BABEL_ENV=i18n babel --quiet app > /dev/null",
+    "build:i18n:json": "BABEL_ENV=production babel --quiet app > /dev/null",
     "build:i18n:pot": "rip json2pot './messages/**/*.json' -o './mcs-layout.pot'",
     "build:i18n:po2json": "rip po2json './*.po' -m './messages/app/**/*.json' -o './messages/translations.json'",
     "build:i18n": "npm run build:i18n:clean && npm run build:i18n:json && npm run build:i18n:pot && npm run build:i18n:po2json",
