@@ -18,7 +18,7 @@ module.exports = function ($db) {
     const templatePath = datachannelTypeId + '/' + typeId + '/' + method + '/';
     const filePath = path.resolve(__dirname, '../../client/apiHints/' + templatePath, content + '.ejs');
 
-    
+    console.log(filePath);
     var apiHost = global.host.split(':')[0];
     var apiPort = global.host.split(':')[1].split('/')[0];
 

@@ -4,12 +4,10 @@ exports[`should return messages 1`] = `
 Object {
   "Notification.switchQuestion": Object {
     "defaultMessage": "請問要切換到手機版來操作測試裝置嗎？",
-    "description": "Question description",
     "id": "Notification.switchQuestion",
   },
   "Notification.switchToMobile": Object {
     "defaultMessage": "切換到手機版",
-    "description": "Confirm button",
     "id": "Notification.switchToMobile",
   },
 }

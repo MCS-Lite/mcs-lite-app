@@ -1,0 +1,12 @@
+[
+  {
+    "id": "UnitType.unitType",
+    "description": "",
+    "defaultMessage": "資料單位"
+  },
+  {
+    "id": "UnitType.unitTypeError",
+    "description": "",
+    "defaultMessage": "請選擇資料單位"
+  }
+]

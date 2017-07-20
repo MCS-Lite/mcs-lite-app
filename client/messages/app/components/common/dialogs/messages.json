@@ -1,0 +1,133 @@
+[
+  {
+    "id": "Dialogs.deviceNameLabel",
+    "defaultMessage": "測試裝置名稱"
+  },
+  {
+    "id": "Dialogs.deviceNamePlaceholder",
+    "defaultMessage": "輸入裝置名稱"
+  },
+  {
+    "id": "descriptionLabel",
+    "defaultMessage": "描述"
+  },
+  {
+    "id": "Dialogs.descriptionPlaceholder",
+    "defaultMessage": "輸入裝置描述"
+  },
+  {
+    "id": "Dialogs.inputPrototypeInfo",
+    "description": "",
+    "defaultMessage": "輸入原型資訊"
+  },
+  {
+    "id": "Dialogs.importJSON",
+    "description": "",
+    "defaultMessage": "匯入 JSON 檔"
+  },
+  {
+    "id": "Dialogs.useExample",
+    "description": "",
+    "defaultMessage": "使用範例原型"
+  },
+  {
+    "id": "Dialogs.selectExample",
+    "description": "",
+    "defaultMessage": "選擇範例"
+  },
+  {
+    "id": "Dialogs.uploadJSONhint",
+    "description": "",
+    "defaultMessage": "匯入產品原型：請將使用 JSON 格式之內容貼於此。 或"
+  },
+  {
+    "id": "Dialogs.browseAndUpload",
+    "description": "",
+    "defaultMessage": "瀏覽上傳"
+  },
+  {
+    "id": "Dialogs.clear",
+    "description": "",
+    "defaultMessage": "清除"
+  },
+  {
+    "id": "Dialogs.createPrototype",
+    "description": "",
+    "defaultMessage": "創建原型"
+  },
+  {
+    "id": "Dialogs.clonePrototype",
+    "description": "",
+    "defaultMessage": "使用原型範例"
+  },
+  {
+    "id": "Dialogs.chooseCreateMethod",
+    "description": "",
+    "defaultMessage": "選擇創建方式"
+  },
+  {
+    "id": "Dialogs.prototypeName",
+    "description": "",
+    "defaultMessage": "產品原型名稱"
+  },
+  {
+    "id": "Dialogs.inputThePrototypeName",
+    "description": "",
+    "defaultMessage": "輸入產品原型名稱"
+  },
+  {
+    "id": "Dialogs.prototypeVersion",
+    "description": "",
+    "defaultMessage": "產品原型版本"
+  },
+  {
+    "id": "Dialogs.inputThePrototypeVersion",
+    "description": "",
+    "defaultMessage": "輸入產品原型版本"
+  },
+  {
+    "id": "Dialogs.prototypeDescription",
+    "description": "",
+    "defaultMessage": "描述"
+  },
+  {
+    "id": "Dialogs.uploadImage",
+    "description": "",
+    "defaultMessage": "上傳影像"
+  },
+  {
+    "id": "Dialogs.inputThePrototypeDescription",
+    "description": "",
+    "defaultMessage": "輸入產品原型描述"
+  },
+  {
+    "id": "Dialogs.save",
+    "description": "",
+    "defaultMessage": "儲存"
+  },
+  {
+    "id": "Dialogs.cancel",
+    "description": "",
+    "defaultMessage": "取消"
+  },
+  {
+    "id": "Dialogs.editDevice",
+    "description": "",
+    "defaultMessage": "編輯測試裝置"
+  },
+  {
+    "id": "Dialogs.errorWhenUploadJSON",
+    "description": "",
+    "defaultMessage": "錯誤！上傳JSON檔時發生錯誤。"
+  },
+  {
+    "id": "Dialogs.codeBlockPlaceholder",
+    "description": "",
+    "defaultMessage": "在此處貼上JSON..."
+  },
+  {
+    "id": "Dialogs.createPrototypeSuccess",
+    "description": "",
+    "defaultMessage": "成功！你已經成功建立一個產品原型。"
+  }
+]

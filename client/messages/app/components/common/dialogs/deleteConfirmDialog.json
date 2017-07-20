@@ -1,0 +1,18 @@
+[
+  {
+    "id": "Dialogs.Notice",
+    "defaultMessage": "注意!"
+  },
+  {
+    "id": "Dialogs.Notification",
+    "defaultMessage": "是否確定刪除？一但刪除將無法復原。"
+  },
+  {
+    "id": "Dialogs.Cancel",
+    "defaultMessage": "取消"
+  },
+  {
+    "id": "Dialogs.Confirm",
+    "defaultMessage": "確定"
+  }
+]

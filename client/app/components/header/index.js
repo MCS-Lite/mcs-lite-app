@@ -9,6 +9,7 @@ import withHandlers from 'recompose/withHandlers';
 import MiDevelopment from 'mtk-icon/lib/MiDevelopment';
 import Avatar from 'mtk-ui/lib/Avatar';
 import IconResources from 'mcs-lite-icon/lib/IconResources';
+import IconPublic from 'mcs-lite-icon/lib/IconPublic';
 import logo from 'images/logo_mcs_lite_white.svg';
 import { withGetMessages } from 'react-intl-inject-hoc';
 import messages from './messages';
@@ -174,6 +175,56 @@ const Header = ({
           </NavItem>
         </DropdownButton>
       </Nav>
+      <Nav className={headerStyles.optionalBlock}>
+        <DropdownButton
+          id="profile"
+          buttonStyle={headerStyles.link}
+          activeStyle={headerStyles.activeStyle}
+          title={
+            <span>
+              <IconPublic className={headerStyles.prefixIcon} />
+              {t('language')}
+            </span>
+          }
+        >
+          <NavItem
+            key="en"
+            href={window.location.origin + window.location.pathname + '?locale=en'}
+            className={c(
+              headerStyles.menuItem,
+              isItemActive('profile', pathname) ? headerStyles.menuItemActive : {},
+            )}
+            linkStyle={headerStyles.menuLink}
+            activeStyle={headerStyles.menuItemActive}
+          >
+            English
+          </NavItem>
+          <NavItem
+            key="zh-TW"
+            href={window.location.origin + window.location.pathname + '?locale=zh-TW'}
+            className={headerStyles.menuItem}
+            linkStyle={headerStyles.menuLink}
+            activeStyle={c(
+              headerStyles.menuItemActive,
+              headerStyles.menuItemBorder,
+            )}
+          >
+            繁體中文
+          </NavItem>
+          <NavItem
+            key="zh-CN"
+            href={window.location.origin + window.location.pathname + '?locale=zh-CN'}
+            className={headerStyles.menuItem}
+            linkStyle={headerStyles.menuLink}
+            activeStyle={c(
+              headerStyles.menuItemActive,
+              headerStyles.menuItemBorder,
+            )}
+          >
+            简体中文
+          </NavItem>
+        </DropdownButton>
+      </Nav>
     </div>
   </header>
 );
@@ -187,7 +238,7 @@ export default compose(
     onSignOut: props => () => {
       browserHistory.push('/login');
       props.signOut();
-    },
+    },    
   }),
   withGetMessages(messages, 'Header'),
 )(Header);

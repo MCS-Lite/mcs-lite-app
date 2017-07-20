@@ -1,0 +1,97 @@
+[
+  {
+    "id": "Dashboard.dashboard",
+    "description": "",
+    "defaultMessage": "儀表板"
+  },
+  {
+    "id": "Dashboard.example",
+    "description": "",
+    "defaultMessage": "原型範例"
+  },
+  {
+    "id": "Dashboard.myPrototype",
+    "description": "",
+    "defaultMessage": "我的產品原型"
+  },
+  {
+    "id": "Dashboard.shareWithMeExample",
+    "description": "",
+    "defaultMessage": "與我分享的範例"
+  },
+  {
+    "id": "Dashboard.lastUpdatePrototype",
+    "description": "",
+    "defaultMessage": "最後更新的產品原型"
+  },
+  {
+    "id": "Dashboard.noAnyPrototypes",
+    "description": "",
+    "defaultMessage": "目前還沒有任何產品原型"
+  },
+  {
+    "id": "Dashboard.noAnyDevice",
+    "description": "",
+    "defaultMessage": "目前還沒有任何測試裝置"
+  },
+  {
+    "id": "Dashboard.create",
+    "description": "",
+    "defaultMessage": "創建"
+  },
+  {
+    "id": "Dashboard.allPrototypes",
+    "description": "",
+    "defaultMessage": "所有的產品原型"
+  },
+  {
+    "id": "Dashboard.testDeviceList",
+    "description": "",
+    "defaultMessage": "測試裝置列表"
+  },
+  {
+    "id": "Dashboard.noTestDeviceCurrent",
+    "description": "",
+    "defaultMessage": "目前還沒有任何測試裝置"
+  },
+  {
+    "id": "Dashboard.deviceName",
+    "description": "",
+    "defaultMessage": "名稱"
+  },
+  {
+    "id": "Dashboard.deviceId",
+    "description": "",
+    "defaultMessage": "DeviceId"
+  },
+  {
+    "id": "Dashboard.deviceKey",
+    "description": "",
+    "defaultMessage": "DeviceKey"
+  },
+  {
+    "id": "Dashboard.lastDataPointTime",
+    "description": "",
+    "defaultMessage": "最後資料點時間"
+  },
+  {
+    "id": "Dashboard.clonePrototype",
+    "description": "",
+    "defaultMessage": "使用範例創建原型"
+  },
+  {
+    "id": "Dashboard.prototypeName",
+    "description": "",
+    "defaultMessage": "產品原型名稱"
+  },
+  {
+    "id": "Dashboard.lastUpdateTime",
+    "description": "",
+    "defaultMessage": "最後更新時間"
+  },
+  {
+    "id": "Dashboard.copy",
+    "description": "",
+    "defaultMessage": "複製"
+  }
+]

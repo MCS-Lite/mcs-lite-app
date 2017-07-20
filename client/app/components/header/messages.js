@@ -31,6 +31,11 @@ const messages = defineMessages({
     description: '',
     defaultMessage: '登出',
   },
+  'Header.language': {
+    id: 'Header.language',
+    description: '',
+    defaultMessage: '語言',
+  },
 });
 
 export default messages;

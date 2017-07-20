@@ -34,6 +34,7 @@ exports[`should redner <Notification /> when it is mobile mode 1`] = `
           active={false}
           block={false}
           component="button"
+          disabled={false}
           kind="primary"
           onClick={[Function]}
           round={false}

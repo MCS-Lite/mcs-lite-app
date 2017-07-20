@@ -2,15 +2,37 @@
 
 exports[`should render components correctly 1`] = `
 Array [
-  <div>
+  .c0 {
+  max-height: 250px;
+  min-height: 3em;
+  overflow-y: auto;
+  border-radius: 3px;
+  margin-top: 10px;
+  padding: 5px 10px;
+  border: 1px solid #D1D2D3;
+  background-color: #FAFAFA;
+}
+
+<div>
     <styled-components__CodeWrapper>
         <div
-            className="styled-components__CodeWrapper-gQlBpv QjdJf"
+            className="c0"
         />
     </styled-components__CodeWrapper>
 </div>,
-  <div
-    className="styled-components__CodeWrapper-gQlBpv QjdJf"
+  .c0 {
+  max-height: 250px;
+  min-height: 3em;
+  overflow-y: auto;
+  border-radius: 3px;
+  margin-top: 10px;
+  padding: 5px 10px;
+  border: 1px solid #D1D2D3;
+  background-color: #FAFAFA;
+}
+
+<div
+    className="c0"
 />,
 ]
 `;

@@ -1,0 +1,1489 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: mcs-lite\n"
+"POT-Creation-Date: 2017-06-23 11:30+0800\n"
+"PO-Revision-Date: 2017-06-23 11:30+0800\n"
+"Last-Translator: Daria Chen <smartexist@gmail.com>\n"
+"Language-Team: Chinese Traditional\n"
+"Language: zh_TW\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.0.2\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Crowdin-Project: mcs-lite\n"
+"X-Crowdin-Language: zh-TW\n"
+"X-Crowdin-File: zh-TW.po\n"
+
+#. [ApiHint.apiType]
+#. defaultMessage is:
+#. API 類型：
+#: messages/app/components/deviceDetail/apiHint/messages.json
+msgid "API 類型："
+msgstr "API 類型："
+
+#. [Text.apiHint]
+#. defaultMessage is:
+#. API提示
+#. [Devices.apiHint]
+#. defaultMessage is:
+#. API提示
+#: messages/app/components/dataChannelCards/common/more/messages.json
+#: messages/app/components/deviceDetail/messages.json
+msgid "API提示"
+msgstr "API提示"
+
+#. [Dashboard.deviceId]
+#. defaultMessage is:
+#. DeviceId
+#. [PrototypeDetail.deviceId]
+#. defaultMessage is:
+#. DeviceId
+#: messages/app/components/dashboard/messages.json
+#: messages/app/components/prototypeDetail/messages.json
+msgid "DeviceId"
+msgstr "DeviceId"
+
+#. [Dashboard.deviceKey]
+#. defaultMessage is:
+#. DeviceKey
+#. [PrototypeDetail.deviceKey]
+#. defaultMessage is:
+#. DeviceKey
+#: messages/app/components/dashboard/messages.json
+#: messages/app/components/prototypeDetail/messages.json
+msgid "DeviceKey"
+msgstr "DeviceKey"
+
+#. [Login.Email]
+#. defaultMessage is:
+#. Email
+#. [Signup.Email]
+#. defaultMessage is:
+#. Email
+#: messages/app/components/login/messages.json
+#: messages/app/components/signup/messages.json
+msgid "Email"
+msgstr "Email"
+
+#. [ImageUploader.upload]
+#. defaultMessage is:
+#. 上傳
+#: messages/app/components/common/imageUploader/messages.json
+msgid "上傳"
+msgstr "上傳"
+
+#. [Profile.uploadImage]
+#. defaultMessage is:
+#. 上傳圖片
+#: messages/app/components/profile/messages.json
+msgid "上傳圖片"
+msgstr "上傳圖片"
+
+#. [Dialogs.uploadImage]
+#. defaultMessage is:
+#. 上傳影像
+#. [CreateTestDevice.uploadImage]
+#. defaultMessage is:
+#. 上傳影像
+#. [Prototypes.uploadImage]
+#. defaultMessage is:
+#. 上傳影像
+#: messages/app/components/common/dialogs/messages.json
+#: messages/app/components/prototypeDetail/dialogs/messages.json
+#: messages/app/components/prototypes/messages.json
+msgid "上傳影像"
+msgstr "上傳影像"
+
+#. [ApiHint.upload]
+#. defaultMessage is:
+#. 上傳資料點
+#: messages/app/components/deviceDetail/apiHint/messages.json
+msgid "上傳資料點"
+msgstr "上傳資料點"
+
+#. [Dialogs.clonePrototype]
+#. defaultMessage is:
+#. 使用原型範例
+#: messages/app/components/common/dialogs/messages.json
+msgid "使用原型範例"
+msgstr "使用原型範例"
+
+#. [Dashboard.clonePrototype]
+#. defaultMessage is:
+#. 使用範例創建原型
+#. [PrototypeDetail.createPrototypeFromTemplate]
+#. defaultMessage is:
+#. 使用範例創建原型
+#: messages/app/components/dashboard/messages.json
+#: messages/app/components/prototypeDetail/messages.json
+msgid "使用範例創建原型"
+msgstr "使用範例創建原型"
+
+#. [Dialogs.useExample]
+#. defaultMessage is:
+#. 使用範例原型
+#: messages/app/components/common/dialogs/messages.json
+msgid "使用範例原型"
+msgstr "使用原型範例"
+
+#. [Profile.editPassword]
+#. defaultMessage is:
+#. 修改密碼
+#: messages/app/components/profile/messages.json
+msgid "修改密碼"
+msgstr "修改密碼"
+
+#. [Profile.editUserName]
+#. defaultMessage is:
+#. 修改暱稱
+#: messages/app/components/profile/messages.json
+msgid "修改暱稱"
+msgstr "修改暱稱"
+
+#. [Header.profile]
+#. defaultMessage is:
+#. 個人檔案
+#. [Profile.profile]
+#. defaultMessage is:
+#. 個人檔案
+#: messages/app/components/header/messages.json
+#: messages/app/components/profile/messages.json
+msgid "個人檔案"
+msgstr "個人檔案"
+
+#. [Dashboard.dashboard]
+#. defaultMessage is:
+#. 儀表板
+#. [DeviceDetail.Breadcrumb.Dashboard]
+#. defaultMessage is:
+#. 儀表板
+#. [Devices.Dashboard]
+#. defaultMessage is:
+#. 儀表板
+#. [PrototypeDetail.dashboard]
+#. defaultMessage is:
+#. 儀表板
+#: messages/app/components/dashboard/messages.json
+#: messages/app/components/deviceDetail/breadcrumb/index.json
+#: messages/app/components/devices/breadcrumb/index.json
+#: messages/app/components/prototypeDetail/messages.json
+msgid "儀表板"
+msgstr "儀表板"
+
+#. [Dialogs.save]
+#. defaultMessage is:
+#. 儲存
+#. [UnitSelect.save]
+#. defaultMessage is:
+#. 儲存
+#. [Profile.save]
+#. defaultMessage is:
+#. 儲存
+#. [CreateTestDevice.save]
+#. defaultMessage is:
+#. 儲存
+#. [PrototypeDetail.save]
+#. defaultMessage is:
+#. 儲存
+#. [Prototypes.save]
+#. defaultMessage is:
+#. 儲存
+#: messages/app/components/common/dialogs/messages.json
+#: messages/app/components/common/unitSelect/messages.json
+#: messages/app/components/profile/messages.json
+#: messages/app/components/prototypeDetail/dialogs/messages.json
+#: messages/app/components/prototypeDetail/messages.json
+#: messages/app/components/prototypes/messages.json
+msgid "儲存"
+msgstr "儲存"
+
+#. [Profile.confirmPasswordPlaceholder]
+#. defaultMessage is:
+#. 再次輸入新密碼
+#: messages/app/components/profile/messages.json
+msgid "再次輸入新密碼"
+msgstr "再次輸入新密碼"
+
+#. [Notification.switchToMobile] - Confirm button
+#. defaultMessage is:
+#. 切換到手機版
+#: messages/app/components/deviceDetail/notification/messages.json
+msgid "切換到手機版"
+msgstr "切換到手機版"
+
+#. [Login.changeLanguage]
+#. defaultMessage is:
+#. 切換語言
+#: messages/app/components/login/messages.json
+msgid "切換語言"
+msgstr "切換語言"
+
+#. [Text.delete]
+#. defaultMessage is:
+#. 刪除
+#. [Devices.delete]
+#. defaultMessage is:
+#. 刪除
+#. [Devices.delete]
+#. defaultMessage is:
+#. 刪除
+#. [PrototypeDetail.delete]
+#. defaultMessage is:
+#. 刪除
+#. [Prototypes.delete]
+#. defaultMessage is:
+#. 刪除
+#: messages/app/components/dataChannelCards/common/more/messages.json
+#: messages/app/components/deviceDetail/messages.json
+#: messages/app/components/devices/messages.json
+#: messages/app/components/prototypeDetail/messages.json
+#: messages/app/components/prototypes/messages.json
+msgid "刪除"
+msgstr "刪除"
+
+#. [Dashboard.create]
+#. defaultMessage is:
+#. 創建
+#. [Prototypes.create]
+#. defaultMessage is:
+#. 創建
+#: messages/app/components/dashboard/messages.json
+#: messages/app/components/prototypes/messages.json
+msgid "創建"
+msgstr "創建"
+
+#. [Devices.source]
+#. defaultMessage is:
+#. 創建來源：
+#: messages/app/components/devices/messages.json
+msgid "創建來源："
+msgstr "創建來源："
+
+#. [Dialogs.createPrototype]
+#. defaultMessage is:
+#. 創建原型
+#. [Prototypes.createPrototype]
+#. defaultMessage is:
+#. 創建原型
+#: messages/app/components/common/dialogs/messages.json
+#: messages/app/components/prototypes/messages.json
+msgid "創建原型"
+msgstr "創建原型"
+
+#. [PrototypeDetail.createTestDevice]
+#. defaultMessage is:
+#. 創建測試裝置
+#: messages/app/components/prototypeDetail/messages.json
+msgid "創建測試裝置"
+msgstr "創建測試裝置"
+
+#. [PrototypeDetail.testDeviceHint]
+#. defaultMessage is:
+#. 創建測試裝置來試看看並蒐集真實資料吧！
+#: messages/app/components/prototypeDetail/messages.json
+msgid "創建測試裝置來試看看並蒐集真實資料吧！"
+msgstr "創建測試裝置來試看看並蒐集真實資料吧！"
+
+#. [Devices.creator]
+#. defaultMessage is:
+#. 創建者：
+#. [PrototypeDetail.createUser]
+#. defaultMessage is:
+#. 創建者：
+#: messages/app/components/deviceDetail/messages.json
+#: messages/app/components/prototypeDetail/messages.json
+msgid "創建者："
+msgstr "創建者："
+
+#. [Dialogs.importJSON]
+#. defaultMessage is:
+#. 匯入 JSON 檔
+#: messages/app/components/common/dialogs/messages.json
+msgid "匯入 JSON 檔"
+msgstr "匯入 JSON 檔"
+
+#. [Dialogs.uploadJSONhint]
+#. defaultMessage is:
+#. 匯入產品原型：請將使用 JSON 格式之內容貼於此。 或
+#: messages/app/components/common/dialogs/messages.json
+msgid "匯入產品原型：請將使用 JSON 格式之內容貼於此。 或"
+msgstr "匯入產品原型：請將 JSON 格式之內容貼於此。 或"
+
+#. [PrototypeDetail.export]
+#. defaultMessage is:
+#. 匯出
+#. [Prototypes.export]
+#. defaultMessage is:
+#. 匯出
+#: messages/app/components/prototypeDetail/messages.json
+#: messages/app/components/prototypes/messages.json
+msgid "匯出"
+msgstr "匯出"
+
+#. [Header.prototype]
+#. defaultMessage is:
+#. 原型
+#. [PrototypeDetail.prototype]
+#. defaultMessage is:
+#. 原型
+#. [Prototypes.prototype]
+#. defaultMessage is:
+#. 原型
+#: messages/app/components/header/messages.json
+#: messages/app/components/prototypeDetail/messages.json
+#: messages/app/components/prototypes/messages.json
+msgid "原型"
+msgstr "原型"
+
+#. [Prototypes.prototypeList]
+#. defaultMessage is:
+#. 原型列表
+#: messages/app/components/prototypes/messages.json
+msgid "原型列表"
+msgstr "原型列表"
+
+#. [Dashboard.example]
+#. defaultMessage is:
+#. 原型範例
+#. [PrototypeDetail.prototypeTemplate]
+#. defaultMessage is:
+#. 原型範例
+#: messages/app/components/dashboard/messages.json
+#: messages/app/components/prototypeDetail/messages.json
+msgid "原型範例"
+msgstr "原型範例"
+
+#. [ApiHint.retrieve]
+#. defaultMessage is:
+#. 取得資料點
+#: messages/app/components/deviceDetail/apiHint/messages.json
+msgid "取得資料點"
+msgstr "取得資料點"
+
+#. [Dialogs.Cancel]
+#. defaultMessage is:
+#. 取消
+#. [Dialogs.cancel]
+#. defaultMessage is:
+#. 取消
+#. [UnitSelect.cancel]
+#. defaultMessage is:
+#. 取消
+#. [Profile.cancel]
+#. defaultMessage is:
+#. 取消
+#. [CreateTestDevice.cancel]
+#. defaultMessage is:
+#. 取消
+#. [PrototypeDetail.cancel]
+#. defaultMessage is:
+#. 取消
+#. [Prototypes.cancel]
+#. defaultMessage is:
+#. 取消
+#. [Signup.cancel]
+#. defaultMessage is:
+#. 取消
+#: messages/app/components/common/dialogs/deleteConfirmDialog.json
+#: messages/app/components/common/dialogs/messages.json
+#: messages/app/components/common/unitSelect/messages.json
+#: messages/app/components/profile/messages.json
+#: messages/app/components/prototypeDetail/dialogs/messages.json
+#: messages/app/components/prototypeDetail/messages.json
+#: messages/app/components/prototypes/messages.json
+#: messages/app/components/signup/messages.json
+msgid "取消"
+msgstr "取消"
+
+#. [Dashboard.deviceName]
+#. defaultMessage is:
+#. 名稱
+#. [PrototypeDetail.testDeviceName]
+#. defaultMessage is:
+#. 名稱
+#. [PrototypeDetail.deviceName]
+#. defaultMessage is:
+#. 名稱
+#: messages/app/components/dashboard/messages.json
+#: messages/app/components/prototypeDetail/messages.json
+msgid "名稱"
+msgstr "名稱"
+
+#. [UnitSelect.unitName]
+#. defaultMessage is:
+#. 單位名稱
+#. [PrototypeDetail.unitName]
+#. defaultMessage is:
+#. 單位名稱
+#: messages/app/components/common/unitSelect/messages.json
+#: messages/app/components/prototypeDetail/messages.json
+msgid "單位名稱"
+msgstr "單位名稱"
+
+#. [UnitSelect.unitSymbol]
+#. defaultMessage is:
+#. 單位符號
+#. [PrototypeDetail.unitMark]
+#. defaultMessage is:
+#. 單位符號
+#: messages/app/components/common/unitSelect/messages.json
+#: messages/app/components/prototypeDetail/messages.json
+msgid "單位符號"
+msgstr "單位符號"
+
+#. [Devices.backToPrototype]
+#. defaultMessage is:
+#. 回到產品原型
+#: messages/app/components/deviceDetail/messages.json
+msgid "回到產品原型"
+msgstr "回到產品原型"
+
+#. [Dialogs.codeBlockPlaceholder]
+#. defaultMessage is:
+#. 在此處貼上JSON...
+#: messages/app/components/common/dialogs/messages.json
+msgid "在此處貼上JSON..."
+msgstr "在此處貼上 JSON 格式的內容..."
+
+#. [Login.password]
+#. defaultMessage is:
+#. 密碼
+#. [Profile.password]
+#. defaultMessage is:
+#. 密碼
+#. [Signup.password]
+#. defaultMessage is:
+#. 密碼
+#: messages/app/components/login/messages.json
+#: messages/app/components/profile/messages.json
+#: messages/app/components/signup/messages.json
+msgid "密碼"
+msgstr "密碼"
+
+#. [Profile.passwordLengthError]
+#. defaultMessage is:
+#. 密碼長度需要長於 8 個字元
+#: messages/app/components/profile/messages.json
+msgid "密碼長度需要長於 8 個字元"
+msgstr "密碼長度需要長於 8 個字元"
+
+#. [ImageUploader.descriptionL1]
+#. defaultMessage is:
+#. 將您想上傳的圖片拖拉於此
+#: messages/app/components/common/imageUploader/messages.json
+msgid "將您想上傳的圖片拖拉於此"
+msgstr "將您想上傳的圖片拖拉於此"
+
+#. [PrototypeDetail.noDatachannels]
+#. defaultMessage is:
+#. 尚無資料通道
+#: messages/app/components/prototypeDetail/messages.json
+msgid "尚無資料通道"
+msgstr "尚無資料通道"
+
+#. [Signup.createAnAccount]
+#. defaultMessage is:
+#. 建立一個帳戶
+#: messages/app/components/signup/messages.json
+msgid "建立一個帳戶"
+msgstr "建立一個帳戶"
+
+#. [Login.createAnAccount]
+#. defaultMessage is:
+#. 建立一個帳戶！
+#: messages/app/components/login/messages.json
+msgid "建立一個帳戶！"
+msgstr "建立一個帳戶！"
+
+#. [PrototypeDetail.cloneFromExistingPrototype]
+#. defaultMessage is:
+#. 從既有的產品原型複製
+#. [Prototypes.cloneFromExistingPrototype]
+#. defaultMessage is:
+#. 從既有的產品原型複製
+#: messages/app/components/prototypeDetail/messages.json
+#: messages/app/components/prototypes/messages.json
+msgid "從既有的產品原型複製"
+msgstr "從既有的產品原型複製"
+
+#. [PrototypeDetail.cloneFromExistingPrototypeIntro]
+#. defaultMessage is:
+#. 從既有的產品原型複製出一份相同的產品原型來做更進一步的開發。
+#. [Prototypes.cloneFromExistingPrototypeIntro]
+#. defaultMessage is:
+#. 從既有的產品原型複製出一份相同的產品原型來做更進一步的開發。
+#: messages/app/components/prototypeDetail/messages.json
+#: messages/app/components/prototypes/messages.json
+msgid "從既有的產品原型複製出一份相同的產品原型來做更進一步的開發。"
+msgstr "從既有的產品原型複製出一份相同的產品原型來做更進一步的開發。"
+
+#. [ApiHint.example] - description
+#. defaultMessage is:
+#. 您可以使用這邊提供的 API 來設定你所需要的動作。例如上傳和讀取資料點。
+#: messages/app/components/deviceDetail/apiHint/messages.json
+msgid "您可以使用這邊提供的 API 來設定你所需要的動作。例如上傳和讀取資料點。"
+msgstr "您可以使用這邊提供的 API 來設定你所需要的動作。例如上傳和讀取資料點。"
+
+#. [Devices.testDeviceInfo]
+#. defaultMessage is:
+#. 您在使用 API 呼叫裝置時，將會需要 deviceId 和 deviceKey。
+#: messages/app/components/deviceDetail/messages.json
+msgid "您在使用 API 呼叫裝置時，將會需要 deviceId 和 deviceKey。"
+msgstr "您在使用 API 呼叫裝置時，將會需要 deviceId 和 deviceKey。"
+
+#. [ImageUploader.imageUploadSuccess]
+#. defaultMessage is:
+#. 成功！你已經成功上傳圖片。
+#: messages/app/components/common/imageUploader/messages.json
+msgid "成功！你已經成功上傳圖片。"
+msgstr "成功！圖片已經上傳。"
+
+#. [Profile.changePasswordSuccess]
+#. defaultMessage is:
+#. 成功！你已經成功修改密碼。
+#: messages/app/components/profile/messages.json
+msgid "成功！你已經成功修改密碼。"
+msgstr "成功！密碼已經修改完成。"
+
+#. [Profile.editUserNameSuccess]
+#. defaultMessage is:
+#. 成功！你已經成功修改暱稱。
+#: messages/app/components/profile/messages.json
+msgid "成功！你已經成功修改暱稱。"
+msgstr "成功！暱稱已經修改。"
+
+#. [More.deleteSucess]
+#. defaultMessage is:
+#. 成功！你已經成功刪除一個資料通道。
+#: messages/app/components/dataChannelCards/common/more/messages.json
+msgid "成功！你已經成功刪除一個資料通道。"
+msgstr "成功！資料通道已經刪除完成。"
+
+#. [PrototypeDetail.exportSuccess]
+#. defaultMessage is:
+#. 成功！你已經成功匯出產品原型。
+#. [Prototypes.exportSuccess]
+#. defaultMessage is:
+#. 成功！你已經成功匯出產品原型。
+#: messages/app/components/prototypeDetail/messages.json
+#: messages/app/components/prototypes/messages.json
+msgid "成功！你已經成功匯出產品原型。"
+msgstr "成功！產品原型已經匯出完成。"
+
+#. [Dialogs.createPrototypeSuccess]
+#. defaultMessage is:
+#. 成功！你已經成功建立一個產品原型。
+#. [Prototypes.createPrototypeSuccess]
+#. defaultMessage is:
+#. 成功！你已經成功建立一個產品原型。
+#: messages/app/components/common/dialogs/messages.json
+#: messages/app/components/prototypes/messages.json
+msgid "成功！你已經成功建立一個產品原型。"
+msgstr "成功！產品原型已經建立完成。"
+
+#. [PrototypeDetail.addNewDataChannelSuccess]
+#. defaultMessage is:
+#. 成功！你已經成功新增一個資料通道。
+#: messages/app/components/prototypeDetail/messages.json
+msgid "成功！你已經成功新增一個資料通道。"
+msgstr "成功！資料通道已經新增完成。"
+
+#. [Profile.imageUploadSuccess]
+#. defaultMessage is:
+#. 成功！你已經成功更新圖片。
+#: messages/app/components/profile/messages.json
+msgid "成功！你已經成功更新圖片。"
+msgstr "成功！圖片已經更新完成。"
+
+#. [Dashboard.myPrototype]
+#. defaultMessage is:
+#. 我的產品原型
+#: messages/app/components/dashboard/messages.json
+msgid "我的產品原型"
+msgstr "我的產品原型"
+
+#. [Dashboard.allPrototypes]
+#. defaultMessage is:
+#. 所有的產品原型
+#: messages/app/components/dashboard/messages.json
+msgid "所有的產品原型"
+msgstr "所有的產品原型"
+
+#. [More.openHistory]
+#. defaultMessage is:
+#. 打開歷史資料
+#: messages/app/components/dataChannelCards/common/more/messages.json
+msgid "打開歷史資料"
+msgstr "打開歷史資料"
+
+#. [UnitSelect.noResultsFound]
+#. defaultMessage is:
+#. 找不到符合的結果。來建立您自訂的單位吧！
+#: messages/app/components/common/unitSelect/messages.json
+msgid "找不到符合的結果。來建立您自訂的單位吧！"
+msgstr "找不到符合的結果。來建立您自訂的單位吧！"
+
+#. [PrototypeDetail.noUnitTypeHint]
+#. defaultMessage is:
+#. 找不到符合結果。來建立您自訂的單位吧！
+#: messages/app/components/prototypeDetail/messages.json
+msgid "找不到符合結果。來建立您自訂的單位吧！"
+msgstr "找不到符合的結果。來建立您自訂的單位吧！"
+
+#. [PrototypeDetail.control]
+#. defaultMessage is:
+#. 控制器
+#: messages/app/components/prototypeDetail/messages.json
+msgid "控制器"
+msgstr "控制器"
+
+#. [PrototypeDetail.controlHint]
+#. defaultMessage is:
+#. 控制器型態的行資料通道允許您控制您裝置的狀態。例如，打開或關閉開關。
+#: messages/app/components/prototypeDetail/messages.json
+msgid "控制器型態的行資料通道允許您控制您裝置的狀態。例如，打開或關閉開關。"
+msgstr "控制器型態的行資料通道允許您控制您裝置的狀態。例如，打開或關閉開關。"
+
+#. [ImageUploader.descriptionL2]
+#. defaultMessage is:
+#. 推薦大小為 1600 x 854 pixels
+#: messages/app/components/common/imageUploader/messages.json
+msgid "推薦大小為 1600 x 854 pixels"
+msgstr "推薦大小為 1600 x 854 pixels"
+
+#. [descriptionLabel]
+#. defaultMessage is:
+#. 描述
+#. [Dialogs.prototypeDescription]
+#. defaultMessage is:
+#. 描述
+#. [CreateTestDevice.description]
+#. defaultMessage is:
+#. 描述
+#: messages/app/components/common/dialogs/messages.json
+#: messages/app/components/prototypeDetail/dialogs/messages.json
+msgid "描述"
+msgstr "描述"
+
+#. [Devices.description]
+#. defaultMessage is:
+#. 描述：
+#. [Devices.description]
+#. defaultMessage is:
+#. 描述：
+#. [PrototypeDetail.description]
+#. defaultMessage is:
+#. 描述：
+#. [Prototypes.prototypeDescription]
+#. defaultMessage is:
+#. 描述：
+#: messages/app/components/deviceDetail/messages.json
+#: messages/app/components/devices/messages.json
+#: messages/app/components/prototypeDetail/messages.json
+#: messages/app/components/prototypes/messages.json
+msgid "描述："
+msgstr "描述："
+
+#. [Devices.search]
+#. defaultMessage is:
+#. 搜尋
+#. [Prototypes.search]
+#. defaultMessage is:
+#. 搜尋
+#: messages/app/components/devices/messages.json
+#: messages/app/components/prototypes/messages.json
+msgid "搜尋"
+msgstr "搜尋"
+
+#. [PrototypeDetail.add]
+#. defaultMessage is:
+#. 新增
+#: messages/app/components/prototypeDetail/messages.json
+msgid "新增"
+msgstr "新增"
+
+#. [CreateTestDevice.title]
+#. defaultMessage is:
+#. 新增測試裝置
+#. [PrototypeDetail.addNewTestDevice]
+#. defaultMessage is:
+#. 新增測試裝置
+#: messages/app/components/prototypeDetail/dialogs/messages.json
+#: messages/app/components/prototypeDetail/messages.json
+msgid "新增測試裝置"
+msgstr "新增測試裝置"
+
+#. [PrototypeDetail.addNewDataChannel]
+#. defaultMessage is:
+#. 新增資料通道
+#: messages/app/components/prototypeDetail/messages.json
+msgid "新增資料通道"
+msgstr "新增資料通道"
+
+#. [Profile.newPassword]
+#. defaultMessage is:
+#. 新密碼
+#: messages/app/components/profile/messages.json
+msgid "新密碼"
+msgstr "新密碼"
+
+#. [Prototypes.deletePrototype]
+#. defaultMessage is:
+#. 是否確定刪除？ 一但刪除將無法復原。
+#: messages/app/components/prototypes/messages.json
+msgid "是否確定刪除？ 一但刪除將無法復原。"
+msgstr "是否確定刪除？ 一但刪除將無法復原。"
+
+#. [Dialogs.Notification]
+#. defaultMessage is:
+#. 是否確定刪除？一但刪除將無法復原。
+#: messages/app/components/common/dialogs/deleteConfirmDialog.json
+msgid "是否確定刪除？一但刪除將無法復原。"
+msgstr "是否確定刪除？一但刪除將無法復原。"
+
+#. [HistoricalGraph.time]
+#. defaultMessage is:
+#. 時間：
+#: messages/app/components/dataChannelCards/common/historicalGraph/messages.json
+msgid "時間："
+msgstr "時間："
+
+#. [Profile.userName]
+#. defaultMessage is:
+#. 暱稱
+#. [Signup.nickname]
+#. defaultMessage is:
+#. 暱稱
+#: messages/app/components/profile/messages.json
+#: messages/app/components/signup/messages.json
+msgid "暱稱"
+msgstr "暱稱"
+
+#. [Devices.more]
+#. defaultMessage is:
+#. 更多
+#. [PrototypeDetail.more]
+#. defaultMessage is:
+#. 更多
+#: messages/app/components/deviceDetail/messages.json
+#: messages/app/components/prototypeDetail/messages.json
+msgid "更多"
+msgstr "更多"
+
+#. [Dashboard.lastUpdateTime]
+#. defaultMessage is:
+#. 最後更新時間
+#: messages/app/components/dashboard/messages.json
+msgid "最後更新時間"
+msgstr "最後更新時間"
+
+#. [Dashboard.lastUpdatePrototype]
+#. defaultMessage is:
+#. 最後更新的產品原型
+#: messages/app/components/dashboard/messages.json
+msgid "最後更新的產品原型"
+msgstr "最後更新的產品原型"
+
+#. [Dashboard.lastDataPointTime]
+#. defaultMessage is:
+#. 最後資料點時間
+#: messages/app/components/dashboard/messages.json
+msgid "最後資料點時間"
+msgstr "最近一次資料點的上傳時間"
+
+#. [PrototypeDetail.templatesPreview]
+#. defaultMessage is:
+#. 模板預覽：選擇適合您資料通道的模板。
+#. [PrototypeDetail.templateHint]
+#. defaultMessage is:
+#. 模板預覽：選擇適合您資料通道的模板。
+#: messages/app/components/prototypeDetail/messages.json
+msgid "模板預覽：選擇適合您資料通道的模板。"
+msgstr "模板預覽：選擇適合您資料通道的模板。"
+
+#. [Login.welcome]
+#. defaultMessage is:
+#. 歡迎
+#: messages/app/components/login/messages.json
+msgid "歡迎"
+msgstr "歡迎"
+
+#. [PrototypeDetail.required]
+#. defaultMessage is:
+#. 此欄位必填
+#: messages/app/components/prototypeDetail/messages.json
+msgid "此欄位必填"
+msgstr "此欄位必填"
+
+#. [Devices.doNotHaveAccount]
+#. defaultMessage is:
+#. 沒有帳戶嗎？
+#: messages/app/components/login/messages.json
+msgid "沒有帳戶嗎？"
+msgstr "尚未註冊帳戶嗎？"
+
+#. [Dialogs.Notice]
+#. defaultMessage is:
+#. 注意!
+#: messages/app/components/common/dialogs/deleteConfirmDialog.json
+msgid "注意!"
+msgstr "注意！"
+
+#. [Prototypes.notice]
+#. defaultMessage is:
+#. 注意！
+#: messages/app/components/prototypes/messages.json
+msgid "注意！"
+msgstr "注意！"
+
+#. [Dialogs.clear]
+#. defaultMessage is:
+#. 清除
+#: messages/app/components/common/dialogs/messages.json
+msgid "清除"
+msgstr "清除"
+
+#. [DeviceDetail.Breadcrumb.Devices]
+#. defaultMessage is:
+#. 測試裝置
+#. [Header.devices]
+#. defaultMessage is:
+#. 測試裝置
+#. [PrototypeDetail.testDevices]
+#. defaultMessage is:
+#. 測試裝置
+#: messages/app/components/deviceDetail/breadcrumb/index.json
+#: messages/app/components/header/messages.json
+#: messages/app/components/prototypeDetail/messages.json
+msgid "測試裝置"
+msgstr "測試裝置"
+
+#. [Devices.deviceIntro]
+#. defaultMessage is:
+#. 測試裝置介紹
+#: messages/app/components/devices/messages.json
+msgid "測試裝置介紹"
+msgstr "測試裝置介紹"
+
+#. [Dashboard.testDeviceList]
+#. defaultMessage is:
+#. 測試裝置列表
+#. [Devices.TestDevices]
+#. defaultMessage is:
+#. 測試裝置列表
+#. [Devices.testDeviceList]
+#. defaultMessage is:
+#. 測試裝置列表
+#: messages/app/components/dashboard/messages.json
+#: messages/app/components/devices/breadcrumb/index.json
+#: messages/app/components/devices/messages.json
+msgid "測試裝置列表"
+msgstr "測試裝置列表"
+
+#. [Dialogs.deviceNameLabel]
+#. defaultMessage is:
+#. 測試裝置名稱
+#. [CreateTestDevice.name]
+#. defaultMessage is:
+#. 測試裝置名稱
+#: messages/app/components/common/dialogs/messages.json
+#: messages/app/components/prototypeDetail/dialogs/messages.json
+msgid "測試裝置名稱"
+msgstr "測試裝置名稱"
+
+#. [CreateTestDevice.version]
+#. defaultMessage is:
+#. 測試裝置版本
+#: messages/app/components/prototypeDetail/dialogs/messages.json
+msgid "測試裝置版本"
+msgstr "測試裝置版本"
+
+#. [Dialogs.browseAndUpload]
+#. defaultMessage is:
+#. 瀏覽上傳
+#: messages/app/components/common/dialogs/messages.json
+msgid "瀏覽上傳"
+msgstr "瀏覽上傳"
+
+#. [HistoricalGraph.noData]
+#. defaultMessage is:
+#. 無歷史資料
+#: messages/app/components/dataChannelCards/common/historicalGraph/messages.json
+msgid "無歷史資料"
+msgstr "無歷史資料"
+
+#. [Devices.version]
+#. defaultMessage is:
+#. 版本：
+#. [Devices.version]
+#. defaultMessage is:
+#. 版本：
+#. [PrototypeDetail.version]
+#. defaultMessage is:
+#. 版本：
+#. [Prototypes.version]
+#. defaultMessage is:
+#. 版本：
+#: messages/app/components/deviceDetail/messages.json
+#: messages/app/components/devices/messages.json
+#: messages/app/components/prototypeDetail/messages.json
+#: messages/app/components/prototypes/messages.json
+msgid "版本："
+msgstr "版本："
+
+#. [Dialogs.prototypeName]
+#. defaultMessage is:
+#. 產品原型名稱
+#. [Dashboard.prototypeName]
+#. defaultMessage is:
+#. 產品原型名稱
+#. [Prototypes.prototypeName]
+#. defaultMessage is:
+#. 產品原型名稱
+#: messages/app/components/common/dialogs/messages.json
+#: messages/app/components/dashboard/messages.json
+#: messages/app/components/prototypes/messages.json
+msgid "產品原型名稱"
+msgstr "產品原型名稱"
+
+#. [Dialogs.prototypeVersion]
+#. defaultMessage is:
+#. 產品原型版本
+#. [Prototypes.prototypeVersion]
+#. defaultMessage is:
+#. 產品原型版本
+#: messages/app/components/common/dialogs/messages.json
+#: messages/app/components/prototypes/messages.json
+msgid "產品原型版本"
+msgstr "產品原型版本"
+
+#. [Login.signIn]
+#. defaultMessage is:
+#. 登入
+#: messages/app/components/login/messages.json
+msgid "登入"
+msgstr "登入"
+
+#. [Header.signout]
+#. defaultMessage is:
+#. 登出
+#: messages/app/components/header/messages.json
+msgid "登出"
+msgstr "登出"
+
+#. [PrototypeDetail.dataChannelHoverHint]
+#. defaultMessage is:
+#. 目前正在產品原型階段，請前往測試裝置來操控資料通道。
+#: messages/app/components/prototypeDetail/messages.json
+msgid "目前正在產品原型階段，請前往測試裝置來操控資料通道。"
+msgstr "目前正在產品原型階段，請前往測試裝置來操控資料通道。"
+
+#. [Dashboard.noAnyDevice]
+#. defaultMessage is:
+#. 目前還沒有任何測試裝置
+#. [Dashboard.noTestDeviceCurrent]
+#. defaultMessage is:
+#. 目前還沒有任何測試裝置
+#. [DevicesList.NoDevices]
+#. defaultMessage is:
+#. 目前還沒有任何測試裝置
+#: messages/app/components/dashboard/messages.json
+#: messages/app/components/devices/index.json
+msgid "目前還沒有任何測試裝置"
+msgstr "目前還沒有任何測試裝置"
+
+#. [Dashboard.noAnyPrototypes]
+#. defaultMessage is:
+#. 目前還沒有任何產品原型
+#: messages/app/components/dashboard/messages.json
+msgid "目前還沒有任何產品原型"
+msgstr "目前還沒有任何產品原型"
+
+#. [Dialogs.Confirm]
+#. defaultMessage is:
+#. 確定
+#: messages/app/components/common/dialogs/deleteConfirmDialog.json
+msgid "確定"
+msgstr "確定"
+
+#. [Prototypes.OK]
+#. defaultMessage is:
+#. 確認
+#. [Signup.submit]
+#. defaultMessage is:
+#. 確認
+#: messages/app/components/prototypes/messages.json
+#: messages/app/components/signup/messages.json
+msgid "確認"
+msgstr "確認"
+
+#. [Profile.confirmPassword]
+#. defaultMessage is:
+#. 確認密碼
+#: messages/app/components/profile/messages.json
+msgid "確認密碼"
+msgstr "確認密碼"
+
+#. [Profile.confirmPasswordError]
+#. defaultMessage is:
+#. 確認密碼與密碼不一至
+#: messages/app/components/profile/messages.json
+msgid "確認密碼與密碼不一至"
+msgstr "確認密碼與密碼不一至"
+
+#. [Signup.passwordAgain]
+#. defaultMessage is:
+#. 確認您的密碼
+#: messages/app/components/signup/messages.json
+msgid "確認您的密碼"
+msgstr "確認您的密碼"
+
+#. [More.edit]
+#. defaultMessage is:
+#. 編輯
+#. [Devices.edit]
+#. defaultMessage is:
+#. 編輯
+#. [Devices.edit]
+#. defaultMessage is:
+#. 編輯
+#. [PrototypeDetail.edit]
+#. defaultMessage is:
+#. 編輯
+#. [Prototypes.edit]
+#. defaultMessage is:
+#. 編輯
+#: messages/app/components/dataChannelCards/common/more/messages.json
+#: messages/app/components/deviceDetail/messages.json
+#: messages/app/components/devices/messages.json
+#: messages/app/components/prototypeDetail/messages.json
+#: messages/app/components/prototypes/messages.json
+msgid "編輯"
+msgstr "編輯"
+
+#. [Prototypes.editPrototype]
+#. defaultMessage is:
+#. 編輯原型
+#: messages/app/components/prototypes/messages.json
+msgid "編輯原型"
+msgstr "編輯原型"
+
+#. [Dialogs.editDevice]
+#. defaultMessage is:
+#. 編輯測試裝置
+#: messages/app/components/common/dialogs/messages.json
+msgid "編輯測試裝置"
+msgstr "編輯測試裝置"
+
+#. [Dashboard.shareWithMeExample]
+#. defaultMessage is:
+#. 與我分享的範例
+#: messages/app/components/dashboard/messages.json
+msgid "與我分享的範例"
+msgstr "與我分享的範例"
+
+#. [CopyButtonGroup.ButtonText]
+#. defaultMessage is:
+#. 複製
+#. [Dashboard.copy]
+#. defaultMessage is:
+#. 複製
+#. [ApiHint.copy]
+#. defaultMessage is:
+#. 複製
+#. [PrototypeDetail.clone]
+#. defaultMessage is:
+#. 複製
+#. [Prototypes.clone]
+#. defaultMessage is:
+#. 複製
+#: messages/app/components/common/copyButtonGroup/index.json
+#: messages/app/components/dashboard/messages.json
+#: messages/app/components/deviceDetail/apiHint/messages.json
+#: messages/app/components/prototypeDetail/messages.json
+#: messages/app/components/prototypes/messages.json
+msgid "複製"
+msgstr "複製"
+
+#. [Devices.triggerAndAction]
+#. defaultMessage is:
+#. 觸發條件與動作
+#: messages/app/components/devices/messages.json
+msgid "觸發條件與動作"
+msgstr "觸發條件與動作"
+
+#. [PrototypeDetail.createdAt]
+#. defaultMessage is:
+#. 註冊時間
+#. [PrototypeDetail.lastDataPointTime]
+#. defaultMessage is:
+#. 註冊時間
+#: messages/app/components/prototypeDetail/messages.json
+msgid "註冊時間"
+msgstr "註冊時間"
+
+#. [Devices.detail]
+#. defaultMessage is:
+#. 詳情
+#: messages/app/components/devices/messages.json
+msgid "詳情"
+msgstr "詳情"
+
+#. [Prototypes.detail]
+#. defaultMessage is:
+#. 詳細
+#: messages/app/components/prototypes/messages.json
+msgid "詳細"
+msgstr "詳細"
+
+#. [Header.language]
+#. defaultMessage is:
+#. 語言
+#. [Profile.language]
+#. defaultMessage is:
+#. 語言
+#: messages/app/components/header/messages.json
+#: messages/app/components/profile/messages.json
+msgid "語言"
+msgstr "語言"
+
+#. [Notification.switchQuestion] - Question description
+#. defaultMessage is:
+#. 請問要切換到手機版來操作測試裝置嗎？
+#: messages/app/components/deviceDetail/notification/messages.json
+msgid "請問要切換到手機版來操作測試裝置嗎？"
+msgstr "請問要切換到手機版來操作測試裝置嗎？"
+
+#. [UnitSelect.unitNamePlaceholder]
+#. defaultMessage is:
+#. 請輸入名稱
+#: messages/app/components/common/unitSelect/messages.json
+msgid "請輸入名稱"
+msgstr "請輸入名稱"
+
+#. [Profile.userNamePlaceholder]
+#. defaultMessage is:
+#. 請輸入暱稱
+#: messages/app/components/profile/messages.json
+msgid "請輸入暱稱"
+msgstr "請輸入暱稱"
+
+#. [UnitSelect.unitSymbolPlaceholder]
+#. defaultMessage is:
+#. 請輸入簡稱或符號
+#: messages/app/components/common/unitSelect/messages.json
+msgid "請輸入簡稱或符號"
+msgstr "請輸入簡稱或符號"
+
+#. [UnitType.unitTypeError]
+#. defaultMessage is:
+#. 請選擇資料單位
+#: messages/app/components/dataChannelCards/displayTypes/unitType/messages.json
+msgid "請選擇資料單位"
+msgstr "請選擇資料單位"
+
+#. [UnitType.unitType]
+#. defaultMessage is:
+#. 資料單位
+#. [PrototypeDetail.unitType]
+#. defaultMessage is:
+#. 資料單位
+#: messages/app/components/dataChannelCards/displayTypes/unitType/messages.json
+#: messages/app/components/prototypeDetail/messages.json
+msgid "資料單位"
+msgstr "資料單位"
+
+#. [PrototypeDetail.dataChannelType]
+#. defaultMessage is:
+#. 資料型態
+#: messages/app/components/prototypeDetail/messages.json
+msgid "資料型態"
+msgstr "資料型態"
+
+#. [Devices.datachannel]
+#. defaultMessage is:
+#. 資料通道
+#. [PrototypeDetail.datachannel]
+#. defaultMessage is:
+#. 資料通道
+#: messages/app/components/deviceDetail/messages.json
+#: messages/app/components/prototypeDetail/messages.json
+msgid "資料通道"
+msgstr "資料通道"
+
+#. [PrototypeDetail.dataChannelId]
+#. defaultMessage is:
+#. 資料通道 Id
+#: messages/app/components/prototypeDetail/messages.json
+msgid "資料通道 Id"
+msgstr "資料通道 Id"
+
+#. [ApiHint.datachannelId]
+#. defaultMessage is:
+#. 資料通道 Id：
+#: messages/app/components/deviceDetail/apiHint/messages.json
+msgid "資料通道 Id："
+msgstr "資料通道 Id："
+
+#. [Text.upperbound]
+#. defaultMessage is:
+#. 資料通道上限
+#: messages/app/components/dataChannelCards/displayTypes/text/messages.json
+msgid "資料通道上限"
+msgstr "資料通道上限"
+
+#. [Text.lowerbound]
+#. defaultMessage is:
+#. 資料通道下限
+#. [PrototypeDetail.limit]
+#. defaultMessage is:
+#. 資料通道下限
+#: messages/app/components/dataChannelCards/displayTypes/text/messages.json
+#: messages/app/components/prototypeDetail/messages.json
+msgid "資料通道下限"
+msgstr "資料通道下限"
+
+#. [PrototypeDetail.dataChannelName]
+#. defaultMessage is:
+#. 資料通道名稱
+#: messages/app/components/prototypeDetail/messages.json
+msgid "資料通道名稱"
+msgstr "資料通道名稱"
+
+#. [ApiHint.datachannelName]
+#. defaultMessage is:
+#. 資料通道名稱：
+#: messages/app/components/deviceDetail/apiHint/messages.json
+msgid "資料通道名稱："
+msgstr "資料通道名稱："
+
+#. [HistoricalGraph.datapoint]
+#. defaultMessage is:
+#. 資料點：
+#: messages/app/components/dataChannelCards/common/historicalGraph/messages.json
+msgid "資料點："
+msgstr "資料點："
+
+#. [Header.resources]
+#. defaultMessage is:
+#. 資源
+#: messages/app/components/header/messages.json
+msgid "資源"
+msgstr "資源"
+
+#. [Dialogs.inputPrototypeInfo]
+#. defaultMessage is:
+#. 輸入原型資訊
+#: messages/app/components/common/dialogs/messages.json
+msgid "輸入原型資訊"
+msgstr "輸入原型資訊"
+
+#. [Profile.newPasswordPlaceholder]
+#. defaultMessage is:
+#. 輸入新密碼
+#: messages/app/components/profile/messages.json
+msgid "輸入新密碼"
+msgstr "輸入新密碼"
+
+#. [CreateTestDevice.namePlaceholder]
+#. defaultMessage is:
+#. 輸入測試裝置名稱
+#: messages/app/components/prototypeDetail/dialogs/messages.json
+msgid "輸入測試裝置名稱"
+msgstr "輸入測試裝置名稱"
+
+#. [CreateTestDevice.descriptionPlaceholder]
+#. defaultMessage is:
+#. 輸入測試裝置描述
+#: messages/app/components/prototypeDetail/dialogs/messages.json
+msgid "輸入測試裝置描述"
+msgstr "輸入測試裝置描述"
+
+#. [CreateTestDevice.versionPlaceholder]
+#. defaultMessage is:
+#. 輸入測試裝置版本
+#: messages/app/components/prototypeDetail/dialogs/messages.json
+msgid "輸入測試裝置版本"
+msgstr "輸入測試裝置版本"
+
+#. [Dialogs.inputThePrototypeName]
+#. defaultMessage is:
+#. 輸入產品原型名稱
+#. [Prototypes.inputThePrototypeName]
+#. defaultMessage is:
+#. 輸入產品原型名稱
+#: messages/app/components/common/dialogs/messages.json
+#: messages/app/components/prototypes/messages.json
+msgid "輸入產品原型名稱"
+msgstr "輸入產品原型名稱"
+
+#. [Dialogs.inputThePrototypeDescription]
+#. defaultMessage is:
+#. 輸入產品原型描述
+#. [Prototypes.inputThePrototypeDescription]
+#. defaultMessage is:
+#. 輸入產品原型描述
+#: messages/app/components/common/dialogs/messages.json
+#: messages/app/components/prototypes/messages.json
+msgid "輸入產品原型描述"
+msgstr "輸入產品原型描述"
+
+#. [Dialogs.inputThePrototypeVersion]
+#. defaultMessage is:
+#. 輸入產品原型版本
+#. [Prototypes.inputThePrototypeVersion]
+#. defaultMessage is:
+#. 輸入產品原型版本
+#: messages/app/components/common/dialogs/messages.json
+#: messages/app/components/prototypes/messages.json
+msgid "輸入產品原型版本"
+msgstr "輸入產品原型版本"
+
+#. [Dialogs.deviceNamePlaceholder]
+#. defaultMessage is:
+#. 輸入裝置名稱
+#: messages/app/components/common/dialogs/messages.json
+msgid "輸入裝置名稱"
+msgstr "輸入裝置名稱"
+
+#. [Dialogs.descriptionPlaceholder]
+#. defaultMessage is:
+#. 輸入裝置描述
+#: messages/app/components/common/dialogs/messages.json
+msgid "輸入裝置描述"
+msgstr "輸入裝置描述"
+
+#. [PrototypeDetail.inputDataChannelId]
+#. defaultMessage is:
+#. 輸入資料通道 Id
+#: messages/app/components/prototypeDetail/messages.json
+msgid "輸入資料通道 Id"
+msgstr "輸入資料通道 ID"
+
+#. [PrototypeDetail.inputDataChannelName]
+#. defaultMessage is:
+#. 輸入資料通道名稱
+#: messages/app/components/prototypeDetail/messages.json
+msgid "輸入資料通道名稱"
+msgstr "輸入資料通道名稱"
+
+#. [PrototypeDetail.inputDataChannelType]
+#. defaultMessage is:
+#. 輸入資料通道型式
+#: messages/app/components/prototypeDetail/messages.json
+msgid "輸入資料通道型式"
+msgstr "輸入資料通道型式"
+
+#. [PrototypeDetail.inputDataChannelDescription]
+#. defaultMessage is:
+#. 輸入資料通道描述
+#: messages/app/components/prototypeDetail/messages.json
+msgid "輸入資料通道描述"
+msgstr "輸入資料通道描述"
+
+#. [ApiHint.helpful] - Title 1
+#. defaultMessage is:
+#. 這裡是可能有幫助的 API 提示
+#: messages/app/components/deviceDetail/apiHint/messages.json
+msgid "這裡是可能有幫助的 API 提示"
+msgstr "這些是可能有幫助的 API 提示"
+
+#. [UnitSelect.inputSelectPlaceholder]
+#. defaultMessage is:
+#. 選擇單位資料
+#: messages/app/components/common/unitSelect/messages.json
+msgid "選擇單位資料"
+msgstr "選擇單位資料"
+
+#. [Dialogs.selectExample]
+#. defaultMessage is:
+#. 選擇範例
+#: messages/app/components/common/dialogs/messages.json
+msgid "選擇範例"
+msgstr "選擇範例"
+
+#. [Dialogs.errorWhenUploadJSON]
+#. defaultMessage is:
+#. 錯誤！上傳JSON檔時發生錯誤。
+#: messages/app/components/common/dialogs/messages.json
+msgid "錯誤！上傳JSON檔時發生錯誤。"
+msgstr "錯誤！上傳JSON檔時發生錯誤。"
+
+#. [ImageUploader.errorWhenUploadImage]
+#. defaultMessage is:
+#. 錯誤！上傳圖片時發生錯誤。
+#. [Profile.errorWhenUploadImage]
+#. defaultMessage is:
+#. 錯誤！上傳圖片時發生錯誤。
+#: messages/app/components/common/imageUploader/messages.json
+#: messages/app/components/profile/messages.json
+msgid "錯誤！上傳圖片時發生錯誤。"
+msgstr "錯誤！上傳圖片時發生錯誤。"
+
+#. [ImageUploader.fileSizeExceeds]
+#. defaultMessage is:
+#. 錯誤！圖片檔案過大。
+#. [Profile.fileSizeExceeds]
+#. defaultMessage is:
+#. 錯誤！圖片檔案過大。
+#: messages/app/components/common/imageUploader/messages.json
+#: messages/app/components/profile/messages.json
+msgid "錯誤！圖片檔案過大。"
+msgstr "錯誤！圖片檔案過大。"
+
+#. [More.deleteFailed]
+#. defaultMessage is:
+#. 錯誤！在刪除資料通道時產生錯誤。
+#: messages/app/components/dataChannelCards/common/more/messages.json
+msgid "錯誤！在刪除資料通道時產生錯誤。"
+msgstr "錯誤！在刪除資料通道時產生錯誤。"
+
+#. [Header.development]
+#. defaultMessage is:
+#. 開發
+#. [Prototypes.development]
+#. defaultMessage is:
+#. 開發
+#: messages/app/components/header/messages.json
+#: messages/app/components/prototypes/messages.json
+msgid "開發"
+msgstr "開發"
+
+#. [More.closeHistory]
+#. defaultMessage is:
+#. 關閉歷史資料
+#: messages/app/components/dataChannelCards/common/more/messages.json
+msgid "關閉歷史資料"
+msgstr "關閉歷史資料"
+
+#. [PrototypeDetail.display]
+#. defaultMessage is:
+#. 顯示器
+#: messages/app/components/prototypeDetail/messages.json
+msgid "顯示器"
+msgstr "顯示器"
+
+#. [PrototypeDetail.displayHint]
+#. defaultMessage is:
+#. 顯示器型態的資料通道允許您從您的裝置中讀取資料。
+#: messages/app/components/prototypeDetail/messages.json
+msgid "顯示器型態的資料通道允許您從您的裝置中讀取資料。"
+msgstr "顯示器型態的資料通道允許您從您的裝置中讀取資料。"
+
+#. [Prototypes.createYourPrototypeNow]
+#. defaultMessage is:
+#. 馬上創建原型！
+#: messages/app/components/prototypes/messages.json
+msgid "馬上創建原型！"
+msgstr "馬上創建原型！"
+
+#. [PrototypeDetail.addDataChannelNow]
+#. defaultMessage is:
+#. 馬上新增資料通道！
+#. [PrototypeDetail.addNewDataChannelNow]
+#. defaultMessage is:
+#. 馬上新增資料通道！
+#: messages/app/components/prototypeDetail/messages.json
+msgid "馬上新增資料通道！"
+msgstr "馬上新增資料通道！"

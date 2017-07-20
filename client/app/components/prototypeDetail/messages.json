@@ -1,0 +1,271 @@
+[
+  {
+    "id": "PrototypeDetail.templatesPreview",
+    "description": "",
+    "defaultMessage": "模板預覽：選擇適合您資料通道的模板。"
+  },
+  {
+    "id": "PrototypeDetail.dataChannelName",
+    "description": "",
+    "defaultMessage": "資料通道名稱"
+  },
+  {
+    "id": "PrototypeDetail.dataChannelId",
+    "description": "",
+    "defaultMessage": "資料通道 Id"
+  },
+  {
+    "id": "PrototypeDetail.description",
+    "description": "",
+    "defaultMessage": "描述："
+  },
+  {
+    "id": "PrototypeDetail.dataChannelType",
+    "description": "",
+    "defaultMessage": "資料型態"
+  },
+  {
+    "id": "PrototypeDetail.unitType",
+    "description": "",
+    "defaultMessage": "資料單位"
+  },
+  {
+    "id": "PrototypeDetail.addNewDataChannel",
+    "description": "",
+    "defaultMessage": "新增資料通道"
+  },
+  {
+    "id": "PrototypeDetail.addDataChannelNow",
+    "description": "",
+    "defaultMessage": "馬上新增資料通道！"
+  },
+  {
+    "id": "PrototypeDetail.addNewDataChannelSuccess",
+    "description": "",
+    "defaultMessage": "成功！你已經成功新增一個資料通道。"
+  },
+  {
+    "id": "PrototypeDetail.limit",
+    "description": "",
+    "defaultMessage": "資料通道下限"
+  },
+  {
+    "id": "PrototypeDetail.noUnitTypeHint",
+    "description": "",
+    "defaultMessage": "找不到符合結果。來建立您自訂的單位吧！"
+  },
+  {
+    "id": "PrototypeDetail.unitName",
+    "description": "",
+    "defaultMessage": "單位名稱"
+  },
+  {
+    "id": "PrototypeDetail.unitMark",
+    "description": "",
+    "defaultMessage": "單位符號"
+  },
+  {
+    "id": "PrototypeDetail.cancel",
+    "description": "",
+    "defaultMessage": "取消"
+  },
+  {
+    "id": "PrototypeDetail.save",
+    "description": "",
+    "defaultMessage": "儲存"
+  },
+  {
+    "id": "PrototypeDetail.display",
+    "description": "",
+    "defaultMessage": "顯示器"
+  },
+  {
+    "id": "PrototypeDetail.control",
+    "description": "",
+    "defaultMessage": "控制器"
+  },
+  {
+    "id": "PrototypeDetail.controlHint",
+    "description": "",
+    "defaultMessage": "控制器型態的行資料通道允許您控制您裝置的狀態。例如，打開或關閉開關。"
+  },
+  {
+    "id": "PrototypeDetail.displayHint",
+    "description": "",
+    "defaultMessage": "顯示器型態的資料通道允許您從您的裝置中讀取資料。"
+  },
+  {
+    "id": "PrototypeDetail.add",
+    "description": "",
+    "defaultMessage": "新增"
+  },
+  {
+    "id": "PrototypeDetail.addNewDataChannelNow",
+    "description": "",
+    "defaultMessage": "馬上新增資料通道！"
+  },
+  {
+    "id": "PrototypeDetail.dataChannelHoverHint",
+    "description": "",
+    "defaultMessage": "目前正在產品原型階段，請前往測試裝置來操控資料通道。"
+  },
+  {
+    "id": "PrototypeDetail.datachannel",
+    "description": "",
+    "defaultMessage": "資料通道"
+  },
+  {
+    "id": "PrototypeDetail.testDevices",
+    "description": "",
+    "defaultMessage": "測試裝置"
+  },
+  {
+    "id": "PrototypeDetail.createTestDevice",
+    "description": "",
+    "defaultMessage": "創建測試裝置"
+  },
+  {
+    "id": "PrototypeDetail.more",
+    "description": "",
+    "defaultMessage": "更多"
+  },
+  {
+    "id": "PrototypeDetail.edit",
+    "description": "",
+    "defaultMessage": "編輯"
+  },
+  {
+    "id": "PrototypeDetail.clone",
+    "description": "",
+    "defaultMessage": "複製"
+  },
+  {
+    "id": "PrototypeDetail.export",
+    "description": "",
+    "defaultMessage": "匯出"
+  },
+  {
+    "id": "PrototypeDetail.delete",
+    "description": "",
+    "defaultMessage": "刪除"
+  },
+  {
+    "id": "PrototypeDetail.createUser",
+    "description": "",
+    "defaultMessage": "創建者："
+  },
+  {
+    "id": "PrototypeDetail.version",
+    "description": "",
+    "defaultMessage": "版本："
+  },
+  {
+    "id": "PrototypeDetail.dashboard",
+    "description": "",
+    "defaultMessage": "儀表板"
+  },
+  {
+    "id": "PrototypeDetail.prototype",
+    "description": "",
+    "defaultMessage": "原型"
+  },
+  {
+    "id": "PrototypeDetail.testDeviceName",
+    "description": "",
+    "defaultMessage": "名稱"
+  },
+  {
+    "id": "PrototypeDetail.deviceId",
+    "description": "",
+    "defaultMessage": "DeviceId"
+  },
+  {
+    "id": "PrototypeDetail.deviceKey",
+    "description": "",
+    "defaultMessage": "DeviceKey"
+  },
+  {
+    "id": "PrototypeDetail.createdAt",
+    "description": "",
+    "defaultMessage": "註冊時間"
+  },
+  {
+    "id": "PrototypeDetail.testDeviceHint",
+    "description": "",
+    "defaultMessage": "創建測試裝置來試看看並蒐集真實資料吧！"
+  },
+  {
+    "id": "PrototypeDetail.addNewTestDevice",
+    "description": "",
+    "defaultMessage": "新增測試裝置"
+  },
+  {
+    "id": "PrototypeDetail.inputDataChannelName",
+    "description": "",
+    "defaultMessage": "輸入資料通道名稱"
+  },
+  {
+    "id": "PrototypeDetail.inputDataChannelId",
+    "description": "",
+    "defaultMessage": "輸入資料通道 Id"
+  },
+  {
+    "id": "PrototypeDetail.inputDataChannelDescription",
+    "description": "",
+    "defaultMessage": "輸入資料通道描述"
+  },
+  {
+    "id": "PrototypeDetail.inputDataChannelType",
+    "description": "",
+    "defaultMessage": "輸入資料通道型式"
+  },
+  {
+    "id": "PrototypeDetail.templateHint",
+    "description": "",
+    "defaultMessage": "模板預覽：選擇適合您資料通道的模板。"
+  },
+  {
+    "id": "PrototypeDetail.required",
+    "description": "",
+    "defaultMessage": "此欄位必填"
+  },
+  {
+    "id": "PrototypeDetail.deviceName",
+    "description": "",
+    "defaultMessage": "名稱"
+  },
+  {
+    "id": "PrototypeDetail.lastDataPointTime",
+    "description": "",
+    "defaultMessage": "註冊時間"
+  },
+  {
+    "id": "PrototypeDetail.cloneFromExistingPrototype",
+    "description": "",
+    "defaultMessage": "從既有的產品原型複製"
+  },
+  {
+    "id": "PrototypeDetail.cloneFromExistingPrototypeIntro",
+    "description": "",
+    "defaultMessage": "從既有的產品原型複製出一份相同的產品原型來做更進一步的開發。"
+  },
+  {
+    "id": "PrototypeDetail.noDatachannels",
+    "description": "",
+    "defaultMessage": "尚無資料通道"
+  },
+  {
+    "id": "PrototypeDetail.prototypeTemplate",
+    "description": "",
+    "defaultMessage": "原型範例"
+  },
+  {
+    "id": "PrototypeDetail.createPrototypeFromTemplate",
+    "description": "",
+    "defaultMessage": "使用範例創建原型"
+  },
+  {
+    "id": "PrototypeDetail.exportSuccess",
+    "defaultMessage": "成功！你已經成功匯出產品原型。"
+  }
+]
