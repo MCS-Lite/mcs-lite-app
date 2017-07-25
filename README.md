@@ -6,7 +6,7 @@ An on-premises IoT Cloud Platform.
 > Note: Common UI and Mobile page are being developed at https://github.com/MCS-Lite/mcs-lite.
 
 ## Download Binaries
-* You can always get the latest release from [GitHub Releases](https://github.com/MCS-Lite/mcs-lite-app/releases/tag/latest).
+* You can always get the latest release from [GitHub Releases](https://github.com/MCS-Lite/mcs-lite-app/releases/latest).
 
 
 ## Get Started
