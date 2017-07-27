@@ -86,6 +86,7 @@
     "@mtk/mcs-components": "https://cdn.mediatek.com/Mediatek-Cloud/mcs-components/2.1.111.tgz",
     "autoprefixer": "^6.1.0",
     "babel-plugin-react-intl": "^2.3.1",
+    "babel-cli": "^6.24.1",
     "classnames": "^2.2.5",
     "cookie-dough": "^0.1.0",
     "fbjs": "^0.8.0",
