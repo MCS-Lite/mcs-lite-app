@@ -36,6 +36,16 @@ const messages = defineMessages({
     description: '',
     defaultMessage: '語言',
   },
+  'Header.tutorial': {
+    id: 'Header.tutorial',
+    description: '',
+    defaultMessage: '教學範例',
+  },
+  'Header.intromcslite': {
+    id: 'Header.intromcslite',
+    description: '',
+    defaultMessage: '認識 MCS Lite',
+  },
 });
 
 export default messages;
