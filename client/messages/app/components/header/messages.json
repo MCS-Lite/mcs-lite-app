@@ -33,5 +33,15 @@
     "id": "Header.language",
     "description": "",
     "defaultMessage": "語言"
+  },
+  {
+    "id": "Header.tutorial",
+    "description": "",
+    "defaultMessage": "教學範例"
+  },
+  {
+    "id": "Header.intromcslite",
+    "description": "",
+    "defaultMessage": "認識 MCS Lite"
   }
 ]
