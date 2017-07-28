@@ -89,6 +89,45 @@ module.exports = function($db, $app, $admin) {
     handler: usersController.checkCookies,
   };
 
+  this.deleteUser = {
+    path: '/users/:userId',
+    methods: ['delete'],
+    middleware: [parseBasicToken],
+    handler: usersController.deleteUser,
+  };
+
+  this.editUser = {  // Include disable User & changeUserPassword
+    path: '/users/:userId',
+    methods: ['put'],
+    middleware: [parseBasicToken],
+    handler: usersController.editUser,
+  };
+
+  this.retrieveUsers = {
+    path: '/users',
+    methods: ['get'],
+    middleware: [parseBasicToken],
+    handler: usersController.retrieveUsers,
+  };
+
+  this.searchUser = {
+    path: '/users/search',
+    methods: ['get'],
+    middleware: [parseBasicToken],
+    handler: usersController.searchUser,
+  };
+
+  this.addNewUser = {
+    path: '/users',
+    methods: ['post'],
+    middleware: [parseBasicToken],
+    handler: usersController.addNewUser,
+  };
+
+  // this.addNewUserByCSV = {
+
+  // };
+
   this.startService = {
     path: $admin.apiRoute + '/service/start',
     methods: ['get'],

@@ -119,6 +119,31 @@ module.exports = function(users) {
       });
     },
 
+    retrieveUserByQuery: function(query, sort, skip, limit) {
+      return new Promise(function(resolve, reject) {
+        users
+        .find(query)
+        .sort(sort)
+        .skip(skip)
+        .limit(limit)
+        .exec(function(err, data) {
+          if (err) return reject();
+          return resolve(data);
+        });
+      });
+    },
+    retrieveAdminUsers: function(req, res, next) {
+      return new Promise(function(resolve, reject) {
+        return users
+        .find({ 
+          isAdmin: true, 
+          isActive: true 
+        }, function(err, data) {
+          if (err) return reject();
+          return resolve(data);
+        });
+      });
+    },
     checkIsAdmin: function(userId, isMiddleware) {
       return new Promise(function(resolve, reject) {
         return users.find({ userId: userId, isAdmin: true, isActive: true }, function(err, data) {
@@ -175,6 +200,15 @@ module.exports = function(users) {
       });
     },
 
+    deleteUser: function(query) {
+      return new Promise(function(resolve, reject) {
+        return users.remove(query, {}, function(err, data) {
+          if (err) return reject();
+          resolve(data);
+        })
+      });
+    },
+    
     editUser: function(query, update) {
       return new Promise(function(resolve, reject) {
         return users.update(query, { $set: update }, {}, function(err, num) {

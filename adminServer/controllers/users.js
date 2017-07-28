@@ -263,10 +263,6 @@ module.exports = function ($db) {
     });
   };
 
-  var retrieveUsers = function(req, res, next) {
-
-  };
-
   var createAnAdmin = function(req, res, next) {
     return users.checkDefaultUserCount()
     .then(function(status) {
@@ -296,6 +292,99 @@ module.exports = function ($db) {
     });
   };
 
+  var editUser = function(req, res, next) {
+    if (req.body.password) {
+      return users.changePassword(req.params.userId, req.body.password)
+      .then(function(data) {
+        return res.send(200, data);
+      })
+      .catch(function(err) {
+        return res.send(400, err);
+      });
+    } else if (req.body.isActive) {
+      return users.editUser({
+        userId: req.params.userId, 
+        isActive: true
+      }, {
+        isActive: req.body.isActive,
+      })
+      .then(function(data) {
+        return res.send(200, data);
+      })
+      .catch(function(err) {
+        return res.send(400, err);
+      });
+    }
+  };
+
+  var deleteUser = function(req, res, next) {
+    return users.deleteUser({
+      userId: req.params.userId, 
+    })
+    .then(function(data) {
+      return res.send(200, "success.");
+    })
+    .catch(function(err) {
+      return res.send(400, err);
+    });
+  };
+
+  var addNewUser = function(req, res, next) {
+    return users.addNewUser({
+      userName: req.body.userName,
+      email: req.body.email,
+      password: req.body.password,
+      isAdmin: false,
+    })
+    .then(function(data) {
+      return res.send(200, data);
+    })
+    .catch(function(err) {
+      return res.send(400, err);
+    })
+  };
+
+  var searchUser = function(req, res, next) {
+    var userName = req.query.userName;
+    var email = req.query.email;
+    var query = {};
+
+    if (userName) {
+      query.userName = { $regex: new RegExp(userName) };
+    }
+
+    if (email) {
+      query.email = { $regex: new RegExp(email) };
+    }
+
+    return users.retrieveUserByQuery(query)
+    .then(function(data) {
+      return res.send(200, data);
+    })
+    .catch(function(err) {
+      return res.send(400, err);
+    });
+  };
+
+  var retrieveUsers = function(req, res, next) {
+    var query = {
+      isActive: true,
+    };
+
+    var sort = req.query.sort;
+    var skip = req.query.skip;
+    var limit = req.query.limit;
+    
+    return users.retrieveUserByQuery(query, sort, skip, limit)
+    .then(function(data) {
+      return res.send(200, data);
+    })
+    .catch(function(err) {
+      return res.send(400, err);
+    });
+
+  };
+
   return {
     login: login,
     loginInterface: loginInterface,
@@ -304,6 +393,10 @@ module.exports = function ($db) {
     createAnAdmin: createAnAdmin,
     checkAdminExist: checkAdminExist,
     signupInterface: signupInterface,
+    editUser: editUser,
+    deleteUser: deleteUser,
+    searchUser: searchUser,
+    addNewUser: addNewUser,
   };
 
 }
