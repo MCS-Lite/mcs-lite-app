@@ -90,37 +90,30 @@ module.exports = function($db, $app, $admin) {
   };
 
   this.deleteUser = {
-    path: '/users/:userId',
+    path: $admin.apiRoute + '/users/:userId',
     methods: ['delete'],
-    middleware: [parseBasicToken],
+    middleware: [$app.oauth.authorise()],
     handler: usersController.deleteUser,
   };
 
   this.editUser = {  // Include disable User & changeUserPassword
-    path: '/users/:userId',
+    path: $admin.apiRoute + '/users/:userId',
     methods: ['put'],
-    middleware: [parseBasicToken],
+    middleware: [$app.oauth.authorise()],
     handler: usersController.editUser,
   };
 
   this.retrieveUsers = {
-    path: '/users',
+    path: $admin.apiRoute + '/users',
     methods: ['get'],
-    middleware: [parseBasicToken],
+    middleware: [$app.oauth.authorise()],
     handler: usersController.retrieveUsers,
   };
 
-  this.searchUser = {
-    path: '/users/search',
-    methods: ['get'],
-    middleware: [parseBasicToken],
-    handler: usersController.searchUser,
-  };
-
   this.addNewUser = {
-    path: '/users',
+    path: $admin.apiRoute + '/users',
     methods: ['post'],
-    middleware: [parseBasicToken],
+    middleware: [$app.oauth.authorise()],
     handler: usersController.addNewUser,
   };
 

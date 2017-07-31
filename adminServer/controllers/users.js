@@ -334,7 +334,7 @@ module.exports = function ($db) {
       userName: req.body.userName,
       email: req.body.email,
       password: req.body.password,
-      isAdmin: false,
+      isAdmin: req.body.isAdmin,
     })
     .then(function(data) {
       return res.send(200, data);
@@ -344,10 +344,13 @@ module.exports = function ($db) {
     })
   };
 
-  var searchUser = function(req, res, next) {
+  var retrieveUsers = function(req, res, next) {
+    var query = {
+      isActive: true,
+    };
+
     var userName = req.query.userName;
     var email = req.query.email;
-    var query = {};
 
     if (userName) {
       query.userName = { $regex: new RegExp(userName) };
@@ -356,20 +359,6 @@ module.exports = function ($db) {
     if (email) {
       query.email = { $regex: new RegExp(email) };
     }
-
-    return users.retrieveUserByQuery(query)
-    .then(function(data) {
-      return res.send(200, data);
-    })
-    .catch(function(err) {
-      return res.send(400, err);
-    });
-  };
-
-  var retrieveUsers = function(req, res, next) {
-    var query = {
-      isActive: true,
-    };
 
     var sort = req.query.sort;
     var skip = req.query.skip;
