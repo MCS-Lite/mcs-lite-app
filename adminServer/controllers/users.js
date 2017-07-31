@@ -384,7 +384,6 @@ module.exports = function ($db) {
     signupInterface: signupInterface,
     editUser: editUser,
     deleteUser: deleteUser,
-    searchUser: searchUser,
     addNewUser: addNewUser,
   };
 
