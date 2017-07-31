@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: mcs-lite\n"
-"POT-Creation-Date: 2017-07-25T01:42:06.588Z\n"
-"PO-Revision-Date: 2017-07-25 13:43+0800\n"
+"POT-Creation-Date: 2017-07-31T02:28:46.892Z\n"
+"PO-Revision-Date: 2017-07-31 10:32+0800\n"
 "Last-Translator: Daria Chen <smartexist@gmail.com>\n"
 "Language-Team: English\n"
 "Language: en_US\n"
@@ -721,6 +721,13 @@ msgstr "Description: "
 msgid "搜尋"
 msgstr "Search"
 
+#. [Header.tutorial]
+#. defaultMessage is:
+#. 教學範例
+#: messages/app/components/header/messages.json
+msgid "教學範例"
+msgstr "Tutorial"
+
 #. [PrototypeDetail.add]
 #. defaultMessage is:
 #. 新增
@@ -1170,6 +1177,13 @@ msgstr "Details"
 #: messages/app/components/prototypes/messages.json
 msgid "詳細"
 msgstr "Details"
+
+#. [Header.intromcslite]
+#. defaultMessage is:
+#. 認識 MCS Lite
+#: messages/app/components/header/messages.json
+msgid "認識 MCS Lite"
+msgstr "MCS Lite Introduction"
 
 #. [Header.language]
 #. defaultMessage is:

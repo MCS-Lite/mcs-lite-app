@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: mcs-lite\n"
-"POT-Creation-Date: 2017-07-25T01:42:06.588Z\n"
-"PO-Revision-Date: 2017-07-25 12:09+0800\n"
+"POT-Creation-Date: 2017-07-31T02:28:46.892Z\n"
+"PO-Revision-Date: 2017-07-31 10:34+0800\n"
 "Last-Translator: Daria Chen <smartexist@gmail.com>\n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
@@ -400,9 +400,8 @@ msgstr "取消"
 #. defaultMessage is:
 #. 取消範例分享
 #: messages/app/components/prototypeDetail/messages.json
-#, fuzzy
 msgid "取消範例分享"
-msgstr "取消範例分享"
+msgstr "取消范例分享"
 
 #. [Dashboard.deviceName]
 #. defaultMessage is:
@@ -713,6 +712,13 @@ msgstr "描述："
 #: messages/app/components/prototypes/messages.json
 msgid "搜尋"
 msgstr "搜寻"
+
+#. [Header.tutorial]
+#. defaultMessage is:
+#. 教學範例
+#: messages/app/components/header/messages.json
+msgid "教學範例"
+msgstr "教学范例"
 
 #. [PrototypeDetail.add]
 #. defaultMessage is:
@@ -1161,6 +1167,13 @@ msgstr "详情"
 #: messages/app/components/prototypes/messages.json
 msgid "詳細"
 msgstr "详细"
+
+#. [Header.intromcslite]
+#. defaultMessage is:
+#. 認識 MCS Lite
+#: messages/app/components/header/messages.json
+msgid "認識 MCS Lite"
+msgstr "认识 MCS Lite"
 
 #. [Header.language]
 #. defaultMessage is:
