@@ -43,7 +43,7 @@
     }
   },
   "devDependencies": {
-    "babel": "^6.23.x",
+    "babel-cli": "^6.24.1",
     "babel-core": "^6.23.x",
     "babel-loader": "^6.2.10",
     "babel-plugin-import": "^1.1.1",
@@ -86,7 +86,6 @@
     "@mtk/mcs-components": "https://cdn.mediatek.com/Mediatek-Cloud/mcs-components/2.1.111.tgz",
     "autoprefixer": "^6.1.0",
     "babel-plugin-react-intl": "^2.3.1",
-    "babel-cli": "^6.24.1",
     "classnames": "^2.2.5",
     "cookie-dough": "^0.1.0",
     "fbjs": "^0.8.0",
