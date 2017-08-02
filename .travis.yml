@@ -25,9 +25,8 @@ script:
   - ls . && cd ../..
 
 after_success:
-  - ./node_modules/.bin/codecov
+  - ./node_modules/.bin/codecov 
   - sh trigger-dependent-build.sh
-
 
 cache:
   directories:

@@ -1,5 +1,10 @@
 #!/bin/bash
 
+# only execute this script when it is on master branch
+if [ "${TRAVIS_BRANCH}" != "master" ] || [ "${TRAVIS_PULL_REQUEST}" != "false" ]; then
+  exit 0
+fi
+
 # pass the commit ID to downstream job
 curl -X PATCH \
   -H "Content-Type: application/json" \
