@@ -15,7 +15,6 @@ script:
   - cd ..
 
   # Build App (NW.js)
-  - npm run build:global
   - npm run build:7688
 
   # Compression
