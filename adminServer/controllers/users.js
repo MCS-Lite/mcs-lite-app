@@ -351,6 +351,13 @@ module.exports = function ($db) {
 
     var userName = req.query.userName;
     var email = req.query.email;
+    var q = req.query.q;
+
+    if (q) {
+      query['$or'] = [];
+      query['$or'].push({email: { $regex: new RegExp(q)}});
+      query['$or'].push({userName: { $regex: new RegExp(q)}});  
+    }
 
     if (userName) {
       query.userName = { $regex: new RegExp(userName) };
@@ -359,7 +366,7 @@ module.exports = function ($db) {
     if (email) {
       query.email = { $regex: new RegExp(email) };
     }
-
+    
     var sort = req.query.sort;
     var skip = req.query.skip;
     var limit = req.query.limit;
