@@ -318,8 +318,10 @@ module.exports = function ($db) {
   };
 
   var deleteUser = function(req, res, next) {
+    var userId = req.params.userId.split(',');
+    console.log(userId);
     return users.deleteUser({
-      userId: req.params.userId, 
+      userId: userId, 
     })
     .then(function(data) {
       return res.send(200, "success.");

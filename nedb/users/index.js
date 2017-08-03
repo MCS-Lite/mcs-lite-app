@@ -201,12 +201,22 @@ module.exports = function(users) {
     },
 
     deleteUser: function(query) {
-      return new Promise(function(resolve, reject) {
-        return users.remove(query, {}, function(err, data) {
-          if (err) return reject();
-          resolve(data);
-        })
-      });
+
+      var queue = []; 
+
+      query.userId.forEach(function(key, index) {
+        queue.push(
+          new Promise(function(resolve, reject) {
+            var _q = query;
+            _q.userId = key; 
+            return users.remove(_q, { multi: true }, function(err, data) {
+              if (err) return reject();
+              resolve(data);
+            });
+          });  
+        )
+      })
+      
     },
     
     editUser: function(query, update) {
