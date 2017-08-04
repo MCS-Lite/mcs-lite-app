@@ -94,7 +94,7 @@ module.exports = function(users) {
             if (data.length === 0) {
               return resolve();
             } else {
-              return reject({ error: 'This email was registed!' });
+              return reject({ error: field.email + ', This email was registed!' });
             }
           });
         });
@@ -202,20 +202,20 @@ module.exports = function(users) {
 
     deleteUser: function(query) {
 
-      var queue = []; 
+      // var queue = []; 
 
-      query.userId.forEach(function(key, index) {
-        queue.push(
-          new Promise(function(resolve, reject) {
-            var _q = query;
-            _q.userId = key; 
-            return users.remove(_q, { multi: true }, function(err, data) {
-              if (err) return reject();
-              resolve(data);
-            });
-          });  
-        )
-      })
+      // query.userId.forEach(function(key, index) {
+      //   queue.push(
+      //     new Promise(function(resolve, reject) {
+      //       var _q = query;
+      //       _q.userId = key; 
+      //       return users.remove(_q, { multi: true }, function(err, data) {
+      //         if (err) return reject();
+      //         resolve(data);
+      //       });
+      //     });  
+      //   )
+      // })
       
     },
     

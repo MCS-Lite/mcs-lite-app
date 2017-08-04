@@ -383,6 +383,45 @@ module.exports = function ($db) {
 
   };
 
+  var batchAddNewUserByCSV = function(req, res, next) {
+    var rawData;
+    var content = [];
+    
+    if (Object.keys(req.body).length === 0){
+      return res.send(400, { message: 'Raw body is null.' });
+    } else {
+      rawData = Object.keys(req.body)[0].toString().split('\n');
+    }
+    
+    rawData.forEach(function(key, item) {
+      if (key.split(',').length === 3) {
+        content.push({
+          userName: key.split(',')[0],
+          email: key.split(',')[1],
+          password: key.split(',')[2],
+        });  
+      }
+    });
+    var queue = [];
+    content.forEach(function(key, item) {
+      queue.push(users.addNewUser({
+          userName: key.userName,
+          email: key.email,
+          password: key.password,
+          isAdmin: true,
+        })
+      );
+    });
+    
+    return Promise.all(queue)
+    .then(function(values) {
+      return res.send(200, 'success.');
+    })
+    .catch(function(err) {
+      return res.send(400, err);
+    });
+  };
+
   return {
     login: login,
     loginInterface: loginInterface,
@@ -394,6 +433,7 @@ module.exports = function ($db) {
     editUser: editUser,
     deleteUser: deleteUser,
     addNewUser: addNewUser,
+    batchAddNewUserByCSV: batchAddNewUserByCSV,
   };
 
 }
