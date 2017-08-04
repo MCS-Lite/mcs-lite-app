@@ -3,7 +3,7 @@
 
 $.ajax({
   type: "GET",
-  url: "http://<%= host %>/api/devices/<%= deviceId %>/datapoints",
+  url: "http://<%= host %>/api/devices/<%= deviceId %>/datachannels/<%= datachannelId %>/datapoints",
   headers: { deviceKey: "<%= deviceKey %>" },
   contentType: "application/json",
 })
