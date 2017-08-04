@@ -13,6 +13,8 @@ import PanelHeaderNav from '../../common/panelHeaderNav';
 
 import styles from './styles.css';
 
+const protocol = /https/.test(window.location.protocol) ? 'wss' : 'ws';
+
 const PanelContentLayout = ({
   selectPanelValue,
   datachannels,
@@ -37,7 +39,7 @@ const PanelContentLayout = ({
         {
           selectPanelValue === 'datachannel' &&
           <DataChannelContent
-            server={`ws://${window.ws}/deviceId/${deviceId}/deviceKey/${deviceKey}`}
+            server={`${protocol}://${window.ws}/deviceId/${deviceId}/deviceKey/${deviceKey}`}
             deviceId={deviceId}
             deviceKey={deviceKey}
             datachannels={datachannels}
