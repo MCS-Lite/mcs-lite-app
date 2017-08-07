@@ -21,6 +21,7 @@ script:
   - cd ./out/mcs-lite-app
   - find . -type d -name "osx*" -maxdepth 1 -mindepth 1 -exec tar zcf {}.tar.gz {}  \;
   - find . -type d -name "7688*" -maxdepth 1 -mindepth 1 -exec tar zcf {}.tar.gz {}  \;
+  - cp 7688*.tar.gz linux.tar.gz
   - find . -type d -name "win*" -maxdepth 1 -mindepth 1 -exec zip -rq {}.zip {}  \;
   - ls . && cd ../..
 
