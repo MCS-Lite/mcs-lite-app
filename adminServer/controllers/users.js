@@ -301,7 +301,7 @@ module.exports = function ($db) {
       .catch(function(err) {
         return res.send(400, err);
       });
-    } else if (req.body.isActive) {
+    } else if (req.body.hasOwnProperty('isActive')) {
       return users.editUser({
         userId: req.params.userId, 
         isActive: true
@@ -318,8 +318,10 @@ module.exports = function ($db) {
   };
 
   var deleteUser = function(req, res, next) {
-    var userId = req.params.userId.split(',');
-    console.log(userId);
+    var userId = [];
+    if (req.params.userId) userId = req.params.userId.split(',');
+    if (req.body.userId) userId = req.body.userId.split(',');
+    
     return users.deleteUser({
       userId: userId, 
     })
@@ -422,6 +424,16 @@ module.exports = function ($db) {
     });
   };
 
+  var clearAllUserExceptAdmin = function(req, res, next) {
+    return users.clearAllUser()
+    .then(function() {
+      return res.send(200, 'success.');
+    })
+    .catch(function(err) {
+      return res.send(400, err);
+    });
+  };
+
   return {
     login: login,
     loginInterface: loginInterface,
@@ -434,6 +446,7 @@ module.exports = function ($db) {
     deleteUser: deleteUser,
     addNewUser: addNewUser,
     batchAddNewUserByCSV: batchAddNewUserByCSV,
+    clearAllUserExceptAdmin: clearAllUserExceptAdmin,
   };
 
 }

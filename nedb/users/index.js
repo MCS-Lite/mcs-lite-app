@@ -202,21 +202,23 @@ module.exports = function(users) {
 
     deleteUser: function(query) {
 
-      // var queue = []; 
+      var queue = []; 
 
-      // query.userId.forEach(function(key, index) {
-      //   queue.push(
-      //     new Promise(function(resolve, reject) {
-      //       var _q = query;
-      //       _q.userId = key; 
-      //       return users.remove(_q, { multi: true }, function(err, data) {
-      //         if (err) return reject();
-      //         resolve(data);
-      //       });
-      //     });  
-      //   )
-      // })
-      
+      query.userId.forEach(function(key, index) {
+        queue.push(
+          new Promise(function(resolve, reject) {
+            var _q = query;
+            _q.userId = key; 
+            console.log(_q);
+            return users.remove(_q, { multi: true }, function(err, data) {
+              if (err) return reject();
+              resolve(data);
+            });
+          })  
+        )
+      });
+      console.log(112312);
+      return Promise.all(queue);
     },
     
     editUser: function(query, update) {
@@ -227,5 +229,11 @@ module.exports = function(users) {
         });
       });
     },
+
+    clearAllUser: function() {
+      return new Promise(function(resolve, reject) {
+        retur
+      });
+    }
   };
 }

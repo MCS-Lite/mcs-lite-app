@@ -96,6 +96,13 @@ module.exports = function($db, $app, $admin) {
     handler: usersController.deleteUser,
   };
 
+  this.deleteUserByPost = {
+    path: $admin.apiRoute + '/users/delete',
+    methods: ['post'],
+    middleware: [$app.oauth.authorise()],
+    handler: usersController.deleteUser,
+  };
+
   this.editUser = {  // Include disable User & changeUserPassword
     path: $admin.apiRoute + '/users/:userId',
     methods: ['put'],
@@ -184,6 +191,13 @@ module.exports = function($db, $app, $admin) {
     methods: ['post'],
     middleware: [$app.oauth.authorise(), bodyParser.raw({ type: 'text/csv' })],
     handler: usersController.batchAddNewUserByCSV,
+  };
+
+  this.clearAllUserExceptAdmin = {
+    path: $admin.apiRoute + '/clear',
+    methods: ['delete'],
+    middleware: [$app.oauth.authorise()],
+    handler: usersController.clearAllUserExceptAdmin,
   };
 
 };
