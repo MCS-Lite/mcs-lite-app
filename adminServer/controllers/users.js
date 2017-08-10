@@ -72,9 +72,9 @@ module.exports = function ($db) {
               res.cookie('token', token, { maxAge: $admin.session.maxAge });
             }
 
-            if (process.env.NODE_ENV === 'dev') {
-              return res.redirect(req.clientAppInfo.redirect.prod + '/');
-            }
+            // if (process.env.NODE_ENV === 'dev') {
+            //   return res.redirect(req.clientAppInfo.redirect.prod + '/');
+            // }
 
             return res.render(path.resolve(__dirname, adminPathname, 'index.html'), function(err, html) {
               res.send(html);
@@ -84,9 +84,9 @@ module.exports = function ($db) {
             /* 有任何錯誤就返回首頁 */
             res.clearCookie('token', { path: '/' });
 
-            if (process.env.NODE_ENV === 'dev') {
-              return res.redirect(req.clientAppInfo.redirect.prod + '/login');
-            }
+            // if (process.env.NODE_ENV === 'dev') {
+            //   return res.redirect(req.clientAppInfo.redirect.prod + '/login');
+            // }
 
             return res.render(path.resolve(__dirname, adminPathname, 'index.html'), function(err, html) {
               res.send(html);
@@ -98,7 +98,10 @@ module.exports = function ($db) {
             if (req.query.errorMsg) {
               return res.redirect(req.clientAppInfo.redirect.prod + '?errorMsg=' + req.query.errorMsg);
             }
-            return res.redirect(req.clientAppInfo.redirect.prod + '/login');
+            // return res.redirect(req.clientAppInfo.redirect.prod + '/login');
+            return res.render(path.resolve(__dirname, adminPathname, 'index.html'), function(err, html) {
+              res.send(html);
+            });
           }
 
           return res.render(path.resolve(__dirname, adminPathname, 'index.html'), function(err, html) {
@@ -167,7 +170,7 @@ module.exports = function ($db) {
             // if (process.env.NODE_ENV === 'dev') {
             //   return res.redirect(req.clientAppInfo.redirect.prod + '/');
             // }
-            return res.redirect(req.clientAppInfo.redirect.prod + '/');
+            return res.redirect(req.clientAppInfo.redirect.prod + '/ip');
           } else {
             reject(err.response.body.message);
           }

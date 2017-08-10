@@ -11,7 +11,7 @@ module.exports = function($db, $app, $admin) {
   var usersController = new require('../controllers/users')($db);
   var serviceController = new require('../controllers/service')($db);
 
-  const adminPathname = '../node_modules/mcs-lite-admin-web/build';
+  const adminPathname = '../../node_modules/mcs-lite-admin-web/build';
 
   const parseBasicToken = function(req, res, next) {
     req.basicToken = webBasicToken;
