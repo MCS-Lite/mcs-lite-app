@@ -46,14 +46,14 @@ deploy:
     on:
       repo: MCS-Lite/mcs-lite-app
       tags: true
-- provider: s3
-  access_key_id: AKIAJ36FA5PQGVMPSIVA
-  secret_access_key:
-    secure: L39wMZD6SnXp9Ll67nUadbA0vciNIIGlHNmHnyyh8jW6SKZnkx/b1Yvwb6oCOhpmxBLgC+6aBhDB+kVxgrx7+EhKV6jKIo4iuR04j7xrfZD8C9El0H9yvuR3dwWDO4Oq3sW5Fq4BN/ZC9tNCEFzOy5WxNtaVow/Ly/hO9F77OyNVbTDN9r86FyfzFWd+tfQIDq0HhmXAjIiQYRNlfAzgXJNN1poOpeCmQ5/2FEKN1dzqw/yW//LhwSxlH55NTsybBczRonVeeNUqOnqYUM6E6Z30tsgtllLEbqwb2+q3+2mszLciwQ3ScyO0IqKtAQEebpQaDfWcdYOjc/47D2CLFsXyd+T8LLeSPKXXIGFneDCJsjnW5jPQVa3vcwjPmkVGouLkE5imISjR4n/WPchVkAKhoIaVYx4b8L9W5MM/Y0UEOuJwOAZkLHsgsqUrDb2ey/epPzqhK1Wh//3HujkW8OyJzB/2Q6DlLktt3ww/IvbVEAaBFrFFgXSeHdfDeG5ucmvev8eWCikruq+raaMU/xns1/y+7rIP/pjJhysGRHtxgvwIOW3151ItLreZ7vIgrsSF6VTM3GK2nkxJ7m3xLYVOE17jN7f831WupjCixHPcGLZwEylO4G9lhGj+1vlmSlXJx7jP/EbAv0c48JjYTrt0QvBiwXheXxOxn8RaRe0=
-  bucket: mcs-lite-build-bucket
-  acl: public_read
-  skip_cleanup: true
-  region: ap-southeast-1
-  local_dir: $TRAVIS_BUILD_DIR/uploadBuild
-  on:
-    branch: ${S3_DEPLOY_BRANCH}
+  - provider: s3
+    access_key_id: AKIAJ36FA5PQGVMPSIVA
+    secret_access_key:
+      secure: L39wMZD6SnXp9Ll67nUadbA0vciNIIGlHNmHnyyh8jW6SKZnkx/b1Yvwb6oCOhpmxBLgC+6aBhDB+kVxgrx7+EhKV6jKIo4iuR04j7xrfZD8C9El0H9yvuR3dwWDO4Oq3sW5Fq4BN/ZC9tNCEFzOy5WxNtaVow/Ly/hO9F77OyNVbTDN9r86FyfzFWd+tfQIDq0HhmXAjIiQYRNlfAzgXJNN1poOpeCmQ5/2FEKN1dzqw/yW//LhwSxlH55NTsybBczRonVeeNUqOnqYUM6E6Z30tsgtllLEbqwb2+q3+2mszLciwQ3ScyO0IqKtAQEebpQaDfWcdYOjc/47D2CLFsXyd+T8LLeSPKXXIGFneDCJsjnW5jPQVa3vcwjPmkVGouLkE5imISjR4n/WPchVkAKhoIaVYx4b8L9W5MM/Y0UEOuJwOAZkLHsgsqUrDb2ey/epPzqhK1Wh//3HujkW8OyJzB/2Q6DlLktt3ww/IvbVEAaBFrFFgXSeHdfDeG5ucmvev8eWCikruq+raaMU/xns1/y+7rIP/pjJhysGRHtxgvwIOW3151ItLreZ7vIgrsSF6VTM3GK2nkxJ7m3xLYVOE17jN7f831WupjCixHPcGLZwEylO4G9lhGj+1vlmSlXJx7jP/EbAv0c48JjYTrt0QvBiwXheXxOxn8RaRe0=
+    bucket: mcs-lite-build-bucket
+    acl: public_read
+    skip_cleanup: true
+    region: ap-southeast-1
+    local_dir: $TRAVIS_BUILD_DIR/uploadBuild
+    on:
+      branch: ${S3_DEPLOY_BRANCH}
