@@ -19,7 +19,7 @@ curl -X PATCH \
   -H "Travis-API-Version: 3" \
   -H "Authorization: token ${GIT_TOKEN}" \
   -d "{ \"env_var.value\": \"${TRAVIS_BUILD_NUMBER}\", \"env_var.public\": true }" \
-  https://api.travis-ci.org/repo/MCS-Lite%2Fmcs-lite-jmeter-test/env_var/3f5d2fc1-dcbf-4fd6-9c9a-6078db906739
+  https://api.travis-ci.org/repo/MCS-Lite%2Fmcs-lite-jmeter-test/env_var/fca9435a-d9ea-40f5-8eda-a688cc761fb5
 
 # trigger downstream test job
 body='{
