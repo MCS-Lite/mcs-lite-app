@@ -9,6 +9,24 @@ rm -rf ./out
 mkdir build
 mkdir appBuild
 
+if [ ! -f nodeBinary/mac/node ]; then
+	mkdir -p nodeBinary/mac && cd nodeBinary/mac && wget https://s3-ap-southeast-1.amazonaws.com/mtk.linkit/mcs-lite-app/nodejsv6.11.0/mac/node && chmod +x ./node && cd -
+else
+	echo "node for mac exists."
+fi
+
+if [ ! -f nodeBinary/win32/node.exe ]; then
+	mkdir -p nodeBinary/win32 && cd nodeBinary/win32 && wget https://s3-ap-southeast-1.amazonaws.com/mtk.linkit/mcs-lite-app/nodejsv6.11.0/win32/node.exe && cd -
+else
+	echo "node for win32 exists."
+fi
+
+if [ ! -f nodeBinary/win64/node.exe ]; then 
+	mkdir -p nodeBinary/win64 && cd nodeBinary/win64 && wget https://s3-ap-southeast-1.amazonaws.com/mtk.linkit/mcs-lite-app/nodejsv6.11.0/win64/node.exe && cd -
+else
+	echo "node for win64 exists."
+fi
+
 cd appBuild && mkdir client && cd client && mkdir app && mkdir apiHints
 cd ../..
 
@@ -61,8 +79,8 @@ cp -R ./appBuild/. ./out/mcs-lite-app/osx64/mcs-lite-app
 cp -R ./icon.icns ./out/mcs-lite-app/osx64/mcs-lite-app.app/Contents/Resources/app.icns
 cp -R ./icon.icns ./out/mcs-lite-app/osx64/mcs-lite-app.app/Contents/Resources/document.icns
 
-cd ./out/mcs-lite-app/osx64 && wget https://s3-ap-southeast-1.amazonaws.com/mtk.linkit/mcs-lite-app/nodejsv6.11.0/mac/node && chmod +x ./node && cd -
-cd ./out/mcs-lite-app/win32 && wget https://s3-ap-southeast-1.amazonaws.com/mtk.linkit/mcs-lite-app/nodejsv6.11.0/win32/node.exe && cd -
-cd ./out/mcs-lite-app/win64 && wget https://s3-ap-southeast-1.amazonaws.com/mtk.linkit/mcs-lite-app/nodejsv6.11.0/win64/node.exe && cd -
+cp -R ./nodeBinary/mac/node ./out/mcs-lite-app/osx64/
+cp -R ./nodeBinary/win32/node.exe ./out/mcs-lite-app/win32/
+cp -R ./nodeBinary/win64/node.exe ./out/mcs-lite-app/win64/
 
 cp -R ./setup ./out/mcs-lite-app/osx64/ && chmod +x ./out/mcs-lite-app/osx64/setup

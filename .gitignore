@@ -1,4 +1,5 @@
 node_modules
+nodeBinary
 /build
 /appBuild
 client/app/build
