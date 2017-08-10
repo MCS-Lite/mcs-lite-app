@@ -43,7 +43,7 @@ cp -R index.js ./build/index.js
 cp -R package.json ./build/package.json
 
 mkdir out
-nwbuild -p win32,win64,osx64 -v 0.20.1 ./build -o ./out
+nwbuild -p win32,win64,osx64 -v 0.20.3 ./build -o ./out
 
 cd ./out/mcs-lite-app/win64
 mkdir mcs-lite-app
