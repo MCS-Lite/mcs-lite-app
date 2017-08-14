@@ -217,7 +217,6 @@ module.exports = function(users) {
           })  
         )
       });
-      console.log(112312);
       return Promise.all(queue);
     },
     
@@ -232,7 +231,27 @@ module.exports = function(users) {
 
     clearAllUser: function() {
       return new Promise(function(resolve, reject) {
-        retur
+        return users.find({
+          isAdmin: false,
+          isActive: true,
+        }, function(err, data) {
+          if (err) return reject();
+          resolve(data);
+        })
+      })
+      .then(function(data) {
+        var queue = [];
+        data.forEach(function(k, i) {
+          queue.push(
+            new Promise(function(resolve, reject) {
+              return users.remove({ userId: k.userId }, { multi: true }, function(err, data) {
+                if (err) return reject();
+                resolve(data);
+              });
+            })  
+          )
+        });  
+        return Promise.all(queue);
       });
     }
   };
