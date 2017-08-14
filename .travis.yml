@@ -28,7 +28,6 @@ script:
 
 after_success:
   - ./node_modules/.bin/codecov 
-  - sh trigger-dependent-build.sh
 
 cache:
   directories:
@@ -57,3 +56,5 @@ deploy:
     local_dir: $TRAVIS_BUILD_DIR/uploadBuild
     on:
       branch: ${S3_DEPLOY_BRANCH}
+after_deploy:
+  - sh trigger-dependent-build.sh
