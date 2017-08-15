@@ -3,7 +3,7 @@ global.logs = '';
 global.console.log = function(x){
   global.logs += JSON.stringify(x) + '\n';
   process.stdout.write(util.format.apply(util, arguments));
-}; 
+};
 
 var fs = require('fs');
 var gui = require('nw.gui');
@@ -12,6 +12,20 @@ var nwPath = process.execPath;
 var nwDir = path.dirname(nwPath);
 var exec = require('child_process').exec;
 var spawn = require('child_process').spawn;
+
+
+var child_process = require('child_process');
+
+
+
+function kill (port) {
+  if (!Number.parseInt(port)) {
+    return Promise.reject(new Error('Invalid argument provided for port'))
+  }
+
+  return child_process.execSync(`lsof -i tcp:${port} | grep LISTEN | awk '{print $2}' | xargs kill -9`);
+}
+
 
 var $ = function (selector) {
   return document.querySelector(selector);
@@ -30,27 +44,27 @@ function startNode(path) {
 
   if (process.env.NODE_ENV === 'dev' && /^win/.test(process.platform)) nodePath = global.__dirname + '\\node\\win32\\node.exe';
   // if (process.env.NODE_ENV === 'dev' && /^darwin/.test(process.platform)) nodePath = global.__dirname + '/node/osx64/node';
-  
+
   if (process.env.NODE_ENV != 'dev' && /^win/.test(process.platform)) {
     nodePath = nwDir + '\\node.exe';
   }
 
   if (process.env.NODE_ENV != 'dev' && process.platform === 'darwin') {
-    var folderDir = require(global.__dirname + '/config').path;  
+    var folderDir = require(global.__dirname + '/config').path;
     nodePath = folderDir + '/node';
   }
 
   var lite_server = spawn(nodePath, [path]);
 
-  lite_server.stdout.on('data', function (data) {   
+  lite_server.stdout.on('data', function (data) {
     console.log(data.toString());
   });
 
-  lite_server.stderr.on('data', function (data) {   
-    console.log(data.toString());  
+  lite_server.stderr.on('data', function (data) {
+    console.log(data.toString());
   });
-  
-  lite_server.on('close', function (status) { 
+
+  lite_server.on('close', function (status) {
     console.log("Terminal MCS Lite server:" + status);
   });
 }
@@ -98,7 +112,7 @@ function initApp() {
       adminServer = require(folderDir + '\\adminServer\\index');
       $admin = require(folderDir + '\\configs\\admin');
     }
-     
+
     adminServer.listen($admin.port);
     var win = gui.Window.get();
     win.show();
@@ -127,14 +141,14 @@ function initApp() {
           $admin = require(folderDir + '/configs/admin');
         }
       }
-      var kill = require('kill-port');  
+      //var kill = require('kill-port');
       kill($rest.port);
       kill($wot.port);
       kill($stream.serverPort);
       kill($stream.rtmpServerPort);
       win.close(true);
     });
-    
+
     if (process.env.NODE_ENV === 'dev') {
       document.body.innerHTML += '<iframe frameborder="0" src="http://' + $admin.host + ':' + $admin.port + '/login' + '" style="width: 100%; height: 580px; overflow: auto;" nwdisable nwfaketop>';
       // document.body.innerHTML += '<iframe frameborder="0" src="' + $admin.webClient.redirect.dev + '" style="width: 100%; height: 580px; overflow: auto;" nwdisable nwfaketop>';
