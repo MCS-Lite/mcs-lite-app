@@ -25,7 +25,7 @@ script:
   - find . -type d -name "7688*" -maxdepth 1 -mindepth 1 -exec tar zcf {}.tar.gz {}  \;
   - cp 7688*.tar.gz linux.tar.gz
   - find . -type d -name "win*" -maxdepth 1 -mindepth 1 -exec zip -rq {}.zip {}  \;
-  - mkdir -p $TRAVIS_BUILD_DIR/uploadBuild/7688/$TRAVIS_BUILD_NUMBER/ && cp 7688*.tar.gz $TRAVIS_BUILD_DIR/uploadBuild/7688/$TRAVIS_BUILD_NUMBER/7688.tar.gz
+  - mkdir -p $TRAVIS_BUILD_DIR/uploadBuild/7688/$TRAVIS_BUILD_NUMBER/ && cp 7688*.tar.gz $TRAVIS_BUILD_DIR/uploadBuild/7688/$TRAVIS_BUILD_NUMBER/7688.tar.gz && cp osx*.tar.gz $TRAVIS_BUILD_DIR/uploadBuild/7688/$TRAVIS_BUILD_NUMBER/osx.tar.gz
   - ls . && cd ../..
 
 after_success:
@@ -57,6 +57,6 @@ deploy:
     region: ap-southeast-1
     local_dir: $TRAVIS_BUILD_DIR/uploadBuild
     on:
-      branch: ${S3_DEPLOY_BRANCH}
+      branch: bugfix/kill-port
 after_deploy:
   - sh trigger-dependent-build.sh
