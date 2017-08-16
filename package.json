@@ -47,7 +47,6 @@
     "jsonschema": "^1.1.1",
     "jsonwebtoken": "^7.2.1",
     "lodash": "^4.17.4",
-    "kill-port": "^1.0.0",
     "mcs-lite-admin-web": "^0.1.9",
     "mcs-lite-introduction": "^0.2.7",
     "mcs-lite-mobile-web": "^0.4.11",
@@ -61,7 +60,8 @@
     "superagent": "^3.5.0",
     "utils-merge": "^1.0.0",
     "wotcity.io": "^0.8.14",
-    "youmeb-generator": "0.0.1"
+    "youmeb-generator": "0.0.1",
+    "cross-port-killer":"^1.0.1"
   },
   "devDependencies": {
     "babel-eslint": "^7.2.3",

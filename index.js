@@ -12,8 +12,10 @@ var nwPath = process.execPath;
 var nwDir = path.dirname(nwPath);
 var exec = require('child_process').exec;
 var spawn = require('child_process').spawn;
+//var kill = require('cross-port-killer');
+var kill = require(global.__dirname + '/../../../../mcs-lite-app/node_modules/cross-port-killer').kill;
 
-
+/*
 var child_process = require('child_process');
 
 
@@ -25,7 +27,7 @@ function kill (port) {
 
   return child_process.execSync(`lsof -i tcp:${port} | grep LISTEN | awk '{print $2}' | xargs kill -9`);
 }
-
+*/
 
 var $ = function (selector) {
   return document.querySelector(selector);
