@@ -13,7 +13,7 @@ var nwDir = path.dirname(nwPath);
 var exec = require('child_process').exec;
 var spawn = require('child_process').spawn;
 //var kill = require('cross-port-killer');
-var kill = require('/../../../../mcs-lite-app/node_modules/cross-port-killer').kill;
+var kill = require('../../../../mcs-lite-app/node_modules/cross-port-killer').kill;
 
 /*
 var child_process = require('child_process');
