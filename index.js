@@ -12,27 +12,34 @@ var nwPath = process.execPath;
 var nwDir = path.dirname(nwPath);
 var exec = require('child_process').exec;
 var spawn = require('child_process').spawn;
-//var kill = require('cross-port-killer');
+
+/*
 var kill;
 if (process.platform == "darwin" && process.env.NODE_ENV !== 'dev') {
   var folderDir = require(global.__dirname + '/config').path;
   kill = require(folderDir + '/mcs-lite-app/node_modules/cross-port-killer').kill;
+  console.log("mac!");
 } else {
   kill = require('../../../../mcs-lite-app/node_modules/cross-port-killer').kill;
 }
-/*
+*/
+
+
 var child_process = require('child_process');
-
-
 
 function kill (port) {
   if (!Number.parseInt(port)) {
     return Promise.reject(new Error('Invalid argument provided for port'))
   }
+  if (process.platform == "darwin" && process.env.NODE_ENV !== 'dev') {
+  	return child_process.execSync(`lsof -i tcp:${port} | grep LISTEN | awk '{print $2}' | xargs kill -9`);
 
-  return child_process.execSync(`lsof -i tcp:${port} | grep LISTEN | awk '{print $2}' | xargs kill -9`);
+  } else {
+  	return child_process.execSync(`for /f "tokens=5" %a in ('netstat -aon ^| find ":${port}" ^| find "LISTENING"') do taskkill /f /pid %a`);
+  }
+  
 }
-*/
+
 
 var $ = function (selector) {
   return document.querySelector(selector);
