@@ -31,11 +31,12 @@ function kill (port) {
   if (!Number.parseInt(port)) {
     return Promise.reject(new Error('Invalid argument provided for port'))
   }
-  if (process.platform == "darwin" && process.env.NODE_ENV !== 'dev') {
+  if (process.platform == "darwin") {
   	return child_process.execSync(`lsof -i tcp:${port} | grep LISTEN | awk '{print $2}' | xargs kill -9`);
-
+  	console.log("run on MAC");
   } else {
-  	return child_process.execSync(`for /f "tokens=5" %a in ('netstat -aon ^| find ":${port}" ^| find "LISTENING"') do taskkill /f /pid %a`);
+  	return child_process.spawn('cmd.exe', ['for', '/f', '"tokens=5"', '%a', 'in', '(\'netstat', '-aon', ,'|', 'findstr', ':${port}', '|', 'find', '"LISTENING"\')', 'do', 'taskkill', '/f', '/pid', '%a']);
+  	console.log("run on Windows");
   }
   
 }
