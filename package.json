@@ -60,8 +60,7 @@
     "superagent": "^3.5.0",
     "utils-merge": "^1.0.0",
     "wotcity.io": "^0.8.14",
-    "youmeb-generator": "0.0.1",
-    "cross-port-killer":"^1.0.1"
+    "youmeb-generator": "0.0.1"
   },
   "devDependencies": {
     "babel-eslint": "^7.2.3",
