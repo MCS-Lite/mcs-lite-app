@@ -2,10 +2,12 @@ var os = require('os');
 var fs = require('fs');
 var path = require('path');
 var exec = require('child_process').exec;
+var kill = require('cross-port-killer').kill;
 var $rest = require('../../configs/rest');
 var $wot = require('../../configs/wot');
 var $stream = require('../../configs/stream');
 var $admin = require('../../configs/admin');
+
 
 module.exports = function ($db) {
 
@@ -16,7 +18,6 @@ module.exports = function ($db) {
   };
 
   var stopService = function(req, res, next) {
-    var kill = require('kill-port');
     kill($rest.port);
     kill($wot.port);
     kill($stream.serverPort);

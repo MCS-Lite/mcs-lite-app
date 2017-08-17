@@ -27,7 +27,7 @@ script:
   - ls . && cd ../..
 
 after_success:
-  - ./node_modules/.bin/codecov 
+  - ./node_modules/.bin/codecov
 
 cache:
   directories:
