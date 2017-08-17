@@ -56,6 +56,7 @@ function startNode(path) {
     nodePath = folderDir + '/node';
   }
 
+  console.log("nodePath is " + nodePath);
   var lite_server = spawn(nodePath, [path]);
 
   lite_server.stdout.on('data', function (data) {
@@ -143,7 +144,6 @@ function initApp() {
           $admin = require(folderDir + '/configs/admin');
         }
       }
-      //var kill = require('kill-port');
       kill($rest.port);
       kill($wot.port);
       kill($stream.serverPort);
