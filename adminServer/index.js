@@ -45,6 +45,7 @@ app.use(cookieParser());
 const adminPathname = '../node_modules/mcs-lite-admin-web/build';
 app.use('/admin/static', express.static(path.resolve(__dirname, adminPathname + '/static')));
 app.use('/admin/images', express.static(path.resolve(__dirname, adminPathname + '/images')));
+app.use('/admin/service-worker.js', express.static(path.resolve(__dirname, adminPathname + '/service-worker.js')));
 
 app.all('/oauth/token', app.oauth.grant());
 app.db = connectDB;

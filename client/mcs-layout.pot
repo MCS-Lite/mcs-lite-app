@@ -1,5 +1,6 @@
 msgid ""
 msgstr ""
+
 "POT-Creation-Date: 2017-08-07T04:03:31.042Z\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -707,6 +708,13 @@ msgstr ""
 msgid "搜尋"
 msgstr ""
 
+#: ./messages/app/components/header/messages.json
+#. [Header.tutorial]
+#. defaultMessage is:
+#. 教學範例
+msgid "教學範例"
+msgstr ""
+
 #: ./messages/app/components/prototypeDetail/messages.json
 #. [PrototypeDetail.add]
 #. defaultMessage is:
@@ -1156,6 +1164,13 @@ msgstr ""
 #. defaultMessage is:
 #. 詳細
 msgid "詳細"
+msgstr ""
+
+#: ./messages/app/components/header/messages.json
+#. [Header.intromcslite]
+#. defaultMessage is:
+#. 認識 MCS Lite
+msgid "認識 MCS Lite"
 msgstr ""
 
 #: ./messages/app/components/header/messages.json

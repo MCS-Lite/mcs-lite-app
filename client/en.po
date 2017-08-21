@@ -1,15 +1,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: mcs-lite\n"
-"POT-Creation-Date: 2017-07-05 17:51+0800\n"
-"PO-Revision-Date: 2017-07-05 17:58+0800\n"
+"POT-Creation-Date: 2017-07-31T02:28:46.892Z\n"
+"PO-Revision-Date: 2017-07-31 10:32+0800\n"
 "Last-Translator: Daria Chen <smartexist@gmail.com>\n"
 "Language-Team: English\n"
 "Language: en_US\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.0.2\n"
+"X-Generator: Poedit 2.0.3\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Crowdin-Project: mcs-lite\n"
 "X-Crowdin-Language: en\n"
@@ -93,7 +93,7 @@ msgstr "Upload image"
 #: messages/app/components/prototypeDetail/dialogs/messages.json
 #: messages/app/components/prototypes/messages.json
 msgid "上傳影像"
-msgstr "Upload video"
+msgstr "Upload image"
 
 #. [ApiHint.upload]
 #. defaultMessage is:
@@ -118,7 +118,7 @@ msgstr "Use a template"
 #: messages/app/components/dashboard/messages.json
 #: messages/app/components/prototypeDetail/messages.json
 msgid "使用範例創建原型"
-msgstr "Create a prototype with this template"
+msgstr "Fork this template"
 
 #. [Dialogs.useExample]
 #. defaultMessage is:
@@ -346,11 +346,11 @@ msgstr "Prototype list"
 #. [Dashboard.example]
 #. defaultMessage is:
 #. 原型範例
-#. [PrototypeDetail.prototypeTemplate]
+#. [Prototypes.prototypeTemplate]
 #. defaultMessage is:
 #. 原型範例
 #: messages/app/components/dashboard/messages.json
-#: messages/app/components/prototypeDetail/messages.json
+#: messages/app/components/prototypes/messages.json
 msgid "原型範例"
 msgstr "Template"
 
@@ -395,6 +395,13 @@ msgstr "Retrieve data points"
 #: messages/app/components/signup/messages.json
 msgid "取消"
 msgstr "Cancel"
+
+#. [PrototypeDetail.unmarkTemplate]
+#. defaultMessage is:
+#. 取消範例分享
+#: messages/app/components/prototypeDetail/messages.json
+msgid "取消範例分享"
+msgstr "Stop sharing"
 
 #. [Dashboard.deviceName]
 #. defaultMessage is:
@@ -566,13 +573,9 @@ msgstr "Success! Your nickname has been changed."
 msgid "成功！你已經成功刪除一個資料通道。"
 msgstr "Success! The data channel has been deleted."
 
-#. [PrototypeDetail.exportSuccess]
-#. defaultMessage is:
-#. 成功！你已經成功匯出產品原型。
 #. [Prototypes.exportSuccess]
 #. defaultMessage is:
 #. 成功！你已經成功匯出產品原型。
-#: messages/app/components/prototypeDetail/messages.json
 #: messages/app/components/prototypes/messages.json
 msgid "成功！你已經成功匯出產品原型。"
 msgstr "Success! The prototype has been exported."
@@ -601,6 +604,20 @@ msgstr "Success! The data channel has been created."
 #: messages/app/components/profile/messages.json
 msgid "成功！你已經成功更新圖片。"
 msgstr "Success! The image has been updated."
+
+#. [PrototypeDetail.unmarkTemplateSuccess]
+#. defaultMessage is:
+#. 成功！此原型已取消範例設定。
+#: messages/app/components/prototypeDetail/messages.json
+msgid "成功！此原型已取消範例設定。"
+msgstr "Success! The template sharing has been stopped."
+
+#. [PrototypeDetail.markTemplateSuccess]
+#. defaultMessage is:
+#. 成功！此原型已設定為範例並分享。
+#: messages/app/components/prototypeDetail/messages.json
+msgid "成功！此原型已設定為範例並分享。"
+msgstr "Success! The prototype has been shared as a template."
 
 #. [Dashboard.myPrototype]
 #. defaultMessage is:
@@ -703,6 +720,13 @@ msgstr "Description: "
 #: messages/app/components/prototypes/messages.json
 msgid "搜尋"
 msgstr "Search"
+
+#. [Header.tutorial]
+#. defaultMessage is:
+#. 教學範例
+#: messages/app/components/header/messages.json
+msgid "教學範例"
+msgstr "Tutorial"
 
 #. [PrototypeDetail.add]
 #. defaultMessage is:
@@ -1123,6 +1147,13 @@ msgstr "Copy"
 msgid "觸發條件與動作"
 msgstr "Triggers and actions"
 
+#. [PrototypeDetail.markTemplate]
+#. defaultMessage is:
+#. 設為原型範例
+#: messages/app/components/prototypeDetail/messages.json
+msgid "設為原型範例"
+msgstr "Share as template"
+
 #. [PrototypeDetail.createdAt]
 #. defaultMessage is:
 #. 註冊時間
@@ -1146,6 +1177,13 @@ msgstr "Details"
 #: messages/app/components/prototypes/messages.json
 msgid "詳細"
 msgstr "Details"
+
+#. [Header.intromcslite]
+#. defaultMessage is:
+#. 認識 MCS Lite
+#: messages/app/components/header/messages.json
+msgid "認識 MCS Lite"
+msgstr "MCS Lite Introduction"
 
 #. [Header.language]
 #. defaultMessage is:
@@ -1399,6 +1437,13 @@ msgstr "Enter the data channel description"
 #: messages/app/components/deviceDetail/apiHint/messages.json
 msgid "這裡是可能有幫助的 API 提示"
 msgstr "Here is a helpful API hint"
+
+#. [Dialogs.chooseCreateMethod]
+#. defaultMessage is:
+#. 選擇創建方式
+#: messages/app/components/common/dialogs/messages.json
+msgid "選擇創建方式"
+msgstr "Select creation method"
 
 #. [UnitSelect.inputSelectPlaceholder]
 #. defaultMessage is:
