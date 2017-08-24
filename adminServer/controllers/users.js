@@ -353,7 +353,7 @@ module.exports = function ($db) {
 
   var retrieveUsers = function(req, res, next) {
     var query = {
-      isActive: true,
+      // isActive: true,
     };
 
     var userName = req.query.userName;
