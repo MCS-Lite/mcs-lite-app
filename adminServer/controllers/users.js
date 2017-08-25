@@ -307,7 +307,7 @@ module.exports = function ($db) {
     } else if (req.body.hasOwnProperty('isActive')) {
       return users.editUser({
         userId: req.params.userId, 
-        isActive: true
+        isActive: !req.body.isActive,
       }, {
         isActive: req.body.isActive,
       })
@@ -322,6 +322,7 @@ module.exports = function ($db) {
 
   var deleteUser = function(req, res, next) {
     var userId = [];
+
     if (req.params.userId) userId = req.params.userId.split(',');
     if (req.body.userId) userId = req.body.userId.split(',');
     
