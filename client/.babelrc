@@ -16,6 +16,9 @@
           "camel2DashComponentName": false
         }
       ]
-    ]
+    ],
+    ["react-intl", {
+        "messagesDir": "./messages"
+    }]
   ]
 }

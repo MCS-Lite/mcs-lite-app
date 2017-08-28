@@ -9,7 +9,7 @@ import withState from 'recompose/withState';
 import withHandlers from 'recompose/withHandlers';
 import MiUnfold from 'mtk-icon/lib/MiUnfold';
 
-import Nav from './Nav';
+import Nav from './nav';
 import Clickable from '../clickable';
 
 import dropButtonStyles from './dropDownButton.css';

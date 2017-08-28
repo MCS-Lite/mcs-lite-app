@@ -1,5 +1,6 @@
 import React from 'react';
-
+import PropTypes from 'prop-types';
+import pure from 'recompose/pure';
 import Breadcrumb from './breadcrumb';
 import PanelContent from './panelContent';
 import PrototypeDetailHeader from './header';
@@ -18,6 +19,7 @@ const Prototypes = ({
   pushToast,
   deleteDevice,
   retrievePrototype,
+  setPrototypeToTemplate,
   uploadPrototypeImage,
   uploadDeviceImage,
   exportJSON,
@@ -57,6 +59,9 @@ const Prototypes = ({
           readOnly={readOnly}
           isTemplate={isTemplate}
           exportJSON={exportJSON}
+          isAdmin={isAdmin}
+          setPrototypeToTemplate={setPrototypeToTemplate}
+          retrievePrototype={retrievePrototype}
           {...props}
         />
         <PrototypeDetailInfo
@@ -85,4 +90,24 @@ const Prototypes = ({
   );
 };
 
-export default Prototypes;
+Prototypes.propTypes = {
+  main: PropTypes.shape({
+    userId: PropTypes.string,
+    userName: PropTypes.string,
+  }),
+  prototypes: PropTypes.object,
+  createTestDevice: PropTypes.func,
+  createDataChannel: PropTypes.func,
+  deleteDataChannel: PropTypes.func,
+  retrieveUnitTypes: PropTypes.func,
+  createUnitTypes: PropTypes.func,
+  pushToast: PropTypes.func,
+  deleteDevice: PropTypes.func,
+  retrievePrototype: PropTypes.func,
+  setPrototypeToTemplate: PropTypes.func,
+  uploadPrototypeImage: PropTypes.func,
+  uploadDeviceImage: PropTypes.func,
+  exportJSON: PropTypes.func,
+};
+
+export default pure(Prototypes);

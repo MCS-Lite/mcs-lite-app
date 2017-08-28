@@ -2,7 +2,7 @@ import React from 'react';
 
 import Panel from 'mtk-ui/lib/Panel';
 import PanelHeader from 'mtk-ui/lib/PanelHeader';
-import PanelIcon from 'mtk-ui/lib/panelIcon';
+import PanelIcon from 'mtk-ui/lib/PanelIcon';
 import PanelBody from 'mtk-ui/lib/PanelBody';
 import Table from 'mtk-ui/lib/table/Table';
 import { Heading } from 'mcs-lite-ui';

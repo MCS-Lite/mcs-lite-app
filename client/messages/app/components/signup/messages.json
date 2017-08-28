@@ -1,0 +1,37 @@
+[
+  {
+    "id": "Signup.nickname",
+    "description": "",
+    "defaultMessage": "暱稱"
+  },
+  {
+    "id": "Signup.Email",
+    "description": "",
+    "defaultMessage": "Email"
+  },
+  {
+    "id": "Signup.password",
+    "description": "",
+    "defaultMessage": "密碼"
+  },
+  {
+    "id": "Signup.passwordAgain",
+    "description": "",
+    "defaultMessage": "確認您的密碼"
+  },
+  {
+    "id": "Signup.cancel",
+    "description": "",
+    "defaultMessage": "取消"
+  },
+  {
+    "id": "Signup.submit",
+    "description": "",
+    "defaultMessage": "確認"
+  },
+  {
+    "id": "Signup.createAnAccount",
+    "description": "",
+    "defaultMessage": "建立一個帳戶"
+  }
+]

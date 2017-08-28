@@ -1,0 +1,153 @@
+[
+  {
+    "id": "Prototypes.prototypeList",
+    "description": "",
+    "defaultMessage": "原型列表"
+  },
+  {
+    "id": "Prototypes.createYourPrototypeNow",
+    "description": "",
+    "defaultMessage": "馬上創建原型！"
+  },
+  {
+    "id": "Prototypes.version",
+    "description": "",
+    "defaultMessage": "版本："
+  },
+  {
+    "id": "Prototypes.development",
+    "description": "",
+    "defaultMessage": "開發"
+  },
+  {
+    "id": "Prototypes.prototype",
+    "description": "",
+    "defaultMessage": "原型"
+  },
+  {
+    "id": "Prototypes.createPrototype",
+    "description": "",
+    "defaultMessage": "創建原型"
+  },
+  {
+    "id": "Prototypes.detail",
+    "description": "",
+    "defaultMessage": "詳細"
+  },
+  {
+    "id": "Prototypes.create",
+    "description": "",
+    "defaultMessage": "創建"
+  },
+  {
+    "id": "Prototypes.prototypeName",
+    "description": "",
+    "defaultMessage": "產品原型名稱"
+  },
+  {
+    "id": "Prototypes.inputThePrototypeName",
+    "description": "",
+    "defaultMessage": "輸入產品原型名稱"
+  },
+  {
+    "id": "Prototypes.prototypeVersion",
+    "description": "",
+    "defaultMessage": "產品原型版本"
+  },
+  {
+    "id": "Prototypes.inputThePrototypeVersion",
+    "description": "",
+    "defaultMessage": "輸入產品原型版本"
+  },
+  {
+    "id": "Prototypes.prototypeDescription",
+    "description": "",
+    "defaultMessage": "描述："
+  },
+  {
+    "id": "Prototypes.uploadImage",
+    "description": "",
+    "defaultMessage": "上傳影像"
+  },
+  {
+    "id": "Prototypes.inputThePrototypeDescription",
+    "description": "",
+    "defaultMessage": "輸入產品原型描述"
+  },
+  {
+    "id": "Prototypes.editPrototype",
+    "description": "",
+    "defaultMessage": "編輯原型"
+  },
+  {
+    "id": "Prototypes.notice",
+    "description": "",
+    "defaultMessage": "注意！"
+  },
+  {
+    "id": "Prototypes.deletePrototype",
+    "description": "",
+    "defaultMessage": "是否確定刪除？ 一但刪除將無法復原。"
+  },
+  {
+    "id": "Prototypes.OK",
+    "description": "",
+    "defaultMessage": "確認"
+  },
+  {
+    "id": "Prototypes.edit",
+    "description": "",
+    "defaultMessage": "編輯"
+  },
+  {
+    "id": "Prototypes.clone",
+    "description": "",
+    "defaultMessage": "複製"
+  },
+  {
+    "id": "Prototypes.delete",
+    "description": "",
+    "defaultMessage": "刪除"
+  },
+  {
+    "id": "Prototypes.export",
+    "description": "",
+    "defaultMessage": "匯出"
+  },
+  {
+    "id": "Prototypes.cloneFromExistingPrototype",
+    "description": "",
+    "defaultMessage": "從既有的產品原型複製"
+  },
+  {
+    "id": "Prototypes.cloneFromExistingPrototypeIntro",
+    "description": "",
+    "defaultMessage": "從既有的產品原型複製出一份相同的產品原型來做更進一步的開發。"
+  },
+  {
+    "id": "Prototypes.save",
+    "description": "",
+    "defaultMessage": "儲存"
+  },
+  {
+    "id": "Prototypes.cancel",
+    "description": "",
+    "defaultMessage": "取消"
+  },
+  {
+    "id": "Prototypes.search",
+    "defaultMessage": "搜尋"
+  },
+  {
+    "id": "Prototypes.exportSuccess",
+    "defaultMessage": "成功！你已經成功匯出產品原型。"
+  },
+  {
+    "id": "Prototypes.createPrototypeSuccess",
+    "defaultMessage": "成功！你已經成功建立一個產品原型。"
+  },
+  {
+    "id": "Prototypes.prototypeTemplate",
+    "defaultMessage": "原型範例"
+  }
+]

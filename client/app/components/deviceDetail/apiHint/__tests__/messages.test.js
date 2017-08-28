@@ -1,3 +1,5 @@
+import messages from '../messages';
+
 it('should return messages', () => {
-  expect(require('../messages')).toMatchSnapshot();
+  expect(messages).toMatchSnapshot();
 });

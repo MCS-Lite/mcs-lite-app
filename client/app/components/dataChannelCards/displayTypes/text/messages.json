@@ -1,0 +1,12 @@
+[
+  {
+    "id": "Text.lowerbound",
+    "description": "",
+    "defaultMessage": "資料通道下限"
+  },
+  {
+    "id": "Text.upperbound",
+    "description": "",
+    "defaultMessage": "資料通道上限"
+  }
+]

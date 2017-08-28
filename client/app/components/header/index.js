@@ -9,6 +9,7 @@ import withHandlers from 'recompose/withHandlers';
 import MiDevelopment from 'mtk-icon/lib/MiDevelopment';
 import Avatar from 'mtk-ui/lib/Avatar';
 import IconResources from 'mcs-lite-icon/lib/IconResources';
+import IconPublic from 'mcs-lite-icon/lib/IconPublic';
 import logo from 'images/logo_mcs_lite_white.svg';
 import { withGetMessages } from 'react-intl-inject-hoc';
 import messages from './messages';
@@ -36,158 +37,221 @@ const isMenuActive = (listName, pathname) => {
 const isItemActive = (regPath, pathname) => new RegExp(regPath).test(pathname);
 
 const Header = ({
-  resourcesList,
   basePath,
   imageUrl,
   pathname,
   onSignOut,
   getMessages: t,
-}) => (
-  <header className={headerStyles.base}>
-    <div className={headerStyles.mask} />
-    <div className={headerStyles.container}>
-      <Nav>
-        <NavItem
-          to="/dashboard"
-          linkStyle={headerStyles.logoLink}
-        >
-          <img
-            src={logo}
-            alt="logo"
-            className={headerStyles.logo}
-          />
-        </NavItem>
-      </Nav>
-      <Nav>
-        <DropdownButton
-          buttonStyle={c(
-            headerStyles.link,
-            isMenuActive('developmentList', pathname) && headerStyles.activeStyle)}
-          activeStyle={headerStyles.activeStyle}
-          title={
-            <span>
-              <MiDevelopment className={headerStyles.prefixIcon} />
-              {t('development')}
-            </span>
-          }
-        >
+}) => {
+
+  const resourcesList = [
+    {
+      name: t('intromcslite'),
+      path: './docs/zh-tw/index.html',
+    },
+    {
+      name: t('tutorial'),
+      path: './docs/zh-tw/mcs_lite_tutorial/7697_overview.html',
+    }
+  ];
+
+  return (
+    <header className={headerStyles.base}>
+      <div className={headerStyles.mask} />
+      <div className={headerStyles.container}>
+        <Nav>
           <NavItem
-            to="/prototypes"
-            className={c(
-              headerStyles.menuItem,
-              isItemActive('prototypes', pathname) ? headerStyles.menuItemActive : {},
-            )}
-            linkStyle={headerStyles.menuLink}
-            activeStyle={headerStyles.menuItemActive}
+            to="/dashboard"
+            linkStyle={headerStyles.logoLink}
           >
-            {t('prototype')}
+            <img
+              src={logo}
+              alt="logo"
+              className={headerStyles.logo}
+            />
           </NavItem>
-          <NavItem
-            to="/devices"
-            className={c(
-              headerStyles.menuItem,
-              isItemActive('devices', pathname) ? headerStyles.menuItemActive : {},
-              headerStyles.menuItemBorder,
-            )}
-            linkStyle={headerStyles.menuLink}
-            activeStyle={headerStyles.menuItemActive}
+        </Nav>
+        <Nav>
+          <DropdownButton
+            buttonStyle={c(
+              headerStyles.link,
+              isMenuActive('developmentList', pathname) && headerStyles.activeStyle)}
+            activeStyle={headerStyles.activeStyle}
+            title={
+              <span>
+                <MiDevelopment className={headerStyles.prefixIcon} />
+                {t('development')}
+              </span>
+            }
           >
-            {t('devices')}
-          </NavItem>
-        </DropdownButton>
-        <DropdownButton
-          id="resources"
-          buttonStyle={c(
-            headerStyles.link,
-            isMenuActive('resourcesList', pathname) && headerStyles.activeStyle,
-          )}
-          activeStyle={headerStyles.activeStyle}
-          title={
-            <span>
-              <IconResources className={headerStyles.prefixIcon} />
-              {t('resources')}
-            </span>
-          }
-        >
-          {
-            resourcesList.map((entry, index, array) => (
-              <NavItem
-                key={`nav-${entry.path}`}
-                to={entry.path.startsWith('http') ? entry.path : basePath + entry.path}
-                className={c(
-                  headerStyles.menuItem,
-                  isItemActive(entry.path, pathname) ? headerStyles.menuItemActive : {},
-                  array.length === index + 1 ? headerStyles.menuItemBorder : {},
-                )}
-                isHref
-                linkStyle={headerStyles.menuLink}
-                activeStyle={c(
-                  headerStyles.menuItemActive,
-                  array.length === index + 1 ? headerStyles.menuItemBorder : {},
-                )}
-              >
-                { entry.name }
-              </NavItem>
-            ))
-          }
-        </DropdownButton>
-      </Nav>
-      <Nav className={headerStyles.optionalBlock}>
-        <DropdownButton
-          id="profile"
-          buttonStyle={headerStyles.link}
-          activeStyle={headerStyles.activeStyle}
-          title={
-            <span>
-              <Avatar
-                size={30}
-                src={imageUrl}
-                className={headerStyles.userImage}
-                alt="profilePhoto"
-              />
-            </span>
-          }
-        >
-          <NavItem
-            key="Profile"
-            to="/profile"
-            className={c(
-              headerStyles.menuItem,
-              isItemActive('profile', pathname) ? headerStyles.menuItemActive : {},
+            <NavItem
+              to="/prototypes"
+              className={c(
+                headerStyles.menuItem,
+                isItemActive('prototypes', pathname) ? headerStyles.menuItemActive : {},
+              )}
+              linkStyle={headerStyles.menuLink}
+              activeStyle={headerStyles.menuItemActive}
+            >
+              {t('prototype')}
+            </NavItem>
+            <NavItem
+              to="/devices"
+              className={c(
+                headerStyles.menuItem,
+                isItemActive('devices', pathname) ? headerStyles.menuItemActive : {},
+                headerStyles.menuItemBorder,
+              )}
+              linkStyle={headerStyles.menuLink}
+              activeStyle={headerStyles.menuItemActive}
+            >
+              {t('devices')}
+            </NavItem>
+          </DropdownButton>
+          <DropdownButton
+            id="resources"
+            buttonStyle={c(
+              headerStyles.link,
+              isMenuActive('resourcesList', pathname) && headerStyles.activeStyle,
             )}
-            linkStyle={headerStyles.menuLink}
-            activeStyle={headerStyles.menuItemActive}
+            activeStyle={headerStyles.activeStyle}
+            title={
+              <span>
+                <IconResources className={headerStyles.prefixIcon} />
+                {t('resources')}
+              </span>
+            }
           >
-            {t('profile')}
-          </NavItem>
-          <NavItem
-            key="SignOut"
-            onClick={onSignOut}
-            className={headerStyles.menuItem}
-            linkStyle={headerStyles.menuLink}
-            activeStyle={c(
-              headerStyles.menuItemActive,
-              headerStyles.menuItemBorder,
-            )}
+            {
+              resourcesList.map((entry, index, array) => (
+                <NavItem
+                  key={`nav-${entry.path}`}
+                  to={entry.path.startsWith('http') ? entry.path : basePath + entry.path}
+                  className={c(
+                    headerStyles.menuItem,
+                    isItemActive(entry.path, pathname) ? headerStyles.menuItemActive : {},
+                    array.length === index + 1 ? headerStyles.menuItemBorder : {},
+                  )}
+                  isHref
+                  linkStyle={headerStyles.menuLink}
+                  activeStyle={c(
+                    headerStyles.menuItemActive,
+                    array.length === index + 1 ? headerStyles.menuItemBorder : {},
+                  )}
+                >
+                  { entry.name }
+                </NavItem>
+              ))
+            }
+          </DropdownButton>
+        </Nav>
+        <Nav className={headerStyles.optionalBlock}>
+          <DropdownButton
+            id="profile"
+            buttonStyle={headerStyles.link}
+            activeStyle={headerStyles.activeStyle}
+            title={
+              <span>
+                <Avatar
+                  size={30}
+                  src={imageUrl}
+                  className={headerStyles.userImage}
+                  alt="profilePhoto"
+                />
+              </span>
+            }
           >
-            {t('signout')}
-          </NavItem>
-        </DropdownButton>
-      </Nav>
-    </div>
-  </header>
-);
+            <NavItem
+              key="Profile"
+              to="/profile"
+              className={c(
+                headerStyles.menuItem,
+                isItemActive('profile', pathname) ? headerStyles.menuItemActive : {},
+              )}
+              linkStyle={headerStyles.menuLink}
+              activeStyle={headerStyles.menuItemActive}
+            >
+              {t('profile')}
+            </NavItem>
+            <NavItem
+              key="SignOut"
+              onClick={onSignOut}
+              className={headerStyles.menuItem}
+              linkStyle={headerStyles.menuLink}
+              activeStyle={c(
+                headerStyles.menuItemActive,
+                headerStyles.menuItemBorder,
+              )}
+            >
+              {t('signout')}
+            </NavItem>
+          </DropdownButton>
+        </Nav>
+        <Nav className={headerStyles.optionalBlock}>
+          <DropdownButton
+            id="profile"
+            buttonStyle={headerStyles.link}
+            activeStyle={headerStyles.activeStyle}
+            title={
+              <span>
+                <IconPublic className={headerStyles.prefixIcon} />
+                {t('language')}
+              </span>
+            }
+          >
+            <NavItem
+              key="en"
+              href={window.location.origin + window.location.pathname + '?locale=en'}
+              className={c(
+                headerStyles.menuItem,
+                isItemActive('profile', pathname) ? headerStyles.menuItemActive : {},
+              )}
+              linkStyle={headerStyles.menuLink}
+              activeStyle={headerStyles.menuItemActive}
+            >
+              English
+            </NavItem>
+            <NavItem
+              key="zh-TW"
+              href={window.location.origin + window.location.pathname + '?locale=zh-TW'}
+              className={headerStyles.menuItem}
+              linkStyle={headerStyles.menuLink}
+              activeStyle={c(
+                headerStyles.menuItemActive,
+                headerStyles.menuItemBorder,
+              )}
+            >
+              繁體中文
+            </NavItem>
+            <NavItem
+              key="zh-CN"
+              href={window.location.origin + window.location.pathname + '?locale=zh-CN'}
+              className={headerStyles.menuItem}
+              linkStyle={headerStyles.menuLink}
+              activeStyle={c(
+                headerStyles.menuItemActive,
+                headerStyles.menuItemBorder,
+              )}
+            >
+              简体中文
+            </NavItem>
+          </DropdownButton>
+        </Nav>
+      </div>
+    </header>
+  );
+};
 
 export default compose(
   pure,
   withState('helpList', 'setHelpList', resourcesConfig.helpList),
-  withState('resourcesList', 'setResourcesList', resourcesConfig.resourcesList),
+  // withState('resourcesList', 'setResourcesList', resourcesConfig.resourcesList),
   withState('basePath', 'setBasePath', () => `${window.location.origin}/`),
   withHandlers({
     onSignOut: props => () => {
       browserHistory.push('/login');
       props.signOut();
-    },
+    },    
   }),
   withGetMessages(messages, 'Header'),
 )(Header);

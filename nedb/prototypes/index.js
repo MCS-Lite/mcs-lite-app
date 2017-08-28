@@ -128,7 +128,7 @@ module.exports = function(prototypes) {
       return new Promise(function(resolve, reject) {
         return prototypes.update(query, { $set: update }, {}, function(err, num) {
           if (err) return reject();
-          resolve({ message: 'success' });
+          return resolve({ message: 'success' });
         });
       });
     },

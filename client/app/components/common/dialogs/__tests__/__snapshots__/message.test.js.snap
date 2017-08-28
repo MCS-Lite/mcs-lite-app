@@ -1,0 +1,114 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should return messages 1`] = `
+Object {
+  "Dialogs.browseAndUpload": Object {
+    "defaultMessage": "瀏覽上傳",
+    "id": "Dialogs.browseAndUpload",
+  },
+  "Dialogs.cancel": Object {
+    "defaultMessage": "取消",
+    "id": "Dialogs.cancel",
+  },
+  "Dialogs.chooseCreateMethod": Object {
+    "defaultMessage": "選擇創建方式",
+    "id": "Dialogs.chooseCreateMethod",
+  },
+  "Dialogs.clear": Object {
+    "defaultMessage": "清除",
+    "id": "Dialogs.clear",
+  },
+  "Dialogs.clonePrototype": Object {
+    "defaultMessage": "使用原型範例",
+    "id": "Dialogs.clonePrototype",
+  },
+  "Dialogs.codeBlockPlaceholder": Object {
+    "defaultMessage": "在此處貼上JSON...",
+    "id": "Dialogs.codeBlockPlaceholder",
+  },
+  "Dialogs.createPrototype": Object {
+    "defaultMessage": "創建原型",
+    "id": "Dialogs.createPrototype",
+  },
+  "Dialogs.createPrototypeSuccess": Object {
+    "defaultMessage": "成功！你已經成功建立一個產品原型。",
+    "id": "Dialogs.createPrototypeSuccess",
+  },
+  "Dialogs.descriptionLabel": Object {
+    "defaultMessage": "描述",
+    "id": "descriptionLabel",
+  },
+  "Dialogs.descriptionPlaceholder": Object {
+    "defaultMessage": "輸入裝置描述",
+    "id": "Dialogs.descriptionPlaceholder",
+  },
+  "Dialogs.deviceNameLabel": Object {
+    "defaultMessage": "測試裝置名稱",
+    "id": "Dialogs.deviceNameLabel",
+  },
+  "Dialogs.deviceNamePlaceholder": Object {
+    "defaultMessage": "輸入裝置名稱",
+    "id": "Dialogs.deviceNamePlaceholder",
+  },
+  "Dialogs.editDevice": Object {
+    "defaultMessage": "編輯測試裝置",
+    "id": "Dialogs.editDevice",
+  },
+  "Dialogs.errorWhenUploadJSON": Object {
+    "defaultMessage": "錯誤！上傳JSON檔時發生錯誤。",
+    "id": "Dialogs.errorWhenUploadJSON",
+  },
+  "Dialogs.importJSON": Object {
+    "defaultMessage": "匯入 JSON 檔",
+    "id": "Dialogs.importJSON",
+  },
+  "Dialogs.inputPrototypeInfo": Object {
+    "defaultMessage": "輸入原型資訊",
+    "id": "Dialogs.inputPrototypeInfo",
+  },
+  "Dialogs.inputThePrototypeDescription": Object {
+    "defaultMessage": "輸入產品原型描述",
+    "id": "Dialogs.inputThePrototypeDescription",
+  },
+  "Dialogs.inputThePrototypeName": Object {
+    "defaultMessage": "輸入產品原型名稱",
+    "id": "Dialogs.inputThePrototypeName",
+  },
+  "Dialogs.inputThePrototypeVersion": Object {
+    "defaultMessage": "輸入產品原型版本",
+    "id": "Dialogs.inputThePrototypeVersion",
+  },
+  "Dialogs.prototypeDescription": Object {
+    "defaultMessage": "描述",
+    "id": "Dialogs.prototypeDescription",
+  },
+  "Dialogs.prototypeName": Object {
+    "defaultMessage": "產品原型名稱",
+    "id": "Dialogs.prototypeName",
+  },
+  "Dialogs.prototypeVersion": Object {
+    "defaultMessage": "產品原型版本",
+    "id": "Dialogs.prototypeVersion",
+  },
+  "Dialogs.save": Object {
+    "defaultMessage": "儲存",
+    "id": "Dialogs.save",
+  },
+  "Dialogs.selectExample": Object {
+    "defaultMessage": "選擇範例",
+    "id": "Dialogs.selectExample",
+  },
+  "Dialogs.uploadImage": Object {
+    "defaultMessage": "上傳影像",
+    "id": "Dialogs.uploadImage",
+  },
+  "Dialogs.uploadJSONhint": Object {
+    "defaultMessage": "匯入產品原型：請將使用 JSON 格式之內容貼於此。 或",
+    "id": "Dialogs.uploadJSONhint",
+  },
+  "Dialogs.useExample": Object {
+    "defaultMessage": "使用範例原型",
+    "id": "Dialogs.useExample",
+  },
+}
+`;

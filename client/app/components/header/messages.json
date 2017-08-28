@@ -1,0 +1,37 @@
+[
+  {
+    "id": "Header.development",
+    "description": "",
+    "defaultMessage": "開發"
+  },
+  {
+    "id": "Header.prototype",
+    "description": "",
+    "defaultMessage": "原型"
+  },
+  {
+    "id": "Header.devices",
+    "description": "",
+    "defaultMessage": "測試裝置"
+  },
+  {
+    "id": "Header.resources",
+    "description": "",
+    "defaultMessage": "資源"
+  },
+  {
+    "id": "Header.profile",
+    "description": "",
+    "defaultMessage": "個人檔案"
+  },
+  {
+    "id": "Header.signout",
+    "description": "",
+    "defaultMessage": "登出"
+  },
+  {
+    "id": "Header.language",
+    "description": "",
+    "defaultMessage": "語言"
+  }
+]

@@ -1,0 +1,86 @@
+[
+  {
+    "id": "Profile.profile",
+    "defaultMessage": "個人檔案"
+  },
+  {
+    "id": "Profile.userName",
+    "defaultMessage": "暱稱"
+  },
+  {
+    "id": "Profile.password",
+    "defaultMessage": "密碼"
+  },
+  {
+    "id": "Profile.editPassword",
+    "defaultMessage": "修改密碼"
+  },
+  {
+    "id": "Profile.language",
+    "defaultMessage": "語言"
+  },
+  {
+    "id": "Profile.editUserName",
+    "defaultMessage": "修改暱稱"
+  },
+  {
+    "id": "Profile.editUserNameSuccess",
+    "defaultMessage": "成功！你已經成功修改暱稱。"
+  },
+  {
+    "id": "Profile.userNamePlaceholder",
+    "defaultMessage": "請輸入暱稱"
+  },
+  {
+    "id": "Profile.newPassword",
+    "defaultMessage": "新密碼"
+  },
+  {
+    "id": "Profile.newPasswordPlaceholder",
+    "defaultMessage": "輸入新密碼"
+  },
+  {
+    "id": "Profile.confirmPassword",
+    "defaultMessage": "確認密碼"
+  },
+  {
+    "id": "Profile.confirmPasswordPlaceholder",
+    "defaultMessage": "再次輸入新密碼"
+  },
+  {
+    "id": "Profile.cancel",
+    "defaultMessage": "取消"
+  },
+  {
+    "id": "Profile.save",
+    "defaultMessage": "儲存"
+  },
+  {
+    "id": "Profile.passwordLengthError",
+    "defaultMessage": "密碼長度需要長於 8 個字元"
+  },
+  {
+    "id": "Profile.confirmPasswordError",
+    "defaultMessage": "確認密碼與密碼不一至"
+  },
+  {
+    "id": "Profile.changePasswordSuccess",
+    "defaultMessage": "成功！你已經成功修改密碼。"
+  },
+  {
+    "id": "Profile.uploadImage",
+    "defaultMessage": "上傳圖片"
+  },
+  {
+    "id": "Profile.errorWhenUploadImage",
+    "defaultMessage": "錯誤！上傳圖片時發生錯誤。"
+  },
+  {
+    "id": "Profile.fileSizeExceeds",
+    "defaultMessage": "錯誤！圖片檔案過大。"
+  },
+  {
+    "id": "Profile.imageUploadSuccess",
+    "defaultMessage": "成功！你已經成功更新圖片。"
+  }
+]

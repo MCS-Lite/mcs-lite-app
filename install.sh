@@ -1,8 +1,17 @@
 #!/usr/bin/env bash
 
+cp -R ./configs/ ./defaultConfigs 
 mkdir uploadImages && cd uploadImages && mkdir device && mkdir profile && mkdir prototype && cd ..
 
 mkdir uploadFotaFiles
+
+mkdir node && cd node && mkdir win32 && mkdir win64 && mkdir osx64
+
+cd ./osx64 && wget https://s3-ap-southeast-1.amazonaws.com/mtk.linkit/mcs-lite-app/nodejsv6.11.0/mac/node && chmod +x ./node && cd -
+cd ./win32 && wget https://s3-ap-southeast-1.amazonaws.com/mtk.linkit/mcs-lite-app/nodejsv6.11.0/win32/node.exe && cd -
+cd ./win64 && wget https://s3-ap-southeast-1.amazonaws.com/mtk.linkit/mcs-lite-app/nodejsv6.11.0/win64/node.exe && cd -
+
+cd ..
 
 rm -rf ./nw.js-sdk
 mkdir nw.js-sdk && cd nw.js-sdk

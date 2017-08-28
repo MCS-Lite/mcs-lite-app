@@ -1,0 +1,17 @@
+[
+  {
+    "id": "HistoricalGraph.datapoint",
+    "description": "",
+    "defaultMessage": "資料點："
+  },
+  {
+    "id": "HistoricalGraph.time",
+    "description": "",
+    "defaultMessage": "時間："
+  },
+  {
+    "id": "HistoricalGraph.noData",
+    "description": "",
+    "defaultMessage": "無歷史資料"
+  }
+]

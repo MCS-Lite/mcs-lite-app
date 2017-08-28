@@ -1,0 +1,36 @@
+[
+  {
+    "id": "ApiHint.helpful",
+    "description": "Title 1",
+    "defaultMessage": "這裡是可能有幫助的 API 提示"
+  },
+  {
+    "id": "ApiHint.example",
+    "description": "description",
+    "defaultMessage": "您可以使用這邊提供的 API 來設定你所需要的動作。例如上傳和讀取資料點。"
+  },
+  {
+    "id": "ApiHint.datachannelName",
+    "defaultMessage": "資料通道名稱："
+  },
+  {
+    "id": "ApiHint.datachannelId",
+    "defaultMessage": "資料通道 Id："
+  },
+  {
+    "id": "ApiHint.apiType",
+    "defaultMessage": "API 類型："
+  },
+  {
+    "id": "ApiHint.upload",
+    "defaultMessage": "上傳資料點"
+  },
+  {
+    "id": "ApiHint.retrieve",
+    "defaultMessage": "取得資料點"
+  },
+  {
+    "id": "ApiHint.copy",
+    "defaultMessage": "複製"
+  }
+]

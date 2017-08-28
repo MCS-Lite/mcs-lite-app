@@ -1,0 +1,52 @@
+[
+  {
+    "id": "CreateTestDevice.title",
+    "description": "",
+    "defaultMessage": "新增測試裝置"
+  },
+  {
+    "id": "CreateTestDevice.name",
+    "description": "",
+    "defaultMessage": "測試裝置名稱"
+  },
+  {
+    "id": "CreateTestDevice.namePlaceholder",
+    "description": "",
+    "defaultMessage": "輸入測試裝置名稱"
+  },
+  {
+    "id": "CreateTestDevice.version",
+    "description": "",
+    "defaultMessage": "測試裝置版本"
+  },
+  {
+    "id": "CreateTestDevice.versionPlaceholder",
+    "description": "",
+    "defaultMessage": "輸入測試裝置版本"
+  },
+  {
+    "id": "CreateTestDevice.description",
+    "description": "",
+    "defaultMessage": "描述"
+  },
+  {
+    "id": "CreateTestDevice.uploadImage",
+    "description": "",
+    "defaultMessage": "上傳影像"
+  },
+  {
+    "id": "CreateTestDevice.descriptionPlaceholder",
+    "description": "",
+    "defaultMessage": "輸入測試裝置描述"
+  },
+  {
+    "id": "CreateTestDevice.cancel",
+    "description": "",
+    "defaultMessage": "取消"
+  },
+  {
+    "id": "CreateTestDevice.save",
+    "description": "",
+    "defaultMessage": "儲存"
+  }
+]
