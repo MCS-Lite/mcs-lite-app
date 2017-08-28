@@ -4,7 +4,7 @@ var schema = require('./schema');
 
 module.exports = function(datachannels) {
 
-  // return {
+  return {
   //   validateSchema: function(object) {
   //     return v.validate(object, schema);
   //   },
@@ -113,5 +113,5 @@ module.exports = function(datachannels) {
   //     });
   //     return Promise.all(channelPool)
   //   },
-  // };
+  };
 };
