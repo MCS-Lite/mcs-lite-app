@@ -10,6 +10,7 @@ var $admin = require('../../configs/admin');
 
 
 module.exports = function ($db) {
+  var users = $db.users;
 
   var startService = function(req, res, next) {
     global.startMCSLiteService();
@@ -95,12 +96,33 @@ module.exports = function ($db) {
     return res.send(200, { data: JSON.stringify(global.logs) });
   };
 
+  var resetData = function(req, res, next) {
+    users.retrieveAdminUsers()
+    .then(function(data) {
+      var adminUsersContent = '';
+      
+      data.forEach(function(k, v) {
+        adminUsersContent += k.toString() + '\n';
+      });
+      
+      fs.writeFileSync(path.resolve(__dirname, '../../db/users.json'), adminUsersContent, 'utf8');
+      fs.writeFileSync(path.resolve(__dirname, '../../db/datapoints.json'), '', 'utf8');
+      fs.writeFileSync(path.resolve(__dirname, '../../db/devices.json'), '', 'utf8');
+      fs.writeFileSync(path.resolve(__dirname, '../../db/prototypes.json'), '', 'utf8');
+      return res.send(200, "success.");
+    })
+    .catch(function(err) {
+      return (400, err);
+    });
+  };
+
   return {
     serviceStatus: false,
     retrieveServiceSetting: retrieveServiceSetting,
     editServiceSetting: editServiceSetting,
     resetServiceSetting: resetServiceSetting,
     getServiceIp: getServiceIp,
+    resetData: resetData,
     getServiceLog: getServiceLog,
     startService: startService,
     stopService: stopService,

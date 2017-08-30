@@ -89,6 +89,45 @@ module.exports = function($db, $app, $admin) {
     handler: usersController.checkCookies,
   };
 
+  this.deleteUser = {
+    path: $admin.apiRoute + '/users/:userId',
+    methods: ['delete'],
+    middleware: [$app.oauth.authorise()],
+    handler: usersController.deleteUser,
+  };
+
+  this.deleteUserByPost = {
+    path: $admin.apiRoute + '/users/delete',
+    methods: ['post'],
+    middleware: [$app.oauth.authorise()],
+    handler: usersController.deleteUser,
+  };
+
+  this.editUser = {  // Include disable User & changeUserPassword
+    path: $admin.apiRoute + '/users/:userId',
+    methods: ['put'],
+    middleware: [$app.oauth.authorise()],
+    handler: usersController.editUser,
+  };
+
+  this.retrieveUsers = {
+    path: $admin.apiRoute + '/users',
+    methods: ['get'],
+    middleware: [$app.oauth.authorise()],
+    handler: usersController.retrieveUsers,
+  };
+
+  this.addNewUser = {
+    path: $admin.apiRoute + '/users',
+    methods: ['post'],
+    middleware: [$app.oauth.authorise()],
+    handler: usersController.addNewUser,
+  };
+
+  // this.addNewUserByCSV = {
+
+  // };
+
   this.startService = {
     path: $admin.apiRoute + '/service/start',
     methods: ['get'],
@@ -145,6 +184,20 @@ module.exports = function($db, $app, $admin) {
     methods: ['get'],
     middleware: [$app.oauth.authorise()],
     handler: serviceController.getServiceLog,
+  };
+
+  this.batchAddNewUserByCSV = {
+    path: $admin.apiRoute + '/users.csv',
+    methods: ['post'],
+    middleware: [$app.oauth.authorise(), bodyParser.raw({ type: 'text/csv' })],
+    handler: usersController.batchAddNewUserByCSV,
+  };
+
+  this.clearAllUserExceptAdmin = {
+    path: $admin.apiRoute + '/clear',
+    methods: ['delete'],
+    middleware: [$app.oauth.authorise()],
+    handler: usersController.clearAllUserExceptAdmin,
   };
 
 };

@@ -94,7 +94,7 @@ module.exports = function(users) {
             if (data.length === 0) {
               return resolve();
             } else {
-              return reject({ error: 'This email was registed!' });
+              return reject({ error: field.email + ', This email was registed!' });
             }
           });
         });
@@ -119,6 +119,31 @@ module.exports = function(users) {
       });
     },
 
+    retrieveUserByQuery: function(query, sort, skip, limit) {
+      return new Promise(function(resolve, reject) {
+        users
+        .find(query)
+        .sort(sort)
+        .skip(skip)
+        .limit(limit)
+        .exec(function(err, data) {
+          if (err) return reject();
+          return resolve(data);
+        });
+      });
+    },
+    retrieveAdminUsers: function(req, res, next) {
+      return new Promise(function(resolve, reject) {
+        return users
+        .find({ 
+          isAdmin: true, 
+          isActive: true 
+        }, function(err, data) {
+          if (err) return reject();
+          return resolve(data);
+        });
+      });
+    },
     checkIsAdmin: function(userId, isMiddleware) {
       return new Promise(function(resolve, reject) {
         return users.find({ userId: userId, isAdmin: true, isActive: true }, function(err, data) {
@@ -175,6 +200,26 @@ module.exports = function(users) {
       });
     },
 
+    deleteUser: function(query) {
+
+      var queue = []; 
+
+      query.userId.forEach(function(key, index) {
+        queue.push(
+          new Promise(function(resolve, reject) {
+            var _q = query;
+            _q.userId = key; 
+            console.log(_q);
+            return users.remove(_q, { multi: true }, function(err, data) {
+              if (err) return reject();
+              resolve(data);
+            });
+          })  
+        )
+      });
+      return Promise.all(queue);
+    },
+    
     editUser: function(query, update) {
       return new Promise(function(resolve, reject) {
         return users.update(query, { $set: update }, {}, function(err, num) {
@@ -183,5 +228,31 @@ module.exports = function(users) {
         });
       });
     },
+
+    clearAllUser: function() {
+      return new Promise(function(resolve, reject) {
+        return users.find({
+          isAdmin: false,
+          isActive: true,
+        }, function(err, data) {
+          if (err) return reject();
+          resolve(data);
+        })
+      })
+      .then(function(data) {
+        var queue = [];
+        data.forEach(function(k, i) {
+          queue.push(
+            new Promise(function(resolve, reject) {
+              return users.remove({ userId: k.userId }, { multi: true }, function(err, data) {
+                if (err) return reject();
+                resolve(data);
+              });
+            })  
+          )
+        });  
+        return Promise.all(queue);
+      });
+    }
   };
 }
