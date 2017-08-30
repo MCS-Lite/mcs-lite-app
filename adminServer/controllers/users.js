@@ -414,7 +414,7 @@ module.exports = function ($db) {
           userName: key.userName,
           email: key.email,
           password: key.password,
-          isAdmin: true,
+          isAdmin: false,
         })
       );
     });
