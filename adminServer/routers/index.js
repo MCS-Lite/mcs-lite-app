@@ -52,7 +52,7 @@ module.exports = function($db, $app, $admin) {
       return res.render(path.resolve(__dirname, adminPathname, 'index.html'), function(err, html) {
         res.send(html);
       });
-    }, 
+    },
   };
 
   this.loginInterface = {
