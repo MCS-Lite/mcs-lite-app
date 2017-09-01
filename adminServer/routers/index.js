@@ -52,7 +52,7 @@ module.exports = function($db, $app, $admin) {
       return res.render(path.resolve(__dirname, adminPathname, 'index.html'), function(err, html) {
         res.send(html);
       });
-    }, 
+    },
   };
 
   this.loginInterface = {
@@ -189,7 +189,7 @@ module.exports = function($db, $app, $admin) {
   this.batchAddNewUserByCSV = {
     path: $admin.apiRoute + '/users.csv',
     methods: ['post'],
-    middleware: [$app.oauth.authorise(), bodyParser.raw({ type: 'text/csv' })],
+    middleware: [$app.oauth.authorise(), bodyParser.urlencoded({ type: 'text/csv' })],
     handler: usersController.batchAddNewUserByCSV,
   };
 
