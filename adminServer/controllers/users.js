@@ -8,13 +8,13 @@ const adminPathname = '../../node_modules/mcs-lite-admin-web/build';
 
 module.exports = function ($db) {
   var users = $db.users;
-  
+
   var signupInterface = function(req, res, next) {
     return res.render(path.resolve(__dirname, adminPathname, 'index.html'), function(err, html) {
       res.send(html);
     });
   };
-  
+
   var loginInterface = function(req, res, next) {
     return users.checkDefaultUserCount()
     .then(function(status) {
@@ -79,7 +79,7 @@ module.exports = function ($db) {
             return res.render(path.resolve(__dirname, adminPathname, 'index.html'), function(err, html) {
               res.send(html);
             });
-            
+
           }).catch(function(err) {
             /* 有任何錯誤就返回首頁 */
             res.clearCookie('token', { path: '/' });
@@ -306,7 +306,7 @@ module.exports = function ($db) {
       });
     } else if (req.body.hasOwnProperty('isActive')) {
       return users.editUser({
-        userId: req.params.userId, 
+        userId: req.params.userId,
         isActive: !req.body.isActive,
       }, {
         isActive: req.body.isActive,
@@ -325,9 +325,9 @@ module.exports = function ($db) {
 
     if (req.params.userId) userId = req.params.userId.split(',');
     if (req.body.userId) userId = req.body.userId;
-    
+
     return users.deleteUser({
-      userId: userId, 
+      userId: userId,
     })
     .then(function(data) {
       return res.send(200, "success.");
@@ -364,7 +364,7 @@ module.exports = function ($db) {
     if (q) {
       query['$or'] = [];
       query['$or'].push({email: { $regex: new RegExp(q)}});
-      query['$or'].push({userName: { $regex: new RegExp(q)}});  
+      query['$or'].push({userName: { $regex: new RegExp(q)}});
     }
 
     if (userName) {
@@ -374,11 +374,11 @@ module.exports = function ($db) {
     if (email) {
       query.email = { $regex: new RegExp(email) };
     }
-    
+
     var sort = req.query.sort;
     var skip = req.query.skip;
     var limit = req.query.limit;
-    
+
     return users.retrieveUserByQuery(query, sort, skip, limit)
     .then(function(data) {
       return res.send(200, data);
@@ -392,20 +392,20 @@ module.exports = function ($db) {
   var batchAddNewUserByCSV = function(req, res, next) {
     var rawData;
     var content = [];
-    
+
     if (Object.keys(req.body).length === 0){
       return res.send(400, { message: 'Raw body is null.' });
     } else {
-      rawData = Object.keys(req.body)[0].toString().split('\n');
+      rawData = req.body.toString().split('\n');
     }
-    
+
     rawData.forEach(function(key, item) {
       if (key.split(',').length === 3) {
         content.push({
           userName: key.split(',')[0],
           email: key.split(',')[1],
           password: key.split(',')[2],
-        });  
+        });
       }
     });
     var queue = [];
@@ -418,7 +418,7 @@ module.exports = function ($db) {
         })
       );
     });
-    
+
     return Promise.all(queue)
     .then(function(values) {
       return res.send(200, 'success.');
