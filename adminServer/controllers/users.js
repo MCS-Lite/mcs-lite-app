@@ -396,7 +396,7 @@ module.exports = function ($db) {
     if (Object.keys(req.body).length === 0){
       return res.send(400, { message: 'Raw body is null.' });
     } else {
-      rawData = req.body.toString().split('\n');
+      rawData = req.body.toString().split(/\r?\n/);
     }
 
     rawData.forEach(function(key, item) {
