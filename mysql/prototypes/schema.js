@@ -53,7 +53,7 @@ module.exports = function(Sequelize) {
     updatedAt: {
       type: Sequelize.DATE,
       allowNull: false,
-      defaultValue: Sequelize.NOW,
+      defaultValue: Sequelize.fn('NOW'),
     },
   };
 };
