@@ -14,6 +14,10 @@ module.exports = {
         type: DataTypes.STRING,
         allowNull: false,
       },
+      password: { 
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
       userName: { 
         type: DataTypes.STRING,
         allowNull: false,
@@ -21,10 +25,6 @@ module.exports = {
       userImage: {
         type: DataTypes.STRING,
         allowNull: false, 
-      },
-      isActive: { 
-        type: DataTypes.BOOLEAN,
-        allowNull: false,
       },
       isActive: { 
         type: DataTypes.BOOLEAN,

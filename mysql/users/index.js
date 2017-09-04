@@ -3,7 +3,7 @@
 // var schema = require('./schema');
 var shortid = require('shortid');
 var crypto = require('crypto');
-// var secretKey = require('../../configs/rest').secretKey;
+var secretKey = require('../../configs/rest').secretKey;
 
 module.exports = function(users) {
   return {
@@ -55,9 +55,9 @@ module.exports = function(users) {
       return new Promise( function(resolve, reject) {
         return users
         .find({ where: query })
-        .success(function(err, data) {
-          if (data.length === 1) {
-            return resolve(data[0]);
+        .success(function(data) {
+          if (data !== null) {
+            return resolve(data.dataValues);
           } else {
             return reject({ error: 'email / password is incorrect.' });
           }
@@ -72,8 +72,8 @@ module.exports = function(users) {
 
     addNewUser: function(field) {
       field.userId = shortid.generate();
-      field.createdAt = new Date().getTime();
-      field.updatedAt = new Date().getTime();
+      // field.createdAt = new Date().getTime();
+      // field.updatedAt = new Date().getTime();
       field.isActive = true;
       field.userImage = '';
       field.password = crypto
@@ -81,36 +81,24 @@ module.exports = function(users) {
         .update(field.password)
         .digest('hex');
 
-      // var validataSchema = v.validate(field, schema);
-
-      // return new Promise( function(resolve, reject) {
-      //   /* validate schema */
-      //   var validataSchema = v.validate(field, schema);
-
-      //   if (validataSchema.errors.length === 0) {
-      //     return resolve();
-      //   } else {
-      //     return reject({ schema: validataSchema.errors })
-      //   }
-      // })
-      // .then(function() {
-        /* find same email or not */
-        return new Promise( function(resolve, reject) {
-          return users.find({
-            where: { 
-              email: field.email,
-            },
-          }, function(err, data) {
-            if (err) {
-              return reject(err);
-            }
-            if (data.length === 0) {
-              return resolve();
-            } else {
-              return reject({ error: 'This email was registed!' });
-            }
-          });
-        // });
+      return new Promise( function(resolve, reject) {
+        return users.find({
+          where: { 
+            email: field.email,
+          },
+        })
+        .success(function(data) {
+          if (data === null) { 
+            return resolve();
+          } else {
+            return reject({ error: 'This email was registed!' });
+          }
+        })
+        .error(function(err) {
+          if (err) {
+            return reject(err);
+          }
+        });
       })
       .then(function() {
         /* inser into database */
@@ -118,7 +106,7 @@ module.exports = function(users) {
           return users
           .create(field)
           .success(function(data) {
-            return resolve(data);
+            return resolve(data.dataValues);
           })
           .error(function(err) {
             if (err) return reject();
@@ -149,6 +137,7 @@ module.exports = function(users) {
           }
         })
         .success(function(data) {
+
           if (isMiddleware) {
             return resolve(data);
           }
@@ -173,10 +162,11 @@ module.exports = function(users) {
           },
         })
         .success(function(data) {
-          if (data.length !== 0) {
+          if (data) { 
             return resolve(false);  
+          } else { // data === null
+            return resolve(true);          
           }
-          return resolve(true);  
         })
         .error(function(err) {
           if (err) return reject();          
@@ -204,9 +194,13 @@ module.exports = function(users) {
     retrieveOneUser: function(query) {
       return new Promise(function(resolve, reject) {
         return users
-        .find(query)
+        .find({ where: query })
         .success(function(data) {
-          return resolve(data);
+          if (data !== null) {
+            return resolve([data.dataValues]);          
+          } else {
+            return resolve([]);
+          }
         })
         .error(function(err) {
           if (err) return reject();
