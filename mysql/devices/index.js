@@ -7,14 +7,15 @@ var crypto = require('crypto');
 
 module.exports = function(devices) {
   return {
-    validateSchema: function(object) {
-      return v.validate(object, schema);
-    },
+    // validateSchema: function(object) {
+    //   return v.validate(object, schema);
+    // },
 
     retrievePrototypeDevices: function(query) {
       query.isActive = true;
       return new Promise(function(resolve, reject) {
-        return devices.find({ where: query })
+        return devices
+        .find({ where: query })
         .success(function(data) {
           if (err) return reject();
           return resolve(data);

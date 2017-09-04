@@ -12,7 +12,8 @@ module.exports = function(datachannels, prototypes) {
     retrievDatachannel: function(field) {
       field.isActive = true;
       return new Promise(function(resolve, reject) {
-        return datachannels.find({ where: field })
+        return datachannels
+        .find({ where: field })
         .success(function(data) {
           return resolve(data);
         })
