@@ -68,3 +68,27 @@ $ cd client && npm run test:watch
 
 * Open browser and go to `http://localhost:8081` (don't use 127.0.0.1) for web console.
 
+## How to Setup MySQL
+### Prerequisite 
+
+*   docker
+
+### Steps
+
+* Pull images from Dockerhub
+
+```cmd
+$ docker pull mysql:latest
+$ docker run \
+  --name mcslite-mysql \
+  -p 3306:3306 \
+  -e MYSQL_ROOT_PASSWORD=123123123 \
+  -e MYSQL_DATABASE=mcslite \
+  -e MYSQL_USER=mcslite \
+  -e MYSQL_PASSWORD=123123123 \
+  -d mysql:latest
+
+$ docker logs mcslite-mysql
+$ docker exec mcslite-mysql mysql --version
+# mysql  Ver 14.14 Distrib 5.7.19, for Linux (x86_64) using  EditLine wrapper
+```
