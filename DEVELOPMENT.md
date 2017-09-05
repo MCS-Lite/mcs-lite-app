@@ -96,7 +96,7 @@ $ docker exec mcslite-mysql mysql --version
 
 To connect with mcs-lite-app, please modify the configuration file of MySQL `configs/db.json`:
 
-```
+```json
 // configs/db.json
 
 {
