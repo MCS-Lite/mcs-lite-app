@@ -20,12 +20,10 @@ Object {
   },
   "ApiHint.example": Object {
     "defaultMessage": "您可以使用這邊提供的 API 來設定你所需要的動作。例如上傳和讀取資料點。",
-    "description": "description",
     "id": "ApiHint.example",
   },
   "ApiHint.helpful": Object {
     "defaultMessage": "這裡是可能有幫助的 API 提示",
-    "description": "Title 1",
     "id": "ApiHint.helpful",
   },
   "ApiHint.retrieve": Object {

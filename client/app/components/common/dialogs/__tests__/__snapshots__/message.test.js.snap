@@ -4,42 +4,34 @@ exports[`should return messages 1`] = `
 Object {
   "Dialogs.browseAndUpload": Object {
     "defaultMessage": "瀏覽上傳",
-    "description": "",
     "id": "Dialogs.browseAndUpload",
   },
   "Dialogs.cancel": Object {
     "defaultMessage": "取消",
-    "description": "",
     "id": "Dialogs.cancel",
   },
   "Dialogs.chooseCreateMethod": Object {
     "defaultMessage": "選擇創建方式",
-    "description": "",
     "id": "Dialogs.chooseCreateMethod",
   },
   "Dialogs.clear": Object {
     "defaultMessage": "清除",
-    "description": "",
     "id": "Dialogs.clear",
   },
   "Dialogs.clonePrototype": Object {
     "defaultMessage": "使用原型範例",
-    "description": "",
     "id": "Dialogs.clonePrototype",
   },
   "Dialogs.codeBlockPlaceholder": Object {
     "defaultMessage": "在此處貼上JSON...",
-    "description": "",
     "id": "Dialogs.codeBlockPlaceholder",
   },
   "Dialogs.createPrototype": Object {
     "defaultMessage": "創建原型",
-    "description": "",
     "id": "Dialogs.createPrototype",
   },
   "Dialogs.createPrototypeSuccess": Object {
     "defaultMessage": "成功！你已經成功建立一個產品原型。",
-    "description": "",
     "id": "Dialogs.createPrototypeSuccess",
   },
   "Dialogs.descriptionLabel": Object {
@@ -60,77 +52,62 @@ Object {
   },
   "Dialogs.editDevice": Object {
     "defaultMessage": "編輯測試裝置",
-    "description": "",
     "id": "Dialogs.editDevice",
   },
   "Dialogs.errorWhenUploadJSON": Object {
     "defaultMessage": "錯誤！上傳JSON檔時發生錯誤。",
-    "description": "",
     "id": "Dialogs.errorWhenUploadJSON",
   },
   "Dialogs.importJSON": Object {
     "defaultMessage": "匯入 JSON 檔",
-    "description": "",
     "id": "Dialogs.importJSON",
   },
   "Dialogs.inputPrototypeInfo": Object {
     "defaultMessage": "輸入原型資訊",
-    "description": "",
     "id": "Dialogs.inputPrototypeInfo",
   },
   "Dialogs.inputThePrototypeDescription": Object {
     "defaultMessage": "輸入產品原型描述",
-    "description": "",
     "id": "Dialogs.inputThePrototypeDescription",
   },
   "Dialogs.inputThePrototypeName": Object {
     "defaultMessage": "輸入產品原型名稱",
-    "description": "",
     "id": "Dialogs.inputThePrototypeName",
   },
   "Dialogs.inputThePrototypeVersion": Object {
     "defaultMessage": "輸入產品原型版本",
-    "description": "",
     "id": "Dialogs.inputThePrototypeVersion",
   },
   "Dialogs.prototypeDescription": Object {
     "defaultMessage": "描述",
-    "description": "",
     "id": "Dialogs.prototypeDescription",
   },
   "Dialogs.prototypeName": Object {
     "defaultMessage": "產品原型名稱",
-    "description": "",
     "id": "Dialogs.prototypeName",
   },
   "Dialogs.prototypeVersion": Object {
     "defaultMessage": "產品原型版本",
-    "description": "",
     "id": "Dialogs.prototypeVersion",
   },
   "Dialogs.save": Object {
     "defaultMessage": "儲存",
-    "description": "",
     "id": "Dialogs.save",
   },
   "Dialogs.selectExample": Object {
     "defaultMessage": "選擇範例",
-    "description": "",
     "id": "Dialogs.selectExample",
   },
   "Dialogs.uploadImage": Object {
     "defaultMessage": "上傳影像",
-    "description": "",
     "id": "Dialogs.uploadImage",
   },
   "Dialogs.uploadJSONhint": Object {
     "defaultMessage": "匯入產品原型：請將使用 JSON 格式之內容貼於此。 或",
-    "description": "",
     "id": "Dialogs.uploadJSONhint",
   },
   "Dialogs.useExample": Object {
     "defaultMessage": "使用範例原型",
-    "description": "",
     "id": "Dialogs.useExample",
   },
 }

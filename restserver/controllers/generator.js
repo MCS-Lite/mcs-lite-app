@@ -1,5 +1,5 @@
-var fileExists = require('file-exists');
 var path = require('path');
+var fs = require('fs');
 
 module.exports = function ($db) {
   var arduinoGenerator = function(req, res, next) {
@@ -18,11 +18,7 @@ module.exports = function ($db) {
     const templatePath = datachannelTypeId + '/' + typeId + '/' + method + '/';
     const filePath = path.resolve(__dirname, '../../client/apiHints/' + templatePath, content + '.ejs');
 
-    if (!fileExists(filePath)) {
-    // if (!fileExists.sync(filePath)) {
-      return res.send(400, { message: 'Cannot find this file.'});
-    }
-
+    console.log(filePath);
     var apiHost = global.host.split(':')[0];
     var apiPort = global.host.split(':')[1].split('/')[0];
 
@@ -33,12 +29,13 @@ module.exports = function ($db) {
       host: apiHost,
       port: apiPort
     };
-    
+
     // Remind: Send the text as json format to keep whitespace / break-line / tab.
-    return res.render(filePath, configs, (err, html) => {
+    return res.render(filePath, configs, function(err, html) {
       if (err) console.log(err);
       return res.send(JSON.stringify(html));
     });
+
   };
 
   return {

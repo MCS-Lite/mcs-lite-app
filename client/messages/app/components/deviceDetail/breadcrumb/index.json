@@ -1,0 +1,10 @@
+[
+  {
+    "id": "DeviceDetail.Breadcrumb.Dashboard",
+    "defaultMessage": "儀表板"
+  },
+  {
+    "id": "DeviceDetail.Breadcrumb.Devices",
+    "defaultMessage": "測試裝置"
+  }
+]

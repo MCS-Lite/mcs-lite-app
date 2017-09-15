@@ -43,14 +43,14 @@ module.exports = function ($db) {
     })
     .then(function(data) {
       if (process.env.NODE_ENV === 'dev') {
-        return res.redirect('http://localhost:8081/login');
+        return res.redirect('http://127.0.0.1:8081/login');
       }
       return res.redirect('/login');
 
     })
     .catch(function(err) {
       if (process.env.NODE_ENV === 'dev') {
-        return res.redirect('http://localhost:8081/signup?errorMsg=' + encodeURI(err));
+        return res.redirect('http://127.0.0.1:8081/signup?errorMsg=' + encodeURI(err));
       }
       return res.redirect('/signup?errorMsg=' + encodeURI(err));
     });
@@ -125,6 +125,7 @@ module.exports = function ($db) {
         });
       });
     }).catch(function(err) {
+      console.log(err);
       if (err === 'Your account is not activated yet!') {
         return res.redirect('/user/' + req.locale + '/verify?email=' + req.body.email);
       } else {
@@ -132,7 +133,7 @@ module.exports = function ($db) {
           return res.redirect('/mobile/login?errorMsg=' + encodeURI(err));
         } else {
           if (process.env.NODE_ENV === 'dev') {
-            return res.redirect('http://localhost:8081/login?errorMsg=' + encodeURI(err));
+            return res.redirect('http://127.0.0.1:8081/login?errorMsg=' + encodeURI(err));
           }
           return res.redirect('/login?errorMsg=' + encodeURI(err));
         }

@@ -1,0 +1,42 @@
+[
+  {
+    "id": "Devices.datachannel",
+    "defaultMessage": "資料通道"
+  },
+  {
+    "id": "Devices.apiHint",
+    "defaultMessage": "API提示"
+  },
+  {
+    "id": "Devices.creator",
+    "defaultMessage": "創建者："
+  },
+  {
+    "id": "Devices.version",
+    "defaultMessage": "版本："
+  },
+  {
+    "id": "Devices.backToPrototype",
+    "defaultMessage": "回到產品原型"
+  },
+  {
+    "id": "Devices.description",
+    "defaultMessage": "描述："
+  },
+  {
+    "id": "Devices.testDeviceInfo",
+    "defaultMessage": "您在使用 API 呼叫裝置時，將會需要 deviceId 和 deviceKey。"
+  },
+  {
+    "id": "Devices.edit",
+    "defaultMessage": "編輯"
+  },
+  {
+    "id": "Devices.delete",
+    "defaultMessage": "刪除"
+  },
+  {
+    "id": "Devices.more",
+    "defaultMessage": "更多"
+  }
+]

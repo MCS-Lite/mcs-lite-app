@@ -53,5 +53,5 @@ module.exports = {
       onmessage: onmessage,
       onnewthing: onnewthing
     });
-  }
+  },
 }

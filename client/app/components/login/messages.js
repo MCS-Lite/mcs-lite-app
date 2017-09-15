@@ -31,6 +31,11 @@ const messages = defineMessages({
     description: '',
     defaultMessage: '歡迎',
   },
+  'Login.changeLanguage': {
+    id: 'Login.changeLanguage',
+    description: '',
+    defaultMessage: '切換語言',
+  },
 });
 
 export default messages;
