@@ -63,7 +63,7 @@ export default {
         loader: vendorCssExtractor.extract('style', 'css', { publicPath: '/' }),
       },
       { test: /\.svg\?v=[0-9]\.[0-9]\.[0-9]$/, loaders: ['url?limit=10000&minetype=application/font-woff', 'img']},
-      { test: /\.(svg|png|jpg|jpeg)$/, loaders: ['url?limit=10000&name=./assets/[name].[ext]']},
+      { test: /\.(svg|png|jpg|jpeg|ico)$/, loaders: ['url?limit=10000&name=./assets/[name].[ext]']},
       { test: /\.json$/, loaders: ['json']},
     ],
   },
