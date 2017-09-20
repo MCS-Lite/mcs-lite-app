@@ -14,66 +14,137 @@ module.exports = function(prototypes) {
     //   return v.validate(object, schema);
     // },
 
-    retriveUserPrototypes: function(query, sort, skip, limit) {
+    retriveUserPrototypes: function(query, sort, offset, limit) {
       return new Promise(function(resolve, reject) {
-        if (typeof(skip) === 'number' && sort && limit) {
+        if (typeof(offset) === 'number' && sort && limit) {
+          var order = '';
+          Object.keys(sort).forEach(function(key) {
+            if (sort[key] < 0) {
+              order = sort[key] + ' DESC';
+            } else {
+              order = sort[key] + ' ASC';
+            }
+          });
+
           return prototypes
-            .find(query)
-            .sort(sort)
-            .skip(skip)
-            .limit(limit)
-            .exec(function(err, data) {
-              if (err) return reject();
-              return resolve(data);
-            });
-        } else {
-          return prototypes.find(query, function(err, data) {
-            if (err) return reject();
-            resolve(data);
-          });
-        }
-      });
-    },
-
-    retriveAllPrototypes: function(query, sort, skip, limit) {
-      return new Promise(function(resolve, reject) {
-        if (typeof(skip) === 'number' && sort && limit) {
-          return
-            prototypes
-            .find({})
-            .sort(sort)
-            .skip(skip)
-            .limit(limit)
-            .exec(function(err, data) {
-              if (err) return reject();
-              return resolve(data);
-            });
-        } else {
-          return prototypes.find({}, function(err, data) {
-            if (err) return reject();
-            resolve(data);
-          });
-        }
-      });
-    },
-
-    retriveAllTemplatesPrototypes: function(sort, skip, limit) {
-      return new Promise(function(resolve, reject) {
-        if (typeof(skip) === 'number' && sort && limit) {
-          return
-            prototypes
-            .findAll({ where: { isTemplate: true, isActive: true }})
-            .sort(sort)
-            .skip(skip)
-            .limit(limit)
-            .exec(function(err, data) {
-              if (err) return reject();
-              return resolve(data);
-            });
-        } else {
-          return prototypes.findAll({ where: { isTemplate: true, isActive: true }})
+          .findAll({
+            where: query,
+            order: order, 
+            limit: limit,
+            offset: offset,
+          })
           .success(function(data) {
+            console.log(data);
+            return resolve(data);
+          })
+          .error(function(err) {
+            if (err) return reject();            
+          });
+        } else {
+          return prototypes
+          .findAll({
+            where: query,
+          })
+          .success(function(data) {
+            console.log(data);
+            return resolve(data);
+          })
+          .error(function(err) {
+            if (err) return reject();            
+          });
+        }
+      });
+    },
+
+    retriveAllPrototypes: function(query, sort, offset, limit) {
+      return new Promise(function(resolve, reject) {
+        if (typeof(offset) === 'number' && sort && limit) {
+          var order = '';
+          Object.keys(sort).forEach(function(key) {
+            if (sort[key] < 0) {
+              order = sort[key] + ' DESC';
+            } else {
+              order = sort[key] + ' ASC';
+            }
+          });
+
+          return
+            prototypes
+            .findAll({
+              where: query,
+              order: order, 
+              limit: limit,
+              offset: offset,
+            })
+            .success(function(data) {
+              console.log(data);
+              return resolve(data);
+            })
+            .error(function(err) {
+              if (err) return reject();            
+            });
+            // .find({})
+            // .sort(sort)
+            // .skip(skip)
+            // .limit(limit)
+            // .exec(function(err, data) {
+            //   if (err) return reject();
+            //   return resolve(data);
+            // });
+        } else {
+          return prototypes.findAll({}, function(err, data) {
+            if (err) return reject();
             resolve(data);
+          });
+        }
+      });
+    },
+
+    retriveAllTemplatesPrototypes: function(sort, offset, limit) {
+      return new Promise(function(resolve, reject) {
+        if (typeof(offset) === 'number' && sort && limit) {
+          var order = '';
+          Object.keys(sort).forEach(function(key) {
+            if (sort[key] < 0) {
+              order = sort[key] + ' DESC';
+            } else {
+              order = sort[key] + ' ASC';
+            }
+          });
+
+          return
+            prototypes
+            .findAll({ 
+              where: { isTemplate: true, isActive: true },
+              order: order, 
+              limit: limit,
+              offset: offset,
+            })
+            .success(function(data) {
+              console.log(data);
+              return resolve(data);
+            })
+            .error(function(err) {
+              if (err) return reject();            
+            });
+            // .sort(sort)
+            // .skip(skip)
+            // .limit(limit)
+            // .exec(function(err, data) {
+            //   if (err) return reject();
+            //   return resolve(data);
+            // });
+        } else {
+          return prototypes
+          .findAll({ 
+            where: {
+              isTemplate: true,
+              isActive: true,
+            },
+          })
+          .success(function(data) {
+            console.log(data);
+            return resolve(data);
           })
           .error(function(err) {
             if (err) return reject();            
