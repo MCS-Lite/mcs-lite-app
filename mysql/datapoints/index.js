@@ -53,25 +53,48 @@ module.exports = function(datapoints, devices) {
             return resolve(data);
           })
           .error(function(err) {
-            return reject();
+            if (err) return reject();
+            // return reject();
           });
         });
       });
     },
 
-    retrieveDeviceAllDatapoint: function(query, sort, skip, limit) {
+    retrieveDeviceAllDatapoint: function(query, sort, offset, limit) {
       return new Promise(function(resolve, reject) {
-        if (sort && typeof(skip) === 'number' && limit) {
+        if (sort && typeof(offset) === 'number' && limit) {
+          var order = '';
+          Object.keys(sort).forEach(function(key) {
+            if (sort[key] < 0) {
+              order = sort[key] + ' DESC';
+            } else {
+              order = sort[key] + ' ASC';
+            }
+          });
+
           return
             datapoints
-            .find(query)
-            .sort(sort)
-            .skip(skip)
-            .limit(limit)
-            .exec(function(err, data) {
-              if (err) return reject();
+            // .find(query)
+            .findAll({
+              where: query,
+              order: order, 
+              limit: limit,
+              offset: offset,
+            })
+            .success(function(data) {
+              console.log(data);
               return resolve(data);
+            })
+            .error(function(err) {
+              if (err) return reject();            
             });
+            // .sort(sort)
+            // .skip(skip)
+            // .limit(limit)
+            // .exec(function(err, data) {
+            //   if (err) return reject();
+            //   return resolve(data);
+            // });
         } else {
           return datapoints.find(query, function(err, data) {
             if (err) return reject();
@@ -81,18 +104,43 @@ module.exports = function(datapoints, devices) {
       });
     },
 
-    retrieveDatachannelDatapoint: function(query, sort, skip, limit) {
+    retrieveDatachannelDatapoint: function(query, sort, offset, limit) {
       return new Promise(function(resolve, reject) {
-        if (sort && typeof(skip) === 'number' && limit) {
+        if (sort && typeof(offset) === 'number' && limit) {
+          var order = '';
+          Object.keys(sort).forEach(function(key) {
+            if (sort[key] < 0) {
+              order = sort[key] + ' DESC';
+            } else {
+              order = sort[key] + ' ASC';
+            }
+          });
+
           datapoints
-            .find(query)
-            .sort(sort)
-            .skip(skip)
-            .limit(limit)
-            .exec(function(err, data) {
-              if (err) return reject();
+            // .find({
+            //   where: query
+
+            // })
+            .findAll({
+              where: query,
+              order: order, 
+              limit: limit,
+              offset: offset,
+            })
+            .success(function(data) {
+              // console.log(data);
               return resolve(data);
+            })
+            .error(function(err) {
+              if (err) return reject();            
             });
+            // .sort(sort)
+            // .skip(skip)
+            // .limit(limit)
+            // .exec(function(err, data) {
+            //   if (err) return reject();
+            //   return resolve(data);
+            // });
         } else {
           return datapoints.find(query, function(err, data) {
             if (err) return reject();
