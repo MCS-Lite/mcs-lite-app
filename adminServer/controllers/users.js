@@ -8,6 +8,8 @@ const adminPathname = '../../node_modules/mcs-lite-admin-web/build';
 
 module.exports = function ($db) {
   var users = $db.users;
+  var services = $db.services;
+
 
   var signupInterface = function(req, res, next) {
     return res.render(path.resolve(__dirname, adminPathname, 'index.html'), function(err, html) {
@@ -436,6 +438,7 @@ module.exports = function ($db) {
   var clearAllUserExceptAdmin = function(req, res, next) {
     return users.clearAllUser()
     .then(function() {
+      services.clearAllData();
       return res.send(200, 'success.');
     })
     .catch(function(err) {
