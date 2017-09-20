@@ -62,7 +62,7 @@ module.exports = function(prototypes) {
         if (typeof(skip) === 'number' && sort && limit) {
           return
             prototypes
-            .find({ isTemplate: true, isActive: true })
+            .findAll({ where: { isTemplate: true, isActive: true }})
             .sort(sort)
             .skip(skip)
             .limit(limit)
@@ -71,9 +71,12 @@ module.exports = function(prototypes) {
               return resolve(data);
             });
         } else {
-          return prototypes.find({ isTemplate: true, isActive: true }, function(err, data) {
-            if (err) return reject();
+          return prototypes.findAll({ where: { isTemplate: true, isActive: true }})
+          .success(function(data) {
             resolve(data);
+          })
+          .error(function(err) {
+            if (err) return reject();            
           });
         }
       });
