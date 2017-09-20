@@ -324,7 +324,12 @@ module.exports = function ($db) {
     var userId = [];
 
     if (req.params.userId) userId = req.params.userId.split(',');
-    if (req.body.userId) userId = req.body.userId;
+
+    if (Array.isArray(req.body.userId)) {
+      userId = req.body.userId
+    } else {
+      userId = req.body.userId.split(',');    
+    }
 
     return users.deleteUser({
       userId: userId,
