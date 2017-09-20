@@ -13,7 +13,7 @@ module.exports = function(datachannels, prototypes) {
       field.isActive = true;
       return new Promise(function(resolve, reject) {
         return datachannels
-        .find({ where: field })
+        .findAll({ where: field })
         .success(function(data) {
           return resolve(data);
         })
