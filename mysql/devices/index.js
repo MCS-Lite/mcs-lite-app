@@ -17,33 +17,55 @@ module.exports = function(devices) {
         return devices
         .find({ where: query })
         .success(function(data) {
-          if (err) return reject();
           return resolve(data);
         })
         .error(function(err) {
-          return reject();
+          if (err) return reject();
         });
       });
     },
 
-    retriveUserDevices: function(query, sort, skip, limit) {
+    retriveUserDevices: function(query, sort, offset, limit) {
 
       query.isActive = true;
 
       return new Promise(function(resolve, reject) {
-        if (sort && typeof(skip) === 'number' && limit) {
+        if (sort && typeof(offset) === 'number' && limit) {
+          var order = '';
+          Object.keys(sort).forEach(function(key) {
+            if (sort[key] < 0) {
+              order = sort[key] + ' DESC';
+            } else {
+              order = sort[key] + ' ASC';
+            }
+          });
+
           return
             devices
-            .find(query)
-            .sort(sort)
-            .skip(skip)
-            .limit(limit)
-            .exec(function(err, data) {
-              if (err) return reject();
+            // .find(query)
+            .findAll({
+              where: query,
+              order: order, 
+              limit: limit,
+              offset: offset,
+            })
+            .success(function(data) {
+              // console.log(data);
               return resolve(data);
+            })
+            .error(function(err) {
+              if (err) return reject();            
             });
+            // .sort(sort)
+            // .skip(skip)
+            // .limit(limit)
+            // .exec(function(err, data) {
+            //   if (err) return reject();
+            //   return resolve(data);
+            // });
         } else {
-          return devices.find({ where: query }).success(function(data) {
+          return devices.find({ where: query })
+          .success(function(data) {
             // if (err) return reject();
             return resolve(data);
           })
@@ -54,19 +76,41 @@ module.exports = function(devices) {
       });
     },
 
-    retriveAllDevices: function(query, sort, skip, limit) {
+    retriveAllDevices: function(query, sort, offset, limit) {
       return new Promise(function(resolve, reject) {
-        if (sort && typeof(skip) === 'number' && limit) {
+        if (sort && typeof(offset) === 'number' && limit) {
+          var order = '';
+          Object.keys(sort).forEach(function(key) {
+            if (sort[key] < 0) {
+              order = sort[key] + ' DESC';
+            } else {
+              order = sort[key] + ' ASC';
+            }
+          });
+
           return
             devices
-            .find({})
-            .sort(sort)
-            .skip(skip)
-            .limit(limit)
-            .exec(function(err, data) {
-              if (err) return reject();
+            .findAll({
+              where: {},
+              order: order, 
+              limit: limit,
+              offset: offset,
+            })
+            .success(function(data) {
+              // console.log(data);
               return resolve(data);
+            })
+            .error(function(err) {
+              if (err) return reject();            
             });
+            // .find({})
+            // .sort(sort)
+            // .skip(skip)
+            // .limit(limit)
+            // .exec(function(err, data) {
+            //   if (err) return reject();
+            //   return resolve(data);
+            // });
         } else {
           return devices.find({}, function(err, data) {
             if (err) return reject();
