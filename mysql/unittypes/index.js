@@ -19,8 +19,8 @@ module.exports = function(unittypes) {
       });
     },
     addNewUnitTypes: function(field) {
-      field.createdAt = new Date().getTime();
-      field.updatedAt = new Date().getTime();
+      // field.createdAt = new Date().getTime();
+      // field.updatedAt = new Date().getTime();
 
       // return new Promise( function(resolve, reject) {
       //   /* validate schema */

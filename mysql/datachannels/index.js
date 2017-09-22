@@ -87,7 +87,7 @@ module.exports = function(datachannels, prototypes) {
     editDatachannel: function(query, update) {
       return new Promise(function(resolve, reject) {
         return datachannels
-        .update(update, { where: query })
+        .update(update, query)
         .success(function(num) {
           return resolve({ message: 'success.' });
         })
@@ -103,9 +103,7 @@ module.exports = function(datachannels, prototypes) {
         .update({ 
           updatedAt: new Date().getTime(), 
           isActive: false,
-        }, { 
-          where: query 
-        })
+        }, query)
         .success(function() {
           return resolve({ message: 'success.' });          
         })
@@ -118,14 +116,19 @@ module.exports = function(datachannels, prototypes) {
     cloneDatachannel: function(fromPrototypeId, toPrototypeId, userId) {
       var _this = this;
       return new Promise(function(resolve, reject) {
-        return datachannels.find({
+        return datachannels.findAll({
           where: {
             prototypeId: fromPrototypeId,
             isActive: true,
-          }
+          },
         })
         .success(function(data) {
-          return resolve(data);
+          let adjustData = []
+          data.forEach(function(key) {
+            adjustData.push(key.dataValues);
+          });
+          return resolve(adjustData);
+          // return resolve(data);
         })
         .error(function(err) {
           return reject(err);

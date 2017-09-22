@@ -23,11 +23,11 @@ module.exports = function(Sequelize) {
     },
     deviceDescription: {
       type: Sequelize.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     deviceImageURL: { 
       type: Sequelize.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     prototypeId: { 
       type: Sequelize.STRING,
