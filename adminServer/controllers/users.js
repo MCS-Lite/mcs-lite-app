@@ -8,13 +8,15 @@ const adminPathname = '../../node_modules/mcs-lite-admin-web/build';
 
 module.exports = function ($db) {
   var users = $db.users;
-  
+  var services = $db.services;
+
+
   var signupInterface = function(req, res, next) {
     return res.render(path.resolve(__dirname, adminPathname, 'index.html'), function(err, html) {
       res.send(html);
     });
   };
-  
+
   var loginInterface = function(req, res, next) {
     return users.checkDefaultUserCount()
     .then(function(status) {
@@ -79,7 +81,7 @@ module.exports = function ($db) {
             return res.render(path.resolve(__dirname, adminPathname, 'index.html'), function(err, html) {
               res.send(html);
             });
-            
+
           }).catch(function(err) {
             /* 有任何錯誤就返回首頁 */
             res.clearCookie('token', { path: '/' });
@@ -266,10 +268,6 @@ module.exports = function ($db) {
     });
   };
 
-  var retrieveUsers = function(req, res, next) {
-
-  };
-
   var createAnAdmin = function(req, res, next) {
     return users.checkDefaultUserCount()
     .then(function(status) {
@@ -302,6 +300,155 @@ module.exports = function ($db) {
     });
   };
 
+  var editUser = function(req, res, next) {
+    if (req.body.password) {
+      return users.changePassword(req.params.userId, req.body.password)
+      .then(function(data) {
+        return res.send(200, data);
+      })
+      .catch(function(err) {
+        return res.send(400, err);
+      });
+    } else if (req.body.hasOwnProperty('isActive')) {
+      return users.editUser({
+        userId: req.params.userId,
+        isActive: !req.body.isActive,
+      }, {
+        isActive: req.body.isActive,
+      })
+      .then(function(data) {
+        return res.send(200, data);
+      })
+      .catch(function(err) {
+        return res.send(400, err);
+      });
+    }
+  };
+
+  var deleteUser = function(req, res, next) {
+    var userId = [];
+
+    if (req.params.userId) userId = req.params.userId.split(',');
+
+    if (Array.isArray(req.body.userId)) {
+      userId = req.body.userId
+    } else {
+      userId = req.body.userId.split(',');    
+    }
+
+    return users.deleteUser({
+      userId: userId,
+    })
+    .then(function(data) {
+      return res.send(200, "success.");
+    })
+    .catch(function(err) {
+      return res.send(400, err);
+    });
+  };
+
+  var addNewUser = function(req, res, next) {
+    return users.addNewUser({
+      userName: req.body.userName,
+      email: req.body.email,
+      password: req.body.password,
+      isAdmin: req.body.isAdmin,
+    })
+    .then(function(data) {
+      return res.send(200, data);
+    })
+    .catch(function(err) {
+      return res.send(400, err);
+    })
+  };
+
+  var retrieveUsers = function(req, res, next) {
+    var query = {
+      // isActive: true,
+    };
+
+    var userName = req.query.userName;
+    var email = req.query.email;
+    var q = req.query.q;
+
+    if (q) {
+      query['$or'] = [];
+      query['$or'].push({email: { $regex: new RegExp(q)}});
+      query['$or'].push({userName: { $regex: new RegExp(q)}});
+    }
+
+    if (userName) {
+      query.userName = { $regex: new RegExp(userName) };
+    }
+
+    if (email) {
+      query.email = { $regex: new RegExp(email) };
+    }
+
+    var sort = req.query.sort;
+    var skip = req.query.skip;
+    var limit = req.query.limit;
+
+    return users.retrieveUserByQuery(query, sort, skip, limit)
+    .then(function(data) {
+      return res.send(200, data);
+    })
+    .catch(function(err) {
+      return res.send(400, err);
+    });
+
+  };
+
+  var batchAddNewUserByCSV = function(req, res, next) {
+    var rawData;
+    var content = [];
+
+    if (Object.keys(req.body).length === 0){
+      return res.send(400, { message: 'Raw body is null.' });
+    } else {
+      rawData = req.body.toString().split(/\r?\n/);
+    }
+
+    rawData.forEach(function(key, item) {
+      if (key.split(',').length === 3) {
+        content.push({
+          userName: key.split(',')[0],
+          email: key.split(',')[1],
+          password: key.split(',')[2],
+        });
+      }
+    });
+    var queue = [];
+    content.forEach(function(key, item) {
+      queue.push(users.addNewUser({
+          userName: key.userName,
+          email: key.email,
+          password: key.password,
+          isAdmin: false,
+        })
+      );
+    });
+
+    return Promise.all(queue)
+    .then(function(values) {
+      return res.send(200, 'success.');
+    })
+    .catch(function(err) {
+      return res.send(400, err);
+    });
+  };
+
+  var clearAllUserExceptAdmin = function(req, res, next) {
+    return users.clearAllUser()
+    .then(function() {
+      services.clearAllData();
+      return res.send(200, 'success.');
+    })
+    .catch(function(err) {
+      return res.send(400, err);
+    });
+  };
+
   return {
     login: login,
     loginInterface: loginInterface,
@@ -310,6 +457,11 @@ module.exports = function ($db) {
     createAnAdmin: createAnAdmin,
     checkAdminExist: checkAdminExist,
     signupInterface: signupInterface,
+    editUser: editUser,
+    deleteUser: deleteUser,
+    addNewUser: addNewUser,
+    batchAddNewUserByCSV: batchAddNewUserByCSV,
+    clearAllUserExceptAdmin: clearAllUserExceptAdmin,
   };
 
 }
