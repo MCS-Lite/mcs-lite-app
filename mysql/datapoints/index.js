@@ -9,9 +9,10 @@ module.exports = function(datapoints, devices) {
     // },
 
     uploadDatapoint: function(field) {
-      field.createdAt = new Date().getTime();
-      field.updatedAt = new Date().getTime();
+      // field.createdAt = new Date().getTime();
+      // field.updatedAt = new Date().getTime();
       field.isActive = true;
+      if (field.values) field.values = JSON.stringify(field.values);
 
       // return new Promise(function(resolve, reject) {
       //   var validataSchema = v.validate(field, schema);
@@ -31,11 +32,10 @@ module.exports = function(datapoints, devices) {
             },
           })
           .success(function(data) {
-            // if (err) return reject();
-            if (data.length != 1) {
+            if (data === null) {
               return reject({ message: 'DeviceId / DeviceKey is invalid.'});
             } else {
-              return resolve(data[0]);
+              return resolve(data.dataValues);
             }
           })
           .error(function(err) {
@@ -44,17 +44,15 @@ module.exports = function(datapoints, devices) {
         })
       // })
       .then(function() {
-        delete field.deviceKey;
+        // delete field.deviceKey;
         return new Promise (function(resolve, reject) {
           return datapoints
           .create(field)
           .success(function(data) {
-            // if (err) return reject();
             return resolve(data);
           })
           .error(function(err) {
             if (err) return reject();
-            // return reject();
           });
         });
       });
@@ -74,7 +72,6 @@ module.exports = function(datapoints, devices) {
 
           return
             datapoints
-            // .find(query)
             .findAll({
               where: query,
               order: order, 
@@ -82,23 +79,24 @@ module.exports = function(datapoints, devices) {
               offset: offset,
             })
             .success(function(data) {
-              console.log(data);
-              return resolve(data);
+              let adjustData = []
+              data.forEach(function(key) {
+                key.dataValues.values = JSON.parse(key.dataValues.values);
+                adjustData.push(key.dataValues);
+              });
+              return resolve(adjustData);
             })
             .error(function(err) {
               if (err) return reject();            
             });
-            // .sort(sort)
-            // .skip(skip)
-            // .limit(limit)
-            // .exec(function(err, data) {
-            //   if (err) return reject();
-            //   return resolve(data);
-            // });
         } else {
-          return datapoints.find(query, function(err, data) {
-            if (err) return reject();
+          return datapoints
+          .find(query)
+          .success(function(data) {  
             return resolve(data);
+          })
+          .error(function(err) {
+            if (err) return reject();            
           });
         }
       });
@@ -116,11 +114,7 @@ module.exports = function(datapoints, devices) {
             }
           });
 
-          datapoints
-            // .find({
-            //   where: query
-
-            // })
+          return datapoints
             .findAll({
               where: query,
               order: order, 
@@ -128,8 +122,12 @@ module.exports = function(datapoints, devices) {
               offset: offset,
             })
             .success(function(data) {
-              // console.log(data);
-              return resolve(data);
+              let adjustData = []
+              data.forEach(function(key) {
+                key.dataValues.values = JSON.parse(key.dataValues.values);
+                adjustData.push(key.dataValues);
+              });
+              return resolve(adjustData);
             })
             .error(function(err) {
               if (err) return reject();            
@@ -142,9 +140,17 @@ module.exports = function(datapoints, devices) {
             //   return resolve(data);
             // });
         } else {
-          return datapoints.find(query, function(err, data) {
-            if (err) return reject();
-            return resolve(data);
+          return datapoints
+          .find(query)
+          .success(function(data) {  
+            if (data) { 
+              return resolve(data.dataValues); 
+            } else {
+              return resolve({});
+            }
+          })
+          .error(function(err) {
+            if (err) return reject();            
           });
         }
       });

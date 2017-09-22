@@ -15,7 +15,18 @@ module.exports = function(datachannels, prototypes) {
         return datachannels
         .findAll({ where: field })
         .success(function(data) {
-          return resolve(data);
+          if (data) {
+            let adjustData = [];            
+            data.forEach(function(key) {
+              key.dataValues.format = JSON.parse(key.dataValues.format);
+              key.dataValues.channelType = JSON.parse(key.dataValues.channelType);
+              adjustData.push(key.dataValues);                
+            });
+            return resolve(adjustData);
+          } else {
+            return resolve([]);            
+          }
+          // return resolve(data);
         })
         .error(function(err) {
           return reject(err);
@@ -24,18 +35,21 @@ module.exports = function(datachannels, prototypes) {
     },
 
     addNewDatachannel: function(field) {
-      field.updatedAt = new Date().getTime();
-      field.createdAt = new Date().getTime();
+      // field.updatedAt = new Date().getTime();
+      // field.createdAt = new Date().getTime();
+
+      if (field.channelType) field.channelType = JSON.stringify(field.channelType);
+      if (field.format) field.format = JSON.stringify(field.format);
       field.isActive = true;
 
       return new Promise(function(resolve, reject) {
-        return prototypes.find({
+        return prototypes.findAll({
           where: {
             prototypeId: field.prototypeId,
           },
         })
         .success(function(data) {
-          if (data.length === 1) {
+          if (data && data.length === 1) {
             return resolve(data[0]);
           } else {
             return reject({ error: 'Can not find this prototypeId.' });

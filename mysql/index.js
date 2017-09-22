@@ -19,9 +19,9 @@ var $unittypes = sequelize.define('unittypes', require('./unittypes/schema')(Seq
 
 var users = require('./users/index')($users);
 var devices = require('./devices/index')($devices);
-var datapoints = require('./datapoints/index')($datapoints);
+var datapoints = require('./datapoints/index')($datapoints, $devices);
 var prototypes = require('./prototypes/index')($prototypes);
-var datachannels = require('./datachannels/index')($datachannels);
+var datachannels = require('./datachannels/index')($datachannels, $prototypes);
 var unittypes = require('./unittypes/index')($unittypes);
 
 function init(host, port, config) {
