@@ -3,7 +3,7 @@
 // var schema = require('./schema');
 var shortid = require('shortid');
 var crypto = require('crypto');
-// var configs = require('../../configs/rest');
+var configs = require('../../configs/rest');
 
 module.exports = function(devices) {
   return {
@@ -17,7 +17,11 @@ module.exports = function(devices) {
         return devices
         .find({ where: query })
         .success(function(data) {
-          return resolve(data);
+          if (data) {
+            return resolve(data);
+          } else {
+            return resolve([]);            
+          }
         })
         .error(function(err) {
           if (err) return reject();
@@ -42,7 +46,6 @@ module.exports = function(devices) {
 
           return
             devices
-            // .find(query)
             .findAll({
               where: query,
               order: order, 
@@ -50,24 +53,27 @@ module.exports = function(devices) {
               offset: offset,
             })
             .success(function(data) {
-              // console.log(data);
-              return resolve(data);
+              let adjustData = []
+              data.forEach(function(key) {
+                adjustData.push(key.dataValues);
+              });
+              console.log(adjustData);
+              return resolve(adjustData);
+              // return resolve(data);
             })
             .error(function(err) {
               if (err) return reject();            
             });
-            // .sort(sort)
-            // .skip(skip)
-            // .limit(limit)
-            // .exec(function(err, data) {
-            //   if (err) return reject();
-            //   return resolve(data);
-            // });
         } else {
           return devices.find({ where: query })
           .success(function(data) {
-            // if (err) return reject();
-            return resolve(data);
+            console.log(data.dataValues);
+            if (data !== null) {
+              return resolve([data.dataValues]);
+            } else {
+              return resolve([{}]);
+            }
+            // return resolve(data);
           })
           .error(function(err) {
             return reject();
@@ -97,20 +103,16 @@ module.exports = function(devices) {
               offset: offset,
             })
             .success(function(data) {
-              // console.log(data);
-              return resolve(data);
+              let adjustData = []
+              data.forEach(function(key) {
+                adjustData.push(key.dataValues);
+              });
+              return resolve(adjustData);
+              // return resolve(data);
             })
             .error(function(err) {
               if (err) return reject();            
             });
-            // .find({})
-            // .sort(sort)
-            // .skip(skip)
-            // .limit(limit)
-            // .exec(function(err, data) {
-            //   if (err) return reject();
-            //   return resolve(data);
-            // });
         } else {
           return devices.find({}, function(err, data) {
             if (err) return reject();
@@ -124,29 +126,29 @@ module.exports = function(devices) {
       field.isPublic = false;
       field.isActive = false;
       field.isHeartbeating = false;
-      field.createdAt = new Date().getTime();
-      field.updatedAt = new Date().getTime();
+      // field.createdAt = new Date().getTime();
+      // field.updatedAt = new Date().getTime();
       field.fwId = '';
       field.isActive = true;
       field.deviceId = shortid.generate();
       field.deviceKey = crypto
         .createHmac('sha256', configs.deviceKey)
-        .update(field.createdAt.toString() + field.deviceId)
+        .update(new Date().getTime().toString() + field.deviceId)
         .digest('hex');
+      console.log(field);
+      // var validataSchema = v.validate(field, schema);
 
-      var validataSchema = v.validate(field, schema);
+      // return new Promise( function(resolve, reject) {
+      //   /* validate schema */
+      //   var validataSchema = v.validate(field, schema);
 
-      return new Promise( function(resolve, reject) {
-        /* validate schema */
-        var validataSchema = v.validate(field, schema);
-
-        if (validataSchema.errors.length === 0) {
-          return resolve();
-        } else {
-          return reject({ schema: validataSchema.errors })
-        }
-      })
-      .then(function() {
+      //   if (validataSchema.errors.length === 0) {
+      //     return resolve();
+      //   } else {
+      //     return reject({ schema: validataSchema.errors })
+      //   }
+      // })
+      // .then(function() {
         /* add new device */
         return new Promise(function(resolve, reject) {
           return devices
@@ -158,7 +160,7 @@ module.exports = function(devices) {
             return reject();
           })
         });
-      });
+      // });
     },
 
     editDevices: function(query, update) {

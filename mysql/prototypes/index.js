@@ -34,8 +34,11 @@ module.exports = function(prototypes) {
             offset: offset,
           })
           .success(function(data) {
-            console.log(data);
-            return resolve(data);
+            let adjustData = []
+            data.forEach(function(key) {
+              adjustData.push(key.dataValues);
+            });
+            return resolve(adjustData);
           })
           .error(function(err) {
             if (err) return reject();            
@@ -46,8 +49,11 @@ module.exports = function(prototypes) {
             where: query,
           })
           .success(function(data) {
-            console.log(data);
-            return resolve(data);
+            let adjustData = []
+            data.forEach(function(key) {
+              adjustData.push(key.dataValues);
+            });
+            return resolve(adjustData);
           })
           .error(function(err) {
             if (err) return reject();            
@@ -77,20 +83,11 @@ module.exports = function(prototypes) {
               offset: offset,
             })
             .success(function(data) {
-              console.log(data);
               return resolve(data);
             })
             .error(function(err) {
               if (err) return reject();            
             });
-            // .find({})
-            // .sort(sort)
-            // .skip(skip)
-            // .limit(limit)
-            // .exec(function(err, data) {
-            //   if (err) return reject();
-            //   return resolve(data);
-            // });
         } else {
           return prototypes.findAll({}, function(err, data) {
             if (err) return reject();
@@ -121,48 +118,40 @@ module.exports = function(prototypes) {
               offset: offset,
             })
             .success(function(data) {
-              console.log(data);
               return resolve(data);
             })
             .error(function(err) {
               if (err) return reject();            
             });
-            // .sort(sort)
-            // .skip(skip)
-            // .limit(limit)
-            // .exec(function(err, data) {
-            //   if (err) return reject();
-            //   return resolve(data);
-            // });
         } else {
-          return prototypes
-          .findAll({ 
-            where: {
-              isTemplate: true,
-              isActive: true,
-            },
-          })
-          .success(function(data) {
-            console.log(data);
-            return resolve(data);
-          })
-          .error(function(err) {
-            if (err) return reject();            
-          });
+          return 
+            prototypes
+            .findAll({ 
+              where: {
+                isTemplate: true,
+                isActive: true,
+              },
+            })
+            .success(function(data) {
+              return resolve(data);
+            })
+            .error(function(err) {
+              if (err) return reject();            
+            });
         }
       });
     },
 
     addNewPrototype: function(field) {
       field.isPublic = false;
-      field.createdAt = new Date().getTime();
-      field.updatedAt = new Date().getTime();
+      // field.createdAt = new Date().getTime();
+      // field.updatedAt = new Date().getTime();
       field.fwId = '';
       field.isActive = true;
       field.prototypeId = shortid.generate();
       field.prototypeKey =  crypto
         .createHmac('sha256', configs.prototypeKey)
-        .update(field.createdAt.toString() + field.prototypeId)
+        .update(new Date().getTime().toString() + field.prototypeId)
         .digest('hex');;
 
       // var validataSchema = v.validate(field, schema);
@@ -221,7 +210,7 @@ module.exports = function(prototypes) {
 
     exportPrototype: function(prototypeId) {
       return new Promise(function(resolve, reject) {
-        return prototypes.find({
+        return prototypes.findAll({
           where: {
             prototypeId: prototypeId,
             isActive: true,
@@ -231,7 +220,12 @@ module.exports = function(prototypes) {
           if (data.length != 1) {
             return reject({ error: 'This prototypeId is not valid.' });
           }
-          return resolve(data);
+          let adjustData = []
+          data.forEach(function(key) {
+            adjustData.push(key.dataValues);
+          });
+          return resolve(adjustData);
+          // return resolve(data);
         })
         .error(function(err) {
           if (err) return reject();          
@@ -311,7 +305,7 @@ module.exports = function(prototypes) {
       field.prototypeId = shortid.generate();
       field.prototypeKey =  crypto
         .createHmac('sha256', configs.prototypeKey)
-        .update(field.createdAt.toString() + field.prototypeId)
+        .update(new Date().getTime().toString() + field.prototypeId)
         .digest('hex');;
       field.prototypeName = data.prototypeName || '';
       field.prototypeImageURL = data.prototypeImageURL || '';
