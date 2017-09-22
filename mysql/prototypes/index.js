@@ -83,7 +83,12 @@ module.exports = function(prototypes) {
               offset: offset,
             })
             .success(function(data) {
-              return resolve(data);
+              let adjustData = []
+              data.forEach(function(key) {
+                adjustData.push(key.dataValues);
+              });
+              return resolve(adjustData);
+              // return resolve(data);
             })
             .error(function(err) {
               if (err) return reject();            
@@ -91,7 +96,12 @@ module.exports = function(prototypes) {
         } else {
           return prototypes.findAll({}, function(err, data) {
             if (err) return reject();
-            resolve(data);
+            let adjustData = []
+            data.forEach(function(key) {
+              adjustData.push(key.dataValues);
+            });
+            return resolve(adjustData);
+            // resolve(data);
           });
         }
       });
@@ -118,7 +128,12 @@ module.exports = function(prototypes) {
               offset: offset,
             })
             .success(function(data) {
-              return resolve(data);
+              let adjustData = []
+              data.forEach(function(key) {
+                adjustData.push(key.dataValues);
+              });
+              return resolve(adjustData);
+              // return resolve(data);
             })
             .error(function(err) {
               if (err) return reject();            
@@ -133,7 +148,12 @@ module.exports = function(prototypes) {
               },
             })
             .success(function(data) {
-              return resolve(data);
+              let adjustData = []
+              data.forEach(function(key) {
+                adjustData.push(key.dataValues);
+              });
+              return resolve(adjustData);
+              // return resolve(data);
             })
             .error(function(err) {
               if (err) return reject();            
@@ -170,7 +190,7 @@ module.exports = function(prototypes) {
         return new Promise(function(resolve, reject) {
           return prototypes.create(field)
           .success(function(data) {
-            return resolve(data);
+            return resolve(data.dataValues);
           })
           .error(function(err) {
             if (err) return reject();            
@@ -258,40 +278,40 @@ module.exports = function(prototypes) {
 
     importPrototype: function(field, userId, isMCSLite) {
       var _this = this;
-      return new Promise(function(resolve, reject) {
-        var validataSchema;
+      // return new Promise(function(resolve, reject) {
+      //   var validataSchema;
 
-        if (isMCSLite) {
-          validataSchema = v.validate(field, mcsLitePrototypeSchema);
-        } else {
-          validataSchema = v.validate(field, mcsOnlinePrototypeSchema);
-        }
+      //   if (isMCSLite) {
+      //     validataSchema = v.validate(field, mcsLitePrototypeSchema);
+      //   } else {
+      //     validataSchema = v.validate(field, mcsOnlinePrototypeSchema);
+      //   }
 
-        if (validataSchema.errors.length === 0) {
-          return resolve();
-        } else {
-          return reject({ schema: validataSchema.errors })
-        }
-      })
-      .then(function() {
+      //   if (validataSchema.errors.length === 0) {
+      //     return resolve();
+      //   } else {
+      //     return reject({ schema: validataSchema.errors })
+      //   }
+      // })
+      // .then(function() {
         var clonePrototypeData = {};
 
         if (isMCSLite) {
           clonePrototypeData.prototypeName = field.prototypeName;
           clonePrototypeData.version = field.version;
-          clonePrototypeData.prototypeDescription = field.prototypeDescription;
+          clonePrototypeData.prototypeDescription = field.prototypeDescription || '';
           clonePrototypeData.prototypeImageURL = field.prototypeImageURL || '';
         } else {
           clonePrototypeData.prototypeName = field.prodName;
           clonePrototypeData.version = field.version;
-          clonePrototypeData.prototypeDescription = field.description;
+          clonePrototypeData.prototypeDescription = field.description || '';
           clonePrototypeData.prototypeImageURL = '';
         }
 
         clonePrototypeData.isTemplate = false;
         clonePrototypeData.createUserId = userId;
         return _this.addNewPrototype(clonePrototypeData);
-      });
+      // });
     },
 
     clonePrototype: function(prototypeId, data) {
@@ -327,7 +347,7 @@ module.exports = function(prototypes) {
           if (data === null) {
             return reject({ error: 'This prototypeId is not valid.' });
           }
-          return resolve(data.dataValues);
+          return resolve([data.dataValues]);
         })
         .error(function(err) {
           return reject();
@@ -353,7 +373,6 @@ module.exports = function(prototypes) {
           return prototypes
           .create(field)
           .success(function(data) {
-            console.log(data);
             return resolve(data.dataValues);
           })
           .error(function(err) {
