@@ -9,9 +9,13 @@ module.exports = function(unittypes) {
       query.isActive = true;
 
       return new Promise(function(resolve, reject) {
-        return unittypes.find({ where: query })
+        return unittypes
+        .find({ where: query })
         .success(function(data) {
-          return resolve(data);
+          if (data === null) {
+            return resolve([]);
+          }
+          return resolve([data.dataValues]);
         })
         .error(function(data) {
           if (err) return reject();
@@ -37,7 +41,7 @@ module.exports = function(unittypes) {
           return unittypes
           .create(field)
           .sucess(function(data) {
-            return resolve(data);
+            return resolve(data.dataValues);
           })
           .error(function(err) {
             if (err) return reject();            

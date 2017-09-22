@@ -75,7 +75,7 @@ module.exports = function(datachannels, prototypes) {
           return datachannels
           .create(field)
           .success(function(data) {
-            return resolve(data);
+            return resolve(data.dataValues);
           })
           .error(function(err) {
             return reject(err);
