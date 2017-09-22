@@ -137,10 +137,13 @@ module.exports = function(users) {
         .success(function(data) {
 
           if (isMiddleware) {
-            return resolve(data);
+            if (data === null) {
+              return resolve([]);
+            }
+            return resolve([data.dataValues]);
           }
 
-          if (data.length != 1) {
+          if (data === null) {
             return reject({ error: 'This user is not admin!' });
           } else {
             return resolve(data);
