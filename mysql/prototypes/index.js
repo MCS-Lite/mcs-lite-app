@@ -108,6 +108,7 @@ module.exports = function(prototypes) {
     },
 
     retriveAllTemplatesPrototypes: function(sort, offset, limit) {
+
       return new Promise(function(resolve, reject) {
         if (typeof(offset) === 'number' && sort && limit) {
           var order = '';
@@ -139,8 +140,7 @@ module.exports = function(prototypes) {
               if (err) return reject();            
             });
         } else {
-          return 
-            prototypes
+          return prototypes
             .findAll({ 
               where: {
                 isTemplate: true,
@@ -156,6 +156,7 @@ module.exports = function(prototypes) {
               // return resolve(data);
             })
             .error(function(err) {
+
               if (err) return reject();            
             });
         }
