@@ -21,10 +21,8 @@ module.exports = function(users) {
         .update({ 
           password: password 
         }, {
-          where: {
-            userId: userId,
-            isActive: true,
-          },
+          userId: userId,
+          isActive: true,
         })
         .success(function(num) {
           return resolve({ message: 'success' });
@@ -177,10 +175,8 @@ module.exports = function(users) {
     changeUserToAdmin: function(email, isAdmin) {
       return new Promise(function(resolve, reject) {
         return users.update({ isAdmin: isAdmin }, {
-          where: {
-            email: email,
-            isActive: true,  
-          }
+          email: email,
+          isActive: true,  
         })
         .success(function(num) {
           return resolve({ message: 'success' });
@@ -210,7 +206,7 @@ module.exports = function(users) {
 
     editUser: function(query, update) {
       return new Promise(function(resolve, reject) {
-        return users.update(update, { where: query })
+        return users.update(update, query)
         .success(function(num) {
           return resolve({ message: 'success' });
         })

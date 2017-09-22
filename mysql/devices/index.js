@@ -57,7 +57,6 @@ module.exports = function(devices) {
               data.forEach(function(key) {
                 adjustData.push(key.dataValues);
               });
-              console.log(adjustData);
               return resolve(adjustData);
               // return resolve(data);
             })
@@ -67,11 +66,10 @@ module.exports = function(devices) {
         } else {
           return devices.find({ where: query })
           .success(function(data) {
-            console.log(data.dataValues);
             if (data !== null) {
               return resolve([data.dataValues]);
             } else {
-              return resolve([{}]);
+              return resolve([]);
             }
             // return resolve(data);
           })
@@ -135,7 +133,6 @@ module.exports = function(devices) {
         .createHmac('sha256', configs.deviceKey)
         .update(new Date().getTime().toString() + field.deviceId)
         .digest('hex');
-      console.log(field);
       // var validataSchema = v.validate(field, schema);
 
       // return new Promise( function(resolve, reject) {
@@ -164,10 +161,10 @@ module.exports = function(devices) {
     },
 
     editDevices: function(query, update) {
-      update.updatedAt = new Date().getTime();
+      // update.updatedAt = new Date().getTime();
       return new Promise(function(resolve, reject) {
         return devices
-        .update(update, { where: query })
+        .update(update, query)
         .success(function(num) {
           return resolve({ message: 'success' });
         })
@@ -179,11 +176,11 @@ module.exports = function(devices) {
 
     deleteDevice: function(query) {
       var update = {};
-      update.updatedAt = new Date().getTime();
+      // update.updatedAt = new Date().getTime();
       update.isActive = false;
       return new Promise(function(resolve, reject) {
         return devices
-        .update(update , { where: query })
+        .update(update , query)
         .success(function(err, num) {
           return resolve({ message: 'success' });
         })
