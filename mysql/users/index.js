@@ -209,7 +209,8 @@ module.exports = function(users) {
 
     editUser: function(query, update) {
       return new Promise(function(resolve, reject) {
-        return users.update(update, query)
+        return users
+        .update(update, query)
         .success(function(num) {
           return resolve({ message: 'success' });
         })
