@@ -40,7 +40,7 @@ module.exports = function(unittypes) {
         return new Promise(function(resolve, reject) {
           return unittypes
           .create(field)
-          .sucess(function(data) {
+          .success(function(data) {
             return resolve(data.dataValues);
           })
           .error(function(err) {
