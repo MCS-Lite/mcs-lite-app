@@ -180,10 +180,10 @@ module.exports = function(prototypes) {
     },
 
     editPrototype: function(query, update) {
-      update.updatedAt = new Date().getTime();
+      // update.updatedAt = new Date().getTime();
       return new Promise(function(resolve, reject) {
         return prototypes
-        .update(update, { where: query })
+        .update(update, query)
         .success(function(num) {
           // if (err) return reject();
           resolve({ message: 'success' });
@@ -195,10 +195,10 @@ module.exports = function(prototypes) {
     },
 
     deletePrototype: function(query, update) {
-      update.updatedAt = new Date().getTime();
+      // update.updatedAt = new Date().getTime();
       return new Promise(function(resolve, reject) {
         return prototypes
-        .update(update, { where: query })
+        .update(update, query)
         .success(function(num) {
           return resolve({ message: 'success' });
         })
@@ -297,8 +297,8 @@ module.exports = function(prototypes) {
     clonePrototype: function(prototypeId, data) {
       var field = {};
       field.isPublic = false;
-      field.createdAt = new Date().getTime();
-      field.updatedAt = new Date().getTime();
+      // field.createdAt = new Date().getTime();
+      // field.updatedAt = new Date().getTime();
       field.isActive = true;
       field.fwId = '';
       field.isTemplate = false;
@@ -316,13 +316,18 @@ module.exports = function(prototypes) {
 
       return new Promise(function(resolve, reject) {
         return prototypes
-        .find({ where: { prototypeId: prototypeId, isActive: true }})
+        .find({ 
+          where: { 
+            prototypeId: prototypeId, 
+            isActive: true, 
+          },
+        })
         .success(function(data) {
-          if (err) return reject();
-          if (data.length != 1) {
+          // if (err) return reject();
+          if (data === null) {
             return reject({ error: 'This prototypeId is not valid.' });
           }
-          return resolve(data);
+          return resolve(data.dataValues);
         })
         .error(function(err) {
           return reject();
@@ -348,7 +353,8 @@ module.exports = function(prototypes) {
           return prototypes
           .create(field)
           .success(function(data) {
-            return resolve(data);
+            console.log(data);
+            return resolve(data.dataValues);
           })
           .error(function(err) {
             return reject();

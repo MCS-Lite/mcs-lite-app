@@ -24,11 +24,11 @@ module.exports = {
       },
       deviceDescription: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
       },
       deviceImageURL: { 
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
       },
       prototypeId: { 
         type: DataTypes.STRING,
