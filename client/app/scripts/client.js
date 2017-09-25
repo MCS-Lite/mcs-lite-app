@@ -7,7 +7,7 @@ require('./style.js');
 if (/\:8081/.test(window.location.host)) {
   window.apiUrl = 'http://127.0.0.1:3000/api';
   window.oauthUrl = 'http://127.0.0.1:3000/oauth';
-  window.ws = '127.0.0.1:8000';
+  window.ws = '127.0.0.1:3000';
 } else {
   window.apiUrl = window.location.origin + '/api';
   window.oauthUrl = window.location.origin + '/oauth';
