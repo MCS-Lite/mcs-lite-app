@@ -144,6 +144,7 @@ module.exports = function(datapoints, devices) {
           .find(query)
           .success(function(data) {  
             if (data) { 
+              data.dataValues.values = JSON.parse(data.dataValues.values);
               return resolve(data.dataValues); 
             } else {
               return resolve({});
