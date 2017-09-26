@@ -64,7 +64,7 @@
     "cross-port-killer": "^1.0.1"
   },
   "devDependencies": {
-    "babel-eslint": "^7.2.3",
+    "babel-eslint": "^8.0.1",
     "codecov": "^2.2.0",
     "eslint": "^3.19.0",
     "eslint-config-airbnb": "^15.0.1",
