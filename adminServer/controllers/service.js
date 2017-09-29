@@ -46,7 +46,7 @@ module.exports = function ($db) {
       return fs.writeFile(path.resolve(__dirname, '../../configs/' + req.params.settingId + '.json'), JSON.stringify(content, null, 4), function(err) {
         if (err) reject(err);
         resolve();
-      });  
+      });
     })
     .then(function() {
       return res.send(200, "success.");
@@ -67,7 +67,7 @@ module.exports = function ($db) {
       return res.send(200, "success.");
     })
     .catch(function(err) {
-      return (400, err);
+      return res.send(400, err);
     });
   };
 
@@ -75,7 +75,7 @@ module.exports = function ($db) {
     var interfaces = os.networkInterfaces();
     var addresses = [];
     var restPath = path.resolve(__dirname, '../../configs/rest.json');
-    
+
     return fs.readFile(restPath, 'utf8', function(err, data) {
       var data = JSON.parse(data);
       if (this.serviceStatus) {
