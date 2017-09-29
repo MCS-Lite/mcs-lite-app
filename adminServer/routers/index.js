@@ -206,4 +206,11 @@ module.exports = function($db, $app, $admin) {
     middleware: [$app.oauth.authorise()],
     handler: serviceController.databaseInfo,
   };
+
+  this.restartService = {
+    path: $admin.apiRoute + '/service/restart',
+    methods: ['post'],
+    middleware: [$app.oauth.authorise()],
+    handler: serviceController.restartService,
+  };
 };
