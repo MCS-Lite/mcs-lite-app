@@ -8,6 +8,12 @@ var $wot = require('../../configs/wot');
 var $stream = require('../../configs/stream');
 var $admin = require('../../configs/admin');
 
+var _stopService = function () {
+  kill($rest.port);
+  kill($wot.port);
+  kill($stream.serverPort);
+  kill($stream.rtmpServerPort);
+};
 
 module.exports = function ($db) {
   var users = $db.users;
@@ -19,10 +25,7 @@ module.exports = function ($db) {
   };
 
   var stopService = function(req, res, next) {
-    kill($rest.port);
-    kill($wot.port);
-    kill($stream.serverPort);
-    kill($stream.rtmpServerPort);
+    _stopService();
     this.serviceStatus = false;
     return res.send(200, "success.");
   };
