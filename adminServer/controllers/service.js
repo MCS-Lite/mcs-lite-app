@@ -67,7 +67,7 @@ module.exports = function ($db) {
       return res.send(200, "success.");
     })
     .catch(function(err) {
-      return (400, err);
+      return res.send(400, err);
     });
   };
 
@@ -112,8 +112,13 @@ module.exports = function ($db) {
       return res.send(200, "success.");
     })
     .catch(function(err) {
-      return (400, err);
+      return res.send(400, err);
     });
+  };
+
+  var databaseInfo = function(req, res, next) {
+    var db = require(path.resolve(__dirname, '../../configs/db.json'));
+    return res.send(200, { db: db.db });
   };
 
   return {
@@ -126,6 +131,7 @@ module.exports = function ($db) {
     getServiceLog: getServiceLog,
     startService: startService,
     stopService: stopService,
+    databaseInfo: databaseInfo,
   };
 
 };

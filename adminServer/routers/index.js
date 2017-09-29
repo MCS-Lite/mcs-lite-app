@@ -200,4 +200,10 @@ module.exports = function($db, $app, $admin) {
     handler: usersController.clearAllUserExceptAdmin,
   };
 
+  this.showDatabaseInfo = {
+    path: $admin.apiRoute + '/database/info',
+    methods: ['get'],
+    middleware: [$app.oauth.authorise()],
+    handler: serviceController.databaseInfo,
+  };
 };
