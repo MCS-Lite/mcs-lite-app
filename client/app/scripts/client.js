@@ -35,6 +35,7 @@ var basic_token = new Buffer(clientId + ':' + clientSecret).toString('base64');
 window.basic_token = basic_token;
 
 import '../utils/i18n';
+import '../images/favicon.ico';
 
 if (document && document.getElementById('app')) {
   dom.render(
