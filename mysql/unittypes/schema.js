@@ -3,32 +3,32 @@ module.exports = function(Sequelize) {
     id: {
       type: Sequelize.BIGINT,
       autoIncrement: true,
-      primaryKey: true
+      primaryKey: true,
     },
-    createUserId: { 
+    createUserId: {
       type: Sequelize.STRING,
       allowNull: false,
     },
-    name: { 
+    name: {
       type: Sequelize.STRING,
       allowNull: false,
     },
-    symbol: { 
+    symbol: {
       type: Sequelize.STRING,
       allowNull: false,
     },
-    isActive: { 
+    isActive: {
       type: Sequelize.BOOLEAN,
       allowNull: false,
     },
-    isTemplate: { 
+    isTemplate: {
       type: Sequelize.BOOLEAN,
       allowNull: false,
     },
     createdAt: {
       type: Sequelize.DATE,
       allowNull: false,
-      defaultValue: Sequelize.NOW,
+      defaultValue: Sequelize.fn('NOW'),
     },
     updatedAt: {
       type: Sequelize.DATE,
