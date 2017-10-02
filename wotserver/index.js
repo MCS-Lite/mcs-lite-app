@@ -48,9 +48,10 @@ var onnewthing = function(thing) {
 };
 
 module.exports = {
-  init: function() {
+  init: function(server) {
     websocketServer.start({
       onmessage: onmessage,
+      server: server,
       onnewthing: onnewthing
     });
   },

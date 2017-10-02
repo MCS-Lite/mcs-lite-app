@@ -160,13 +160,17 @@ WebsocketBroker.prototype.start = function(route, handlers) {
   var port = self.port || process.env['PORT'];
   var host = self.host || process.env['HOST'];
   var endpoint = self.endpoint || process.env['ENDPOINT'];
-
-  var server = http.createServer(this.onRequest).listen(port, host, function() {
-      var workerinfo = "";
-      if (cluster.isWorker) workerinfo = " on CPU " + cluster.worker.id;
-      console.info('WoT/WebSocket server is listening at ws://' + self.host + ':' + self.port + workerinfo);
-  });
-
+  var server;
+  if (self.server) {
+    server = self.server;
+  } else {
+    server = http.createServer(this.onRequest).listen(port, host, function() {
+        var workerinfo = "";
+        if (cluster.isWorker) workerinfo = " on CPU " + cluster.worker.id;
+        console.info('WoT/WebSocket server is listening at ws://' + self.host + ':' + self.port + workerinfo);
+    });
+  }
+  
   var wsServer = new WebSocketServer({
     httpServer: server,
     autoAcceptConnections: false
