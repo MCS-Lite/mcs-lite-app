@@ -19,7 +19,8 @@ getSequelize = function() {
   options = {
     host: config.host,
     dialect: dialect,
-    port: port
+    port: port,
+    logging: false,
   } || {};
   console.log(options, username, password);
   return new Sequelize(db, username, password, options);
@@ -31,10 +32,11 @@ sequelize.getMigrator(migratorOptions);
 goMigration = function(filepath) {
   return fs.exists(filepath, function(exists) {
     if (exists) {
+      console.log('Migration start...');
       return sequelize
         .migrate()
         .success(function() {
-          return console.log('migration success.');
+          return console.log('Migration success.');
         })
         .error(function(err) {
           return console.log(err);
