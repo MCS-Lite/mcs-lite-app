@@ -1,6 +1,7 @@
 var Validator = require('jsonschema').Validator;
 var v = new Validator();
 var schema = require('./schema');
+var R = require('ramda');
 var shortid = require('shortid');
 var crypto = require('crypto');
 var secretKey = require('../../configs/rest').secretKey;
@@ -201,25 +202,23 @@ module.exports = function(users) {
     },
 
     deleteUser: function(query) {
+      var queue = [];
 
-      var queue = []; 
-
-      query.userId.forEach(function(key, index) {
+      query.userId.forEach(function(key) {
         queue.push(
           new Promise(function(resolve, reject) {
-            var _q = query;
-            _q.userId = key; 
-            console.log(_q);
+            var _q = R.merge(query, { userId: key });
+
             return users.remove(_q, { multi: true }, function(err, data) {
               if (err) return reject();
               resolve(data);
             });
-          })  
-        )
+          })
+        );
       });
       return Promise.all(queue);
     },
-    
+
     editUser: function(query, update) {
       return new Promise(function(resolve, reject) {
         return users.update(query, { $set: update }, {}, function(err, num) {
