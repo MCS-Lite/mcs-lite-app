@@ -1,16 +1,15 @@
 var config = require('./configs/db.json');
+var migrationPath, migratorOptions, getSequelize, goMigration;
+var fs = require('fs');
+var path = require('path');
+var Sequelize = require('sequelize');
 console.log(config);
-var fs, mkdirp, migrationPath, Sequelize, migratorOptions, getSequelize, sequelize, migrator, migrate, goMigration;
-fs = require('fs');
-mkdirp = require('mkdirp');
-migrationPath = process.cwd() + '/' + config.dialect + '/migrations';
-Sequelize = require('sequelize');
 
-migratorOptions = {
-  path: migrationPath
-};
+migrationPath = path.resolve(__dirname, `./${config.dialect}/migrations`);
 
-getSequelize = function(){
+migratorOptions = { path: migrationPath };
+
+getSequelize = function() {
   var db, password, username, dialect, port, options;
   db = config.database;
   password = config.password || null;
@@ -18,27 +17,30 @@ getSequelize = function(){
   dialect = config.dialect || 'mysql';
   port = config.port || 3306;
   options = {
-    host: '127.0.0.1',
+    host: config.host,
     dialect: dialect,
     port: port
   } || {};
   console.log(options, username, password);
   return new Sequelize(db, username, password, options);
 };
-sequelize = getSequelize();
-migrator = sequelize.getMigrator(migratorOptions);
-migrate = function(){
-  return sequelize.migrate().success(function(){
-  }).error(function(err){
-    return console.log(err);
-  });
-};
-goMigration = function(filepath){
-  return fs.exists(filepath, function(exists){
+
+var sequelize = getSequelize();
+sequelize.getMigrator(migratorOptions);
+
+goMigration = function(filepath) {
+  return fs.exists(filepath, function(exists) {
     if (exists) {
-      return migrate().success(function(d){
-      });
+      return sequelize
+        .migrate()
+        .success(function() {
+          return console.log('migration success.');
+        })
+        .error(function(err) {
+          return console.log(err);
+        });
     }
   });
 };
-goMigration(migratorOptions.path);
+
+goMigration(migrationPath);
