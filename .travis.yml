@@ -54,5 +54,7 @@ deploy:
     skip_cleanup: true
     region: ap-southeast-1
     local_dir: $TRAVIS_BUILD_DIR/uploadBuild
+    on:
+      all_branches: true
 after_deploy:
   - sh trigger-dependent-build.sh
