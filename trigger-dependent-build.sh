@@ -1,7 +1,12 @@
 #!/bin/bash
 
 # only execute this script when it is on master branch
-if [ "${TRAVIS_BRANCH}" != "master" ] || [ "${TRAVIS_PULL_REQUEST}" != "false" ]; then
+#if [ "${TRAVIS_BRANCH}" != "master" ] || [ "${TRAVIS_PULL_REQUEST}" != "false" ]; then
+#  exit 0
+#fi
+
+# Skip test for PR
+if [ "${TRAVIS_PULL_REQUEST}" != "false" ]; then
   exit 0
 fi
 
