@@ -1,55 +1,36 @@
+var R = require('ramda');
+var schema = require('../users/schema');
+var doMigrationFromNeDB = require('../utils').doMigrationFromNeDB;
+var sequelize = require('../utils').sequelize;
+
 module.exports = {
   up: function(migration, DataTypes, done){
-    migration.createTable('users', {
-      id: {
-        type: DataTypes.BIGINT,
-        autoIncrement: true,
-        primaryKey: true,
-      },
-      userId: { 
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
-      email: { 
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
-      password: { 
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
-      userName: { 
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
-      userImage: {
-        type: DataTypes.STRING,
-        allowNull: false, 
-      },
-      isActive: { 
-        type: DataTypes.BOOLEAN,
-        allowNull: false,
-      },
-      isAdmin: { 
-        type: DataTypes.BOOLEAN,
-        allowNull: false,
-      },
-      createdAt: {
-        type: DataTypes.DATE,
-        allowNull: false,
-        defaultValue: DataTypes.NOW,
-      },
-      updatedAt: {
-        type: DataTypes.DATE,
-        allowNull: false,
-        defaultValue: DataTypes.NOW,
-      },
-    }, {
-      charset: 'utf8'
-    });
-    done();
+    migration
+      .createTable('users', schema, {
+        charset: 'utf8'
+      })
+      .success(function() {
+        var table = sequelize.define('users', schema);
+        var nedbPath = process.cwd() + '/db/users.json';
+
+        doMigrationFromNeDB(
+          nedbPath,
+          function(entry) {
+            const user = R.merge(entry, {
+              createdAt: new Date(entry.createdAt)
+                .toISOString()
+                .replace('Z', ''),
+              updatedAt: new Date(entry.updatedAt)
+                .toISOString()
+                .replace('Z', '')
+            });
+            return table.create(user);
+          },
+          done
+        );
+      });
   },
-  down: function(migration, DataTypes, done){
+  down: function(migration, DataTypes, done) {
     done();
   }
 };
