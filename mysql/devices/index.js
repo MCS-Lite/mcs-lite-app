@@ -15,17 +15,19 @@ module.exports = function(devices) {
       query.isActive = true;
       return new Promise(function(resolve, reject) {
         return devices
-        .find({ where: query })
-        .success(function(data) {
-          if (data) {
-            return resolve(data);
-          } else {
-            return resolve([]);            
-          }
-        })
-        .error(function(err) {
-          if (err) return reject();
-        });
+          .findAll({ where: query })
+          .success(function(data) {
+            if (data.length > 0) {
+              return resolve(data.map(function(device) {
+                return device.dataValues;
+              }));
+            }
+
+            return resolve([]);
+          })
+          .error(function(err) {
+            if (err) return reject();
+          });
       });
     },
 
@@ -48,7 +50,7 @@ module.exports = function(devices) {
             devices
             .findAll({
               where: query,
-              order: order, 
+              order: order,
               limit: limit,
               offset: offset,
             })
@@ -61,7 +63,7 @@ module.exports = function(devices) {
               // return resolve(data);
             })
             .error(function(err) {
-              if (err) return reject();            
+              if (err) return reject();
             });
         } else {
           return devices.find({ where: query })
@@ -96,7 +98,7 @@ module.exports = function(devices) {
             devices
             .findAll({
               where: {},
-              order: order, 
+              order: order,
               limit: limit,
               offset: offset,
             })
@@ -109,7 +111,7 @@ module.exports = function(devices) {
               // return resolve(data);
             })
             .error(function(err) {
-              if (err) return reject();            
+              if (err) return reject();
             });
         } else {
           return devices.find({}, function(err, data) {
