@@ -20,6 +20,8 @@ module.exports = {
       const entriesCount = entries.length;
       let migratedCount = 0;
 
+      if (entriesCount === 0) return done();
+
       entries.forEach(function(entry) {
         doMigrate(entry).success(function() {
           migratedCount += 1;
