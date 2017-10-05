@@ -1,3 +1,5 @@
+var Sequelize = require('sequelize');
+
 module.exports = function($db) {
 
   var unittypes = $db.unittypes;
@@ -24,21 +26,15 @@ module.exports = function($db) {
     });
   };
 
-  var retrieveUnitTypes = function(req, res, next) {
+  var retrieveUnitTypes = function(req, res) {
     var userId = req.user.userId;
-    var unitTypeData;
-    return unittypes.retrieveUnitTypes({
-      isTemplate: true,
-    })
+
+    return unittypes.retrieveUnitTypes(Sequelize.or(
+      { isTemplate: true },
+      { createUserId: userId }
+    ))
     .then(function(data) {
-      unitTypeData = data;
-      return unittypes.retrieveUnitTypes({
-        createUserId: userId
-      });
-    })
-    .then(function(data) {
-      unitTypeData = unitTypeData.concat(data)
-      return res.send(200, { data: unitTypeData });
+      return res.send(200, { data });
     })
   };
 

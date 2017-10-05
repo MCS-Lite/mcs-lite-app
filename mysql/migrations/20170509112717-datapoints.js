@@ -1,47 +1,37 @@
+var R = require('ramda');
+var schema = require('../datapoints/schema');
+var doMigrationFromNeDB = require('../utils').doMigrationFromNeDB;
+var sequelize = require('../utils').sequelize;
+
 module.exports = {
   up: function(migration, DataTypes, done){
-    migration.createTable('datapoints', {
-      id: {
-        type: DataTypes.BIGINT,
-        autoIncrement: true,
-        primaryKey: true
-      },
-      deviceId: { 
-        type: DataTypes.STRING, 
-        allowNull: false,
-      },
-      deviceKey: { 
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
-      datachannelId: { 
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
-      values: { 
-        type: DataTypes.TEXT,
-        allowNull: false,
-      },
-      updatedAt: { 
-        type: DataTypes.DATE,
-        defaultValue: DataTypes.NOW,
-        allowNull: false,
-      },
-      createdAt: {
-        type: DataTypes.DATE,
-        defaultValue: DataTypes.NOW,
-        allowNull: false,
-      },
-      isActive: { 
-        type: DataTypes.BOOLEAN, 
-        allowNull: false,
-      },
-    }, {
-      charset: 'utf8',
-    });
-    done();
+    migration
+      .createTable('datapoints', schema, {
+        charset: 'utf8'
+      })
+      .success(function() {
+        var table = sequelize.define('datapoints', schema);
+        var nedbPath = process.cwd() + '/db/datapoints.json';
+
+        doMigrationFromNeDB(
+          nedbPath,
+          function(entry) {
+            const user = R.merge(entry, {
+              createdAt: new Date(entry.createdAt)
+                .toISOString()
+                .replace('Z', ''),
+              updatedAt: new Date(entry.updatedAt)
+                .toISOString()
+                .replace('Z', ''),
+              values: JSON.stringify(entry.values)
+            });
+            return table.create(user);
+          },
+          done
+        );
+      });
   },
-  down: function(migration, DataTypes, done){
+  down: function(migration, DataTypes, done) {
     done();
   }
 };

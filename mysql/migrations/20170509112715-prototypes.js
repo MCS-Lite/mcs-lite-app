@@ -1,111 +1,36 @@
+var R = require('ramda');
+var schema = require('../prototypes/schema');
+var doMigrationFromNeDB = require('../utils').doMigrationFromNeDB;
+var sequelize = require('../utils').sequelize;
+
 module.exports = {
   up: function(migration, DataTypes, done){
-    migration.createTable('prototypes', {
-      id: {
-        type: DataTypes.BIGINT,
-        autoIncrement: true,
-        primaryKey: true
-      },
-      prototypeId: { 
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
-      prototypeKey: { 
-        type: DataTypes.STRING, 
-        allowNull: false,
-      },
-      prototypeName: { 
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
-      prototypeDescription: { 
-        type: DataTypes.TEXT,
-        allowNull: false,
-      },
-      prototypeImageURL: { 
-        type: DataTypes.STRING, 
-        allowNull: false,
-      },
-      createUserId: { 
-        type: DataTypes.STRING, 
-        allowNull: false,
-      },
-      version: { 
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
-      isPublic: { 
-        type: DataTypes.BOOLEAN,
-        allowNull: false,
-      },
-      isActive: { 
-        type: DataTypes.BOOLEAN,
-        allowNull: false,
-      },
-      isTemplate: { 
-        type: DataTypes.BOOLEAN, 
-        allowNull: false,
-      },
-      createdAt: {
-        type: DataTypes.DATE,
-        allowNull: false,
-        defaultValue: DataTypes.NOW,
-      },
-      updatedAt: {
-        type: DataTypes.DATE,
-        allowNull: false,
-        defaultValue: DataTypes.NOW,
-      },id: {
-        type: DataTypes.BIGINT,
-        autoIncrement: true,
-        primaryKey: true
-      },
-      prototypeId: { 
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
-      prototypeKey: { 
-        type: DataTypes.STRING, 
-        allowNull: false,
-      },
-      prototypeName: { 
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
-      prototypeDescription: { 
-        type: DataTypes.TEXT,
-        allowNull: false,
-      },
-      prototypeImageURL: { 
-        type: DataTypes.STRING, 
-        allowNull: false,
-      },
-      createUserId: { 
-        type: DataTypes.STRING, 
-        allowNull: false,
-      },
-      version: { 
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
-      isPublic: { 
-        type: DataTypes.BOOLEAN,
-        allowNull: false,
-      },
-      isActive: { 
-        type: DataTypes.BOOLEAN,
-        allowNull: false,
-      },
-      isTemplate: { 
-        type: DataTypes.BOOLEAN, 
-        allowNull: false,
-      },
-    }, {
-      charset: 'utf8'
-    });
-    done();
+    migration
+      .createTable('prototypes', schema, {
+        charset: 'utf8'
+      })
+      .success(function() {
+        var table = sequelize.define('prototypes', schema);
+        var nedbPath = process.cwd() + '/db/prototypes.json';
+
+        doMigrationFromNeDB(
+          nedbPath,
+          function(entry) {
+            const user = R.merge(entry, {
+              createdAt: new Date(entry.createdAt)
+                .toISOString()
+                .replace('Z', ''),
+              updatedAt: new Date(entry.updatedAt)
+                .toISOString()
+                .replace('Z', '')
+            });
+            return table.create(user);
+          },
+          done
+        );
+      });
   },
-  down: function(migration, DataTypes, done){
+  down: function(migration, DataTypes, done) {
     done();
   }
 };

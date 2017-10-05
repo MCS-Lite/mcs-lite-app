@@ -1,21 +1,29 @@
 // var Validator = require('jsonschema').Validator;
 // var v = new Validator();
-
+var Sequelize = require('sequelize');
 // var schema = require('./schema');
 
 module.exports = function(unittypes) {
   return {
     retrieveUnitTypes: function(query) {
-      query.isActive = true;
 
       return new Promise(function(resolve, reject) {
         return unittypes
-        .find({ where: query })
+        .findAll({
+          where: Sequelize.and(
+            { isActive: true },
+            query
+          ),
+        })
         .success(function(data) {
-          if (data === null) {
-            return resolve([]);
+          if (data.length > 0) {
+            const unittypes = data.map(function(item) {
+              return item.dataValues;
+            })
+            return resolve(unittypes);
           }
-          return resolve([data.dataValues]);
+
+          return resolve([]);
         })
         .error(function(data) {
           if (err) return reject();
@@ -44,7 +52,7 @@ module.exports = function(unittypes) {
             return resolve(data.dataValues);
           })
           .error(function(err) {
-            if (err) return reject();            
+            if (err) return reject();
           });
         });
       // });

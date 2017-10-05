@@ -1,71 +1,36 @@
+var R = require('ramda');
+var schema = require('../devices/schema');
+var doMigrationFromNeDB = require('../utils').doMigrationFromNeDB;
+var sequelize = require('../utils').sequelize;
+
 module.exports = {
   up: function(migration, DataTypes, done){
-    migration.createTable('devices', {
-      id: {
-        type: DataTypes.BIGINT,
-        autoIncrement: true,
-        primaryKey: true
-      },
-      createUserId: { 
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
-      deviceId: { 
-        type: DataTypes.STRING, 
-        allowNull: false,
-      },
-      deviceKey: { 
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
-      deviceName: { 
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
-      deviceDescription: {
-        type: DataTypes.STRING,
-        allowNull: true,
-      },
-      deviceImageURL: { 
-        type: DataTypes.STRING,
-        allowNull: true,
-      },
-      prototypeId: { 
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
-      isHeartbeating: { 
-        type: DataTypes.BOOLEAN,
-        allowNull: false,
-      },
-      isPublic: { 
-        type: DataTypes.BOOLEAN,
-        allowNull: false,
-      },
-      fwId: {
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
-      isActive: { 
-        type: DataTypes.BOOLEAN,
-        allowNull: false,
-      },
-      createdAt: {
-        type: DataTypes.DATE,
-        allowNull: false,
-        defaultValue: DataTypes.NOW,
-      },
-      updatedAt: {
-        type: DataTypes.DATE,
-        allowNull: false,
-        defaultValue: DataTypes.NOW,
-      }
-    }, {
-      charset: 'utf8'
-    });
-    done();
+    migration
+      .createTable('devices', schema, {
+        charset: 'utf8'
+      })
+      .success(function() {
+        var table = sequelize.define('devices', schema);
+        var nedbPath = process.cwd() + '/db/devices.json';
+
+        doMigrationFromNeDB(
+          nedbPath,
+          function(entry) {
+            const user = R.merge(entry, {
+              createdAt: new Date(entry.createdAt)
+                .toISOString()
+                .replace('Z', ''),
+              updatedAt: new Date(entry.updatedAt)
+                .toISOString()
+                .replace('Z', '')
+            });
+            return table.create(user);
+          },
+          done
+        );
+      });
   },
-  down: function(migration, DataTypes, done){
+  down: function(migration, DataTypes, done) {
     done();
   }
 };
