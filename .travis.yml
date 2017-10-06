@@ -55,6 +55,6 @@ deploy:
     region: ap-southeast-1
     local_dir: $TRAVIS_BUILD_DIR/uploadBuild
     on:
-      branch: ${S3_DEPLOY_BRANCH}
+      all_branches: true
 after_deploy:
   - sh trigger-dependent-build.sh
