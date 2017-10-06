@@ -1,0 +1,20 @@
+{
+  "presets": [
+    ["env", {
+      "targets": {
+        "node": "6.11"
+      }
+    }]
+  ],
+  "env": {
+    "7688": {
+      "presets": [
+        ["env", {
+          "targets": {
+            "node": "0.12"
+          }
+        }]
+      ]
+    }
+  }
+}
