@@ -21,7 +21,7 @@ else
 	echo "node for win32 exists."
 fi
 
-if [ ! -f nodeBinary/win64/node.exe ]; then 
+if [ ! -f nodeBinary/win64/node.exe ]; then
 	mkdir -p nodeBinary/win64 && cd nodeBinary/win64 && wget https://s3-ap-southeast-1.amazonaws.com/mtk.linkit/mcs-lite-app/nodejsv6.11.0/win64/node.exe && cd -
 else
 	echo "node for win64 exists."
@@ -74,11 +74,14 @@ mkdir mcs-lite-app
 cd ../../..
 cp -R ./appBuild/. ./out/mcs-lite-app/win64/mcs-lite-app
 winresourcer --operation=Update --exeFile=./out/mcs-lite-app/win64/mcs-lite-app.exe --resourceType=Icongroup --resourceName=IDR_MAINFRAME --lang=1033 --resourceFile=./icon.ico
+winresourcer --operation=Update --exeFile=./out/mcs-lite-app/win64/mcs-lite-app.exe --resourceType=Icongroup --resourceName=IDR_MAINFRAME --lang=1033 --resourceFile=./icon_tray@2x.png
 cp -R ./appBuild/. ./out/mcs-lite-app/win32/mcs-lite-app
 winresourcer --operation=Update --exeFile=./out/mcs-lite-app/win32/mcs-lite-app.exe --resourceType=Icongroup --resourceName=IDR_MAINFRAME --lang=1033 --resourceFile=./icon.ico
+winresourcer --operation=Update --exeFile=./out/mcs-lite-app/win32/mcs-lite-app.exe --resourceType=Icongroup --resourceName=IDR_MAINFRAME --lang=1033 --resourceFile=./icon_tray@2x.png
 cp -R ./appBuild/. ./out/mcs-lite-app/osx64/mcs-lite-app
 cp -R ./icon.icns ./out/mcs-lite-app/osx64/mcs-lite-app.app/Contents/Resources/app.icns
 cp -R ./icon.icns ./out/mcs-lite-app/osx64/mcs-lite-app.app/Contents/Resources/document.icns
+cp -R ./icon_tray@2x.png ./out/mcs-lite-app/osx64/mcs-lite-app.app/Contents/Resources/app.nw/icon_tray@2x.png
 
 cp -R ./nodeBinary/mac/node ./out/mcs-lite-app/osx64/
 cp -R ./nodeBinary/win32/node.exe ./out/mcs-lite-app/win32/
