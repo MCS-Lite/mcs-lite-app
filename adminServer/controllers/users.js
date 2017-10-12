@@ -1,6 +1,8 @@
 var jwt = require('jsonwebtoken');
 var request = require('superagent');
 var path = require('path');
+var validator = require('validator');
+var R = require('ramda');
 
 /* config */
 var $admin = require('../../configs/admin');
@@ -333,7 +335,7 @@ module.exports = function ($db) {
     if (Array.isArray(req.body.userId)) {
       userId = req.body.userId
     } else {
-      userId = req.body.userId.split(',');    
+      userId = req.body.userId.split(',');
     }
 
     return users.deleteUser({
@@ -409,33 +411,68 @@ module.exports = function ($db) {
       rawData = req.body.toString().split(/\r?\n/);
     }
 
-    rawData.forEach(function(key, item) {
-      if (key.split(',').length === 3) {
-        content.push({
-          userName: key.split(',')[0],
-          email: key.split(',')[1],
-          password: key.split(',')[2],
-        });
-      }
-    });
-    var queue = [];
-    content.forEach(function(key, item) {
-      queue.push(users.addNewUser({
-          userName: key.userName,
-          email: key.email,
-          password: key.password,
-          isAdmin: false,
-        })
-      );
-    });
+    const userCount = rawData.length;
 
-    return Promise.all(queue)
-    .then(function(values) {
-      return res.send(200, 'success.');
-    })
-    .catch(function(err) {
-      return res.send(400, err);
-    });
+    // Validate csv format
+    for (var i = 0; i < userCount; i ++) {
+      const items = rawData[i].split(',').map(R.trim);
+
+      if ( items.length !== 3
+        || items[0] === ''
+        || items[1] === ''
+        || items[2].length < 8
+        || !validator.isEmail(items[1])
+      ) {
+        return res.send(400, 'Csv file format error.');
+      }
+
+      content.push({
+        userName: items[0],
+        email: items[1],
+        password: items[2],
+      });
+    }
+
+    // Check duplicated email in csv file
+    const emailList = content.map(function(record) { return record.email });
+    const emailDuplicated = emailList.length !== R.uniq(emailList).length;
+
+    if (emailDuplicated) return res.send(400, 'Email duplicated in csv file.');
+
+    // Check duplicated email in database
+    var checkIsRegisteredQueue = [];
+
+    for (var i = 0; i < userCount; i ++) {
+      checkIsRegisteredQueue.push(users.isRegistered(content[i].email));
+    }
+
+    return Promise.all(checkIsRegisteredQueue)
+      .then(function(results) {
+
+        for (var i = 0; i < results.length; i++) {
+          if (results[i].exist) return res.send(400, results[i].email + ', This email was registed.')
+        }
+
+        var queue = [];
+
+        content.forEach(function(key, item) {
+          queue.push(users.addNewUser({
+              userName: key.userName,
+              email: key.email,
+              password: key.password,
+              isAdmin: false,
+            })
+          );
+        });
+
+        return Promise.all(queue)
+          .then(function(values) {
+            return res.send(200, 'success.');
+          })
+          .catch(function(err) {
+            return res.send(400, err);
+          });
+      })
   };
 
   var clearAllUserExceptAdmin = function(req, res, next) {
