@@ -322,6 +322,10 @@ bluebird@^3.3.1, bluebird@^3.3.3, bluebird@^3.4.0:
   version "3.5.0"
   resolved "https://registry.yarnpkg.com/bluebird/-/bluebird-3.5.0.tgz#791420d7f551eea2897453a8a77653f96606d67c"
 
+bluebird@^3.5.1:
+  version "3.5.1"
+  resolved "https://registry.yarnpkg.com/bluebird/-/bluebird-3.5.1.tgz#d9551f9de98f1fcda1e683d17ee91a0602ee2eb9"
+
 body-parser@^1.15.2:
   version "1.17.1"
   resolved "https://registry.yarnpkg.com/body-parser/-/body-parser-1.17.1.tgz#75b3bc98ddd6e7e0d8ffe750dfaca5c66993fa47"
@@ -690,6 +694,10 @@ create-error-class@^3.0.1:
   resolved "https://registry.yarnpkg.com/create-error-class/-/create-error-class-3.0.2.tgz#06be7abef947a3f14a30fd610671d401bca8b7b6"
   dependencies:
     capture-stack-trace "^1.0.0"
+
+cross-port-killer@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/cross-port-killer/-/cross-port-killer-1.0.1.tgz#94be34efb5354a9c8d9dce7a9373ec2efeefb241"
 
 cryptiles@2.x.x:
   version "2.0.5"
@@ -1988,18 +1996,23 @@ lwm2m-node-lib@^0.4.1:
     mongoose-auto-increment "5.0.1"
     underscore "1.7.0"
 
-mcs-lite-introduction@^0.2.4:
-  version "0.2.4"
-  resolved "https://registry.yarnpkg.com/mcs-lite-introduction/-/mcs-lite-introduction-0.2.4.tgz#d6f671ac605ebb71876cc9a55084586c68a9a681"
+mcs-lite-admin-web@^0.1.9:
+  version "0.1.10"
+  resolved "https://registry.yarnpkg.com/mcs-lite-admin-web/-/mcs-lite-admin-web-0.1.10.tgz#d141ea6479255893afabe185643d6cb6c2654af0"
+
+mcs-lite-introduction@^0.2.7:
+  version "0.2.8"
+  resolved "https://registry.yarnpkg.com/mcs-lite-introduction/-/mcs-lite-introduction-0.2.8.tgz#e44847e3859e42b36788b97f72bb60f79fa3d068"
   dependencies:
     gitbook-plugin-anchorjs "^1.1.1"
     gitbook-plugin-edit-link "^2.0.2"
     gitbook-plugin-github "^2.0.0"
-    gitbook-plugin-prism "^2.2.0"
+    gitbook-plugin-prism "^2.3.0"
+    gitbook-plugin-sitemap-general "^0.1.1"
 
-mcs-lite-mobile-web@^0.4.1:
-  version "0.4.1"
-  resolved "https://registry.yarnpkg.com/mcs-lite-mobile-web/-/mcs-lite-mobile-web-0.4.1.tgz#3b9f494aba231eb4ac64d31364e976f2dc9a7667"
+mcs-lite-mobile-web@^0.4.11:
+  version "0.4.12"
+  resolved "https://registry.yarnpkg.com/mcs-lite-mobile-web/-/mcs-lite-mobile-web-0.4.12.tgz#e396ecff7c47075cb5c9b0145d024a4e2d24ea19"
 
 media-typer@0.3.0:
   version "0.3.0"
