@@ -33,11 +33,13 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bluebird": "^3.5.1",
     "body-parser": "^1.15.2",
     "chai": "^3.5.0",
     "compression": "^1.6.2",
     "connect-multiparty": "^2.0.0",
     "cookie-parser": "^1.4.3",
+    "cross-port-killer": "^1.0.1",
     "crypto": "0.0.3",
     "ejs": "^2.5.5",
     "express": "^4.14.0",
@@ -60,8 +62,7 @@
     "superagent": "^3.5.0",
     "utils-merge": "^1.0.0",
     "wotcity.io": "^0.8.14",
-    "youmeb-generator": "0.0.1", 
-    "cross-port-killer": "^1.0.1"
+    "youmeb-generator": "0.0.1"
   },
   "devDependencies": {
     "babel-eslint": "^7.2.3",
