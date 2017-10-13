@@ -18,8 +18,8 @@ module.exports = function(users) {
 
       return new Promise(function(resolve, reject) {
         return users
-        .update({ 
-          password: password 
+        .update({
+          password: password
         }, {
           userId: userId,
           isActive: true,
@@ -34,7 +34,7 @@ module.exports = function(users) {
     },
 
     signInUser: function(email, password, admin) {
-      // admin is for admin console login 
+      // admin is for admin console login
       password = crypto
         .createHmac('sha256', secretKey)
         .update(password)
@@ -68,6 +68,29 @@ module.exports = function(users) {
       });
     },
 
+    isRegistered: function isRegistered(email) {
+      return new Promise(function(resolve, reject) {
+        return users
+          .find({ where: { email: email } })
+          .success(function(data) {
+            if (data === null) {
+              return resolve({
+                email: email,
+                exist: false,
+              });
+            }
+
+            return resolve({
+              email: email,
+              exist: true,
+            });
+          })
+          .error(function(err) {
+            return reject(err);
+          });
+      });
+    },
+
     addNewUser: function(field) {
       field.userId = shortid.generate();
       // field.createdAt = new Date().getTime();
@@ -81,12 +104,12 @@ module.exports = function(users) {
 
       return new Promise( function(resolve, reject) {
         return users.find({
-          where: { 
+          where: {
             email: field.email,
           },
         })
         .success(function(data) {
-          if (data === null) { 
+          if (data === null) {
             return resolve();
           } else {
             return reject({ error: 'This email was registed!' });
@@ -120,18 +143,18 @@ module.exports = function(users) {
           return resolve(data);
         })
         .error(function(err) {
-          if (err) return reject();          
+          if (err) return reject();
         })
       });
     },
 
     checkIsAdmin: function(userId, isMiddleware) {
       return new Promise(function(resolve, reject) {
-        return users.find({ 
+        return users.find({
           where: {
-            userId: userId, 
-            isAdmin: true, 
-            isActive: true 
+            userId: userId,
+            isAdmin: true,
+            isActive: true
           }
         })
         .success(function(data) {
@@ -150,27 +173,27 @@ module.exports = function(users) {
           }
         })
         .error(function(err) {
-          if (err) return reject();          
+          if (err) return reject();
         })
       });
     },
 
     checkDefaultUserCount: function() {
       return new Promise(function(resolve, reject) {
-        return users.find({ 
+        return users.find({
           where: {
-            isActive: true,          
+            isActive: true,
           },
         })
         .success(function(data) {
-          if (data) { 
-            return resolve(false);  
+          if (data) {
+            return resolve(false);
           } else { // data === null
-            return resolve(true);          
+            return resolve(true);
           }
         })
         .error(function(err) {
-          if (err) return reject();          
+          if (err) return reject();
         });
       });
     },
@@ -179,13 +202,13 @@ module.exports = function(users) {
       return new Promise(function(resolve, reject) {
         return users.update({ isAdmin: isAdmin }, {
           email: email,
-          isActive: true,  
+          isActive: true,
         })
         .success(function(num) {
           return resolve({ message: 'success' });
         })
         .error(function(err) {
-          if (err) return reject();          
+          if (err) return reject();
         });
       });
     },
@@ -196,7 +219,7 @@ module.exports = function(users) {
         .find({ where: query })
         .success(function(data) {
           if (data !== null) {
-            return resolve([data.dataValues]);          
+            return resolve([data.dataValues]);
           } else {
             return resolve([]);
           }
@@ -215,7 +238,7 @@ module.exports = function(users) {
           return resolve({ message: 'success' });
         })
         .error(function(err) {
-          if (err) return reject();          
+          if (err) return reject();
         });
       });
     },
