@@ -248,7 +248,7 @@ module.exports = function ($db) {
         });
       });
     }).then(function(info) {
-      return users.retrieveOneUser({ userId: info.userId})
+      return users.retrieveOneUser({ userId: info.userId});
     })
     .then(function(foundUsers) {
       if (foundUsers.length != 0) {
@@ -287,6 +287,9 @@ module.exports = function ($db) {
       } else {
         return res.send(400, "Cannot regist admin Account.");
       }
+    })
+    .catch(function(err) {
+      return res.send(400, err);
     });
   };
 

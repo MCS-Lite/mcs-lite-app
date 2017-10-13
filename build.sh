@@ -38,8 +38,10 @@ cp -R ./wotserver/ ./appBuild/wotserver
 cp -R ./configs/ ./appBuild/defaultConfigs
 cp -R ./configs/ ./appBuild/configs
 cp -R ./nedb/ ./appBuild/nedb
+cp -R ./mysql/ ./appBuild/mysql
 cp -R ./node_modules/ ./appBuild/node_modules
 cp -R ./server.js ./appBuild/server.js
+cp -R ./migration.js ./appBuild/migration.js
 cp -R package.json ./appBuild/package.json
 cp -R ./dbTemplates/ ./appBuild/db
 cp -R ./uploadImages/ ./appBuild/uploadImages
@@ -53,6 +55,7 @@ npm remove supertest-as-promised --save
 
 rm -rf ./restserver/tests
 rm -rf ./nedb/test
+rm -rf ./mysql/test
 
 cd ..
 
