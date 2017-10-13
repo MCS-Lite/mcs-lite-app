@@ -126,5 +126,14 @@ module.exports = function(devices) {
         });
       });
     },
+
+    clearAllDevices: function() {
+      return new Promise(function(resolve, reject) {
+        return devices.remove({}, { multi: true }, function(err) {
+          if (err) return reject(err);
+          return resolve();
+        });
+      });
+    },
   };
 }

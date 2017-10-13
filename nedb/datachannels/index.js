@@ -108,5 +108,14 @@ module.exports = function(datachannels, prototypes) {
       });
       return Promise.all(channelPool)
     },
+
+    clearAllDatachannels: function() {
+      return new Promise(function(resolve, reject) {
+        return datachannels.remove({}, { multi: true }, function(err) {
+          if (err) return reject(err);
+          return resolve();
+        });
+      });
+    },
   };
-}
+};

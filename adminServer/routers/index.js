@@ -193,11 +193,11 @@ module.exports = function($db, $app, $admin) {
     handler: usersController.batchAddNewUserByCSV,
   };
 
-  this.clearAllUserExceptAdmin = {
+  this.clearAllData = {
     path: $admin.apiRoute + '/clear',
     methods: ['delete'],
     middleware: [$app.oauth.authorise()],
-    handler: usersController.clearAllUserExceptAdmin,
+    handler: serviceController.clearAllData,
   };
 
 };
