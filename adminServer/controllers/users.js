@@ -333,7 +333,7 @@ module.exports = function ($db) {
     if (Array.isArray(req.body.userId)) {
       userId = req.body.userId
     } else {
-      userId = req.body.userId.split(',');    
+      userId = req.body.userId.split(',');
     }
 
     return users.deleteUser({
@@ -438,17 +438,6 @@ module.exports = function ($db) {
     });
   };
 
-  var clearAllUserExceptAdmin = function(req, res, next) {
-    return users.clearAllUser()
-    .then(function() {
-      services.clearAllData();
-      return res.send(200, 'success.');
-    })
-    .catch(function(err) {
-      return res.send(400, err);
-    });
-  };
-
   return {
     login: login,
     loginInterface: loginInterface,
@@ -461,7 +450,6 @@ module.exports = function ($db) {
     deleteUser: deleteUser,
     addNewUser: addNewUser,
     batchAddNewUserByCSV: batchAddNewUserByCSV,
-    clearAllUserExceptAdmin: clearAllUserExceptAdmin,
   };
 
 }
