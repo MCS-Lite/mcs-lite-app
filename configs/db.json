@@ -1,10 +1,5 @@
 {
-  "db": "mysql",
-  "host": "127.0.0.1",
-  "port": 3306,
-  "username": "root",
-  "password": "root",
-  "database": "mcslite",
-  "dialect": "mysql",
-  "logging": true
+  "db": "nedb",
+  "host": "localhost",
+  "port": ""
 }
