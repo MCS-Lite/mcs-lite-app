@@ -12,7 +12,10 @@ module.exports = function(unittypes) {
         .findAll({
           where: Sequelize.and(
             { isActive: true },
-            query
+            Sequelize.or(
+              { isTemplate: true },
+              query
+            )
           ),
         })
         .success(function(data) {
