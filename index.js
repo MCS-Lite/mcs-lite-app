@@ -118,7 +118,10 @@ function initApp() {
 
     adminServer.listen($admin.port);
     var win = gui.Window.get();
-    var tray = new gui.Tray({ icon: 'icon_tray@2x.png' });
+    var tray = new gui.Tray({
+      icon: 'icon_tray@2x.png',
+      tooltip: 'MCS Lite',
+    });
     var trayMenu = new gui.Menu();
     var showMenuItem = new gui.MenuItem({
       type: 'normal',
