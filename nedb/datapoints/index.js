@@ -90,5 +90,14 @@ module.exports = function(datapoints, devices) {
         }
       });
     },
+
+    clearAllDatapoints: function() {
+      return new Promise(function(resolve, reject) {
+        return datapoints.remove({}, { multi: true }, function(err) {
+          if (err) return reject(err);
+          return resolve();
+        });
+      });
+    },
   };
 }

@@ -103,11 +103,11 @@ module.exports = function ($db) {
     users.retrieveAdminUsers()
     .then(function(data) {
       var adminUsersContent = '';
-      
+
       data.forEach(function(k, v) {
         adminUsersContent += k.toString() + '\n';
       });
-      
+
       fs.writeFileSync(path.resolve(__dirname, '../../db/users.json'), adminUsersContent, 'utf8');
       fs.writeFileSync(path.resolve(__dirname, '../../db/datapoints.json'), '', 'utf8');
       fs.writeFileSync(path.resolve(__dirname, '../../db/devices.json'), '', 'utf8');
@@ -117,6 +117,31 @@ module.exports = function ($db) {
     .catch(function(err) {
       return (400, err);
     });
+  };
+
+  var clearAllData = function clearAllData(req, res) {
+    var datachannels = $db.datachannels;
+    var unittypes = $db.unittypes;
+    var datapoints = $db.datapoints;
+    var devices = $db.devices;
+    var prototypes = $db.prototypes;
+
+    var queue = [];
+
+    queue.push(users.clearAllUser());
+    queue.push(unittypes.clearAllUnittypes());
+    queue.push(datachannels.clearAllDatachannels());
+    queue.push(datapoints.clearAllDatapoints());
+    queue.push(devices.clearAllDevices());
+    queue.push(prototypes.clearAllPrototypes());
+
+    Promise.all(queue)
+      .then(function() {
+        return res.send(200, 'success.');
+      })
+      .catch(function(err) {
+        return res.send(400, err);
+      });
   };
 
   return {
@@ -129,6 +154,7 @@ module.exports = function ($db) {
     getServiceLog: getServiceLog,
     startService: startService,
     stopService: stopService,
+    clearAllData: clearAllData,
   };
 
 };

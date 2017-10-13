@@ -12,7 +12,10 @@ module.exports = function(unittypes) {
         .findAll({
           where: Sequelize.and(
             { isActive: true },
-            query
+            Sequelize.or(
+              { isTemplate: true },
+              query
+            )
           ),
         })
         .success(function(data) {
@@ -56,6 +59,19 @@ module.exports = function(unittypes) {
           });
         });
       // });
+    },
+
+    clearAllUnittypes: function() {
+      return new Promise(function(resolve, reject) {
+        return unittypes
+          .destroy({ isTemplate: false })
+          .success(function() {
+            return resolve();
+          })
+          .error(function(err) {
+            return reject(err);
+          });
+      });
     },
   };
 }
