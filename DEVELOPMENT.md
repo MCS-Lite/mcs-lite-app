@@ -68,3 +68,51 @@ $ cd client && npm run test:watch
 
 * Open browser and go to `http://localhost:8081` (don't use 127.0.0.1) for web console.
 
+## How to Setup MySQL
+### Prerequisite 
+
+*   docker
+
+### Steps
+
+Pull the official mysql image from Dockerhub:
+
+```cmd
+$ docker pull mysql:latest
+$ docker run \
+  --name mcslite-mysql \
+  -p 3306:3306 \
+  -e MYSQL_ROOT_PASSWORD=root \
+  -e MYSQL_DATABASE=mcslite \
+  -e MYSQL_USER=root \
+  -e MYSQL_PASSWORD=root \
+  -d mysql:latest
+
+$ docker logs mcslite-mysql
+$ docker exec mcslite-mysql mysql --version
+# mysql  Ver 14.14 Distrib 5.7.19, for Linux (x86_64) using  EditLine wrapper
+```
+
+
+To connect with mcs-lite-app, please modify the configuration file of MySQL `configs/db.json`:
+
+```json
+// configs/db.json
+
+{
+  "db": "mysql",
+  "host": "127.0.0.1",
+  "port": 3306,
+  "username": "root",
+  "password": "root",
+  "database": "mcslite",
+  "dialect": "mysql",
+  "logging": true
+}
+```
+
+Run the migration script to update tables and schemas of database:
+
+```cmd
+$ node migration.js
+```
