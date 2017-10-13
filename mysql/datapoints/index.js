@@ -74,7 +74,7 @@ module.exports = function(datapoints, devices) {
             datapoints
             .findAll({
               where: query,
-              order: order, 
+              order: order,
               limit: limit,
               offset: offset,
             })
@@ -87,16 +87,16 @@ module.exports = function(datapoints, devices) {
               return resolve(adjustData);
             })
             .error(function(err) {
-              if (err) return reject();            
+              if (err) return reject();
             });
         } else {
           return datapoints
           .find(query)
-          .success(function(data) {  
+          .success(function(data) {
             return resolve(data);
           })
           .error(function(err) {
-            if (err) return reject();            
+            if (err) return reject();
           });
         }
       });
@@ -117,7 +117,7 @@ module.exports = function(datapoints, devices) {
           return datapoints
             .findAll({
               where: query,
-              order: order, 
+              order: order,
               limit: limit,
               offset: offset,
             })
@@ -130,7 +130,7 @@ module.exports = function(datapoints, devices) {
               return resolve(adjustData);
             })
             .error(function(err) {
-              if (err) return reject();            
+              if (err) return reject();
             });
             // .sort(sort)
             // .skip(skip)
@@ -142,18 +142,31 @@ module.exports = function(datapoints, devices) {
         } else {
           return datapoints
           .find(query)
-          .success(function(data) {  
-            if (data) { 
+          .success(function(data) {
+            if (data) {
               data.dataValues.values = JSON.parse(data.dataValues.values);
-              return resolve(data.dataValues); 
+              return resolve(data.dataValues);
             } else {
               return resolve({});
             }
           })
           .error(function(err) {
-            if (err) return reject();            
+            if (err) return reject();
           });
         }
+      });
+    },
+
+    clearAllDatapoints: function() {
+      return new Promise(function(resolve, reject) {
+        return datapoints
+          .destroy({}, { truncate: true })
+          .success(function() {
+            return resolve();
+          })
+          .error(function(err) {
+            return reject(err);
+          });
       });
     },
   };

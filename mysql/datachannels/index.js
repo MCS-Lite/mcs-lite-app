@@ -16,15 +16,15 @@ module.exports = function(datachannels, prototypes) {
         .findAll({ where: field })
         .success(function(data) {
           if (data) {
-            let adjustData = [];            
+            let adjustData = [];
             data.forEach(function(key) {
               key.dataValues.format = JSON.parse(key.dataValues.format);
               key.dataValues.channelType = JSON.parse(key.dataValues.channelType);
-              adjustData.push(key.dataValues);                
+              adjustData.push(key.dataValues);
             });
             return resolve(adjustData);
           } else {
-            return resolve([]);            
+            return resolve([]);
           }
           // return resolve(data);
         })
@@ -100,12 +100,12 @@ module.exports = function(datachannels, prototypes) {
     deleteDatachannel: function(query) {
       return new Promise(function(resolve, reject) {
         return datachannels
-        .update({ 
-          updatedAt: new Date().getTime(), 
+        .update({
+          updatedAt: new Date().getTime(),
           isActive: false,
         }, query)
         .success(function() {
-          return resolve({ message: 'success.' });          
+          return resolve({ message: 'success.' });
         })
         .error(function(err) {
           return reject();
@@ -155,6 +155,19 @@ module.exports = function(datachannels, prototypes) {
         channelPool.push(_this.addNewDatachannel(key));
       });
       return Promise.all(channelPool)
+    },
+
+    clearAllDatachannels: function() {
+      return new Promise(function(resolve, reject) {
+        return datachannels
+          .destroy({}, { truncate: true })
+          .success(function() {
+            return resolve();
+          })
+          .error(function(err) {
+            return reject(err);
+          });
+      });
     },
   };
 }

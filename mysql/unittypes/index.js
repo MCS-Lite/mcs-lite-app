@@ -60,5 +60,18 @@ module.exports = function(unittypes) {
         });
       // });
     },
+
+    clearAllUnittypes: function() {
+      return new Promise(function(resolve, reject) {
+        return unittypes
+          .destroy({ isTemplate: false })
+          .success(function() {
+            return resolve();
+          })
+          .error(function(err) {
+            return reject(err);
+          });
+      });
+    },
   };
 }

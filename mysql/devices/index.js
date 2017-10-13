@@ -191,5 +191,18 @@ module.exports = function(devices) {
         });
       });
     },
+
+    clearAllDevices: function() {
+      return new Promise(function(resolve, reject) {
+        return devices
+          .destroy({}, { truncate: true })
+          .success(function() {
+            return resolve();
+          })
+          .error(function(err) {
+            return reject(err);
+          });
+      });
+    },
   };
 }

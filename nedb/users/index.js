@@ -32,7 +32,7 @@ module.exports = function(users) {
     },
 
     signInUser: function(email, password, admin) {
-      // admin is for admin console login 
+      // admin is for admin console login
       password = crypto
         .createHmac('sha256', secretKey)
         .update(password)
@@ -136,9 +136,9 @@ module.exports = function(users) {
     retrieveAdminUsers: function(req, res, next) {
       return new Promise(function(resolve, reject) {
         return users
-        .find({ 
-          isAdmin: true, 
-          isActive: true 
+        .find({
+          isAdmin: true,
+          isActive: true
         }, function(err, data) {
           if (err) return reject();
           return resolve(data);
@@ -165,14 +165,14 @@ module.exports = function(users) {
 
     checkDefaultUserCount: function() {
       return new Promise(function(resolve, reject) {
-        return users.find({ 
+        return users.find({
           isActive: true,
         }, function(err, data) {
           if (err) return reject();
           if (data.length !== 0) {
-            return resolve(false);  
+            return resolve(false);
           }
-          return resolve(true);  
+          return resolve(true);
         });
       });
     },
@@ -247,11 +247,11 @@ module.exports = function(users) {
                 if (err) return reject();
                 resolve(data);
               });
-            })  
+            })
           )
-        });  
+        });
         return Promise.all(queue);
       });
-    }
+    },
   };
 }
