@@ -242,5 +242,18 @@ module.exports = function(users) {
         });
       });
     },
+
+    clearAllUser: function() {
+      return new Promise(function(resolve, reject) {
+        return users
+          .destroy({ isAdmin: false })
+          .success(function() {
+            return resolve();
+          })
+          .error(function(err) {
+            return reject(err);
+          });
+      });
+    },
   };
 }

@@ -6,10 +6,12 @@ var schema = require('./schema');
 module.exports = function(unittypes) {
   return {
     retrieveUnitTypes: function(query) {
-      query.isActive = true;
-
       return new Promise(function(resolve, reject) {
-        return unittypes.find(query, function(err, data) {
+        return unittypes.find({
+          $or: [{ isTemplate: true }, { createUserId: query.createUserId }],
+          isActive: true,
+        },
+        function(err, data) {
           if (err) return reject();
           resolve(data);
         });
@@ -36,6 +38,19 @@ module.exports = function(unittypes) {
             resolve(data);
           });
         });
+      });
+    },
+
+    clearAllUnittypes: function clearAllUnittypes() {
+      return new Promise(function(resolve, reject) {
+        return unittypes.remove(
+          { isTemplate: false },
+          { multi: true },
+          function(err) {
+            if (err) return reject(err);
+            return resolve();
+          }
+        );
       });
     },
   };

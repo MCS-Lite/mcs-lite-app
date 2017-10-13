@@ -271,6 +271,6 @@ module.exports = function(users) {
         });
         return Promise.all(queue);
       });
-    }
+    },
   };
 }

@@ -29,7 +29,7 @@ module.exports = function(prototypes) {
           return prototypes
           .findAll({
             where: query,
-            order: order, 
+            order: order,
             limit: limit,
             offset: offset,
           })
@@ -41,7 +41,7 @@ module.exports = function(prototypes) {
             return resolve(adjustData);
           })
           .error(function(err) {
-            if (err) return reject();            
+            if (err) return reject();
           });
         } else {
           return prototypes
@@ -56,7 +56,7 @@ module.exports = function(prototypes) {
             return resolve(adjustData);
           })
           .error(function(err) {
-            if (err) return reject();            
+            if (err) return reject();
           });
         }
       });
@@ -78,7 +78,7 @@ module.exports = function(prototypes) {
             prototypes
             .findAll({
               where: query,
-              order: order, 
+              order: order,
               limit: limit,
               offset: offset,
             })
@@ -91,7 +91,7 @@ module.exports = function(prototypes) {
               // return resolve(data);
             })
             .error(function(err) {
-              if (err) return reject();            
+              if (err) return reject();
             });
         } else {
           return prototypes.findAll({}, function(err, data) {
@@ -122,9 +122,9 @@ module.exports = function(prototypes) {
 
           return
             prototypes
-            .findAll({ 
+            .findAll({
               where: { isTemplate: true, isActive: true },
-              order: order, 
+              order: order,
               limit: limit,
               offset: offset,
             })
@@ -137,11 +137,11 @@ module.exports = function(prototypes) {
               // return resolve(data);
             })
             .error(function(err) {
-              if (err) return reject();            
+              if (err) return reject();
             });
         } else {
           return prototypes
-            .findAll({ 
+            .findAll({
               where: {
                 isTemplate: true,
                 isActive: true,
@@ -157,7 +157,7 @@ module.exports = function(prototypes) {
             })
             .error(function(err) {
 
-              if (err) return reject();            
+              if (err) return reject();
             });
         }
       });
@@ -194,7 +194,7 @@ module.exports = function(prototypes) {
             return resolve(data.dataValues);
           })
           .error(function(err) {
-            if (err) return reject();            
+            if (err) return reject();
           });
         });
       // });
@@ -249,7 +249,7 @@ module.exports = function(prototypes) {
           // return resolve(data);
         })
         .error(function(err) {
-          if (err) return reject();          
+          if (err) return reject();
         });
       })
       .then(function(data) {
@@ -337,10 +337,10 @@ module.exports = function(prototypes) {
 
       return new Promise(function(resolve, reject) {
         return prototypes
-        .find({ 
-          where: { 
-            prototypeId: prototypeId, 
-            isActive: true, 
+        .find({
+          where: {
+            prototypeId: prototypeId,
+            isActive: true,
           },
         })
         .success(function(data) {
@@ -381,6 +381,19 @@ module.exports = function(prototypes) {
           })
         });
       })
+    },
+
+    clearAllPrototypes: function() {
+      return new Promise(function(resolve, reject) {
+        return prototypes
+          .destroy({}, { truncate: true })
+          .success(function() {
+            return resolve();
+          })
+          .error(function(err) {
+            return reject(err);
+          });
+      });
     },
   };
 }
