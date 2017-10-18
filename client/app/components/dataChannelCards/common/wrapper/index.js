@@ -69,7 +69,7 @@ const WrapperLayout = ({
         ? `Last data point time : ${moment(updatedAt).format(
             'YYYY-MM-DD h:mm',
           )}`
-        : `Data channel Id: ${datachannelId}`
+        : `Data channel Id: ${props.id}`
     }
     description={description}
     isHistoryShow={isHistoryShow}
