@@ -46,6 +46,7 @@ const DataChannelContentLayout = ({
           return (
             <DataChannelWrapper
               key={dataChannel.datachannelId}
+              datachannelId={dataChannel.datachannelId}
               displayName={displayName}
               isPrototype
               onSubmit={() => {}}
@@ -53,7 +54,6 @@ const DataChannelContentLayout = ({
               title={dataChannel.datachannelName}
               className={styles.displayCard}
               format={dataChannel.format}
-              updatedAt={dataChannel.updatedAt}
               description={dataChannel.datachannelDescription}
               deleteDataChannel={deleteDataChannel}
               prototypeId={prototypeId}

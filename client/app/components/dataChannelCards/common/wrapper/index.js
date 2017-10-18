@@ -40,6 +40,7 @@ const WrapperLayout = ({
     value,
     period,
   } = {},
+  datachannelId,
   title,
   updatedAt = '',
   description,
@@ -63,7 +64,13 @@ const WrapperLayout = ({
       isHistoryShow && styles.withGraph,
     )}
     title={title}
-    subtitle={`Last data point time : ${moment(updatedAt).format('YYYY-MM-DD h:mm')}`}
+    subtitle={
+      updatedAt
+        ? `Last data point time : ${moment(updatedAt).format(
+            'YYYY-MM-DD h:mm',
+          )}`
+        : `Data channel Id: ${datachannelId}`
+    }
     description={description}
     isHistoryShow={isHistoryShow}
     header={
