@@ -40,7 +40,6 @@ const WrapperLayout = ({
     value,
     period,
   } = {},
-  datachannelId,
   title,
   updatedAt = '',
   description,
