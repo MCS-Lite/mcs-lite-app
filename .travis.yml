@@ -4,22 +4,21 @@ matrix:
     language: node_js
     node_js:
       - '6'
-    before_script:
+    before_install:
       - echo "$TRAVIS_TAG"
-      - if [ "$TRAVIS_TAG" != "" ]; then exit 0; fi
+      - if [ "$TRAVIS_TAG" != "" ]; then travis_terminate 0; fi
   - sudo: true
     language: csharp
     mono: none
     dotnet: 1.0.3
     dist: trusty
-    before_script:
+    before_install:
+      - echo "$TRAVIS_TAG"
+      - if [ "$TRAVIS_TAG" = "" ]; then travis_terminate 0; fi
       - sudo apt-get update
       - curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
       - sudo apt-get install -y nodejs
       - sudo apt-get install wine
-    branches:
-      only:
-        - /^v(\d+\.)?(\d+\.)?(\*|\d+)$/
 
 install:
   - npm install
