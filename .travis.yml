@@ -6,8 +6,9 @@ matrix:
       - '6'
     before_install:
       - echo "$TRAVIS_TAG"
+      - travis_terminate 0
       # If it is triggered by tag, use .net instead.
-      - if [ "$TRAVIS_TAG" != "" ]; then travis_terminate 0; fi
+      #- if [ "$TRAVIS_TAG" = "" ]; then travis_terminate 0; fi
   - sudo: true
     language: csharp
     mono: none
@@ -16,7 +17,7 @@ matrix:
     before_install:
       - echo "$TRAVIS_TAG"
       # If it is not triggered by tag, use node instead.
-      - if [ "$TRAVIS_TAG" = "" ]; then travis_terminate 0; fi
+      #- if [ "$TRAVIS_TAG" = "" ]; then travis_terminate 0; fi
       - sudo apt-get update
       - curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
       - sudo apt-get install -y nodejs
