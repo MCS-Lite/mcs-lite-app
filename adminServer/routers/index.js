@@ -117,6 +117,13 @@ module.exports = function($db, $app, $admin) {
     handler: usersController.retrieveUsers,
   };
 
+  this.checkUserAvailable = {
+    path: $admin.apiRoute + '/users/available',
+    methods: ['get'],
+    middleware: [$app.oauth.authorise()],
+    handler: usersController.checkUserAvailable,
+  };
+
   this.addNewUser = {
     path: $admin.apiRoute + '/users',
     methods: ['post'],
