@@ -10,24 +10,7 @@ var gui = require('nw.gui');
 var path = require('path');
 var nwPath = process.execPath;
 var nwDir = path.dirname(nwPath);
-var exec = require('child_process').exec;
 var spawn = require('child_process').spawn;
-var execSync = require('child_process').execSync;
-
-function kill (port) {
-  if (!Number.parseInt(port)) {
-    return Promise.reject(new Error('Invalid argument provided for port'))
-  }
-  if (process.platform == "darwin") {
-  	return execSync(`lsof -i tcp:${port} | grep LISTEN | awk '{print $2}' | xargs kill -9`);
-  	console.log("run on MAC");
-  } else {
-  	return spawn('cmd.exe', ['for', '/f', '"tokens=5"', '%a', 'in', '(\'netstat', '-aon', ,'|', 'findstr', ':${port}', '|', 'find', '"LISTENING"\')', 'do', 'taskkill', '/f', '/pid', '%a']);
-  	console.log("run on Windows");
-  }
-  
-}
-
 
 var $ = function (selector) {
   return document.querySelector(selector);
@@ -40,6 +23,8 @@ if (process.platform == "darwin") {
 }
 
 initApp();
+
+var liteServer;
 
 function startNode(path) {
   var nodePath = 'node';
@@ -57,44 +42,49 @@ function startNode(path) {
   }
 
   console.log("nodePath is " + nodePath);
-  var lite_server = spawn(nodePath, [path]);
+  liteServer = spawn(nodePath, [path]);
 
-  lite_server.stdout.on('data', function (data) {
+  liteServer.stdout.on('data', function (data) {
     console.log(data.toString());
   });
 
-  lite_server.stderr.on('data', function (data) {
+  liteServer.stderr.on('data', function (data) {
     console.log(data.toString());
   });
 
-  lite_server.on('close', function (status) {
+  liteServer.on('close', function (status) {
+    liteServer = null;
     console.log("Terminal MCS Lite server:" + status);
   });
 }
 
 function startMCSLiteService() {
-  setTimeout(function(){
-    if (process.platform == "darwin") {
-      if (process.env.NODE_ENV === 'dev') {
-        startNode('./server');
-      } else {
-        var folderDir;
-        try {
-          folderDir = require(global.__dirname + '/config').path;
-          startNode(folderDir + '/mcs-lite-app/server');
-        } catch(e) {
-          $("#app").innerHTML = "<p>Please click \"setup\" file to setup your env and reopen this mcs-lite-app.app.<p>";
-        }
+  if (process.platform == "darwin") {
+    if (process.env.NODE_ENV === 'dev') {
+      startNode('./server');
+    } else {
+      var folderDir;
+      try {
+        folderDir = require(global.__dirname + '/config').path;
+        startNode(folderDir + '/mcs-lite-app/server');
+      } catch(e) {
+        $("#app").innerHTML = "<p>Please click \"setup\" file to setup your env and reopen this mcs-lite-app.app.<p>";
       }
     }
-    if (/^win/.test(process.platform)) {
-      var folderDir = nwDir + '\\mcs-lite-app';
-      startNode(folderDir + '\\server');
-    }
-  }, 0);
+  }
+  if (/^win/.test(process.platform)) {
+    var folderDir = nwDir + '\\mcs-lite-app';
+    startNode(folderDir + '\\server');
+  }
+}
+
+function stopMCSLiteService() {
+  if (liteServer) liteServer.kill();
 }
 
 global.startMCSLiteService = startMCSLiteService;
+
+global.stopMCSLiteService = stopMCSLiteService;
 
 function initApp() {
   var adminServer;
@@ -120,34 +110,8 @@ function initApp() {
     var win = gui.Window.get();
     win.show();
 
-    win.on('close', function(event) {
-      var $rest, $wot, $stream, $admin;
-
-      if (process.env.NODE_ENV === 'dev') {
-        $rest = require('./configs/rest');
-        $wot = require('./configs/wot');
-        $stream = require('./configs/stream');
-        $admin = require('./configs/admin');
-      } else {
-        if (/^win/.test(process.platform)) {
-          var folderDir = nwDir + '\\mcs-lite-app\\configs';
-          $rest = require(folderDir + '\\rest');
-          $wot = require(folderDir + '\\wot');
-          $stream = require(folderDir + '\\stream');
-          $admin = require(folderDir + '\\admin');
-        }
-        if (process.platform === 'darwin') {
-          var folderDir = require(global.__dirname + '/config').path + '/mcs-lite-app';
-          $rest = require(folderDir + '/configs/rest');
-          $wot = require(folderDir + '/configs/wot');
-          $stream = require(folderDir + '/configs/stream');
-          $admin = require(folderDir + '/configs/admin');
-        }
-      }
-      kill($rest.port);
-      kill($wot.port);
-      kill($stream.serverPort);
-      kill($stream.rtmpServerPort);
+    win.on('close', function() {
+      stopMCSLiteService();
       win.close(true);
     });
 

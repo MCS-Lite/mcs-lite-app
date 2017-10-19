@@ -2,18 +2,6 @@ var os = require('os');
 var fs = require('fs');
 var path = require('path');
 var exec = require('child_process').exec;
-var kill = require('cross-port-killer').kill;
-var $rest = require('../../configs/rest');
-var $wot = require('../../configs/wot');
-var $stream = require('../../configs/stream');
-var $admin = require('../../configs/admin');
-
-var _stopService = function () {
-  kill($rest.port);
-  kill($wot.port);
-  kill($stream.serverPort);
-  kill($stream.rtmpServerPort);
-};
 
 module.exports = function ($db) {
   var users = $db.users;
@@ -25,7 +13,7 @@ module.exports = function ($db) {
   };
 
   var stopService = function(req, res, next) {
-    _stopService();
+    global.stopMCSLiteService();
     this.serviceStatus = false;
     return res.send(200, "success.");
   };
