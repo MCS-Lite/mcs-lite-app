@@ -1,26 +1,16 @@
-matrix:
-  include:
-  - sudo: true
-    language: node_js
-    node_js:
-      - '6'
-    before_install:
-      - echo "$TRAVIS_TAG"
-      # If it is triggered by tag, use .net instead.
-      - if [ "$TRAVIS_TAG" != "" ]; then travis_terminate 0; fi
-  - sudo: true
-    language: csharp
-    mono: none
-    dotnet: 1.0.3
-    dist: trusty
-    before_install:
-      - echo "$TRAVIS_TAG"
-      # If it is not triggered by tag, use node instead.
-      - if [ "$TRAVIS_TAG" = "" ]; then travis_terminate 0; fi
-      - sudo apt-get update
-      - curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
-      - sudo apt-get install -y nodejs
-      - sudo apt-get install wine
+sudo: true
+language: csharp
+mono: none
+dotnet: 1.0.3
+dist: trusty
+before_install:
+  - echo "$TRAVIS_TAG"
+  # If it is not triggered by tag, use node instead.
+  - if [ "$TRAVIS_TAG" = "" ]; then travis_terminate 0; fi
+  - sudo apt-get update
+  - curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
+  - sudo apt-get install -y nodejs
+  - sudo apt-get install wine
 
 install:
   - npm install
