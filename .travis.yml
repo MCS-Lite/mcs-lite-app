@@ -42,7 +42,7 @@ script:
   - find . -type d -name "7688*" -maxdepth 1 -mindepth 1 -exec tar zcf {}.tar.gz {}  \;
   - cp 7688*.tar.gz linux.tar.gz
   - find . -type d -name "win*" -maxdepth 1 -mindepth 1 -exec zip -rq {}.zip {}  \;
-  - mkdir -p $TRAVIS_BUILD_DIR/uploadBuild/7688/$TRAVIS_BUILD_NUMBER/ && cp 7688*.tar.gz $TRAVIS_BUILD_DIR/uploadBuild/7688/$TRAVIS_BUILD_NUMBER/7688.tar.gz && cp win64.zip $TRAVIS_BUILD_DIR/uploadBuild/7688/$TRAVIS_BUILD_NUMBER/win64.zip
+  - mkdir -p $TRAVIS_BUILD_DIR/uploadBuild/7688/$TRAVIS_BUILD_NUMBER/ && cp 7688*.tar.gz $TRAVIS_BUILD_DIR/uploadBuild/7688/$TRAVIS_BUILD_NUMBER/7688.tar.gz
   - ls . && cd ../..
 
 after_success:
