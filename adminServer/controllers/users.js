@@ -364,6 +364,19 @@ module.exports = function ($db) {
     })
   };
 
+  var checkUserAvailable = function(req, res) {
+    var email = req.query.email;
+
+    return users.isRegistered(email)
+      .then(function(result) {
+        if(result.exist) return res.send(200, false);
+        return res.send(200, true);
+      })
+      .catch(function(err) {
+        return res.send(400, err);
+      })
+  }
+
   var retrieveUsers = function(req, res, next) {
     var query = {
       // isActive: true,
@@ -487,6 +500,7 @@ module.exports = function ($db) {
     deleteUser: deleteUser,
     addNewUser: addNewUser,
     batchAddNewUserByCSV: batchAddNewUserByCSV,
+    checkUserAvailable: checkUserAvailable,
   };
 
 }
