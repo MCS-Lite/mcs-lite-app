@@ -230,6 +230,11 @@ module.exports = function(users) {
       });
     },
 
+    // TODO: retrieve user by query with MySQL, this function is now identity of retrieveUserList
+    retrieveUserByQuery: function(query, sort, skip, limit) {
+      return retrieveUserList();
+    },
+
     editUser: function(query, update) {
       return new Promise(function(resolve, reject) {
         return users
