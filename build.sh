@@ -21,7 +21,7 @@ else
 	echo "node for win32 exists."
 fi
 
-if [ ! -f nodeBinary/win64/node.exe ]; then 
+if [ ! -f nodeBinary/win64/node.exe ]; then
 	mkdir -p nodeBinary/win64 && cd nodeBinary/win64 && wget https://s3-ap-southeast-1.amazonaws.com/mtk.linkit/mcs-lite-app/nodejsv6.11.0/win64/node.exe && cd -
 else
 	echo "node for win64 exists."
@@ -62,7 +62,7 @@ cp -R package.json ./build/package.json
 
 mkdir out
 
-nwbuild -p win32,win64,osx64,linux32,linux64 -v 0.20.3 ./build -o ./out
+node ./nwBuild.js
 
 cd ./out/mcs-lite-app/win64
 mkdir mcs-lite-app
@@ -73,12 +73,8 @@ mkdir mcs-lite-app
 
 cd ../../..
 cp -R ./appBuild/. ./out/mcs-lite-app/win64/mcs-lite-app
-winresourcer --operation=Update --exeFile=./out/mcs-lite-app/win64/mcs-lite-app.exe --resourceType=Icongroup --resourceName=IDR_MAINFRAME --lang=1033 --resourceFile=./icon.ico
 cp -R ./appBuild/. ./out/mcs-lite-app/win32/mcs-lite-app
-winresourcer --operation=Update --exeFile=./out/mcs-lite-app/win32/mcs-lite-app.exe --resourceType=Icongroup --resourceName=IDR_MAINFRAME --lang=1033 --resourceFile=./icon.ico
 cp -R ./appBuild/. ./out/mcs-lite-app/osx64/mcs-lite-app
-cp -R ./icon.icns ./out/mcs-lite-app/osx64/mcs-lite-app.app/Contents/Resources/app.icns
-cp -R ./icon.icns ./out/mcs-lite-app/osx64/mcs-lite-app.app/Contents/Resources/document.icns
 
 cp -R ./nodeBinary/mac/node ./out/mcs-lite-app/osx64/
 cp -R ./nodeBinary/win32/node.exe ./out/mcs-lite-app/win32/

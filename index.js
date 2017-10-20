@@ -25,7 +25,7 @@ function kill (port) {
   	return spawn('cmd.exe', ['for', '/f', '"tokens=5"', '%a', 'in', '(\'netstat', '-aon', ,'|', 'findstr', ':${port}', '|', 'find', '"LISTENING"\')', 'do', 'taskkill', '/f', '/pid', '%a']);
   	console.log("run on Windows");
   }
-  
+
 }
 
 
@@ -118,37 +118,73 @@ function initApp() {
 
     adminServer.listen($admin.port);
     var win = gui.Window.get();
+    var tray = new gui.Tray({
+      icon: process.platform === 'darwin'
+        ? 'icon_tray@2x.png'
+        : 'icon_tray_windows.png',
+      tooltip: 'MCS Lite',
+    });
+    var trayMenu = new gui.Menu();
+    var showMenuItem = new gui.MenuItem({
+      type: 'normal',
+      click: function() {
+        win.show();
+        win.setShowInTaskbar(true);
+      },
+      label: 'Show Admin Window',
+    });
+    var quitMenuItem = new gui.MenuItem({
+      type: 'normal',
+      click: function() {
+        quitApp();
+      },
+      label: 'Quit MCS Lite',
+    });
+
+    trayMenu.append(showMenuItem);
+    trayMenu.append(quitMenuItem);
+
+    tray.menu = trayMenu;
+
     win.show();
 
-    win.on('close', function(event) {
-      var $rest, $wot, $stream, $admin;
+    function quitApp() {
+      var $rest, $wot, $stream;
 
       if (process.env.NODE_ENV === 'dev') {
         $rest = require('./configs/rest');
         $wot = require('./configs/wot');
         $stream = require('./configs/stream');
-        $admin = require('./configs/admin');
       } else {
         if (/^win/.test(process.platform)) {
           var folderDir = nwDir + '\\mcs-lite-app\\configs';
           $rest = require(folderDir + '\\rest');
           $wot = require(folderDir + '\\wot');
           $stream = require(folderDir + '\\stream');
-          $admin = require(folderDir + '\\admin');
         }
         if (process.platform === 'darwin') {
           var folderDir = require(global.__dirname + '/config').path + '/mcs-lite-app';
           $rest = require(folderDir + '/configs/rest');
           $wot = require(folderDir + '/configs/wot');
           $stream = require(folderDir + '/configs/stream');
-          $admin = require(folderDir + '/configs/admin');
         }
       }
       kill($rest.port);
       kill($wot.port);
       kill($stream.serverPort);
       kill($stream.rtmpServerPort);
+      tray.remove();
+      tray = null;
       win.close(true);
+    }
+
+    win.on('close', function(event) {
+      win.hide();
+      win.setShowInTaskbar(false);
+
+      if (event === 'quit') {
+        quitApp();
+      }
     });
 
     if (process.env.NODE_ENV === 'dev') {
