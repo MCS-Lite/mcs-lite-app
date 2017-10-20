@@ -1,5 +1,7 @@
+rm -rf ./out/mcs-lite-app/7688
 cp -R ./appBuild ./out/mcs-lite-app/7688
 cp ./server.js ./out/mcs-lite-app/7688/server.js
+./node_modules/.bin/babel ./out/mcs-lite-app/7688 --ignore node_modules -d ./out/mcs-lite-app/7688
 cd ./out/mcs-lite-app/7688
 npm uninstall wotcity.io --save
 npm i https://github.com/wotcity/wotcity-wot-framework.git#0.12 --save

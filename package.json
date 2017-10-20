@@ -9,7 +9,7 @@
     "install:nwjs": "sh ./install.sh",
     "test:ws": "node ./node_modules/wotcity.io/tests/websocket-send.js",
     "build:global": "sh ./build.sh",
-    "build:7688": "sh ./build.sh && sh ./build_7688.sh",
+    "build:7688": "BABEL_ENV=7688 sh ./build_7688.sh",
     "build:nvidia_tx1": "sh ./build.sh && sh ./build_nvidia_tx1.sh",
     "build:cloud": "sh ./build.sh && sh ./build_cloud.sh",
     "test:nedb": "mocha --recursive ./nedb/tests/",
@@ -65,7 +65,9 @@
     "youmeb-generator": "0.0.1"
   },
   "devDependencies": {
+    "babel-cli": "^6.26.0",
     "babel-eslint": "^7.2.3",
+    "babel-preset-env": "^1.6.0",
     "codecov": "^2.2.0",
     "eslint": "^3.19.0",
     "eslint-config-airbnb": "^15.0.1",
