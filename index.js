@@ -119,7 +119,9 @@ function initApp() {
     adminServer.listen($admin.port);
     var win = gui.Window.get();
     var tray = new gui.Tray({
-      icon: 'icon_tray@2x.png',
+      icon: process.platform === 'darwin'
+        ? 'icon_tray@2x.png'
+        : 'icon_tray_windows.png',
       tooltip: 'MCS Lite',
     });
     var trayMenu = new gui.Menu();
