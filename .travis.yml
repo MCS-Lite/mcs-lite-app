@@ -1,7 +1,14 @@
-sudo: false
-language: node_js
-node_js:
-  - '6'
+sudo: true
+language: csharp
+mono: none
+dotnet: 1.0.3
+dist: trusty
+before_install:
+  - echo "$TRAVIS_TAG"
+  - sudo apt-get update
+  - curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
+  - sudo apt-get install -y nodejs
+  - sudo apt-get install wine
 
 install:
   - npm install
