@@ -5,6 +5,7 @@ var nw = new NwBuilder({
     './index.html',
     './package.json',
     './icon_tray@2x.png',
+    './icon_tray_windows.png',
     './icon.png'
   ],
   platforms: ['osx64', 'win32', 'win64', 'linux32', 'linux64'],
