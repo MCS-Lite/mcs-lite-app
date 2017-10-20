@@ -378,9 +378,16 @@ module.exports = function ($db) {
   }
 
   var retrieveUsers = function(req, res, next) {
-    var query = {
-      // isActive: true,
-    };
+    if (R.isEmpty(req.query)) {
+      // retrieve all user when query is empty
+      return users.retrieveUserList()
+      .then(function(data) {
+        return res.send(200, data);
+      })
+      .catch(function(err) {
+        return res.send(400, err);
+      });
+    }
 
     var userName = req.query.userName;
     var email = req.query.email;
