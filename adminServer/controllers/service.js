@@ -6,16 +6,27 @@ var exec = require('child_process').exec;
 module.exports = function ($db) {
   var users = $db.users;
 
-  var startService = function(req, res, next) {
-    global.startMCSLiteService();
-    this.serviceStatus = true;
-    return res.send(200, "success!");
+  var startService = function(req, res) {
+    return global.startMCSLiteService()
+      .then(function(message) {
+        this.serviceStatus = true;
+        return res.send(200, message);
+      })
+      .catch(function(err) {
+        return res.send(400, err);
+      });
   };
 
-  var stopService = function(req, res, next) {
-    global.stopMCSLiteService();
-    this.serviceStatus = false;
-    return res.send(200, "success.");
+  var stopService = function(req, res) {
+    return global.stopMCSLiteService()
+      .then(function(message) {
+        this.serviceStatus = false;
+        return res.send(200, message);
+      })
+      .catch(function(err) {
+        console.log('err');
+        return res.send(400, err);
+      });
   };
 
   var retrieveServiceSetting = function(req, res, next) {

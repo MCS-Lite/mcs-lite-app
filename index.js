@@ -26,7 +26,7 @@ initApp();
 
 var liteServer;
 
-function startNode(path) {
+function startNode(serverPath) {
   var nodePath = 'node';
 
   if (process.env.NODE_ENV === 'dev' && /^win/.test(process.platform)) nodePath = global.__dirname + '\\node\\win32\\node.exe';
@@ -42,44 +42,67 @@ function startNode(path) {
   }
 
   console.log("nodePath is " + nodePath);
-  liteServer = spawn(nodePath, [path]);
+  liteServer = spawn(nodePath, [serverPath]);
 
-  liteServer.stdout.on('data', function (data) {
+  liteServer.stdout.on('data', function(data) {
     console.log(data.toString());
   });
 
-  liteServer.stderr.on('data', function (data) {
+  liteServer.stderr.on('data', function(data) {
     console.log(data.toString());
   });
 
-  liteServer.on('close', function (status) {
+  liteServer.on('close', function(status) {
     liteServer = null;
-    console.log("Terminal MCS Lite server:" + status);
+    console.log(`Terminal MCS Lite server: ${status}`);
   });
 }
 
 function startMCSLiteService() {
-  if (process.platform == "darwin") {
-    if (process.env.NODE_ENV === 'dev') {
-      startNode('./server');
-    } else {
-      var folderDir;
-      try {
-        folderDir = require(global.__dirname + '/config').path;
-        startNode(folderDir + '/mcs-lite-app/server');
-      } catch(e) {
-        $("#app").innerHTML = "<p>Please click \"setup\" file to setup your env and reopen this mcs-lite-app.app.<p>";
+  return new Promise(function(resolve, reject) {
+    if (liteServer || (liteServer && !liteServer.killed)) {
+      return reject('MCS Lite service is still running');
+    }
+
+    if (process.platform === 'darwin') {
+      if (process.env.NODE_ENV === 'dev') {
+        startNode('./server');
+      } else {
+        let folderDir;
+        try {
+          folderDir = require(global.__dirname + '/config').path;
+          startNode(folderDir + '/mcs-lite-app/server');
+        } catch (e) {
+          $("#app").innerHTML = "<p>Please click \"setup\" file to setup your env and reopen this mcs-lite-app.app.<p>";
+        }
       }
     }
-  }
-  if (/^win/.test(process.platform)) {
-    var folderDir = nwDir + '\\mcs-lite-app';
-    startNode(folderDir + '\\server');
-  }
+
+    if (/^win/.test(process.platform)) {
+      const folderDir = nwDir + '\\mcs-lite-app';
+      startNode(folderDir + '\\server');
+    }
+
+    console.log('MCS lite service is started.');
+    return resolve('MCS lite service is started.');
+  });
 }
 
 function stopMCSLiteService() {
-  if (liteServer) liteServer.kill();
+  return new Promise(function(resolve, reject) {
+    if (liteServer) {
+      liteServer.on('close', function(status) {
+        liteServer = null;
+        console.log(`Terminal MCS Lite server: ${status}`);
+        return resolve('MCS Lite service is stopped.');
+      });
+
+      liteServer.kill();
+      setTimeout(function() {
+        return reject('Stop request failed.');
+      }, 2000);
+    } else return reject('MCS Lite service is not running.');
+  });
 }
 
 global.startMCSLiteService = startMCSLiteService;
