@@ -7,7 +7,6 @@ var R = require('ramda');
 var $oauth = require('../configs/oauth');
 var $rest = require('../configs/rest');
 var $wot = require('../configs/wot');
-var $stream = require('../configs/stream');
 var app = express();
 var oauth = require('./oauth');
 var routers = require('./routers/index');
@@ -15,8 +14,7 @@ var handleRouters = require('./libs/index').handleRouter;
 var connectToDB = require('./libs/index').connectToDB;
 var dbConfig = require('../configs/db');
 var os = require('os');
-var StreamServer = require('node-rtsp-rtmp-server');
-var compression = require('compression')
+var compression = require('compression');
 var socketPort = require('../configs/wot.json').port;
 
 var connectDB = connectToDB(dbConfig).init();
@@ -111,9 +109,6 @@ for (var k in interfaces) {
         }
     }
 }
-
-var server = new StreamServer(null, $stream);
-server.start();
 
 console.log('+-+-+-+ +-+-+-+-+');
 console.log(' M C S   L I T E ');
