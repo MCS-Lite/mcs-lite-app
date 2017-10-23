@@ -393,6 +393,8 @@ module.exports = function ($db) {
     var email = req.query.email;
     var q = req.query.q;
 
+    const query = {};
+
     if (q) {
       query['$or'] = [];
       query['$or'].push({email: { $regex: new RegExp(q)}});
