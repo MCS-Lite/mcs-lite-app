@@ -19,7 +19,7 @@ import withProps from 'recompose/withProps';
 import { withGetMessages } from 'react-intl-inject-hoc';
 import messages from '../../messages';
 import Dialog from '../../../common/dialog';
-import { data } from '../../../../utils/dataChannelTypes';
+import { getData } from '../../../../utils/dataChannelTypes';
 import Preview from '../../preview';
 
 import styles from './styles.css';
@@ -138,8 +138,8 @@ export default compose(
   withState('channelType', 'setChannelType', {}),
   withState('format', 'setFormat', {}),
   withState('error', 'setError', {}),
-  withProps(({ displayCardType }) => {
-    const treatedData = data.map((k) => {
+  withProps(({ displayCardType, getMessages: t }) => {
+    const treatedData = getData(t).map((k) => {
       const value = k.type === 1
         ? `${k.dataChannelTypeName}_Control`
         : `${k.dataChannelTypeName}_Display`;

@@ -274,5 +274,57 @@
   {
     "id": "PrototypeDetail.unmarkTemplateSuccess",
     "defaultMessage": "成功！此原型已取消範例設定。"
+  },
+  {
+    "id": "PrototypeDetail.DC.Switch",
+    "defaultMessage": "Switch"
+  },
+  {
+    "id": "PrototypeDetail.DC.Category",
+    "defaultMessage": "Category"
+  },
+  {
+    "id": "PrototypeDetail.DC.Integer",
+    "defaultMessage": "Integer"
+  },
+  {
+    "id": "PrototypeDetail.DC.Float",
+    "defaultMessage": "Float"
+  },
+  {
+    "id": "PrototypeDetail.DC.Hex",
+    "defaultMessage": "Hex"
+  },
+  {
+    "id": "PrototypeDetail.DC.String",
+    "defaultMessage": "String"
+  },
+  {
+    "id": "PrototypeDetail.DC.GPS",
+    "defaultMessage": "GPS"
+  },
+  {
+    "id": "PrototypeDetail.DC.GPIO",
+    "defaultMessage": "GPIO"
+  },
+  {
+    "id": "PrototypeDetail.DC.PWM",
+    "defaultMessage": "PWM"
+  },
+  {
+    "id": "PrototypeDetail.DC.Analog",
+    "defaultMessage": "Analog"
+  },
+  {
+    "id": "PrototypeDetail.DC.GamePad",
+    "defaultMessage": "GamePad"
+  },
+  {
+    "id": "PrototypeDetail.DC.Image",
+    "defaultMessage": "Image"
+  },
+  {
+    "id": "PrototypeDetail.DC.VideoStream",
+    "defaultMessage": "Video Stream"
   }
 ]
