@@ -13,6 +13,7 @@ module.exports = {
     updatedAt: { type: 'integer' },
     createdAt: { type: 'integer' },
     isActive: { type: 'boolean' },
+    hasHistory: { type: 'boolean' },
   },
   required: [
     'prototypeId',
@@ -27,5 +28,6 @@ module.exports = {
     'updatedAt',
     'createdAt',
     'isActive',
+    'hasHistory',
   ],
 };
