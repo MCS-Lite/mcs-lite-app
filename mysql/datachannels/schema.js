@@ -56,4 +56,9 @@ module.exports = {
     type: Sequelize.BOOLEAN,
     allowNull: false,
   },
+  hasHistory: {
+    type: Sequelize.BOOLEAN,
+    allowNull: false,
+    defaultValue: false,
+  },
 };
