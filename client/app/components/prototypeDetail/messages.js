@@ -71,6 +71,11 @@ const messages = defineMessages({
     description: '',
     defaultMessage: '取消',
   },
+  'PrototypeDetail.create': {
+    id: 'PrototypeDetail.create',
+    description: '',
+    defaultMessage: '新增',
+  },
   'PrototypeDetail.save': {
     id: 'PrototypeDetail.save',
     description: '',
@@ -276,6 +281,59 @@ const messages = defineMessages({
   'PrototypeDetail.unmarkTemplateSuccess': {
     id: 'PrototypeDetail.unmarkTemplateSuccess',
     defaultMessage: '成功！此原型已取消範例設定。',
+  },
+
+  'PrototypeDetail.DC.Switch': {
+    id: 'PrototypeDetail.DC.Switch',
+    defaultMessage: 'Switch',
+  },
+  'PrototypeDetail.DC.Category': {
+    id: 'PrototypeDetail.DC.Category',
+    defaultMessage: 'Category',
+  },
+  'PrototypeDetail.DC.Integer': {
+    id: 'PrototypeDetail.DC.Integer',
+    defaultMessage: 'Integer',
+  },
+  'PrototypeDetail.DC.Float': {
+    id: 'PrototypeDetail.DC.Float',
+    defaultMessage: 'Float',
+  },
+  'PrototypeDetail.DC.Hex': {
+    id: 'PrototypeDetail.DC.Hex',
+    defaultMessage: 'Hex',
+  },
+  'PrototypeDetail.DC.String': {
+    id: 'PrototypeDetail.DC.String',
+    defaultMessage: 'String',
+  },
+  'PrototypeDetail.DC.GPS': {
+    id: 'PrototypeDetail.DC.GPS',
+    defaultMessage: 'GPS',
+  },
+  'PrototypeDetail.DC.GPIO': {
+    id: 'PrototypeDetail.DC.GPIO',
+    defaultMessage: 'GPIO',
+  },
+  'PrototypeDetail.DC.PWM': {
+    id: 'PrototypeDetail.DC.PWM',
+    defaultMessage: 'PWM',
+  },
+  'PrototypeDetail.DC.Analog': {
+    id: 'PrototypeDetail.DC.Analog',
+    defaultMessage: 'Analog',
+  },
+  'PrototypeDetail.DC.GamePad': {
+    id: 'PrototypeDetail.DC.GamePad',
+    defaultMessage: 'GamePad',
+  },
+  'PrototypeDetail.DC.Image': {
+    id: 'PrototypeDetail.DC.Image',
+    defaultMessage: 'Image',
+  },
+  'PrototypeDetail.DC.VideoStream': {
+    id: 'PrototypeDetail.DC.VideoStream',
+    defaultMessage: 'Video Stream',
   },
 });
 

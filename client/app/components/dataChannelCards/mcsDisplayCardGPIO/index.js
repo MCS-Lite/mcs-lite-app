@@ -3,7 +3,7 @@ import { pure } from 'recompose';
 import { DataChannelAdapter } from 'mcs-lite-ui';
 
 const DisplayGPIOLayout = ({
-  value = 0,
+  value,
   id,
 }) => (
   <DataChannelAdapter
