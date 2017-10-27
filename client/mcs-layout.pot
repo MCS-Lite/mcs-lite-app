@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"POT-Creation-Date: 2017-10-27T03:18:03.613Z\n"
+"POT-Creation-Date: 2017-10-27T03:25:24.872Z\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "MIME-Version: 1.0\n"
@@ -805,6 +805,10 @@ msgstr ""
 msgid "教學範例"
 msgstr ""
 
+#: ./messages/app/components/prototypeDetail/messages.json
+#. [PrototypeDetail.create]
+#. defaultMessage is:
+#. 新增
 #: ./messages/app/components/prototypeDetail/messages.json
 #. [PrototypeDetail.add]
 #. defaultMessage is:

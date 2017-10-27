@@ -71,6 +71,11 @@ const messages = defineMessages({
     description: '',
     defaultMessage: '取消',
   },
+  'PrototypeDetail.create': {
+    id: 'PrototypeDetail.create',
+    description: '',
+    defaultMessage: '新增',
+  },
   'PrototypeDetail.save': {
     id: 'PrototypeDetail.save',
     description: '',

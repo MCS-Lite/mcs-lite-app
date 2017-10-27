@@ -120,9 +120,11 @@ const CreateDataChannelDialog = ({
       />
     </DialogBody>
     <DialogFooter>
-      <Button kind="cancel" onClick={closeCreateDataChannel}>Cancel</Button>
+      <Button kind="cancel" onClick={closeCreateDataChannel}>
+        {t('cancel')}
+      </Button>
       <Button kind="primary" onClick={submitCreateDataChannel}>
-        Create
+        {t('create')}
       </Button>
     </DialogFooter>
   </Dialog>
