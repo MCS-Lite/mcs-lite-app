@@ -1,3 +1,4 @@
+set -x
 cp -R ./appBuild ./out/mcs-lite-app/7688
 cp ./server.js ./out/mcs-lite-app/7688/server.js
 cd ./out/mcs-lite-app/7688
