@@ -2,6 +2,7 @@ var R = require('ramda');
 var schema = require('../prototypes/schema');
 var doMigrationFromNeDB = require('../utils').doMigrationFromNeDB;
 var sequelize = require('../utils').sequelize;
+var path = require('path');
 
 module.exports = {
   up: function(migration, DataTypes, done){
@@ -11,7 +12,7 @@ module.exports = {
       })
       .success(function() {
         var table = sequelize.define('prototypes', schema);
-        var nedbPath = process.cwd() + '/db/prototypes.json';
+        var nedbPath = path.resolve(__dirname, `../../db/prototypes.json`);
 
         doMigrationFromNeDB(
           nedbPath,
