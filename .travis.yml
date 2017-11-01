@@ -22,8 +22,8 @@ script:
   - cd ..
 
   # Build App (NW.js)
-  #- npm run build:7688
-  - node ./nwBuild.js
+  - npm -v
+  - npm run build:global
 
   # Compression
   - cd ./out/mcs-lite-app
