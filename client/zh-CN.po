@@ -1,19 +1,20 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: mcs-lite\n"
-"POT-Creation-Date: 2017-07-31T02:28:46.892Z\n"
-"PO-Revision-Date: 2017-07-31 10:34+0800\n"
+"POT-Creation-Date: 2017-10-31T01:50:32.690Z\n"
+"PO-Revision-Date: 2017-10-31 13:36+0800\n"
 "Last-Translator: Daria Chen <smartexist@gmail.com>\n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.0.3\n"
+"X-Generator: Poedit 2.0.4\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Crowdin-Project: mcs-lite\n"
 "X-Crowdin-Language: zh-CN\n"
 "X-Crowdin-File: zh-CN.po\n"
+"X-Source-Language: en_US\n"
 
 #. [ApiHint.apiType]
 #. defaultMessage is:
@@ -32,6 +33,20 @@ msgstr "API 类型："
 #: messages/app/components/deviceDetail/messages.json
 msgid "API提示"
 msgstr "API 提示"
+
+#. [PrototypeDetail.DC.Analog]
+#. defaultMessage is:
+#. Analog
+#: messages/app/components/prototypeDetail/messages.json
+msgid "Analog"
+msgstr "类比"
+
+#. [PrototypeDetail.DC.Category]
+#. defaultMessage is:
+#. Category
+#: messages/app/components/prototypeDetail/messages.json
+msgid "Category"
+msgstr "类别"
 
 #. [Dashboard.deviceId]
 #. defaultMessage is:
@@ -65,6 +80,83 @@ msgstr "DeviceKey"
 #: messages/app/components/signup/messages.json
 msgid "Email"
 msgstr "电子邮箱"
+
+#. [PrototypeDetail.DC.Float]
+#. defaultMessage is:
+#. Float
+#: messages/app/components/prototypeDetail/messages.json
+msgid "Float"
+msgstr "浮点数"
+
+#. [PrototypeDetail.DC.GPIO]
+#. defaultMessage is:
+#. GPIO
+#: messages/app/components/prototypeDetail/messages.json
+msgid "GPIO"
+msgstr "GPIO"
+
+#. [PrototypeDetail.DC.GPS]
+#. defaultMessage is:
+#. GPS
+#: messages/app/components/prototypeDetail/messages.json
+msgid "GPS"
+msgstr "GPS 定位"
+
+#. [PrototypeDetail.DC.GamePad]
+#. defaultMessage is:
+#. GamePad
+#: messages/app/components/prototypeDetail/messages.json
+msgid "GamePad"
+msgstr "游戏控制器"
+
+#. [PrototypeDetail.DC.Hex]
+#. defaultMessage is:
+#. Hex
+#: messages/app/components/prototypeDetail/messages.json
+msgid "Hex"
+msgstr "十六进位值"
+
+#. [PrototypeDetail.DC.Image]
+#. defaultMessage is:
+#. Image
+#: messages/app/components/prototypeDetail/messages.json
+msgid "Image"
+msgstr "图片"
+
+#. [PrototypeDetail.DC.Integer]
+#. defaultMessage is:
+#. Integer
+#: messages/app/components/prototypeDetail/messages.json
+msgid "Integer"
+msgstr "整数"
+
+#. [PrototypeDetail.DC.PWM]
+#. defaultMessage is:
+#. PWM
+#: messages/app/components/prototypeDetail/messages.json
+msgid "PWM"
+msgstr "PWM"
+
+#. [PrototypeDetail.DC.String]
+#. defaultMessage is:
+#. String
+#: messages/app/components/prototypeDetail/messages.json
+msgid "String"
+msgstr "字符串"
+
+#. [PrototypeDetail.DC.Switch]
+#. defaultMessage is:
+#. Switch
+#: messages/app/components/prototypeDetail/messages.json
+msgid "Switch"
+msgstr "开关"
+
+#. [PrototypeDetail.DC.VideoStream]
+#. defaultMessage is:
+#. Video Stream
+#: messages/app/components/prototypeDetail/messages.json
+msgid "Video Stream"
+msgstr "视频流"
 
 #. [ImageUploader.upload]
 #. defaultMessage is:
@@ -720,6 +812,9 @@ msgstr "搜寻"
 msgid "教學範例"
 msgstr "教学范例"
 
+#. [PrototypeDetail.create]
+#. defaultMessage is:
+#. 新增
 #. [PrototypeDetail.add]
 #. defaultMessage is:
 #. 新增

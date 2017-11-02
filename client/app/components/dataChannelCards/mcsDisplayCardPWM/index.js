@@ -3,8 +3,8 @@ import { pure } from 'recompose';
 import { DataChannelAdapter } from 'mcs-lite-ui';
 
 const DisplayPWMLayout = ({
-  value = 0,
-  period = 0,
+  value,
+  period,
   id,
   format,
 }) => (

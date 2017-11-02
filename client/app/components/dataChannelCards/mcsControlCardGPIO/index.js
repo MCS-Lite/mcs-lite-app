@@ -9,6 +9,7 @@ const DisplayStringLayout = ({
   value,
   id,
   onSubmit,
+  onChangeDatachannel,
 }) => (
   <DataChannelAdapter
     dataChannelProps={{
@@ -16,8 +17,19 @@ const DisplayStringLayout = ({
       type: 'GPIO_CONTROL',
       values: { value },
     }}
-    eventHandler={({ id: datachannelId, values }) => {
-      onSubmit(datachannelId, { value: Number(values.value) });
+    eventHandler={({ id: datachannelId, values, type }) => {
+      const newValues = { value: Number(values.value) };
+
+      switch (type) {
+        case 'SUBMIT':
+          // Remind: MUST upload the datapoint via WebSocket.
+          onSubmit(datachannelId, newValues);
+          break;
+        default:
+          // Remind: Just change the state.
+          onChangeDatachannel(datachannelId, newValues);
+          break;
+      }
     }}
   />
 );

@@ -3,7 +3,7 @@ import { pure } from 'recompose';
 import { DataChannelAdapter } from 'mcs-lite-ui';
 
 const DisplayIntegerLayout = ({
-  value = 0,
+  value,
   id,
   format,
 }) => (
