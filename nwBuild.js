@@ -6,8 +6,9 @@ var nw = new NwBuilder({
     './package.json',
     './icon_tray@2x.png',
     './icon_tray_windows.png',
-    './icon.png'
+    './icon.png',
   ],
+  flavor: 'normal',
   platforms: ['osx64', 'win32', 'win64', 'linux32', 'linux64'],
   version: '0.20.3',
   buildDir: './out',
@@ -15,10 +16,12 @@ var nw = new NwBuilder({
   winIco: './icon.ico',
 });
 
+nw.on('log', console.log);
+
 nw.build()
-  .then(function () {
+  .then(function() {
     console.log('all done!');
   })
-  .catch(function (error) {
+  .catch(function(error) {
     console.error(error);
   });
