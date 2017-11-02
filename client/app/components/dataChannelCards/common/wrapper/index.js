@@ -55,6 +55,7 @@ const WrapperLayout = ({
   retrieveDatachannelDatapoint,
   setNewDatapointsSet,
   datapoints,
+  hasHistory,
   ...props
 }) => (
   <StyledDataChannelCard
@@ -73,7 +74,7 @@ const WrapperLayout = ({
     description={description}
     isHistoryShow={isHistoryShow}
     header={
-      <More
+      hasHistory !== false && <More
         isPrototype={isPrototype}
         isDevice={isDevice}
         dataChannelId={props.id}

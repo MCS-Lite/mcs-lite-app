@@ -10,24 +10,7 @@ var gui = require('nw.gui');
 var path = require('path');
 var nwPath = process.execPath;
 var nwDir = path.dirname(nwPath);
-var exec = require('child_process').exec;
 var spawn = require('child_process').spawn;
-var execSync = require('child_process').execSync;
-
-function kill (port) {
-  if (!Number.parseInt(port)) {
-    return Promise.reject(new Error('Invalid argument provided for port'))
-  }
-  if (process.platform == "darwin") {
-  	return execSync(`lsof -i tcp:${port} | grep LISTEN | awk '{print $2}' | xargs kill -9`);
-  	console.log("run on MAC");
-  } else {
-  	return spawn('cmd.exe', ['for', '/f', '"tokens=5"', '%a', 'in', '(\'netstat', '-aon', ,'|', 'findstr', ':${port}', '|', 'find', '"LISTENING"\')', 'do', 'taskkill', '/f', '/pid', '%a']);
-  	console.log("run on Windows");
-  }
-
-}
-
 
 var $ = function (selector) {
   return document.querySelector(selector);
@@ -41,7 +24,9 @@ if (process.platform == "darwin") {
 
 initApp();
 
-function startNode(path) {
+var liteServer;
+
+function startNode(serverPath) {
   var nodePath = 'node';
 
   if (process.env.NODE_ENV === 'dev' && /^win/.test(process.platform)) nodePath = global.__dirname + '\\node\\win32\\node.exe';
@@ -57,44 +42,72 @@ function startNode(path) {
   }
 
   console.log("nodePath is " + nodePath);
-  var lite_server = spawn(nodePath, [path]);
+  liteServer = spawn(nodePath, [serverPath]);
 
-  lite_server.stdout.on('data', function (data) {
+  liteServer.stdout.on('data', function(data) {
     console.log(data.toString());
   });
 
-  lite_server.stderr.on('data', function (data) {
+  liteServer.stderr.on('data', function(data) {
     console.log(data.toString());
   });
 
-  lite_server.on('close', function (status) {
-    console.log("Terminal MCS Lite server:" + status);
+  liteServer.on('close', function(status) {
+    liteServer = null;
+    console.log(`Terminal MCS Lite server: ${status}`);
   });
 }
 
 function startMCSLiteService() {
-  setTimeout(function(){
-    if (process.platform == "darwin") {
+  return new Promise(function(resolve, reject) {
+    if (liteServer || (liteServer && !liteServer.killed)) {
+      return reject('MCS Lite service is still running');
+    }
+
+    if (process.platform === 'darwin') {
       if (process.env.NODE_ENV === 'dev') {
         startNode('./server');
       } else {
-        var folderDir;
+        let folderDir;
         try {
           folderDir = require(global.__dirname + '/config').path;
           startNode(folderDir + '/mcs-lite-app/server');
-        } catch(e) {
+        } catch (e) {
           $("#app").innerHTML = "<p>Please click \"setup\" file to setup your env and reopen this mcs-lite-app.app.<p>";
         }
       }
     }
+
     if (/^win/.test(process.platform)) {
-      var folderDir = nwDir + '\\mcs-lite-app';
+      const folderDir = nwDir + '\\mcs-lite-app';
       startNode(folderDir + '\\server');
     }
-  }, 0);
+
+    console.log('MCS lite service is started.');
+    return resolve('MCS lite service is started.');
+  });
+}
+
+function stopMCSLiteService() {
+  return new Promise(function(resolve, reject) {
+    if (liteServer) {
+      liteServer.on('close', function(status) {
+        liteServer = null;
+        console.log(`Terminal MCS Lite server: ${status}`);
+        return resolve('MCS Lite service is stopped.');
+      });
+
+      liteServer.kill();
+      setTimeout(function() {
+        return reject('Stop request failed.');
+      }, 2000);
+    } else return reject('MCS Lite service is not running.');
+  });
 }
 
 global.startMCSLiteService = startMCSLiteService;
+
+global.stopMCSLiteService = stopMCSLiteService;
 
 function initApp() {
   var adminServer;
@@ -149,30 +162,7 @@ function initApp() {
     win.show();
 
     function quitApp() {
-      var $rest, $wot, $stream;
-
-      if (process.env.NODE_ENV === 'dev') {
-        $rest = require('./configs/rest');
-        $wot = require('./configs/wot');
-        $stream = require('./configs/stream');
-      } else {
-        if (/^win/.test(process.platform)) {
-          var folderDir = nwDir + '\\mcs-lite-app\\configs';
-          $rest = require(folderDir + '\\rest');
-          $wot = require(folderDir + '\\wot');
-          $stream = require(folderDir + '\\stream');
-        }
-        if (process.platform === 'darwin') {
-          var folderDir = require(global.__dirname + '/config').path + '/mcs-lite-app';
-          $rest = require(folderDir + '/configs/rest');
-          $wot = require(folderDir + '/configs/wot');
-          $stream = require(folderDir + '/configs/stream');
-        }
-      }
-      kill($rest.port);
-      kill($wot.port);
-      kill($stream.serverPort);
-      kill($stream.rtmpServerPort);
+      stopMCSLiteService();
       tray.remove();
       tray = null;
       win.close(true);

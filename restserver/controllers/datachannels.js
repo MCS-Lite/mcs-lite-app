@@ -1,3 +1,15 @@
+var R = require('ramda');
+
+const datachannelsHasHistory = [
+  { name: 'GPIO', type: 1 },
+  { name: 'PWM', type: 1 },
+  { name: 'Analog', type: 1 },
+  { name: 'Integer', type: 2 },
+  { name: 'Float', type: 2 },
+  { name: 'GPIO', type: 2 },
+  { name: 'PWM', type: 2 },
+];
+
 module.exports = function ($db) {
   var datachannels = $db.datachannels;
 
@@ -5,6 +17,13 @@ module.exports = function ($db) {
     var userId = req.user.userId;
     var prototypeId = req.params.prototypeId;
     var format = req.body.format || {};
+    var hasHistory = R.contains(
+      {
+        name: req.body.channelType.name,
+        type: req.body.type,
+      },
+      datachannelsHasHistory
+    );
 
     if (Object.keys(format).length > 0) {
       Object.keys(format).forEach(function(k, v) {
@@ -25,6 +44,7 @@ module.exports = function ($db) {
       prototypeId: prototypeId,
       createUserId: userId,
       format: format,
+      hasHistory: hasHistory,
     })
     .then(function(data) {
       return res.send(200, { data: data });

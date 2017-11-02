@@ -6,6 +6,7 @@ var prototypes = require('./prototypes/index');
 var datachannels = require('./datachannels/index');
 var users = require('./users/index');
 var unittypes = require('./unittypes/index');
+var fs = require('fs');
 
 var $devices = new Datastore({ filename: path.resolve(__dirname, '../db/devices.json'), autoload: true });
 var $prototypes = new Datastore({ filename: path.resolve(__dirname, '../db/prototypes.json'), autoload: true });
@@ -22,6 +23,14 @@ function init(host, port, config) {
     users: new users($users),
     datachannels: new datachannels($datachannels, $prototypes),
     unittypes: new unittypes($unittypes),
+    services: {
+      clearAllData: function() {
+        fs.writeFileSync(path.resolve(__dirname, '../db/datapoints.json'), '');
+        fs.writeFileSync(path.resolve(__dirname, '../db/datachannels.json'), '');
+        fs.writeFileSync(path.resolve(__dirname, '../db/devices.json'), '');
+        fs.writeFileSync(path.resolve(__dirname, '../db/prototypes.json'), '');
+      },
+    },
   };
 };
 
