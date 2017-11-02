@@ -41,6 +41,7 @@ cache:
     - node_modules
     - client/node_modules
     - nodeBinary
+    - cache
 
 deploy:
   - provider: releases
