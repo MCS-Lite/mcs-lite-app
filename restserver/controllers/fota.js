@@ -1,6 +1,6 @@
 var child = require('child_process');
 var path = require('path');
-var _ = require('lodash');
+var R = require('ramda');
 var uuid = require('node-uuid');
 var generator = require('youmeb-generator');
 var fs = require('fs');
@@ -8,7 +8,7 @@ var fs = require('fs');
 module.exports = function ($db) {
 
   var uploadFotaFile = function(req, res, next) {
-    if (_.isEmpty(req.files)) {
+    if (!(R.is(Object, req.files) || R.is(Array, req.files)) || R.isEmpty(req.files)) {
       return res.send(400, 'You must upload a binary file.');
     }
 

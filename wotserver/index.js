@@ -1,4 +1,3 @@
-const api = require('./api/index');
 const db = require('../configs/db');
 const websocketServer = require('./lib/websocket-broker');
 

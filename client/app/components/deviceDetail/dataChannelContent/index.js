@@ -50,6 +50,7 @@ const DataChannelContentLayout = ({
             datapoints={datapointsSet[dataChannel.datachannelId]}
             setNewDatapointsSet={setNewDatapointsSet}
             newDatapointsSet={newDatapointsSet}
+            hasHistory={dataChannel.hasHistory}
           />
         );
       })
