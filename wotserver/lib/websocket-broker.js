@@ -81,12 +81,6 @@ var Server = function () {
  * The server event handlers
  */
 Server.prototype.onNewThing = function(thing) {
-  // at this server, the thing description is included via a local file
-  // or it can be accessed by invoking HTTP api from remote device
-  // console.log(thing);
-  var def = require('./thing');
-  var thing = merge(def, thing);
-
   // register a new thing to WoT framework
   this.registerThing(thing);
 

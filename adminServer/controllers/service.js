@@ -2,29 +2,31 @@ var os = require('os');
 var fs = require('fs');
 var path = require('path');
 var exec = require('child_process').exec;
-var kill = require('cross-port-killer').kill;
-var $rest = require('../../configs/rest');
-var $wot = require('../../configs/wot');
-var $stream = require('../../configs/stream');
-var $admin = require('../../configs/admin');
-
 
 module.exports = function ($db) {
   var users = $db.users;
 
-  var startService = function(req, res, next) {
-    global.startMCSLiteService();
-    this.serviceStatus = true;
-    return res.send(200, "success!");
+  var startService = function(req, res) {
+    return global.startMCSLiteService()
+      .then(function(message) {
+        this.serviceStatus = true;
+        return res.send(200, message);
+      })
+      .catch(function(err) {
+        return res.send(400, err);
+      });
   };
 
-  var stopService = function(req, res, next) {
-    kill($rest.port);
-    kill($wot.port);
-    kill($stream.serverPort);
-    kill($stream.rtmpServerPort);
-    this.serviceStatus = false;
-    return res.send(200, "success.");
+  var stopService = function(req, res) {
+    return global.stopMCSLiteService()
+      .then(function(message) {
+        this.serviceStatus = false;
+        return res.send(200, message);
+      })
+      .catch(function(err) {
+        console.log('err');
+        return res.send(400, err);
+      });
   };
 
   var retrieveServiceSetting = function(req, res, next) {
@@ -46,7 +48,7 @@ module.exports = function ($db) {
       return fs.writeFile(path.resolve(__dirname, '../../configs/' + req.params.settingId + '.json'), JSON.stringify(content, null, 4), function(err) {
         if (err) reject(err);
         resolve();
-      });  
+      });
     })
     .then(function() {
       return res.send(200, "success.");
@@ -67,7 +69,7 @@ module.exports = function ($db) {
       return res.send(200, "success.");
     })
     .catch(function(err) {
-      return (400, err);
+      return res.send(400, err);
     });
   };
 
@@ -75,7 +77,7 @@ module.exports = function ($db) {
     var interfaces = os.networkInterfaces();
     var addresses = [];
     var restPath = path.resolve(__dirname, '../../configs/rest.json');
-    
+
     return fs.readFile(restPath, 'utf8', function(err, data) {
       var data = JSON.parse(data);
       if (this.serviceStatus) {
@@ -100,11 +102,11 @@ module.exports = function ($db) {
     users.retrieveAdminUsers()
     .then(function(data) {
       var adminUsersContent = '';
-      
+
       data.forEach(function(k, v) {
         adminUsersContent += k.toString() + '\n';
       });
-      
+
       fs.writeFileSync(path.resolve(__dirname, '../../db/users.json'), adminUsersContent, 'utf8');
       fs.writeFileSync(path.resolve(__dirname, '../../db/datapoints.json'), '', 'utf8');
       fs.writeFileSync(path.resolve(__dirname, '../../db/devices.json'), '', 'utf8');
@@ -114,6 +116,31 @@ module.exports = function ($db) {
     .catch(function(err) {
       return (400, err);
     });
+  };
+
+  var clearAllData = function clearAllData(req, res) {
+    var datachannels = $db.datachannels;
+    var unittypes = $db.unittypes;
+    var datapoints = $db.datapoints;
+    var devices = $db.devices;
+    var prototypes = $db.prototypes;
+
+    var queue = [];
+
+    queue.push(users.clearAllUser());
+    queue.push(unittypes.clearAllUnittypes());
+    queue.push(datachannels.clearAllDatachannels());
+    queue.push(datapoints.clearAllDatapoints());
+    queue.push(devices.clearAllDevices());
+    queue.push(prototypes.clearAllPrototypes());
+
+    Promise.all(queue)
+      .then(function() {
+        return res.send(200, 'success.');
+      })
+      .catch(function(err) {
+        return res.send(400, err);
+      });
   };
 
   return {
@@ -126,6 +153,7 @@ module.exports = function ($db) {
     getServiceLog: getServiceLog,
     startService: startService,
     stopService: stopService,
+    clearAllData: clearAllData,
   };
 
 };

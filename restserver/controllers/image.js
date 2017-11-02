@@ -1,4 +1,4 @@
-var _ = require('lodash');
+var R = require('ramda');
 var path = require('path');
 var uuid = require('node-uuid');
 var isImage = require('is-image');
@@ -11,7 +11,7 @@ module.exports = function ($db) {
   var uploadImage = function(req, res, next) {
     var typeArray = ['prototype', 'device', 'profile'];
 
-    if (_.isEmpty(req.files)) {
+    if (!(R.is(Object, req.files) || R.is(Array, req.files)) || R.isEmpty(req.files)) {
       return res.send(400, 'You must upload a image file.');
     }
 
@@ -23,7 +23,7 @@ module.exports = function ($db) {
       return res.send(502);
     }
 
-    if (_.indexOf(typeArray, req.query.type) === -1) {
+    if (R.indexOf(req.query.type, typeArray) === -1) {
       return res.send(503);
     }
 

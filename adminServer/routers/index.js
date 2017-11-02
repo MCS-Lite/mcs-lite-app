@@ -52,7 +52,7 @@ module.exports = function($db, $app, $admin) {
       return res.render(path.resolve(__dirname, adminPathname, 'index.html'), function(err, html) {
         res.send(html);
       });
-    }, 
+    },
   };
 
   this.loginInterface = {
@@ -115,6 +115,13 @@ module.exports = function($db, $app, $admin) {
     methods: ['get'],
     middleware: [$app.oauth.authorise()],
     handler: usersController.retrieveUsers,
+  };
+
+  this.checkUserAvailable = {
+    path: $admin.apiRoute + '/users/available',
+    methods: ['get'],
+    middleware: [$app.oauth.authorise()],
+    handler: usersController.checkUserAvailable,
   };
 
   this.addNewUser = {
@@ -193,11 +200,11 @@ module.exports = function($db, $app, $admin) {
     handler: usersController.batchAddNewUserByCSV,
   };
 
-  this.clearAllUserExceptAdmin = {
+  this.clearAllData = {
     path: $admin.apiRoute + '/clear',
     methods: ['delete'],
     middleware: [$app.oauth.authorise()],
-    handler: usersController.clearAllUserExceptAdmin,
+    handler: serviceController.clearAllData,
   };
 
 };

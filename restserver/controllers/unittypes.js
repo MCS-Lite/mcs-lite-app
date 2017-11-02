@@ -24,22 +24,13 @@ module.exports = function($db) {
     });
   };
 
-  var retrieveUnitTypes = function(req, res, next) {
+  var retrieveUnitTypes = function(req, res) {
     var userId = req.user.userId;
-    var unitTypeData;
-    return unittypes.retrieveUnitTypes({
-      isTemplate: true,
-    })
-    .then(function(data) {
-      unitTypeData = data;
-      return unittypes.retrieveUnitTypes({
-        createUserId: userId
+
+    return unittypes.retrieveUnitTypes({ createUserId: userId })
+      .then(function(data) {
+        return res.send(200, { data });
       });
-    })
-    .then(function(data) {
-      unitTypeData = unitTypeData.concat(data)
-      return res.send(200, { data: unitTypeData });
-    })
   };
 
   return {

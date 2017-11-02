@@ -262,5 +262,14 @@ module.exports = function(prototypes) {
         });
       })
     },
+
+    clearAllPrototypes: function() {
+      return new Promise(function(resolve, reject) {
+        return prototypes.remove({}, { multi: true }, function(err) {
+          if (err) return reject(err);
+          return resolve();
+        });
+      });
+    },
   };
 }

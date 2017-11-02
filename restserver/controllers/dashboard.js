@@ -8,11 +8,12 @@ module.exports = function ($db) {
 
     return prototypes.retriveAllTemplatesPrototypes()
     .then(function(data) {
+      // console.log(data);
       prototypeData.templates = data;
       return prototypes.retriveUserPrototypes({
         createUserId: userId,
         isActive: true,
-      },{
+      }, {
         updatedAt: -1,
       }, 0, 1);
     })
