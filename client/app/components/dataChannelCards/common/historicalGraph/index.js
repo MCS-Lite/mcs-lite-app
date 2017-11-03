@@ -30,14 +30,11 @@ const HistoricalGraph = ({
       />
       : <div className={styles.noData}>{t('noData')}</div>
     }
-    {
-      data.length > 0 &&
-        <DateSelector
-          startDate={startDate}
-          endDate={endDate}
-          onSearch={onDateSelectorSearch}
-        />
-    }
+    <DateSelector
+      startDate={startDate}
+      endDate={endDate}
+      onSearch={onDateSelectorSearch}
+    />
   </div>
 );
 
