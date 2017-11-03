@@ -27,7 +27,7 @@ else
 	echo "node for win64 exists."
 fi
 
-cd appBuild && mkdir client && cd client && mkdir app && mkdir apiHints
+cd appBuild && mkdir client && cd client && mkdir app
 cd ../..
 
 cp -R ./client/app/build/ ./appBuild/client/app/build
