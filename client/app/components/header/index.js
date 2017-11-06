@@ -1,4 +1,5 @@
 import React from 'react';
+import * as R from 'ramda';
 import c from 'classnames';
 import { browserHistory } from 'react-router';
 import compose from 'recompose/compose';
@@ -35,6 +36,11 @@ const isMenuActive = (listName, pathname) => {
 };
 
 const isItemActive = (regPath, pathname) => new RegExp(regPath).test(pathname);
+const getLocale = R.pipe(
+  R.path(['location', 'search']),
+  R.match(/^\?locale=(.*)/),
+  R.nth(1),
+);
 
 const Header = ({
   basePath,
@@ -43,15 +49,15 @@ const Header = ({
   onSignOut,
   getMessages: t,
 }) => {
-
+  const locale = getLocale(window);
   const resourcesList = [
     {
       name: t('intromcslite'),
-      path: './docs/zh-tw/index.html',
+      path: `./docs/${locale}/index.html`,
     },
     {
       name: t('tutorial'),
-      path: './docs/zh-tw/mcs_lite_tutorial/7697_overview.html',
+      path: `./docs/${locale}/mcs_lite_tutorial/7697_overview.html`,
     }
   ];
 
@@ -251,7 +257,7 @@ export default compose(
     onSignOut: props => () => {
       browserHistory.push('/login');
       props.signOut();
-    },    
+    },
   }),
   withGetMessages(messages, 'Header'),
 )(Header);

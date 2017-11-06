@@ -152,7 +152,7 @@ export default compose(
       if (displayCardType === k.type) {
         return [
           ...acc,
-          { value: k.value, children: k.dataChannelTypeName },
+          { value: k.value, children: k.children },
         ];
       }
       return acc;
