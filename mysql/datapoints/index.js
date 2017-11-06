@@ -44,7 +44,6 @@ module.exports = function(datapoints, devices) {
         })
       // })
       .then(function() {
-        // delete field.deviceKey;
         return new Promise (function(resolve, reject) {
           return datapoints
           .create(field)
