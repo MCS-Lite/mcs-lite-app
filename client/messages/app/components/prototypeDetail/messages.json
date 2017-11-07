@@ -45,6 +45,11 @@
     "defaultMessage": "成功！你已經成功新增一個資料通道。"
   },
   {
+    "id": "PrototypeDetail.addNewDataChannelFailed",
+    "description": "",
+    "defaultMessage": "錯誤！新增資料通道時發生錯誤。"
+  },
+  {
     "id": "PrototypeDetail.limit",
     "description": "",
     "defaultMessage": "資料通道下限"

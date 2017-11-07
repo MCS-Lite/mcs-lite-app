@@ -234,6 +234,10 @@ export default compose(
           .then(() => props.pushToast({
             kind: 'success',
             message: props.getMessages('addNewDataChannelSuccess'),
+          }))
+          .catch(() => props.pushToast({
+            kind: 'error',
+            message: props.getMessages('addNewDataChannelFailed'),
           }));
         props.setIsCreateDataChannel(false);
         props.setIsSelectCreateDataChannel(false);
