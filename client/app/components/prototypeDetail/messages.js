@@ -41,10 +41,20 @@ const messages = defineMessages({
     description: '',
     defaultMessage: '馬上新增資料通道！',
   },
+  'PrototypeDetail.dataChannelIdHasBeenUsed': {
+    id: 'PrototypeDetail.dataChannelIdHasBeenUsed',
+    description: '',
+    defaultMessage: '同個產品原型中的資料通道 ID 不可重複。',
+  },
   'PrototypeDetail.addNewDataChannelSuccess': {
     id: 'PrototypeDetail.addNewDataChannelSuccess',
     description: '',
     defaultMessage: '成功！你已經成功新增一個資料通道。',
+  },
+  'PrototypeDetail.addNewDataChannelFailed': {
+    id: 'PrototypeDetail.addNewDataChannelFailed',
+    description: '',
+    defaultMessage: '錯誤！新增資料通道時發生錯誤。',
   },
   'PrototypeDetail.limit': {
     id: 'PrototypeDetail.limit',

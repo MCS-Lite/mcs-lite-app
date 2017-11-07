@@ -55,6 +55,16 @@ export const deletePrototype = id => (dispatch, getState) =>
     browserHistory.push('/prototypes');
   });
 
+export const checkDatachannelIdAvailable = (prototypeId, datachannelId) => (
+  dispatch,
+  getState,
+) =>
+  request(
+    `/prototypes/${prototypeId}/datachannels/${datachannelId}/available`,
+    'GET',
+    getState().main.access_token,
+  );
+
 export const createDataChannel = (id, data) => (dispatch, getState) =>
   request(
     `/prototypes/${id}/datachannels`,

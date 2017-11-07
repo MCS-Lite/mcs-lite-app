@@ -240,6 +240,14 @@ module.exports = function($db, $app, $rest, $oauth, $wot) {
     handler: prototypesController.deletePrototype,
   };
 
+  this.checkDatachannelIdAvailable = {
+    path: $rest.apiRoute +
+      '/prototypes/:prototypeId/datachannels/:datachannelId/available',
+    methods: ['get'],
+    middleware: [$app.oauth.authorise()],
+    handler: datachannelsController.checkDatachannelIdAvailable,
+  };
+
   this.addDatachannel = {
     path: $rest.apiRoute + '/prototypes/:prototypeId/datachannels',
     methods: ['post'],

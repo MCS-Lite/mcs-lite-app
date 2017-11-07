@@ -13,6 +13,26 @@ const datachannelsHasHistory = [
 module.exports = function ($db) {
   var datachannels = $db.datachannels;
 
+  var checkDatachannelIdAvailable = function(req, res) {
+    var dataChannelId = req.params.datachannelId;
+    var prototypeId = req.params.prototypeId;
+
+    return datachannels
+      .retrievDatachannel({
+        datachannelId: dataChannelId,
+        prototypeId: prototypeId,
+      })
+      .then(function(results) {
+        if (results.length === 0) {
+          return res.send(200, true);
+        }
+        return res.send(200, false);
+      })
+      .catch(function(err) {
+        return res.send(400, err);
+      });
+  };
+
   var addNewDatachannel = function(req, res, next) {
     var userId = req.user.userId;
     var prototypeId = req.params.prototypeId;
@@ -97,6 +117,7 @@ module.exports = function ($db) {
   };
 
   return {
+    checkDatachannelIdAvailable: checkDatachannelIdAvailable,
     addNewDatachannel: addNewDatachannel,
     editDatachannel: editDatachannel,
     deleteDatachannel: deleteDatachannel,

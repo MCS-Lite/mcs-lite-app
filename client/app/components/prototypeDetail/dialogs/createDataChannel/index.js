@@ -20,6 +20,7 @@ import { withGetMessages } from 'react-intl-inject-hoc';
 import messages from '../../messages';
 import Dialog from '../../../common/dialog';
 import { getData } from '../../../../utils/dataChannelTypes';
+import { request } from '../../../../utils/fetch';
 import Preview from '../../preview';
 
 import styles from './styles.css';
@@ -33,6 +34,7 @@ const CreateDataChannelDialog = ({
   dataChannelName,
   dataChannelId,
   dataChannelDescription,
+  checkDatachannelIdAvailable,
   submitCreateDataChannel,
   onDataChannelTypeChange,
   dataChannelType,
@@ -67,7 +69,7 @@ const CreateDataChannelDialog = ({
           value={dataChannelName}
           placeholder={t('inputDataChannelName')}
           onChange={onDataChannelNameChange}
-          error={error.dataChannelName ? t('required') : ''}
+          error={error.dataChannelName ? error.dataChannelName : ''}
         />
         <InputText
           required
@@ -75,7 +77,7 @@ const CreateDataChannelDialog = ({
           value={dataChannelId}
           placeholder={t('inputDataChannelId')}
           onChange={onDataChannelIdChange}
-          error={error.dataChannelId ? t('required') : ''}
+          error={error.dataChannelId ? error.dataChannelId : ''}
         />
         <InputTextarea
           label={t('description')}
@@ -219,8 +221,8 @@ export default compose(
       data.isHidden = true;
 
       let error = {};
-      if (data.id === '') error.dataChannelId = true;
-      if (data.name === '') error.dataChannelName = true;
+      if (data.id === '') error.dataChannelId = props.getMessages('required');
+      if (data.name === '') error.dataChannelName = props.getMessages('required');
       if (!data.channelType.id) error.dataChannelType = true;
 
       Object.keys(props.format).forEach((k) => {
@@ -229,16 +231,35 @@ export default compose(
         }
       });
 
-      if (Object.keys(error).length === 0) {
-        props.createDataChannel(props.prototypeId, data)
-          .then(() => props.pushToast({
-            kind: 'success',
-            message: props.getMessages('addNewDataChannelSuccess'),
-          }));
-        props.setIsCreateDataChannel(false);
-        props.setIsSelectCreateDataChannel(false);
-      } else {
+      if (Object.keys(error).length !== 0) {
         props.setError(error);
+      } else {
+        props
+          .checkDatachannelIdAvailable(props.prototypeId, props.dataChannelId)
+          .then(result => {
+            if (result === false) {
+              props.setError({
+                dataChannelId: props.getMessages('dataChannelIdHasBeenUsed'),
+              });
+            } else {
+              props
+                .createDataChannel(props.prototypeId, data)
+                .then(() =>
+                  props.pushToast({
+                    kind: 'success',
+                    message: props.getMessages('addNewDataChannelSuccess'),
+                  }),
+                )
+                .catch(() =>
+                  props.pushToast({
+                    kind: 'error',
+                    message: props.getMessages('addNewDataChannelFailed'),
+                  }),
+                );
+              props.setIsCreateDataChannel(false);
+              props.setIsSelectCreateDataChannel(false);
+            }
+          });
       }
     },
   }),
