@@ -16,6 +16,7 @@ import styles from './styles.css';
 const PanelContentLayout = ({
   prototypeId,
   selectPanelValue,
+  checkDatachannelIdAvailable,
   createDataChannel,
   deleteDataChannel,
   datachannels,
@@ -47,6 +48,7 @@ const PanelContentLayout = ({
           selectPanelValue === 'datachannel' &&
             <DataChannelContent
               datachannels={datachannels}
+              checkDatachannelIdAvailable={checkDatachannelIdAvailable}
               createDataChannel={createDataChannel}
               deleteDataChannel={deleteDataChannel}
               prototypeId={prototypeId}

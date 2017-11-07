@@ -12,6 +12,7 @@ const Prototypes = ({
   main,
   prototypes,
   createTestDevice,
+  checkDatachannelIdAvailable,
   createDataChannel,
   deleteDataChannel,
   retrieveUnitTypes,
@@ -73,6 +74,7 @@ const Prototypes = ({
           createTestDevice={createTestDevice}
           devices={devices}
           datachannels={datachannels}
+          checkDatachannelIdAvailable={checkDatachannelIdAvailable}
           createDataChannel={createDataChannel}
           deleteDataChannel={deleteDataChannel}
           prototypeId={prototypeId}
@@ -97,6 +99,7 @@ Prototypes.propTypes = {
   }),
   prototypes: PropTypes.object,
   createTestDevice: PropTypes.func,
+  checkDatachannelIdAvailable: PropTypes.func,
   createDataChannel: PropTypes.func,
   deleteDataChannel: PropTypes.func,
   retrieveUnitTypes: PropTypes.func,

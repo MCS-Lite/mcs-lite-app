@@ -15,10 +15,12 @@ module.exports = function ($db) {
 
   var checkDatachannelIdAvailable = function(req, res) {
     var dataChannelId = req.params.datachannelId;
+    var prototypeId = req.params.prototypeId;
 
     return datachannels
       .retrievDatachannel({
         datachannelId: dataChannelId,
+        prototypeId: prototypeId,
       })
       .then(function(results) {
         if (results.length === 0) {

@@ -18,6 +18,7 @@ const NewDisplayCardLayout = ({
   isSelectCreateDataChannel,
   setIsSelectCreateDataChannel,
   prototypeId,
+  checkDatachannelIdAvailable,
   createDataChannel,
   getMessages: t,
   retrieveUnitTypes,
@@ -35,6 +36,7 @@ const NewDisplayCardLayout = ({
     </Button>
     <SelectCreateDataChannelDialog
       prototypeId={prototypeId}
+      checkDatachannelIdAvailable={checkDatachannelIdAvailable}
       createDataChannel={createDataChannel}
       isSelectCreateDataChannel={isSelectCreateDataChannel}
       setIsSelectCreateDataChannel={setIsSelectCreateDataChannel}

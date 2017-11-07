@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"POT-Creation-Date: 2017-10-31T05:44:45.705Z\n"
+"POT-Creation-Date: 2017-11-07T08:03:40.871Z\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "MIME-Version: 1.0\n"
@@ -484,6 +484,13 @@ msgstr ""
 #. defaultMessage is:
 #. 取消範例分享
 msgid "取消範例分享"
+msgstr ""
+
+#: ./messages/app/components/prototypeDetail/messages.json
+#. [PrototypeDetail.dataChannelIdHasBeenUsed]
+#. defaultMessage is:
+#. 同個產品原型中的資料通道 ID 不可重複。
+msgid "同個產品原型中的資料通道 ID 不可重複。"
 msgstr ""
 
 #: ./messages/app/components/dashboard/messages.json
@@ -1574,6 +1581,13 @@ msgstr ""
 #. defaultMessage is:
 #. 錯誤！在刪除資料通道時產生錯誤。
 msgid "錯誤！在刪除資料通道時產生錯誤。"
+msgstr ""
+
+#: ./messages/app/components/prototypeDetail/messages.json
+#. [PrototypeDetail.addNewDataChannelFailed]
+#. defaultMessage is:
+#. 錯誤！新增資料通道時發生錯誤。
+msgid "錯誤！新增資料通道時發生錯誤。"
 msgstr ""
 
 #: ./messages/app/components/header/messages.json

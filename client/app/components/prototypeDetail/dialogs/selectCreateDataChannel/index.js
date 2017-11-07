@@ -24,6 +24,7 @@ const CreateDataChannelDialog = ({
   isSelectCreateDataChannel,
   setIsSelectCreateDataChannel,
   prototypeId,
+  checkDatachannelIdAvailable,
   createDataChannel,
   getMessages: t,
   retrieveUnitTypes,
@@ -57,6 +58,7 @@ const CreateDataChannelDialog = ({
       {
         isCreateDataChannel &&
         <CreateDataChannel
+          checkDatachannelIdAvailable={checkDatachannelIdAvailable}
           createDataChannel={createDataChannel}
           prototypeId={prototypeId}
           displayCardType={displayCardType}

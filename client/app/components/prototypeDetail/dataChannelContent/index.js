@@ -9,6 +9,7 @@ import styles from './styles.css';
 const DataChannelContentLayout = ({
   datachannels,
   prototypeId,
+  checkDatachannelIdAvailable,
   createDataChannel,
   deleteDataChannel,
   retrieveUnitTypes,
@@ -26,6 +27,7 @@ const DataChannelContentLayout = ({
     {
       !readOnly &&
       <NewDisplayCard
+        checkDatachannelIdAvailable={checkDatachannelIdAvailable}
         createDataChannel={createDataChannel}
         prototypeId={prototypeId}
         retrieveUnitTypes={retrieveUnitTypes}
