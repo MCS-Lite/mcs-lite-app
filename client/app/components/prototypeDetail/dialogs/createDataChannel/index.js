@@ -69,7 +69,7 @@ const CreateDataChannelDialog = ({
           value={dataChannelName}
           placeholder={t('inputDataChannelName')}
           onChange={onDataChannelNameChange}
-          error={error.dataChannelName ? t('required') : ''}
+          error={error.dataChannelName ? error.dataChannelName : ''}
         />
         <InputText
           required
@@ -77,9 +77,7 @@ const CreateDataChannelDialog = ({
           value={dataChannelId}
           placeholder={t('inputDataChannelId')}
           onChange={onDataChannelIdChange}
-          error={
-            error.dataChannelId ? error.dataChannelId || t('required') : ''
-          }
+          error={error.dataChannelId ? error.dataChannelId : ''}
         />
         <InputTextarea
           label={t('description')}
@@ -223,8 +221,8 @@ export default compose(
       data.isHidden = true;
 
       let error = {};
-      if (data.id === '') error.dataChannelId = true;
-      if (data.name === '') error.dataChannelName = true;
+      if (data.id === '') error.dataChannelId = props.getMessages('required');
+      if (data.name === '') error.dataChannelName = props.getMessages('required');
       if (!data.channelType.id) error.dataChannelType = true;
 
       Object.keys(props.format).forEach((k) => {
