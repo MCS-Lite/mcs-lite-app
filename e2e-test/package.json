@@ -1,0 +1,78 @@
+{
+  "private": true,
+  "name": "e2e-test",
+  "version": "1.0.0",
+  "description": "E2E test for mcs-lite.",
+  "author": "Michael Hsu (徐承志) <evenchange4@gmail.com>",
+  "license": "MIT",
+  "repository": "https://github.com/MCS-Lite/mcs-lite-app.git",
+  "scripts": {
+    "test": "NODE_ENV='test' TZ='UTC' jest",
+    "test:watch": "npm run test -- --watch",
+    "eslint": "eslint ./",
+    "format": "prettier --write 'src/**/*.{js,json}'"
+  },
+  "jest": {
+    "bail": true
+  },
+  "dependencies": {
+    "delay": "^2.0.0",
+    "dotenv": "^4.0.0",
+    "jest": "^21.2.1",
+    "puppeteer": "^0.12.0"
+  },
+  "devDependencies": {
+    "babel-eslint": "^8.0.2",
+    "eslint": "^4.11.0",
+    "eslint-config-airbnb": "^15.1.0",
+    "eslint-config-prettier": "^2.7.0",
+    "eslint-config-react-app": "^2.0.1",
+    "eslint-plugin-flowtype": "^2.39.1",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-jest": "^21.3.2",
+    "eslint-plugin-jsx-a11y": "^5.1.1",
+    "eslint-plugin-prettier": "^2.3.1",
+    "eslint-plugin-react": "^7.4.0",
+    "prettier": "^1.8.2"
+  },
+  "engines": {
+    "node": ">=9.0.0"
+  },
+  "prettier": {
+    "trailingComma": "all",
+    "singleQuote": true
+  },
+  "eslintConfig": {
+    "parser": "babel-eslint",
+    "extends": [
+      "react-app",
+      "airbnb",
+      "prettier",
+      "prettier/flowtype",
+      "prettier/react",
+      "plugin:jest/recommended"
+    ],
+    "plugins": [
+      "prettier",
+      "jest"
+    ],
+    "env": {
+      "jest/globals": true
+    },
+    "rules": {
+      "react/jsx-filename-extension": [
+        1,
+        {
+          "extensions": [
+            ".js"
+          ]
+        }
+      ],
+      "import/no-extraneous-dependencies": 0,
+      "jsx-a11y/no-static-element-interactions": 0,
+      "react/forbid-prop-types": 0,
+      "react/require-default-props": 0,
+      "prettier/prettier": "error"
+    }
+  }
+}
