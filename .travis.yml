@@ -1,7 +1,7 @@
 sudo: true
 language: csharp
 mono: none
-dotnet: 1.0.3
+dotnet: 1.0.4
 dist: trusty
 before_install:
   - echo "$TRAVIS_TAG"
@@ -11,8 +11,9 @@ before_install:
   - sudo apt-get install wine
 
 install:
-  - npm install
-  - cd client && npm install && cd ..
+  - npm install yarn -g
+  - yarn install --pure-lockfile
+  - cd client && yarn install --pure-lockfile && cd ..
 
 script:
   # Build MCS-Lite console (Webpack)
