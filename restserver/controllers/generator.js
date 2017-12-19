@@ -19,8 +19,8 @@ module.exports = function ($db) {
     const filePath = path.resolve(__dirname, '../../client/apiHints/' + templatePath, content + '.ejs');
 
     console.log(filePath);
-    var apiHost = global.host.split(':')[0];
-    var apiPort = global.host.split(':')[1].split('/')[0];
+    var apiHost = global.wotHost.split(':')[0];
+    var apiPort = global.wotHost.split(':')[1].split('/')[0];
 
     const configs = {
       deviceId: deviceId,
