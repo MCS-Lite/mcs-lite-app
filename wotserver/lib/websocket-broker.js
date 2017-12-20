@@ -128,6 +128,9 @@ function createServer(options) {
 Server.prototype.start = function(options) {
   var port = $wot.port || process.env.PORT;
   var host = $wot.host || process.env.HOST;
+  global.wotHost = host;
+  global.wotPort = port;
+
   var options = options || {};
 
   for (var prop in options) {
