@@ -1,5 +1,4 @@
 var path = require('path');
-var fs = require('fs');
 
 module.exports = function ($db) {
   var arduinoGenerator = function(req, res, next) {
@@ -19,8 +18,8 @@ module.exports = function ($db) {
     const filePath = path.resolve(__dirname, '../../client/apiHints/' + templatePath, content + '.ejs');
 
     console.log(filePath);
-    var apiHost = global.wotHost.split(':')[0];
-    var apiPort = global.wotHost.split(':')[1].split('/')[0];
+    var apiHost = global.wotHost;
+    var apiPort = global.wotPort;
 
     const configs = {
       deviceId: deviceId,

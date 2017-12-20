@@ -20,10 +20,6 @@ var socketPort = require('../configs/wot.json').port;
 var connectDB = connectToDB(dbConfig).init();
 var Oauth = new oauth(connectDB);
 
-global.oauthHost = 'http://' + $oauth.host + ':' + $oauth.port;
-global.host = $rest.host + ':' + $rest.port + $rest.apiRoute;
-global.wotHost = 'ws://' + $wot.host + ':' + $wot.port;
-
 app.oauth = new OAuthServer({
   model: Oauth,
   grants: ['password', 'refresh_token'],
