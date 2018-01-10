@@ -8,6 +8,9 @@ var $wot = require('../../configs/wot');
 
 
 module.exports = function ($db) {
+  const host = $rest.host + ':' + $rest.port
+  const oauthHost = $oauth.host + ':' + $oauth.port
+
   var users = $db.users;
 
   var signUp = function(req, res, next) {
@@ -36,7 +39,7 @@ module.exports = function ($db) {
         .set('Cache-Control', 'no-cache')
         .set('Content-Type', 'application/json')
         .send(data)
-        .end(function(err, res) {
+        .end(function(err, res = {}) {
           return res.ok ?  resolve(res.body) : reject(err.response.body.error);
         });
       });
@@ -77,7 +80,7 @@ module.exports = function ($db) {
         .set('Content-Type', 'application/x-www-form-urlencoded')
         .send(data)
         .set('Authorization', 'Basic ' + req.basicToken)
-        .end(function(err, res) {
+        .end(function(err, res = {}) {
           var errMsg;
           if (err) {
             if(err.response.body.error_description.code === 401) {
@@ -163,7 +166,7 @@ module.exports = function ($db) {
         .set('Content-Type', 'application/x-www-form-urlencoded')
         .send(data)
         .set('Authorization', 'Basic ' + req.basicToken)
-        .end(function(err, res) {
+        .end(function(err, res = {}) {
           return res.ok ?  resolve(res.body) : reject(err.response.body.message);
         });
       });
@@ -176,7 +179,7 @@ module.exports = function ($db) {
         .set('Cache-Control', 'no-cache')
         .set('Content-Type', 'application/x-www-form-urlencoded')
         .set('Authorization', 'Bearer ' + token.access_token)
-        .end(function(err, res) {
+        .end(function(err, res = {}) {
           if (res.ok) {
             info.access_token = token.access_token;
             info.expire_time  = token.expire_time;
@@ -240,7 +243,7 @@ module.exports = function ($db) {
           .set('Cache-Control', 'no-cache')
           .set('Content-Type', 'application/x-www-form-urlencoded')
           .set('Authorization', 'Bearer ' + token.access_token)
-          .end(function(err, res) {
+          .end(function(err, res = {}) {
             return res.ok ? resolve('active') : reject({
               code: err.response.body.code,
               message: err.response.body.message,
@@ -266,7 +269,7 @@ module.exports = function ($db) {
             .set('Content-Type', 'application/x-www-form-urlencoded')
             .send(data)
             .set('Authorization', 'Basic ' + req.basic_token)
-            .end(function(err, res) {
+            .end(function(err, res = {}) {
               return res.ok ?  resolve(res.body) : reject(err.response.body.message);
             });
           });
