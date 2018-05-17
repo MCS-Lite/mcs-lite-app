@@ -79,4 +79,10 @@ $ NODE_ENV=prod GZIP_DISABLE='true' node server
 * Upload and retrieve data points.
 * Mobile web support.
 
+## Quality Assurance 
 
+### REST APIs 
+We use [JMeter](https://jmeter.apache.org/) to performan the end-to-end automation test to ensure all the functionality work as expected.
+
+### Web UI
+We use [BrowserStack](http://browserstack.com/) to performan both the end-to-end and browser-compatibility testing to ensure all the functionality work as expected.
