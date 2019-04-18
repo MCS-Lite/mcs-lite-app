@@ -48,7 +48,7 @@
     "mcs-lite-admin-web": "^0.2.0",
     "mcs-lite-introduction": "^0.2.9",
     "mcs-lite-mobile-web": "^0.4.13",
-    "mysql": "^2.13.0",
+    "mysql": "^2.17.1",
     "nedb": "^1.8.0",
     "node-uuid": "^1.4.7",
     "oauth2-server": "https://github.com/iamblue/Oauth2-server.git",
