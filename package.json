@@ -65,7 +65,7 @@
     "babel-eslint": "^7.2.3",
     "chai": "^3.5.0",
     "codecov": "^2.2.0",
-    "eslint": "^3.19.0",
+    "eslint": "^6.3.0",
     "eslint-config-airbnb": "^15.0.1",
     "eslint-config-mcs-lite": "^0.4.0",
     "eslint-config-prettier": "^2.1.1",
