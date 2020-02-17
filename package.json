@@ -55,7 +55,7 @@
     "ramda": "^0.23.0",
     "sequelize": "^1.7.10",
     "shortid": "^2.2.6",
-    "superagent": "^3.5.0",
+    "superagent": "^5.2.2",
     "utils-merge": "^1.0.0",
     "validator": "^9.0.0",
     "wotcity.io": "^0.8.14",
